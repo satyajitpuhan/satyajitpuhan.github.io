@@ -46,17 +46,19 @@
             <a href="{{ current_url | replace(from=lang ~ "/", to="") }}">{{ config.extra.languages_flags[0] }}</a>
           {% endif %}
         </small>
-        <a {% if current_path is containing("/about") %}class="nav-item active"{% else %}class="nav-item"{% endif %}
-    {% if lang == "en" %} href="{{ config.base_url ~ '/about' }}" {% else %} href="{{ config.base_url ~ '/' ~ lang ~ '/about'}}" {% endif %}
->
-    <span> About Me </span>
-</a>
-<a {% if current_path is containing("/research") %}class="nav-item active"{% else %}class="nav-item"{% endif %}
-    {% if lang == "en" %} href="{{ config.base_url ~ '/research' }}" {% else %} href="{{ config.base_url ~ '/' ~ lang ~ '/research'}}" {% endif %}
->
-    <span> Research </span>
-</a>
-      </div>
+        <div class="nav-links" style="display: flex; flex-direction: column;">
+  <a {% if current_path is containing("/about") %}class="nav-item active"{% else %}class="nav-item"{% endif %}
+      {% if lang == "en" %} href="{{ config.base_url ~ '/about' }}" {% else %} href="{{ config.base_url ~ '/' ~ lang ~ '/about'}}" {% endif %}
+  >
+      <span> About ME </span>
+  </a>
+
+  <a {% if current_path is containing("/research") %}class="nav-item active"{% else %}class="nav-item"{% endif %}
+      {% if lang == "en" %} href="{{ config.base_url ~ '/research' }}" {% else %} href="{{ config.base_url ~ '/' ~ lang ~ '/research'}}" {% endif %}
+  >
+      <span> Research </span>
+  </a>
+</div>
     </nav>
     <main class="container">
       {% block content %} {% endblock %}
