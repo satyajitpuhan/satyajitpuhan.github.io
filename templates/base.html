@@ -47,9 +47,9 @@
           {% endif %}
         </small>
         <div class="nav-links" style="display: flex; flex-direction: column;">
-  <div class="nav-links" style="display: flex; flex-direction: column;">
+  <div class="nav-links" style="display: flex; flex-direction: column; gap: 16px;">
   <a 
-    style="margin-bottom: 12px;"
+    style="color: blue;"
     {% if current_path is containing("/about") %}class="nav-item active"{% else %}class="nav-item"{% endif %}
     {% if lang == "en" %} href="{{ config.base_url ~ '/about' }}" {% else %} href="{{ config.base_url ~ '/' ~ lang ~ '/about'}}" {% endif %}
   >
@@ -57,12 +57,14 @@
   </a>
 
   <a 
+    style="color: red;"
     {% if current_path is containing("/research") %}class="nav-item active"{% else %}class="nav-item"{% endif %}
     {% if lang == "en" %} href="{{ config.base_url ~ '/research' }}" {% else %} href="{{ config.base_url ~ '/' ~ lang ~ '/research'}}" {% endif %}
   >
     <span> Research </span>
   </a>
 </div>
+
 
     </nav>
     <main class="container">
