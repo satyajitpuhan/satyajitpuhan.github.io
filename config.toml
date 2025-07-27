@@ -16,7 +16,7 @@ default_language = "en"
 
 [extra]
 author = "Satyajit Puhan"
-author_image="me.jpg"
+author_image=""
 city="Jalandhar"
 years="2025"
 
