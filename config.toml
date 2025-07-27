@@ -1,0 +1,38 @@
+# The URL the site will be built for
+base_url = "https://satyajitpuhan.github.io/"
+
+# Whether to automatically compile all Sass files in the sass directory
+compile_sass = true
+
+# Whether to do syntax highlighting
+# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
+#highlight_code = true
+
+# Whether to build a search index to be used later on by a JavaScript library
+build_search_index = false
+default_language = "en"
+#languages = []
+
+
+[extra]
+author = "Satyajit Puhan"
+author_image="me.jpg"
+city="Jalandhar"
+years="2025"
+
+job = "Senior Research Fellow, NIT Jalandhar"
+description = "Dragons & Aunt ❤️"
+
+links = [
+    { url = "https://github.com/satyajitpuhan", title="", icon = "fab fa-github"},
+    { url = "", title="", icon = "fab fa-twitter"},
+    { url = "", title="", icon = "fab fa-linkedin"},
+    { url = "mailto:puhansatyajit@gmail.com", title="",icon = "fas fa-envelope"},
+    { url = "https://instagram.com/puhansatya", title="",icon = "fab fa-instagram"},
+        { url = "", title="", icon = "fab fa-researchgate"}
+]
+
+# if you add languages, put your emoji flag on array
+languages_flags = [
+    "🇬🇧"
+]
