@@ -47,18 +47,23 @@
           {% endif %}
         </small>
         <div class="nav-links" style="display: flex; flex-direction: column;">
-  <a {% if current_path is containing("/about") %}class="nav-item active"{% else %}class="nav-item"{% endif %}
-      {% if lang == "en" %} href="{{ config.base_url ~ '/about' }}" {% else %} href="{{ config.base_url ~ '/' ~ lang ~ '/about'}}" {% endif %}
+  <div class="nav-links" style="display: flex; flex-direction: column;">
+  <a 
+    style="margin-bottom: 12px;"
+    {% if current_path is containing("/about") %}class="nav-item active"{% else %}class="nav-item"{% endif %}
+    {% if lang == "en" %} href="{{ config.base_url ~ '/about' }}" {% else %} href="{{ config.base_url ~ '/' ~ lang ~ '/about'}}" {% endif %}
   >
-      <span> About ME </span>
+    <span> About ME </span>
   </a>
 
-  <a {% if current_path is containing("/research") %}class="nav-item active"{% else %}class="nav-item"{% endif %}
-      {% if lang == "en" %} href="{{ config.base_url ~ '/research' }}" {% else %} href="{{ config.base_url ~ '/' ~ lang ~ '/research'}}" {% endif %}
+  <a 
+    {% if current_path is containing("/research") %}class="nav-item active"{% else %}class="nav-item"{% endif %}
+    {% if lang == "en" %} href="{{ config.base_url ~ '/research' }}" {% else %} href="{{ config.base_url ~ '/' ~ lang ~ '/research'}}" {% endif %}
   >
-      <span> Research </span>
+    <span> Research </span>
   </a>
 </div>
+
     </nav>
     <main class="container">
       {% block content %} {% endblock %}
