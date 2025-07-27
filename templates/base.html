@@ -51,12 +51,6 @@
 >
     <span> About ME </span>
 </a>
-
-<a {% if current_path is containing("/research") %}class="nav-item active"{% else %}class="nav-item"{% endif %}
-    {% if lang == "en" %} href="{{ config.base_url ~ '/research' }}" {% else %} href="{{ config.base_url ~ '/' ~ lang ~ '/research'}}" {% endif %}
->
-    <span> Research </span>
-</a>
       </div>
     </nav>
     <main class="container">
