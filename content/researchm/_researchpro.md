@@ -1,6 +1,6 @@
 +++
 title = "Description"
-template = "research.html"
+template = "about.html"
 sort_by = "date"
 +++
 
