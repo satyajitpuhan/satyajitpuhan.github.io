@@ -29,8 +29,7 @@ links = [
     { url = "", title="", icon = "fab fa-linkedin"},
     { url = "mailto:puhansatyajit@gmail.com", title="",icon = "fas fa-envelope"},
     { url = "https://instagram.com/puhansatya", title="",icon = "fab fa-instagram"},
-        { url = "", title="", icon = "fab fa-researchgate"},
-        { url = "", title="", icon = "fab fa-google-scholar"}
+        { url = "", title="", icon = "fab fa-researchgate"}
 ]
 
 # if you add languages, put your emoji flag on array
