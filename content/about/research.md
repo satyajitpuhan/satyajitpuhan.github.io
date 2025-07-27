@@ -1,6 +1,6 @@
 +++
 title = "Research"
-date = "06-07-2025"
+date = 2025-07-25
 +++
 
 ### **Research**
