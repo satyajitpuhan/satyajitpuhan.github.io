@@ -1,9 +1,9 @@
 +++
-title = "VeNi---ViDi---ViCi"
+title = "<span style="color: black;">VeNi---ViDi---ViCi</span>"
 date = 2025-07-25
 +++
 ---
-### Published Articles
+### <span style="color: Orange;">Published Articles</span>
 
 1. **Scalar, vector, and tensor form factors of pion and kaon**, <span style="color: red;">Satyajit Puhan</span> and Harleen Dahiya, *Physical Review D*, 2025.  [Link](https://journals.aps.org/prd/abstract/10.1103/2wpb-jgkc)  
 2. **Effect of nuclear medium on the spatial distribution of pions**, <span style="color: red;">Satyajit Puhan</span>, Navpreet Kaur, Arvind Kumar, Suneel Dutt, and Harleen Dahiya, *Nuclear Physics B*, 2025. [Link](https://www.sciencedirect.com/science/article/pii/S055032132500149X?via%3Dihub)  
