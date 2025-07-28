@@ -1,8 +1,8 @@
 +++
-title = "Research"
+title = "Fun is Solving New Problems"
 date = 2025-07-25
 +++
-
+---
 ### Published Articles
 
 1. **Scalar, vector, and tensor form factors of pion and kaon**, <span style="color: red;">Satyajit Puhan</span> and Harleen Dahiya, *Physical Review D*, 2025.  [Link](https://journals.aps.org/prd/abstract/10.1103/2wpb-jgkc)  
