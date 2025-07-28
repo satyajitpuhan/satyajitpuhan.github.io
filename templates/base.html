@@ -48,46 +48,40 @@
         </small>
 <div class="nav-links">
   <a
+    style="color: blue;"
     {% if current_path is containing("/about") %}class="nav-item active"{% else %}class="nav-item"{% endif %}
     {% if lang == "en" %} href="{{ config.base_url ~ '/about' }}" {% else %} href="{{ config.base_url ~ '/' ~ lang ~ '/about'}}" {% endif %}
-  >
-    About ME
-  </a>
-  
+  >About ME</a>
+
   <a
+    style="color: red;"
     {% if current_path is containing("/education") %}class="nav-item active"{% else %}class="nav-item"{% endif %}
     {% if lang == "en" %} href="{{ config.base_url ~ '/education' }}" {% else %} href="{{ config.base_url ~ '/' ~ lang ~ '/education'}}" {% endif %}
-  >
-    Education
-  </a>
+  >Education</a>
 
   <a
+    style="color: green;"
     {% if current_path is containing("/research") %}class="nav-item active"{% else %}class="nav-item"{% endif %}
     {% if lang == "en" %} href="{{ config.base_url ~ '/research' }}" {% else %} href="{{ config.base_url ~ '/' ~ lang ~ '/research'}}" {% endif %}
-  >
-    Research
-  </a>
+  >Research</a>
 
   <a
+    style="color: goldenrod;"
     {% if current_path is containing("/publication") %}class="nav-item active"{% else %}class="nav-item"{% endif %}
     {% if lang == "en" %} href="{{ config.base_url ~ '/publication' }}" {% else %} href="{{ config.base_url ~ '/' ~ lang ~ '/publication'}}" {% endif %}
-  >
-    Publications
-  </a>
+  >Publications</a>
 
   <a
+    style="color: orange;"
     {% if current_path is containing("/talk") %}class="nav-item active"{% else %}class="nav-item"{% endif %}
     {% if lang == "en" %} href="{{ config.base_url ~ '/talk' }}" {% else %} href="{{ config.base_url ~ '/' ~ lang ~ '/talk'}}" {% endif %}
-  >
-    Talks
-  </a>
+  >Talks</a>
 
   <a
+    style="color: black;"
     {% if current_path is containing("/conf") %}class="nav-item active"{% else %}class="nav-item"{% endif %}
     {% if lang == "en" %} href="{{ config.base_url ~ '/conf' }}" {% else %} href="{{ config.base_url ~ '/' ~ lang ~ '/conf'}}" {% endif %}
-  >
-    Conferences & Schools
-  </a>
+  >Conferences & Schools</a>
 </div>
     </nav>
     <main class="container">
