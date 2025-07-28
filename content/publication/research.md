@@ -33,4 +33,6 @@ date = 2025-07-25
 2. **In-medium properties of pseudoscalar mesons in symmetric nuclear matter**, Anshu Gautam, Dhananjay Singh, <span style="color: red;">Satyajit Puhan</span>, Navpreet Kaur, Arvind Kumar, Harleen Dahiya, and Suneel Dutt, *DAE Symp.Nucl.Phys.*, 2025. [Link](https://inspirehep.net/conferences/2872160?ui-citation-summary=true) 
 2. **Spin-1 unpolarized GPDs in light front formalism**, <span style="color: red;">Satyajit Puhan</span>, Narinder Kumar  and Harleen Dahiya, *DAE Symp.Nucl.Phys.*, 2025. [Link](https://inspirehep.net/conferences/2872160?ui-citation-summary=true) 
 2. **Spatial and Transverse structure of Heavy B- and D-mesons**, <span style="color: red;">Satyajit Puhan</span>, and Harleen Dahiya, *PoS HQL2023*, 2024. [Link](https://doi.org/10.22323/1.462.0089) 
-### 
+
+---
+### Ongoing- Work
