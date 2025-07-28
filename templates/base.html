@@ -55,8 +55,8 @@
     <span> About ME </span>
    <a 
     style="color: red;"
-    {% if current_path is containing("/research") %}class="nav-item active"{% else %}class="nav-item"{% endif %}
-    {% if lang == "en" %} href="{{ config.base_url ~ '/research' }}" {% else %} href="{{ config.base_url ~ '/' ~ lang ~ '/research'}}" {% endif %}
+    {% if current_path is containing("/education") %}class="nav-item active"{% else %}class="nav-item"{% endif %}
+    {% if lang == "en" %} href="{{ config.base_url ~ '/education' }}" {% else %} href="{{ config.base_url ~ '/' ~ lang ~ '/education'}}" {% endif %}
   >
     <span> Education </span>
     <a 
