@@ -46,7 +46,7 @@
             <a href="{{ current_url | replace(from=lang ~ "/", to="") }}">{{ config.extra.languages_flags[0] }}</a>
           {% endif %}
         </small>
-<div class="nav-links">
+<div class="nav-links" style="display: flex; gap: 50px; justify-content: center; flex-wrap: wrap; padding: 20px 0;">
   <a
     style="color: blue;"
     {% if current_path is containing("/about") %}class="nav-item active"{% else %}class="nav-item"{% endif %}
@@ -83,6 +83,7 @@
     {% if lang == "en" %} href="{{ config.base_url ~ '/conf' }}" {% else %} href="{{ config.base_url ~ '/' ~ lang ~ '/conf'}}" {% endif %}
   >Conferences & Schools</a>
 </div>
+
     </nav>
     <main class="container">
       {% block content %} {% endblock %}
