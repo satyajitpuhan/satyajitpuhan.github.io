@@ -1,6 +1,6 @@
 +++
 title = "Description"
-template = "conf.html"
+template = "conference.html"
 sort_by = "date"
 +++
 
