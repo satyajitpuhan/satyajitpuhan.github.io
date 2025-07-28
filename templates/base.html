@@ -65,6 +65,18 @@
     {% if lang == "en" %} href="{{ config.base_url ~ '/research' }}" {% else %} href="{{ config.base_url ~ '/' ~ lang ~ '/research'}}" {% endif %}
   >
     <span> Research </span>
+    <a 
+    style="color: yellow;"
+    {% if current_path is containing("/publication") %}class="nav-item active"{% else %}class="nav-item"{% endif %}
+    {% if lang == "en" %} href="{{ config.base_url ~ '/publication' }}" {% else %} href="{{ config.base_url ~ '/' ~ lang ~ '/publication'}}" {% endif %}
+  >
+    <span> Publications </span>
+    <a 
+    style="color: orange;"
+    {% if current_path is containing("/talk") %}class="nav-item active"{% else %}class="nav-item"{% endif %}
+    {% if lang == "en" %} href="{{ config.base_url ~ '/talk' }}" {% else %} href="{{ config.base_url ~ '/' ~ lang ~ '/talk'}}" {% endif %}
+  >
+    <span> Talks </span>
   </a>
 </div>
     </nav>
