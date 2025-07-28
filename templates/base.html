@@ -60,7 +60,7 @@
   >
     <span> Education </span>
     <a 
-    style="color: red;"
+    style="color: green;"
     {% if current_path is containing("/research") %}class="nav-item active"{% else %}class="nav-item"{% endif %}
     {% if lang == "en" %} href="{{ config.base_url ~ '/research' }}" {% else %} href="{{ config.base_url ~ '/' ~ lang ~ '/research'}}" {% endif %}
   >
