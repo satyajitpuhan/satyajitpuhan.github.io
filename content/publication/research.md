@@ -1,5 +1,5 @@
 +++
-title = "Fun is Solving New Problems"
+title = "VeNi---VeDi---ViCi"
 date = 2025-07-25
 +++
 ---
