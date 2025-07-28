@@ -1,5 +1,5 @@
 +++
-title = "VeNi---VeDi---ViCi"
+title = "VeNi---ViDi---ViCi"
 date = 2025-07-25
 +++
 ---
