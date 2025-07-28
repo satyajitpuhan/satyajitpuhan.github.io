@@ -26,10 +26,10 @@ description = "Russians ❤️"
 links = [
     { url = "https://github.com/satyajitpuhan", title="", icon = "fab fa-github"},
     { url = "", title="", icon = "fab fa-twitter"},
-    { url = "", title="", icon = "fab fa-linkedin"},
+    { url = "https://www.linkedin.com/in/satyajit-puhan-b9889a162/", title="", icon = "fab fa-linkedin"},
     { url = "mailto:puhansatyajit@gmail.com", title="",icon = "fas fa-envelope"},
-    { url = "https://instagram.com/puhansatya", title="",icon = "fab fa-instagram"},
-        { url = "", title="", icon = "fab fa-researchgate"}
+    { url = "https://www.instagram.com/arie_kanha/", title="",icon = "fab fa-instagram"},
+        { url = "https://www.researchgate.net/profile/Satyajit-Puhan/research", title="", icon = "fab fa-researchgate"}
 ]
 
 # if you add languages, put your emoji flag on array
