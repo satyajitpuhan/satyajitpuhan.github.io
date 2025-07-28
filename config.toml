@@ -25,7 +25,6 @@ description = "Russians ❤️"
 
 links = [
     { url = "https://github.com/satyajitpuhan", title="", icon = "fab fa-github"},
-    { url = "", title="", icon = "fab fa-twitter"},
     { url = "https://www.linkedin.com/in/satyajit-puhan-b9889a162/", title="", icon = "fab fa-linkedin"},
     { url = "mailto:puhansatyajit@gmail.com", title="",icon = "fas fa-envelope"},
     { url = "https://www.instagram.com/arie_kanha/", title="",icon = "fab fa-instagram"},
