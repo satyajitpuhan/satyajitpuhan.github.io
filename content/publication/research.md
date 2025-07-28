@@ -19,7 +19,7 @@ date = 2025-07-25
 3. **Leading twist T-even TMDs for the spin-1 heavy vector mesons**, <span style="color: red;">Satyajit Puhan</span>, and Harleen Dahiya, *Physical Review D*, 2024. [Link](https://journals.aps.org/prd/abstract/10.1103/PhysRevD.109.034005)
 ---
 
-### Online Article(Not Published Yet)
+### <span style="color: Orange;">Online Article(Not Published Yet)</span>
 1. **D and D^* mesons in isospin asymmetric nuclear medium**,Anshu Gautam, Dhananjay Singh, Navpreet Kaur, <span style="color: red;">Satyajit Puhan</span>, Arvind Kumar, Suneel Dutt, and Harleen Dahiya,, *Under Review*, 2025.  [Arxiv::2506.08707](https://arxiv.org/abs/2506.08707)  
 2. **EValence quark distribution of light rho and heavy J/Psi vector mesons in light-cone quark model**, Tanisha,<span style="color: red;">Satyajit Puhan</span>, Anurag Yadav, and Harleen Dahiya, *Under Review*, 2025. [Arxiv::2505.09213](https://arxiv.org/abs/2505.09213)  
 3. **Valence quark properties of charged kaons in symmetric nuclear matter**, Reetanshu Pandey, <span style="color: red;">Satyajit Puhan</span>, Navpreet Kaur, Arvind Kumar, Suneel Dutt, Harleen Dahiya, *Under Review*, 2025. [Arxiv::2505.01202](https://arxiv.org/abs/2505.01202)
@@ -27,7 +27,7 @@ date = 2025-07-25
 2. **Radiative Transitions for the Ground and Excited Charmonia States**, Anurag Yadav, <span style="color: red;">Satyajit Puhan</span>, and Harleen Dahiya, *Under Review*, 2025. [Arxiv::2504.14864](https://arxiv.org/abs/2504.14864)
 2. **Understanding the Valence Quark Structure of the Pion through GTMDs**,  <span style="color: red;">Satyajit Puhan</span>, Shubham Sharma, Narinder Kumar, and Harleen Dahiya, *Under Review*, 2025. [Arxiv::2504.14982](https://arxiv.org/abs/2504.14982) 
 ---
-### Conference Proceedings
+### <span style="color: Orange;">Conference Proceedings</span>
 2. **Understanding photon TMDs using light-front wave function**,  <span style="color: red;">Satyajit Puhan</span>, Narinder Kumar, and Harleen Dahiya, *HP-2024*, 2024. [Arxiv::2504.01419](https://arxiv.org/abs/2504.01419) 
 2. **Radiative transition of in light-front quark model**, Anurag Yadav, <span style="color: red;">Satyajit Puhan</span>,  and Harleen Dahiya, *DAE Symp.Nucl.Phys.*, 2025. [Link](https://inspirehep.net/conferences/2872160?ui-citation-summary=true) 
 2. **In-medium properties of pseudoscalar mesons in symmetric nuclear matter**, Anshu Gautam, Dhananjay Singh, <span style="color: red;">Satyajit Puhan</span>, Navpreet Kaur, Arvind Kumar, Harleen Dahiya, and Suneel Dutt, *DAE Symp.Nucl.Phys.*, 2025. [Link](https://inspirehep.net/conferences/2872160?ui-citation-summary=true) 
@@ -35,4 +35,4 @@ date = 2025-07-25
 2. **Spatial and Transverse structure of Heavy B- and D-mesons**, <span style="color: red;">Satyajit Puhan</span>, and Harleen Dahiya, *PoS HQL2023*, 2024. [Link](https://doi.org/10.22323/1.462.0089) 
 
 ---
-### Ongoing- Work
+### <span style="color: Orange;">Ongoing- Work</span>
