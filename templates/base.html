@@ -54,34 +54,39 @@
   >About ME</a>
 
   <a
-    style="color: red;"
+    style="color: blue;"
     {% if current_path is containing("/education") %}class="nav-item active"{% else %}class="nav-item"{% endif %}
     {% if lang == "en" %} href="{{ config.base_url ~ '/education' }}" {% else %} href="{{ config.base_url ~ '/' ~ lang ~ '/education'}}" {% endif %}
   >Education</a>
 
   <a
-    style="color: green;"
+    style="color: blue;"
     {% if current_path is containing("/research") %}class="nav-item active"{% else %}class="nav-item"{% endif %}
     {% if lang == "en" %} href="{{ config.base_url ~ '/research' }}" {% else %} href="{{ config.base_url ~ '/' ~ lang ~ '/research'}}" {% endif %}
   >Research</a>
 
   <a
-    style="color: goldenrod;"
+    style="color: blue;"
     {% if current_path is containing("/publication") %}class="nav-item active"{% else %}class="nav-item"{% endif %}
     {% if lang == "en" %} href="{{ config.base_url ~ '/publication' }}" {% else %} href="{{ config.base_url ~ '/' ~ lang ~ '/publication'}}" {% endif %}
   >Publications</a>
 
   <a
-    style="color: orange;"
+    style="color: blue;"
     {% if current_path is containing("/talk") %}class="nav-item active"{% else %}class="nav-item"{% endif %}
     {% if lang == "en" %} href="{{ config.base_url ~ '/talk' }}" {% else %} href="{{ config.base_url ~ '/' ~ lang ~ '/talk'}}" {% endif %}
   >Talks</a>
 
   <a
-    style="color: black;"
+    style="color: blue;"
     {% if current_path is containing("/conf") %}class="nav-item active"{% else %}class="nav-item"{% endif %}
     {% if lang == "en" %} href="{{ config.base_url ~ '/conf' }}" {% else %} href="{{ config.base_url ~ '/' ~ lang ~ '/conf'}}" {% endif %}
   >Conferences & Schools</a>
+  <a
+    style="color: blue;"
+    {% if current_path is containing("/achie") %}class="nav-item active"{% else %}class="nav-item"{% endif %}
+    {% if lang == "en" %} href="{{ config.base_url ~ '/achie' }}" {% else %} href="{{ config.base_url ~ '/' ~ lang ~ '/achie'}}" {% endif %}
+  >Achievements</a>
 </div>
 
     </nav>
