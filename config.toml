@@ -30,7 +30,8 @@ links = [
     { url = "mailto:puhansatyajit@gmail.com", title="",icon = "fas fa-envelope"},
     { url = "https://www.instagram.com/arie_kanha/", title="",icon = "fab fa-instagram"},
     { url = "https://www.researchgate.net/profile/Satyajit-Puhan/", title="", icon = "fab fa-researchgate"},
-    { url = "https://https://www.facebook.com/satyajit.puhan.982/", title="", icon = "fab fa-facebook"}
+    { url = "https://https://www.facebook.com/satyajit.puhan.982/", title="", icon = "fab fa-facebook"},
+    { url = "https://scholar.google.com/citations?hl=en&user=pKbmhZQAAAAJ/", title="", icon = "fab fa-google-scholar"}
 ]
 
 # if you add languages, put your emoji flag on array
