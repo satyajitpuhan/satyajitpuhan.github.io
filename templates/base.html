@@ -46,43 +46,47 @@
             <a href="{{ current_url | replace(from=lang ~ "/", to="") }}">{{ config.extra.languages_flags[0] }}</a>
           {% endif %}
         </small>
-  <div class="nav-links" style="display: flex; flex-direction: column; gap: 16px;">
-  <a 
-    style="color: blue;"
+<div class="nav-links">
+  <a
     {% if current_path is containing("/about") %}class="nav-item active"{% else %}class="nav-item"{% endif %}
     {% if lang == "en" %} href="{{ config.base_url ~ '/about' }}" {% else %} href="{{ config.base_url ~ '/' ~ lang ~ '/about'}}" {% endif %}
   >
-    <span> About ME </span>
-   <a 
-    style="color: red;"
+    About ME
+  </a>
+  
+  <a
     {% if current_path is containing("/education") %}class="nav-item active"{% else %}class="nav-item"{% endif %}
     {% if lang == "en" %} href="{{ config.base_url ~ '/education' }}" {% else %} href="{{ config.base_url ~ '/' ~ lang ~ '/education'}}" {% endif %}
   >
-    <span> Education </span>
-    <a 
-    style="color: green;"
+    Education
+  </a>
+
+  <a
     {% if current_path is containing("/research") %}class="nav-item active"{% else %}class="nav-item"{% endif %}
     {% if lang == "en" %} href="{{ config.base_url ~ '/research' }}" {% else %} href="{{ config.base_url ~ '/' ~ lang ~ '/research'}}" {% endif %}
   >
-    <span> Research </span>
-    <a 
-    style="color: yellow;"
+    Research
+  </a>
+
+  <a
     {% if current_path is containing("/publication") %}class="nav-item active"{% else %}class="nav-item"{% endif %}
     {% if lang == "en" %} href="{{ config.base_url ~ '/publication' }}" {% else %} href="{{ config.base_url ~ '/' ~ lang ~ '/publication'}}" {% endif %}
   >
-    <span> Publications </span>
-    <a 
-    style="color: orange;"
+    Publications
+  </a>
+
+  <a
     {% if current_path is containing("/talk") %}class="nav-item active"{% else %}class="nav-item"{% endif %}
     {% if lang == "en" %} href="{{ config.base_url ~ '/talk' }}" {% else %} href="{{ config.base_url ~ '/' ~ lang ~ '/talk'}}" {% endif %}
   >
-    <span> Talks </span>
-    <a 
-    style="color: black;"
+    Talks
+  </a>
+
+  <a
     {% if current_path is containing("/conf") %}class="nav-item active"{% else %}class="nav-item"{% endif %}
     {% if lang == "en" %} href="{{ config.base_url ~ '/conf' }}" {% else %} href="{{ config.base_url ~ '/' ~ lang ~ '/conf'}}" {% endif %}
   >
-    <span> Conferences & Schools </span>
+    Conferences & Schools
   </a>
 </div>
     </nav>
