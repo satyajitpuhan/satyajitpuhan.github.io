@@ -1,5 +1,5 @@
 +++
-title = "<span style="color: black;">VeNi---ViDi---ViCi</span>"
+title = "VeNi---ViDi---ViCi"
 date = 2025-07-25
 +++
 ---
