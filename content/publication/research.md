@@ -19,10 +19,10 @@ date = 2025-07-25
 3. **Leading twist T-even TMDs for the spin-1 heavy vector mesons**, <span style="color: red;">Satyajit Puhan</span>, and Harleen Dahiya, *Physical Review D*, 2024. [Link](https://journals.aps.org/prd/abstract/10.1103/PhysRevD.109.034005)
 ---
 
-### Talks 
+### Online Article(Not Published Yet)
 
 
-### Research Groups
+### Conference Proceedings
 
 
 ### 
