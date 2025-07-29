@@ -3,7 +3,7 @@ title = "Where I came From !!"
 date = 2025-07-25
 +++
 
-### Early Life
+### <span style="color: orange;">Early Life</span>
 I am the second child of my parents, born on 15th May 1999 in a small village called Chhatara, Srirampur, located in the district of Balasore, Odisha. I am the son of Mr. Debendranath Puhan and Mrs. Durgarani Puhan, and the younger brother of Mr. Biswajit Puhan, Mr. Indrajit Puhan, and Mr. Abhijit Puhan.
 
 Growing up in a poor family came with many challenges. There were countless days when we had nothing but plain rice to eat—no curry, no vegetables. Yet, those days taught us the true meaning of resilience and humility. My three brothers and I stood together through thick and thin, helping our father in the rice fields and doing whatever we could to ease the burden.
@@ -14,7 +14,7 @@ It's painful to recall those days of hardship, but they are an inseparable part 
 
 ---
 
-### Life Changing Moments
+### <span style="color: orange;">Life Changing Moments</span>
 
 I was not a good student during my early school years. In fact, until Class 7, I struggled a lot with my studies. I still remember the day I was caught cheating during an exam by our Head Teacher. That incident left a mark on me—not because of the punishment, but because my mother broke down in tears in front of my teacher. She wept, not out of anger, but out of worry and helplessness, seeing her son fall behind. That moment became the turning point in my life.
 
