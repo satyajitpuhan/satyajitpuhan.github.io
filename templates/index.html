@@ -22,21 +22,38 @@
       {% endfor %}
     </div>
 
-    <!-- News Section -->
-    <section id="news" style="margin-top: 3rem;">
-      <h2>News & Recent Activity</h2>
-      <ul>
-        <li>
-  <strong><span style="color: red;">July 2025</span>:</strong>
-  Presented my work in front of Prof. C. R. Ji’s group —
-  <a href="https://crjiresearchgroup.wordpress.ncsu.edu/group-meetings/archives-satyajit-puhan/" target="_blank" rel="noopener noreferrer">
-    Talk Link
-  </a>.
-</li>
-        <li><strong><span style="color: red;">June 2025</span>:</strong> Junior Research Fellow at BLTP, JINR, Dubna.</li>
-        <li><strong><span style="color: red;">May 2025</span>:</strong> Turned 25 .</li>
-      </ul>
-    </section>
-  </div>
+    <!-- Notification Box on Right Center -->
+<div id="news-box">
+  <h2>News & Recent Activity</h2>
+  <ul id="news-list">
+    <li class="news-item">
+      <strong><span style="color: red;">July 2025</span>:</strong>
+      Presented my work in front of Prof. C. R. Ji’s group —
+      <a href="https://crjiresearchgroup.wordpress.ncsu.edu/group-meetings/archives-satyajit-puhan/" target="_blank" rel="noopener noreferrer">Talk Link</a>.
+    </li>
+    <li class="news-item">
+      <strong><span style="color: red;">June 2025</span>:</strong> Junior Research Fellow at BLTP, JINR, Dubna.
+    </li>
+    <li class="news-item">
+      <strong><span style="color: red;">May 2025</span>:</strong> Turned 25.
+    </li>
+  </ul>
 </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const items = document.querySelectorAll(".news-item");
+    let index = 0;
+
+    function showNextItem() {
+      items.forEach((item) => item.classList.remove("show"));
+      items[index].classList.add("show");
+      index = (index + 1) % items.length;
+    }
+
+    showNextItem();
+    setInterval(showNextItem, 4000);
+  });
+</script>
 {% endblock content %}
