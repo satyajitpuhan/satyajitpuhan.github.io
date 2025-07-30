@@ -37,7 +37,7 @@ date = 2025-07-25
   </p>
 </div>
 
-
+---
 
 
 ### <span style="color: orange;">Master of Science</span>
@@ -58,6 +58,7 @@ date = 2025-07-25
   </p>
 </div>
 
+---
 
 ### <span style="color: orange;">Bachelor of Science</span>
 
@@ -77,6 +78,7 @@ date = 2025-07-25
   </p>
 </div>
 
+---
 
 ### <span style="color: orange;">Higher Secondary (12th)</span>
 
@@ -93,6 +95,8 @@ date = 2025-07-25
   </p>
 </div>
 
+---
+
 ### <span style="color: orange;">Higher Secondary (11th)</span>
 
 <div style="margin-left: 20px;">
@@ -108,6 +112,8 @@ date = 2025-07-25
   </p>
 </div>
 
+---
+
 ### <span style="color: orange;">Summer Course</span>
 
 <div style="margin-left: 20px;">
@@ -121,6 +127,7 @@ date = 2025-07-25
   </p>
 </div>
 
+---
 
 ### <span style="color: orange;">High School</span>
 
@@ -135,6 +142,8 @@ date = 2025-07-25
   </p>
 </div>
 
+---
+
 ### <span style="color: orange;">M.E School</span>
 
 <div style="margin-left: 20px;">
@@ -146,6 +155,8 @@ date = 2025-07-25
   </p>
 </div>
 
+---
+
 ### <span style="color: orange;">Primary School</span>
 
 <div style="margin-left: 20px;">
@@ -156,3 +167,5 @@ date = 2025-07-25
    Srirampur Primary School, Srirampur, Balasore, Odisha, India.<br>
   </p>
 </div>
+
+---
