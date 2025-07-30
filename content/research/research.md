@@ -30,20 +30,60 @@ Whether it's constructing helicity amplitude matrices for spin-1 hadrons, or ext
 
 ### <span style="color: orange;">Research Collaborations !!</span>
 
-<p>
-I have had the privilege to collaborate with several exceptional researchers across institutions. Their insights and guidance have significantly shaped my academic journey and enriched my understanding of hadronic and particle physics. Here is a list of researchers I have worked with or am currently collaborating with:
-</p>
+<h3><span style="color: orange;">Research Collaborations !!</span></h3>
 
-<ul>
-  <li><strong>A</strong> – Assistant Professor</li>
-  <li><strong>A</strong> – Associate Professor</li>
-  <li><strong>B</strong> – Assistant Professor</li>
-  <li><strong>Hv</strong> – Professor</li>
-  <li><strong>Ne</strong> – Assistant Professor</li>
-  <li><strong>Ra</strong> – Associate Professor</li>
-  <li><strong>U</strong> – Assistant Professor</li>
-  <li><strong>Uja</strong> – Professor</li>
-</ul>
+<div style="display: flex; overflow-x: auto; gap: 20px; padding: 10px 0;">
+  
+  <!-- Collaborator 1 -->
+  <div style="flex: 0 0 auto; text-align: center;">
+    <img src="images/abhishek_majhi.jpg" alt="Abhishek Majhi" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <p><strong>Abhishek Majhi</strong><br>Assistant Professor</p>
+  </div>
+
+  <!-- Collaborator 2 -->
+  <div style="flex: 0 0 auto; text-align: center;">
+    <img src="images/ajay_kumar_singh.jpg" alt="Ajay Kumar Singh" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <p><strong>Ajay Kumar Singh</strong><br>Associate Professor</p>
+  </div>
+
+  <!-- Collaborator 3 -->
+  <div style="flex: 0 0 auto; text-align: center;">
+    <img src="images/bibekananda_kundu.jpg" alt="Bibekananda Kundu" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <p><strong>Bibekananda Kundu</strong><br>Assistant Professor</p>
+  </div>
+
+  <!-- Collaborator 4 -->
+  <div style="flex: 0 0 auto; text-align: center;">
+    <img src="images/hira_lal_yadav.jpg" alt="Hira Lal Yadav" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <p><strong>Hira Lal Yadav</strong><br>Professor</p>
+  </div>
+
+  <!-- Collaborator 5 -->
+  <div style="flex: 0 0 auto; text-align: center;">
+    <img src="images/neha_agnihotri.jpg" alt="Neha Agnihotri" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <p><strong>Neha Agnihotri</strong><br>Assistant Professor</p>
+  </div>
+
+  <!-- Collaborator 6 -->
+  <div style="flex: 0 0 auto; text-align: center;">
+    <img src="images/rajeev_ranjan.jpg" alt="Rajeev Ranjan" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <p><strong>Rajeev Ranjan</strong><br>Associate Professor</p>
+  </div>
+
+  <!-- Collaborator 7 -->
+  <div style="flex: 0 0 auto; text-align: center;">
+    <img src="images/uday_kumar.jpg" alt="Uday Kumar" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <p><strong>Uday Kumar</strong><br>Assistant Professor</p>
+  </div>
+
+  <!-- Collaborator 8 -->
+  <div style="flex: 0 0 auto; text-align: center;">
+    <img src="images/ujjwal_laha.jpg" alt="Ujjwal Laha" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <p><strong>Ujjwal Laha</strong><br>Professor</p>
+  </div>
+
+</div>
+
 
 
 ### <span style="color: orange;">What are My Future Goals !! !!</span>
