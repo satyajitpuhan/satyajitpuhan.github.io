@@ -109,12 +109,23 @@ Whether it's constructing helicity amplitude matrices for spin-1 hadrons, or ext
       <strong>Ujjwal Laha</strong><br>
       Professor<br>
       <em>IIT In
-
+     </p>
+   </div>
+  </div>
 
 
 ### <span style="color: orange;">What are My Future Goals !! !!</span>
 
-
+<div style="display: flex; justify-content: center; margin-top: 20px;">
+  <div style="width: 200px; text-align: center;">
+    <img src="/static/me.jpg" alt="Test Image" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <p>
+      <strong>Satyajit Puhan</strong><br>
+      Senior Research Fellow<br>
+      <em>NIT Jalandhar, India</em>
+    </p>
+  </div>
+</div>
 
 ### <span style="color: orange;">Do I Love It!! !! !!</span>
 
