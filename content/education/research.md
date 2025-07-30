@@ -37,8 +37,25 @@ date = 2025-07-25
     </a><br>
     <strong><span style="color: magenta;">Project Titled</span>:</strong>:</strong> Proton-Oxygen elastic scattering by Taylor Series Expansion<br>
     <strong><span style="color: magenta;">Courses</span>:</strong>:</strong> Particle Physisics,Laser Physics, Condensed matter physics, mathematical physics, english, environmental physics, electronics<br>
-    <strong><span style="color: magenta;">Marks Obtained</span>:</strong>:</strong> 8.91/ 10.0 (CGPA)
+    <strong><span style="color: magenta;">Marks Obtained</span>:</strong>:</strong> 8.59/ 10.0 (CGPA)
   </p>
 </div>
 
 
+### <span style="color: orange;">Bachelor of Science</span>
+
+<div style="margin-left: 20px;">
+  <p style="color: green; font-weight: bold;">➤ Year (2016–2019)</p>
+  
+  <p>
+    <strong><span style="color: magenta;">B.Sc Project</span>:</strong> Condensed Matter of Physics<br>
+    <strong><span style="color: magenta;">B.Sc Project Guide</span>:</strong>:</strong> Dr. Rajat Kumar Pradhan<br>
+    <strong><span style="color: magenta;">Institute</span>:</strong>:</strong> 
+    <a href="https://bhadrakcollege.ac.in" target="_blank">
+    Bhadrak Autonomous College, Bhadrak, Odisha, India.
+    </a><br>
+    <strong><span style="color: magenta;">Project Titled</span>:</strong>:</strong> Superconductivity and its application to Maglev trains<br>
+    <strong><span style="color: magenta;">Courses</span>:</strong>:</strong> Almsot every Subjects<br>
+    <strong><span style="color: magenta;">Marks Obtained</span>:</strong>:</strong> 8.91/ 10.0 (CGPA)
+  </p>
+</div>
