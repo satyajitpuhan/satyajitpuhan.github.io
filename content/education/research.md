@@ -3,7 +3,9 @@ title = "Details"
 date = 2025-07-25
 +++
 
-### Doctoral Philosophy
+### <span style="color: orange;">Doctoral Philosophy</span>
+
+
 
 ### Master Degree
 
