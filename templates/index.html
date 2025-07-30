@@ -22,21 +22,117 @@
       {% endfor %}
     </div>
 
-    <!-- News Section -->
-    <section id="news" style="margin-top: 3rem;">
-      <h2>News & Recent Activity</h2>
-      <ul>
-        <li>
-  <strong><span style="color: red;">July 2025</span>:</strong>
-  Presented my work in front of Prof. C. R. Ji’s group —
-  <a href="https://crjiresearchgroup.wordpress.ncsu.edu/group-meetings/archives-satyajit-puhan/" target="_blank" rel="noopener noreferrer">
-    Talk Link
-  </a>.
-</li>
-        <li><strong><span style="color: red;">June 2025</span>:</strong> Junior Research Fellow at BLTP, JINR, Dubna.</li>
-        <li><strong><span style="color: red;">May 2025</span>:</strong> Turned 25 .</li>
-      </ul>
-    </section>
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notification Box Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+    }
+
+    .homepage {
+      max-width: 800px;
+    }
+
+    .notification-box {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 300px;
+      max-height: 60vh;
+      overflow-y: auto;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      padding: 10px;
+      display: none;
+      z-index: 9999;
+    }
+
+    .notification {
+      background: #e3f2fd;
+      border-left: 5px solid #2196f3;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      font-size: 14px;
+      animation: fadein 0.3s ease-in;
+    }
+
+    @keyframes fadein {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .input-area {
+      margin-top: 2rem;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      width: 250px;
+      font-size: 14px;
+    }
+
+    button {
+      padding: 10px 15px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div class="homepage">
+  <h1>Welcome to My Site</h1>
+  <p>This is a simple homepage layout with a live notification box.</p>
+
+  <div class="input-area">
+    <input type="text" id="notification-input" placeholder="Enter a notification">
+    <button onclick="addNotification()">Add Notification</button>
   </div>
+</div>
+
+<!-- Notification Box -->
+<div id="notification-box" class="notification-box"></div>
+
+<script>
+  function showNotification(message) {
+    const box = document.getElementById("notification-box");
+    box.style.display = "block";
+
+    const note = document.createElement("div");
+    note.className = "notification";
+    note.innerText = message;
+    box.appendChild(note);
+
+    setTimeout(() => {
+      note.remove();
+      if (box.childElementCount === 0) {
+        box.style.display = "none";
+      }
+    }, 5000);
+  }
+
+  function addNotification() {
+    const input = document.getElementById("notification-input");
+    const msg = input.value.trim();
+    if (msg === "") return;
+    showNotification(msg);
+    input.value = "";
+  }
+
+  // Optional: show welcome notification on load
+  document.addEventListener("DOMContentLoaded", () => {
+    showNotification("Welcome to the site!");
+  });
+</script>
+
+</body>
+</html>
+
 </div>
 {% endblock content %}
