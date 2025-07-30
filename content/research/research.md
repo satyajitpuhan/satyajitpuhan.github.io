@@ -36,7 +36,7 @@ Whether it's constructing helicity amplitude matrices for spin-1 hadrons, or ext
   <div style="width: 200px; text-align: center;">
     <img src="/c1.png" alt="me" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
     <p>
-      <strong><span style="color: blue;">Prof. Oleg Teryaev !!</span></strong><br>
+      <strong><span style="color: blue;">Prof. Oleg Teryaev </span></strong><br>
      Professor<br>
       <em>JINR, Dubna</em>
     </p>
@@ -46,7 +46,7 @@ Whether it's constructing helicity amplitude matrices for spin-1 hadrons, or ext
   <div style="width: 200px; text-align: center;">
     <img src="/c1.png" alt="abcd" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
     <p>
-      <strong><span style="color: blue;">Prof. C R Ji !!</span></strong><br>
+      <strong><span style="color: blue;">Prof. C R Ji </span></strong><br>
        Professor<br>
       <em>North-Carolina University, USA.</em>
     </p>
@@ -56,7 +56,7 @@ Whether it's constructing helicity amplitude matrices for spin-1 hadrons, or ext
   <div style="width: 200px; text-align: center;">
     <img src="/c1.png" alt="abcd" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
     <p>
-      <strong><span style="color: blue;">Prof. Sabyasachi Ghosh !!</span></strong><br>
+      <strong><span style="color: blue;">Prof. Sabyasachi Ghosh </span></strong><br>
      Professor<br>
       <em>IIT-Bhilai</em>
     </p>
@@ -66,7 +66,7 @@ Whether it's constructing helicity amplitude matrices for spin-1 hadrons, or ext
   <div style="width: 200px; text-align: center;">
     <img src="/c1.png" alt="abcd" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
     <p>
-      <strong><span style="color: blue;">Dr. Narinder Kumar !!</span></strong><br>
+      <strong><span style="color: blue;">Dr. Narinder Kumar</span></strong><br>
      Asst. Professor<br>
       <em>Doaba College, Jalandhar</em>
     </p>
@@ -76,7 +76,7 @@ Whether it's constructing helicity amplitude matrices for spin-1 hadrons, or ext
   <div style="width: 200px; text-align: center;">
     <img src="/c1.png" alt="abcd" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
     <p>
-      <strong><span style="color: blue;">Dr. Shubham Sharma !!</span></strong><br>
+      <strong><span style="color: blue;">Dr. Shubham Sharma </span></strong><br>
       Post-Doc<br>
       <em>MIPT, Moscow</em>
     </p>
@@ -86,7 +86,7 @@ Whether it's constructing helicity amplitude matrices for spin-1 hadrons, or ext
   <div style="width: 200px; text-align: center;">
     <img src="/c1.png" alt="abcd" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
     <p>
-      <strong><span style="color: blue;">Mr. Ashutosh Dwivedi !!</span></strong><br>
+      <strong><span style="color: blue;">Mr. Ashutosh Dwivedi </span></strong><br>
       PhD<br>
       <em>IIT-Bhilai</em>
     </p>
@@ -96,7 +96,7 @@ Whether it's constructing helicity amplitude matrices for spin-1 hadrons, or ext
   <div style="width: 200px; text-align: center;">
     <img src="/c1.png" alt="abcd" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
     <p>
-      <strong><span style="color: blue;">Dr. Nisha Dhiman !!</span></strong><br>
+      <strong><span style="color: blue;">Dr. Nisha Dhiman </span></strong><br>
     </p>
   </div>
   </div>
