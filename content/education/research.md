@@ -59,3 +59,50 @@ date = 2025-07-25
     <strong><span style="color: magenta;">Marks Obtained</span>:</strong>:</strong> 8.91/ 10.0 (CGPA)
   </p>
 </div>
+
+
+### <span style="color: orange;">Higher Secondary (12th)</span>
+
+<div style="margin-left: 20px;">
+  <p style="color: green; font-weight: bold;">➤ Year (2015–2016)</p>
+  
+  <p>
+    <strong><span style="color: magenta;">Institute</span>:</strong>:</strong> 
+    <a href="https://svrcbalasore.org.in" target="_blank">
+    Sidhivinayak +2 Science Residential College, Balasore, Odisha, India.
+    </a><br>
+    <strong><span style="color: magenta;">Courses</span>:</strong>:</strong> Mathematics, Physics(99/100), English, Hindi, Biology and Chemestry.<br>
+    <strong><span style="color: magenta;">Marks Obtained</span>:</strong>:</strong> 478/600 (CGPA)
+  </p>
+</div>
+
+### <span style="color: orange;">Higher Secondary (11th)</span>
+
+<div style="margin-left: 20px;">
+  <p style="color: green; font-weight: bold;">➤ Year (2014–2015)</p>
+  
+  <p>
+    <strong><span style="color: magenta;">Institute</span>:</strong>:</strong> 
+    <a href="https://fmcollege.ac.in" target="_blank">
+    Fakir Mohan Junior College, Balasore, Odisha, India.
+    </a><br>
+    <strong><span style="color: magenta;">Courses</span>:</strong>:</strong> Mathematics, Physics(99/100), English, Hindi, Biology and Chemestry.<br>
+    <strong><span style="color: magenta;">Marks Obtained</span>:</strong>:</strong> 522/600 (CGPA)
+  </p>
+</div>
+
+
+### <span style="color: orange;">Higher Secondary (11th)</span>
+
+<div style="margin-left: 20px;">
+  <p style="color: green; font-weight: bold;">➤ Year (2014–2015)</p>
+  
+  <p>
+    <strong><span style="color: magenta;">Institute</span>:</strong>:</strong> 
+    <a href="https://fmcollege.ac.in" target="_blank">
+    Fakir Mohan Junior College, Balasore, Odisha, India.
+    </a><br>
+    <strong><span style="color: magenta;">Courses</span>:</strong>:</strong> Mathematics, Physics(99/100), English, Hindi, Biology and Chemestry.<br>
+    <strong><span style="color: magenta;">Marks Obtained</span>:</strong>:</strong> 522/600 (CGPA)
+  </p>
+</div>
