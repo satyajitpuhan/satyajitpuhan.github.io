@@ -27,60 +27,88 @@ Whether it's constructing helicity amplitude matrices for spin-1 hadrons, or ext
 
 ---
 
-
 ### <span style="color: orange;">Research Collaborations !!</span>
+
 
 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
 
   <!-- Collaborator 1 -->
-  <div style="width: 180px; text-align: center;">
-    <img src="static/me.jpg" alt="Abhishek Majhi" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
-    <p><strong>Abhishek Majhi</strong><br>Assistant Professor</p>
+  <div style="width: 200px; text-align: center;">
+    <img src="/static/me.jpg" alt="me" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <p>
+      <strong>Abhishek Majhi</strong><br>
+      Assistant Professor<br>
+      <em>Bose Institute, Kolkata</em>
+    </p>
   </div>
 
   <!-- Collaborator 2 -->
-  <div style="width: 180px; text-align: center;">
-    <img src="images/ajay_kumar_singh.jpg" alt="Ajay Kumar Singh" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
-    <p><strong>Ajay Kumar Singh</strong><br>Associate Professor</p>
+  <div style="width: 200px; text-align: center;">
+    <img src="/static/ajay_kumar_singh.jpg" alt="Ajay Kumar Singh" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <p>
+      <strong>Ajay Kumar Singh</strong><br>
+      Associate Professor<br>
+      <em>Central University of Jharkhand</em>
+    </p>
   </div>
 
   <!-- Collaborator 3 -->
-  <div style="width: 180px; text-align: center;">
-    <img src="images/bibekananda_kundu.jpg" alt="Bibekananda Kundu" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
-    <p><strong>Bibekananda Kundu</strong><br>Assistant Professor</p>
+  <div style="width: 200px; text-align: center;">
+    <img src="/static/bibekananda_kundu.jpg" alt="Bibekananda Kundu" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <p>
+      <strong>Bibekananda Kundu</strong><br>
+      Assistant Professor<br>
+      <em>Sidho Kanho Birsha University</em>
+    </p>
   </div>
 
   <!-- Collaborator 4 -->
-  <div style="width: 180px; text-align: center;">
-    <img src="images/hira_lal_yadav.jpg" alt="Hira Lal Yadav" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
-    <p><strong>Hira Lal Yadav</strong><br>Professor</p>
+  <div style="width: 200px; text-align: center;">
+    <img src="/static/hira_lal_yadav.jpg" alt="Hira Lal Yadav" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <p>
+      <strong>Hira Lal Yadav</strong><br>
+      Professor<br>
+      <em>Banaras Hindu University (BHU)</em>
+    </p>
   </div>
 
   <!-- Collaborator 5 -->
-  <div style="width: 180px; text-align: center;">
-    <img src="images/neha_agnihotri.jpg" alt="Neha Agnihotri" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
-    <p><strong>Neha Agnihotri</strong><br>Assistant Professor</p>
+  <div style="width: 200px; text-align: center;">
+    <img src="/static/neha_agnihotri.jpg" alt="Neha Agnihotri" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <p>
+      <strong>Neha Agnihotri</strong><br>
+      Assistant Professor<br>
+      <em>University of Delhi</em>
+    </p>
   </div>
 
   <!-- Collaborator 6 -->
-  <div style="width: 180px; text-align: center;">
-    <img src="images/rajeev_ranjan.jpg" alt="Rajeev Ranjan" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
-    <p><strong>Rajeev Ranjan</strong><br>Associate Professor</p>
+  <div style="width: 200px; text-align: center;">
+    <img src="/static/rajeev_ranjan.jpg" alt="Rajeev Ranjan" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <p>
+      <strong>Rajeev Ranjan</strong><br>
+      Associate Professor<br>
+      <em>Indian Institute of Technology (IIT) Patna</em>
+    </p>
   </div>
 
   <!-- Collaborator 7 -->
-  <div style="width: 180px; text-align: center;">
-    <img src="images/uday_kumar.jpg" alt="Uday Kumar" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
-    <p><strong>Uday Kumar</strong><br>Assistant Professor</p>
+  <div style="width: 200px; text-align: center;">
+    <img src="/static/uday_kumar.jpg" alt="Uday Kumar" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <p>
+      <strong>Uday Kumar</strong><br>
+      Assistant Professor<br>
+      <em>Central University of Jharkhand</em>
+    </p>
   </div>
 
   <!-- Collaborator 8 -->
-  <div style="width: 180px; text-align: center;">
-    <img src="images/ujjwal_laha.jpg" alt="Ujjwal Laha" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
-    <p><strong>Ujjwal Laha</strong><br>Professor</p>
-  </div>
-
-</div>
+  <div style="width: 200px; text-align: center;">
+    <img src="/static/ujjwal_laha.jpg" alt="Ujjwal Laha" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <p>
+      <strong>Ujjwal Laha</strong><br>
+      Professor<br>
+      <em>IIT In
 
 
 
