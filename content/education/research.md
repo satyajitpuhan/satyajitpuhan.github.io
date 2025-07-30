@@ -21,6 +21,23 @@ date = 2025-07-25
   </p>
 </div>
 
+---
+
+<div style="margin-left: 20px;">
+  <p style="color: green; font-weight: bold;">➤ Year (2025–Ongoing)</p>
+  
+  <p>
+    <strong><span style="color: magenta;">Program</span>:</strong> Junior Research Fellow<br>
+    <strong><span style="color: magenta;">Supervisor</span>:</strong>:</strong> Prof. Oleg Teryaev<br>
+    <strong><span style="color: magenta;">Institute</span>:</strong>:</strong> 
+    <a href="https://bltp.jinr.ru" target="_blank">
+      Joint Institute for Nuclear Research, Dubna, Moscow.
+    </a><br>
+    <strong><span style="color: magenta;">Project Titled</span>:</strong>:</strong> Energy-momentum tensor for spin-0 mesons and mechanical properties<br>
+  </p>
+</div>
+
+
 
 
 ### <span style="color: orange;">Master of Science</span>
@@ -86,8 +103,8 @@ date = 2025-07-25
     <a href="https://fmcollege.ac.in" target="_blank">
     Fakir Mohan Junior College, Balasore, Odisha, India.
     </a><br>
-    <strong><span style="color: magenta;">Courses</span>:</strong>:</strong> Mathematics, Physics(99/100), English, Hindi, Biology and Chemestry.<br>
-    <strong><span style="color: magenta;">Marks Obtained</span>:</strong>:</strong> 522/600 (Marks)
+    <strong><span style="color: magenta;">Courses</span>:</strong>:</strong> Mathematics, Physics, English, Hindi, Biology and Chemestry.<br>
+    <strong><span style="color: magenta;">Marks Obtained</span>:</strong>:</strong> 5/600 (Marks)
   </p>
 </div>
 
