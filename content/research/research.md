@@ -34,7 +34,7 @@ Whether it's constructing helicity amplitude matrices for spin-1 hadrons, or ext
 
   <!-- Collaborator 1 -->
   <div style="width: 200px; text-align: center;">
-    <img src="/static/me.jpg" alt="me" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <img src="/me1.jpg" alt="me" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
     <p>
       <strong>abcd</strong><br>
      abcd<br>
@@ -44,7 +44,7 @@ Whether it's constructing helicity amplitude matrices for spin-1 hadrons, or ext
 
   <!-- Collaborator 2 -->
   <div style="width: 200px; text-align: center;">
-    <img src="/static/abcd.jpg" alt="abcd" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <img src="/me1.jpg" alt="abcd" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
     <p>
       <strong>abcd</strong><br>
       Associate Professor<br>
@@ -54,7 +54,7 @@ Whether it's constructing helicity amplitude matrices for spin-1 hadrons, or ext
 
   <!-- Collaborator 3 -->
   <div style="width: 200px; text-align: center;">
-    <img src="/static/abcd.jpg" alt="abcd" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <img src="/me1.jpg" alt="abcd" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
     <p>
       <strong>abcd</strong><br>
       Assistant Professor<br>
@@ -64,7 +64,7 @@ Whether it's constructing helicity amplitude matrices for spin-1 hadrons, or ext
 
   <!-- Collaborator 4 -->
   <div style="width: 200px; text-align: center;">
-    <img src="/static/abcd.jpg" alt="abcd" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <img src="/me1.jpg" alt="abcd" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
     <p>
       <strong>abcd</strong><br>
       Professor<br>
@@ -74,7 +74,7 @@ Whether it's constructing helicity amplitude matrices for spin-1 hadrons, or ext
 
   <!-- Collaborator 5 -->
   <div style="width: 200px; text-align: center;">
-    <img src="/static/abcd.jpg" alt="abcd" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <img src="/me1.jpg" alt="abcd" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
     <p>
       <strong>abcd</strong><br>
       abcd<br>
@@ -84,7 +84,7 @@ Whether it's constructing helicity amplitude matrices for spin-1 hadrons, or ext
 
   <!-- Collaborator 6 -->
   <div style="width: 200px; text-align: center;">
-    <img src="/static/abcd" alt="abcd" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <img src="/me1.jpg" alt="abcd" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
     <p>
       <strong>abcd</strong><br>
       abcd<br>
@@ -94,7 +94,7 @@ Whether it's constructing helicity amplitude matrices for spin-1 hadrons, or ext
 
   <!-- Collaborator 7 -->
   <div style="width: 200px; text-align: center;">
-    <img src="/static/abcd" alt="abcd" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <img src="/me1.jpg" alt="abcd" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
     <p>
       <strong>abcd</strong><br>
       abcd<br>
@@ -104,7 +104,7 @@ Whether it's constructing helicity amplitude matrices for spin-1 hadrons, or ext
 
   <!-- Collaborator 8 -->
   <div style="width: 200px; text-align: center;">
-    <img src="/static/abcd" alt="abcd" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <img src="/me1.jpg" alt="abcd" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
     <p>
       <strong>abcd</strong><br>
       Professor<br>
@@ -116,14 +116,6 @@ Whether it's constructing helicity amplitude matrices for spin-1 hadrons, or ext
 
 ### <span style="color: orange;">What are My Future Goals !! !!</span>
 
-<div style="width: 200px; text-align: center;">
-  <img src="/ronflex.png" />">
-  <p>
-    <strong>abcd</strong><br>
-    Professor<br>
-    <em>abcd</em>
-  </p>
-</div>
 
 
 ### <span style="color: orange;">Do I Love It!! !! !!</span>
