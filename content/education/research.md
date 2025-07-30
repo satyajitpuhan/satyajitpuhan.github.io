@@ -11,7 +11,7 @@ date = 2025-07-25
   <p>
     <strong>Program:</strong> Computational High Energy Physics<br>
     <strong>Institute:</strong> 
-    <a href="https://www.nitj.ac.in" target="_blank" style="text-decoration: none; color: black;">
+    <a href="https://www.nitj.ac.in" target="_blank" style="text-decoration: none; color: red;">
       Dr. B R Ambedkar National Institute of Technology, Jalandhar, Punjab, India
     </a><br>
     <strong>Thesis Titled:</strong> Tomography of Light and Heavy Mesons Using Light-front Dynamics.<br>
