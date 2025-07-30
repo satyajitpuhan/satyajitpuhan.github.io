@@ -34,83 +34,71 @@ Whether it's constructing helicity amplitude matrices for spin-1 hadrons, or ext
 
   <!-- Collaborator 1 -->
   <div style="width: 200px; text-align: center;">
-    <img src="/me1.jpg" alt="me" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <img src="/c1.png" alt="me" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
     <p>
-      <strong>abcd</strong><br>
-     abcd<br>
-      <em>abcd</em>
+      <strong>Prof. Oleg Teryaev</strong><br>
+     Professor<br>
+      <em>JINR, Dubna</em>
     </p>
   </div>
 
   <!-- Collaborator 2 -->
   <div style="width: 200px; text-align: center;">
-    <img src="/me1.jpg" alt="abcd" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <img src="/c1.png" alt="abcd" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
     <p>
-      <strong>abcd</strong><br>
-      Associate Professor<br>
-      <em>abcd</em>
+      <strong>Prof. C R Ji</strong><br>
+       Professor<br>
+      <em>North-Carolina University, USA.</em>
     </p>
   </div>
 
   <!-- Collaborator 3 -->
   <div style="width: 200px; text-align: center;">
-    <img src="/me1.jpg" alt="abcd" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <img src="/c1.png" alt="abcd" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
     <p>
-      <strong>abcd</strong><br>
-      Assistant Professor<br>
-      <em>abcd</em>
+      <strong>Prof. Sabyasachi Ghosh</strong><br>
+     Professor<br>
+      <em>IIT-Bhilai</em>
     </p>
   </div>
 
   <!-- Collaborator 4 -->
   <div style="width: 200px; text-align: center;">
-    <img src="/me1.jpg" alt="abcd" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <img src="/c1.png" alt="abcd" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
     <p>
-      <strong>abcd</strong><br>
-      Professor<br>
-      <em>abcdy (BHU)</em>
+      <strong>Dr. Narinder Kumar</strong><br>
+     Asst. Professor<br>
+      <em>Doaba College, Jalandhar</em>
     </p>
   </div>
 
   <!-- Collaborator 5 -->
   <div style="width: 200px; text-align: center;">
-    <img src="/me1.jpg" alt="abcd" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <img src="/c1.png" alt="abcd" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
     <p>
-      <strong>abcd</strong><br>
-      abcd<br>
-      <em>abcd</em>
+      <strong>Dr. Shubham Sharma</strong><br>
+      Post-Doc<br>
+      <em>MIPT, Moscow</em>
     </p>
   </div>
 
   <!-- Collaborator 6 -->
   <div style="width: 200px; text-align: center;">
-    <img src="/me1.jpg" alt="abcd" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <img src="/c1.png" alt="abcd" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
     <p>
-      <strong>abcd</strong><br>
-      abcd<br>
-      <em>abcd</em>
+      <strong>Mr. Ashutosh Dwivedi</strong><br>
+      PhD<br>
+      <em>IIT-Bhilai</em>
     </p>
   </div>
 
   <!-- Collaborator 7 -->
   <div style="width: 200px; text-align: center;">
-    <img src="/me1.jpg" alt="abcd" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <img src="/c1.png" alt="abcd" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
     <p>
-      <strong>abcd</strong><br>
-      abcd<br>
-      <em>abcd</em>
+      <strong>Dr. Nisha Dhiman</strong><br>
     </p>
   </div>
-
-  <!-- Collaborator 8 -->
-  <div style="width: 200px; text-align: center;">
-    <img src="/me1.jpg" alt="abcd" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
-    <p>
-      <strong>abcd</strong><br>
-      Professor<br>
-      <em>abcd
-     </p>
-   </div>
   </div>
 
 
