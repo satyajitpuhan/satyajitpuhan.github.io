@@ -72,7 +72,7 @@ date = 2025-07-25
     Sidhivinayak +2 Science Residential College, Balasore, Odisha, India.
     </a><br>
     <strong><span style="color: magenta;">Courses</span>:</strong>:</strong> Mathematics, Physics(99/100), English, Hindi, Biology and Chemestry.<br>
-    <strong><span style="color: magenta;">Marks Obtained</span>:</strong>:</strong> 478/600 (CGPA)
+    <strong><span style="color: magenta;">Marks Obtained</span>:</strong>:</strong> 478/600 (Marks)
   </p>
 </div>
 
@@ -87,22 +87,55 @@ date = 2025-07-25
     Fakir Mohan Junior College, Balasore, Odisha, India.
     </a><br>
     <strong><span style="color: magenta;">Courses</span>:</strong>:</strong> Mathematics, Physics(99/100), English, Hindi, Biology and Chemestry.<br>
-    <strong><span style="color: magenta;">Marks Obtained</span>:</strong>:</strong> 522/600 (CGPA)
+    <strong><span style="color: magenta;">Marks Obtained</span>:</strong>:</strong> 522/600 (Marks)
+  </p>
+</div>
+
+### <span style="color: orange;">Summer Course</span>
+
+<div style="margin-left: 20px;">
+  <p style="color: green; font-weight: bold;">➤ Year (2014–2014)</p>
+  
+  <p>
+    <strong><span style="color: magenta;">Institute</span>:</strong>:</strong> 
+    Jhadeswar +2 Science Residential college, Balasore, Odisha, India.<br>
+    <strong><span style="color: magenta;">Courses</span>:</strong>:</strong> Mathematics, Physics, English, Hindi, Biology and Chemesnce.<br>
+    <strong><span style="color: magenta;">Marks Obtained</span>:</strong>:</strong> 522/600 (Marks)
   </p>
 </div>
 
 
-### <span style="color: orange;">Higher Secondary (11th)</span>
+### <span style="color: orange;">High School</span>
 
 <div style="margin-left: 20px;">
-  <p style="color: green; font-weight: bold;">➤ Year (2014–2015)</p>
+  <p style="color: green; font-weight: bold;">➤ Year (2011–2014)</p>
   
   <p>
     <strong><span style="color: magenta;">Institute</span>:</strong>:</strong> 
-    <a href="https://fmcollege.ac.in" target="_blank">
-    Fakir Mohan Junior College, Balasore, Odisha, India.
-    </a><br>
-    <strong><span style="color: magenta;">Courses</span>:</strong>:</strong> Mathematics, Physics(99/100), English, Hindi, Biology and Chemestry.<br>
-    <strong><span style="color: magenta;">Marks Obtained</span>:</strong>:</strong> 522/600 (CGPA)
+    Harekrushna High School, Uitikiri, Balasore, Odisha, India.<br>
+    <strong><span style="color: magenta;">Courses</span>:</strong>:</strong> Odia, English, Hindi, Mathematics, Social Science, General Science.<br>
+    <strong><span style="color: magenta;">Marks Obtained</span>:</strong>:</strong> 522/600 (Marks)
+  </p>
+</div>
+
+### <span style="color: orange;">M.E School</span>
+
+<div style="margin-left: 20px;">
+  <p style="color: green; font-weight: bold;">➤ Year (2009–2011)</p>
+  
+  <p>
+    <strong><span style="color: magenta;">Institute</span>:</strong>:</strong> 
+    Haladipal M. E School, Uitikiri, Balasore, Odisha, India.<br>
+  </p>
+</div>
+
+### <span style="color: orange;">Primary School</span>
+
+<div style="margin-left: 20px;">
+  <p style="color: green; font-weight: bold;">➤ Year (2004–2019)</p>
+  
+  <p>
+    <strong><span style="color: magenta;">Institute</span>:</strong>:</strong> 
+   Srirampur Primary School, Srirampur, Balasore, Odisha, India.<br>
   </p>
 </div>
