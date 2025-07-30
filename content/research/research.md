@@ -117,7 +117,7 @@ Whether it's constructing helicity amplitude matrices for spin-1 hadrons, or ext
 ### <span style="color: orange;">What are My Future Goals !! !!</span>
 
 <div style="width: 200px; text-align: center;">
-  <img src="/static/me1.jpg" alt="abcd" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+  <img src="/ronflex.png" />">
   <p>
     <strong>abcd</strong><br>
     Professor<br>
