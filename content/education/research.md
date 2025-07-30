@@ -26,12 +26,18 @@ date = 2025-07-25
 ### <span style="color: orange;">Master of Science</span>
 
 <div style="margin-left: 20px;">
-  <p style="color: green; font-weight: bold;">➤ Year (2019–2021)</p>
+  <p style="color: green; font-weight: bold;">➤ Year (2019–2022)</p>
+  
   <p>
-    <strong>Computational High Energy Physics</strong>, 
-    <a href="https://www.nitj.ac.in" target="_blank" style="text-decoration: none; color: black;">
-     National Institute of Technology, Jamshedpur, , India
-    </a>.
+    <strong><span style="color: magenta;">M.Sc Project</span>:</strong> Nuclear Physics<br>
+    <strong><span style="color: magenta;">M.Sc Project Guide</span>:</strong>:</strong> Prof. Ujjwal Laha<br>
+    <strong><span style="color: magenta;">Institute</span>:</strong>:</strong> 
+    <a href="https://www.nitjsr.ac.in" target="_blank">
+    National Institute of Technology, Jamshedpur India
+    </a><br>
+    <strong><span style="color: magenta;">Project Titled</span>:</strong>:</strong> Proton-Oxygen elastic scattering by Taylor Series Expansion<br>
+    <strong><span style="color: magenta;">Courses</span>:</strong>:</strong> Particle Physisics,Laser Physics, Condensed matter physics, mathematical physics, english, environmental physics, electronics<br>
+    <strong><span style="color: magenta;">Marks Obtained</span>:</strong>:</strong> 8.91/ 10.0 (CGPA)
   </p>
 </div>
 
