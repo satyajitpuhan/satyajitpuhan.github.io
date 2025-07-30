@@ -12,7 +12,7 @@ date = 2025-07-25
     <strong><span style="color: magenta;">Program</span>:</strong> Computational High Energy Physics<br>
     <strong><span style="color: magenta;">Supervisor</span>:</strong>:</strong> Dr. Harleen Dahiya<br>
     <strong><span style="color: magenta;">Institute</span>:</strong>:</strong> 
-    <a href="https://www.nitj.ac.in" target="_blank" style="text-decoration: none; color: red;">
+    <a href="https://www.nitj.ac.in" target="_blank">
       Dr. B R Ambedkar National Institute of Technology, Jalandhar, Punjab, India
     </a><br>
     <strong><span style="color: magenta;">Thesis Titled</span>:</strong>:</strong> Tomography of Light and Heavy Mesons Using Light-front Dynamics.<br>
