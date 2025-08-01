@@ -105,3 +105,17 @@ effect on PDFs in asymmetric matter.
 
 
 ### <span style="color: Orange;">Poster Presentation</span>
+
+<div style="margin-left: 20px;">
+  <p style="color: green; font-weight: bold;">➤ Dec., 2023 (TIFR 2023)</p>
+  <p>
+    <strong><span style="color: teal;">Poster Title</span>:</strong> 
+    Internal Structure of Heavy B and D- mesons <br>
+  <strong><span style="color: teal;">Mode and Place</span>:</strong> 
+   In person at TIFR, Mumbai, India.<br>   
+ <strong><span style="color: teal;">Talk Link</span>:</strong> 
+    <a href="https://www.tifr.res.in/~hql2023/" target="_blank">
+      View Talk
+    </a><br>
+  </p>
+</div>
