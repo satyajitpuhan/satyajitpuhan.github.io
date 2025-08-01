@@ -23,18 +23,18 @@ date = 2025-07-25
 <hr>
 
 <div style="margin-left: 20px;">
-  <p style="color: green; font-weight: bold;">➤ [Nextrvfdv]</p>
+  <p style="color: green; font-weight: bold;">➤ 28th March, 2025 (JINR, Dubna)</p>
   <p>
     <strong><span style="color: teal;">Talk Title</span>:</strong> 
-    [Insert Title of the Second Talk Here]<br>
+    Internal structure of pion, kaon, and ρ meson in light front dynamics<br>
     
  <strong><span style="color: teal;">Talk Link</span>:</strong> 
-    <a href="[Insert Talk Link Here]" target="_blank">
+    <a href="https://www.jinr.ru/posts/214775/" target="_blank">
       View Talk
     </a><br>
 
 <strong><span style="color: teal;">Abstract</span>:</strong> 
-    [Insert Abstract of the Second Talk Here]
+    The talk focuses on studying the internal structure of pion, kaon, and ρ mesons within light-front models. The authors systematically explore transverse momentum-dependent parton distributions (TMDs), generalised parton distributions (GPDs), form factors (FFs), and parton distribution functions (PDFs) for these particles. Additionally, the authors delve into the mechanical properties of the pion and kaon by calculating pressure and shear distributions through GPDs. The charge radii of these particles are predicted as well, providing insight into their spatial structure. To further understand the behaviour of the pion and kaon in nuclear environments, these distributions are studied in medium using the chiral SU(3) quark mean field model. In addition, the PDFs are evolved to higher Q2 scales to facilitate comparison with experimental data. The upcoming Electron-Ion Collider and NICA will serve as a crucial platform to test and refine these theoretical predictions, offering a more comprehensive understanding of the internal dynamics of these mesons.
   </p>
 </div>
 
