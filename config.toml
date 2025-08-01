@@ -21,7 +21,7 @@ city="Jalandhar"
 years="2025"
 
 job = "Senior Research Fellow, NIT Jalandhar"
-description = "India ❤️"
+description = "We fall to Rise Again, India ❤️"
 
 links = [
     { url = "https://github.com/satyajitpuhan", title="", icon = "fab fa-github"},
