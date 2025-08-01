@@ -42,5 +42,44 @@ date = 2025-07-25
 
 ### <span style="color: Orange;">Conference Talks</span>
 
+<div style="margin-left: 20px;">
+  <p style="color: green; font-weight: bold;">➤ Dec, 2024 ( IIT Roorke)</p>
+  <p>
+    <strong><span style="color: teal;">Talk Title</span>:</strong> 
+    Spin-1 unpolarized GPDs in Light-front formalism <br>
+    
+<strong><span style="color: teal;">Talk Link</span>:</strong> 
+    <a href="https://sympnp.org/snp2025/" target="_blank">
+      View Talk
+    </a><br>
+<strong><span style="color: teal;">Abstract</span>:</strong> 
+    I have talked about Spin-1 GPDs along with structure functions of rho meson.
+  </p>
+</div>
+
+<hr>
+
+<div style="margin-left: 20px;">
+  <p style="color: green; font-weight: bold;">➤ Oct. -Nov., 2024 (HHIQCD 2024)</p>
+  <p>
+    <strong><span style="color: teal;">Talk Title</span>:</strong> 
+    Structural analysis of Pion and Kaon with distribution functions<br>
+    
+ <strong><span style="color: teal;">Talk Link</span>:</strong> 
+    <a href="https://indico.yukawa.kyoto-u.ac.jp/event/27/" target="_blank">
+      View Talk
+    </a><br>
+
+<strong><span style="color: teal;">Abstract</span>:</strong> 
+    Pion and kaon are one of the simplest meson structures to study the distribution function. In this
+work, we have calculated the time reversal quark transverse momentum-dependent parton distribution functions (TMDs) in the light-front based holographic model (LFHM) and quark model (LFQM)
+up to twist-4. We have presented the three dimensional structure of T-even TMDs for both the particles in both models. The transverse structure have been discussed with the help of two dimensional
+contour plot distribution in momentum space and average quark momenta in both the models. We
+have taken the overlap representation of LFHM wave function for orbital angular momentum Lz = 0
+and Lz = 1, which makes the calculations more significant. The T-even TMDs have also been compared for both the models and evolved to higher Q2 to compare with available TMDs extraction datafor the case of pion. The collinear parton distribution functions (PDFs) have also been investigated in this work. The unpolarized f1(x) PDF have been evolved through DGLAP evolution from Q2 = 1 GeV2 to 16 GeV2 and found significant behavior with experimental results. The inverse moments and Mellin moments have also been discussed in this work. The average longitudinal momentum fraction < x > and transverse momenta < k2⊥ > of our calculation found to be consistent with other model result. The spatial structure have also been studied through leading twist GPDs for both the particles in LFQM and have been implicated to understand the form factors (FFs). The FFs found to be consistent with lattice result and experimental result. We have also tried to study the medium modification
+effect on PDFs in asymmetric matter.
+  </p>
+</div>
+
 
 ### <span style="color: Orange;">Poster Presentation</span>
