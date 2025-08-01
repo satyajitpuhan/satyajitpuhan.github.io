@@ -17,7 +17,7 @@ date = 2025-07-25
   </a><br>
 
   <strong><span style="color: teal;">Abstract</span>:</strong> 
-  This talk covered the internal structure of light mesons using Light-Front Quark Model (LFQM), Light-Front Holographic QCD (LFHQCD), and power-law wavefunctions. The focus was on extracting Parton Distribution Functions (PDFs), Generalized Parton Distributions (GPDs), and Transverse Momentum Distributions (TMDs), and understanding their roles in hadronic structure studies relevant for future facilities like the Electron-Ion Collider.
+  In this talk, I am going to discuss the internal structure of pion, kaon, and rho mesons using the light-front models. These internal structures have been studied using the valence quark TMDs, GPDs, and PDFs. I will also talk about the mechanical properties of pions and the behavior of these distribution functions in the presence of a nuclear medium.
 </p>
 
 
