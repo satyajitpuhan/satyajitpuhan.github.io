@@ -10,6 +10,9 @@ date = 2025-07-25
   <p>
     <strong><span style="color: teal;">Talk Title</span>:</strong> 
     Internal Structure of Light Mesons through Distribution Functions<br>
+
+<strong><span style="color: teal;">Mode and Place</span>:</strong> 
+    Through Zoom Meeting<br>
     
 <strong><span style="color: teal;">Talk Link</span>:</strong> 
     <a href="https://crjiresearchgroup.wordpress.ncsu.edu/group-meetings/archives-satyajit-puhan/" target="_blank">
@@ -27,7 +30,8 @@ date = 2025-07-25
   <p>
     <strong><span style="color: teal;">Talk Title</span>:</strong> 
     Internal structure of pion, kaon, and ρ meson in light front dynamics<br>
-    
+  <strong><span style="color: teal;">Mode and Place</span>:</strong> 
+    Through Zoom Meeting<br>  
  <strong><span style="color: teal;">Talk Link</span>:</strong> 
     <a href="https://www.jinr.ru/posts/214775/" target="_blank">
       View Talk
@@ -47,7 +51,8 @@ date = 2025-07-25
   <p>
     <strong><span style="color: teal;">Talk Title</span>:</strong> 
     Spin-1 unpolarized GPDs in Light-front formalism <br>
-    
+  <strong><span style="color: teal;">Mode and Place</span>:</strong> 
+   In person at 68th DAE Symposium on Nuclear Physics (SNP 2024) at IIT Roorke, India.<br>  
 <strong><span style="color: teal;">Talk Link</span>:</strong> 
     <a href="https://sympnp.org/snp2025/" target="_blank">
       View Talk
@@ -64,7 +69,8 @@ date = 2025-07-25
   <p>
     <strong><span style="color: teal;">Talk Title</span>:</strong> 
     Structural analysis of Pion and Kaon with distribution functions<br>
-    
+  <strong><span style="color: teal;">Mode and Place</span>:</strong> 
+   In person at HHIQCD, Kyoto University, Japan.<br>   
  <strong><span style="color: teal;">Talk Link</span>:</strong> 
     <a href="https://indico.yukawa.kyoto-u.ac.jp/event/27/" target="_blank">
       View Talk
@@ -78,6 +84,22 @@ contour plot distribution in momentum space and average quark momenta in both th
 have taken the overlap representation of LFHM wave function for orbital angular momentum Lz = 0
 and Lz = 1, which makes the calculations more significant. The T-even TMDs have also been compared for both the models and evolved to higher Q2 to compare with available TMDs extraction datafor the case of pion. The collinear parton distribution functions (PDFs) have also been investigated in this work. The unpolarized f1(x) PDF have been evolved through DGLAP evolution from Q2 = 1 GeV2 to 16 GeV2 and found significant behavior with experimental results. The inverse moments and Mellin moments have also been discussed in this work. The average longitudinal momentum fraction < x > and transverse momenta < k2⊥ > of our calculation found to be consistent with other model result. The spatial structure have also been studied through leading twist GPDs for both the particles in LFQM and have been implicated to understand the form factors (FFs). The FFs found to be consistent with lattice result and experimental result. We have also tried to study the medium modification
 effect on PDFs in asymmetric matter.
+  </p>
+</div>
+
+<hr>
+
+<div style="margin-left: 20px;">
+  <p style="color: green; font-weight: bold;">➤ Jan. -Feb., 2024 (ICTS-TIFR 2024)</p>
+  <p>
+    <strong><span style="color: teal;">Talk Title</span>:</strong> 
+    Structural analysis of pion with distribution functions (TMDs, GPDs and GDAs)<br>
+  <strong><span style="color: teal;">Mode and Place</span>:</strong> 
+   In person at ICTS, Bengaluru, India.<br>   
+ <strong><span style="color: teal;">Talk Link</span>:</strong> 
+    <a href="https://www.youtube.com/watch?v=R3M5XIhKjFQ" target="_blank">
+      View Talk
+    </a><br>
   </p>
 </div>
 
