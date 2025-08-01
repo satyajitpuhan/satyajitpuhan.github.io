@@ -5,9 +5,6 @@ date = 2025-07-25
 
 ### <span style="color: orange;">Master Thesis !!</span>
 
-<div style="margin-left: 20px; font-family: Arial, sans-serif; line-height: 1.7; font-size: 15px;">
-  <h3 style="color: orange;">Master Thesis !!</h3>
-
   <p style="color: teal; font-weight: bold;">➤ Title:</p>
   <p>
     <em>On the Proton-Oxygen Elastic Scattering by Taylor Series Expansion</em>
