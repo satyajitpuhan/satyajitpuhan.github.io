@@ -5,8 +5,62 @@ date = 2025-07-25
 
 ### <span style="color: orange;">What I do !!</span>
 
-Hi, I'm Satya! I'm currently working as a Senior Research Fellow, deeply immersed in the theoretical exploration of hadronic physics. My work revolves around uncovering the fundamental structure and internal dynamics of mesons and baryons — the particles that make up most of the visible matter in the universe. I study Parton Distribution Functions (PDFs), Transverse Momentum Dependent distributions (TMDs), Generalized Parton Distributions (GPDs), GTMDs, and form factors using techniques rooted in Quantum Chromodynamics (QCD) and light-front dynamics.
-I also design and implement computational tools, primarily in Python and Mathematica, to model and simulate complex physical systems, ranging from simple two-body bound states to higher Fock-state contributions. This is not just a job for me — this is my way of contributing to a deeper understanding of the universe. 
+<div style="margin-left: 20px; font-family: Arial, sans-serif; line-height: 1.6; font-size: 15px;">
+  <p style="color: green; font-weight: bold; font-size: 16px;">➤ Research Focus: Unveiling the Internal Structure of Hadrons</p>
+
+  <p>
+    My primary goal is to understand the <strong>internal structure of hadrons</strong> and explore their intrinsic properties through modern theoretical frameworks, especially within <strong>light-front dynamics</strong>.
+  </p>
+
+  <p style="color: teal; font-weight: bold;">⟶ Transverse Momentum Dependent Distributions (TMDs):</p>
+  <p>
+    I have studied model-dependent TMDs for:
+    <ul>
+      <li><strong>Spin-0:</strong> Pion, Kaon</li>
+      <li><strong>Spin-1/2:</strong> Proton</li>
+      <li><strong>Spin-1:</strong> Heavy Vector Mesons, Photon</li>
+    </ul>
+    Along with TMDs, I have calculated <strong>Parton Distribution Functions (PDFs)</strong> and <strong>spin densities</strong> in momentum space, providing a 3D understanding of partonic structures. These are vital for the physics programs at the <strong>Electron-Ion Collider (EIC)</strong>.
+  </p>
+
+  <p style="color: teal; font-weight: bold;">⟶ Generalized Parton Distributions (GPDs) and GDAs:</p>
+  <p>
+    I have calculated GPDs for:
+    <ul>
+      <li><strong>Spin-0:</strong> Pion</li>
+      <li><strong>Spin-1:</strong> Rho meson</li>
+    </ul>
+    From these, I extract <strong>electromagnetic and gravitational form factors</strong>. I have also initiated the computation of <strong>Generalized Distribution Amplitudes (GDAs)</strong> for the pion, relevant to exclusive processes at <strong>JLab</strong> and <strong>EIC</strong>.
+  </p>
+
+  <p style="color: teal; font-weight: bold;">⟶ Hadronic Properties:</p>
+  <p>
+    Using light-front quark models, I have worked on:
+    <ul>
+      <li>Spin-orbit correlations in mesons</li>
+      <li>Distribution amplitudes (DAs)</li>
+      <li>Form factors, charge radii, decay constants</li>
+      <li>Mass spectra and radially excited states of quarkonia</li>
+      <li>Radiative transitions of charmonia</li>
+    </ul>
+  </p>
+
+  <p style="color: teal; font-weight: bold;">⟶ Medium Modifications:</p>
+  <p>
+    In collaboration, I am studying the modification of distribution functions (TMDs, PDFs, GPDs) in a <strong>nuclear or hadronic medium</strong> using:
+    <ul>
+      <li>Light-Front Quark Model (LFQM)</li>
+      <li>Light-Front Holographic QCD (LFHQCD)</li>
+      <li>Chiral SU(3) Quark Mean Field Model</li>
+    </ul>
+    These are crucial to understanding quark behavior in nuclear environments such as compact stars and heavy-ion collisions.
+  </p>
+
+  <p>
+    My research strongly aligns with the goals of next-generation experimental programs such as the <strong>Electron-Ion Collider (EIC)</strong> and <strong>Jefferson Lab (JLab)</strong>.
+  </p>
+</div>
+
 
 ---
 
