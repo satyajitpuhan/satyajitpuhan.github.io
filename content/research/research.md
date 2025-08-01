@@ -58,6 +58,7 @@ date = 2025-07-25
   <p>
     My research strongly aligns with the goals of next-generation experimental programs such as the <strong>Electron-Ion Collider (EIC)</strong> and <strong>Jefferson Lab (JLab)</strong>.
   </p>
+  <p style="color: teal; font-weight: bold;">⟶ Methods I use:</p>
   <p>
     For all the calculations, I knew these following theoretical models, Tools and Programming language:
     <ul>
@@ -122,7 +123,6 @@ date = 2025-07-25
     Whether it's constructing <strong>helicity amplitude matrices for spin-1 hadrons</strong>, or extracting <strong>Transverse Momentum Dependent Distributions (TMDs)</strong> from correlators, my work remains <strong>rigorous, step-by-step, and physically grounded</strong>.
   </p>
 </div>
-
 
 ---
 
