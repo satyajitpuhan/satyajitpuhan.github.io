@@ -125,7 +125,7 @@ date = 2025-07-25
 </div>
 
 ---
-### <span style="color: orange;">NIT-J !!</span>
+### <span style="color: orange;"> Research Collaboration (NIT-J) !!</span>
 
 
 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
@@ -216,7 +216,7 @@ date = 2025-07-25
   </div>
 
 
-### <span style="color: orange;">Research Collaborations !!</span>
+### <span style="color: orange;"> !!</span>
 
 
 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
