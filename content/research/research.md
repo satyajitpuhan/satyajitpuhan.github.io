@@ -125,6 +125,96 @@ date = 2025-07-25
 </div>
 
 ---
+### <span style="color: orange;">NIT-J !!</span>
+
+
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
+
+  <!-- Collaborator 1 -->
+  <div style="width: 200px; text-align: center;">
+    <img src="/c1.png" alt="me" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <p>
+      <strong><span style="color: blue;">Dr. Harleen Dahiya </span></strong><br>
+     Associate Professor<br>
+    </p>
+  </div>
+
+  <!-- Collaborator 2 -->
+  <div style="width: 200px; text-align: center;">
+    <img src="/c1.png" alt="abcd" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <p>
+      <strong><span style="color: blue;">Dr. Arvind Kumar </span></strong><br>
+      Associate Professor<br>
+    </p>
+  </div>
+
+  <!-- Collaborator 3 -->
+  <div style="width: 200px; text-align: center;">
+    <img src="/c1.png" alt="abcd" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <p>
+      <strong><span style="color: blue;">Dr. Suneel Dutt </span></strong><br>
+     Assistant Professor<br>
+    </p>
+  </div>
+
+  <!-- Collaborator 4 -->
+  <div style="width: 200px; text-align: center;">
+    <img src="/c1.png" alt="abcd" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <p>
+      <strong><span style="color: blue;">Mr. Reetanshu Pandey</span></strong><br>
+     Junior Research Fellow<br>
+    </p>
+  </div>
+
+  <!-- Collaborator 5 -->
+  <div style="width: 200px; text-align: center;">
+    <img src="/c1.png" alt="abcd" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <p>
+      <strong><span style="color: blue;">Mr. Ritwik Accharya </span></strong><br>
+      M. Sc<br>
+    </p>
+  </div>
+
+  <!-- Collaborator 6 -->
+  <div style="width: 200px; text-align: center;">
+    <img src="/c1.png" alt="abcd" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <p>
+      <strong><span style="color: blue;">Mr. Anurag Yadav </span></strong><br>
+      M.Sc<br>
+    </p>
+  </div>
+
+  <!-- Collaborator 7 -->
+  <div style="width: 200px; text-align: center;">
+    <img src="/c1.png" alt="abcd" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <p>
+      <strong><span style="color: blue;">Ms. Tanisha </span></strong><br>
+    </p>
+  </div>
+  <!-- Collaborator 8 -->
+  <div style="width: 200px; text-align: center;">
+    <img src="/c1.png" alt="abcd" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <p>
+      <strong><span style="color: blue;">Ms. Anshu Gautam </span></strong><br>
+    </p>
+  </div>
+  <!-- Collaborator 9 -->
+  <div style="width: 200px; text-align: center;">
+    <img src="/c1.png" alt="abcd" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <p>
+      <strong><span style="color: blue;">Mr. Abhishek </span></strong><br>
+    </p>
+  </div>
+
+  <!-- Collaborator 9 -->
+  <div style="width: 200px; text-align: center;">
+    <img src="/c1.png" alt="abcd" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+    <p>
+      <strong><span style="color: blue;">Mr. Hari </span></strong><br>
+    </p>
+  </div>
+  </div>
+
 
 ### <span style="color: orange;">Research Collaborations !!</span>
 
