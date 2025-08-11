@@ -47,6 +47,24 @@ date = 2025-07-25
 ### <span style="color: Orange;">Conference Talks</span>
 
 <div style="margin-left: 20px;">
+  <p style="color: green; font-weight: bold;">➤ Aug, 2025 ( JINR-BLTP)</p>
+  <p>
+    <strong><span style="color: teal;">Talk Title</span>:</strong> 
+    Gravitational form factor of pion <br>
+  <strong><span style="color: teal;">Mode and Place</span>:</strong> 
+   Interplay of gravity and strong interactions at BLTP, JINR.<br>  
+<strong><span style="color: teal;">Talk Link</span>:</strong> 
+    <a href="https://indico.jinr.ru/event/5492/page/2510-timetable" target="_blank">
+      View Talk
+    </a><br>
+<strong><span style="color: teal;">Abstract</span>:</strong> 
+    In this talk, I will discuss about the GFFs of pion and how to extract it from experiments.
+  </p>
+</div>
+
+<hr>
+
+<div style="margin-left: 20px;">
   <p style="color: green; font-weight: bold;">➤ Dec, 2024 ( IIT Roorke)</p>
   <p>
     <strong><span style="color: teal;">Talk Title</span>:</strong> 
