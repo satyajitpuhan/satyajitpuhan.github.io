@@ -136,9 +136,9 @@ date = 2025-07-25
   <div style="width: 200px; text-align: center;">
     <img src="/c1.png" alt="me" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
     <p>
-      <strong><span style="color: blue;">Prof. Oleg Teryaev </span></strong><br>
+      <strong><span style="color: blue;">ABCD </span></strong><br>
      Professor<br>
-      <em>JINR, Dubna</em>
+      <em>ABCD</em>
     </p>
   </div>
   </div>
