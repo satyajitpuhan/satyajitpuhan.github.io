@@ -21,11 +21,11 @@ date = 2025-07-25
 
 ### <span style="color: Orange;">Online Article(Not Published Yet)</span>
 1. **D and D^* mesons in isospin asymmetric nuclear medium**,Anshu Gautam, Dhananjay Singh, Navpreet Kaur, <span style="color: red;">Satyajit Puhan</span>, Arvind Kumar, Suneel Dutt, and Harleen Dahiya,, *Under Review*, 2025.  [Arxiv::2506.08707](https://arxiv.org/abs/2506.08707)  
-2. **EValence quark distribution of light rho and heavy J/Psi vector mesons in light-cone quark model**, Tanisha,<span style="color: red;">Satyajit Puhan</span>, Anurag Yadav, and Harleen Dahiya, *Under Review*, 2025. [Arxiv::2505.09213](https://arxiv.org/abs/2505.09213)  
+2. **Valence quark distribution of light rho and heavy J/Psi vector mesons in light-cone quark model**, Tanisha,<span style="color: red;">Satyajit Puhan</span>, Anurag Yadav, and Harleen Dahiya, *Under Review*, 2025. [Arxiv::2505.09213](https://arxiv.org/abs/2505.09213)  
 3. **Valence quark properties of charged kaons in symmetric nuclear matter**, Reetanshu Pandey, <span style="color: red;">Satyajit Puhan</span>, Navpreet Kaur, Arvind Kumar, Suneel Dutt, Harleen Dahiya, *Under Review*, 2025. [Arxiv::2505.01202](https://arxiv.org/abs/2505.01202)
 1. **Impact of isospin asymmetric nuclear medium on pseudoscalar and vector B mesons**, Tanisha , <span style="color: red;">Satyajit Puhan</span>, Navpreet Kaur, Arvind Kumar ,and Harleen Dahiya, *Under Review*, 2025.  [Arxiv::2504.21392](https://arxiv.org/pdf/2504.21392)  
 2. **Radiative Transitions for the Ground and Excited Charmonia States**, Anurag Yadav, <span style="color: red;">Satyajit Puhan</span>, and Harleen Dahiya, *Under Review*, 2025. [Arxiv::2504.14864](https://arxiv.org/abs/2504.14864)
-2. **Understanding the Valence Quark Structure of the Pion through GTMDs**,  <span style="color: red;">Satyajit Puhan</span>, Shubham Sharma, Narinder Kumar, and Harleen Dahiya, *Under Review*, 2025. [Arxiv::2504.14982](https://arxiv.org/abs/2504.14982) 
+2. **Understanding the Valence Quark Structure of the Pion through GTMDs**,  <span style="color: red;">Satyajit Puhan</span>, Shubham Sharma, Narinder Kumar, and Harleen Dahiya, <span style="color: orange;">(Accepted in PTEP)</span>, 2025. [Arxiv::2504.14982](https://arxiv.org/abs/2504.14982) 
 ---
 ### <span style="color: Orange;">Conference Proceedings</span>
 2. **Understanding photon TMDs using light-front wave function**,  <span style="color: red;">Satyajit Puhan</span>, Narinder Kumar, and Harleen Dahiya, *HP-2024*, 2024. [Arxiv::2504.01419](https://arxiv.org/abs/2504.01419) 
