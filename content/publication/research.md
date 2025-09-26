@@ -4,6 +4,7 @@ date = 2025-07-25
 +++
 ---
 ### <span style="color: Orange;">Published Articles</span>
+1. **Valence quark distribution of light rho and heavy J psi vector mesons in a light-cone quark model**, Tanisha, <span style="color: red;">Satyajit Puhan</span>, Anurag Yadav and Harleen Dahiya, *Physical Review D*, 2025.  [Link](https://journals.aps.org/prd/abstract/10.1103/cmbw-vcds)
 1. **Understanding the Valence Quark Structure of the Pion through Generalized Transverse Momentum-Dependent Parton Distributions**, <span style="color: red;">Satyajit Puhan</span>, Shubham Sharma, Narinder Kumar and Harleen Dahiya, *Progress in Theoreticak and Experimental Physics*, 2025.  [Link](https://academic.oup.com/ptep/article/2025/8/083B02/8220888) 
 1. **Scalar, vector, and tensor form factors of pion and kaon**, <span style="color: red;">Satyajit Puhan</span> and Harleen Dahiya, *Physical Review D*, 2025.  [Link](https://journals.aps.org/prd/abstract/10.1103/2wpb-jgkc)  
 2. **Effect of nuclear medium on the spatial distribution of pions**, <span style="color: red;">Satyajit Puhan</span>, et. al, *Nuclear Physics B*, 2025. [Link](https://www.sciencedirect.com/science/article/pii/S055032132500149X?via%3Dihub)  
@@ -21,7 +22,6 @@ date = 2025-07-25
 
 ### <span style="color: Orange;">Online Article(Not Published Yet)</span>
 1. **D and D^* mesons in isospin asymmetric nuclear medium**,Anshu Gautam, Dhananjay Singh, Navpreet Kaur, <span style="color: red;">Satyajit Puhan</span>, Arvind Kumar, Suneel Dutt, and Harleen Dahiya,, *Under Review*, 2025.  [Arxiv::2506.08707](https://arxiv.org/abs/2506.08707)  
-2. **Valence quark distribution of light rho and heavy J/Psi vector mesons in light-cone quark model**, Tanisha,<span style="color: red;">Satyajit Puhan</span>, Anurag Yadav, and Harleen Dahiya, *Under Review*, 2025. [Arxiv::2505.09213](https://arxiv.org/abs/2505.09213)  
 3. **Valence quark properties of charged kaons in symmetric nuclear matter**, Reetanshu Pandey, <span style="color: red;">Satyajit Puhan</span>, Navpreet Kaur, Arvind Kumar, Suneel Dutt, Harleen Dahiya, *Under Review*, 2025. [Arxiv::2505.01202](https://arxiv.org/abs/2505.01202)
 1. **Impact of isospin asymmetric nuclear medium on pseudoscalar and vector B mesons**, Tanisha , <span style="color: red;">Satyajit Puhan</span>, Navpreet Kaur, Arvind Kumar ,and Harleen Dahiya, *Under Review*, 2025.  [Arxiv::2504.21392](https://arxiv.org/pdf/2504.21392)  
 2. **Radiative Transitions for the Ground and Excited Charmonia States**, Anurag Yadav, <span style="color: red;">Satyajit Puhan</span>, and Harleen Dahiya, *Under Review*, 2025. [Arxiv::2504.14864](https://arxiv.org/abs/2504.14864)
