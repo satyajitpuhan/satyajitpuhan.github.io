@@ -1,0 +1,82 @@
+{% macro pagination(paginator) %}
+{% if paginator and paginator.number_pagers > 1 %}
+<nav aria-label="Page navigation" class="w-100">
+  <ul class="pagination justify-content-center pagination-lg">
+    {% for pager in range(start=1, end=paginator.number_pagers + 1) %}
+        <li class="page-item {% if pager == paginator.current_index %}active{% endif %}">
+          <a class="page-link" href="{{ paginator.base_url ~ pager }}">{{ pager }}</a>
+        </li>
+    {% endfor %}
+
+    {% if pagintor.next %}
+    <li class="page-item">
+      <a class="page-link" href="{{ paginator.next }}" rel="next">
+        →
+      </a>
+    </li>
+    {% endif %}
+  </ul>
+</nav>
+{% endif %}
+{% endmacro %}
+
+{% macro feeds(path="") %}
+{% for filename in config.feed_filenames %}
+    {% set type = filename | replace(from=".xml", to="") %}
+    {% set url = get_url(path=path ~ "/" ~ filename, trailing_slash=false) %}
+    
+    {% if type in ["atom", "rss"] %}
+    <link rel="alternate" type="application/{{ type }}+xml" title="{{ type | title }}" href="{{ url }}">
+    {% endif %}
+{% endfor %}
+{% endmacro %}
+
+
+{% macro openstreetmap(delta, layer="mapnik", class="col-lg-6") %}
+    {% if config.extra.map.longitude and config.extra.map.latitude %}
+        {% set lng = config.extra.map.longitude | float %}
+        {% set lat = config.extra.map.latitude | float %}
+    
+        {% set min_lat = lat - delta %}
+        {% set max_lat = lat + delta %}
+        {% set min_lng = lng - delta %}
+        {% set max_lng = lng + delta %}
+    
+        {% set bbox = min_lng ~ "," ~ min_lat ~ "," ~ max_lng ~ "," ~ max_lat %}
+        
+        <div class="{{ class }}">
+            <iframe loading="lazy" 
+                    width="100%" 
+                    height="100%" 
+                    src="https://www.openstreetmap.org/export/embed.html?bbox={{ bbox }}&layer={{ layer }}&marker={{ lat }}%2C{{ lng }}"></iframe>
+        </div>
+    {% endif %}
+{% endmacro %}
+
+{% macro ms_application(path, color="#ffffff") %}
+    {% set image = resize_image(path=path, width=144, height=144, format="png", op="scale") %}
+
+    <meta name="msapplication-TileColor" content="{{ color }}">
+    <meta name="msapplication-TileImage" content="{{ image.url }}">
+{% endmacro %}
+
+{% macro icons(path, sizes, apple=false, op="scale") %}
+    {% for size in sizes %}
+        {% set image = resize_image(path=path, width=size, height=size, format="png", op=op) %}
+        
+        <link {% if apple %}rel="icon" type="image/png"{% else %}rel="apple-touch-icon"{% endif %} sizes="{{ size }}x{{ size }}" href="{{ image.url }}">
+    {% endfor %}
+{% endmacro %}
+
+{% macro analytics() %}
+    {% if config.extra.ganalytics %}
+      <script async src="https://www.googletagmanager.com/gtag/js?id={{config.extra.ganalytics}}"></script>
+      <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '{{ config.extra.ganalytics }}');
+      </script>
+    {% endif %}
+{% endmacro  %}
+

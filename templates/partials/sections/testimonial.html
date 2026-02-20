@@ -1,0 +1,58 @@
+{% set path = "static/sections/testimonial/" ~ lang ~ ".toml" %}
+{% set data = load_data(path=path, required=false) %}
+
+{% if data %}
+<section class="section testimonial">
+   <div class="testimonial__background_shape">
+       <svg viewBox="0 0 1920 79">
+           <path d="M0 0h1920v79L0 0z" data-name="Path 1450" />
+       </svg>
+   </div>
+   <div class="container">
+       <div class="row text-center">
+           <div class="col-lg-6 offset-lg-3">
+               <div class="testimonial__header">
+                    {% if data.top_title %}
+                    <span>{{ data.top_title }}</span>
+                    {% endif %}
+                     <h1>{{ data.title }}</h1>
+               </div>
+           </div>
+       </div>
+       <div class="row">
+           <div class="col-lg-12">
+               <div id="carousel-testimonials" class="carousel slide" data-bs-ride="carousel">
+                   <div class="carousel-indicators">
+                       {% for testimonial in data.testimonials %}
+                       <button type="button"
+                               class="testimonial__slider_button {% if loop.first %}active{% endif %}"
+                               data-bs-target="#carousel-testimonials" 
+                               data-bs-slide-to="{{ loop.index0 }}" 
+                               aria-label="Slide {{ loop.index }}"
+                               {% if loop.first %}aria-current=true{% endif %}></button> 
+                       {% endfor %}
+                   </div>
+
+                   <div class="carousel-inner">
+                   {% for testimonial in data.testimonials %}
+                        <div class="testimonial__slider_item carousel-item {% if loop.first %} active{% endif %}">
+                           <ul class="testimonial__slider_item-rating">
+                                {% for rate in range(end=5) %} 
+                                <li>
+                                    <i class="lni lni-star-filled{% if rate >= testimonial.star %} inactive{% endif %}"></i>
+                                </li>
+                               {% endfor %}
+                           </ul>
+                           <p class="testimonial__slider_item-content">{{ testimonial.comment }}</p>
+                           <p class="testimonial__slider_item-author">
+                                <span>{{ testimonial.name }}</span> | {{ testimonial.time }}
+                           </p>
+                      </div>
+                   {% endfor %}
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+</section>
+{% endif %}

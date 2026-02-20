@@ -1,0 +1,16 @@
+[tools]
+zola = "0.22.0"
+
+[tasks.check]
+run = "zola check --drafts"
+description = "Check site for errors and drafts"
+
+[tasks.serve]
+run = "zola serve --fast --force"
+description = "Preview site locally with fast rebuilds"
+
+[tasks.build]
+run = "zola build --minify"
+description = "Build minified production site"
+
+

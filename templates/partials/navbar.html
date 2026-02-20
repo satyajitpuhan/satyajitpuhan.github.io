@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+        <a href="{{ get_url(path="/", lang=lang) }}" class="navbar-brand">
+            <img src="{{ get_url(path=extra.logo) }}" alt="site-logo">
+        </a>
+        
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+            <ul class="nav navbar-nav main-navigation">
+                {% for menu in extra.menus %}
+                <li class="nav-item">
+                    <a href="{{ get_url(path=menu.url, lang=lang) }}" class="nav-link">
+                        {{ trans(key=menu.name, lang=lang) }}
+                    </a>
+                </li>
+                {% endfor %}
+                
+                {% if config.languages | length >= 1 %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ lang | upper }}</a>
+                    
+                    <ul class="dropdown-menu">
+                        {% for language, _ in config.languages %}
+                        <li>
+                            <a class="dropdown-item" href="{{ get_url(path="/", lang=language) }}">
+                            {{ language | upper }}
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                {% endif %}
+            </ul>
+
+            <div class="navbar-nav">
+                <a href="{{get_url(path='contact', lang=lang) }}" class="hire_button">
+                    {{ trans(key="hire_me_now", lang=lang) }}
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>

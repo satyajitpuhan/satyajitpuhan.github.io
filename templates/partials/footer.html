@@ -1,0 +1,107 @@
+<section class="contact" id="contact">
+    <div class="contact__background_shape">
+        <svg viewBox="0 0 1920 79">
+            <path d="M0 0h1920v79L0 0z" data-name="Path 1450" />
+        </svg>
+    </div>
+    <div class="container">
+        {% if config.extra.display_cta %}
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="contact__cta">
+                    <div class="shape-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="357" height="315.029" viewBox="0 0 357 315.029">
+                            <path data-name="Path 1449" d="M76.1-157.222C91.746-135.8 87.2-94.273 99.993-61.945c12.7 32.328 42.661 55.459 39.248 73.282-3.318 17.823-40.007 30.337-65.6 43.325-25.5 12.988-39.912 26.545-60.01 42.566-20.1 16.116-46.074 34.6-63.328 27.682-17.349-6.921-25.976-39.153-59.915-59.82s-93.1-29.768-105.325-51.478 22.373-56.028 43.609-93.949c21.331-37.921 29.2-79.35 53.563-96.793 24.459-17.444 65.414-10.9 103.9-6.921 38.396 3.982 74.326 5.404 89.965 26.829z" transform="translate(217.489 188.626)"/>
+                        </svg>
+                    </div>
+                    <div class="shape-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="357" height="315.029" viewBox="0 0 357 315.029">
+                            <path data-name="Path 1449" d="M76.1-157.222C91.746-135.8 87.2-94.273 99.993-61.945c12.7 32.328 42.661 55.459 39.248 73.282-3.318 17.823-40.007 30.337-65.6 43.325-25.5 12.988-39.912 26.545-60.01 42.566-20.1 16.116-46.074 34.6-63.328 27.682-17.349-6.921-25.976-39.153-59.915-59.82s-93.1-29.768-105.325-51.478 22.373-56.028 43.609-93.949c21.331-37.921 29.2-79.35 53.563-96.793 24.459-17.444 65.414-10.9 103.9-6.921 38.396 3.982 74.326 5.404 89.965 26.829z" transform="translate(217.489 188.626)"/>
+                        </svg>
+                    </div>
+                    <div class="contact__cta_content">
+                        <span>{{ trans(key="contact_me", lang=lang) }}</span>
+                        <h1>{{ trans(key="start_project", lang=lang) }}</h1>
+                    </div>
+                    <div class="contact__cta_action">
+                        <a href="{{ get_url(path='contact', lang=lang) }}">
+                            {{ trans(key="get_in_touch", lang=lang) }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        <div class="row contact__widget">
+            <div class="col-lg-4">
+                <div class="contact__widget_logo">
+                    <img src="{{ get_url(path=extra.footer_logo) }}" alt="widget-logo">
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="contact__widget_sitemap">
+                    <h3>{{ trans(key="sitemap", lang=lang) }}</h3>
+                    <ul>
+                        {% for sitemap in extra.sitemaps %}
+                          <li>
+                              <a href="{{ sitemap.url }}">
+                                  {{ trans(key=sitemap.name, lang=lang) }}
+                              </a>
+                          </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="contact__widget_address">
+                    <h3>{{ trans(key="address", lang=lang) }}</h3>
+                    <ul>
+                        {% if extra.address.phone %}
+                        <li>
+                            <a href="tel:{{ extra.address.phone }}">
+                                <i class="lni lni-phone"></i>{{ extra.address.phone }}
+                            </a>
+                        </li> 
+                        {% endif %}
+
+                        {% if extra.address.email %}
+                        <li>
+                            <a href="mailto:{{ extra.address.email }}">
+                                <i class="lni lni-envelope"></i>{{ extra.address.email }}
+                            </a>
+                        </li>
+                        {% endif %}
+
+                        {% if extra.address.address %}
+                        <li>
+                            <p>
+                                <i class="lni lni-map-marker"></i>{{ extra.address.address }}
+                            </p>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row contact__footer">
+            <div class="col-lg-6">
+                <div class="contact__footer_copy">
+                    <p>{{ trans(key="copyright", lang=lang) }}</p>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="contact__footer_social">
+                    <ul>
+                        {% for social in extra.socials %}
+                        <li class="d-inline-block mx-2">
+                            <a target="_blank" href="{{ social.url }}">
+                                <i class="lni lni-{{ social.icon }}"></i>
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

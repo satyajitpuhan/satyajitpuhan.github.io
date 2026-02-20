@@ -1,0 +1,58 @@
+
+{% set path = "static/sections/resume/" ~ lang ~ ".toml" %}
+{% set data = load_data(path=path, required=false) %}
+
+{% if data %}
+<section class="section resume" id="resume">
+   <div class="resume__background"></div>
+   <div class="container">
+       <div class="row">
+           <div class="col-lg-6">
+               <div class="resume__heading">
+                   <span>{{ data.title }}</span>
+                   <h1>{{ data.title }}</h1>
+                   <p> {{ data.subtitle }} </p><br><br>
+                   <p> {{ data.second_subtitle }} </p>
+                   <ul class="nav nav-tabs">
+                       <li>
+                           <a href="#educations" class="active" data-bs-toggle="tab">
+                               {{ data.educations_tab }}
+                           </a>
+                       </li>
+                       <li>
+                           <a href="#experiences" data-bs-toggle="tab">
+                               {{ data.experiences_tab }}
+                           </a>
+                       </li>
+                   </ul>
+               </div>
+           </div>
+
+           <div class="col-lg-6">
+               <div class="tab-content">
+                   <div class="resume__education tab-pane show active" id="educations">
+                       {% for education in data.educations %}
+                           <div class="resume__education_item">
+                               <span>{{ education.time }}</span>
+                               <h4>{{ education.title }}</h4>
+                               <p>{{ education.content }}</p>
+                           </div>
+                       {% endfor %}
+                   </div>
+
+                   <div class="resume__education tab-pane" id="experiences">
+                       {% for experience in data.experiences %}
+                           <div class="resume__education_item">
+                               <span>{{ experience.time }}</span>
+                               <h4>{{ experience.title }}</h4>
+                               <p>{{ experience.content }}</p>
+                           </div>
+                       {% endfor %}
+                   </div>
+               </div>
+           </div>
+
+       </div>
+   </div>
+</section>
+{% endif %}
