@@ -4,33 +4,33 @@ subtitle = "Theoretical frameworks, computational tools, and programming languag
 image = "images/about/me.jpg"
 
 [[skills]]
-name = "Mathematica"
-value = "95"
+title = "Mathematica"
+percent = "95"
 
 [[skills]]
-name = "Python / NumPy / SciPy"
-value = "90"
+title = "Python / NumPy / SciPy"
+percent = "90"
 
 [[skills]]
-name = "Light-Front Quark Model (LFQM)"
-value = "95"
+title = "Light-Front Quark Model (LFQM)"
+percent = "95"
 
 [[skills]]
-name = "NJL / DS-BSE Models"
-value = "85"
+title = "NJL / DS-BSE Models"
+percent = "85"
 
 [[skills]]
-name = "LHAPDF / xFitter / DGLAP"
-value = "90"
+title = "LHAPDF / xFitter / DGLAP"
+percent = "90"
 
 [[skills]]
-name = "LaTeX / Scientific Writing"
-value = "95"
+title = "LaTeX / Scientific Writing"
+percent = "95"
 
 [[skills]]
-name = "Light-Front Holographic QCD"
-value = "85"
+title = "Light-Front Holographic QCD"
+percent = "85"
 
 [[skills]]
-name = "Chiral SU(3) QMF Model"
-value = "80"
+title = "Chiral SU(3) QMF Model"
+percent = "80"
