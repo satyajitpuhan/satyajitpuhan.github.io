@@ -1,0 +1,35 @@
+{% set path = "static/sections/news/" ~ lang ~ ".toml" %}
+{% set data = load_data(path=path, required=false) %}
+
+{% if data %}
+<section id="news" class="section news-section">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="news-section__header">
+                    {% if data.top_title %}<span>{{ data.top_title }}</span>{% endif %}
+                    <h1>{{ data.title }}</h1>
+                    {% if data.subtitle %}<p>{{ data.subtitle }}</p>{% endif %}
+                </div>
+            </div>
+        </div>
+
+        {% if data.items %}
+        <div class="news-grid">
+            {% for item in data.items %}
+            <div class="news-card">
+                <div class="news-card__image">
+                    <img src="{{ get_url(path=item.image) }}" alt="{{ item.title }}">
+                </div>
+                <div class="news-card__body">
+                    <span class="news-card__date">{{ item.date }}</span>
+                    <h5 class="news-card__title">{{ item.title }}</h5>
+                    <p class="news-card__text">{{ item.description }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endif %}
