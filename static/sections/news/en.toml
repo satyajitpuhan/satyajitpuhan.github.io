@@ -1,33 +1,14 @@
-top_title = "What's New"
+top_title = "Recently participated in"
 title = "Recent News & Activities"
-subtitle = "Highlights from my research journey across the globe."
+subtitle = "Highlights from my research journey."
 
 [[items]]
-image = "images/gallery/moscow-bolshoi.jpg"
-title = "Visiting Fellow at JINR, Dubna"
-date = "Jun–Sep 2025"
-description = "Worked on extraction of hadron GPDs using neural networks and energy-momentum tensor calculations under Prof. Oleg V. Teryaev at JINR, Dubna, Russia."
-
-[[items]]
-image = "images/gallery/switzerland-alps.jpg"
-title = "PSI Summer School — Zuoz, Switzerland"
-date = "Aug 2024"
-description = "Attended the PSI Particle Physics Summer School: From Low to High — Particle Physics at the Frontier, at Lyceum Alpinum, Zuoz."
-
-[[items]]
-image = "images/gallery/adiyogi-coimbatore.jpg"
-title = "ICTS-TIFR Workshop — Bengaluru"
-date = "Jan–Feb 2024"
-description = "Delivered a talk on 'Structural analysis of pion with distribution functions' at the EIC workshop, ICTS-TIFR, Bengaluru."
-
-[[items]]
-image = "images/gallery/office-research.jpg"
-title = "Premier Research Award — NIT Jalandhar"
-date = "Jan 2025"
-description = "Received the Premier Research Award in the Department of Physics at NIT Jalandhar for outstanding research contributions."
-
-[[items]]
-image = "images/gallery/hilltop-bengaluru.jpg"
-title = "20+ Publications in Top Journals"
-date = "2023–Present"
-description = "Published 20+ papers in Phys. Rev. D, JHEP, Phys. Lett. B, Nucl. Phys. A/B, PTEP, EPJP, CPC, and EPJA on hadron tomography."
+image = "images/gallery/iitb-cteq-group.jpg"
+title = "The 2026 IITB-CFNS-CTEQ School on Perturbative QCD for EIC"
+date = "Feb 8–15, 2026"
+description = "Participated in the school hosted by Indian Institute of Technology Bombay (IITB) in collaboration with CTEQ Collaboration and CFNS of Stony Brook University. The curriculum explored perturbative quantum chromodynamics, experimental results, and hands-on tutorials on Monte Carlo event generators."
+extra_images = [
+    "images/gallery/iitb-cteq-fun.jpg",
+    "images/gallery/iitb-cteq-gateway.jpg",
+    "images/gallery/iitb-cteq-poster.jpg"
+]

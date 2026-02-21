@@ -14,7 +14,6 @@
             </div>
         </div>
 
-        {% if data.items %}
         <div class="news-grid">
             {% for item in data.items %}
             <div class="news-card">
@@ -25,11 +24,20 @@
                     <span class="news-card__date">{{ item.date }}</span>
                     <h5 class="news-card__title">{{ item.title }}</h5>
                     <p class="news-card__text">{{ item.description }}</p>
+
+                    {% if item.extra_images %}
+                    <div class="news-card__extra-gallery">
+                        {% for img in item.extra_images %}
+                        <div class="extra-img-wrap">
+                            <img src="{{ get_url(path=img) }}" alt="News extra image" />
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
                 </div>
             </div>
             {% endfor %}
         </div>
-        {% endif %}
     </div>
 </section>
 {% endif %}

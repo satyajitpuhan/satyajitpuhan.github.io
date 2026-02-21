@@ -7,3 +7,11 @@ Senior Research Fellow at Dr. B R Ambedkar NIT, Jalandhar. Exploring the interna
 button_name = "Contact Me"
 button_url  = "contact"
 image       = "images/hero/me1.jpg"
+
+gallery_images = [
+    "images/gallery/switzerland-alps.jpg",
+    "images/gallery/moscow-bolshoi.jpg",
+    "images/gallery/adiyogi-coimbatore.jpg",
+    "images/gallery/hilltop-bengaluru.jpg",
+    "images/gallery/office-research.jpg"
+]
