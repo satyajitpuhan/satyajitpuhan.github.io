@@ -63,3 +63,27 @@ details = """
 **Abstract (arXiv):**
 We investigate the partonic structure of the ρ meson, the lightest spin-1 vector meson, within the light-front quark model (LFQM). To explore the sensitivity to model assumptions, we employ two distinct types of spin wave functions in the LFQM. Using light-front helicity wave functions, we derive explicit expressions for the leading-twist and subleading-twist quark parton distribution functions (PDFs), and evolve the leading-twist PDFs to higher scales with next-to-leading order (NLO) Dokshitzer--Gribov--Lipatov--Altarelli--Parisi (DGLAP) evolution. We have also calculated the Mellin moment from the evolved PDFs using a simple neural network frame and compared with available theoretical predictions. Furthermore, we compute the full set of nine leading-twist transverse-momentum-dependent distributions (TMDs) for the valence quark in the ρ meson, including three tensor TMDs that arise from spin-1 tensor polarization of the hadron. Positivity constraints for the PDFs and TMDs are examined within this framework. Our findings highlight the crucial role of tensor polarization in shaping the three-dimensional partonic structure of vector mesons.
 """
+
+[[items]]
+image = "images/gallery/icts-satpp-group.jpg"
+title = "School for Advanced Topics in Particle Physics (SATPP)"
+date = "19 Jan – 30 Jan, 2026"
+description = "Participated in the School for Advanced Topics in Particle Physics (SATPP) at ICTS Bengaluru, focusing on Quantum Chromodynamics, Effective Field Theories, and Nuclear Physics."
+details = """
+**VENUE:** Ramanujan Lecture Hall, ICTS Bengaluru  
+**DATE:** 19 January 2026 to 30 January 2026
+
+**ORGANIZERS:**
+- Rick Sandeepan Gupta (TIFR, Mumbai, India)
+- Namit Mahajan (PRL, Ahmedabad, India)
+- Tuhin S. Roy (TIFR, Mumbai, India)
+- Sudhir Vempati (IISc, Bengaluru, India)
+
+**About the Program:**
+The aim of the SATPP is to provide exposure/training to postdoctoral fellows and advanced theoretical particle physics students. The goal is not just to provide details of the spectrum of ideas/mechanisms but also to supply essential technical tools that will allow young researchers to think critically and constructively.
+
+This second edition, "Selected Topics in Effective Field Theories (EFTs)," spanned two weeks. The first week focused on topics of low-energy EFTs and the second week concentrated on high-energy EFTs. EFTs provide systematic ways of "describing" the physics of a scale using only the relevant degrees of freedom, essential for understanding our universe from the TeV scale down to observables involving mesons, baryons, and nuclei.
+
+**Program Link:**  
+[https://www.icts.res.in/program/satpp2026](https://www.icts.res.in/program/satpp2026)
+"""
