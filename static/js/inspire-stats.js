@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const inspireId = "2706496";
+    const inspireId = "Satyajit.Puhan.1";
     const apiUrl = `https://inspirehep.net/api/literature?sort=mostrecent&size=250&q=a%20${inspireId}`;
 
     fetch(apiUrl)
