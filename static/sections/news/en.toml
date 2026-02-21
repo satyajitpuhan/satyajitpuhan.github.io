@@ -12,3 +12,38 @@ extra_images = [
     "images/gallery/iitb-cteq-gateway.jpg",
     "images/gallery/iitb-cteq-poster.jpg"
 ]
+details = """
+The school will be hosted by the Indian Institute of Technology Bombay (IITB) in collaboration with CTEQ Collaboration and the Center for Frontiers in Nuclear Science (CFNS) of Stony Brook University.
+
+The 2026 IITB-CFNS-CTEQ School on Perturbative QCD for EIC will be held 8 to 15 February 2026 at the Indian Institute of Technology Bombay (IITB) in Mumbai, India.
+
+The school is ideally suited for advanced graduate students, postdocs, and junior faculty, with a curriculum that includes a focused introduction to perturbative quantum chromodynamics, along with applications and recent experimental results. It will also offer "hands-on" tutorial sessions on Monte Carlo event generators.
+
+**International Organizing Committee:**
+Asmita Mukherjee, V. Ravindran, Abhay Deshpande, Ross Corliss, Huey-Wen Lin, Zack Sullivan, Fred Olness
+
+**Local Organising Committee:**
+Asmita Mukherjee, Manibrata Sen, Vikram Rentala, Debojit Sarkar
+
+**Speakers:**
+- Abhay Deshpande (Stony Brook & BNL)
+- Asmita Mukherjee (IIT-Bombay)
+- Amanda Cooper-Sarkar (Oxford)
+- Fred Olness (SMU)
+- Tomas Jezo (Muenster)
+- Cristian Pisano (U. Cagliari)
+- Krishna Kumar (UMass Amherst)
+- V. Ravindran (IMSC)
+- Padmanath Madanagopalan (IMSC)
+- Subir Sarkar (Oxford)
+- Nilmani Mathur (TIFR)
+- Dave Soper (U. Oregon)
+- Anurag Tripathi (IIT-Hyderabad)
+
+**Supporting Organizations:**
+- Center for Frontiers in Nuclear Science, Stony Brook University
+- The CTEQ Collaboration
+- Institute of Mathematical Sciences (IMSc)
+- The Board of Research in Nuclear Sciences (BRNS)
+- Southern Methodist University
+"""
