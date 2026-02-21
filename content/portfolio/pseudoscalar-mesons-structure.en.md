@@ -3,7 +3,7 @@ title = "Transverse and Spatial Structure of Light to Heavy Pseudoscalar Mesons"
 date = 2024-10-10
 
 [extra]
-thumbnail = "images/portfolio/portfolio-1.png"
+thumbnail = "images/portfolio/papers/pseudoscalar-mesons-structure.png"
 service = "Phys. Rev. D 111, 014008 (2025)"
 client = "Satyajit Puhan, Navpreet Kaur, Harleen Dahiya"
 short_description = "Transverse and spatial structure of light (π⁺, K⁺) and heavy (ηc, ηb, B, D) pseudoscalar mesons in the LCQM."

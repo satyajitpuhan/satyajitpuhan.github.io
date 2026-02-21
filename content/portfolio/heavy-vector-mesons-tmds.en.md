@@ -3,7 +3,7 @@ title = "Leading Twist T-even TMDs for the Spin-1 Heavy Vector Mesons"
 date = 2023-10-05
 
 [extra]
-thumbnail = "images/portfolio/portfolio-1.png"
+thumbnail = "images/portfolio/papers/heavy-vector-mesons-tmds.png"
 service = "Phys. Rev. D 109, 034005 (2024)"
 client = "Satyajit Puhan, Harleen Dahiya"
 short_description = "Leading twist quark TMDs for spin-1 heavy vector mesons J/ψ and Υ using light-front wave functions."

@@ -3,7 +3,7 @@ title = "Photon Leading Twist Transverse Momentum Dependent Parton Distributions
 date = 2024-08-14
 
 [extra]
-thumbnail = "images/portfolio/portfolio-5.png"
+thumbnail = "images/portfolio/papers/photon-tmds.png"
 service = "Eur. Phys. J. A 61, 56 (2025)"
 client = "Satyajit Puhan, Narinder Kumar, Harleen Dahiya"
 short_description = "T-even TMDs for the photon as a quark-antiquark Fock state using light-front wave functions."

@@ -3,7 +3,7 @@ title = "Does Nuclear Medium Affect the TMDs of Valence Quark of Pions?"
 date = 2024-09-09
 
 [extra]
-thumbnail = "images/portfolio/portfolio-2.png"
+thumbnail = "images/portfolio/papers/pion-tmds-nuclear-medium.png"
 service = "Phys. Lett. B 859, 139114 (2024)"
 client = "Navpreet Kaur, Satyajit Puhan, Reetanshu Pandey, Arvind Kumar, Suneel Dutt, Harleen Dahiya"
 short_description = "Valence quark TMDs of pions in isospin asymmetric nuclear matter using the light-cone quark model."

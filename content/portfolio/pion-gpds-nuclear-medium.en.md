@@ -3,7 +3,7 @@ title = "Effect of Nuclear Medium on the Spatial Distribution of Pions"
 date = 2025-01-28
 
 [extra]
-thumbnail = "images/portfolio/portfolio-7.png"
+thumbnail = "images/portfolio/papers/pion-gpds-nuclear-medium.png"
 service = "Nucl. Phys. B 1017, 116940 (2025)"
 client = "Satyajit Puhan, Navpreet Kaur, Arvind Kumar, Suneel Dutt, Harleen Dahiya"
 short_description = "Valence quark GPDs of pion in isospin asymmetric nuclear matter using the light-cone quark model."

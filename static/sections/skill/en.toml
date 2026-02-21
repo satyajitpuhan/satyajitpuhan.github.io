@@ -1,24 +1,36 @@
-top_title = "My Skills"
-title     = "Research Tools & Expertise"
-subtitle  = "I combine analytical techniques with computational simulations using various theoretical models, tools, and programming languages."
-image     = "images/skill/skill_image.jpg"
+top_title = "Skills"
+title = "Research Tools & Technical Skills"
+subtitle = "Theoretical frameworks, computational tools, and programming languages used in my research."
+image = "images/about/me.jpg"
 
 [[skills]]
-title   = "Mathematica"
-percent = 92
+name = "Mathematica"
+value = "95"
 
 [[skills]]
-title   = "Python"
-percent = 85
+name = "Python / NumPy / SciPy"
+value = "90"
 
 [[skills]]
-title   = "Light-Front Quark Model"
-percent = 95
+name = "Light-Front Quark Model (LFQM)"
+value = "95"
 
 [[skills]]
-title   = "LHAPDF / xFitter"
-percent = 80
+name = "NJL / DS-BSE Models"
+value = "85"
 
 [[skills]]
-title   = "LaTeX"
-percent = 90
+name = "LHAPDF / xFitter / DGLAP"
+value = "90"
+
+[[skills]]
+name = "LaTeX / Scientific Writing"
+value = "95"
+
+[[skills]]
+name = "Light-Front Holographic QCD"
+value = "85"
+
+[[skills]]
+name = "Chiral SU(3) QMF Model"
+value = "80"

@@ -3,7 +3,7 @@ title = "Effect of Asymmetric Nuclear Medium on Valence Quark Structure of Kaons
 date = 2024-10-26
 
 [extra]
-thumbnail = "images/portfolio/portfolio-8.png"
+thumbnail = "images/portfolio/papers/kaons-asymmetric-nuclear-medium.png"
 service = "Phys. Rev. D 111, 054001 (2025)"
 client = "Dhananjay Singh, Satyajit Puhan, Navpreet Kaur, Manpreet Kaur, Arvind Kumar, Suneel Dutt, Harleen Dahiya"
 short_description = "Role of asymmetric nuclear medium on kaon properties using the LCQM and CQMF model."

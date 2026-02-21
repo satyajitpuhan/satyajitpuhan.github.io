@@ -3,7 +3,7 @@ title = "Understanding the Valence Quark Structure of the Pion through GTMDs"
 date = 2025-04-21
 
 [extra]
-thumbnail = "images/portfolio/portfolio-6.png"
+thumbnail = "images/portfolio/papers/pion-generalized-tmds.png"
 service = "PTEP 2025 (2025) 083B02"
 client = "Satyajit Puhan, Shubham Sharma, Narinder Kumar, Harleen Dahiya"
 short_description = "Internal structure of the pion using generalized transverse momentum-dependent parton distributions (GTMDs) within the LCQM."

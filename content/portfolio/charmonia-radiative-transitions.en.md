@@ -3,7 +3,7 @@ title = "Radiative Transitions for the Ground and Excited Charmonia States"
 date = 2025-04-21
 
 [extra]
-thumbnail = "images/portfolio/portfolio-5.png"
+thumbnail = "images/portfolio/papers/charmonia-radiative-transitions.png"
 service = "arXiv:2504.14864 [hep-ph] (2025)"
 client = "Anurag Yadav, Satyajit Puhan, Harleen Dahiya"
 short_description = "Physical properties of ground and radially excited charmonia states in the light-front quark model."

@@ -3,7 +3,7 @@ title = "Scalar, Vector and Tensor Form Factors of Pion and Kaon"
 date = 2025-05-05
 
 [extra]
-thumbnail = "images/portfolio/portfolio-2.png"
+thumbnail = "images/portfolio/papers/form-factors-pion-kaon.png"
 service = "Phys. Rev. D 111, 114039 (2025)"
 client = "Satyajit Puhan, Harleen Dahiya"
 short_description = "Calculation of scalar, vector, and tensor form factors for pion and kaon in the light-cone quark model."

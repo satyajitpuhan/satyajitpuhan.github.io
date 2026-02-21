@@ -3,7 +3,7 @@ title = "Distribution Functions of Radially Excited Pion using the Light-Front Q
 date = 2026-01-10
 
 [extra]
-thumbnail = "images/portfolio/portfolio-5.png"
+thumbnail = "images/portfolio/papers/radially-excited-pion-lfqm.png"
 service = "arXiv:2601.06628 [hep-ph] (2026)"
 client = "Ashutosh Dwibedi, Satyajit Puhan, Sabyasachi Ghosh, Harleen Dahiya"
 short_description = "Investigation of the internal structure of ground and radially excited states of the pion within the light-front quark model."

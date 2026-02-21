@@ -3,7 +3,7 @@ title = "Quark Spin-Orbit Correlations in Spin-0 and Spin-1 Mesons"
 date = 2024-05-01
 
 [extra]
-thumbnail = "images/portfolio/portfolio-7.png"
+thumbnail = "images/portfolio/papers/spin-orbit-correlations-mesons.png"
 service = "Phys. Rev. D 110, 034020 (2024)"
 client = "Ritwik Acharyya, Satyajit Puhan, Harleen Dahiya"
 short_description = "Spin-orbital angular momentum correlations for active quarks inside light and heavy mesons for spin-0 and spin-1 cases."

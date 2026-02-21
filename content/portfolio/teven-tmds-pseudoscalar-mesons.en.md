@@ -3,7 +3,7 @@ title = "T-even TMDs for Spin-0 Pseudoscalar Mesons up to Twist-4"
 date = 2023-10-05
 
 [extra]
-thumbnail = "images/portfolio/portfolio-8.png"
+thumbnail = "images/portfolio/papers/teven-tmds-pseudoscalar-mesons.png"
 service = "JHEP 02, 075 (2024)"
 client = "Satyajit Puhan, Shubham Sharma, Navpreet Kaur, Narinder Kumar, Harleen Dahiya"
 short_description = "All time-reversal even TMDs for pion and kaon up to twist-4 in the light-front holographic and quark models."

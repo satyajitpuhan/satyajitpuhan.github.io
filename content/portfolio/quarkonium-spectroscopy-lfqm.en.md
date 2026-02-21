@@ -3,7 +3,7 @@ title = "Spectroscopy of Excited Quarkonium States in the Light-Front Quark Mode
 date = 2024-08-14
 
 [extra]
-thumbnail = "images/portfolio/portfolio-4.png"
+thumbnail = "images/portfolio/papers/quarkonium-spectroscopy-lfqm.png"
 service = "Chin. Phys. C 49, 023104 (2025)"
 client = "Ritwik Acharyya, Satyajit Puhan, Harleen Dahiya, Narinder Kumar"
 short_description = "Ground and excited state investigation of heavy charmonia and bottomonia mesons in the LFQM."

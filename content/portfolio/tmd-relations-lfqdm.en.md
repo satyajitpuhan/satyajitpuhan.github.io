@@ -3,7 +3,7 @@ title = "TMD Relations: Insights from a Light-Front Quark-Diquark Model"
 date = 2024-05-22
 
 [extra]
-thumbnail = "images/portfolio/portfolio-6.png"
+thumbnail = "images/portfolio/papers/tmd-relations-lfqdm.png"
 service = "PTEP 2024, 103B05 (2024)"
 client = "Shubham Sharma, Satyajit Puhan, Narinder Kumar, Harleen Dahiya"
 short_description = "Relations between T-even proton TMDs at all twist levels up to twist-4 using the LFQDM."

@@ -3,7 +3,7 @@ title = "Valence Quark Distribution of Light ρ and Heavy J/ψ Vector Mesons"
 date = 2025-05-14
 
 [extra]
-thumbnail = "images/portfolio/portfolio-1.png"
+thumbnail = "images/portfolio/papers/rho-jpsi-vector-mesons-gpds.png"
 service = "Phys. Rev. D 112, 054035 (2025)"
 client = "Tanisha, Satyajit Puhan, Anurag Yadav, Harleen Dahiya"
 short_description = "Valence quark structure of light ρ and heavy J/ψ vector mesons using the light-cone quark model through unpolarized quark GPDs."

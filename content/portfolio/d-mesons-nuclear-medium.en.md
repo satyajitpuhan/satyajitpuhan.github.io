@@ -3,7 +3,7 @@ title = "D and D* Mesons in Isospin Asymmetric Nuclear Medium"
 date = 2025-06-10
 
 [extra]
-thumbnail = "images/portfolio/portfolio-8.png"
+thumbnail = "images/portfolio/papers/d-mesons-nuclear-medium.png"
 service = "PTEP 2025 (2025) 113D03"
 client = "Anshu Gautam, Dhananjay Singh, Navpreet Kaur, Satyajit Puhan, Suneel Dutt, Harleen Dahiya, Arvind Kumar"
 short_description = "Properties of pseudoscalar D and vector D* mesons in isospin asymmetric nuclear medium using a hybrid LFQM + CQMF approach."

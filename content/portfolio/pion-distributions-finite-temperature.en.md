@@ -3,7 +3,7 @@ title = "Pion Valence Quark Distributions in Asymmetric Nuclear Matter at Finite
 date = 2024-08-14
 
 [extra]
-thumbnail = "images/portfolio/portfolio-3.png"
+thumbnail = "images/portfolio/papers/pion-distributions-finite-temperature.png"
 service = "Phys. Rev. D 110, 054042 (2024)"
 client = "Satyajit Puhan, Navpreet Kaur, Arvind Kumar, Suneel Dutt, Harleen Dahiya"
 short_description = "Valence quark distributions of pions in isospin asymmetric nuclear matter at zero and finite temperature."

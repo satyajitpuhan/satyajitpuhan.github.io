@@ -3,7 +3,7 @@ title = "Spectroscopy of ρ-meson in Symmetric Nuclear Medium"
 date = 2026-01-16
 
 [extra]
-thumbnail = "images/portfolio/portfolio-4.png"
+thumbnail = "images/portfolio/papers/rho-meson-nuclear-medium.png"
 service = "arXiv:2601.11082 [hep-ph] (2026)"
 client = "Anshu Gautam, Tanisha, Satyajit Puhan, Arvind Kumar, Harleen Dahiya"
 short_description = "Investigation of the behavior of the light vector ρ meson in the presence of a symmetric nuclear medium at zero temperature."

@@ -3,7 +3,7 @@ title = "Valence Quark Distribution of ρ Meson Using Light-Front Quark Model"
 date = 2025-11-14
 
 [extra]
-thumbnail = "images/portfolio/portfolio-7.png"
+thumbnail = "images/portfolio/papers/rho-meson-valence-quark.png"
 service = "arXiv:2511.10981 [hep-ph] (2025)"
 client = "Satyajit Puhan, Shubham Sharma, Narinder Kumar, Harleen Dahiya"
 short_description = "Partonic structure of the ρ meson within the LFQM using two distinct spin wave functions."

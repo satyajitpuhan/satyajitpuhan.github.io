@@ -3,7 +3,7 @@ title = "Valence Quark Properties of Charged Kaons in Symmetric Nuclear Matter"
 date = 2025-05-02
 
 [extra]
-thumbnail = "images/portfolio/portfolio-3.png"
+thumbnail = "images/portfolio/papers/kaons-symmetric-nuclear-matter.png"
 service = "Eur. Phys. J. Plus 140, 1040 (2025)"
 client = "Reetanshu Pandey, Satyajit Puhan, Navpreet Kaur, Arvind Kumar, Suneel Dutt, Harleen Dahiya"
 short_description = "Leading twist valence quark TMDs and GPDs of charged kaons in isospin symmetric nuclear matter."

@@ -3,7 +3,7 @@ title = "Impact of Isospin Asymmetric Nuclear Medium on Pseudoscalar and Vector 
 date = 2025-04-30
 
 [extra]
-thumbnail = "images/portfolio/portfolio-4.png"
+thumbnail = "images/portfolio/papers/b-mesons-isospin-asymmetric.png"
 service = "Nucl. Phys. A 1068, 123330 (2026)"
 client = "Tanisha, Satyajit Puhan, Navpreet Kaur, Harleen Dahiya, Arvind Kumar"
 short_description = "Properties of pseudoscalar and vector B mesons under isospin asymmetric nuclear medium."

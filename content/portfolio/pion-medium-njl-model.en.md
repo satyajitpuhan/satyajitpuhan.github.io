@@ -3,7 +3,7 @@ title = "Valence Quark Distribution of Pion Inside a Medium with Finite Baryon D
 date = 2025-12-31
 
 [extra]
-thumbnail = "images/portfolio/portfolio-6.png"
+thumbnail = "images/portfolio/papers/pion-medium-njl-model.png"
 service = "arXiv:2512.24921 [hep-ph] (2025)"
 client = "Ashutosh Dwibedi, Satyajit Puhan, Sabyasachi Ghosh, Harleen Dahiya"
 short_description = "In-medium valence quark distribution of pion at finite baryon density using the light-cone quark model and NJL model."
