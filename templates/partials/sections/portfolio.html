@@ -11,20 +11,21 @@
         </div>
       </div>
     </div>
-    
+
     <div class="row">
       <div class="col-12">
-        <div class="portfolio-item-grid">
+        <div class="publication-list">
           {% for page in section.pages %}
-          <div class="portfolio-item">
-            <img src="{{ get_url(path=page.extra.thumbnail) }}" class="portfolio-item-thumb" alt="portfolio-thumb" />
-            <div class="portfolio-item-content">
-              <span>{{ page.extra.service }}</span>
-              <h3 class="mb-0">
-                <a class="text-dark" href="{{ page.permalink }}">{{ page.title }}</a>
-              </h3>
-              <a class="see-more-btn" href="{{ page.permalink }}">{{ trans(key="see_details", lang=lang) }}</a>
+          <div class="publication-item">
+            <div class="publication-item__info">
+              <span class="publication-item__journal">{{ page.extra.service }}</span>
+              <h5 class="publication-item__title">
+                <a href="{{ page.permalink }}">{{ page.title }}</a>
+              </h5>
+              <p class="publication-item__authors">{{ page.extra.client }}</p>
             </div>
+            <a class="publication-item__link" href="{{ page.permalink }}">{{ trans(key="see_details", lang=lang) }}
+              →</a>
           </div>
           {% endfor %}
         </div>

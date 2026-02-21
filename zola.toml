@@ -87,12 +87,15 @@ socials = [
   { icon = "github-original", url = "https://github.com/satyajitpuhan" },
   { icon = "linkedin-original", url = "https://www.linkedin.com/in/satyajit-puhan-b9889a162/" },
   { icon = "google-scholar", url = "https://scholar.google.com/citations?hl=en&user=pKbmhZQAAAAJ/" },
-  { icon = "twitter-original",  url = "https://www.researchgate.net/profile/Satyajit-Puhan/" }
+  { icon = "twitter-original", url = "https://www.researchgate.net/profile/Satyajit-Puhan/" },
+  { icon = "chrome-original", url = "https://inspirehep.net/authors/2695282" },
+  { icon = "facebook-original", url = "https://www.facebook.com/satyajit.puhan" },
+  { icon = "google-original", url = "https://orcid.org/0009-0004-9766-5005" }
 ]
 
 [extra.address]
 phone = "+91-9776342407"
-email = "puhansatyajit@gmail.com"
+email = "puhansatyajit@gmail.com | puhansatyajit1@gmail.com | satyajitp.ph.21@nitj.ac.in | bealonekrishan@gmail.com"
 address = "Dr. B R Ambedkar NIT, Jalandhar, Punjab, India"
 opening_hours = "Available for research collaborations"
 

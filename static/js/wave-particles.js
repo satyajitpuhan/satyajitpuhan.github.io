@@ -1,106 +1,115 @@
-/* ── Floating Colorful Wave Dots ── */
+/* ── Floating Colorful Wave Dots — Home Section Only + Mouse Following ── */
 (function () {
+    const hero = document.getElementById('home');
+    if (!hero) return;
+
     const canvas = document.createElement('canvas');
     canvas.id = 'wave-particles';
     canvas.style.cssText =
-        'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:0.6;';
-    document.body.prepend(canvas);
+        'position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1;';
+    hero.style.position = 'relative';
+    hero.style.overflow = 'hidden';
+    hero.appendChild(canvas);
 
     const ctx = canvas.getContext('2d');
     let W, H, particles;
-    const PARTICLE_COUNT = 120;
+    const COUNT = 100;
+    let mouseX = -1000, mouseY = -1000;
 
-    /* vibrant color palette */
     const COLORS = [
-        '#6366f1', /* indigo */
-        '#8b5cf6', /* violet */
-        '#a855f7', /* purple */
-        '#ec4899', /* pink */
-        '#f43f5e', /* rose */
-        '#f97316', /* orange */
-        '#eab308', /* yellow */
-        '#22d3ee', /* cyan */
-        '#3b82f6', /* blue */
-        '#10b981', /* emerald */
+        '#6366f1', '#8b5cf6', '#a855f7', '#ec4899',
+        '#f43f5e', '#f97316', '#eab308', '#22d3ee',
+        '#3b82f6', '#10b981',
     ];
 
-    function rand(min, max) {
-        return Math.random() * (max - min) + min;
-    }
+    function rand(a, b) { return Math.random() * (b - a) + a; }
 
-    function createParticle() {
+    function makeParticle() {
         return {
-            x: rand(0, W),
-            y: rand(0, H),
+            x: rand(0, W), y: rand(0, H),
             r: rand(2, 5),
             color: COLORS[Math.floor(Math.random() * COLORS.length)],
-            vx: rand(-0.3, 0.3),
-            vy: rand(-0.2, 0.2),
+            vx: rand(-0.4, 0.4), vy: rand(-0.2, 0.2),
             phase: rand(0, Math.PI * 2),
-            waveAmp: rand(20, 60),
-            waveFreq: rand(0.005, 0.02),
-            waveSpeed: rand(0.01, 0.03),
+            amp: rand(15, 50),
+            freq: rand(0.008, 0.025),
+            speed: rand(0.015, 0.04),
             baseY: 0,
-            alpha: rand(0.3, 0.8),
+            alpha: rand(0.35, 0.85),
         };
     }
 
     function resize() {
-        W = canvas.width = window.innerWidth;
-        H = canvas.height = window.innerHeight;
+        const rect = hero.getBoundingClientRect();
+        W = canvas.width = rect.width;
+        H = canvas.height = rect.height;
     }
 
     function init() {
         resize();
         particles = [];
-        for (let i = 0; i < PARTICLE_COUNT; i++) {
-            const p = createParticle();
+        for (let i = 0; i < COUNT; i++) {
+            const p = makeParticle();
             p.baseY = p.y;
             particles.push(p);
         }
     }
 
+    /* track mouse within hero */
+    hero.addEventListener('mousemove', function (e) {
+        const rect = hero.getBoundingClientRect();
+        mouseX = e.clientX - rect.left;
+        mouseY = e.clientY - rect.top;
+    });
+    hero.addEventListener('mouseleave', function () {
+        mouseX = -1000; mouseY = -1000;
+    });
+
     let t = 0;
     function draw() {
         ctx.clearRect(0, 0, W, H);
-        t += 1;
+        t++;
 
         for (const p of particles) {
             /* wave motion */
-            const waveOffset =
-                Math.sin(p.x * p.waveFreq + t * p.waveSpeed + p.phase) * p.waveAmp;
-
+            const wave = Math.sin(p.x * p.freq + t * p.speed + p.phase) * p.amp;
             p.x += p.vx;
             p.baseY += p.vy;
-            p.y = p.baseY + waveOffset;
+            p.y = p.baseY + wave;
 
-            /* wrap around edges */
+            /* mouse attraction — gently pull toward cursor */
+            const dx = mouseX - p.x;
+            const dy = mouseY - p.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 200 && dist > 0) {
+                const force = (200 - dist) / 200 * 0.6;
+                p.x += dx / dist * force;
+                p.baseY += dy / dist * force * 0.5;
+            }
+
+            /* wrap edges */
             if (p.x < -10) p.x = W + 10;
             if (p.x > W + 10) p.x = -10;
-            if (p.baseY < -10) { p.baseY = H + 10; p.y = p.baseY; }
-            if (p.baseY > H + 10) { p.baseY = -10; p.y = p.baseY; }
+            if (p.baseY < -10) { p.baseY = H + 10; }
+            if (p.baseY > H + 10) { p.baseY = -10; }
 
             /* glow */
-            const gradient = ctx.createRadialGradient(
-                p.x, p.y, 0, p.x, p.y, p.r * 3
-            );
-            gradient.addColorStop(0, p.color);
-            gradient.addColorStop(1, 'transparent');
-
+            const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 3);
+            g.addColorStop(0, p.color);
+            g.addColorStop(1, 'transparent');
+            ctx.globalAlpha = p.alpha;
             ctx.beginPath();
             ctx.arc(p.x, p.y, p.r * 3, 0, Math.PI * 2);
-            ctx.fillStyle = gradient;
-            ctx.globalAlpha = p.alpha;
+            ctx.fillStyle = g;
             ctx.fill();
 
-            /* solid core */
+            /* core */
             ctx.beginPath();
             ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
             ctx.fillStyle = p.color;
-            ctx.globalAlpha = p.alpha + 0.2;
+            ctx.globalAlpha = Math.min(1, p.alpha + 0.2);
             ctx.fill();
         }
-
         ctx.globalAlpha = 1;
         requestAnimationFrame(draw);
     }

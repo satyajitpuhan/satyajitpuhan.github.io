@@ -1,0 +1,51 @@
+top_title = "My Network"
+title = "Collaborators"
+subtitle = "Researchers and mentors I have the privilege to work with."
+
+[[collaborators]]
+name = "Dr. Harleen Dahiya"
+role = "Supervisor (PhD)"
+institution = "Dr. B R Ambedkar NIT, Jalandhar"
+photo = "images/collaborators/placeholder.png"
+
+[[collaborators]]
+name = "Prof. Oleg V. Teryaev"
+role = "Supervisor (JINR)"
+institution = "JINR, Dubna, Russia"
+photo = "images/collaborators/placeholder.png"
+
+[[collaborators]]
+name = "Prof. Sabyasachi Ghosh"
+role = "Collaborator"
+institution = "IIT Bhilai, Chhattisgarh"
+photo = "images/collaborators/placeholder.png"
+
+[[collaborators]]
+name = "Prof. Ujjwal Laha"
+role = "MSc Supervisor"
+institution = "NIT Jamshedpur"
+photo = "images/collaborators/placeholder.png"
+
+[[collaborators]]
+name = "Prof. Arvind Kumar"
+role = "Collaborator"
+institution = "NIT Jalandhar"
+photo = "images/collaborators/placeholder.png"
+
+[[collaborators]]
+name = "Dr. Navpreet Kaur"
+role = "Collaborator"
+institution = "NIT Jalandhar"
+photo = "images/collaborators/placeholder.png"
+
+[[collaborators]]
+name = "Narinder Kumar"
+role = "Collaborator"
+institution = "NIT Jalandhar"
+photo = "images/collaborators/placeholder.png"
+
+[[collaborators]]
+name = "Shubham Sharma"
+role = "Collaborator"
+institution = "NIT Jalandhar"
+photo = "images/collaborators/placeholder.png"

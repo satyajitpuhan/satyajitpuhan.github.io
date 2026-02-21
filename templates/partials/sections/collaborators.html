@@ -1,0 +1,27 @@
+{% set path = "static/sections/collaborators/" ~ lang ~ ".toml" %}
+{% set data = load_data(path=path, required=false) %}
+
+{% if data %}
+<section id="collaborators" class="section collaborators">
+    <div class="container">
+        <div class="collaborators__header">
+            {% if data.top_title %}<span>{{ data.top_title }}</span>{% endif %}
+            <h1>{{ data.title }}</h1>
+            {% if data.subtitle %}<p>{{ data.subtitle }}</p>{% endif %}
+        </div>
+        <div class="row">
+            {% for person in data.collaborators %}
+            <div class="col-lg-3 col-md-4 col-6">
+                <div class="collaborator-card">
+                    <img class="collaborator-card__photo" src="{{ get_url(path=person.photo) }}"
+                        alt="{{ person.name }}">
+                    <h5 class="collaborator-card__name">{{ person.name }}</h5>
+                    <p class="collaborator-card__role">{{ person.role }}</p>
+                    <p class="collaborator-card__inst">{{ person.institution }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
