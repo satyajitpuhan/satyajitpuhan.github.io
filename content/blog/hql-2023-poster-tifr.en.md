@@ -4,7 +4,7 @@ date = 2023-12-01
 [taxonomies]
 tags = ["Poster", "HQL 2023", "B Mesons", "D Mesons"]
 [extra]
-image = "images/blog/blog-post-2.jpg"
+feature_image = "images/blog/posts/7.jpg"
 +++
 
 **Poster Title:** Internal Structure of Heavy B and D-mesons

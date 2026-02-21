@@ -4,7 +4,7 @@ date = 2024-12-07
 [taxonomies]
 tags = ["Conference Talk", "DAE Symposium", "GPDs", "Vector Mesons"]
 [extra]
-image = "images/blog/blog-post-1.jpg"
+feature_image = "images/blog/posts/7.jpg"
 +++
 
 **Talk Title:** Spin-1 unpolarized GPDs in Light-front formalism
