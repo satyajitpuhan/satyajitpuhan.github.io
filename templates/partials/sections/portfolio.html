@@ -35,15 +35,20 @@
       <div class="col-12 text-center">
         <h3 class="mb-4" style="font-family: inherit; font-size: 28px; color: #1e285a; margin-top: 40px;">Citation
           Summary</h3>
-        <p style="color: #666; margin-bottom: 30px;">Live citation history from <a
+        <p style="color: #666; margin-bottom: 30px;">Live citation and publication history retrieved dynamically from <a
             href="https://inspirehep.net/authors/2706496" target="_blank">INSPIRE-HEP</a>.</p>
+
+        <div id="inspire-stats-container" style="margin-bottom: 30px;">
+          <!-- Fetched stats pushed here via JS -->
+        </div>
+
         <div class="citation-container"
-          style="width: 100%; height: 800px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(50, 65, 141, 0.08); background: #fff;">
-          <iframe src="https://inspirehep.net/authors/2706496?ui-citation-summary=true" width="100%" height="100%"
-            style="border: none;"></iframe>
+          style="width: 100%; height: 500px; padding: 20px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(50, 65, 141, 0.08); background: #fff;">
+          <canvas id="papersChart"></canvas>
         </div>
       </div>
     </div>
   </div>
 </section>
+<script src="{{ get_url(path='js/inspire-stats.js') }}"></script>
 {% endif %}
