@@ -1,8 +1,8 @@
-top_title = "Recently participated in"
 title = "Recent News & Activities"
 subtitle = "Highlights from my research journey."
 
 [[items]]
+top_title = "Recently participated in"
 image = "images/gallery/iitb-cteq-group.jpg"
 title = "The 2026 IITB-CFNS-CTEQ School on Perturbative QCD for EIC"
 date = "Feb 8–15, 2026"
@@ -51,7 +51,7 @@ Asmita Mukherjee, Manibrata Sen, Vikram Rentala, Debojit Sarkar
 [[items]]
 image = "images/gallery/prd-paper.png"
 title = "Recent Paper Accepted in Physical Review D"
-date = "Nov 14, 2025"
+date = "5th Feb, 2026"
 description = "Our recent paper 'Valence quark distribution of rho meson using light-front quark model' has been accepted for publication in Phys. Rev. D (e-Print: 2511.10981)."
 details = """
 **Title:** Valence quark distribution of rho meson using light-front quark model  

@@ -7,7 +7,6 @@
         <div class="row text-center">
             <div class="col-lg-6 offset-lg-3">
                 <div class="news-section__header">
-                    {% if data.top_title %}<span>{{ data.top_title }}</span>{% endif %}
                     <h1>{{ data.title }}</h1>
                     {% if data.subtitle %}<p>{{ data.subtitle }}</p>{% endif %}
                 </div>
@@ -21,6 +20,9 @@
                     <img src="{{ get_url(path=item.image) }}" alt="{{ item.title }}">
                 </div>
                 <div class="news-card__body">
+                    {% if item.top_title %}<span class="news-card__top-title"
+                        style="display:block; text-transform:uppercase; font-size:13px; color:#5d78ff; font-weight:700; margin-bottom:5px;">{{
+                        item.top_title }}</span>{% endif %}
                     <span class="news-card__date">{{ item.date }}</span>
                     <h5 class="news-card__title">{{ item.title }}</h5>
                     <p class="news-card__text">{{ item.description }}</p>
