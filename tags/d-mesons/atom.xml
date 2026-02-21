@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Satyajit Puhan - D Mesons</title>
+    <link rel="self" type="application/atom+xml" href="https://satyajitpuhan.github.io/tags/d-mesons/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2023-12-01T00:00:00+00:00</updated>
+    <id>https://satyajitpuhan.github.io/tags/d-mesons/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Internal Structure of Heavy B and D-Mesons — Poster at TIFR</title>
+        <published>2023-12-01T00:00:00+00:00</published>
+        <updated>2023-12-01T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/blog/hql-2023-poster-tifr-en/"/>
+        <id>https://satyajitpuhan.github.io/blog/hql-2023-poster-tifr-en/</id>
+        
+        <summary type="html">&lt;p&gt;&lt;strong&gt;Poster Title:&lt;&#x2F;strong&gt; Internal Structure of Heavy B and D-mesons&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Venue:&lt;&#x2F;strong&gt; &lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.tifr.res.in&#x2F;~hql2023&#x2F;&quot;&gt;HQL 2023 Conference&lt;&#x2F;a&gt;, TIFR, Mumbai, India&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Mode:&lt;&#x2F;strong&gt; In person&lt;&#x2F;p&gt;
+&lt;p&gt;I presented a poster on the unpolarized valence quark GPDs and PDFs for heavy spin-0 B- and D-mesons using the light-front quark model.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+</feed>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Satyajit Puhan - seminar</title>
+    <link rel="self" type="application/atom+xml" href="https://satyajitpuhan.github.io/tags/seminar/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-07-04T00:00:00+00:00</updated>
+    <id>https://satyajitpuhan.github.io/tags/seminar/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Internal Structure of Light Mesons — Prof. C. R. Ji&#x27;s Group</title>
+        <published>2025-07-04T00:00:00+00:00</published>
+        <updated>2025-07-04T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/blog/seminar-crji-group-light-mesons-en/"/>
+        <id>https://satyajitpuhan.github.io/blog/seminar-crji-group-light-mesons-en/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/blog/seminar-crji-group-light-mesons-en/">&lt;p&gt;&lt;strong&gt;Talk Title:&lt;&#x2F;strong&gt; Internal Structure of Light Mesons through Distribution Functions&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Mode:&lt;&#x2F;strong&gt; Zoom Meeting | &lt;strong&gt;Group:&lt;&#x2F;strong&gt; Prof. C. R. Ji&#x27;s Research Group, NCSU, USA&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;crjiresearchgroup.wordpress.ncsu.edu&#x2F;group-meetings&#x2F;archives-satyajit-puhan&#x2F;&quot;&gt;View Talk →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;abstract&quot;&gt;Abstract&lt;&#x2F;h2&gt;
+&lt;p&gt;In this talk, I discuss the internal structure of light mesons such as the pion, kaon, and rho using light-front models. The study focuses on valence quark-level Parton Distribution Functions (PDFs), Generalized Parton Distributions (GPDs), and Transverse Momentum Dependent distributions (TMDs). Additionally, I highlight the mechanical properties of the pion and explore how these distributions behave in a nuclear medium.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Internal structure of pion, kaon, and ρ meson — JINR Seminar</title>
+        <published>2025-03-28T00:00:00+00:00</published>
+        <updated>2025-03-28T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/blog/jinr-seminar-meson-structure-en/"/>
+        <id>https://satyajitpuhan.github.io/blog/jinr-seminar-meson-structure-en/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/blog/jinr-seminar-meson-structure-en/">&lt;p&gt;&lt;strong&gt;Talk Title:&lt;&#x2F;strong&gt; Internal structure of pion, kaon, and ρ meson in light front dynamics&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Mode:&lt;&#x2F;strong&gt; Zoom Meeting | &lt;strong&gt;Place:&lt;&#x2F;strong&gt; JINR, Dubna, Moscow&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.jinr.ru&#x2F;posts&#x2F;214775&#x2F;&quot;&gt;View Talk →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;abstract&quot;&gt;Abstract&lt;&#x2F;h2&gt;
+&lt;p&gt;The talk focuses on studying the internal structure of pion, kaon, and ρ mesons within light-front models. We systematically explore transverse momentum-dependent parton distributions (TMDs), generalised parton distributions (GPDs), form factors (FFs), and parton distribution functions (PDFs) for these particles.&lt;&#x2F;p&gt;
+&lt;p&gt;Additionally, the mechanical properties of the pion and kaon are investigated by calculating pressure and shear distributions through GPDs. The charge radii of these particles are predicted as well, providing insight into their spatial structure.&lt;&#x2F;p&gt;
+&lt;p&gt;To further understand the behaviour of the pion and kaon in nuclear environments, these distributions are studied in medium using the chiral SU(3) quark mean field model. The PDFs are evolved to higher Q² scales to facilitate comparison with experimental data.&lt;&#x2F;p&gt;
+&lt;p&gt;The upcoming &lt;strong&gt;Electron-Ion Collider&lt;&#x2F;strong&gt; and &lt;strong&gt;NICA&lt;&#x2F;strong&gt; will serve as crucial platforms to test and refine these theoretical predictions.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+</feed>
