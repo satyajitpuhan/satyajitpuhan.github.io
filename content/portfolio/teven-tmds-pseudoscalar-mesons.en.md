@@ -1,18 +1,16 @@
 +++
-title = "T-even TMDs for Pseudoscalar Mesons up to Twist-4"
-date = 2024-02-15
+title = "T-even TMDs for Spin-0 Pseudoscalar Mesons up to Twist-4"
+date = 2023-10-05
 
 [extra]
-thumbnail = "images/portfolio/portfolio-4.png"
-service = "Journal of High Energy Physics, 2024"
-client = "Satyajit Puhan, Shubham Sharma, Narinder Kumar, Harleen Dahiya"
-short_description = "T-even TMDs for the spin-0 pseudo-scalar mesons up to twist-4 using light-front formalism."
-challenge = "Going beyond leading twist to compute higher-twist TMDs that capture richer partonic correlations in pseudoscalar mesons."
-solution = "Derived T-even TMDs up to twist-4 for pion and kaon using the light-front quark model, providing new predictions for the three-dimensional momentum structure of these fundamental particles."
+thumbnail = "images/portfolio/portfolio-8.png"
+service = "JHEP 02, 075 (2024)"
+client = "Satyajit Puhan, Shubham Sharma, Navpreet Kaur, Narinder Kumar, Harleen Dahiya"
+short_description = "All time-reversal even TMDs for pion and kaon up to twist-4 in the light-front holographic and quark models."
+challenge = "We investigate the pseudo-scalar meson structure via TMDs in the light-front holographic model and quark model. Starting from leading order, we calculate all T-even TMDs for pion and kaon up to twist-4. The 3D and 2D structures with average quark transverse momenta are shown. PDFs are compared with E615 experimental results."
+solution = "Sum rules, TMD transverse dependence, inverse moments and Gaussian transverse dependence ratio are studied. Transverse quark densities are analyzed in momentum space. Higher twist kaon properties in the light-front framework are predicted for the first time."
 +++
 
-**Published in:** Journal of High Energy Physics, 2024
+**Published in:** JHEP | **DOI:** [10.1007/JHEP02(2024)075](https://doi.org/10.1007/JHEP02(2024)075)
 
-[Read the Paper →](https://link.springer.com/article/10.1007/JHEP02(2024)075)
-
-This work presents a systematic computation of T-even transverse momentum-dependent parton distribution functions (TMDs) for spin-0 pseudoscalar mesons (pion and kaon) up to twist-4 using light-front formalism. The higher-twist TMDs capture richer correlations between quarks and gluons inside these mesons.
+[View on INSPIRE →](https://inspirehep.net/literature/2706491) | [Read on arXiv →](https://arxiv.org/abs/2310.03464)
