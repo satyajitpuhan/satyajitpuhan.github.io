@@ -1,33 +1,23 @@
-top_title = "Working Area"
-title     = "Creative Services"
-subtitle  = "Enjoy team diversity and increase their networks among others people in various fields by provided."
+top_title = "Research Focus"
+title     = "My Research Areas"
+subtitle  = "Understanding the internal structure of hadrons and exploring their intrinsic properties through modern theoretical frameworks, especially within light-front dynamics."
 
 [[services]]
-title   = "UI/UX Design"
-content = "Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat."
+title   = "TMDs"
+content = "Transverse Momentum Dependent Distributions for **spin-0** (pion, kaon), **spin-1/2** (proton), and **spin-1** (vector mesons, photon) particles. Including PDFs, spin densities, and higher twist calculations vital for **EIC** physics."
 image   = "images/service/ui-ux.svg"
 
 [[services]]
-title   = "Web Development"
-content = "Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat."
+title   = "GPDs & GDAs"
+content = "Generalized Parton Distributions for pion, kaon, and rho meson. Extraction of **electromagnetic and gravitational form factors**. Computing Generalized Distribution Amplitudes for exclusive processes at **JLab** and **EIC**."
 image   = "images/service/web.svg"
 
 [[services]]
-title   = "Creative Design"
-content = "Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat."
+title   = "Hadronic Properties"
+content = "Spin-orbit correlations, distribution amplitudes, form factors, charge radii, decay constants, mass spectra of quarkonia, radiative transitions of charmonia, and **mechanical properties** using light-front quark models."
 image   = "images/service/creative.svg"
 
 [[services]]
-title   = "Branding"
-content = "Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat."
+title   = "Medium Modifications"
+content = "Studying modification of TMDs, PDFs, and GPDs in **nuclear/hadronic medium** using LFQM, LFHQCD, and Chiral SU(3) Quark Mean Field Model. Understanding quark behavior in compact stars and heavy-ion collisions."
 image   = "images/service/branding.svg"
-
-[[services]]
-title   = "UI/UX Design"
-content = "Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat."
-image   = "images/service/ui-ux.svg"
-
-[[services]]
-title   = "Web Development"
-content = "Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat."
-image   = "images/service/web.svg"

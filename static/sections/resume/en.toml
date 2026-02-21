@@ -1,56 +1,56 @@
 top_title       = "My Resume"
-title           = "My Expertises"
-subtitle        = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore"
-second_subtitle = "Magna aliquyam erat, sed diam voluptua. At vero eos accusam justo."
-educations_tab = "Educations"
-experiences_tab = "Experiences"
+title           = "Academic Background"
+subtitle        = "A journey from a small village in Odisha to the frontiers of High Energy Physics research across India and Russia."
+second_subtitle = "Dedicated to understanding the fundamental building blocks of matter."
+educations_tab = "Education"
+experiences_tab = "Experience"
 
 [[educations]]
-title   = "Master in Arts"
-content = "Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam"
-time    = "2008-2010"
-  
-[[educations]]
-title   = "Master in Arts"
-content = "Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam"
-time    = "2008-2010"
+title   = "Ph.D. in Computational High Energy Physics"
+content = "Thesis: Tomography of Light and Heavy Mesons Using Light-front Dynamics. Supervisor: Dr. Harleen Dahiya. CGPA: 8.75/10.0"
+time    = "2021–Present"
 
 [[educations]]
-title   = "Master in Arts"
-content = "Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam"
-time    = "2008-2010"
+title   = "Junior Research Fellow — JINR, Dubna, Moscow"
+content = "Project: Energy-momentum tensor for spin-0 mesons and mechanical properties. Supervisor: Prof. Oleg Teryaev."
+time    = "2025–Present"
 
 [[educations]]
-title   = "Master in Arts"
-content = "Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam"
-time    = "2008-2010"
+title   = "M.Sc. in Physics — NIT Jamshedpur"
+content = "Project: Proton-Oxygen Elastic Scattering by Taylor Series Expansion. Supervisor: Prof. Ujjwal Laha. CGPA: 8.59/10.0"
+time    = "2019–2022"
 
 [[educations]]
-title   = "Master in Arts"
-content = "Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam"
-time    = "2008-2010"
+title   = "B.Sc. in Physics — Bhadrak Autonomous College"
+content = "Project: Superconductivity and its Application to Maglev Trains. Supervisor: Dr. Rajat Kumar Pradhan. CGPA: 8.91/10.0"
+time    = "2016–2019"
+
+[[educations]]
+title   = "Higher Secondary — Sidhivinayak +2 Science College"
+content = "Physics: 99/100. Total: 478/600. Balasore, Odisha, India."
+time    = "2015–2016"
 
 [[experiences]]
-title   = "experience"
-content = "Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam"
-time    = "2008-2010"
+title   = "Senior Research Fellow"
+content = "Dr. B R Ambedkar NIT, Jalandhar. Research on hadron tomography, TMDs, GPDs, and form factors using light-front dynamics."
+time    = "2021–Present"
 
 [[experiences]]
-title   = "experience"
-content = "Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam"
-time    = "2008-2010"
+title   = "Junior Research Fellow at JINR"
+content = "Joint Institute for Nuclear Research, Dubna, Moscow. Working on gravitational form factors and mechanical properties of mesons under Prof. Oleg Teryaev."
+time    = "2025–Present"
 
 [[experiences]]
-title   = "experience"
-content = "Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam"
-time    = "2008-2010"
+title   = "Seminar at Prof. C. R. Ji's Group"
+content = "Presented 'Internal Structure of Light Mesons through Distribution Functions' via Zoom. NCSU, USA."
+time    = "July 2025"
 
 [[experiences]]
-title   = "experience"
-content = "Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam"
-time    = "2008-2010"
+title   = "Conference Talk at HHIQCD 2024"
+content = "Presented 'Structural analysis of Pion and Kaon with distribution functions' in person at Kyoto University, Japan."
+time    = "Oct–Nov 2024"
 
 [[experiences]]
-title   = "experience"
-content = "Lorem ipsum dolor sit amet conset sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam"
-time    = "2008-2010"
+title   = "Conference Talk at ICTS-TIFR 2024"
+content = "Presented 'Structural analysis of pion with distribution functions (TMDs, GPDs and GDAs)' in person at ICTS, Bengaluru."
+time    = "Jan–Feb 2024"

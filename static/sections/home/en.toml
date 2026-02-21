@@ -1,11 +1,9 @@
-title       = "Hello, I am Natasha"
+title       = "Hello, I am Satyajit Puhan"
 description = """
-# I am here for your personal business
+# Researcher in High Energy Physics
 
-Enjoy team diversity and increase their networks among others people in various fields by
+Senior Research Fellow at Dr. B R Ambedkar NIT, Jalandhar. Currently a Junior Research Fellow at JINR, Dubna, Moscow. Exploring the internal structure of hadrons through light-front dynamics.
 """
-button_name = "Contact me"
+button_name = "Contact Me"
 button_url  = "contact"
-image       = "images/hero/2960351.jpg"
-video_thumb = "images/hero/popup-thumb.png"
-video_url   = "https://www.youtube.com/embed/tgbNymZ7vqY"
+image       = "images/hero/me1.jpg"

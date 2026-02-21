@@ -1,16 +1,24 @@
 top_title = "My Skills"
-title     = "Why hire me for your next project?"
-subtitle  = "My goal is to build a strong supportive professional network among all freelancers and startups in order to improve their performance."
+title     = "Research Tools & Expertise"
+subtitle  = "I combine analytical techniques with computational simulations using various theoretical models, tools, and programming languages."
 image     = "images/skill/skill_image.jpg"
 
 [[skills]]
-title   = "HTML"
-percent = 69
+title   = "Mathematica"
+percent = 92
 
 [[skills]]
-title   = "CSS"
-percent = 60
-    
-[[skills]]
-title   = "Javascript"
+title   = "Python"
 percent = 85
+
+[[skills]]
+title   = "Light-Front Quark Model"
+percent = 95
+
+[[skills]]
+title   = "LHAPDF / xFitter"
+percent = 80
+
+[[skills]]
+title   = "LaTeX"
+percent = 90

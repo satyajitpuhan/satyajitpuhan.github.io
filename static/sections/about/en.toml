@@ -1,19 +1,21 @@
 title = "About"
-image = "images/about/about-img.jpg"
+image = "images/about/me.jpg"
 buttons = [
     ""
 ]
 description = """
-  ## About me
+  ## About Me
 
-  Enjoy team diversity and increase their networks among others people in
-  various fields by provided.
+  A passionate researcher with a dream to fly high — from a small village in Odisha to the world stage of High Energy Physics.
 """
 content = """
-  ### I design and build ultimate things.
-  
-  I love to work in User Experience & User Interface designing. Because I love
-  to solve the design problem and find easy and better solutions to solve it. I always
-  try my best to make good user interface with the best user experience. I have been
-  working as a Visual designer from.
+  ### From Humble Beginnings to the World of Physics
+
+  I am Satyajit Puhan, born on 15th May 1999 in a small village called Chhatara, Srirampur, Balasore, Odisha. Growing up in a simple family, I learned the true meaning of resilience and humility through life's early challenges.
+
+  Everything changed when extraordinary teachers — Mr. Chitta Ranjan Das, Mr. Suresh Chandra Jena, Mr. Hui Sir, and Mr. Pranesh Sahoo — ignited a spark within me. They saw potential where I had only seen failure and gave me not just education, but direction, discipline, and purpose.
+
+  Today, I am a Senior Research Fellow at Dr. B R Ambedkar NIT, Jalandhar, working on **Computational High Energy Physics** under Dr. Harleen Dahiya. My thesis focuses on the **Tomography of Light and Heavy Mesons Using Light-front Dynamics**. I am also a Junior Research Fellow at **JINR, Dubna, Moscow** under Prof. Oleg Teryaev, working on energy-momentum tensor for spin-0 mesons and their mechanical properties.
+
+  What I am today — and whatever I strive to become tomorrow — is because of the people who stood by me through every hardship.
 """

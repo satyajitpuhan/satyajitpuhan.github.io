@@ -1,5 +1,5 @@
 # The URL the site will be built for
-base_url = "http://127.0.0.1:1111"
+base_url = "https://satyajitpuhan.github.io/"
 
 #
 minify_html = true
@@ -8,10 +8,10 @@ minify_html = true
 compile_sass = true
 
 #
-default_language = "fr"
+default_language = "en"
 
 [languages.en]
-title = "Portio Zola"
+title = "Satyajit Puhan"
 generate_feeds = true
 build_search_index = false
 
@@ -21,88 +21,41 @@ taxonomies = [
 ]
 
 [languages.en.translations]
-contact_me = "Contact me"
-start_project = "Let's Start a Project"
+contact_me = "Contact Me"
+start_project = "Get In Touch"
 showing_all = "Showing All"
-hire_me_now = "Hire Me Now"
-get_in_touch = "Get in touch"
+hire_me_now = "Contact Me"
+get_in_touch = "Get in Touch"
 see_details = "See Details"
 sitemap = "Sitemap"
 address = "Address"
-phone = "Téléphone"
+phone = "Phone"
 email = "Email"
 categories_description = "Showing all posts with the category"
 tags_description = "Showing all posts with the tag"
-opening_hours = "Working hours"
-form_title = "Contact form"
+opening_hours = "Working Hours"
+form_title = "Contact Form"
 form_button = "Send Message"
 form_input_name = "Name"
 form_input_email = "Email"
 form_input_message = "Message"
 form_input_agreement = "I agree that my submitted data is being collected and stored."
-copyright = "All right reserved copyright © Portio 2020"
+copyright = "All rights reserved © Satyajit Puhan 2025"
 
 # Menus
 home = "Home"
 about = "About"
-service = "Service"
-work = "Work"
+service = "Research"
+work = "Publications"
 resume = "Resume"
-blog = "Blog"
+blog = "Talks"
 contact = "Contact"
 
 # Sitemaps
-about_me = "About me"
-frequently_ask_question = "Frequently Ask Question"
-privacy_and_policy = "Privacy & Policy"
-latest_article = "Latest Article"
-
-[languages.fr]
-title = "Portio Zola"
-generate_feeds = true
-build_search_index = false
-
-taxonomies = [
-    { name = "tags", feed = true, render = true, paginate_by = 9 },
-    { name = "categories", feed = true, render = true, paginate_by = 9 },
-]
-
-[languages.fr.translations]
-contact_me   = "Contactez‑moi"
-start_project = "Commencer un projet"
-showing_all = "Afficher tout"
-hire_me_now = "Engagez‑moi maintenant"
-get_in_touch = "Entrer en contact"
-see_details = "Voir les détails"
-sitemap = "Plan du site"
-address = "Adresse"
-phone = "Téléphone"
-email = "E‑mail"
-categories_description = "Affichage de tous les articles de la catégorie"
-tags_description = "Affichage de tous les articles du tag"
-opening_hours = "Horaires d'ouverture"
-form_title = "Formulaire de contact"
-form_button = "Envoyer le message"
-form_input_name = "Nom"
-form_input_email = "E‑mail"
-form_input_message = "Message"
-form_input_agreement = "J’accepte que mes données soumises soient collectées et stockées."
-copyright = "Tous droits réservés © Portio 2020"
-
-# Menus
-home = "Accueil"
-about = "À propos"
-service = "Services"
-work = "Réalisations"
-resume = "CV"
-blog = "Blog"
-contact = "Contact"
-
-# Sitemaps
-about_me = "À propos de moi"
-frequently_ask_question = "Foire aux questions"
-privacy_and_policy = "Politique de confidentialité"
-latest_article = "Dernier article"
+about_me = "About Me"
+frequently_ask_question = "Research"
+privacy_and_policy = "Publications"
+latest_article = "Latest Talks"
 
 
 [extra]
@@ -125,24 +78,24 @@ menus = [
 
 sitemaps = [
   { name = "about_me", url = "#about" },
-  { name = "frequently_ask_question", url = "#" },
-  { name = "privacy_and_policy", url = "#" },
-  { name = "latest_article", url = "#" }
+  { name = "frequently_ask_question", url = "#service" },
+  { name = "privacy_and_policy", url = "#portfolio" },
+  { name = "latest_article", url = "#blog" }
 ]
 
 socials = [
-  { icon = "facebook-original", url = "https://www.facebook.com/" },
-  { icon = "linkedin-original", url = "https://www.linkedin.com/" },
-  { icon = "pinterest", url = "https://www.pinterest.com" },
-  { icon = "twitter-original",  url = "https://www.twitter.com" }
+  { icon = "github-original", url = "https://github.com/satyajitpuhan" },
+  { icon = "linkedin-original", url = "https://www.linkedin.com/in/satyajit-puhan-b9889a162/" },
+  { icon = "google-scholar", url = "https://scholar.google.com/citations?hl=en&user=pKbmhZQAAAAJ/" },
+  { icon = "twitter-original",  url = "https://www.researchgate.net/profile/Satyajit-Puhan/" }
 ]
 
 [extra.address]
-phone = "+(448) 833 5272 332"
-email = "hello@example.com"
-address = "23 Khan Niketon, Grand Street, NYK."
-opening_hours = "Open from 10am to 6pm (close at 5pm Sundays) "
+phone = ""
+email = "puhansatyajit@gmail.com"
+address = "Dr. B R Ambedkar NIT, Jalandhar, Punjab, India"
+opening_hours = "Available for research collaborations"
 
 [extra.map]
-latitude = "48.864716"
-longitude = "2.349014"
+latitude = "31.3955"
+longitude = "75.5354"
