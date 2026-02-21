@@ -1,36 +1,36 @@
 top_title = "Skills"
-title = "Research Tools & Technical Skills"
+title = "Technical Skills & Tools"
 subtitle = "Theoretical frameworks, computational tools, and programming languages used in my research."
 image = "images/about/me.jpg"
 
 [[skills]]
-title = "Mathematica"
+title = "Mathematica (Expert)"
 percent = "95"
 
 [[skills]]
-title = "Python / NumPy / SciPy"
-percent = "90"
+title = "Python / NumPy / SciPy (Expert)"
+percent = "92"
 
 [[skills]]
 title = "Light-Front Quark Model (LFQM)"
 percent = "95"
 
 [[skills]]
-title = "NJL / DS-BSE Models"
+title = "NJL / DS-BSE / Spectator Models"
 percent = "85"
 
 [[skills]]
-title = "LHAPDF / xFitter / DGLAP"
+title = "LHAPDF / xFitter / DGLAP / CSS"
 percent = "90"
 
 [[skills]]
-title = "LaTeX / Scientific Writing"
+title = "LaTeX / Overleaf / Scientific Writing"
 percent = "95"
 
 [[skills]]
-title = "Light-Front Holographic QCD"
-percent = "85"
+title = "Neural Networks / ML / Monte Carlo (Pythia)"
+percent = "75"
 
 [[skills]]
-title = "Chiral SU(3) QMF Model"
-percent = "80"
+title = "C++ / Linux / Git"
+percent = "60"

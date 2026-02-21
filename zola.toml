@@ -40,7 +40,7 @@ form_input_name = "Name"
 form_input_email = "Email"
 form_input_message = "Message"
 form_input_agreement = "I agree that my submitted data is being collected and stored."
-copyright = "All rights reserved © Satyajit Puhan 2025"
+copyright = "All rights reserved © Satyajit Puhan 2026"
 
 # Menus
 home = "Home"
@@ -91,7 +91,7 @@ socials = [
 ]
 
 [extra.address]
-phone = ""
+phone = "+91-9776342407"
 email = "puhansatyajit@gmail.com"
 address = "Dr. B R Ambedkar NIT, Jalandhar, Punjab, India"
 opening_hours = "Available for research collaborations"

@@ -1,23 +1,23 @@
-top_title = "Research Focus"
-title     = "My Research Areas"
-subtitle  = "Understanding the internal structure of hadrons and exploring their intrinsic properties through modern theoretical frameworks, especially within light-front dynamics."
+title = "Research Areas"
+top_title = "What I Do"
+subtitle = "My primary research focuses on understanding the internal structure of hadrons through modern theoretical frameworks in light-front dynamics."
 
 [[services]]
-title   = "TMDs"
-content = "Transverse Momentum Dependent Distributions for **spin-0** (pion, kaon), **spin-1/2** (proton), and **spin-1** (vector mesons, photon) particles. Including PDFs, spin densities, and higher twist calculations vital for **EIC** physics."
-image   = "images/service/ui-ux.svg"
+icon = "lni-target"
+title = "Transverse Momentum Distributions (TMDs)"
+content = "Model-dependent TMDs for spin-0 (pion, kaon), spin-1/2 (proton), and spin-1 (ρ meson, heavy vector mesons, photon). PDFs and spin densities in momentum space. Higher twist calculations with WW approximations."
 
 [[services]]
-title   = "GPDs & GDAs"
-content = "Generalized Parton Distributions for pion, kaon, and rho meson. Extraction of **electromagnetic and gravitational form factors**. Computing Generalized Distribution Amplitudes for exclusive processes at **JLab** and **EIC**."
-image   = "images/service/web.svg"
+icon = "lni-map"
+title = "Generalized Parton Distributions (GPDs)"
+content = "GPDs for spin-0 (pion, kaon) and spin-1 (ρ meson) particles. Extraction of electromagnetic and gravitational form factors. GDAs for pion. Global extraction from charge form factor data using neural networks. Relevant for EIC and JLab."
 
 [[services]]
-title   = "Hadronic Properties"
-content = "Spin-orbit correlations, distribution amplitudes, form factors, charge radii, decay constants, mass spectra of quarkonia, radiative transitions of charmonia, and **mechanical properties** using light-front quark models."
-image   = "images/service/creative.svg"
+icon = "lni-pulse"
+title = "Hadronic & Mechanical Properties"
+content = "Spin-orbit correlations, distribution amplitudes, form factors, charge radii, decay constants, mass spectra, radially excited states of quarkonia, radiative transitions of charmonia. Gravitational form factors, pressure and shear distributions inside pion."
 
 [[services]]
-title   = "Medium Modifications"
-content = "Studying modification of TMDs, PDFs, and GPDs in **nuclear/hadronic medium** using LFQM, LFHQCD, and Chiral SU(3) Quark Mean Field Model. Understanding quark behavior in compact stars and heavy-ion collisions."
-image   = "images/service/branding.svg"
+icon = "lni-layers"
+title = "Medium Modifications & Extraction"
+content = "Medium modification of TMDs, PDFs, GPDs in nuclear/hadronic medium using LFQM + Chiral SU(3) CQMF model. Extraction of pion TMDs/PDFs from Drell-Yan data via neural networks. Monte Carlo simulations of charmonia production with Pythia 8312 (NRQCD). Transport coefficients using NJL-Polyakov loop model."

@@ -1,24 +1,29 @@
 top_title       = "My Resume"
 title           = "Academic Background"
-subtitle        = "A journey from a small village in Odisha to the frontiers of High Energy Physics research across India and Russia."
+subtitle        = "A journey from a small village in Odisha to the frontiers of High Energy Physics research across India, Japan, Switzerland, and Russia."
 second_subtitle = "Dedicated to understanding the fundamental building blocks of matter."
 educations_tab = "Education"
 experiences_tab = "Experience"
 
 [[educations]]
 title   = "Ph.D. in Computational High Energy Physics"
-content = "Thesis: Tomography of Light and Heavy Mesons Using Light-front Dynamics. Supervisor: Dr. Harleen Dahiya. Coursework: Particle Physics, Advanced Particle Physics, Quantum Field Theory, Research Methodology, Experimental HEP. CGPA: 8.75/10.0"
-time    = "2021–Present"
+content = "Thesis: Tomography of Light and Heavy Mesons Using Light-front Dynamics. Supervisor: Dr. Harleen Dahiya. Courses: Particle Physics, Adv. Particle Physics, QFT, Research Methodology, Exp. HEP. CGPA: 8.75/10.0"
+time    = "2022–Ongoing"
 
 [[educations]]
-title   = "Junior Research Fellow — JINR, Dubna, Moscow"
-content = "Project: Energy-momentum tensor for spin-0 mesons and mechanical properties. Supervisor: Prof. Oleg Teryaev. Joint Institute for Nuclear Research."
-time    = "2025–Present"
+title   = "Visiting Fellow — JINR, Dubna, Russia"
+content = "Project: Extraction of hadron GPDs using neural networks and energy-momentum tensor calculations. Supervisor: Prof. Oleg V. Teryaev. Joint Institute for Nuclear Research (16 Jun – 12 Sep 2025)."
+time    = "Jun–Sep 2025"
+
+[[educations]]
+title   = "Visiting Fellow — IIT Bhilai, Chhattisgarh"
+content = "Worked on applications of NJL model to understand hadron structure. Supervisor: Prof. Sabyasachi Ghosh (16–23 Feb 2025)."
+time    = "Feb 2025"
 
 [[educations]]
 title   = "M.Sc. in Physics — NIT Jamshedpur"
-content = "Project: Proton-Oxygen Elastic Scattering by Taylor Series Expansion. Supervisor: Prof. Ujjwal Laha. Courses: Particle Physics, Laser Physics, Condensed Matter Physics, Mathematical Physics. CGPA: 8.59/10.0"
-time    = "2019–2022"
+content = "Project: Proton-Oxygen Elastic Scattering by Taylor Series Expansion. Supervisor: Prof. Ujjwal Laha. CGPA: 8.59/10.0"
+time    = "2019–2021"
 
 [[educations]]
 title   = "B.Sc. in Physics — Bhadrak Autonomous College"
@@ -26,34 +31,34 @@ content = "Project: Superconductivity and its Application to Maglev Trains. Supe
 time    = "2016–2019"
 
 [[educations]]
-title   = "Higher Secondary — Sidhivinayak +2 Science College"
-content = "Physics: 99/100. Total: 478/600. Balasore, Odisha, India."
+title   = "Higher Secondary (12th) — Siddhivinayak +2 Science College"
+content = "2nd Topper in Physics in CHSE Final Examination, Odisha. Marks: 478/600 (78%). Balasore, Odisha."
 time    = "2015–2016"
 
 [[experiences]]
 title   = "Senior Research Fellow — NIT Jalandhar"
-content = "Research on hadron tomography: TMDs, GPDs, GTMDs, GDAs, form factors, and PDFs of mesons using light-front dynamics. Published 15+ papers in top journals including PRD, JHEP, PLB, NPA, NPB."
-time    = "2021–Present"
+content = "Hadron tomography: TMDs, GPDs, GTMDs, GDAs, form factors, PDFs of mesons in light-front dynamics. Published 20+ papers in top journals: PRD, JHEP, PLB, NPA, NPB, PTEP, EPJP, CPC, EPJA."
+time    = "2022–Present"
 
 [[experiences]]
-title   = "Junior Research Fellow — JINR, Dubna, Moscow"
-content = "Working on gravitational form factors, mechanical properties (pressure, shear distributions), and energy-momentum tensor for spin-0 mesons under Prof. Oleg Teryaev."
-time    = "2025–Present"
+title   = "Premier Research Award — NIT Jalandhar"
+content = "Received the Premier Research Award in the Department of Physics, NIT Jalandhar on 26th January 2025."
+time    = "Jan 2025"
 
 [[experiences]]
-title   = "Seminar at Prof. C. R. Ji's Group (NCSU, USA)"
-content = "Presented 'Internal Structure of Light Mesons through Distribution Functions' via Zoom. Discussed PDFs, GPDs, TMDs and mechanical properties of pion."
-time    = "July 2025"
-
-[[experiences]]
-title   = "Conference Talk — JINR-BLTP 2025"
-content = "Presented 'Gravitational form factor of pion' at the Interplay of Gravity and Strong Interactions workshop, BLTP, JINR."
+title   = "Conference Talk — JINR-BLTP 2025, Dubna"
+content = "Presented 'Gravitational Form Factors of Pion' at the 'Interplay of Gravity and Strong Interactions' conference, BLTP, JINR."
 time    = "Aug 2025"
 
 [[experiences]]
-title   = "Seminar at JINR, Dubna"
+title   = "Seminar at Prof. C. R. Ji's Group (NCSU, USA)"
+content = "Presented 'Internal Structure of Light Mesons through Distribution Functions' via Zoom. Discussed PDFs, GPDs, TMDs and mechanical properties."
+time    = "Jul 2025"
+
+[[experiences]]
+title   = "Seminar at JINR, Dubna, Russia"
 content = "Presented 'Internal structure of pion, kaon, and ρ meson in light front dynamics' covering TMDs, GPDs, FFs, PDFs, and medium modifications."
-time    = "March 2025"
+time    = "Mar 2025"
 
 [[experiences]]
 title   = "Conference Talk — DAE SNP 2024, IIT Roorkee"
@@ -62,15 +67,20 @@ time    = "Dec 2024"
 
 [[experiences]]
 title   = "Conference Talk — HHIQCD 2024, Kyoto, Japan"
-content = "Presented 'Structural analysis of Pion and Kaon with distribution functions' in person at Kyoto University, Japan."
+content = "Presented 'Structural analysis of Pion and Kaon with distribution functions' at Yukawa Institute for Theoretical Physics, Kyoto University."
 time    = "Oct–Nov 2024"
 
 [[experiences]]
+title   = "PSI Summer School 2024 — Zuoz, Switzerland"
+content = "Attended 'From Low to High: Particle Physics at the Frontier' at Lyceum Alpinum, Zuoz, Switzerland (Aug 4–10, 2024)."
+time    = "Aug 2024"
+
+[[experiences]]
 title   = "Conference Talk — ICTS-TIFR 2024, Bengaluru"
-content = "Presented 'Structural analysis of pion with distribution functions (TMDs, GPDs and GDAs)' in person at ICTS, Bengaluru."
+content = "Presented 'Structural analysis of pion with distribution functions (TMDs, GPDs and GDAs)' at the EIC workshop, ICTS-TIFR, Bengaluru."
 time    = "Jan–Feb 2024"
 
 [[experiences]]
-title   = "Poster Presentation — TIFR 2023, Mumbai"
-content = "Presented poster on 'Internal Structure of Heavy B and D-mesons' at the HQL 2023 conference, TIFR, Mumbai."
-time    = "Dec 2023"
+title   = "Poster — HQL 2023, TIFR Mumbai"
+content = "Presented poster on 'Internal Structure of Heavy B and D-mesons' at the 16th International Conference on Heavy Quarks and Leptons, TIFR, Mumbai."
+time    = "Nov–Dec 2023"
