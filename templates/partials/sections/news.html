@@ -13,27 +13,64 @@
             </div>
         </div>
 
-        <div class="news-grid">
-            {% for item in data.items %}
-            <div class="news-card">
-                <div class="news-card__image">
-                    <img src="{{ get_url(path=item.image) }}" alt="{{ item.title }}">
-                </div>
-                <div class="news-card__body">
-                    {% if item.top_title %}<span class="news-card__top-title"
-                        style="display:block; text-transform:uppercase; font-size:13px; color:#5d78ff; font-weight:700; margin-bottom:5px;">{{
-                        item.top_title }}</span>{% endif %}
-                    <span class="news-card__date">{{ item.date }}</span>
-                    <h5 class="news-card__title">{{ item.title }}</h5>
-                    <p class="news-card__text">{{ item.description }}</p>
+        <div class="news-slider-container" style="position: relative; padding: 0 50px;">
+            <div id="newsCarousel" class="carousel slide" data-bs-ride="false">
+                <div class="carousel-inner" style="padding-bottom: 20px;">
+                    <div class="carousel-item active">
+                        <div class="row">
+                            {% for item in data.items %}
+                            {% if loop.index0 > 0 and loop.index0 % 3 == 0 %}
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            {% endif %}
 
-                    {% if item.details %}
-                    <a href="#" class="btn btn-sm btn-outline-primary mt-3" data-bs-toggle="modal"
-                        data-bs-target="#newsModal{{ loop.index }}">See Details</a>
-                    {% endif %}
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="news-card" style="height: 100%; display: flex; flex-direction: column;">
+                                    <div class="news-card__image">
+                                        <img src="{{ get_url(path=item.image) }}" alt="{{ item.title }}">
+                                    </div>
+                                    <div class="news-card__body"
+                                        style="flex: 1; display: flex; flex-direction: column;">
+                                        {% if item.top_title %}<span class="news-card__top-title"
+                                            style="display:block; text-transform:uppercase; font-size:13px; color:#5d78ff; font-weight:700; margin-bottom:5px;">{{
+                                            item.top_title }}</span>{% endif %}
+                                        <span class="news-card__date">{{ item.date }}</span>
+                                        <h5 class="news-card__title">{{ item.title }}</h5>
+                                        <p class="news-card__text" style="flex: 1;">{{ item.description }}</p>
+
+                                        {% if item.details %}
+                                        <div>
+                                            <a href="#" class="btn btn-sm btn-outline-primary mt-3"
+                                                data-bs-toggle="modal" data-bs-target="#newsModal{{ loop.index }}">See
+                                                Details</a>
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Controls -->
+                {% if data.items | length > 3 %}
+                <button class="carousel-control-prev" type="button" data-bs-target="#newsCarousel" data-bs-slide="prev"
+                    style="width: 50px; left: -50px; justify-content: center; align-items: center;">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"
+                        style="filter: invert(50%) sepia(85%) saturate(3000%) hue-rotate(210deg) brightness(100%) contrast(100%); width: 3rem; height: 3rem;"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#newsCarousel" data-bs-slide="next"
+                    style="width: 50px; right: -50px; justify-content: center; align-items: center;">
+                    <span class="carousel-control-next-icon" aria-hidden="true"
+                        style="filter: invert(50%) sepia(85%) saturate(3000%) hue-rotate(210deg) brightness(100%) contrast(100%); width: 3rem; height: 3rem;"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+                {% endif %}
             </div>
-            {% endfor %}
         </div>
 
         <!-- Modals -->
