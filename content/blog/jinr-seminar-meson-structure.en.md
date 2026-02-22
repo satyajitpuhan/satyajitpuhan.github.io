@@ -3,7 +3,7 @@ title = "Internal structure of pion, kaon, and ρ meson — JINR Seminar"
 date = 2025-03-28
 
 [extra]
-feature_image = "images/blog/posts/7.jpg"
+feature_image = "images/blog/posts/jinr-seminar-2025.png"
 post_image = "images/blog/feature-image.jpg"
 
 [taxonomies]

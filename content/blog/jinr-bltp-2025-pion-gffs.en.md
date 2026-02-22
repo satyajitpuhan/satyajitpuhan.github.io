@@ -3,7 +3,7 @@ title = "Pion GFFs at JINR-BLTP — Dubna, Moscow"
 date = 2025-08-15
 
 [extra]
-feature_image = "images/blog/posts/7.jpg"
+feature_image = "images/blog/posts/jinr-bltp-2025.png"
 post_image = "images/blog/feature-image.jpg"
 
 [taxonomies]

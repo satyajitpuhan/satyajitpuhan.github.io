@@ -5,7 +5,7 @@ date = 2024-08-05
 tags = ["Summer School", "Particle Physics", "PSI", "Switzerland"]
 categories = ["conferences"]
 [extra]
-feature_image = "images/blog/posts/7.jpg"
+feature_image = "images/blog/posts/psi-zuoz-2024.png"
 post_image = "images/blog/feature-image.jpg"
 +++
 

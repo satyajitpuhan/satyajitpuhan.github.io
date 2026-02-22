@@ -5,7 +5,7 @@ date = 2025-02-14
 tags = ["Conference", "ICFHEP", "IIT Bhilai"]
 categories = ["conferences"]
 [extra]
-feature_image = "images/blog/posts/7.jpg"
+feature_image = "images/blog/posts/icfhep-2025.png"
 post_image = "images/blog/feature-image.jpg"
 +++
 

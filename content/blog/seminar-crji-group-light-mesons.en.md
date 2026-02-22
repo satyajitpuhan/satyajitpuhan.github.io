@@ -3,7 +3,7 @@ title = "Internal Structure of Light Mesons — Prof. C. R. Ji's Group"
 date = 2025-07-04
 
 [extra]
-feature_image = "images/blog/posts/7.jpg"
+feature_image = "images/blog/posts/crji-seminar.png"
 post_image = "images/blog/feature-image.jpg"
 
 [taxonomies]
