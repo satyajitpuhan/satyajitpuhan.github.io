@@ -1,7 +1,5 @@
-/* ── Floating KaTeX Equations — Sub-pages only (not homepage) ── */
+/* ── Floating KaTeX Equations — All pages ── */
 (function () {
-    /* Skip the main homepage entirely */
-    if (document.getElementById('home')) return;
 
     /* Target the #content wrapper on sub-pages */
     const container = document.getElementById('content');
