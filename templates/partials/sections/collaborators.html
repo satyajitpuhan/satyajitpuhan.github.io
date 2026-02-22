@@ -10,18 +10,16 @@
             {% if data.subtitle %}<p>{{ data.subtitle }}</p>{% endif %}
         </div>
 
-        <!-- Carousel for collaborators: 4 per row × 2 rows = 8 per slide -->
+        <!-- Carousel: 4 per row × 2 rows = 8 per slide -->
         <div id="collaboratorsCarousel" class="carousel slide" data-bs-ride="false">
             <div class="carousel-inner">
-                {% set per_slide = 8 %}
-                {% set total = data.collaborators | length %}
-                {% set slides = (total + per_slide - 1) // per_slide %}
+                {% set_global slide_idx = 0 %}
+                {% set_global item_idx = 0 %}
 
-                {% for s in range(end=slides) %}
-                <div class="carousel-item {% if s == 0 %}active{% endif %}">
+                {% for batch in data.collaborators | batch(size=8) %}
+                <div class="carousel-item {% if slide_idx == 0 %}active{% endif %}">
                     <div class="row g-3">
-                        {% set start = s * per_slide %}
-                        {% for person in data.collaborators | slice(start=start, end=start + per_slide) %}
+                        {% for person in batch %}
                         <div class="col-lg-3 col-md-4 col-6">
                             <div class="collaborator-card" style="
                                 background: rgba(255,255,255,0.03);
@@ -48,8 +46,7 @@
                                     color: #fff;
                                     letter-spacing: 1px;
                                 ">
-                                    {{ person.name | split(pat=" ") | first | truncate(length=1, end="") | upper }}{{
-                                    person.name | split(pat=" ") | last | truncate(length=1, end="") | upper }}
+                                    {{ person.name | truncate(length=1, end="") | upper }}
                                 </div>
 
                                 <h5 style="font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; color: #1e293b;">
@@ -63,14 +60,16 @@
                                 </p>
                             </div>
                         </div>
+                        {% set_global item_idx = item_idx + 1 %}
                         {% endfor %}
                     </div>
                 </div>
+                {% set_global slide_idx = slide_idx + 1 %}
                 {% endfor %}
             </div>
 
             <!-- Navigation arrows -->
-            {% if slides > 1 %}
+            {% if slide_idx > 1 %}
             <button class="carousel-control-prev" type="button" data-bs-target="#collaboratorsCarousel"
                 data-bs-slide="prev"
                 style="width: 40px; height: 40px; background: rgba(99,102,241,0.15); border-radius: 50%; top: 50%; left: -20px; opacity: 1;">
