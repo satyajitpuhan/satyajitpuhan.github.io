@@ -1,6 +1,11 @@
-/* ── Floating KaTeX Equations — About Section Background ── */
+/* ── Floating KaTeX Equations — Sub-pages only (not homepage) ── */
 (function () {
-    const section = document.getElementById('about');
+    /* Skip the main homepage entirely */
+    if (document.getElementById('home')) return;
+
+    /* Attach to the main content area on sub-pages */
+    const section = document.querySelector('.singleBlog, .case-details, .breadCrumb')
+        ? document.body : null;
     if (!section) return;
 
     /* Wait for KaTeX to be available */
