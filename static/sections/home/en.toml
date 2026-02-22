@@ -17,12 +17,32 @@ image = "images/gallery/moscow-bolshoi.jpg"
 caption = "Bolshoi Theatre, Moscow"
 
 [[gallery]]
+image = "images/gallery/red-square-moscow.jpg"
+caption = "Red Square, Moscow"
+
+[[gallery]]
+image = "images/gallery/hanoi-airport.jpg"
+caption = "Hanoi Airport, Vietnam"
+
+[[gallery]]
+image = "images/gallery/jinr-office-dubna.jpg"
+caption = "BLTP Office, JINR Dubna"
+
+[[gallery]]
 image = "images/gallery/adiyogi-coimbatore.jpg"
 caption = "Adiyogi, Coimbatore"
 
 [[gallery]]
 image = "images/gallery/hilltop-bengaluru.jpg"
 caption = "Nandi Hills, Bengaluru"
+
+[[gallery]]
+image = "images/gallery/moonlit-rooftop.jpg"
+caption = "Moonlit Night, Jalandhar"
+
+[[gallery]]
+image = "images/gallery/hilltop-sunset.jpg"
+caption = "Hilltop Sunset, Dharamshala"
 
 [[gallery]]
 image = "images/gallery/office-research.jpg"

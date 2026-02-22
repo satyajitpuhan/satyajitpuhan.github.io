@@ -3,10 +3,13 @@
     /* Skip the main homepage entirely */
     if (document.getElementById('home')) return;
 
-    /* Attach to the main content area on sub-pages */
-    const section = document.querySelector('.singleBlog, .case-details, .breadCrumb')
-        ? document.body : null;
-    if (!section) return;
+    /* Target the #content wrapper on sub-pages */
+    const container = document.getElementById('content');
+    if (!container) return;
+
+    /* Ensure the container supports absolute positioning */
+    container.style.position = 'relative';
+    container.style.overflow = 'hidden';
 
     /* Wait for KaTeX to be available */
     function waitForKaTeX(cb) {
@@ -42,14 +45,12 @@
         layer.id = 'floating-equations';
         layer.style.cssText =
             'position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:2;overflow:hidden;';
-        section.style.position = 'relative';
-        section.style.overflow = 'hidden';
-        section.appendChild(layer);
+        container.appendChild(layer);
 
         /* ── Spawn formula elements ── */
         const formulaEls = [];
-        const W = () => section.offsetWidth;
-        const H = () => section.offsetHeight;
+        const W = () => container.offsetWidth;
+        const H = () => container.offsetHeight;
 
         function rand(a, b) { return Math.random() * (b - a) + a; }
 
@@ -92,22 +93,17 @@
             const goingRight = Math.random() > 0.5;
             formulaEls.push({
                 el,
-                /* Position */
                 x: rand(0, W()),
                 y: rand(0, H()),
-                /* Velocity: drift from one side to the other  */
                 vx: goingRight ? rand(0.15, 0.45) : rand(-0.45, -0.15),
                 vy: rand(-0.08, 0.08),
-                /* Wave oscillation */
                 amp: rand(10, 40),
                 freq: rand(0.005, 0.02),
                 phase: rand(0, Math.PI * 2),
                 speed: rand(0.008, 0.025),
                 baseY: 0,
-                /* Rotation */
                 rot: rand(-0.04, 0.04),
                 rotSpeed: rand(-0.0003, 0.0003),
-                /* Opacity pulse */
                 baseAlpha: alpha,
                 alphaSpeed: rand(0.001, 0.004),
                 alphaPhase: rand(0, Math.PI * 2),
@@ -123,28 +119,20 @@
             const w = W(), h = H();
 
             for (const f of formulaEls) {
-                /* Horizontal drift */
                 f.x += f.vx;
-
-                /* Vertical wave */
                 const wave = Math.sin(f.x * f.freq + t * f.speed + f.phase) * f.amp;
                 f.baseY += f.vy;
                 f.y = f.baseY + wave;
-
-                /* Rotation */
                 f.rot += f.rotSpeed;
 
-                /* Opacity pulse */
                 const opPulse = Math.sin(t * f.alphaSpeed + f.alphaPhase) * 0.1;
                 const opacity = Math.max(0.4, Math.min(0.95, f.baseAlpha + opPulse));
 
-                /* Wrap edges: re-enter from the opposite side */
                 if (f.vx > 0 && f.x > w + 100) { f.x = -100; f.baseY = rand(0, h); }
                 if (f.vx < 0 && f.x < -100) { f.x = w + 100; f.baseY = rand(0, h); }
                 if (f.baseY < -60) f.baseY = h + 60;
                 if (f.baseY > h + 60) f.baseY = -60;
 
-                /* Apply transform */
                 f.el.style.transform =
                     `translate(${f.x.toFixed(1)}px, ${f.y.toFixed(1)}px) rotate(${f.rot.toFixed(3)}rad)`;
                 f.el.style.opacity = opacity.toFixed(2);
@@ -153,7 +141,7 @@
             requestAnimationFrame(animate);
         }
 
-        /* Start with a fade-in */
+        /* Fade in */
         layer.style.opacity = '0';
         layer.style.transition = 'opacity 1.5s ease';
         requestAnimationFrame(() => {
