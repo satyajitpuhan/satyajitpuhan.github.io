@@ -1,4 +1,4 @@
-/* ── Floating Colorful Wave Dots — Home Section Only + Mouse Following ── */
+/* ── Orbital Rotating Dots — Antigravity-inspired — Home Section ── */
 (function () {
     const hero = document.getElementById('home');
     if (!hero) return;
@@ -12,109 +12,184 @@
     hero.appendChild(canvas);
 
     const ctx = canvas.getContext('2d');
-    let W, H, particles;
-    const COUNT = 100;
-    let mouseX = -1000, mouseY = -1000;
+    let W, H;
+    let mouseX = -9999, mouseY = -9999;
 
+    /* ── Palette — soft electric blues, lavenders, cyans ── */
     const COLORS = [
-        '#6366f1', '#8b5cf6', '#a855f7', '#ec4899',
-        '#f43f5e', '#f97316', '#eab308', '#22d3ee',
-        '#3b82f6', '#10b981',
+        [99, 102, 241],   // indigo
+        [139, 92, 246],   // violet
+        [168, 85, 247],   // purple
+        [59, 130, 246],   // blue
+        [34, 211, 238],   // cyan
+        [236, 72, 153],   // pink
+        [16, 185, 129],   // emerald
+        [249, 115, 22],   // orange
+        [255, 255, 255],  // white
+        [200, 200, 255],  // light lavender
     ];
 
     function rand(a, b) { return Math.random() * (b - a) + a; }
 
-    function makeParticle() {
-        return {
-            x: rand(0, W), y: rand(0, H),
-            r: rand(2, 5),
-            color: COLORS[Math.floor(Math.random() * COLORS.length)],
-            vx: rand(-0.4, 0.4), vy: rand(-0.2, 0.2),
-            phase: rand(0, Math.PI * 2),
-            amp: rand(15, 50),
-            freq: rand(0.008, 0.025),
-            speed: rand(0.015, 0.04),
-            baseY: 0,
-            alpha: rand(0.35, 0.85),
-        };
+    /* ── Build orbits — each orbit is a tilted ellipse ── */
+    const ORBIT_COUNT = 6;
+    const PARTICLES_PER_ORBIT = 18;
+    const orbits = [];
+    const particles = [];
+
+    function buildOrbits() {
+        orbits.length = 0;
+        particles.length = 0;
+
+        const cx = W * 0.5;
+        const cy = H * 0.5;
+
+        for (let o = 0; o < ORBIT_COUNT; o++) {
+            const orbit = {
+                cx: cx + rand(-W * 0.1, W * 0.1),
+                cy: cy + rand(-H * 0.1, H * 0.1),
+                rx: rand(W * 0.15, W * 0.45),   // semi-major axis
+                ry: rand(H * 0.1, H * 0.35),     // semi-minor axis
+                tilt: rand(-0.6, 0.6),            // radians tilt
+                speed: rand(0.0008, 0.003) * (Math.random() > 0.5 ? 1 : -1),
+            };
+            orbits.push(orbit);
+
+            const count = PARTICLES_PER_ORBIT + Math.floor(rand(-5, 8));
+            for (let i = 0; i < count; i++) {
+                const color = COLORS[Math.floor(Math.random() * COLORS.length)];
+                particles.push({
+                    orbit: o,
+                    angle: rand(0, Math.PI * 2),
+                    radiusJitter: rand(0.85, 1.15),  // slight orbit deviation
+                    size: rand(1.2, 3.5),
+                    alpha: rand(0.3, 0.9),
+                    color,
+                    twinkleSpeed: rand(0.01, 0.04),
+                    twinklePhase: rand(0, Math.PI * 2),
+                    trail: rand(0.02, 0.06),  // trail length factor
+                });
+            }
+        }
+
+        /* Add extra scattered "starfield" particles */
+        for (let i = 0; i < 40; i++) {
+            particles.push({
+                orbit: -1,  // no orbit — free floating
+                x: rand(0, W),
+                y: rand(0, H),
+                vx: rand(-0.15, 0.15),
+                vy: rand(-0.1, 0.1),
+                size: rand(0.8, 2),
+                alpha: rand(0.15, 0.5),
+                color: COLORS[Math.floor(Math.random() * COLORS.length)],
+                twinkleSpeed: rand(0.005, 0.02),
+                twinklePhase: rand(0, Math.PI * 2),
+            });
+        }
     }
 
     function resize() {
         const rect = hero.getBoundingClientRect();
         W = canvas.width = rect.width;
         H = canvas.height = rect.height;
+        buildOrbits();
     }
 
-    function init() {
-        resize();
-        particles = [];
-        for (let i = 0; i < COUNT; i++) {
-            const p = makeParticle();
-            p.baseY = p.y;
-            particles.push(p);
-        }
-    }
-
-    /* track mouse within hero */
+    /* ── Mouse tracking ── */
     hero.addEventListener('mousemove', function (e) {
         const rect = hero.getBoundingClientRect();
         mouseX = e.clientX - rect.left;
         mouseY = e.clientY - rect.top;
     });
     hero.addEventListener('mouseleave', function () {
-        mouseX = -1000; mouseY = -1000;
+        mouseX = -9999; mouseY = -9999;
     });
 
+    /* ── Draw loop ── */
     let t = 0;
     function draw() {
+        /* Subtle fade trail instead of full clear — gives motion trails */
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.08)';
+        ctx.fillRect(0, 0, W, H);
         ctx.clearRect(0, 0, W, H);
+
         t++;
 
         for (const p of particles) {
-            /* wave motion */
-            const wave = Math.sin(p.x * p.freq + t * p.speed + p.phase) * p.amp;
-            p.x += p.vx;
-            p.baseY += p.vy;
-            p.y = p.baseY + wave;
+            let px, py, depth;
 
-            /* mouse attraction — gently pull toward cursor */
-            const dx = mouseX - p.x;
-            const dy = mouseY - p.y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < 200 && dist > 0) {
-                const force = (200 - dist) / 200 * 0.6;
-                p.x += dx / dist * force;
-                p.baseY += dy / dist * force * 0.5;
+            if (p.orbit >= 0) {
+                /* Orbital particle */
+                const orb = orbits[p.orbit];
+                p.angle += orb.speed;
+
+                const cosT = Math.cos(orb.tilt);
+                const sinT = Math.sin(orb.tilt);
+                const cosA = Math.cos(p.angle);
+                const sinA = Math.sin(p.angle);
+
+                const ex = orb.rx * p.radiusJitter * cosA;
+                const ey = orb.ry * p.radiusJitter * sinA;
+
+                /* Apply tilt rotation */
+                px = orb.cx + ex * cosT - ey * sinT;
+                py = orb.cy + ex * sinT + ey * cosT;
+
+                /* Depth: particles "behind" center are smaller/dimmer */
+                depth = 0.5 + 0.5 * sinA;  // 0 = far, 1 = near
+            } else {
+                /* Free-floating starfield particle */
+                p.x += p.vx;
+                p.y += p.vy;
+                if (p.x < -5) p.x = W + 5;
+                if (p.x > W + 5) p.x = -5;
+                if (p.y < -5) p.y = H + 5;
+                if (p.y > H + 5) p.y = -5;
+                px = p.x;
+                py = p.y;
+                depth = 0.3;
             }
 
-            /* wrap edges */
-            if (p.x < -10) p.x = W + 10;
-            if (p.x > W + 10) p.x = -10;
-            if (p.baseY < -10) { p.baseY = H + 10; }
-            if (p.baseY > H + 10) { p.baseY = -10; }
+            /* Mouse repulsion — subtle push away */
+            const dx = px - mouseX;
+            const dy = py - mouseY;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 150 && dist > 0) {
+                const force = (150 - dist) / 150 * 12;
+                px += (dx / dist) * force;
+                py += (dy / dist) * force;
+            }
 
-            /* glow */
-            const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 3);
-            g.addColorStop(0, p.color);
-            g.addColorStop(1, 'transparent');
-            ctx.globalAlpha = p.alpha;
+            /* Twinkle */
+            const twinkle = 0.5 + 0.5 * Math.sin(t * p.twinkleSpeed + p.twinklePhase);
+            const alpha = p.alpha * (0.5 + 0.5 * twinkle) * (0.4 + 0.6 * depth);
+            const size = p.size * (0.5 + 0.5 * depth);
+
+            const [r, g, b] = p.color;
+
+            /* Outer glow */
+            const glowRadius = size * 4;
+            const grad = ctx.createRadialGradient(px, py, 0, px, py, glowRadius);
+            grad.addColorStop(0, `rgba(${r},${g},${b},${(alpha * 0.6).toFixed(2)})`);
+            grad.addColorStop(0.4, `rgba(${r},${g},${b},${(alpha * 0.2).toFixed(2)})`);
+            grad.addColorStop(1, `rgba(${r},${g},${b},0)`);
             ctx.beginPath();
-            ctx.arc(p.x, p.y, p.r * 3, 0, Math.PI * 2);
-            ctx.fillStyle = g;
+            ctx.arc(px, py, glowRadius, 0, Math.PI * 2);
+            ctx.fillStyle = grad;
             ctx.fill();
 
-            /* core */
+            /* Core dot */
             ctx.beginPath();
-            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-            ctx.fillStyle = p.color;
-            ctx.globalAlpha = Math.min(1, p.alpha + 0.2);
+            ctx.arc(px, py, size, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(${r},${g},${b},${Math.min(1, alpha + 0.3).toFixed(2)})`;
             ctx.fill();
         }
-        ctx.globalAlpha = 1;
+
         requestAnimationFrame(draw);
     }
 
     window.addEventListener('resize', resize);
-    init();
+    resize();
     draw();
 })();
