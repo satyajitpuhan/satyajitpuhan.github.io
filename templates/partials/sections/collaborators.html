@@ -9,18 +9,81 @@
             <h1>{{ data.title }}</h1>
             {% if data.subtitle %}<p>{{ data.subtitle }}</p>{% endif %}
         </div>
-        <div class="row">
-            {% for person in data.collaborators %}
-            <div class="col-lg-3 col-md-4 col-6">
-                <div class="collaborator-card">
-                    <img class="collaborator-card__photo" src="{{ get_url(path=person.photo) }}"
-                        alt="{{ person.name }}">
-                    <h5 class="collaborator-card__name">{{ person.name }}</h5>
-                    <p class="collaborator-card__role">{{ person.role }}</p>
-                    <p class="collaborator-card__inst">{{ person.institution }}</p>
+
+        <!-- Carousel for collaborators: 4 per row × 2 rows = 8 per slide -->
+        <div id="collaboratorsCarousel" class="carousel slide" data-bs-ride="false">
+            <div class="carousel-inner">
+                {% set per_slide = 8 %}
+                {% set total = data.collaborators | length %}
+                {% set slides = (total + per_slide - 1) // per_slide %}
+
+                {% for s in range(end=slides) %}
+                <div class="carousel-item {% if s == 0 %}active{% endif %}">
+                    <div class="row g-3">
+                        {% set start = s * per_slide %}
+                        {% for person in data.collaborators | slice(start=start, end=start + per_slide) %}
+                        <div class="col-lg-3 col-md-4 col-6">
+                            <div class="collaborator-card" style="
+                                background: rgba(255,255,255,0.03);
+                                border: 1px solid rgba(99,102,241,0.15);
+                                border-radius: 14px;
+                                padding: 24px 16px;
+                                text-align: center;
+                                transition: all 0.3s ease;
+                                height: 100%;
+                            " onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 8px 30px rgba(99,102,241,0.12)'; this.style.borderColor='rgba(99,102,241,0.4)';"
+                                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.borderColor='rgba(99,102,241,0.15)';">
+
+                                <div style="
+                                    width: 72px;
+                                    height: 72px;
+                                    border-radius: 50%;
+                                    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    margin: 0 auto 14px;
+                                    font-size: 1.6rem;
+                                    font-weight: 700;
+                                    color: #fff;
+                                    letter-spacing: 1px;
+                                ">
+                                    {{ person.name | split(pat=" ") | first | truncate(length=1, end="") | upper }}{{
+                                    person.name | split(pat=" ") | last | truncate(length=1, end="") | upper }}
+                                </div>
+
+                                <h5 style="font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; color: #1e293b;">
+                                    {{ person.name }}
+                                </h5>
+                                <p style="font-size: 0.78rem; color: #6366f1; font-weight: 500; margin-bottom: 4px;">
+                                    {{ person.role }}
+                                </p>
+                                <p style="font-size: 0.75rem; color: #94a3b8; margin: 0;">
+                                    {{ person.institution }}
+                                </p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
                 </div>
+                {% endfor %}
             </div>
-            {% endfor %}
+
+            <!-- Navigation arrows -->
+            {% if slides > 1 %}
+            <button class="carousel-control-prev" type="button" data-bs-target="#collaboratorsCarousel"
+                data-bs-slide="prev"
+                style="width: 40px; height: 40px; background: rgba(99,102,241,0.15); border-radius: 50%; top: 50%; left: -20px; opacity: 1;">
+                <span class="carousel-control-prev-icon" aria-hidden="true" style="filter: invert(0.4);"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#collaboratorsCarousel"
+                data-bs-slide="next"
+                style="width: 40px; height: 40px; background: rgba(99,102,241,0.15); border-radius: 50%; top: 50%; right: -20px; opacity: 1;">
+                <span class="carousel-control-next-icon" aria-hidden="true" style="filter: invert(0.4);"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+            {% endif %}
         </div>
     </div>
 </section>

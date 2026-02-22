@@ -33,7 +33,7 @@ institution = "NIT Jalandhar"
 photo = "images/collaborators/placeholder.png"
 
 [[collaborators]]
-name = "r"
+name = "Prof. Suneel Dutt"
 role = "Collaborator"
 institution = "NIT Jalandhar"
 photo = "images/collaborators/placeholder.png"
@@ -46,6 +46,54 @@ photo = "images/collaborators/placeholder.png"
 
 [[collaborators]]
 name = "Shubham Sharma"
+role = "Collaborator"
+institution = "NIT Jalandhar"
+photo = "images/collaborators/placeholder.png"
+
+[[collaborators]]
+name = "Navpreet Kaur"
+role = "Collaborator"
+institution = "NIT Jalandhar"
+photo = "images/collaborators/placeholder.png"
+
+[[collaborators]]
+name = "Dhananjay Singh"
+role = "Collaborator"
+institution = "NIT Jalandhar"
+photo = "images/collaborators/placeholder.png"
+
+[[collaborators]]
+name = "Manpreet Kaur"
+role = "Collaborator"
+institution = "NIT Jalandhar"
+photo = "images/collaborators/placeholder.png"
+
+[[collaborators]]
+name = "Anshu Gautam"
+role = "Collaborator"
+institution = "NIT Jalandhar"
+photo = "images/collaborators/placeholder.png"
+
+[[collaborators]]
+name = "Tanisha"
+role = "Collaborator"
+institution = "NIT Jalandhar"
+photo = "images/collaborators/placeholder.png"
+
+[[collaborators]]
+name = "Ashutosh Dwibedi"
+role = "Collaborator"
+institution = "IIT Bhilai, Chhattisgarh"
+photo = "images/collaborators/placeholder.png"
+
+[[collaborators]]
+name = "Aman Yadav"
+role = "Collaborator"
+institution = "NIT Jalandhar"
+photo = "images/collaborators/placeholder.png"
+
+[[collaborators]]
+name = "Ridhi Pandey"
 role = "Collaborator"
 institution = "NIT Jalandhar"
 photo = "images/collaborators/placeholder.png"
