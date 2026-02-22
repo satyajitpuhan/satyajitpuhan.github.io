@@ -4,7 +4,7 @@ date = 2025-03-28
 
 [extra]
 feature_image = "images/blog/posts/jinr-seminar-2025.png"
-post_image = "images/blog/feature-image.jpg"
+post_image = "images/blog/posts/jinr-seminar-2025.png"
 
 [taxonomies]
 tags = ["seminar", "TMDs", "GPDs", "pion", "kaon", "rho"]

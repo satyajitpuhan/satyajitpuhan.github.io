@@ -6,7 +6,7 @@ tags = ["Summer School", "Particle Physics", "PSI", "Switzerland"]
 categories = ["conferences"]
 [extra]
 feature_image = "images/blog/posts/psi-zuoz-2024.png"
-post_image = "images/blog/feature-image.jpg"
+post_image = "images/blog/posts/psi-zuoz-2024.png"
 +++
 
 **Event:** PSI Particle Physics Summer School — *From Low to High: Particle Physics at the Frontier*

@@ -4,7 +4,7 @@ date = 2025-08-15
 
 [extra]
 feature_image = "images/blog/posts/jinr-bltp-2025.png"
-post_image = "images/blog/feature-image.jpg"
+post_image = "images/blog/posts/jinr-bltp-2025.png"
 
 [taxonomies]
 tags = ["conference", "gravitational form factors", "pion"]

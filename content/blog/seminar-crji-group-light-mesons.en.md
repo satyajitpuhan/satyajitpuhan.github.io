@@ -4,7 +4,7 @@ date = 2025-07-04
 
 [extra]
 feature_image = "images/blog/posts/crji-seminar.png"
-post_image = "images/blog/feature-image.jpg"
+post_image = "images/blog/posts/crji-seminar.png"
 
 [taxonomies]
 tags = ["seminar", "TMDs", "GPDs"]
