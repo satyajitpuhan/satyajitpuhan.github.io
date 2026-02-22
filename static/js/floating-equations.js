@@ -75,10 +75,10 @@
             el.style.cssText += size;
 
             const colorTemplate = COLORS[Math.floor(Math.random() * COLORS.length)];
-            const alpha = rand(0.25, 0.55);
+            const alpha = rand(0.55, 0.85);
             const color = colorTemplate.replace('VAR', alpha.toFixed(2));
             el.style.color = color;
-            el.style.textShadow = `0 0 8px ${colorTemplate.replace('VAR', '0.15')}`;
+            el.style.textShadow = `0 0 14px ${colorTemplate.replace('VAR', '0.4')}, 0 0 30px ${colorTemplate.replace('VAR', '0.15')}`;
 
             try {
                 katex.render(eq.tex, el, { displayMode: eq.display, throwOnError: false });
@@ -135,8 +135,8 @@
                 f.rot += f.rotSpeed;
 
                 /* Opacity pulse */
-                const opPulse = Math.sin(t * f.alphaSpeed + f.alphaPhase) * 0.12;
-                const opacity = Math.max(0.12, Math.min(0.6, f.baseAlpha + opPulse));
+                const opPulse = Math.sin(t * f.alphaSpeed + f.alphaPhase) * 0.1;
+                const opacity = Math.max(0.4, Math.min(0.95, f.baseAlpha + opPulse));
 
                 /* Wrap edges: re-enter from the opposite side */
                 if (f.vx > 0 && f.x > w + 100) { f.x = -100; f.baseY = rand(0, h); }

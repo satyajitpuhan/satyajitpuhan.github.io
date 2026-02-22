@@ -39,15 +39,32 @@
           </div>
           <a href="{{ get_url(path=data.button_url, lang=lang) }}">{{ data.button_name }}</a>
 
-          {% if data.gallery_images %}
+          {% if data.gallery %}
           <div id="homeHeroCarousel" class="carousel slide carousel-fade mt-5" data-bs-ride="carousel"
             data-bs-interval="3500"
             style="max-width: 400px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
             <div class="carousel-inner">
-              {% for img in data.gallery_images %}
+              {% for item in data.gallery %}
               <div class="carousel-item {% if loop.first %}active{% endif %}">
-                <img src="{{ get_url(path=img) }}" class="d-block w-100" style="height: 250px; object-fit: cover;"
-                  alt="My journey photo" />
+                <img src="{{ get_url(path=item.image) }}" class="d-block w-100"
+                  style="height: 250px; object-fit: cover;" alt="{{ item.caption }}" />
+                {% if item.caption %}
+                <div style="
+                  position: absolute;
+                  bottom: 0;
+                  left: 0;
+                  right: 0;
+                  padding: 8px 16px;
+                  background: linear-gradient(transparent, rgba(0,0,0,0.7));
+                  color: #fff;
+                  font-size: 0.85rem;
+                  font-weight: 500;
+                  letter-spacing: 0.5px;
+                  text-align: right;
+                ">
+                  📍 {{ item.caption }}
+                </div>
+                {% endif %}
               </div>
               {% endfor %}
             </div>

@@ -2,16 +2,28 @@ title       = "Hello, I am Satyajit Puhan"
 description = """
 # Researcher in High Energy Physics
 
-Senior Research Fellow at Dr. B R Ambedkar NIT, Jalandhar. Exploring the internal structure of hadrons through light-front dynamics. Published 20+ papers in leading journals. AIR-877 JAM | AIR-209 JEST.
+Senior Research Fellow at NIT Jalandhar, unraveling the quantum architecture of hadrons through light-front dynamics. With 20+ publications in Physical Review D, JHEP, and leading journals — and national ranks of **AIR-877 (JAM)** and **AIR-209 (JEST)** — I bridge first-principles QCD with observable meson structure at future colliders like the EIC and NICA.
 """
 button_name = "Contact Me"
 button_url  = "contact"
 image       = "images/hero/me1.jpg"
 
-gallery_images = [
-    "images/gallery/switzerland-alps.jpg",
-    "images/gallery/moscow-bolshoi.jpg",
-    "images/gallery/adiyogi-coimbatore.jpg",
-    "images/gallery/hilltop-bengaluru.jpg",
-    "images/gallery/office-research.jpg"
-]
+[[gallery]]
+image = "images/gallery/switzerland-alps.jpg"
+caption = "Zuoz, Swiss Alps"
+
+[[gallery]]
+image = "images/gallery/moscow-bolshoi.jpg"
+caption = "Bolshoi Theatre, Moscow"
+
+[[gallery]]
+image = "images/gallery/adiyogi-coimbatore.jpg"
+caption = "Adiyogi, Coimbatore"
+
+[[gallery]]
+image = "images/gallery/hilltop-bengaluru.jpg"
+caption = "Nandi Hills, Bengaluru"
+
+[[gallery]]
+image = "images/gallery/office-research.jpg"
+caption = "Research Lab, NIT Jalandhar"
