@@ -61,6 +61,7 @@ institution = "NIT Jalandhar"
 name = "Ashutosh Dwibedi"
 role = "Collaborator"
 institution = "IIT Bhilai, Chhattisgarh"
+image = "images/collaborators/ashutosh.jpg"
 
 [[collaborators]]
 name = "Anurag Yadav"
