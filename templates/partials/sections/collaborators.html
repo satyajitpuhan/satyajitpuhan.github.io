@@ -10,18 +10,15 @@
             {% if data.subtitle %}<p>{{ data.subtitle }}</p>{% endif %}
         </div>
 
-        <!-- Carousel: 4 per row × 2 rows = 8 per slide -->
         <div id="collaboratorsCarousel" class="carousel slide" data-bs-ride="false">
             <div class="carousel-inner">
-                {% set_global slide_idx = 0 %}
-                {% set_global item_idx = 0 %}
 
-                {% for batch in data.collaborators | batch(size=8) %}
-                <div class="carousel-item {% if slide_idx == 0 %}active{% endif %}">
+                <!-- Slide 1: first 8 -->
+                <div class="carousel-item active">
                     <div class="row g-3">
-                        {% for person in batch %}
-                        <div class="col-lg-3 col-md-4 col-6">
-                            <div class="collaborator-card" style="
+                        {% for person in data.collaborators %}
+                        {% if loop.index <= 8 %} <div class="col-lg-3 col-md-4 col-6">
+                            <div style="
                                 background: rgba(255,255,255,0.03);
                                 border: 1px solid rgba(99,102,241,0.15);
                                 border-radius: 14px;
@@ -31,59 +28,75 @@
                                 height: 100%;
                             " onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 8px 30px rgba(99,102,241,0.12)'; this.style.borderColor='rgba(99,102,241,0.4)';"
                                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.borderColor='rgba(99,102,241,0.15)';">
-
                                 <div style="
-                                    width: 72px;
-                                    height: 72px;
-                                    border-radius: 50%;
+                                    width: 72px; height: 72px; border-radius: 50%;
                                     background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
-                                    display: flex;
-                                    align-items: center;
-                                    justify-content: center;
-                                    margin: 0 auto 14px;
-                                    font-size: 1.6rem;
-                                    font-weight: 700;
-                                    color: #fff;
-                                    letter-spacing: 1px;
-                                ">
-                                    {{ person.name | truncate(length=1, end="") | upper }}
-                                </div>
-
-                                <h5 style="font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; color: #1e293b;">
-                                    {{ person.name }}
-                                </h5>
-                                <p style="font-size: 0.78rem; color: #6366f1; font-weight: 500; margin-bottom: 4px;">
-                                    {{ person.role }}
-                                </p>
-                                <p style="font-size: 0.75rem; color: #94a3b8; margin: 0;">
-                                    {{ person.institution }}
-                                </p>
+                                    display: flex; align-items: center; justify-content: center;
+                                    margin: 0 auto 14px; font-size: 1.6rem; font-weight: 700;
+                                    color: #fff; letter-spacing: 1px;
+                                ">{{ loop.index }}</div>
+                                <h5 style="font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; color: #1e293b;">{{
+                                    person.name }}</h5>
+                                <p style="font-size: 0.78rem; color: #6366f1; font-weight: 500; margin-bottom: 4px;">{{
+                                    person.role }}</p>
+                                <p style="font-size: 0.75rem; color: #94a3b8; margin: 0;">{{ person.institution }}</p>
                             </div>
-                        </div>
-                        {% set_global item_idx = item_idx + 1 %}
-                        {% endfor %}
                     </div>
+                    {% endif %}
+                    {% endfor %}
                 </div>
-                {% set_global slide_idx = slide_idx + 1 %}
-                {% endfor %}
             </div>
 
-            <!-- Navigation arrows -->
-            {% if slide_idx > 1 %}
-            <button class="carousel-control-prev" type="button" data-bs-target="#collaboratorsCarousel"
-                data-bs-slide="prev"
-                style="width: 40px; height: 40px; background: rgba(99,102,241,0.15); border-radius: 50%; top: 50%; left: -20px; opacity: 1;">
-                <span class="carousel-control-prev-icon" aria-hidden="true" style="filter: invert(0.4);"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#collaboratorsCarousel"
-                data-bs-slide="next"
-                style="width: 40px; height: 40px; background: rgba(99,102,241,0.15); border-radius: 50%; top: 50%; right: -20px; opacity: 1;">
-                <span class="carousel-control-next-icon" aria-hidden="true" style="filter: invert(0.4);"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-            {% endif %}
+            <!-- Slide 2: remaining -->
+            <div class="carousel-item">
+                <div class="row g-3">
+                    {% for person in data.collaborators %}
+                    {% if loop.index > 8 %}
+                    <div class="col-lg-3 col-md-4 col-6">
+                        <div style="
+                                background: rgba(255,255,255,0.03);
+                                border: 1px solid rgba(99,102,241,0.15);
+                                border-radius: 14px;
+                                padding: 24px 16px;
+                                text-align: center;
+                                transition: all 0.3s ease;
+                                height: 100%;
+                            "
+                            onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 8px 30px rgba(99,102,241,0.12)'; this.style.borderColor='rgba(99,102,241,0.4)';"
+                            onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.borderColor='rgba(99,102,241,0.15)';">
+                            <div style="
+                                    width: 72px; height: 72px; border-radius: 50%;
+                                    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
+                                    display: flex; align-items: center; justify-content: center;
+                                    margin: 0 auto 14px; font-size: 1.6rem; font-weight: 700;
+                                    color: #fff; letter-spacing: 1px;
+                                ">{{ loop.index }}</div>
+                            <h5 style="font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; color: #1e293b;">{{
+                                person.name }}</h5>
+                            <p style="font-size: 0.78rem; color: #6366f1; font-weight: 500; margin-bottom: 4px;">{{
+                                person.role }}</p>
+                            <p style="font-size: 0.75rem; color: #94a3b8; margin: 0;">{{ person.institution }}</p>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+
         </div>
+
+        <!-- Navigation arrows -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#collaboratorsCarousel" data-bs-slide="prev"
+            style="width: 40px; height: 40px; background: rgba(99,102,241,0.15); border-radius: 50%; top: 50%; left: -20px; opacity: 1;">
+            <span class="carousel-control-prev-icon" aria-hidden="true" style="filter: invert(0.4);"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#collaboratorsCarousel" data-bs-slide="next"
+            style="width: 40px; height: 40px; background: rgba(99,102,241,0.15); border-radius: 50%; top: 50%; right: -20px; opacity: 1;">
+            <span class="carousel-control-next-icon" aria-hidden="true" style="filter: invert(0.4);"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
     </div>
 </section>
 {% endif %}
