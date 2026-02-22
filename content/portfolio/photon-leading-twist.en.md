@@ -3,12 +3,12 @@ title = "Photon Leading Twist Transverse Momentum Dependent Parton Distributions
 date = 2025-01-01
 
 [extra]
-thumbnail = "images/portfolio/portfolio-1.png"
+thumbnail = "images/portfolio/papers/photon-tmds.png"
 service = "Eur. Phys. J. A 61 (2025)"
 client = "S. Puhan, N. Kumar and H. Dahiya"
 short_description = "Published in EPJA special edition on Topical Spin-1 observables."
-challenge = "Photon Leading Twist Transverse Momentum Dependent Parton Distributions"
-solution = "Research article published in Eur. Phys. J. A 61 (2025)."
+challenge = "We investigate the leading twist transverse momentum-dependent parton distributions (TMDs) of the photon using light-front wave functions. The unpolarized, helicity, and transversity TMDs are computed at leading twist for the quark content of the photon, including both resolved and direct contributions."
+solution = "This paper provides the first comprehensive study of leading twist TMDs for the photon using light-front techniques, contributing to the topical collection on spin-1 observables in EPJA."
 +++
 
 **Authors:** S. Puhan, N. Kumar and H. Dahiya  

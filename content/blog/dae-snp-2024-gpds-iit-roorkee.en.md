@@ -4,7 +4,7 @@ date = 2024-12-07
 [taxonomies]
 tags = ["Conference Talk", "DAE Symposium", "GPDs", "Vector Mesons"]
 [extra]
-feature_image = "images/blog/posts/7.jpg"
+feature_image = "images/blog/posts/dae-snp-2024.png"
 post_image = "images/blog/feature-image.jpg"
 +++
 
