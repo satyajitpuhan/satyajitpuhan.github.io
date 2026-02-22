@@ -1,7 +1,7 @@
-/* ── Floating KaTeX Equations — Hero Section Background ── */
+/* ── Floating KaTeX Equations — About Section Background ── */
 (function () {
-    const hero = document.getElementById('home');
-    if (!hero) return;
+    const section = document.getElementById('about');
+    if (!section) return;
 
     /* Wait for KaTeX to be available */
     function waitForKaTeX(cb) {
@@ -37,12 +37,14 @@
         layer.id = 'floating-equations';
         layer.style.cssText =
             'position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:2;overflow:hidden;';
-        hero.appendChild(layer);
+        section.style.position = 'relative';
+        section.style.overflow = 'hidden';
+        section.appendChild(layer);
 
         /* ── Spawn formula elements ── */
         const formulaEls = [];
-        const W = () => hero.offsetWidth;
-        const H = () => hero.offsetHeight;
+        const W = () => section.offsetWidth;
+        const H = () => section.offsetHeight;
 
         function rand(a, b) { return Math.random() * (b - a) + a; }
 
