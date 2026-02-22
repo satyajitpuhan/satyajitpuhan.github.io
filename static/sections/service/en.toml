@@ -5,7 +5,7 @@ subtitle = "My primary research focuses on understanding the internal structure 
 [[services]]
 icon = "lni-target"
 title = "Transverse Momentum Distributions (TMDs)"
-content = "Model-dependent TMDs for spin-0 (pion, kaon), spin-1/2 (proton), and spin-1 (ρ meson, heavy vector mesons, photon). PDFs and spin densities in momentum space. Higher twist calculations. Builds upon foundational frameworks by Mulders & Tangerman, Boer & Mulders, Meissner, Metz & Goeke, and Bacchetta et al."
+content = "Model-dependent TMDs for spin-0 (pion, kaon), spin-1/2 (proton), and spin-1 (ρ meson, heavy vector mesons, photon). PDFs and spin densities in momentum space. Higher twist calculations."
 
 [[services]]
 icon = "lni-map"
