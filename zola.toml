@@ -58,6 +58,54 @@ privacy_and_policy = "Publications"
 latest_article = "Latest Talks"
 
 
+[languages.or]
+title = "ସତ୍ୟଜିତ ପୁହାଣ"
+generate_feeds = true
+build_search_index = false
+
+taxonomies = [
+    { name = "tags", feed = true, render = true, paginate_by = 9 },
+    { name = "categories", feed = true, render = true, paginate_by = 9 },
+]
+
+[languages.or.translations]
+contact_me = "ମୋ ସହିତ ଯୋଗାଯୋଗ କରନ୍ତୁ"
+start_project = "ଯୋଗାଯୋଗ କରନ୍ତୁ"
+showing_all = "ସମସ୍ତ ଦେଖାଉଛି"
+hire_me_now = "ଯୋଗାଯୋଗ କରନ୍ତୁ"
+get_in_touch = "ଯୋଗାଯୋଗ କରନ୍ତୁ"
+see_details = "ବିବରଣୀ ଦେଖନ୍ତୁ"
+sitemap = "ସାଇଟମ୍ୟାପ୍"
+address = "ଠିକଣା"
+phone = "ଫୋନ୍"
+email = "ଇମେଲ୍"
+categories_description = "ଶ୍ରେଣୀ ସହିତ ସମସ୍ତ ପୋଷ୍ଟଗୁଡିକ ଦେଖାଉଛି"
+tags_description = "ଟ୍ୟାଗ୍ ସହିତ ସମସ୍ତ ପୋଷ୍ଟଗୁଡିକ ଦେଖାଉଛି"
+opening_hours = "କାର୍ଯ୍ୟ ସମୟ"
+form_title = "ଯୋଗାଯୋଗ ଫର୍ମ"
+form_button = "ମେସେଜ୍ ପଠାନ୍ତୁ"
+form_input_name = "ନାମ"
+form_input_email = "ଇମେଲ୍"
+form_input_message = "ମେସେଜ୍"
+form_input_agreement = "ମୋର ଦାଖଲ ହୋଇଥିବା ଡାଟା ସଂଗ୍ରହ ଓ ସଂରକ୍ଷଣ କରାଯାଉଥିବାରୁ ମୁଁ ସମ୍ମତ ଅଟେ।"
+copyright = "ସର୍ବସତ୍ତ୍ୱ ସଂରକ୍ଷିତ © ସତ୍ୟଜିତ ପୁହାଣ 2026"
+
+# Menus
+home = "ମୁଖ୍ୟ ପୃଷ୍ଠା"
+about = "ମୋ ବିଷୟରେ"
+service = "ଗବେଷଣା"
+work = "ପ୍ରକାଶନ"
+resume = "ବାୟୋଡାଟା"
+blog = "ଆଲୋଚନା"
+contact = "ଯୋଗାଯୋଗ"
+
+# Sitemaps
+about_me = "ମୋ ବିଷୟରେ"
+frequently_ask_question = "ଗବେଷଣା"
+privacy_and_policy = "ପ୍ରକାଶନ"
+latest_article = "ଆଲୋଚନା"
+
+
 [extra]
 date_format = "%d %B, %Y"
 logo = "images/logo.png"

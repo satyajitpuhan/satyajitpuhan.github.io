@@ -1,0 +1,23 @@
+title = "Research Areas"
+top_title = "What I Do"
+subtitle = "My primary research focuses on understanding the internal structure of hadrons through modern theoretical frameworks in light-front dynamics."
+
+[[services]]
+icon = "lni-target"
+title = "Transverse Momentum Distributions (TMDs)"
+content = "Model-dependent TMDs for spin-0 (pion, kaon), spin-1/2 (proton), and spin-1 (ρ meson, heavy vector mesons, photon). PDFs and spin densities in momentum space. Higher twist calculations."
+
+[[services]]
+icon = "lni-map"
+title = "Generalized Parton Distributions (GPDs)"
+content = "GPDs for spin-0 (pion, kaon) and spin-1 (ρ meson) particles. Extraction of electromagnetic and gravitational form factors. GDAs for pion. Global extraction from charge form factor data using neural networks. Relevant for EIC and JLab."
+
+[[services]]
+icon = "lni-pulse"
+title = "Hadronic & Mechanical Properties"
+content = "Spin-orbit correlations, distribution amplitudes, form factors, charge radii, decay constants, mass spectra, radially excited states of quarkonia, radiative transitions of charmonia. Gravitational form factors, pressure and shear distributions inside pion."
+
+[[services]]
+icon = "lni-layers"
+title = "Medium Modifications & Extraction"
+content = "Medium modification of TMDs, PDFs, GPDs in nuclear/hadronic medium using LFQM + Chiral SU(3) CQMF model. Extraction of pion TMDs/PDFs from Drell-Yan data via neural networks. Monte Carlo simulations of charmonia production with Pythia 8312 (NRQCD). Transport coefficients using NJL-Polyakov loop model."
