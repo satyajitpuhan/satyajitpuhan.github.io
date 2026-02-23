@@ -1,5 +1,5 @@
 +++
-title = "Spatial and Transverse structure of Heavy B-and D-mesons"
+title = "ଭାରୀ ବି-ଏବଂ ଡି-ମେସନ୍ ର ସ୍ଥାନିକ ଏବଂ ଟ୍ରାନ୍ସଭର୍ସ ଗଠନ |"
 date = 2023-11-28
 
 [extra]
@@ -11,7 +11,8 @@ challenge = "We have investigated the unpolarized valence quark generalized part
 solution = "This conference proceeding presents the transverse and spatial structure of heavy B and D-mesons, extracting key observables from GPDs in the light-front framework, and discusses the complete particle structure through EMFFs and GFFs."
 +++
 
-**Authors:** S. Puhan and H. Dahiya  
-**Published in:** PoS HQL2023
 
-[Read on arXiv →](https://arxiv.org/abs/2408.07717)
+** ଲେଖକ: ** ଏସ୍ ପୁହାନ୍ ଏବଂ ଏଚ୍ ଡାହିଆ |  
+** ରେ ପ୍ରକାଶିତ: ** PoS HQL2023 |
+
+[ArXiv on ରେ ପ Read ନ୍ତୁ →] (https://arxiv.org/abs/2408.07717)

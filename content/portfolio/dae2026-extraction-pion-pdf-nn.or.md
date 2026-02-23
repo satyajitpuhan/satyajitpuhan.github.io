@@ -1,5 +1,5 @@
 +++
-title = "Extraction of Pion Parton Distribution Function using NN"
+title = "NN ବ୍ୟବହାର କରି ପିଆନ୍ ପାର୍ଟନ୍ ବଣ୍ଟନ କାର୍ଯ୍ୟର ନିଷ୍କାସନ |"
 date = 2026-02-01
 
 [extra]
@@ -11,7 +11,8 @@ challenge = "Extracting the probability distribution of partons inside a pion us
 solution = "We employ artificial neural networks to reconstruct the parton distribution functions (PDFs) of the pion from available data, minimizing model bias."
 +++
 
-**Authors:** Satyajit Puhan, Harleen Dahiya  
-**Published in:** DAE Symp.Nucl.Phys. 69 (2026) 849-850
 
-[View Details →](#)
+** ଲେଖକ: ** ସତ୍ୟଜିତ୍ ପୁହାନ୍, ହାର୍ଲେନ୍ ଡାହିଆ |  
+** ରେ ପ୍ରକାଶିତ: ** DAE Symp.Nucl.Phys। 69 (2026) 849-850
+
+[ବିବରଣୀ ଦେଖନ୍ତୁ →] (#)

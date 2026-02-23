@@ -1,5 +1,5 @@
 +++
-title = "Spin-1 unpolarized GPDs in light front dynamics"
+title = "ହାଲୁକା ସାମ୍ନା ଗତିଶୀଳତାରେ ସ୍ପିନ୍ -1 ଅଣପୋଲାରାଇଜଡ୍ ଜିପିଡି |"
 date = 2024-12-08
 
 [extra]
@@ -11,7 +11,8 @@ challenge = "We present the spin-1 unpolarized generalized parton distributions 
 solution = "This conference article presents the spin-1 unpolarized GPDs in the light-front framework, discussing the connection to form factors and structure functions relevant for DVCS and DVMP processes."
 +++
 
-**Authors:** S. Puhan, Narinder Kumar, and H. Dahiya  
-**Published in:** DAE Nuclear 2024
 
-[View Details →](#)
+** ଲେଖକ: ** ଏସ୍ ପୁହାନ୍, ନରିନ୍ଦର କୁମାର, ଏବଂ ଏଚ୍ ଡାହିଆ |  
+** ରେ ପ୍ରକାଶିତ: ** DAE ପରମାଣୁ 2024 |
+
+[ବିବରଣୀ ଦେଖନ୍ତୁ →] (#)

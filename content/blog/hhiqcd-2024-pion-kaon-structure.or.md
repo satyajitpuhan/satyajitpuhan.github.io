@@ -1,5 +1,5 @@
 +++
-title = "Pion and Kaon Structure at HHIQCD 2024 — Kyoto University"
+title = "HHIQCD 2024 ରେ ପିଆନ୍ ଏବଂ କାଓନ୍ ଗଠନ - କାଇଟୋ ବିଶ୍ୱବିଦ୍ୟାଳୟ |"
 date = 2024-11-01
 
 [extra]
@@ -7,20 +7,21 @@ feature_image = "images/blog/posts/hhiqcd-2024.png"
 post_image = "images/blog/posts/hhiqcd-2024.png"
 
 [taxonomies]
-tags = ["conference", "TMDs", "GPDs", "pion", "kaon"]
-categories = ["talks"]
+tags = [ "conference", "TMDs", "GPDs", "pion", "kaon",]
+categories = [ "talks",]
 +++
 
-**Talk Title:** Structural analysis of Pion and Kaon with distribution functions
 
-**Mode:** In person at HHIQCD, Kyoto University, Japan
+** ଟକ୍ ଆଖ୍ୟା: ** ବଣ୍ଟନ କାର୍ଯ୍ୟ ସହିତ ପିଅନ୍ ଏବଂ କାଓନ୍ ର ଗଠନମୂଳକ ବିଶ୍ଳେଷଣ |
 
-[View Talk →](https://indico.yukawa.kyoto-u.ac.jp/event/27/)
+** ମୋଡ୍: ** HHIQCD, ଜାପାନର କାଇଟୋ ବିଶ୍ୱବିଦ୍ୟାଳୟ |
 
-## Abstract
+[କଥାବାର୍ତ୍ତା ଦେଖନ୍ତୁ →] (https://indico.yukawa.kyoto-u.ac.jp/event/27/)
 
-Pion and kaon are one of the simplest meson structures to study the distribution function. In this work, we have calculated the time reversal quark transverse momentum-dependent parton distribution functions (TMDs) in the light-front based holographic model (LFHM) and quark model (LFQM) up to twist-4.
+## ବିସ୍ତୃତ
 
-We have presented the three dimensional structure of T-even TMDs for both the particles in both models. The transverse structure have been discussed with the help of two dimensional contour plot distribution in momentum space and average quark momenta in both the models. The T-even TMDs have also been compared for both the models and evolved to higher Q² to compare with available TMDs extraction data for the case of pion.
+ବଣ୍ଟନ କାର୍ଯ୍ୟକୁ ଅଧ୍ୟୟନ କରିବା ପାଇଁ ପିଆନ୍ ଏବଂ କାଓନ୍ ହେଉଛି ସରଳ ମେସନ୍ ଗଠନ | ଏହି କାର୍ଯ୍ୟରେ, ଆମେ ଲାଇଟ୍-ଫ୍ରଣ୍ଟ୍ ଆଧାରିତ ହୋଲୋଗ୍ରାଫିକ୍ ମଡେଲ୍ (LFHM) ଏବଂ କ୍ୱାର୍କ ମଡେଲ୍ (LFQM) ରେ ଟ୍ୱିଷ୍ଟ -4 ପର୍ଯ୍ୟନ୍ତ ସମୟ ରିଭର୍ସାଲ୍ କ୍ୱାର୍କ ଟ୍ରାନ୍ସଭର୍ସ ଗତି-ନିର୍ଭରଶୀଳ ପାର୍ଟନ୍ ବଣ୍ଟନ କାର୍ଯ୍ୟ (TMDs) ଗଣନା କରିଛୁ |
 
-The collinear parton distribution functions (PDFs) have also been investigated. The unpolarized f₁(x) PDF have been evolved through DGLAP evolution from Q² = 1 GeV² to 16 GeV² and found significant behavior with experimental results. The spatial structure have also been studied through leading twist GPDs and have been implicated to understand the form factors (FFs).
+ଆମେ ଉଭୟ ମଡେଲରେ ଉଭୟ କଣିକା ପାଇଁ T-even TMD ର ତିନୋଟି ଡାଇମେନ୍ସନାଲ୍ ଗଠନ ଉପସ୍ଥାପନ କରିଛୁ | ଗତିଶୀଳ ମଡେଲରେ ଦୁଇଟି ଡାଇମେନ୍ସନାଲ୍ କଣ୍ଟୁର ପ୍ଲଟ୍ ବଣ୍ଟନ ଏବଂ ଉଭୟ ମଡେଲରେ ହାରାହାରି କ୍ୱାର୍କ ମୁହୂର୍ତ୍ତ ସାହାଯ୍ୟରେ ଟ୍ରାନ୍ସଭର୍ସ ଗଠନ ଉପରେ ଆଲୋଚନା କରାଯାଇଛି | ଉଭୟ ମଡେଲଗୁଡିକ ପାଇଁ ଟି-ଏପରିକି ଟିଏମଡିଗୁଡିକ ମଧ୍ୟ ତୁଳନା କରାଯାଇଛି ଏବଂ ପିଆନ୍ ମାମଲାରେ ଉପଲବ୍ଧ TMDs ନିଷ୍କାସନ ତଥ୍ୟ ସହିତ ତୁଳନା କରିବାକୁ ଉଚ୍ଚ Q² ରେ ବିକଶିତ ହୋଇଛି |
+
+କଲିନାର୍ ପାର୍ଟନ୍ ବଣ୍ଟନ କାର୍ଯ୍ୟ (ପିଡିଏଫ୍) ମଧ୍ୟ ଅନୁସନ୍ଧାନ କରାଯାଇଛି | ଅଣପୋଲାରାଇଜଡ୍ f₁ (x) PDF DGLAP ବିବର୍ତ୍ତନ ମାଧ୍ୟମରେ Q² = 1 GeV² ରୁ 16 GeV² କୁ ବିକଶିତ ହୋଇଛି ଏବଂ ପରୀକ୍ଷାମୂଳକ ଫଳାଫଳ ସହିତ ମହତ୍ behavior ପୂର୍ଣ୍ଣ ଆଚରଣ ପାଇଛି | ଅଗ୍ରଣୀ ଟୁଇଷ୍ଟ ଜିପିଡି ମାଧ୍ୟମରେ ସ୍ଥାନିକ ସଂରଚନାକୁ ମଧ୍ୟ ଅଧ୍ୟୟନ କରାଯାଇଛି ଏବଂ ଫର୍ମ ଫ୍ୟାକ୍ଟର୍ (FF) କୁ ବୁ to ିବା ପାଇଁ ଜଡିତ |

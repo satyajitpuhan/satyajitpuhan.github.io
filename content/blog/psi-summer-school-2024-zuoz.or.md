@@ -1,20 +1,23 @@
 +++
-title = "PSI Particle Physics Summer School — Zuoz, Switzerland"
+title = "PSI କଣିକା ପଦାର୍ଥ ବିଜ୍ଞାନ ଗ୍ରୀଷ୍ମ ବିଦ୍ୟାଳୟ - ଜୁଜ୍, ସ୍ୱିଜରଲ୍ୟାଣ୍ଡ |"
 date = 2024-08-05
+
 [taxonomies]
-tags = ["Summer School", "Particle Physics", "PSI", "Switzerland"]
-categories = ["conferences"]
+tags = [ "Summer School", "Particle Physics", "PSI", "Switzerland",]
+categories = [ "conferences",]
+
 [extra]
 feature_image = "images/blog/posts/psi-zuoz-2024.png"
 post_image = "images/blog/posts/psi-zuoz-2024.png"
 +++
 
-**Event:** PSI Particle Physics Summer School — *From Low to High: Particle Physics at the Frontier*
 
-**Venue:** Lyceum Alpinum, Zuoz, Switzerland (Aug 4–10, 2024)
+** ଇଭେଣ୍ଟ: ** PSI କଣିକା ପଦାର୍ଥ ବିଜ୍ଞାନ ଗ୍ରୀଷ୍ମ ବିଦ୍ୟାଳୟ - * ନିମ୍ନରୁ ଉଚ୍ଚ: ସୀମାନ୍ତରେ କଣିକା ପଦାର୍ଥ ବିଜ୍ଞାନ *
 
-Attended this prestigious international summer school covering cutting-edge topics at the frontiers of particle physics, from precision measurements to high-energy collider experiments.
+** ସ୍ଥାନ: ** ଲାଇସେମ୍ ଆଲପିନାମ୍, ଜୁଜ୍, ସ୍ୱିଜରଲ୍ୟାଣ୍ଡ (ଅଗଷ୍ଟ 4-10, 2024)
 
-<!-- more -->
+ସଠିକତା ମାପଠାରୁ ଆରମ୍ଭ କରି ଉଚ୍ଚ-ଶକ୍ତି କୋଲାଇଡର୍ ପରୀକ୍ଷଣ ପର୍ଯ୍ୟନ୍ତ କଣିକା ପଦାର୍ଥ ବିଜ୍ଞାନର ସୀମାରେ ଅତ୍ୟାଧୁନିକ ବିଷୟଗୁଡ଼ିକୁ ଅନ୍ତର୍ଭୁକ୍ତ କରୁଥିବା ଏହି ସମ୍ମାନଜନକ ଆନ୍ତର୍ଜାତୀୟ ଗ୍ରୀଷ୍ମ ବିଦ୍ୟାଳୟରେ ଯୋଗ ଦେଇଥିଲେ |
 
-The program covered a wide range of topics including the Standard Model, beyond-the-Standard-Model physics, neutrino physics, and experimental techniques at current and future collider facilities.
+<! - ଅଧିକ ->
+
+ଏହି ପ୍ରୋଗ୍ରାମରେ ଷ୍ଟାଣ୍ଡାର୍ଡ ମଡେଲ୍, ଷ୍ଟାଣ୍ଡାର୍ଡ-ମଡେଲ୍ ଫିଜିକ୍ସ, ନ୍ୟୁଟ୍ରିନୋ ଫିଜିକ୍ସ ଏବଂ ସାମ୍ପ୍ରତିକ ଏବଂ ଭବିଷ୍ୟତର ଧକ୍କା ସୁବିଧାଗୁଡ଼ିକରେ ପରୀକ୍ଷାମୂଳକ କ ques ଶଳ ସହିତ ବିଭିନ୍ନ ବିଷୟ ଅନ୍ତର୍ଭୁକ୍ତ ହୋଇଥିଲା |

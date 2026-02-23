@@ -1,5 +1,5 @@
 +++
-title = "Internal structure of pion, kaon, and ρ meson — JINR Seminar"
+title = "ପିଆନ୍, କାଓନ୍, ଏବଂ ρ ମେସନ୍ ର ଆଭ୍ୟନ୍ତରୀଣ ଗଠନ - JINR ସେମିନାର୍ |"
 date = 2025-03-28
 
 [extra]
@@ -7,22 +7,23 @@ feature_image = "images/blog/posts/jinr-seminar-2025.png"
 post_image = "images/blog/posts/jinr-seminar-2025.png"
 
 [taxonomies]
-tags = ["seminar", "TMDs", "GPDs", "pion", "kaon", "rho"]
-categories = ["talks"]
+tags = [ "seminar", "TMDs", "GPDs", "pion", "kaon", "rho",]
+categories = [ "talks",]
 +++
 
-**Talk Title:** Internal structure of pion, kaon, and ρ meson in light front dynamics
 
-**Mode:** Zoom Meeting | **Place:** JINR, Dubna, Moscow
+** ଟକ୍ ଆଖ୍ୟା: ** ହାଲୁକା ସାମ୍ନା ଗତିଶୀଳତାରେ ପିଆନ୍, କାଓନ୍, ଏବଂ ρ ମେସନ୍ ର ଆଭ୍ୟନ୍ତରୀଣ ଗଠନ |
 
-[View Talk →](https://www.jinr.ru/posts/214775/)
+** ମୋଡ୍: ** ଜୁମ୍ ମିଟିଂ | ** ସ୍ଥାନ: ** JINR, Dubna, ମସ୍କୋ |
 
-## Abstract
+[କଥାବାର୍ତ୍ତା ଦେଖନ୍ତୁ →] (https://www.jinr.ru/posts/214775/)
 
-The talk focuses on studying the internal structure of pion, kaon, and ρ mesons within light-front models. We systematically explore transverse momentum-dependent parton distributions (TMDs), generalised parton distributions (GPDs), form factors (FFs), and parton distribution functions (PDFs) for these particles.
+## ବିସ୍ତୃତ
 
-Additionally, the mechanical properties of the pion and kaon are investigated by calculating pressure and shear distributions through GPDs. The charge radii of these particles are predicted as well, providing insight into their spatial structure.
+ଆଲୋକ-ସାମ୍ନା ମଡେଲ ମଧ୍ୟରେ ପିଆନ୍, କାଓନ୍, ଏବଂ ρ ମେସନ୍ ର ଆଭ୍ୟନ୍ତରୀଣ ଗଠନ ଉପରେ ଅଧ୍ୟୟନ ଉପରେ ଧ୍ୟାନ ଦିଆଯାଇଛି | ଆମେ ନିୟମିତ ଭାବରେ ଏହି କଣିକାଗୁଡ଼ିକ ପାଇଁ ଟ୍ରାନ୍ସଭର୍ସ ଗତି-ନିର୍ଭରଶୀଳ ପାର୍ଟନ୍ ବଣ୍ଟନ (ଟିଏମଡି), ଜେନେରାଲାଇଜଡ୍ ପାର୍ଟନ୍ ବଣ୍ଟନ (ଜିପିଡି), ଫର୍ମ ଫ୍ୟାକ୍ଟର୍ (FF), ଏବଂ ପାର୍ଟନ୍ ବଣ୍ଟନ କାର୍ଯ୍ୟ (ପିଡିଏଫ୍) ଅନୁସନ୍ଧାନ କରୁ |
 
-To further understand the behaviour of the pion and kaon in nuclear environments, these distributions are studied in medium using the chiral SU(3) quark mean field model. The PDFs are evolved to higher Q² scales to facilitate comparison with experimental data.
+ଅତିରିକ୍ତ ଭାବରେ, ପିଆନ୍ ଏବଂ କାଓନ୍ ର ଯାନ୍ତ୍ରିକ ଗୁଣଗୁଡିକ ଜିପିଡି ମାଧ୍ୟମରେ ଚାପ ଏବଂ ଶିଅର ବଣ୍ଟନକୁ ଗଣନା କରି ଅନୁସନ୍ଧାନ କରାଯାଏ | ଏହି କଣିକାର ଚାର୍ଜ ରେଡି ମଧ୍ୟ ପୂର୍ବାନୁମାନ କରାଯାଏ, ସେମାନଙ୍କର ସ୍ଥାନିକ ଗଠନ ବିଷୟରେ ଅନ୍ତର୍ନିହିତ ସୂଚନା ପ୍ରଦାନ କରେ |
 
-The upcoming **Electron-Ion Collider** and **NICA** will serve as crucial platforms to test and refine these theoretical predictions.
+ଆଣବିକ ପରିବେଶରେ ପିଆନ୍ ଏବଂ କାଓନର ଆଚରଣକୁ ଅଧିକ ବୁ To ିବା ପାଇଁ, ଏହି ବଣ୍ଟନଗୁଡ଼ିକ ଚିରାଲ୍ SU (3) କ୍ୱାର୍କ ଅର୍ଥ ଫିଲ୍ଡ ମଡେଲ୍ ବ୍ୟବହାର କରି ମଧ୍ୟମ ଭାବରେ ଅଧ୍ୟୟନ କରାଯାଏ | ପରୀକ୍ଷାମୂଳକ ତଥ୍ୟ ସହିତ ତୁଳନାକୁ ସହଜ କରିବା ପାଇଁ PDF ଗୁଡିକ ଉଚ୍ଚ Q² ମାପରେ ବିକଶିତ ହୋଇଛି |
+
+ଆଗାମୀ ** ଇଲେକ୍ଟ୍ରୋନ-ଆଇନ୍ କଲିଡର୍ ** ଏବଂ ** NICA ** ଏହି ତତ୍ତ୍ୱିକ ଭବିଷ୍ୟବାଣୀଗୁଡିକ ପରୀକ୍ଷା ଏବଂ ପରିଷ୍କାର କରିବା ପାଇଁ ଗୁରୁତ୍ୱପୂର୍ଣ୍ଣ ପ୍ଲାଟଫର୍ମ ଭାବରେ କାର୍ଯ୍ୟ କରିବ |

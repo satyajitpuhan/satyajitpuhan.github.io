@@ -1,5 +1,5 @@
 +++
-title = "Valence quark structure of rho meson using light-front quark model"
+title = "ହାଲୁକା ସାମ୍ନା କ୍ୱାର୍କ ମଡେଲ୍ ବ୍ୟବହାର କରି ରୋ ମେସନ୍ ର ଭାଲେନ୍ସ କ୍ୱାର୍କ ଗଠନ |"
 date = 2025-11-01
 
 [extra]
@@ -11,7 +11,8 @@ challenge = "We investigate the valence quark structure of the ρ meson using th
 solution = "This comprehensive study reveals the rich internal structure of the ρ meson, providing predictions for its TMDs, GPDs, and form factors that can guide future experimental measurements of vector meson structure."
 +++
 
-**Authors:** S. Puhan, S. Sharma, N. Kumar, and H. Dahiya  
-**Published in:** Accepted in PRD
 
-[Read on arXiv →](https://arxiv.org/abs/2511.10981)
+** ଲେଖକ: ** ଏସ୍ ପୁହାନ୍, ଏସ୍ ଶର୍ମା, ଏନ କୁମାର, ଏବଂ ଏଚ୍ ଡାହିଆ |  
+** ରେ ପ୍ରକାଶିତ: ** PRD ରେ ଗ୍ରହଣ କରାଯାଇଛି |
+
+[ArXiv on ରେ ପ Read ନ୍ତୁ →] (https://arxiv.org/abs/2511.10981)

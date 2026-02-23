@@ -1,5 +1,5 @@
 +++
-title = "Radiative transitions of psi-meson"
+title = "Psi-meson ର ବିକିରଣ ପରିବର୍ତ୍ତନ |"
 date = 2024-12-09
 
 [extra]
@@ -11,7 +11,8 @@ challenge = "We present the radiative transition properties of the ψ-meson (J/�
 solution = "This conference article provides predictions for radiative transition properties of charmonia states using the light-front framework, contributing to the understanding of quarkonium spectroscopy."
 +++
 
-**Authors:** A. Yadav, S. Puhan, and H. Dahiya  
-**Published in:** DAE Nuclear 2024
 
-[View Details →](#)
+** ଲେଖକ: ** ଏ ଯାଦବ, ଏସ୍ ପୁହାନ୍, ଏବଂ ଏଚ୍ ଡାହିଆ |  
+** ରେ ପ୍ରକାଶିତ: ** DAE ପରମାଣୁ 2024 |
+
+[ବିବରଣୀ ଦେଖନ୍ତୁ →] (#)

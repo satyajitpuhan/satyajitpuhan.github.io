@@ -1,5 +1,5 @@
 +++
-title = "Pion in asymmetric nuclear medium"
+title = "ଅସୀମିତ ପରମାଣୁ ମାଧ୍ୟମରେ ପିଆନ୍ |"
 date = 2024-12-17
 
 [extra]
@@ -11,7 +11,8 @@ challenge = "We study the pion properties in asymmetric nuclear medium using the
 solution = "This conference article presents predictions for pion properties in asymmetric nuclear environments, demonstrating how isospin asymmetry affects the pion's internal structure."
 +++
 
-**Authors:** N. Kaur, S. Puhan, A. Kumar, and H. Dahiya  
-**Published in:** DAE HEP 2024
 
-[View Details →](#)
+** ଲେଖକ: ** N. Kaur, S. Puhan, A. Kumar, ଏବଂ H. Dahiya |  
+** ରେ ପ୍ରକାଶିତ: ** DAE HEP 2024 |
+
+[ବିବରଣୀ ଦେଖନ୍ତୁ →] (#)

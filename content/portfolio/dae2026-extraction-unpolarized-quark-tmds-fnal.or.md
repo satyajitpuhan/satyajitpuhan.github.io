@@ -1,5 +1,5 @@
 +++
-title = "Extraction of unpolarized quark TMDs of proton from FNAL-E-0605 data using iminuit"
+title = "ଇମିନ୍ୟୁଟ୍ ବ୍ୟବହାର କରି FNAL-E-0605 ତଥ୍ୟରୁ ପ୍ରୋଟନର ଅଣପୋଲାରାଇଜଡ୍ କ୍ୱାର୍କ TMD ର ଉତ୍ତୋଳନ |"
 date = 2026-02-01
 
 [extra]
@@ -11,7 +11,8 @@ challenge = "We perform the extraction of unpolarized quark TMDs of the proton u
 solution = "This study provides a refined extraction of unpolarized TMDs using modern computational techniques and precision data."
 +++
 
-**Authors:** Abhishek K. P, Reetanshu Pandey, Satyajit Puhan, Suneel Dutt, Harleen Dahiya et al.  
-**Published in:** DAE Symp.Nucl.Phys. 69 (2026) 877-878
 
-[View Details →](#)
+** ଲେଖକ: ** ଅଭିଷେକ କେ।  
+** ରେ ପ୍ରକାଶିତ: ** DAE Symp.Nucl.Phys। 69 (2026) 877-878
+
+[ବିବରଣୀ ଦେଖନ୍ତୁ →] (#)

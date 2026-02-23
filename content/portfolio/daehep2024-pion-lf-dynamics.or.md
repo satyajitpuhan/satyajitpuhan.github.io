@@ -1,5 +1,5 @@
 +++
-title = "Valence quark structure of pion using light front dynamics"
+title = "ହାଲୁକା ସାମ୍ନା ଗତିଶୀଳତା ବ୍ୟବହାର କରି ପିଅନର ଭାଲେନ୍ସ କ୍ୱାର୍କ ଗଠନ |"
 date = 2024-12-15
 
 [extra]
@@ -11,7 +11,8 @@ challenge = "We investigate the leading twist valence quark distribution functio
 solution = "This conference article provides insights into the pion's valence quark structure using light-front dynamics, highlighting the dominant S-wave contribution to TMDs and PDFs."
 +++
 
-**Authors:** S. Puhan and H. Dahiya  
-**Published in:** DAE HEP 2024
 
-[View Details →](#)
+** ଲେଖକ: ** ଏସ୍ ପୁହାନ୍ ଏବଂ ଏଚ୍ ଡାହିଆ |  
+** ରେ ପ୍ରକାଶିତ: ** DAE HEP 2024 |
+
+[ବିବରଣୀ ଦେଖନ୍ତୁ →] (#)

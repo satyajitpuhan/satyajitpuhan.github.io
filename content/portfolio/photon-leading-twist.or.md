@@ -1,5 +1,5 @@
 +++
-title = "Photon Leading Twist Transverse Momentum Dependent Parton Distributions"
+title = "ଫୋଟନ୍ ଅଗ୍ରଣୀ ଟ୍ୱିଷ୍ଟ୍ ଟ୍ରାନ୍ସଭର୍ସ ମୁହୂର୍ତ୍ତ ନିର୍ଭରଶୀଳ ପାର୍ଟନ୍ ବଣ୍ଟନ |"
 date = 2025-01-01
 
 [extra]
@@ -11,7 +11,8 @@ challenge = "We investigate the leading twist transverse momentum-dependent part
 solution = "This paper provides the first comprehensive study of leading twist TMDs for the photon using light-front techniques, contributing to the topical collection on spin-1 observables in EPJA."
 +++
 
-**Authors:** S. Puhan, N. Kumar and H. Dahiya  
-**Published in:** Eur. Phys. J. A 61 (2025)
 
-[Read on arXiv →](https://arxiv.org/abs/2408.07714)
+** ଲେଖକ: ** ଏସ୍ ପୁହାନ୍, ଏନ କୁମାର ଏବଂ ଏଚ୍ ଡାହିଆ |  
+** ରେ ପ୍ରକାଶିତ: ** ୟୁରୋ | ପଦାର୍ଥ J. A 61 (2025)
+
+[ArXiv on ରେ ପ Read ଼ନ୍ତୁ] (https://arxiv.org/abs/2408.07714)

@@ -1,5 +1,5 @@
 +++
-title = "In-medium pseudoscalar meson properties"
+title = "ଇନ୍-ମିଡିୟମ୍ ସିଉଡୋସ୍କାଲାର୍ ମେସନ୍ ଗୁଣ |"
 date = 2024-12-11
 
 [extra]
@@ -11,7 +11,8 @@ challenge = "We study the in-medium properties of pseudoscalar mesons using the 
 solution = "This conference article presents the nuclear medium effects on pseudoscalar meson properties, providing insights into how the dense nuclear environment modifies the internal structure of mesons."
 +++
 
-**Authors:** Anshu Gautam, S. Puhan, and H. Dahiya  
-**Published in:** DAE Nuclear 2024
 
-[View Details →](#)
+** ଲେଖକ: ** ଅନୁସୁ ଗ aut ତମ, ଏସ୍ ପୁହାନ୍, ଏବଂ ଏଚ୍ ଡାହିଆ |  
+** ରେ ପ୍ରକାଶିତ: ** DAE ପରମାଣୁ 2024 |
+
+[ବିବରଣୀ ଦେଖନ୍ତୁ →] (#)

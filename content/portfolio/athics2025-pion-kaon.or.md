@@ -1,5 +1,5 @@
 +++
-title = "Leading-twist TMDs for pion and kaon using power law wave functions"
+title = "ପାୱାର୍ ଆଇନ୍ ତରଙ୍ଗ କାର୍ଯ୍ୟ ବ୍ୟବହାର କରି ପିଅନ୍ ଏବଂ କାଓନ୍ ପାଇଁ ଅଗ୍ରଣୀ-ଟ୍ୱିଷ୍ଟ୍ ଟିଏମଡିଗୁଡିକ |"
 date = 2025-01-10
 
 [extra]
@@ -11,7 +11,8 @@ challenge = "We investigate the leading-twist transverse momentum-dependent part
 solution = "This conference proceeding presents leading-twist TMD predictions for light mesons using power-law wave function parametrizations, facilitating comparisons with other model approaches."
 +++
 
-**Authors:** S. Puhan, and H. Dahiya  
-**Published in:** ATHICS 2025
 
-[View Details →](#)
+** ଲେଖକ: ** ଏସ୍ ପୁହାନ୍, ଏବଂ ଏଚ୍ ଡାହିଆ |  
+** ରେ ପ୍ରକାଶିତ: ** ATHICS 2025 |
+
+[ବିବରଣୀ ଦେଖନ୍ତୁ →] (#)

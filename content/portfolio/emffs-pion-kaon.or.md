@@ -1,5 +1,5 @@
 +++
-title = "Scalar, vector and tensor electromagnetic form factors of pion and kaon"
+title = "ସ୍କାଲାର୍, ଭେକ୍ଟର ଏବଂ ଟେନସର୍ ଇଲେକ୍ଟ୍ରୋମ୍ୟାଗ୍ନେଟିକ୍ ଫର୍ମ ଫ୍ୟାକ୍ଟର୍ ପିଅନ୍ ଏବଂ କାଓନ୍ |"
 date = 2025-05-15
 
 [extra]
@@ -11,7 +11,8 @@ challenge = "We compute the scalar, vector, and tensor electromagnetic form fact
 solution = "This work provides a unified study of all three types of electromagnetic form factors for light pseudoscalar mesons, offering predictions that serve as benchmarks for comparison with future experimental measurements at JLab and EIC."
 +++
 
-**Authors:** S. Puhan and H. Dahiya  
-**Published in:** Phys. Rev. D 111 (2025)
 
-[Read on INSPIRE →](https://inspirehep.net/literature/2918260)
+** ଲେଖକ: ** ଏସ୍ ପୁହାନ୍ ଏବଂ ଏଚ୍ ଡାହିଆ |  
+** ରେ ପ୍ରକାଶିତ: ** ପଦାର୍ଥ | Rev. D 111 (2025)
+
+[INSPIRE on ରେ ପ Read ନ୍ତୁ →] (https://inspirehep.net/literature/2918260)

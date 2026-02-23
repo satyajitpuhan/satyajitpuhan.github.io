@@ -1,20 +1,23 @@
 +++
-title = "ICFHEP 2025 — IIT Bhilai, Chhattisgarh"
+title = "ICFHEP 2025 - IIT Bhilai, ଛତିଶଗଡ |"
 date = 2025-02-14
+
 [taxonomies]
-tags = ["Conference", "ICFHEP", "IIT Bhilai"]
-categories = ["conferences"]
+tags = [ "Conference", "ICFHEP", "IIT Bhilai",]
+categories = [ "conferences",]
+
 [extra]
 feature_image = "images/blog/posts/icfhep-2025.png"
 post_image = "images/blog/posts/icfhep-2025.png"
 +++
 
-**Event:** International Conference on Frontiers of High Energy Physics (ICFHEP)
 
-**Venue:** Indian Institute of Technology Bhilai, Chhattisgarh (Feb 13–15, 2025)
+** ଇଭେଣ୍ଟ: ** ଉଚ୍ଚ ଶକ୍ତି ପଦାର୍ଥ ବିଜ୍ଞାନର ସୀମାନ୍ତ ଉପରେ ଆନ୍ତର୍ଜାତୀୟ ସମ୍ମିଳନୀ (ICFHEP)
 
-Participated in this international conference during my visiting fellowship at IIT Bhilai, where I also worked with Prof. Sabyasachi Ghosh on applications of the NJL model for understanding hadron structure.
+** ସ୍ଥାନ: ** ଇଣ୍ଡିଆନ୍ ଇନଷ୍ଟିଚ୍ୟୁଟ୍ ଅଫ୍ ଟେକ୍ନୋଲୋଜି ଭିଲାଇ, ଛତିଶଗଡ (ଫେବୃଆରୀ 13-15, 2025)
 
-<!-- more -->
+ଆଇଆଇଟି ଭିଲାଇରେ ମୋର ଭ୍ରମଣ ଫେଲୋସିପ୍ ସମୟରେ ଏହି ଆନ୍ତର୍ଜାତୀୟ ସମ୍ମିଳନୀରେ ଅଂଶଗ୍ରହଣ କରିଥିଲି, ଯେଉଁଠାରେ ମୁଁ ହାଡ୍ରନ୍ ଗଠନ ବୁ understanding ିବା ପାଇଁ NJL ମଡେଲର ପ୍ରୟୋଗରେ ପ୍ରଫେସର ସାବ୍ୟାସାଚି ଘୋଷଙ୍କ ସହିତ ମଧ୍ୟ କାର୍ଯ୍ୟ କରିଥିଲି |
 
-The conference brought together leading researchers in theoretical and experimental high energy physics, with sessions covering QCD, hadron physics, and beyond-the-Standard-Model theories.
+<! - ଅଧିକ ->
+
+ଏହି ସମ୍ମିଳନୀରେ QCD, ହାଡ୍ରନ୍ ଫିଜିକ୍ସ ଏବଂ ଷ୍ଟାଣ୍ଡାର୍ଡ-ମଡେଲ୍ ଥିଓରୀଗୁଡିକର ଅଧିବେଶନ ସହିତ ଥିଓରିିକାଲ୍ ଏବଂ ପରୀକ୍ଷାମୂଳକ ଉଚ୍ଚ ଶକ୍ତି ପଦାର୍ଥ ବିଜ୍ଞାନରେ ଅଗ୍ରଣୀ ଅନୁସନ୍ଧାନକାରୀମାନେ ଏକତ୍ରିତ ହୋଇଥିଲେ |

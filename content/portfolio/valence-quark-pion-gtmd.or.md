@@ -1,5 +1,5 @@
 +++
-title = "Understanding the Valence Quark Structure of the Pion through GTMDs"
+title = "GTMD ମାଧ୍ୟମରେ ପିଅନର ଭାଲେନ୍ସ କ୍ୱାର୍କ ଗଠନକୁ ବୁ .ିବା |"
 date = 2025-04-01
 
 [extra]
@@ -11,7 +11,8 @@ challenge = "We investigate the generalized transverse momentum-dependent distri
 solution = "This work provides a comprehensive analysis of pion GTMDs, offering a unified description of the pion's internal structure through the mother distributions that reduce to TMDs, GPDs, and form factors in appropriate limits."
 +++
 
-**Authors:** S. Puhan, S. Sharma, N. Kumar and H. Dahiya  
-**Published in:** PTEP ptaf100 (2025)
 
-[Read on INSPIRE →](https://inspirehep.net/literature/2914151)
+** ଲେଖକ: ** ଏସ୍ ପୁହାନ୍, ଏସ୍ ଶର୍ମା, ଏନ କୁମାର ଏବଂ ଏଚ୍ ଡାହିଆ |  
+** ରେ ପ୍ରକାଶିତ: ** PTEP ptaf100 (2025)
+
+[INSPIRE on ରେ ପ Read ନ୍ତୁ →] (https://inspirehep.net/literature/2914151)

@@ -1,5 +1,5 @@
 +++
-title = "D and D* mesons in isospin asymmetric nuclear medium"
+title = "ଆଇସୋସ୍ପିନ୍ ଅସୀମେଟ୍ରିକ୍ ପରମାଣୁ ମାଧ୍ୟମରେ D ଏବଂ D * ମେସନ୍ |"
 date = 2025-06-15
 
 [extra]
@@ -11,7 +11,8 @@ challenge = "We study the properties of D and D* mesons in isospin asymmetric nu
 solution = "This work reveals how the isospin asymmetric nuclear environment modifies the properties of open-charm D and D* mesons, providing predictions relevant for heavy-ion collision experiments at FAIR and NICA."
 +++
 
-**Authors:** A. Gautam, D. Singh, N. Kaur, S. Puhan, S. Dutt, H. Dahiya, and A. Kumar  
-**Published in:** PTEP ptaf135 (2025)
 
-[Read on INSPIRE →](https://inspirehep.net/literature/2932525)
+** ଲେଖକ: ** ଏ ଗ aut ତମ, ଡି ସିଂ, ଏନ କ ur ର, ଏସ୍ ପୁହାନ୍, ଏସ୍ ଦତ୍ତ, ଏଚ୍ ଡାହିଆ, ଏବଂ ଏ କୁମାର  
+** ରେ ପ୍ରକାଶିତ: ** PTEP ptaf135 (2025)
+
+[INSPIRE on ରେ ପ Read ନ୍ତୁ →] (https://inspirehep.net/literature/2932525)

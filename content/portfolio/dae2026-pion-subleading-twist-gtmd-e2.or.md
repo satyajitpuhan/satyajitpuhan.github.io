@@ -1,5 +1,5 @@
 +++
-title = "Pion sub-leading twist generalized transverse momentum dependent parton distributions E2 in light-front quark model"
+title = "ହାଲୁକା ସାମ୍ମୁଖ୍ୟ କ୍ୱାର୍କ ମଡେଲରେ ପିଅନ୍ ସବ୍-ଅଗ୍ରଣୀ ଟ୍ୱିଷ୍ଟ ଜେନେରାଲାଇଜଡ୍ ଟ୍ରାନ୍ସଭର୍ସ ଗତି ନିର୍ଭରଶୀଳ ପାର୍ଟନ୍ ବଣ୍ଟନ E2 |"
 date = 2026-02-01
 
 [extra]
@@ -11,7 +11,8 @@ challenge = "We investigate the sub-leading twist GTMDs, specifically E2, for th
 solution = "Our results offer an improved understanding of the spin-orbit correlations and multi-parton dynamics inside the pion beyond the leading twist."
 +++
 
-**Authors:** Satyajit Puhan, Shubham Sharma, Narinder Kumar, Harleen Dahiya  
-**Published in:** DAE Symp.Nucl.Phys. 69 (2026) 859-860
 
-[View Details →](#)
+** ଲେଖକ: ** ସତ୍ୟଜିତ୍ ପୁହାନ୍, ଶୁଭମ୍ ଶର୍ମା, ନରିନ୍ଦର କୁମାର, ହାର୍ଲିନ୍ ଡାହିଆ |  
+** ରେ ପ୍ରକାଶିତ: ** DAE Symp.Nucl.Phys। 69 (2026) 859-860
+
+[ବିବରଣୀ ଦେଖନ୍ତୁ →] (#)

@@ -1,5 +1,5 @@
 +++
-title = "Effect of Asymmetric Nuclear Medium on the Valence Quark Structure of the Kaons"
+title = "କ on ନ୍ସର ଭାଲେନ୍ସ କ୍ୱାର୍କ ଗଠନ ଉପରେ ଅସ୍ମିତିକ ପରମାଣୁ ମଧ୍ୟମ ର ପ୍ରଭାବ |"
 date = 2025-03-01
 
 [extra]
@@ -11,7 +11,8 @@ challenge = "We investigate the effect of an asymmetric nuclear medium on the va
 solution = "This work provides insights into how asymmetric nuclear matter modifies the internal structure of kaons, demonstrating significant differences between kaon and antikaon distributions and their sensitivity to the nuclear environment."
 +++
 
-**Authors:** D. Singh, S. Puhan, N. Kaur, M. Kaur, S. Dutt, A. Kumar, and H. Dahiya  
-**Published in:** Phys. Rev. D 111 (2025)
 
-[Read on INSPIRE →](https://inspirehep.net/literature/2843133)
+** ଲେଖକ: ** ଡି ସିଂ, ଏସ୍ ପୁହାନ୍, ଏନ କ ur ର, ଏମ୍ କ ur ର, ଏସ୍ ଦତ୍ତ, ଏ କୁମାର, ଏବଂ ଏଚ୍ ଡାହିଆ  
+** ରେ ପ୍ରକାଶିତ: ** ପଦାର୍ଥ | Rev. D 111 (2025)
+
+[INSPIRE on ରେ ପ Read ନ୍ତୁ →] (https://inspirehep.net/literature/2843133)

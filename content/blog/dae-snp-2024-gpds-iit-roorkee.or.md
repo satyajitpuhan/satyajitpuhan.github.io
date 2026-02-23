@@ -1,21 +1,24 @@
 +++
-title = "Spin-1 Unpolarized GPDs — DAE SNP 2024, IIT Roorkee"
+title = "ସ୍ପିନ୍ -1 ଅଣପୋଲାରାଇଜଡ୍ ଜିପିଡି - DAE SNP 2024, IIT ରୁର୍କି |"
 date = 2024-12-07
+
 [taxonomies]
-tags = ["Conference Talk", "DAE Symposium", "GPDs", "Vector Mesons"]
+tags = [ "Conference Talk", "DAE Symposium", "GPDs", "Vector Mesons",]
+
 [extra]
 feature_image = "images/blog/posts/dae-snp-2024.png"
 post_image = "images/blog/posts/dae-snp-2024.png"
 +++
 
-**Talk Title:** Spin-1 unpolarized GPDs in Light-front formalism
 
-**Venue:** [68th DAE Symposium on Nuclear Physics (SNP 2024)](https://sympnp.org/snp2025/), IIT Roorkee, India
+** କଥାବାର୍ତ୍ତା ଆଖ୍ୟା: ** ହାଲୁକା ସାମ୍ମୁଖ୍ୟ formal ପଚାରିକତାରେ ସ୍ପିନ୍ -1 ଅଣପୋଲାରାଇଜଡ୍ ଜିପିଡି |
 
-**Mode:** In person
+** ସ୍ଥାନ: ** [ଆଣବିକ ପଦାର୍ଥ ବିଜ୍ଞାନ ଉପରେ 68 ତମ DAE ସମ୍ମିଳନୀ (SNP 2024)] (https://sympnp.org/snp2025/), ଆଇଆଇଟି ରାଉରକେଲା, ଭାରତ
 
-I presented our work on the spin-1 unpolarized generalized parton distributions (GPDs) in the light-front formalism. The talk covered the chiral-even vector quark GPDs of the ρ meson derived using the light-cone quark model, along with the structure functions corresponding to the Rosenbluth scattering cross section.
+** ମୋଡ୍: ** ବ୍ୟକ୍ତିଗତ ଭାବରେ |
 
-<!-- more -->
+ମୁଁ ସ୍ପିନ୍ -1 ଅଣପୋଲାରାଇଜଡ୍ ଜେନେରାଲାଇଜଡ୍ ପାର୍ଟନ୍ ବଣ୍ଟନ (ଜିପିଡି) ଉପରେ ଆମର କାର୍ଯ୍ୟକୁ ହାଲୁକା ସାମ୍ମୁଖ୍ୟରେ ଉପସ୍ଥାପନ କଲି | ଏହି ଆଲୋଚନାରେ ରୋଜେନବ୍ଲୁଥ୍ ବିଛାଇବା କ୍ରସ୍ ବିଭାଗ ସହିତ ଥିବା ସଂରଚନା କାର୍ଯ୍ୟଗୁଡ଼ିକ ସହିତ ହାଲୁକା କୋନ୍ କ୍ୱାର୍କ ମଡେଲ୍ ବ୍ୟବହାର କରି ଉତ୍ପନ୍ନ ρ ମେସନ୍ ର ଚିରାଲ୍-ଏପରିକି ଭେକ୍ଟର କ୍ୱାର୍କ ଜିପିଡିଗୁଡିକ ଆବୃତ ହୋଇଥିଲା |
 
-The charge, magnetic, and quadrupole form factors were extracted from the vector quark GPDs and compared with theoretical predictions and lattice simulation results. We also discussed the parton distribution functions obtained in the forward limit of GPDs, evolved through NNLO DGLAP evolution.
+<! - ଅଧିକ ->
+
+ଚାର୍ଜ, ଚୁମ୍ବକୀୟ ଏବଂ ଚତୁର୍ଭୁଜ ଫର୍ମ କାରକଗୁଡିକ ଭେକ୍ଟର କ୍ୱାର୍କ ଜିପିଡିରୁ ବାହାର କରାଯାଇଥିଲା ଏବଂ ତତ୍ତ୍ୱଗତ ପୂର୍ବାନୁମାନ ଏବଂ ଲାଟାଇସ୍ ସିମୁଲେସନ୍ ଫଳାଫଳ ସହିତ ତୁଳନା କରାଯାଇଥିଲା | GPD ଗୁଡ଼ିକର ଅଗ୍ରଗାମୀ ସୀମାରେ ପ୍ରାପ୍ତ ପାର୍ଟନ୍ ବଣ୍ଟନ କାର୍ଯ୍ୟଗୁଡ଼ିକ ବିଷୟରେ ମଧ୍ୟ ଆଲୋଚନା କରିଥିଲୁ, NNLO DGLAP ବିବର୍ତ୍ତନ ମାଧ୍ୟମରେ ବିକଶିତ |

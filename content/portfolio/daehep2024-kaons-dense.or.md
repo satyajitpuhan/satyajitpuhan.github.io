@@ -1,5 +1,5 @@
 +++
-title = "Kaons in dense nuclear medium"
+title = "ଘନ ଆଣବିକ ମାଧ୍ୟମରେ କାଓନ୍ସ |"
 date = 2024-12-16
 
 [extra]
@@ -11,7 +11,8 @@ challenge = "We investigate the properties of kaons in dense nuclear medium usin
 solution = "This conference article presents predictions for kaon properties in dense nuclear matter, contributing to the understanding of strangeness in nuclear environments."
 +++
 
-**Authors:** D. Singh, S. Puhan, N. Kaur, A. Kumar, and H. Dahiya  
-**Published in:** DAE HEP 2024
 
-[View Details →](#)
+** ଲେଖକ: ** ଡି ସିଂ, ଏସ୍ ପୁହାନ୍, ଏନ କ ur ର, ଏ କୁମାର, ଏବଂ ଏଚ୍ ଡାହିଆ |  
+** ରେ ପ୍ରକାଶିତ: ** DAE HEP 2024 |
+
+[ବିବରଣୀ ଦେଖନ୍ତୁ →] (#)

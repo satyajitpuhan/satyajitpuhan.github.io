@@ -1,5 +1,5 @@
 +++
-title = "Internal Structure of Light Mesons — Prof. C. R. Ji's Group"
+title = "ହାଲୁକା ମେସନର ଆଭ୍ୟନ୍ତରୀଣ ଗଠନ - ପ୍ରଫେସର ସି ଆର ଜିଙ୍କ ଗୋଷ୍ଠୀ |"
 date = 2025-07-04
 
 [extra]
@@ -7,16 +7,17 @@ feature_image = "images/blog/posts/crji-seminar.png"
 post_image = "images/blog/posts/crji-seminar.png"
 
 [taxonomies]
-tags = ["seminar", "TMDs", "GPDs"]
-categories = ["talks"]
+tags = [ "seminar", "TMDs", "GPDs",]
+categories = [ "talks",]
 +++
 
-**Talk Title:** Internal Structure of Light Mesons through Distribution Functions
 
-**Mode:** Zoom Meeting | **Group:** Prof. C. R. Ji's Research Group, NCSU, USA
+** କଥାବାର୍ତ୍ତା ଆଖ୍ୟା: ** ବଣ୍ଟନ କାର୍ଯ୍ୟ ମାଧ୍ୟମରେ ହାଲୁକା ମେସନର ଆଭ୍ୟନ୍ତରୀଣ ଗଠନ |
 
-[View Talk →](https://crjiresearchgroup.wordpress.ncsu.edu/group-meetings/archives-satyajit-puhan/)
+** ମୋଡ୍: ** ଜୁମ୍ ମିଟିଂ | ** ଗୋଷ୍ଠୀ: ** ପ୍ରଫେସର ସି ଆର ଜିଙ୍କ ଅନୁସନ୍ଧାନ ଗୋଷ୍ଠୀ, NCSU, ଯୁକ୍ତରାଷ୍ଟ୍ର |
 
-## Abstract
+[କଥାବାର୍ତ୍ତା ଦେଖନ୍ତୁ →] (https://crjiresearchgroup.wordpress.ncsu.edu/group-meetings/archives-satyajit-puhan/)
 
-In this talk, I discuss the internal structure of light mesons such as the pion, kaon, and rho using light-front models. The study focuses on valence quark-level Parton Distribution Functions (PDFs), Generalized Parton Distributions (GPDs), and Transverse Momentum Dependent distributions (TMDs). Additionally, I highlight the mechanical properties of the pion and explore how these distributions behave in a nuclear medium.
+## ବିସ୍ତୃତ
+
+ଏହି କଥାବାର୍ତ୍ତାରେ, ମୁଁ ହାଲୁକା ସାମ୍ନା ମଡେଲ ବ୍ୟବହାର କରି ପିଆନ୍, କାଓନ୍, ଏବଂ ରୋ ଭଳି ହାଲୁକା ମେସନ୍ ର ଆଭ୍ୟନ୍ତରୀଣ ଗଠନ ବିଷୟରେ ଆଲୋଚନା କରେ | ଅଧ୍ୟୟନ ଭାଲେନ୍ସ କ୍ୱାର୍କ ସ୍ତରୀୟ ପାର୍ଟନ୍ ବିତରଣ କାର୍ଯ୍ୟ (ପିଡିଏଫ୍), ଜେନେରାଲାଇଜଡ୍ ପାର୍ଟନ୍ ବଣ୍ଟନ (ଜିପିଡି) ଏବଂ ଟ୍ରାନ୍ସଭର୍ସ ମୋମେଣ୍ଟମ୍ ନିର୍ଭରଶୀଳ ବଣ୍ଟନ (ଟିଏମଡି) ଉପରେ ଧ୍ୟାନ ଦେଇଥାଏ | ଅତିରିକ୍ତ ଭାବରେ, ମୁଁ ପିଅନର ଯାନ୍ତ୍ରିକ ଗୁଣଗୁଡିକୁ ହାଇଲାଇଟ୍ କରେ ଏବଂ ପରମାଣୁ ମାଧ୍ୟମରେ ଏହି ବଣ୍ଟନଗୁଡ଼ିକ କିପରି ବ୍ୟବହାର କରେ ତାହା ଅନୁସନ୍ଧାନ କରେ |

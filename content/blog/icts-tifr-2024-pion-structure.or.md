@@ -1,5 +1,5 @@
 +++
-title = "Pion Structure at ICTS-TIFR 2024 — Bengaluru"
+title = "ICTS-TIFR 2024 ରେ ପିଅନ୍ ଗଠନ - ବେଙ୍ଗାଲୁରୁ |"
 date = 2024-02-01
 
 [extra]
@@ -7,18 +7,19 @@ feature_image = "images/blog/posts/icts-tifr-2024.png"
 post_image = "images/blog/posts/icts-tifr-2024.png"
 
 [taxonomies]
-tags = ["conference", "TMDs", "GPDs", "GDAs", "pion"]
-categories = ["talks"]
+tags = [ "conference", "TMDs", "GPDs", "GDAs", "pion",]
+categories = [ "talks",]
 +++
 
-**Talk Title:** Structural analysis of pion with distribution functions (TMDs, GPDs and GDAs)
 
-**Mode:** In person at ICTS, Bengaluru, India
+** ଟକ୍ ଆଖ୍ୟା: ** ବଣ୍ଟନ କାର୍ଯ୍ୟ (ପିଏମଡି, ଜିପିଡି ଏବଂ ଜିଡିଏସ୍) ସହିତ ପିଅନର ଗଠନମୂଳକ ବିଶ୍ଳେଷଣ |
 
-[Watch the Talk on YouTube →](https://www.youtube.com/watch?v=R3M5XIhKjFQ)
+** ମୋଡ୍: ** ବେଙ୍ଗାଲୁରୁ, ଭାରତର ICTS ରେ ବ୍ୟକ୍ତିଗତ ଭାବରେ |
 
-## About This Talk
+[ୟୁଟ୍ୟୁବରେ ଟକ୍ ଦେଖନ୍ତୁ →] (https://www.youtube.com/watch?v=R3M5XIhKjFQ)
 
-I presented my research on identifying the internal structure of the pion using three complementary types of distribution functions: Transverse Momentum Dependent distributions (TMDs), Generalized Parton Distributions (GPDs), and Generalized Distribution Amplitudes (GDAs).
+## ଏହି କଥାବାର୍ତ୍ତା ବିଷୟରେ |
 
-This talk was part of the program at the **International Centre for Theoretical Sciences (ICTS-TIFR)**, Bengaluru, India.
+ତିନୋଟି ସଂପୃକ୍ତ ପ୍ରକାରର ବଣ୍ଟନ କାର୍ଯ୍ୟ ବ୍ୟବହାର କରି ପିଅନର ଆଭ୍ୟନ୍ତରୀଣ ଗଠନ ଚିହ୍ନଟ କରିବା ଉପରେ ମୁଁ ମୋର ଅନୁସନ୍ଧାନ ଉପସ୍ଥାପନ କଲି: ଟ୍ରାନ୍ସଭର୍ସ ମୋଣ୍ଟେଣ୍ଟମ୍ ନିର୍ଭରଶୀଳ ବଣ୍ଟନ (ଟିଏମଡି), ଜେନେରାଲାଇଜଡ୍ ପାର୍ଟନ୍ ବିତରଣ (ଜିପିଡି) ଏବଂ ଜେନେରାଲାଇଜଡ୍ ବିତରଣ ଆମ୍ପ୍ଲିଟ୍ୟୁଡ୍ (GDA) |
+
+ଏହି କଥାବାର୍ତ୍ତା, ବେଙ୍ଗାଲୁରୁ, ଭାରତର ** ଆନ୍ତର୍ଜାତୀୟ କେନ୍ଦ୍ର ତତ୍ତ୍ୱ ବିଜ୍ଞାନ (ICTS-TIFR) ** ରେ କାର୍ଯ୍ୟକ୍ରମର ଏକ ଅଂଶ ଥିଲା |

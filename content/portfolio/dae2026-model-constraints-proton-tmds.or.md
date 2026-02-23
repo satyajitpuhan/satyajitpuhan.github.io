@@ -1,5 +1,5 @@
 +++
-title = "Model-Based Constraints on Proton TMDs"
+title = "ପ୍ରୋଟନ୍ ଟିଏମଡି ଉପରେ ମଡେଲ-ଆଧାରିତ ପ୍ରତିବନ୍ଧକ |"
 date = 2026-02-01
 
 [extra]
@@ -11,7 +11,8 @@ challenge = "We investigate constraints on the Transverse Momentum Dependent par
 solution = "We provide insights into the internal momentum structure of the proton by applying model-based constraints on the TMDs."
 +++
 
-**Authors:** Shubham Sharma, Satyajit Puhan, Narinder Kumar, Harleen Dahiya  
-**Published in:** DAE Symp.Nucl.Phys. 69 (2026) 897-898
 
-[View Details →](#)
+** ଲେଖକ: ** ଶୁଭମ୍ ଶର୍ମା, ସତ୍ୟଜିତ୍ ପୁହାନ୍, ନରିନ୍ଦର କୁମାର, ହାର୍ଲିନ୍ ଡାହିଆ |  
+** ରେ ପ୍ରକାଶିତ: ** DAE Symp.Nucl.Phys। 69 (2026) 897-898
+
+[ବିବରଣୀ ଦେଖନ୍ତୁ →] (#)

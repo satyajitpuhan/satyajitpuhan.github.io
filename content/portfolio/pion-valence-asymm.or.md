@@ -1,5 +1,5 @@
 +++
-title = "Pions valence quark distributions in asymmetric nuclear matter at finite temperature"
+title = "ସୀମିତ ତାପମାତ୍ରାରେ ଅସୀମିତ ପରମାଣୁ ପଦାର୍ଥରେ ପିଆନ୍ସ ଭାଲେନ୍ସ କ୍ୱାର୍କ ବଣ୍ଟନ |"
 date = 2024-09-01
 
 [extra]
@@ -11,7 +11,8 @@ challenge = "We investigate the effect of asymmetric nuclear medium at finite te
 solution = "This work demonstrates how the nuclear environment modifies the pion's internal structure, revealing significant medium effects on the parton distribution functions, decay constants, and distribution amplitudes of pions at finite baryon density and temperature."
 +++
 
-**Authors:** S. Puhan, N. Kaur, A. Kumar, S. Dutt, and H. Dahiya  
-**Published in:** Phys. Rev. D 110 (2024)
 
-[Read on INSPIRE →](https://inspirehep.net/literature/2818000)
+** ଲେଖକ: ** ଏସ୍ ପୁହାନ୍, ଏନ କ ur ର, ଏ କୁମାର, ଏସ୍ ଦତ୍ତ, ଏବଂ ଏଚ୍ ଡାହିଆ  
+** ରେ ପ୍ରକାଶିତ: ** ପଦାର୍ଥ | Rev. D 110 (2024)
+
+[INSPIRE on ରେ ପ Read ନ୍ତୁ →] (https://inspirehep.net/literature/2818000)

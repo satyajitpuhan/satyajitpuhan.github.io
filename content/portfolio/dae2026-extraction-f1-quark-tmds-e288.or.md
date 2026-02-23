@@ -1,5 +1,5 @@
 +++
-title = "Extraction of f1(x,fkperp2) quark TMDs of proton from E288 Drell-Yan data"
+title = "E288 ଡ୍ରେଲ-ୟାନ ତଥ୍ୟରୁ ପ୍ରୋଟନର f1 (x, fkperp2) କ୍ୱାର୍କ TMD ର ଉତ୍ତୋଳନ |"
 date = 2026-02-01
 
 [extra]
@@ -11,7 +11,8 @@ challenge = "Extraction of the unpolarized quark TMDs of the proton using E288 D
 solution = "We extract the f1(x,fkperp2) quark TMDs of the proton to better understand its 3D momentum structure."
 +++
 
-**Authors:** Hari Govind P, Reetanshu Pandey, Satyajit Puhan, Suneel Dutt, Harleen Dahiya et al.  
-**Published in:** DAE Symp.Nucl.Phys. 69 (2026) 963-964
 
-[View Details →](#)
+** ଲେଖକ: ** ହରି ଗୋବିନ୍ଦ ପି, ରିତାନସୁ ପାଣ୍ଡେ, ସତ୍ୟଜିତ୍ ପୁହାନ୍, ସୁନେଲ ଦତ୍ତ, ହାର୍ଲିନ୍ ଡାହିଆ ଇତ୍ୟାଦି |  
+** ରେ ପ୍ରକାଶିତ: ** DAE Symp.Nucl.Phys। 69 (2026) 963-964
+
+[ବିବରଣୀ ଦେଖନ୍ତୁ →] (#)

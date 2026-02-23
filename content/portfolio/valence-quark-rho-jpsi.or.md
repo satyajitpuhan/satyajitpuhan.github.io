@@ -1,5 +1,5 @@
 +++
-title = "Valence quark distribution of light rho and heavy J/psi vector mesons in light-cone quark model"
+title = "ହାଲୁକା କୋନ୍ କ୍ୱାର୍କ ମଡେଲରେ ହାଲୁକା ରୋ ଏବଂ ଭାରୀ J / psi ଭେକ୍ଟର ମେସନ୍ ର ଭାଲେନ୍ସ କ୍ୱାର୍କ ବଣ୍ଟନ |"
 date = 2025-06-01
 
 [extra]
@@ -11,7 +11,8 @@ challenge = "We investigate the valence quark distributions of light ρ and heav
 solution = "This study provides a comprehensive comparison of the valence quark structure between light (ρ) and heavy (J/ψ) vector mesons, revealing how quark mass effects shape the internal distributions and form factors of spin-1 mesons."
 +++
 
-**Authors:** Tanisha, S. Puhan, A. Yadav, and H. Dahiya  
-**Published in:** Phys. Rev. D 112 (2025)
 
-[Read on PRD →](https://journals.aps.org/prd/abstract/10.1103/cmbw-vcds)
+** ଲେଖକ: ** ତନିଶା, ଏସ୍ ପୁହାନ୍, ଏ ଯାଦବ, ଏବଂ ଏଚ୍ ଡାହିଆ |  
+** ରେ ପ୍ରକାଶିତ: ** ପଦାର୍ଥ | Rev. D 112 (2025)
+
+[PRD on ରେ ପ Read ନ୍ତୁ] (https://journals.aps.org/prd/abstract/10.1103/cmbw-vcds)
