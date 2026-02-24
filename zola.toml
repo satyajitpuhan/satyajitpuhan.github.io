@@ -111,7 +111,7 @@ date_format = "%d %B, %Y"
 logo = "images/logo.png"
 footer_logo = "images/logo.png"
 # google_analytics = "YOUR TOKEN FOR GOOGLE ANALYTICS"
-formspree_url = "YOUR FORMSPREE URL"
+formspree_url = "https://formspree.io/f/puhansatyajit@gmail.com"
 display_cta = true
 
 menus = [
