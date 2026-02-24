@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Satyajit Puhan - gravitational form factors</title>
+    <link rel="self" type="application/atom+xml" href="https://satyajitpuhan.github.io/tags/gravitational-form-factors/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-08-15T00:00:00+00:00</updated>
+    <id>https://satyajitpuhan.github.io/tags/gravitational-form-factors/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Pion GFFs at JINR-BLTP — Dubna, Moscow</title>
+        <published>2025-08-15T00:00:00+00:00</published>
+        <updated>2025-08-15T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/blog/jinr-bltp-2025-pion-gffs-en/"/>
+        <id>https://satyajitpuhan.github.io/blog/jinr-bltp-2025-pion-gffs-en/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/blog/jinr-bltp-2025-pion-gffs-en/">&lt;p&gt;&lt;strong&gt;Talk Title:&lt;&#x2F;strong&gt; Gravitational form factor of pion&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Mode:&lt;&#x2F;strong&gt; In person at Interplay of gravity and strong interactions at BLTP, JINR, Dubna, Moscow&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;indico.jinr.ru&#x2F;event&#x2F;5492&#x2F;page&#x2F;2510-timetable&quot;&gt;View Conference →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;about-this-talk&quot;&gt;About This Talk&lt;&#x2F;h2&gt;
+&lt;p&gt;I presented my recent work on extracting the gravitational form factors (GFFs) of the pion and discussed approaches for their experimental extraction. This talk was part of the &quot;Interplay of gravity and strong interactions&quot; program at the &lt;strong&gt;Bogoliubov Laboratory of Theoretical Physics (BLTP)&lt;&#x2F;strong&gt;, Joint Institute for Nuclear Research (JINR), Dubna, Moscow.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+</feed>

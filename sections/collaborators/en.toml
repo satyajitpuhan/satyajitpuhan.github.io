@@ -1,0 +1,84 @@
+top_title = ""
+title = "Collaborators"
+subtitle = "Researchers and mentors I have the privilege to work with."
+
+[[collaborators]]
+name = "Dr. Harleen Dahiya"
+role = "Supervisor (PhD)"
+institution = "Dr. B R Ambedkar NIT, Jalandhar"
+
+[[collaborators]]
+name = "Prof. Oleg V. Teryaev"
+role = "Supervisor (JINR)"
+institution = "JINR, Dubna, Russia"
+
+[[collaborators]]
+name = "Prof. Sabyasachi Ghosh"
+role = "Collaborator"
+institution = "IIT Bhilai, Chhattisgarh"
+
+[[collaborators]]
+name = "Prof. Ujjwal Laha"
+role = "MSc Supervisor"
+institution = "NIT Jamshedpur"
+
+[[collaborators]]
+name = "Prof. Arvind Kumar"
+role = "Collaborator"
+institution = "NIT Jalandhar"
+
+[[collaborators]]
+name = "Prof. Suneel Dutt"
+role = "Collaborator"
+institution = "NIT Jalandhar"
+
+[[collaborators]]
+name = "Narinder Kumar"
+role = "Collaborator"
+institution = "NIT Jalandhar"
+
+[[collaborators]]
+name = "Shubham Sharma"
+role = "Collaborator"
+institution = "NIT Jalandhar"
+
+[[collaborators]]
+name = "Reetanshu Pandey"
+role = "Collaborator"
+institution = "NIT Jalandhar"
+
+[[collaborators]]
+name = "Anshu Gautam"
+role = "Collaborator"
+institution = "NIT Jalandhar"
+
+[[collaborators]]
+name = "Tanisha"
+role = "Collaborator"
+institution = "NIT Jalandhar"
+
+[[collaborators]]
+name = "Ashutosh Dwibedi"
+role = "Collaborator"
+institution = "IIT Bhilai, Chhattisgarh"
+image = "images/collaborators/ashutosh.jpg"
+
+[[collaborators]]
+name = "Anurag Yadav"
+role = "Collaborator"
+institution = "NIT Jalandhar"
+
+[[collaborators]]
+name = "Ritwik Acharyya"
+role = "Collaborator"
+institution = "NIT Jalandhar"
+
+[[collaborators]]
+name = "Hari Govind P"
+role = "Collaborator"
+institution = "NIT Jalandhar"
+
+[[collaborators]]
+name = "Abhishek K P"
+role = "Collaborator"
+institution = "NIT Jalandhar"

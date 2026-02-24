@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Satyajit Puhan - IIT Bhilai</title>
+    <link rel="self" type="application/atom+xml" href="https://satyajitpuhan.github.io/tags/iit-bhilai/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-02-14T00:00:00+00:00</updated>
+    <id>https://satyajitpuhan.github.io/tags/iit-bhilai/atom.xml</id>
+    <entry xml:lang="en">
+        <title>ICFHEP 2025 — IIT Bhilai, Chhattisgarh</title>
+        <published>2025-02-14T00:00:00+00:00</published>
+        <updated>2025-02-14T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/blog/icfhep-2025-iit-bhilai-en/"/>
+        <id>https://satyajitpuhan.github.io/blog/icfhep-2025-iit-bhilai-en/</id>
+        
+        <summary type="html">&lt;p&gt;&lt;strong&gt;Event:&lt;&#x2F;strong&gt; International Conference on Frontiers of High Energy Physics (ICFHEP)&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Venue:&lt;&#x2F;strong&gt; Indian Institute of Technology Bhilai, Chhattisgarh (Feb 13–15, 2025)&lt;&#x2F;p&gt;
+&lt;p&gt;Participated in this international conference during my visiting fellowship at IIT Bhilai, where I also worked with Prof. Sabyasachi Ghosh on applications of the NJL model for understanding hadron structure.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+</feed>

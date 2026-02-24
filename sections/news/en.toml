@@ -1,0 +1,108 @@
+title = "Recent News & Activities"
+subtitle = "Highlights from my research journey."
+
+[[items]]
+top_title = "Recently participated in"
+image = "images/gallery/iitb-cteq-group.jpg"
+title = "The 2026 IITB-CFNS-CTEQ School on Perturbative QCD for EIC"
+date = "Feb 8–15, 2026"
+description = "Participated in the school hosted by Indian Institute of Technology Bombay (IITB) in collaboration with CTEQ Collaboration and CFNS of Stony Brook University. The curriculum explored perturbative quantum chromodynamics, experimental results, and hands-on tutorials on Monte Carlo event generators."
+extra_images = [
+    "images/gallery/iitb-cteq-fun.jpg",
+    "images/gallery/iitb-cteq-gateway.jpg",
+    "images/gallery/iitb-cteq-poster.jpg"
+]
+details = """
+The school will be hosted by the Indian Institute of Technology Bombay (IITB) in collaboration with CTEQ Collaboration and the Center for Frontiers in Nuclear Science (CFNS) of Stony Brook University.
+
+The 2026 IITB-CFNS-CTEQ School on Perturbative QCD for EIC will be held 8 to 15 February 2026 at the Indian Institute of Technology Bombay (IITB) in Mumbai, India.
+
+The school is ideally suited for advanced graduate students, postdocs, and junior faculty, with a curriculum that includes a focused introduction to perturbative quantum chromodynamics, along with applications and recent experimental results. It will also offer "hands-on" tutorial sessions on Monte Carlo event generators.
+
+**International Organizing Committee:**
+Asmita Mukherjee, V. Ravindran, Abhay Deshpande, Ross Corliss, Huey-Wen Lin, Zack Sullivan, Fred Olness
+
+**Local Organising Committee:**
+Asmita Mukherjee, Manibrata Sen, Vikram Rentala, Debojit Sarkar
+
+**Speakers:**
+- Abhay Deshpande (Stony Brook & BNL)
+- Asmita Mukherjee (IIT-Bombay)
+- Amanda Cooper-Sarkar (Oxford)
+- Fred Olness (SMU)
+- Tomas Jezo (Muenster)
+- Cristian Pisano (U. Cagliari)
+- Krishna Kumar (UMass Amherst)
+- V. Ravindran (IMSC)
+- Padmanath Madanagopalan (IMSC)
+- Subir Sarkar (Oxford)
+- Nilmani Mathur (TIFR)
+- Dave Soper (U. Oregon)
+- Anurag Tripathi (IIT-Hyderabad)
+
+**Supporting Organizations:**
+- Center for Frontiers in Nuclear Science, Stony Brook University
+- The CTEQ Collaboration
+- Institute of Mathematical Sciences (IMSc)
+- The Board of Research in Nuclear Sciences (BRNS)
+- Southern Methodist University
+"""
+
+[[items]]
+image = "images/gallery/prd-paper-accepted.png"
+title = "Recent Paper Accepted in Physical Review D"
+date = "5th Feb, 2026"
+description = "Our recent paper 'Valence quark distribution of rho meson using light-front quark model' has been accepted for publication in Phys. Rev. D (e-Print: 2511.10981)."
+details = """
+**Title:** Valence quark distribution of rho meson using light-front quark model  
+**Authors:** Satyajit Puhan, Shubham Sharma, Narinder Kumar, Harleen Dahiya  
+**Journal:** Physical Review D  
+**Date:** Nov 14, 2025  
+**e-Print:** 2511.10981 [hep-ph]
+
+**Abstract (arXiv):**
+We investigate the partonic structure of the ρ meson, the lightest spin-1 vector meson, within the light-front quark model (LFQM). To explore the sensitivity to model assumptions, we employ two distinct types of spin wave functions in the LFQM. Using light-front helicity wave functions, we derive explicit expressions for the leading-twist and subleading-twist quark parton distribution functions (PDFs), and evolve the leading-twist PDFs to higher scales with next-to-leading order (NLO) Dokshitzer--Gribov--Lipatov--Altarelli--Parisi (DGLAP) evolution. We have also calculated the Mellin moment from the evolved PDFs using a simple neural network frame and compared with available theoretical predictions. Furthermore, we compute the full set of nine leading-twist transverse-momentum-dependent distributions (TMDs) for the valence quark in the ρ meson, including three tensor TMDs that arise from spin-1 tensor polarization of the hadron. Positivity constraints for the PDFs and TMDs are examined within this framework. Our findings highlight the crucial role of tensor polarization in shaping the three-dimensional partonic structure of vector mesons.
+"""
+
+[[items]]
+image = "images/gallery/icts-satpp-group.jpg"
+title = "School for Advanced Topics in Particle Physics (SATPP)"
+date = "19 Jan – 30 Jan, 2026"
+description = "Participated in the School for Advanced Topics in Particle Physics (SATPP) at ICTS Bengaluru, focusing on Quantum Chromodynamics, Effective Field Theories, and Nuclear Physics."
+details = """
+**VENUE:** Ramanujan Lecture Hall, ICTS Bengaluru  
+**DATE:** 19 January 2026 to 30 January 2026
+
+**ORGANIZERS:**
+- Rick Sandeepan Gupta (TIFR, Mumbai, India)
+- Namit Mahajan (PRL, Ahmedabad, India)
+- Tuhin S. Roy (TIFR, Mumbai, India)
+- Sudhir Vempati (IISc, Bengaluru, India)
+
+**About the Program:**
+The aim of the SATPP is to provide exposure/training to postdoctoral fellows and advanced theoretical particle physics students. The goal is not just to provide details of the spectrum of ideas/mechanisms but also to supply essential technical tools that will allow young researchers to think critically and constructively.
+
+This second edition, "Selected Topics in Effective Field Theories (EFTs)," spanned two weeks. The first week focused on topics of low-energy EFTs and the second week concentrated on high-energy EFTs. EFTs provide systematic ways of "describing" the physics of a scale using only the relevant degrees of freedom, essential for understanding our universe from the TeV scale down to observables involving mesons, baryons, and nuclei.
+
+**Program Link:**  
+[https://www.icts.res.in/program/satpp2026](https://www.icts.res.in/program/satpp2026)
+"""
+
+[[items]]
+image = "images/gallery/rho-meson-spectroscopy-0.png"
+title = "Spectroscopy of ρ-meson in symmetric nuclear medium"
+date = "Jan 16, 2026"
+description = "Our recent paper investigating the behavior of the light vector ρ meson in the presence of a symmetric nuclear medium at zero temperature (e-Print: 2601.11082)."
+extra_images = [
+    "images/gallery/rho-meson-spectroscopy-1.png",
+    "images/gallery/rho-meson-spectroscopy-2.png"
+]
+details = """
+**Title:** Spectroscopy of ρ-meson in symmetric nuclear medium  
+**Authors:** Anshu Gautam, Tanisha, Satyajit Puhan, Arvind Kumar, Harleen Dahiya  
+**Date:** Jan 16, 2026  
+**e-Print:** 2601.11082 [hep-ph]
+
+**Abstract (arXiv):**
+In this work, we investigate the behavior of the light vector ρ meson in the presence of a symmetric nuclear medium at zero temperature. We calculate the mass and decay constant of the ρ-meson as well as the leading twist distribution amplitudes (DAs) in the light-front quark model in vacuum, which are further investigated at different baryonic densities. We also predict the Mellin moments of the DAs and decay width of the ρ0 → e+ e- process in both vacuum and medium. The evolution of DAs is carried out by the leading order (LO) Efremov-Radyushkin-Brodsky-Lepage method and compared with available predictions. For better understanding of medium effects on ρ-meson, we have also predicted the in-medium charge (Gc(Q²)), magnetic (Gm(Q²)), and quadrupole (Gq(Q²)) form factors. The in-medium charge radii, magnetic moment, and quadrupole moment have also been predicted in this work. We have found that the nuclear medium induces appreciable modifications on the mass, weak decay constant, decay width, and distribution amplitudes of the ρ meson. However, the charge radii, magnetic moment, and quadrupole moment are observed to exhibit weaker sensitivity to changes in baryonic density.
+"""
