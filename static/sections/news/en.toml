@@ -50,17 +50,17 @@ Asmita Mukherjee, Manibrata Sen, Vikram Rentala, Debojit Sarkar
 
 [[items]]
 image = "images/gallery/prd-paper-accepted.png"
-title = "Recent Paper Accepted in Physical Review D"
-date = "5th Feb, 2026"
-description = "Our recent paper 'Valence quark distribution of rho meson using light-front quark model' has been accepted for publication in Phys. Rev. D (e-Print: 2511.10981)."
+title = "Recent Paper Published in Physical Review D"
+date = "27 Feb, 2026"
+description = "Our recent paper 'Valence quark distribution of the rho meson using a light-front quark model' has been published in Phys. Rev. D 113, 036030 (2026)."
 details = """
-**Title:** Valence quark distribution of rho meson using light-front quark model  
+**Title:** Valence quark distribution of the rho meson using a light-front quark model  
 **Authors:** Satyajit Puhan, Shubham Sharma, Narinder Kumar, Harleen Dahiya  
-**Journal:** Physical Review D  
-**Date:** Nov 14, 2025  
-**e-Print:** 2511.10981 [hep-ph]
+**Journal:** Physical Review D 113, 036030 (2026)  
+**Published:** Feb 27, 2026  
+**DOI:** [10.1103/xjkc-l5tr](https://journals.aps.org/prd/abstract/10.1103/xjkc-l5tr)
 
-**Abstract (arXiv):**
+**Abstract:**
 We investigate the partonic structure of the ρ meson, the lightest spin-1 vector meson, within the light-front quark model (LFQM). To explore the sensitivity to model assumptions, we employ two distinct types of spin wave functions in the LFQM. Using light-front helicity wave functions, we derive explicit expressions for the leading-twist and subleading-twist quark parton distribution functions (PDFs), and evolve the leading-twist PDFs to higher scales with next-to-leading order (NLO) Dokshitzer--Gribov--Lipatov--Altarelli--Parisi (DGLAP) evolution. We have also calculated the Mellin moment from the evolved PDFs using a simple neural network frame and compared with available theoretical predictions. Furthermore, we compute the full set of nine leading-twist transverse-momentum-dependent distributions (TMDs) for the valence quark in the ρ meson, including three tensor TMDs that arise from spin-1 tensor polarization of the hadron. Positivity constraints for the PDFs and TMDs are examined within this framework. Our findings highlight the crucial role of tensor polarization in shaping the three-dimensional partonic structure of vector mesons.
 """
 
