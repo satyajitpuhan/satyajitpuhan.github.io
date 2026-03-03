@@ -1,25 +1,30 @@
-.contact{
-    background: #1B2031;
+.contact {
+    background: $dark-navy;
     position: relative;
-    margin-top: 150px;
-    &__background_shape{
+    margin-top: 80px;
+
+    &__background_shape {
         position: absolute;
         width: 100%;
         top: 0;
         left: 0;
-        svg{
+
+        svg {
             height: 100%;
             width: 100%;
-            path{
+
+            path {
                 fill: $white;
             }
         }
-        @include mobile{
+
+        @include mobile {
             display: none;
         }
     }
-    &__cta{
-        background: $primary-color;
+
+    &__cta {
+        background: $accent-gradient;
         padding: 100px 80px;
         border-radius: 20px;
         display: flex;
@@ -29,21 +34,25 @@
         position: relative;
         overflow: hidden;
         z-index: 5;
-        .shape-1{
+        box-shadow: 0 15px 40px rgba(79, 106, 255, 0.3);
+
+        .shape-1 {
             position: absolute;
             z-index: -1;
             transform: rotate(-20deg);
             top: -43%;
             left: 2%;
             animation: moveLeft 5s infinite linear;
-            svg{
-                path{
+
+            svg {
+                path {
                     fill: #ffffff;
                     opacity: .07;
                 }
             }
         }
-        .shape-2{
+
+        .shape-2 {
             position: absolute;
             z-index: -1;
             transform: rotate(80deg);
@@ -52,26 +61,32 @@
             width: 235px;
             height: 208px;
             animation: move_top 3s infinite linear;
-            svg{
+
+            svg {
                 height: 100%;
                 width: 100%;
-                path{
+
+                path {
                     fill: #ffffff;
                     opacity: .07;
                 }
             }
         }
-        @include desktop{
+
+        @include desktop {
             padding: 70px 40px;
         }
-        &_content{
+
+        &_content {
             width: 60%;
-            @include desktop{
+
+            @include desktop {
                 width: 100%;
                 text-align: center;
                 margin-bottom: 20px;
             }
-            span{
+
+            span {
                 font-family: $secondary-font;
                 color: #fff;
                 font-size: 20px;
@@ -79,137 +94,170 @@
                 line-height: 1;
                 margin: 0 0 20px 40px;
                 position: relative;
-                @include desktop{
+
+                @include desktop {
                     display: inline-block;
                 }
-                &::before{
+
+                &::before {
                     position: absolute;
                     content: '';
-                    height: 2px;
+                    height: 3px;
                     width: 20px;
                     left: -40px;
                     top: 50%;
                     transform: translateY(-50%);
                     background: #fff;
+                    border-radius: 2px;
                 }
             }
-            h1{
+
+            h1 {
                 font-family: $primary-font;
                 font-size: 55px;
                 color: #fff;
                 margin: 0;
                 line-height: 1;
-                @include desktop{
+
+                @include desktop {
                     font-size: 40px;
                 }
             }
         }
-        &_action{
+
+        &_action {
             width: 40%;
-            @include desktop{
+
+            @include desktop {
                 width: 100%;
                 text-align: center;
             }
-            a{
+
+            a {
                 float: right;
-                color: $primary-color;
+                color: $secondary-color;
                 padding: 15px 40px;
                 background: #fff;
                 display: inline-block;
                 text-decoration: none;
                 font-family: $secondary-font;
-                border-radius: 7px;
+                border-radius: 10px;
                 font-size: 16px;
-                transition: all .3s ease;
-                @include desktop{
+                font-weight: 500;
+                transition: all .4s cubic-bezier(0.23, 1, 0.32, 1);
+
+                @include desktop {
                     float: none;
                 }
-                &:hover{
-                    background: #768bf3;
-                    color: #fff;
+
+                &:hover {
+                    background: rgba(255, 255, 255, 0.9);
+                    transform: translateY(-2px);
+                    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
                 }
             }
         }
     }
-    &__widget{
-        padding: 100px 0;
-        @include desktop{
+
+    &__widget {
+        padding: 60px 0;
+
+        @include desktop {
             text-align: center;
             padding: 50px 0;
         }
-        &_sitemap{
-            @include desktop{
+
+        &_sitemap {
+            @include desktop {
                 margin: 40px 0;
             }
-            h3{
+
+            h3 {
                 font-family: $secondary-font;
                 color: #fff;
                 margin: 0 0 40px 0;
                 line-height: 1;
                 font-size: 24px;
-                @include desktop{
+
+                @include desktop {
                     margin: 0 0 20px 0;
                 }
             }
-            ul{
+
+            ul {
                 margin: 0;
                 padding: 0;
-                li{
+
+                li {
                     list-style: none;
-                    a{
+
+                    a {
                         text-decoration: none;
                         display: block;
-                        color: #fff;
+                        color: rgba(255, 255, 255, 0.7);
                         transition: all .3s ease;
                         font-family: $secondary-font;
                         font-size: 16px;
-                        &:hover{
-                            color: $primary-color;
+
+                        &:hover {
+                            color: $white;
+                            padding-left: 5px;
                         }
                     }
-                    &:not(:last-child){
+
+                    &:not(:last-child) {
                         margin-bottom: 10px;
                     }
                 }
             }
         }
-        &_address{
-            h3{
+
+        &_address {
+            h3 {
                 font-family: $secondary-font;
                 color: #fff;
                 margin: 0 0 40px 0;
                 line-height: 1;
                 font-size: 24px;
-                @include desktop{
+
+                @include desktop {
                     margin: 0 0 20px 0;
                 }
             }
-            ul{
+
+            ul {
                 margin: 0;
                 padding: 0;
-                li{
+
+                li {
                     list-style: none;
-                    a{
-                        i{
+
+                    a {
+                        i {
                             margin-right: 15px;
                         }
+
                         text-decoration: none;
                         display: block;
-                        color: #fff;
+                        color: rgba(255, 255, 255, 0.7);
                         transition: all .3s ease;
                         font-family: $secondary-font;
                         font-size: 16px;
-                        &:hover{
-                            color: $primary-color;
+
+                        &:hover {
+                            color: $white;
                         }
                     }
-                    &:not(:last-child){
+
+                    &:not(:last-child) {
                         margin-bottom: 10px;
                     }
-                    p{
-                        color: #fff;
+
+                    p {
+                        color: rgba(255, 255, 255, 0.7);
                         margin: 0;
-                        i{
+
+                        i {
                             margin-right: 20px;
                             font-size: 17px;
                         }
@@ -218,43 +266,54 @@
             }
         }
     }
-    &__footer{
+
+    &__footer {
         padding: 50px 0;
-        border-top: 1px solid rgba(255, 255, 255, .2);
-        @include desktop{
+        border-top: 1px solid rgba(255, 255, 255, .1);
+
+        @include desktop {
             text-align: center;
         }
-        &_copy{
-            p{
-                color: #fff;
+
+        &_copy {
+            p {
+                color: rgba(255, 255, 255, 0.6);
                 font-size: 16px;
                 font-family: $secondary-font;
                 margin: 0;
             }
         }
-        &_social{
-            ul{
+
+        &_social {
+            ul {
                 margin: 0;
                 padding: 0;
                 float: right;
-                @include desktop{
+
+                @include desktop {
                     margin: 20px auto 0;
                     float: none;
                 }
-                li{
+
+                li {
                     list-style: none;
                     display: inline-block;
-                    a{
+
+                    a {
                         display: block;
                         text-decoration: none;
-                        color: #fff;
+                        color: rgba(255, 255, 255, 0.6);
                         font-size: 20px;
                         transition: all .3s ease;
-                        &:hover{
-                            color: $primary-color;
+
+                        &:hover {
+                            color: $white;
+                            text-shadow: 0 0 12px rgba(79, 106, 255, 0.5);
+                            transform: translateY(-2px);
                         }
                     }
-                    &:not(:last-child){
+
+                    &:not(:last-child) {
                         margin-right: 25px;
                     }
                 }
@@ -262,12 +321,15 @@
         }
     }
 }
-@keyframes moveLeft{
-    0%, 100% {
+
+@keyframes moveLeft {
+
+    0%,
+    100% {
         -webkit-transform: translateX(0) rotate(-20deg);
         transform: translateX(0) rotate(-20deg);
     }
-    
+
     50% {
         -webkit-transform: translateX(15px) rotate(-20deg);
         transform: translateX(15px) rotate(-20deg);

@@ -1,25 +1,33 @@
 .portfolio {
-  padding: 100px 0 135px 0;
+  padding: 60px 0 80px 0;
+
   @include desktop {
-    padding: 100px 0;
+    padding: 60px 0;
   }
+
   &__header {
     margin-bottom: 50px;
+
     @include tablet {
       margin-bottom: 30px;
     }
+
     span {
       display: block;
       font-size: 20px;
       font-family: $secondary-font;
       margin: 0 0 30px 0;
+      color: $primary-color;
+      font-weight: 600;
     }
+
     h1 {
       margin: 0 0 20px 0;
       font-size: 55px;
       font-family: $primary-font;
       color: $secondary-color;
       line-height: 1;
+
       @include tablet {
         font-size: 40px;
       }
@@ -27,10 +35,11 @@
   }
 }
 
-/* ── Publication List (no thumbnails) ── */
+/* ── Publication List ── */
 .publication-list {
   columns: 2;
   column-gap: 40px;
+
   @include tablet {
     columns: 1;
   }
@@ -39,19 +48,20 @@
 .publication-item {
   break-inside: avoid;
   background: #fff;
-  border-left: 4px solid $primary-color;
+  border-left: 4px solid;
+  border-image: $accent-gradient 1;
   padding: 18px 22px;
   margin-bottom: 18px;
   border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(50, 65, 141, 0.06);
-  transition: all 0.3s ease;
+  box-shadow: 0 2px 12px hsla(230, 50%, 38%, 0.06);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   gap: 12px;
 
   &:hover {
-    box-shadow: 0 6px 24px rgba(50, 65, 141, 0.14);
+    box-shadow: 0 8px 30px hsla(230, 50%, 38%, 0.14);
     transform: translateY(-2px);
   }
 
@@ -75,17 +85,21 @@
     margin: 0 0 6px 0;
     font-size: 16px;
     line-height: 1.4;
+
     a {
       color: $secondary-color;
       text-decoration: none;
       transition: color 0.2s;
-      &:hover { color: $primary-color; }
+
+      &:hover {
+        color: $primary-color;
+      }
     }
   }
 
   &__authors {
     font-size: 13px;
-    color: #888;
+    color: $text-color;
     margin: 0;
     line-height: 1.4;
   }
@@ -97,28 +111,39 @@
     white-space: nowrap;
     text-decoration: none;
     font-weight: 500;
-    &:hover { text-decoration: underline; }
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
 /* ── Collaborators Section ── */
 .collaborators {
-  padding: 80px 0;
-  background: #f8f9fc;
+  padding: 50px 0;
+  background: $gray;
+
   &__header {
     margin-bottom: 50px;
     text-align: center;
+
     span {
       display: block;
       font-size: 20px;
       font-family: $secondary-font;
       margin: 0 0 20px 0;
+      color: $primary-color;
+      font-weight: 600;
     }
+
     h1 {
       font-size: 45px;
       font-family: $primary-font;
       color: $secondary-color;
-      @include tablet { font-size: 32px; }
+
+      @include tablet {
+        font-size: 32px;
+      }
     }
   }
 }
@@ -128,13 +153,17 @@
   padding: 25px 15px;
   border-radius: 16px;
   background: #fff;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-  transition: all 0.3s;
+  box-shadow: 0 4px 20px hsla(230, 50%, 38%, 0.06);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   margin-bottom: 30px;
+  border: 1px solid transparent;
+
   &:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 30px rgba(50,65,141,0.12);
+    box-shadow: 0 12px 40px hsla(230, 50%, 38%, 0.14);
+    border-color: rgba(79, 106, 255, 0.10);
   }
+
   &__photo {
     width: 100px;
     height: 100px;
@@ -143,18 +172,21 @@
     margin-bottom: 16px;
     border: 3px solid $primary-color;
   }
+
   &__name {
     font-family: $primary-font;
     font-size: 18px;
     color: $secondary-color;
     margin-bottom: 4px;
   }
+
   &__role {
     font-family: $secondary-font;
-    color: #888;
+    color: $text-color;
     font-size: 14px;
     margin-bottom: 4px;
   }
+
   &__inst {
     font-size: 13px;
     color: #aaa;

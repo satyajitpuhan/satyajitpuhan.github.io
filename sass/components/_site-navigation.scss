@@ -1,116 +1,164 @@
-.navbar{
+.navbar {
     padding: 40px 0;
     background: transparent;
-    transition: all .3s ease;
-    @include desktop{
-        background: $white;
+    transition: all .4s cubic-bezier(0.23, 1, 0.32, 1);
+
+    @include desktop {
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
     }
-    @include desktop{
+
+    @include desktop {
         padding: 15px 20px;
         margin: 10px 10px 0;
-        border-radius: 5px;
+        border-radius: 12px;
     }
-    .navbar-brand{
-        img{
-            @include desktop{
+
+    .navbar-brand {
+        img {
+            @include desktop {
                 width: 80%;
             }
         }
     }
-    .main-navigation{
+
+    .main-navigation {
         margin: 0 auto;
-        .nav-item{
-            .nav-link{
+
+        .nav-item {
+            .nav-link {
                 color: $secondary-color;
                 font-family: $secondary-font;
                 padding: 0 15px;
                 transition: all .3s ease;
                 font-weight: 500;
-                &:hover{
-                    color: $primary_color;
+                position: relative;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    bottom: -4px;
+                    left: 15px;
+                    right: 15px;
+                    height: 2px;
+                    background: $accent-gradient;
+                    transform: scaleX(0);
+                    transform-origin: right;
+                    transition: transform .35s cubic-bezier(0.23, 1, 0.32, 1);
+                    border-radius: 2px;
                 }
-                @include desktop{
+
+                &:hover {
+                    color: $primary_color;
+
+                    &::after {
+                        transform: scaleX(1);
+                        transform-origin: left;
+                    }
+                }
+
+                @include desktop {
                     text-align: center;
                     padding: 15px 0;
                     cursor: pointer;
+
+                    &::after {
+                        display: none;
+                    }
                 }
             }
-            .active{
+
+            .active {
                 color: $primary_color;
             }
         }
     }
-    
-    .hire_button{
-        background: $primary_color;
+
+    .hire_button {
+        background: $accent-gradient;
         padding: 15px 30px;
         color: #fff;
         text-decoration: none;
-        border-radius: 7px;
+        border-radius: 10px;
         font-size: 16px;
         font-family: $secondary-font;
-        font-weight: 400;
+        font-weight: 500;
         border: 1px solid transparent;
-        transition: all .3s ease;
+        transition: all .4s cubic-bezier(0.23, 1, 0.32, 1);
         transform: scale(1);
-        &:hover{
-            background: #425FEE;
-            box-shadow: 0 8px 20px rgba(56, 87, 241, 0.3);
-            transform: scale(1.03);
+        box-shadow: $glow-blue;
+
+        &:hover {
+            box-shadow: $glow-blue-lg;
+            transform: translateY(-2px) scale(1.03);
         }
-        @include desktop{
+
+        @include desktop {
             text-align: center;
         }
     }
-    
-    &.nav__color__change{
-        background: $white;
+
+    &.nav__color__change {
+        background: rgba(255, 255, 255, 0.88);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
         padding: 20px 0;
-        box-shadow: 0px 10px 20px 0px rgba(50,65,141,0.1);
-        @include desktop{
+        box-shadow: 0 4px 30px rgba(15, 23, 41, 0.08);
+
+        @include desktop {
             padding: 15px 20px;
         }
     }
-    @include desktop{
-        .navbar-toggler{
+
+    @include desktop {
+        .navbar-toggler {
             outline: 0;
             padding: 0;
+
             &-icon {
                 height: 2px;
                 width: 25px;
                 transition: all 0.2s;
                 background: $primary-color;
                 display: block;
-                &:not(:last-child){
+
+                &:not(:last-child) {
                     margin-bottom: 5px;
                 }
-                &:nth-child(1){
+
+                &:nth-child(1) {
                     transform: rotate(45deg);
                     transform-origin: 10% 10%;
                 }
-                &:nth-child(2){
+
+                &:nth-child(2) {
                     opacity: 0;
                     filter: alpha(opacity=0);
                 }
-                &:nth-child(3){
+
+                &:nth-child(3) {
                     transform: rotate(-45deg);
                     transform-origin: 10% 90%;
                 }
             }
-            &.collapsed{
-                .navbar-toggler-icon{
-                    &:nth-child(1){
-                    transform: rotate(0);
+
+            &.collapsed {
+                .navbar-toggler-icon {
+                    &:nth-child(1) {
+                        transform: rotate(0);
                     }
-                    &:nth-child(2){
-                    opacity: 1;
-                    filter: alpha(opacity=1);
+
+                    &:nth-child(2) {
+                        opacity: 1;
+                        filter: alpha(opacity=1);
                     }
-                    &:nth-child(3){
-                    transform: rotate(0);
+
+                    &:nth-child(3) {
+                        transform: rotate(0);
                     }
                 }
             }
         }
     }
-    }
+}

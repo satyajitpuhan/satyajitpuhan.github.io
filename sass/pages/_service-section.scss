@@ -1,118 +1,146 @@
-.service{
+.service {
     position: relative;
     overflow: hidden;
-    padding-bottom: 275px;
-    &__background{
+    padding-bottom: 180px;
+
+    &__background {
         position: absolute;
         top: 0;
         right: 0;
         z-index: -1;
         width: 61%;
-        svg{
+
+        svg {
             width: 100%;
             height: 100%;
         }
     }
-    &__background_shape{
+
+    &__background_shape {
         position: absolute;
         bottom: -10%;
         left: -7%;
         height: 465px;
         width: 410px;
-        svg{
-            width:100%;
+
+        svg {
+            width: 100%;
         }
-        @include desktop{
+
+        @include desktop {
             display: none;
         }
     }
-    &__background_pattern{
+
+    &__background_pattern {
         position: absolute;
         bottom: 4%;
         left: 6%;
         animation: move_top 5s infinite linear;
-        @include desktop{
+
+        @include desktop {
             display: none;
         }
     }
-    &__header{
+
+    &__header {
         margin-bottom: 50px;
-        span{
+
+        span {
             font-size: 20px;
             font-family: $secondary-font;
-            color: $secondary-color;
+            color: $primary-color;
             position: relative;
             display: block;
             margin: 0 0 20px 30px;
-            &::before{
+            font-weight: 600;
+
+            &::before {
                 position: absolute;
                 content: '';
-                height: 2px;
+                height: 3px;
                 width: 20px;
                 top: 50%;
                 left: -20px;
                 transform: translateX(-50%);
-                background: $secondary-color;
+                background: $accent-gradient;
+                border-radius: 2px;
             }
         }
-        h1{
+
+        h1 {
             margin: 0 0 30px 0;
             font-size: 50px;
             font-family: $primary-font;
             color: $secondary-color;
             line-height: 50px;
-            @include tablet{
+
+            @include tablet {
                 font-size: 39px;
             }
         }
-        p{
+
+        p {
             margin: 0 0 0 0;
             font-family: $secondary-font;
-            color: $secondary-color;
+            color: $text-color;
             font-size: 18px;
             line-height: 26px;
         }
     }
-    &__slider{
+
+    &__slider {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-      
+
         @include mobile {
-          grid-template-columns: repeat(1, 1fr);
+            grid-template-columns: repeat(1, 1fr);
         }
 
-
-        &_item{
+        &_item {
             margin: 15px;
             padding: 30px;
-            box-shadow: 0px 20px 40px 0px rgba(50,65,141,0.12);
-            border-radius: 20px;
+            box-shadow: 0 8px 30px hsla(230, 50%, 38%, 0.08);
+            border-radius: 16px;
             background: $white;
-            &-icon{
+            border: 1px solid transparent;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+
+            &:hover {
+                box-shadow: 0 12px 40px hsla(230, 50%, 38%, 0.14);
+                transform: translateY(-4px);
+                border-color: rgba(79, 106, 255, 0.12);
+            }
+
+            &-icon {
                 height: 110px;
                 width: 125px;
                 position: relative;
-                .icon-background{
+
+                .icon-background {
                     position: absolute;
                     top: 0;
                     right: 0;
                 }
-                .icon{
+
+                .icon {
                     position: absolute;
                     left: 0;
                     bottom: 0;
                     z-index: 1;
                 }
             }
-            h4{
+
+            h4 {
                 font-size: 24px;
                 font-family: $primary-font;
                 color: $secondary-color;
                 margin: 40px 0 30px 0;
             }
-            p{
+
+            p {
                 font-family: $secondary-font;
-                color: #7E7E8A;
+                color: $text-color;
                 font-size: 16px;
                 line-height: 30px;
                 margin: 0;
