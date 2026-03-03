@@ -1,12 +1,16 @@
 //site color variables
 $body-color: #fff;
-$primary-color: #5D78FF;
-$secondary-color: #282F49;
-$text-color: #9D9EA5;
+$primary-color: #4F6AFF;
+$secondary-color: #1E2A4A;
+$text-color: #8B8D96;
 $text-color-dark: #00113E;
 $site-ease: cubic-bezier(0.36, 0.03, 0, 0.91);
-$gray: #F7F9FF;
+$gray: #F5F7FF;
 $dark-gray: #646569;
+
+// accent / gradient
+$accent-gradient: linear-gradient(135deg, #4F6AFF, #7C3AED);
+$accent-warm: #FF6B6B;
 
 // solid colors
 $white: #fff;

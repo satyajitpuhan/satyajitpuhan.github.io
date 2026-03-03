@@ -104,19 +104,117 @@
       padding: 20px 50px;
       font-family: $secondary-font;
       font-size: 16px;
-      background: $primary-color;
-      border-radius: 7px;
+      background: $accent-gradient;
+      border-radius: 10px;
       color: #ffffff;
       text-decoration: none;
       border: 1px solid transparent;
-      transition: all 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
       transform: scale(1);
+      box-shadow: 0 4px 15px rgba(79, 106, 255, 0.2);
 
       &:hover {
-        background: #425fee;
-        box-shadow: 0 8px 20px rgba(56, 87, 241, 0.3);
-        transform: scale(1.03);
+        box-shadow: 0 10px 30px rgba(79, 106, 255, 0.4);
+        transform: translateY(-2px) scale(1.04);
       }
+    }
+  }
+
+  /* ── keyword badges ── */
+  .hero_keywords {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+
+    @include desktop {
+      align-items: center;
+    }
+  }
+
+  .keyword-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .keyword-group-label {
+    font-family: $secondary-font;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.6px;
+    color: $secondary-color;
+    opacity: 0.55;
+    margin-right: 4px;
+    display: inline-block !important;
+    position: static !important;
+
+    &::before {
+      display: none !important;
+    }
+  }
+
+  .keyword-badge {
+    display: inline-block !important;
+    position: static !important;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-family: $secondary-font;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    white-space: nowrap;
+    border: 1px solid rgba(93, 120, 255, 0.2);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+    cursor: default;
+    animation: badgeFadeUp 0.6s ease both;
+
+    &::before {
+      display: none !important;
+    }
+
+    /* ─ physics variant ─ */
+    &--physics {
+      background: linear-gradient(135deg, rgba(79, 106, 255, 0.12), rgba(0, 206, 209, 0.10));
+      color: #3a5bdb;
+      border-color: rgba(79, 106, 255, 0.22);
+
+      &:hover {
+        background: linear-gradient(135deg, rgba(79, 106, 255, 0.28), rgba(0, 206, 209, 0.22));
+        box-shadow: 0 4px 18px rgba(79, 106, 255, 0.25);
+        transform: translateY(-2px) scale(1.04);
+        border-color: rgba(79, 106, 255, 0.45);
+      }
+    }
+
+    /* ─ AI / ML variant ─ */
+    &--aiml {
+      background: linear-gradient(135deg, rgba(147, 51, 234, 0.12), rgba(236, 72, 153, 0.10));
+      color: #7c3aed;
+      border-color: rgba(147, 51, 234, 0.22);
+
+      &:hover {
+        background: linear-gradient(135deg, rgba(147, 51, 234, 0.28), rgba(236, 72, 153, 0.22));
+        box-shadow: 0 4px 18px rgba(147, 51, 234, 0.25);
+        transform: translateY(-2px) scale(1.04);
+        border-color: rgba(147, 51, 234, 0.45);
+      }
+    }
+  }
+
+  @keyframes badgeFadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 
