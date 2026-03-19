@@ -369,16 +369,6 @@
   text-decoration: underline;
 }
 
-/* ── Disclaimer ────────────────────────────────────────────── */
-.satyabot-disclaimer {
-  text-align: center;
-  font-size: 11px;
-  color: #a0aec0;
-  padding: 6px 16px;
-  border-top: 1px solid #edf2f7;
-  flex-shrink: 0;
-}
-
 /* ── Input Area ────────────────────────────────────────────── */
 .satyabot-input-area {
   display: flex;

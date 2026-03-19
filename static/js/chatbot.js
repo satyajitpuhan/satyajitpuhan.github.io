@@ -10,8 +10,14 @@
   const BOT_NAME = "SatyaBot";
   const BOT_TAGLINE = "Explore. Learn. Connect with Satyajit.";
   const WELCOME_MSG = `Welcome to Satyajit Puhan's official website. I am <b>SatyaBot</b>, your virtual guide. How may I assist you today?`;
-  const FALLBACK_MSG = `I'm not sure I have information on that. Try asking about:<br>• Research areas (TMDs, GPDs, mesons)<br>• Publications & papers<br>• Education & career<br>• Skills & tools<br>• Contact information<br><br>Or click one of the quick-reply buttons below! 💡`;
+  const FALLBACK_MSG = `I couldn't find that in Satyajit's profile. Please ask about his research, publications, or skills!`;
   const TYPING_DELAY = 600;
+  
+  // ── Google Gemini API Integration ─────────────────────────
+  // ⚠️ IMPORTANT: To enable Google AI to answer general questions, 
+  // paste your free Gemini API key here. Keep it empty to disable.
+  const GEMINI_API_KEY = ""; 
+
 
   // ── Inject HTML ───────────────────────────────────────────
   function createChatbotHTML() {
@@ -48,10 +54,6 @@
       </div>
 
       <div id="satyabot-messages" class="satyabot-messages"></div>
-
-      <div class="satyabot-disclaimer">
-        ⚠️ Knowledge-based responses. Navigate the website for complete details.
-      </div>
 
       <div class="satyabot-input-area">
         <input id="satyabot-input" type="text" placeholder="Ask me about Satyajit..." autocomplete="off" />
@@ -265,8 +267,36 @@
     });
   }
 
+  // ── Google Gemini API Call ───────────────────────────────
+  async function askGoogleGemini(query) {
+    if (!GEMINI_API_KEY) {
+      // Fallback to a standard Google Search link if no API key is provided
+      return `I couldn't find that in Satyajit's profile. However, you can <a href="https://www.google.com/search?q=${encodeURIComponent(query)}" target="_blank">search Google for "${query}"</a> directly!`;
+    }
+
+    try {
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: `You are answering on Satyajit Puhan's academic website. Briefly and concisely answer the following question: ${query}` }] }]
+        })
+      });
+
+      if (!response.ok) throw new Error("API Error");
+      const data = await response.json();
+      const text = data.candidates[0].content.parts[0].text;
+      
+      // Convert basic markdown to HTML
+      return text.replace(/\\*\\*(.*?)\\*\\*/g, '<b>$1</b>').replace(/\\n/g, '<br>');
+    } catch (error) {
+      console.error("Gemini API Error:", error);
+      return `I ran into an error connecting to Google. Please try again later or <a href="https://www.google.com/search?q=${encodeURIComponent(query)}" target="_blank">search Google here.</a>`;
+    }
+  }
+
   // ── Handle User Input ──────────────────────────────────────
-  function handleUserInput(query) {
+  async function handleUserInput(query) {
     if (!query || !query.trim()) return;
 
     addMessage(query, "user");
@@ -274,7 +304,8 @@
 
     showTyping();
 
-    setTimeout(() => {
+    // Small delay for natural feel
+    setTimeout(async () => {
       removeTyping();
 
       if (isGreeting(query)) {
@@ -291,20 +322,25 @@
         return;
       }
 
+      // 1. Search Satyajit's local knowledge base first
       const entry = findBestAnswer(query);
       if (entry) {
         addMessage(entry.answer, "bot");
         if (entry.section) {
           const navBtn = document.createElement("div");
           navBtn.className = "satyabot-nav-link";
-          navBtn.innerHTML = `<a href="${entry.section}">📍 Navigate to this section →</a>`;
+          navBtn.innerHTML = `<a href="\${entry.section}">📍 Navigate to this section →</a>`;
           messagesDiv.appendChild(navBtn);
         }
+        addQuickReplies();
       } else {
-        addMessage(FALLBACK_MSG, "bot");
+        // 2. If not found, use Google AI fallback
+        showTyping(); // re-show typing for API call
+        const geminiAnswer = await askGoogleGemini(query);
+        removeTyping();
+        addMessage(geminiAnswer, "bot");
+        addQuickReplies();
       }
-
-      addQuickReplies();
     }, TYPING_DELAY);
   }
 
