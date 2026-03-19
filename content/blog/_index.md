@@ -4,6 +4,7 @@ description = "Presentations at international conferences, seminars, and worksho
 template = "blog/section.html"
 page_template = "blog/page.html"
 paginate_by = 9
+sort_by = "date"
 
 [extra]
 top_title = "Talks"
