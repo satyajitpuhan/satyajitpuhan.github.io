@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="{{ get_url(path='css/bootstrap.min.css', cachebust=true) }}">
     <link rel="stylesheet" href="{{ get_url(path='main.css', cachebust=true) }}">
     <link rel="stylesheet" href="{{ get_url(path='css/minion-bob.css', cachebust=true) }}">
+    <link rel="stylesheet" href="{{ get_url(path='css/chatbot.css', cachebust=true) }}">
     {% endblock %}
 
     <link rel="shortcut icon" type="image/x-icon" href="{{ get_url(path='images/favicon.ico') }}">
@@ -64,6 +65,10 @@
     <script src="{{ get_url(path='js/minion-bob.js') }}"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- SatyaBot Chatbot -->
+    <script src="{{ get_url(path='js/chatbot-knowledge.js') }}"></script>
+    <script src="{{ get_url(path='js/chatbot.js') }}"></script>
     {% endblock %}
 </body>
 
