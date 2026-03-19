@@ -1,26 +1,26 @@
 //site color variables
-$body-color: #fff;
-$primary-color: #4F6AFF;
-$secondary-color: #1E2A4A;
-$text-color: #8B8D96;
-$text-color-dark: #00113E;
+$body-color: #f8f9fa; // Slightly off-white for academic feel
+$primary-color: #00416d; // NITJ Navy Blue
+$secondary-color: #f39c12; // NITJ Gold/Orange accent
+$text-color: #4a4a4a;
+$text-color-dark: #222222;
 $site-ease: cubic-bezier(0.36, 0.03, 0, 0.91);
-$gray: #F5F7FF;
-$dark-gray: #646569;
+$gray: #e9ecef;
+$dark-gray: #6c757d;
 
 // accent / gradient
-$accent-gradient: linear-gradient(135deg, #4F6AFF, #7C3AED);
-$accent-warm: #FF6B6B;
-$dark-navy: #0F1729;
+$accent-gradient: linear-gradient(135deg, #00416d, #005b9f);
+$accent-warm: #d35400;
+$dark-navy: #00284d;
 
 // glow shadows
-$glow-blue: 0 4px 20px rgba(79, 106, 255, 0.25);
-$glow-blue-lg: 0 8px 35px rgba(79, 106, 255, 0.35);
+$glow-blue: 0 4px 20px rgba(0, 65, 109, 0.25);
+$glow-blue-lg: 0 8px 35px rgba(0, 65, 109, 0.35);
 
 // solid colors
 $white: #fff;
 $black: #000;
 
 // Font Variables
-$primary-font: 'Yeseva One', cursive;
-$secondary-font: 'Poppins', sans-serif;
+$primary-font: 'Roboto', sans-serif;
+$secondary-font: 'Open Sans', sans-serif;

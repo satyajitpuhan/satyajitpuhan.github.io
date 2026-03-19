@@ -1,20 +1,36 @@
-<nav class="navbar navbar-expand-lg fixed-top">
+<header id="site-header" class="d-none d-lg-block" style="background-color: #ffffff; padding: 15px 0; border-bottom: 2px solid #f39c12;">
+    <div class="container d-flex justify-content-between align-items-center">
+        <a href="{{ get_url(path='/', lang=lang) }}" class="d-flex align-items-center text-decoration-none">
+            <img src="{{ get_url(path=extra.logo) }}" alt="Site Logo" style="height: 70px;">
+            <div style="margin-left: 15px; color: #00416d;">
+                <h2 style="margin: 0; font-weight: 700; font-size: 1.5rem; color: #00416d;">Satyajit Puhan</h2>
+                <p style="margin: 0; font-size: 0.9rem; font-weight: 500; color: #4a4a4a;">Dr. B R Ambedkar National Institute of Technology Jalandhar</p>
+            </div>
+        </a>
+        <div class="header-right d-flex align-items-center">
+            <!-- Placeholder for NITJ Logo / Ministry Logo equivalent -->
+            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/52/NIT_Jalandhar_Logo.png/220px-NIT_Jalandhar_Logo.png" alt="NITJ Logo" style="height: 70px;">
+        </div>
+    </div>
+</header>
+<nav class="navbar navbar-expand-lg" style="position: relative; padding: 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1); background-color: #00416d;">
     <div class="container">
-        <a href="{{ get_url(path="/", lang=lang) }}" class="navbar-brand">
-            <img src="{{ get_url(path=extra.logo) }}" alt="site-logo">
+        <!-- Mobile Logo -->
+        <a href="{{ get_url(path='/', lang=lang) }}" class="navbar-brand d-lg-none" style="padding: 10px 0;">
+            <img src="{{ get_url(path=extra.logo) }}" alt="site-logo" style="height: 40px;">
         </a>
         
-        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-            <span class="navbar-toggler-icon"></span>
-            <span class="navbar-toggler-icon"></span>
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbarCollapse" style="border-color: rgba(255,255,255,0.5);">
+            <span class="navbar-toggler-icon" style="background-color: transparent;">
+                <i class="lni lni-menu" style="color: white; font-size: 24px;"></i>
+            </span>
         </button>
     
         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-            <ul class="nav navbar-nav main-navigation">
+            <ul class="nav navbar-nav main-navigation w-100 justify-content-start">
                 {% for menu in extra.menus %}
                 <li class="nav-item">
-                    <a href="{{ get_url(path=menu.url, lang=lang) }}" class="nav-link">
+                    <a href="{{ get_url(path=menu.url, lang=lang) }}" class="nav-link" style="padding: 15px 20px; color: white; font-weight: 600; font-size: 0.95rem;">
                         {{ trans(key=menu.name, lang=lang) }}
                     </a>
                 </li>
@@ -22,12 +38,12 @@
                 
                 {% if config.languages | length >= 1 %}
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ lang | upper }}</a>
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="padding: 15px 20px; color: white;">{{ lang | upper }}</a>
                     
                     <ul class="dropdown-menu">
                         {% for language, _ in config.languages %}
                         <li>
-                            <a class="dropdown-item" href="{{ get_url(path="/", lang=language) }}">
+                            <a class="dropdown-item" href="{{ get_url(path='/', lang=language) }}">
                             {{ language | upper }}
                             </a>
                         </li>
@@ -38,8 +54,8 @@
             </ul>
 
             <div class="navbar-nav">
-                <a href="{{get_url(path='contact', lang=lang) }}" class="hire_button">
-                    {{ trans(key="hire_me_now", lang=lang) }}
+                <a href="{{get_url(path='contact', lang=lang) }}" class="hire_button" style="padding: 10px 20px; margin: 8px 0; border-radius: 4px; background: #f39c12; color: white; font-weight: bold; text-decoration: none;">
+                    {{ trans(key='hire_me_now', lang=lang) }}
                 </a>
             </div>
         </div>

@@ -1,18 +1,17 @@
 .navbar {
-    padding: 40px 0;
-    background: transparent;
+    padding: 15px 0;
+    background: $primary-color;
     transition: all .4s cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 
     @include desktop {
-        background: rgba(255, 255, 255, 0.92);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
+        background: $primary-color;
     }
 
     @include desktop {
-        padding: 15px 20px;
-        margin: 10px 10px 0;
-        border-radius: 12px;
+        padding: 10px 20px;
+        margin: 0;
+        border-radius: 0;
     }
 
     .navbar-brand {
@@ -28,7 +27,7 @@
 
         .nav-item {
             .nav-link {
-                color: $secondary-color;
+                color: rgba(255, 255, 255, 0.85);
                 font-family: $secondary-font;
                 padding: 0 15px;
                 transition: all .3s ease;
@@ -50,7 +49,7 @@
                 }
 
                 &:hover {
-                    color: $primary_color;
+                    color: $secondary-color; // Gold on hover
 
                     &::after {
                         transform: scaleX(1);
@@ -100,14 +99,12 @@
     }
 
     &.nav__color__change {
-        background: rgba(255, 255, 255, 0.88);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        padding: 20px 0;
-        box-shadow: 0 4px 30px rgba(15, 23, 41, 0.08);
+        background: $primary-color;
+        padding: 15px 0;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
 
         @include desktop {
-            padding: 15px 20px;
+            padding: 10px 20px;
         }
     }
 

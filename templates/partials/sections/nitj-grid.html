@@ -1,0 +1,80 @@
+{% set blog_section = get_section(path="blog/_index.md", lang=lang) %}
+{% set portfolio_section = get_section(path="portfolio/_index.md", lang=lang) %}
+
+<section class="nitj-updates-grid" style="padding: 40px 0; background-color: #f8f9fa;">
+    <div class="container">
+        <div class="row">
+            <!-- Column 1: Latest Talks / Updates -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card" style="border: none; border-top: 4px solid #00416d; box-shadow: 0 4px 15px rgba(0,0,0,0.05); height: 100%;">
+                    <div class="card-header" style="background: white; border-bottom: 1px solid #eee; padding: 15px 20px;">
+                        <h4 style="margin: 0; color: #00416d; font-family: 'Roboto', sans-serif; font-weight: 700;">Latest Talks</h4>
+                    </div>
+                    <div class="card-body" style="padding: 0;">
+                        <ul class="list-group list-group-flush">
+                            {% if blog_section.pages %}
+                                {% for page in blog_section.pages | slice(end=5) %}
+                                <li class="list-group-item" style="border-bottom: 1px dashed #ddd; padding: 15px 20px;">
+                                    <div style="font-size: 0.85rem; color: #f39c12; font-weight: bold; margin-bottom: 5px;">{{ page.date | date(format=config.extra.date_format) }}</div>
+                                    <a href="{{ page.permalink }}" style="color: #333; font-weight: 500; text-decoration: none; font-size: 0.95rem;">
+                                        {{ page.title }}
+                                    </a>
+                                </li>
+                                {% endfor %}
+                            {% endif %}
+                        </ul>
+                    </div>
+                    <div class="card-footer" style="background: white; border-top: none; text-align: right;">
+                        <a href="{{ get_url(path='blog', lang=lang) }}" style="color: #00416d; font-weight: bold; font-size: 0.9rem;">View All →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Column 2: Recent Publications -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card" style="border: none; border-top: 4px solid #f39c12; box-shadow: 0 4px 15px rgba(0,0,0,0.05); height: 100%;">
+                    <div class="card-header" style="background: white; border-bottom: 1px solid #eee; padding: 15px 20px;">
+                        <h4 style="margin: 0; color: #00416d; font-family: 'Roboto', sans-serif; font-weight: 700;">Publications</h4>
+                    </div>
+                    <div class="card-body" style="padding: 0;">
+                        <ul class="list-group list-group-flush">
+                            {% if portfolio_section.pages %}
+                                {% for page in portfolio_section.pages | slice(end=5) %}
+                                <li class="list-group-item" style="border-bottom: 1px dashed #ddd; padding: 15px 20px;">
+                                    <div style="font-size: 0.85rem; color: #6c757d; margin-bottom: 5px;"><i class="lni lni-graduation"></i> {{ page.extra.service | default(value="Research") }}</div>
+                                    <a href="{{ page.permalink }}" style="color: #333; font-weight: 500; text-decoration: none; font-size: 0.95rem;">
+                                        {{ page.title }}
+                                    </a>
+                                </li>
+                                {% endfor %}
+                            {% endif %}
+                        </ul>
+                    </div>
+                    <div class="card-footer" style="background: white; border-top: none; text-align: right;">
+                        <a href="{{ get_url(path='portfolio', lang=lang) }}" style="color: #f39c12; font-weight: bold; font-size: 0.9rem;">View All →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Column 3: Announcements / Highlights -->
+            <div class="col-lg-4 col-md-12 mb-4">
+                <div class="card" style="border: none; border-top: 4px solid #00416d; box-shadow: 0 4px 15px rgba(0,0,0,0.05); height: 100%; background: #00416d; color: white;">
+                    <div class="card-header" style="background: transparent; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 15px 20px;">
+                        <h4 style="margin: 0; color: white; font-family: 'Roboto', sans-serif; font-weight: 700;">Highlights</h4>
+                    </div>
+                    <div class="card-body" style="padding: 20px;">
+                        <div style="margin-bottom: 20px;">
+                            <h5 style="color: #f39c12; font-size: 1rem; font-weight: bold;">Available for Collaboration</h5>
+                            <p style="font-size: 0.9rem; margin-bottom: 0;">Currently open for research collaborations in Physics.</p>
+                        </div>
+                        <div style="margin-bottom: 20px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
+                            <h5 style="color: #f39c12; font-size: 1rem; font-weight: bold;">Upcoming Events</h5>
+                            <p style="font-size: 0.9rem; margin-bottom: 0;">Check my latest talks for upcoming seminar locations.</p>
+                        </div>
+                        <a href="{{ get_url(path='contact', lang=lang) }}" class="btn btn-warning w-100" style="color: #00416d; font-weight: bold;">Contact Me</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
