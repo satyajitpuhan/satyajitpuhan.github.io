@@ -8,6 +8,9 @@ about = "Dr. Narinder Kumar is an Assistant Professor of Physics at Doaba Colleg
 institution = "Doaba College, Jalandhar"
 image = "images/collaborators/narinder-kumar.png"
 website = "https://sites.google.com/site/narinderkumariitkanpur/home?authuser=0"
+email = "narinderhep@email.com"
+phone = "+91-(788)-924-6894"
+address = "Department of Physics, Doaba College Jalandhar, Vidyalaya Marg, Pin-144004, Punjab, India"
 +++
 
 ## Academic Profile

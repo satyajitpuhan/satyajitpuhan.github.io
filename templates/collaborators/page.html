@@ -37,6 +37,30 @@
                     <p style="color: #e2e8f0; font-size: 0.95rem; line-height: 1.6; margin: 0;">{{ page.extra.about }}</p>
                 </div>
                 {% endif %}
+
+                {% if page.extra.email or page.extra.phone or page.extra.address %}
+                <div class="card mt-4 text-start" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.2); border-radius: 16px; padding: 25px 20px;">
+                    <h5 style="color: #f39c12; font-weight: 600; margin-bottom: 15px; font-size: 1.15rem;"><i class="lni lni-envelope"></i> Contact Details</h5>
+                    {% if page.extra.email %}
+                    <div style="margin-bottom: 12px; display: flex; align-items: center;">
+                        <i class="lni lni-envelope" style="color: #fff; margin-right: 10px; font-size: 1.1rem;"></i>
+                        <a href="mailto:{{ page.extra.email }}" style="color: #e2e8f0; font-size: 0.95rem; text-decoration: none;">{{ page.extra.email }}</a>
+                    </div>
+                    {% endif %}
+                    {% if page.extra.phone %}
+                    <div style="margin-bottom: 12px; display: flex; align-items: center;">
+                        <i class="lni lni-phone" style="color: #fff; margin-right: 10px; font-size: 1.1rem;"></i>
+                        <span style="color: #e2e8f0; font-size: 0.95rem;">{{ page.extra.phone }}</span>
+                    </div>
+                    {% endif %}
+                    {% if page.extra.address %}
+                    <div style="display: flex; align-items: flex-start;">
+                        <i class="lni lni-map-marker" style="color: #fff; margin-right: 10px; margin-top: 3px; font-size: 1.1rem;"></i>
+                        <span style="color: #e2e8f0; font-size: 0.95rem; line-height: 1.5;">{{ page.extra.address }}</span>
+                    </div>
+                    {% endif %}
+                </div>
+                {% endif %}
             </div>
             
             <div class="col-lg-8">
