@@ -9,15 +9,34 @@ image = ""
 website = "https://inspirehep.net/authors/1054084"
 +++
 
+<div style="background: rgba(128, 128, 128, 0.1); border: 1px solid rgba(128, 128, 128, 0.2); border-radius: 10px; padding: 20px; margin-bottom: 30px;">
+<strong>About:</strong> Dr. Narinder Kumar is an Assistant Professor of Physics at Doaba College Jalandhar, bringing over a decade of research expertise in Hadron Physics, Nucleon Tomography, and Quantum Chromodynamics (QCD). He completed his PhD at NIT Jalandhar under Dr. Harleen Dahiya and later served as a National Post-Doctoral Fellow (NPDF) at IIT Kanpur. An acclaimed researcher in Light-Front QCD, he recently received the SERB Teachers Associateship Research Excellence (TARE) Award from the Government of India.
+</div>
+
 ## Academic Profile
 
 **Author Identifier:** Narinder.Kumar.1 (INSPIRE-HEP)  
 **PhD Advisor:** Dr. Harleen Dahiya  
 
 ### Academic Journey
-- **2018-present:** Junior, Doaba College, Jalandhar  
-- **2016-2018:** Postdoctoral Researcher, Indian Institute of Technology (IIT), Kanpur  
+- **2018-present:** Assistant Professor, Doaba College, Jalandhar  
+- **2021-present:** SERB-TARE Fellow, NIT Jalandhar
+- **2018:** Visiting Scientist, Japan High Energy Accelerator Research Organization (KEK)
+- **2016-2018:** National Post-Doctoral Fellow, IIT Kanpur  
+- **2016:** Assistant Professor (AdHoc), DAV College Jalandhar
 - **2012-2016:** PhD, Dr. B R Ambedkar National Institute of Technology, Jalandhar  
+- **2012:** JINR Fellow, Joint Institute for Nuclear Research, Dubna, Russia
+
+### Education
+- **Ph.D. in Physics:** NIT Jalandhar (2012 — 2016)
+- **M.Sc. in Physics:** NIT Jalandhar (2008 — 2010)
+- **B.Sc. Non-Medical:** Panjab University Chandigarh (2005 — 2008)
+
+### Awards & Honors
+- **2021:** Teachers Associateship Research Excellence (TARE) Award from SERB, Govt. of India.
+- **2018:** International Travel Support (ITS) Award from SERB, Govt. of India.
+- **2018:** KEK Student Program, Japan High Energy Accelerator Research Organization.
+- **2016:** National Post-Doctoral Fellowship (NPDF) from SERB, Govt. of India.
 
 ## Selected Highly Cited Papers
 
