@@ -41,12 +41,12 @@
     font-size: 50px;
     line-height: 60px;
     font-family: $primary-font;
-    color: $secondary-color;
+    color: var(--text-color);
     margin: 0 0 50px 0;
   }
   p {
     font-family: $secondary-font;
-    color: #7e7e8a;
+    color: var(--text-color);
     font-size: 16px;
     line-height: 34px;
     margin: 0 0 30px 0;
@@ -54,7 +54,8 @@
   &-info {
     display: flex;
     justify-content: space-around;
-    background: $secondary-color;
+    background: rgba(128, 128, 128, 0.1);
+    border: 1px solid rgba(128, 128, 128, 0.2);
     border-radius: 20px;
     padding: 65px 0;
     margin: 70px 0 80px 0;
@@ -91,7 +92,7 @@
     h5 {
       margin: 0 0 10px 0;
       font-size: 20px;
-      color: $white;
+      color: var(--text-color);
       font-family: $primary-font;
     }
     p {
@@ -102,7 +103,7 @@
     margin-bottom: 90px;
     h3 {
       font-family: $primary-font;
-      color: $secondary-color;
+      color: var(--text-color);
       font-size: 25px;
       margin: 0 0 25px 0;
     }

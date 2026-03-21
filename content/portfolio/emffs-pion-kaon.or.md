@@ -6,6 +6,7 @@ date = 2025-05-15
 thumbnail = "images/portfolio/papers/form-factors-pion-kaon.png"
 service = "Phys. Rev. D 111 (2025)"
 client = "S. Puhan and H. Dahiya"
+doi = "10.1103/2wpb-jgkc"
 short_description = "Published in PRD."
 challenge = "We compute the scalar, vector, and tensor electromagnetic form factors of the pion and kaon using the light-front quark model. The charge radii, magnetic moments, and quadrupole moments are extracted from the form factors and compared with lattice QCD and experimental data."
 solution = "This work provides a unified study of all three types of electromagnetic form factors for light pseudoscalar mesons, offering predictions that serve as benchmarks for comparison with future experimental measurements at JLab and EIC."

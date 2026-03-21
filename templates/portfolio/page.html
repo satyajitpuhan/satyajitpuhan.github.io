@@ -44,6 +44,12 @@
             <h5>Date</h5>
             <p>{{ page.date | date(format="%B %d, %Y") }}</p>
           </div>
+          {% if page.extra.doi %}
+          <div class="case-details-info-item">
+            <h5>DOI</h5>
+            <p><a href="https://doi.org/{{ page.extra.doi }}" target="_blank" style="color: inherit; text-decoration: underline;">{{ page.extra.doi }}</a></p>
+          </div>
+          {% endif %}
         </div>
         <div class="row">
           <div class="col-lg-6">
