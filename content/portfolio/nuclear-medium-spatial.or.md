@@ -5,7 +5,7 @@ date = 2025-01-20
 [extra]
 thumbnail = "images/portfolio/papers/pion-gpds-nuclear-medium.png"
 service = "Nucl. Phys. B 1017 (2025)"
-client = "S. Puhan, N. Kaur, A. Kumar, S. Dutt, and H. Dahiya"
+client = "Satyajit Puhan, Navpreet Kaur, Arvind Kumar, Suneel Dutt, and Harleen Dahiya"
 doi = "10.1016/j.nuclphysb.2025.116940"
 short_description = "Published in NPB."
 challenge = "We study the effect of the nuclear medium on the spatial distribution of pions using the generalized parton distributions (GPDs) framework. The in-medium GPDs, electromagnetic form factors, and impact parameter space distributions are evaluated using the chiral SU(3) quark mean field model and light-cone quark model."

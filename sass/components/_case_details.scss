@@ -91,11 +91,19 @@
     h5 {
       margin: 0 0 10px 0;
       font-size: 20px;
-      color: $white;
+      color: $primary-color;
       font-family: $primary-font;
     }
     p {
       margin: 0;
+      color: $white;
+      a {
+        color: $white;
+        border-bottom: 2px solid $primary-color;
+        text-decoration: none;
+        transition: color 0.3s;
+        &:hover { color: $primary-color; }
+      }
     }
   }
   &-service {

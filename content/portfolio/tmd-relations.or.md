@@ -5,7 +5,7 @@ date = 2024-10-01
 [extra]
 thumbnail = "images/portfolio/papers/tmd-relations-lfqdm.png"
 service = "PTEP ptae150 (2024)"
-client = "S. Sharma, S. Puhan, N. Kumar and H. Dahiya"
+client = "Shubham Sharma, Satyajit Puhan, Narinder Kumar and Harleen Dahiya"
 doi = "10.1093/ptep/ptae150"
 short_description = "Published in PTEP."
 challenge = "We study the relations between transverse momentum-dependent parton distributions (TMDs) using a light-front quark-diquark model. The interrelations among leading twist TMDs are examined and tested analytically."

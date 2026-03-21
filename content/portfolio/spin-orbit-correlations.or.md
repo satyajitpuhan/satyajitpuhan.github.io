@@ -5,7 +5,7 @@ date = 2024-05-15
 [extra]
 thumbnail = "images/portfolio/papers/spin-orbit-correlations-mesons.png"
 service = "Phys. Rev. D 110 (2024)"
-client = "R. Acharyya, S. Puhan and H. Dahiya"
+client = "Ritwik Acharyya, Satyajit Puhan and Harleen Dahiya"
 doi = "10.1103/PhysRevD.110.034020"
 short_description = "Investigation of quark spin-orbit correlations in mesons."
 challenge = "We investigate the quark spin-orbit correlations in both spin-0 (π, K) and spin-1 (ρ, K*, J/ψ) mesons using the light-front quark model. The Wigner distributions and orbital angular momentum (OAM) contributions are computed for different quark polarization configurations."
