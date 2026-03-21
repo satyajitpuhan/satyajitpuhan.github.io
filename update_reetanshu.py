@@ -1,15 +1,6 @@
-+++
-title = "Reetanshu Pandey"
-description = "Collaborator"
-weight = 9
+import os
 
-[extra]
-institution = "NIT Jalandhar"
-image = ""
-website = ""
-+++
-
-## Selected Papers
+body = """## Selected Papers
 
 - **Does nuclear medium affect the transverse momentum-dependent parton distributions of valence quark of pions?**  
   *Navpreet Kaur, Satyajit Puhan, Reetanshu Pandey, Arvind Kumar, Suneel Dutt et al.* (Sep 9, 2024)  
@@ -26,3 +17,19 @@ website = ""
 - **Extraction of unpolarized quark TMDs of proton from FNAL-E-0605 data using iminuit**  
   *Abhishek K. P, Reetanshu Pandey, Satyajit Puhan, Suneel Dutt, Harleen Dahiya et al.* (2026)  
   *DAE Symp.Nucl.Phys. 69 (2026) 877-878*
+"""
+
+base_path = "content/collaborators"
+name = "reetanshu-pandey"
+for ext in [".md", ".or.md"]:
+    filepath = os.path.join(base_path, f"{name}{ext}")
+    if not os.path.exists(filepath):
+        continue
+    with open(filepath, 'r', encoding='utf-8') as f:
+        content = f.read()
+    parts = content.split('+++\n')
+    if len(parts) >= 3:
+        new_content = parts[0] + '+++\n' + parts[1] + '+++\n\n' + body
+        with open(filepath, 'w', encoding='utf-8') as f:
+            f.write(new_content)
+print("Successfully batch-updated profiles.")
