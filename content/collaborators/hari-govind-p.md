@@ -6,12 +6,15 @@ weight = 15
 [extra]
 institution = "NIT Jalandhar"
 image = ""
-website = ""
+website = "https://inspirehep.net/authors/H.G.P.2"
 +++
 
-## Research Areas
-Specific research areas and focus of work are listed here.
+## Academic Profile
+
+**Author Identifier:** H.G.P.2 (INSPIRE-HEP)  
 
 ## Selected Papers
-- [Title of Paper 1](#)
-- [Title of Paper 2](#)
+
+- **Extraction of f1(x,fkp2erp) quark TMDs of proton from E288 Drell-Yan data**  
+  *Hari Govind P, Reetanshu Pandey, Satyajit Puhan, Suneel Dutt, Harleen Dahiya et al.* (2026)  
+  *DAE Symp.Nucl.Phys. 69 (2026) 963-964*

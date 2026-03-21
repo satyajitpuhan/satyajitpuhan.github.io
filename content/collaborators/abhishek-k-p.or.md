@@ -6,12 +6,15 @@ weight = 16
 [extra]
 institution = "NIT Jalandhar"
 image = ""
-website = ""
+website = "https://inspirehep.net/authors/A.K.P.3"
 +++
 
-## Research Areas
-Specific research areas and focus of work are listed here.
+## Academic Profile
+
+**Author Identifier:** A.K.P.3 (INSPIRE-HEP)  
 
 ## Selected Papers
-- [Title of Paper 1](#)
-- [Title of Paper 2](#)
+
+- **Extraction of unpolarized quark TMDs of proton from FNAL-E-0605 data using iminuit**  
+  *Abhishek K. P, Reetanshu Pandey, Satyajit Puhan, Suneel Dutt, Harleen Dahiya et al.* (2026)  
+  *DAE Symp.Nucl.Phys. 69 (2026) 877-878*

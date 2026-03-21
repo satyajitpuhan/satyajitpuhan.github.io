@@ -6,12 +6,33 @@ weight = 12
 [extra]
 institution = "IIT Bhilai, Chhattisgarh"
 image = "images/collaborators/ashutosh.jpg"
-website = ""
+website = "https://inspirehep.net/authors/Ashutosh.Dwibedi.1"
 +++
 
-## Research Areas
-Specific research areas and focus of work are listed here.
+## Academic Profile
 
-## Selected Papers
-- [Title of Paper 1](#)
-- [Title of Paper 2](#)
+**Author Identifier:** Ashutosh.Dwibedi.1 (INSPIRE-HEP)  
+**PhD Advisor:** Sabyasachi Ghosh  
+
+### Academic Journey
+- **2022-present:** PhD, Indian Institute of Technology (IIT), Bhilai  
+- **2019-2021:** Master, University of Hyderabad  
+- **2016-2019:** Undergraduate, Fakir Mohan University, Balasore  
+
+## Selected Highly Cited Papers
+
+- **Effect of the Coriolis force on the electrical conductivity of quark matter: A nonrelativistic description**  
+  *Ashutosh Dwibedi, Cho Win Aung, Jayanta Dey, Sabyasachi Ghosh* (May 17, 2023)  
+  *Phys.Rev.C 109 (2024) 3, 034914* | **12 Citations**
+
+- **Effect of Coriolis force on the shear viscosity of quark matter: A nonrelativistic description**  
+  *Cho Win Aung, Ashutosh Dwibedi, Jayanta Dey, Sabyasachi Ghosh* (Mar 29, 2023)  
+  *Phys.Rev.C 109 (2024) 3, 2024* | **12 Citations**
+
+- **Effect of Coriolis force on electrical conductivity tensor for the rotating hadron resonance gas**  
+  *Nandita Padhan, Ashutosh Dwibedi, Arghya Chatterjee, Sabyasachi Ghosh* (Mar 25, 2024)  
+  *Phys.Rev.C 110 (2024) 2, 024904* | **11 Citations**
+
+- **Dynamics of hot QCD matter 2024 — Bulk properties**  
+  *Prabhakar Palni et al.* (Dec 14, 2024)  
+  *Int.J.Mod.Phys.E 34 (2025) 07, 2544002* | **10 Citations**

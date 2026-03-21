@@ -6,12 +6,19 @@ weight = 14
 [extra]
 institution = "NIT Jalandhar"
 image = ""
-website = ""
+website = "https://inspirehep.net/authors/Ritwik.Acharyya.2"
 +++
 
-## Research Areas
-Specific research areas and focus of work are listed here.
+## Academic Profile
+
+**Author Identifier:** Ritwik.Acharyya.2 (INSPIRE-HEP)  
 
 ## Selected Papers
-- [Title of Paper 1](#)
-- [Title of Paper 2](#)
+
+- **Quark spin-orbit correlations in spin-0 and spin-1 mesons using the light-front quark model**  
+  *Ritwik Acharyya, Satyajit Puhan, Harleen Dahiya* (May 1, 2024)  
+  *Phys.Rev.D 110 (2024) 3, 034020* | **13 Citations**
+
+- **Spectroscopy of excited quarkonium states in the light-front quark model**  
+  *Ritwik Acharyya, Satyajit Puhan, Harleen Dahiya, Narinder Kumar* (Aug 14, 2024)  
+  *Chin.Phys.C 49 (2025) 2, 023104* | **9 Citations**
