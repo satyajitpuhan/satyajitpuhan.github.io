@@ -4,6 +4,7 @@ description = "Collaborator"
 weight = 15
 
 [extra]
+research_interests = "Quark TMDs, Drell-Yan Process, Proton Structure, Parton Distribution Extraction"
 inspire = "https://inspirehep.net/authors/3114829"
 github = ""
 scholar = ""

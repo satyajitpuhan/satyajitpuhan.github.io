@@ -4,6 +4,7 @@ description = "Assistant Professor"
 weight = 7
 
 [extra]
+research_interests = "Light-Front QCD, Nucleon Tomography, Generalized Parton Distributions, Transverse Momentum Distributions, Spin Asymmetries, Wigner Distributions"
 inspire = "https://inspirehep.net/authors/1380807"
 github = ""
 scholar = ""

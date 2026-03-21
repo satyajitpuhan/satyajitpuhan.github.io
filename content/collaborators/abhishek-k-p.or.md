@@ -4,6 +4,7 @@ description = "Collaborator"
 weight = 16
 
 [extra]
+research_interests = "Unpolarized Quark TMDs, Proton Structure, Statistical Fitting Methods, Drell-Yan Data Analysis"
 inspire = "https://inspirehep.net/authors/3114856"
 github = ""
 scholar = ""

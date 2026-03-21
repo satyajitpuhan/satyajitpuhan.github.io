@@ -4,6 +4,7 @@ description = "Collaborator"
 weight = 14
 
 [extra]
+research_interests = "Light-Front Quark Model, Spin-Orbit Correlations, Quarkonium Spectroscopy, Meson Form Factors"
 inspire = "https://inspirehep.net/authors/2728781"
 github = ""
 scholar = ""

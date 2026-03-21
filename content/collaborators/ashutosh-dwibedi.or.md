@@ -4,6 +4,7 @@ description = "Collaborator"
 weight = 12
 
 [extra]
+research_interests = "Transport Properties of Quark Matter, Electrical Conductivity, Rotating Hadron Resonance Gas, Coriolis Force Effects"
 inspire = "https://inspirehep.net/authors/2646923"
 github = ""
 scholar = ""

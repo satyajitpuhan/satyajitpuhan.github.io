@@ -4,6 +4,7 @@ description = "Postdoctoral Researcher"
 weight = 8
 
 [extra]
+research_interests = "TMD Parton Distributions, Light-Front Quark-Diquark Model, Pseudo-Scalar Meson Structure, Sub-Leading Twist Distributions"
 inspire = "https://inspirehep.net/authors/1896590"
 github = ""
 scholar = ""

@@ -4,6 +4,7 @@ description = "Collaborator"
 weight = 6
 
 [extra]
+research_interests = "Experimental High Energy Physics, CMS Experiment at CERN-LHC, Beyond Standard Model Physics, Nuclear Medium Effects, Baryon Properties"
 inspire = "https://inspirehep.net/authors/1050731"
 github = ""
 scholar = ""

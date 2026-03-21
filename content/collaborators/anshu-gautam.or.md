@@ -4,6 +4,7 @@ description = "Collaborator"
 weight = 10
 
 [extra]
+research_interests = "In-Medium Meson Properties, Asymmetric Nuclear Matter, Pseudoscalar and Vector D Mesons"
 inspire = "https://inspirehep.net/authors/2935391"
 github = ""
 scholar = ""

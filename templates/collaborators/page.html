@@ -38,6 +38,17 @@
                 </div>
                 {% endif %}
 
+                {% if page.extra.research_interests %}
+                <div class="card mt-4 text-start" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.2); border-radius: 16px; padding: 25px 20px;">
+                    <h5 style="color: #f39c12; font-weight: 600; margin-bottom: 15px; font-size: 1.15rem;"><i class="lni lni-bulb"></i> Research Interests</h5>
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                        {% for interest in page.extra.research_interests | split(pat=", ") %}
+                        <span style="color: #e2e8f0; background: rgba(255,255,255,0.1); padding: 5px 12px; border-radius: 20px; font-size: 0.85rem; border: 1px solid rgba(255,255,255,0.15);">{{ interest }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+
                 {% if page.extra.email or page.extra.phone or page.extra.address %}
                 <div class="card mt-4 text-start" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.2); border-radius: 16px; padding: 25px 20px;">
                     <h5 style="color: #f39c12; font-weight: 600; margin-bottom: 15px; font-size: 1.15rem;"><i class="lni lni-envelope"></i> Contact Details</h5>

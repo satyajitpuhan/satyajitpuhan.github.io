@@ -4,6 +4,7 @@ description = "Supervisor (PhD)"
 weight = 1
 
 [extra]
+research_interests = "Light-Front Dynamics, Nucleon Structure, Generalized Parton Distributions, Transverse Momentum Distributions, Hadron Spectroscopy"
 inspire = "https://inspirehep.net/authors/1047815"
 github = ""
 scholar = ""

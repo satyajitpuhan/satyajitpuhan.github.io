@@ -4,6 +4,7 @@ description = "Collaborator"
 weight = 11
 
 [extra]
+research_interests = "Valence Quark Properties, Kaon Structure, Light-Cone Dynamics, Nuclear Medium Effects"
 inspire = "https://inspirehep.net/authors/2916909"
 github = ""
 scholar = ""

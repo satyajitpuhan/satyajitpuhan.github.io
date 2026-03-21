@@ -4,6 +4,7 @@ description = "Collaborator"
 weight = 9
 
 [extra]
+research_interests = "TMD Parton Distributions, Valence Quark Properties, Charged Kaons, Dense Nuclear Environments"
 about = "Reetanshu Pandey is a dynamic high energy physics researcher analyzing deep structural parton dynamics. His key publications involve extensive investigations into the transverse momentum-dependent parton distributions of mesons and the specific valence quark properties of charged kaons within dense nuclear environments."
 institution = "NIT Jalandhar"
 image = ""

@@ -4,6 +4,7 @@ description = "MSc Supervisor"
 weight = 4
 
 [extra]
+research_interests = "Quantum Scattering, Coulomb-Distorted Nuclear Scattering, Hamiltonian Hierarchies, Supersymmetry-Inspired Factorization"
 about = "Prof. Ujjwal Laha is a distinguished Professor in the Department of Physics at the National Institute of Technology, Jamshedpur. An expert in Theoretical Physics with an impressive h-index and vast citations, his highly influential work explores quantum scattering, Coulomb-distorted nuclear scattering, and Hamiltonian hierarchies within complex potentials."
 institution = "Professor, NIT Jamshedpur"
 image = ""

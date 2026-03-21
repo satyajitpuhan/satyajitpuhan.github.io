@@ -4,6 +4,7 @@ description = "Collaborator"
 weight = 3
 
 [extra]
+research_interests = "Transport Coefficients, Shear and Bulk Viscosity, Hadron Resonance Gas, Quark-Meson Coupling, Thermal Field Theory"
 inspire = "https://inspirehep.net/authors/1122092"
 github = ""
 scholar = ""
