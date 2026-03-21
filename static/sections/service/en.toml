@@ -5,19 +5,19 @@ subtitle = "My primary research focuses on understanding the internal structure 
 [[services]]
 icon = "lni-target"
 title = "Transverse Momentum Distributions (TMDs)"
-content = "Model-dependent TMDs for spin-0 (pion, kaon), spin-1/2 (proton), and spin-1 (ρ meson, heavy vector mesons, photon). PDFs and spin densities in momentum space. Higher twist calculations."
+content = "Model-dependent leading-twist and subleading-twist TMDs for spin-0 (pion, kaon), spin-1/2 (proton), and spin-1 (ρ meson, heavy vector mesons, photon) hadrons within the light-front quark model. Includes extraction of T-even and T-odd TMDs, Boer–Mulders and Sivers functions, spin densities in transverse momentum space, Wigner distributions, and higher-twist PDFs. Positivity bounds and Lorentz-invariance relations are systematically examined."
 
 [[services]]
 icon = "lni-map"
 title = "Generalized Parton Distributions (GPDs)"
-content = "GPDs for spin-0 (pion, kaon) and spin-1 (ρ meson) particles. Extraction of electromagnetic and gravitational form factors. GDAs for pion. Global extraction from charge form factor data using neural networks. Relevant for EIC and JLab."
+content = "GPDs for spin-0 (pion, kaon) and spin-1 (ρ meson) hadrons encoding both spatial and momentum correlations. Extraction of electromagnetic (Dirac, Pauli) and gravitational (energy-momentum tensor) form factors via Ji's sum rule. Generalized distribution amplitudes (GDAs) for pion. Global extraction of pion GPDs from Jefferson Lab charge form factor data using neural networks. Directly relevant for upcoming Electron-Ion Collider (EIC) and JLab 12 GeV measurements."
 
 [[services]]
 icon = "lni-pulse"
 title = "Hadronic & Mechanical Properties"
-content = "Spin-orbit correlations, distribution amplitudes, form factors, charge radii, decay constants, mass spectra, radially excited states of quarkonia, radiative transitions of charmonia. Gravitational form factors, pressure and shear distributions inside pion."
+content = "Spin-orbit correlations, leading-twist and higher-twist distribution amplitudes (DAs) evolved via ERBL equations. Electromagnetic form factors, charge radii, magnetic moments, and quadrupole moments for vector mesons. Decay constants, mass spectra, and radially excited states of quarkonia (charmonium, bottomonium). Radiative transition form factors of charmonia (J/ψ → η_c γ). Gravitational form factors (D-term), pressure and shear force distributions inside the pion revealing mechanical stability."
 
 [[services]]
 icon = "lni-layers"
 title = "Medium Modifications & Extraction"
-content = "Medium modification of TMDs, PDFs, GPDs in nuclear/hadronic medium using LFQM + Chiral SU(3) CQMF model. Extraction of pion TMDs/PDFs from Drell-Yan data via neural networks. Monte Carlo simulations of charmonia production with Pythia 8312 (NRQCD). Transport coefficients using NJL-Polyakov loop model."
+content = "In-medium modification of TMDs, PDFs, GPDs, and form factors in symmetric nuclear matter using LFQM combined with the chiral SU(3) coupled quark-meson-Friedberg–Lee (CQMF) model at finite baryon density. Data-driven extraction of pion TMDs and PDFs from E615 and NA10 Drell–Yan cross-section data via neural network parametrization with DGLAP-evolved distributions. Monte Carlo simulations of charmonia (J/ψ, ψ(2S)) production using Pythia 8312 with color-singlet and color-octet NRQCD mechanisms. Transport coefficients using the NJL–Polyakov loop model at finite temperature and chemical potential."

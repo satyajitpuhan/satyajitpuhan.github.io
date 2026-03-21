@@ -1,150 +1,201 @@
 .service {
     position: relative;
     overflow: hidden;
-    padding-bottom: 180px;
-
-    &__background {
-        position: absolute;
-        top: 0;
-        right: 0;
-        z-index: -1;
-        width: 61%;
-
-        svg {
-            width: 100%;
-            height: 100%;
-        }
-    }
-
-    &__background_shape {
-        position: absolute;
-        bottom: -10%;
-        left: -7%;
-        height: 465px;
-        width: 410px;
-
-        svg {
-            width: 100%;
-        }
-
-        @include desktop {
-            display: none;
-        }
-    }
-
-    &__background_pattern {
-        position: absolute;
-        bottom: 4%;
-        left: 6%;
-        animation: move_top 5s infinite linear;
-
-        @include desktop {
-            display: none;
-        }
-    }
 
     &__header {
         margin-bottom: 50px;
 
         span {
-            font-size: 20px;
+            font-size: 15px;
             font-family: $secondary-font;
             color: $primary-color;
             position: relative;
-            display: block;
-            margin: 0 0 20px 30px;
-            font-weight: 600;
-
-            &::before {
-                position: absolute;
-                content: '';
-                height: 3px;
-                width: 20px;
-                top: 50%;
-                left: -20px;
-                transform: translateX(-50%);
-                background: $accent-gradient;
-                border-radius: 2px;
-            }
+            display: inline-block;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         h1 {
-            margin: 0 0 30px 0;
-            font-size: 50px;
+            margin: 0 0 20px 0;
+            font-size: 45px;
             font-family: $primary-font;
             color: $secondary-color;
-            line-height: 50px;
+            line-height: 1.1;
 
             @include tablet {
-                font-size: 39px;
+                font-size: 34px;
             }
         }
 
         p {
-            margin: 0 0 0 0;
+            margin: 0;
             font-family: $secondary-font;
             color: $text-color;
-            font-size: 18px;
-            line-height: 26px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+    }
+}
+
+// ─── Research Cards Carousel ───
+.research-carousel-wrapper {
+    position: relative;
+}
+
+.research-card {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 18px;
+    padding: 35px 28px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+    overflow: hidden;
+
+    // Decorative top gradient bar
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, $primary-color, $secondary-color);
+        border-radius: 18px 18px 0 0;
+    }
+
+    &:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        border-color: rgba(243, 156, 18, 0.3);
+
+        .research-card__icon-wrap {
+            background: linear-gradient(135deg, $primary-color, lighten($primary-color, 10%));
+            color: #fff;
+            transform: scale(1.1);
         }
     }
 
-    &__slider {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
+    &__icon-wrap {
+        width: 58px;
+        height: 58px;
+        border-radius: 14px;
+        background: linear-gradient(135deg, rgba(0, 65, 109, 0.1), rgba(0, 91, 159, 0.15));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 22px;
+        transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 
-        @include mobile {
-            grid-template-columns: repeat(1, 1fr);
+        i {
+            font-size: 26px;
+            color: $primary-color;
+            transition: color 0.3s;
         }
+    }
 
-        &_item {
-            margin: 15px;
-            padding: 30px;
-            box-shadow: 0 8px 30px hsla(230, 50%, 38%, 0.08);
-            border-radius: 16px;
-            background: $white;
-            border: 1px solid transparent;
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    &:hover &__icon-wrap i {
+        color: #fff;
+    }
 
-            &:hover {
-                box-shadow: 0 12px 40px hsla(230, 50%, 38%, 0.14);
-                transform: translateY(-4px);
-                border-color: rgba(79, 106, 255, 0.12);
-            }
+    &__title {
+        font-family: $primary-font;
+        font-size: 19px;
+        font-weight: 700;
+        color: #1a1a2e;
+        margin: 0 0 14px 0;
+        line-height: 1.3;
+    }
 
-            &-icon {
-                height: 110px;
-                width: 125px;
-                position: relative;
+    &__text {
+        font-family: $secondary-font;
+        font-size: 14px;
+        color: #555;
+        line-height: 1.65;
+        margin: 0;
+        flex: 1;
+    }
+}
 
-                .icon-background {
-                    position: absolute;
-                    top: 0;
-                    right: 0;
-                }
+// ─── Arrows ───
+.research-carousel-arrow {
+    width: 48px !important;
+    height: 48px !important;
+    top: 50% !important;
+    transform: translateY(-50%);
+    opacity: 1 !important;
 
-                .icon {
-                    position: absolute;
-                    left: 0;
-                    bottom: 0;
-                    z-index: 1;
-                }
-            }
+    &__icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        font-weight: 700;
+        color: $primary-color;
+        transition: all 0.3s;
+        border: 2px solid rgba(0, 65, 109, 0.15);
+    }
 
-            h4 {
-                font-size: 24px;
-                font-family: $primary-font;
-                color: $secondary-color;
-                margin: 40px 0 30px 0;
-            }
+    &:hover .research-carousel-arrow__icon {
+        background: $primary-color;
+        color: #fff;
+        border-color: $primary-color;
+        transform: scale(1.1);
+    }
+}
 
-            p {
-                font-family: $secondary-font;
-                color: $text-color;
-                font-size: 16px;
-                line-height: 30px;
-                margin: 0;
-            }
-        }
+.carousel-control-prev.research-carousel-arrow {
+    left: -5px !important;
+    justify-content: flex-start !important;
+}
+
+.carousel-control-next.research-carousel-arrow {
+    right: -5px !important;
+    justify-content: flex-end !important;
+}
+
+// ─── Dot Indicators ───
+.research-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    background: transparent;
+    margin: 0 6px;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &.active,
+    &:hover {
+        background: $secondary-color;
+        border-color: $secondary-color;
+        transform: scale(1.2);
+    }
+}
+
+// ─── Mobile Responsive ───
+@include mobile {
+    .research-card {
+        margin-bottom: 20px;
+    }
+
+    .research-carousel-arrow {
+        display: none !important;
+    }
+
+    .research-carousel-wrapper {
+        padding: 0 !important;
     }
 }
