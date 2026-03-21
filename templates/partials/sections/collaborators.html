@@ -1,7 +1,8 @@
 {% set path = "static/sections/collaborators/" ~ lang ~ ".toml" %}
 {% set data = load_data(path=path, required=false) %}
+{% set section = get_section(path="collaborators/_index.md", lang=lang, fallback=true) %}
 
-{% if data %}
+{% if data and section %}
 <section id="collaborators" class="section collaborators" style="position: relative; background-image: url('/images/flowers/flower2.jpg'); background-size: cover; background-position: center; padding: 100px 0;">
   <div style="position: absolute; inset: 0; background: rgba(30, 10, 20, 0.75); pointer-events: none;"></div>
   <div style="position: relative; z-index: 1;">
@@ -18,7 +19,7 @@
                 <!-- Slide 1: first 8 -->
                 <div class="carousel-item active">
                     <div class="row g-3">
-                        {% for person in data.collaborators %}
+                        {% for person in section.pages %}
                         {% if loop.index <= 8 %} <div class="col-lg-3 col-md-4 col-6">
                             <div style="
                                 background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: 0 8px 32px rgba(0,0,0,0.2);
@@ -30,12 +31,12 @@
                                 height: 100%;
                             " onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 12px 40px rgba(0,0,0,0.4)'; this.style.background='rgba(255,255,255,0.25)';"
                                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(0,0,0,0.2)'; this.style.background='rgba(255, 255, 255, 0.15)';">
-                                {% if person.image %}
+                                {% if person.extra.image %}
                                 <div style="
                                     width: 72px; height: 72px; border-radius: 50%;
                                     margin: 0 auto 14px; overflow: hidden;
                                 ">
-                                    <img src="{{ get_url(path=person.image) }}" alt="{{ person.name }}"
+                                    <img src="{{ get_url(path=person.extra.image) }}" alt="{{ person.title }}"
                                         style="width: 100%; height: 100%; object-fit: cover;">
                                 </div>
                                 {% else %}
@@ -51,10 +52,11 @@
                                     </svg></div>
                                 {% endif %}
                                 <h5 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; color: #ffffff;">{{
-                                    person.name }}</h5>
+                                    person.title }}</h5>
                                 <p style="font-size: 0.78rem; color: #f39c12; font-weight: 600; margin-bottom: 4px;">{{
-                                    person.role }}</p>
-                                <p style="font-size: 0.75rem; color: #e2e8f0; margin: 0;">{{ person.institution }}</p>
+                                    person.description }}</p>
+                                <p style="font-size: 0.75rem; color: #e2e8f0; margin: 0; margin-bottom: 10px;">{{ person.extra.institution }}</p>
+                                <a href="{{ person.permalink }}" style="display: inline-block; padding: 4px 14px; font-size: 0.75rem; color: white; border: 1px solid rgba(255,255,255,0.4); border-radius: 20px; text-decoration: none; transition: all 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.2)';" onmouseout="this.style.background='transparent';">More Details</a>
                             </div>
                     </div>
                     {% endif %}
@@ -65,7 +67,7 @@
             <!-- Slide 2: remaining -->
             <div class="carousel-item">
                 <div class="row g-3">
-                    {% for person in data.collaborators %}
+                    {% for person in section.pages %}
                     {% if loop.index > 8 %}
                     <div class="col-lg-3 col-md-4 col-6">
                         <div style="
@@ -79,12 +81,12 @@
                             "
                             onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 12px 40px rgba(0,0,0,0.4)'; this.style.background='rgba(255,255,255,0.25)';"
                             onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(0,0,0,0.2)'; this.style.background='rgba(255, 255, 255, 0.15)';">
-                            {% if person.image %}
+                            {% if person.extra.image %}
                             <div style="
                                 width: 72px; height: 72px; border-radius: 50%;
                                 margin: 0 auto 14px; overflow: hidden;
                             ">
-                                <img src="{{ get_url(path=person.image) }}" alt="{{ person.name }}"
+                                <img src="{{ get_url(path=person.extra.image) }}" alt="{{ person.title }}"
                                     style="width: 100%; height: 100%; object-fit: cover;">
                             </div>
                             {% else %}
@@ -100,10 +102,11 @@
                                 </svg></div>
                             {% endif %}
                             <h5 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; color: #ffffff;">{{
-                                person.name }}</h5>
+                                person.title }}</h5>
                             <p style="font-size: 0.78rem; color: #f39c12; font-weight: 600; margin-bottom: 4px;">{{
-                                person.role }}</p>
-                            <p style="font-size: 0.75rem; color: #e2e8f0; margin: 0;">{{ person.institution }}</p>
+                                person.description }}</p>
+                            <p style="font-size: 0.75rem; color: #e2e8f0; margin: 0; margin-bottom: 10px;">{{ person.extra.institution }}</p>
+                            <a href="{{ person.permalink }}" style="display: inline-block; padding: 4px 14px; font-size: 0.75rem; color: white; border: 1px solid rgba(255,255,255,0.4); border-radius: 20px; text-decoration: none; transition: all 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.2)';" onmouseout="this.style.background='transparent';">More Details</a>
                         </div>
                     </div>
                     {% endif %}

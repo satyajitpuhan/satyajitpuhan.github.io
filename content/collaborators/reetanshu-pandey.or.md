@@ -1,0 +1,17 @@
++++
+title = "ରିତାନସୁ ପାଣ୍ଡେ |"
+description = "Collaborator"
+weight = 9
+
+[extra]
+institution = "NIT Jalandhar"
+image = ""
+website = ""
++++
+
+## Research Areas
+Specific research areas and focus of work are listed here.
+
+## Selected Papers
+- [Title of Paper 1](#)
+- [Title of Paper 2](#)
