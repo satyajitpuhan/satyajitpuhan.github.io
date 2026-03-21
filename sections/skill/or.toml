@@ -1,0 +1,36 @@
+top_title = "ଦକ୍ଷତା |"
+title = "ଯାନ୍ତ୍ରିକ ଦକ୍ଷତା ଏବଂ ଉପକରଣଗୁଡ଼ିକ |"
+subtitle = "ମୋର ଅନୁସନ୍ଧାନରେ ବ୍ୟବହୃତ ତତ୍ତ୍ୱଗତ framework ାଞ୍ଚା, ଗଣନାକାରୀ ଉପକରଣ ଏବଂ ପ୍ରୋଗ୍ରାମିଂ ଭାଷା |"
+image = "images/about/me.jpg"
+[[skills]]
+title = "ଗଣିତ (ବିଶେଷଜ୍ଞ)"
+percent = "95"
+
+[[skills]]
+title = "ପାଇଥନ୍ / NumPy / SciPy (ବିଶେଷଜ୍ଞ)"
+percent = "92"
+
+[[skills]]
+title = "ହାଲୁକା-ଫ୍ରଣ୍ଟ୍ କ୍ୱାର୍କ ମଡେଲ୍ (LFQM)"
+percent = "95"
+
+[[skills]]
+title = "NJL / DS-BSE / ଦର୍ଶକ ମଡେଲଗୁଡିକ |"
+percent = "85"
+
+[[skills]]
+title = "LHAPDF / xFitter / DGLAP / CSS |"
+percent = "90"
+
+[[skills]]
+title = "LaTeX / ଓଭରଲିଫ୍ / ବ Scientific ଜ୍ଞାନିକ ଲେଖା |"
+percent = "95"
+
+[[skills]]
+title = "ସ୍ନାୟୁ ନେଟୱାର୍କ / ML / ମୋଣ୍ଟେ କାର୍ଲୋ (ପାଇଥିଆ)"
+percent = "75"
+
+[[skills]]
+title = "C ++ / Linux / Git"
+percent = "60"
+
