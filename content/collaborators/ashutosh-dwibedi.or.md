@@ -4,10 +4,10 @@ description = "Collaborator"
 weight = 12
 
 [extra]
-inspire = "https://inspirehep.net/authors/Ashutosh.Dwibedi.1"
+inspire = "https://inspirehep.net/authors/2646923"
 github = ""
 scholar = ""
-orcid = ""
+orcid = "https://orcid.org/0009-0004-1568-2806"
 about = "Ashutosh Dwibedi is an accomplished postdoctoral researcher at the Indian Institute of Technology (IIT) Bhilai. Working closely alongside leading experts, his research investigates advanced thermodynamic and transport properties of quark matter, electrical conductivity, and the impacts of Coriolis forces in rotating hadron resonance gases."
 institution = "IIT Bhilai, Chhattisgarh"
 image = "images/collaborators/ashutosh.jpg"

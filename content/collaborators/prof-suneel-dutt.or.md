@@ -4,10 +4,10 @@ description = "Collaborator"
 weight = 6
 
 [extra]
-inspire = "https://inspirehep.net/authors/Suneel.Dutt.1"
+inspire = "https://inspirehep.net/authors/1050731"
 github = ""
 scholar = ""
-orcid = ""
+orcid = "https://orcid.org/0000-0002-0307-2291"
 about = "Prof. Suneel Dutt is a distinguished researcher affiliated with both Dr. B R Ambedkar National Institute of Technology Jalandhar and the Saha Institute of Nuclear Physics. He is an experimental high-energy physicist heavily involved with the CERN-LHC-CMS collaboration, focusing on beyond standard model physics and complex decay analyses."
 institution = "Dr. B R Ambedkar NIT, Jalandhar"
 image = ""

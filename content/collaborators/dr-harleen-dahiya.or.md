@@ -4,7 +4,7 @@ description = "Supervisor (PhD)"
 weight = 1
 
 [extra]
-inspire = "https://inspirehep.net/authors/H.Dahiya.1"
+inspire = "https://inspirehep.net/authors/1047815"
 github = ""
 scholar = ""
 orcid = ""

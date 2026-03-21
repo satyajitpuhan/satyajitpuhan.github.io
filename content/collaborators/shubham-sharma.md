@@ -4,10 +4,10 @@ description = "Postdoctoral Researcher"
 weight = 8
 
 [extra]
-inspire = "https://inspirehep.net/authors/S.Sharma.43"
+inspire = "https://inspirehep.net/authors/1896590"
 github = ""
 scholar = ""
-orcid = ""
+orcid = "https://orcid.org/0000-0002-3047-4333"
 about = "Dr. Shubham Sharma is an esteemed postdoctoral researcher at the Moscow Institute of Physics and Technology (MIPT) in Russia, having completed his PhD at NIT Jalandhar. With deep expertise spanning light-front formalisms, his highly cited research illuminates Transverse Momentum-Dependent parton distributions (TMDs) and the multi-dimensional structure of pseudo-scalar mesons."
 institution = "MIPT, Moscow"
 image = "images/collaborators/shubham-sharma.jpg"

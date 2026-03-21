@@ -4,7 +4,7 @@ description = "Collaborator"
 weight = 15
 
 [extra]
-inspire = "https://inspirehep.net/authors/H.G.P.2"
+inspire = "https://inspirehep.net/authors/3114829"
 github = ""
 scholar = ""
 orcid = ""

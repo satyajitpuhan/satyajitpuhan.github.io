@@ -4,10 +4,10 @@ description = "Collaborator"
 weight = 14
 
 [extra]
-inspire = "https://inspirehep.net/authors/Ritwik.Acharyya.2"
+inspire = "https://inspirehep.net/authors/2728781"
 github = ""
 scholar = ""
-orcid = ""
+orcid = "https://orcid.org/0009-0004-3742-9035"
 about = "Ritwik Acharyya is currently pursuing his PhD at Florida State University. He possesses comprehensive expertise in the light-front quark model, applying it seamlessly to investigate quark spin-orbit correlations and the spectroscopy of excited quarkonium and meson states."
 institution = "Florida State University"
 image = ""

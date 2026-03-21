@@ -4,10 +4,10 @@ description = "Collaborator"
 weight = 3
 
 [extra]
-inspire = "https://inspirehep.net/authors/Sabyasachi.Ghosh.1"
+inspire = "https://inspirehep.net/authors/1122092"
 github = ""
 scholar = ""
-orcid = ""
+orcid = "https://orcid.org/0000-0003-1212-824X"
 about = "Prof. Sabyasachi Ghosh is a leading theoretical physicist at the Indian Institute of Technology (IIT) Bhilai. With a prolific output of over 131 publications, his profound research defines modern understandings of transport coefficients, shear and bulk viscosities of quark matter, and high energy hadronic physics."
 institution = "IIT Bhilai, Chhattisgarh"
 image = ""

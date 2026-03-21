@@ -4,10 +4,10 @@ description = "Collaborator"
 weight = 11
 
 [extra]
-inspire = "https://inspirehep.net/authors/Tanisha.1"
+inspire = "https://inspirehep.net/authors/2916909"
 github = ""
 scholar = ""
-orcid = ""
+orcid = "https://orcid.org/0009-0006-9020-5641"
 about = "Tanisha is an emerging researcher at Dr. B R Ambedkar National Institute of Technology Jalandhar specializing in high energy physics. Her collaborative efforts focus on the valence quark properties of composite systems like kaons across symmetric nuclear matter under light-cone dynamics."
 institution = "NIT Jalandhar"
 image = ""

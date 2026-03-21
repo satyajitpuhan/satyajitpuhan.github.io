@@ -1,27 +1,65 @@
 +++
-title = "ପ୍ରଫେସର ଅରବିନ୍ଦ କୁମାର"
-description = "Collaborator"
+title = "ଡ. ଅରବିନ୍ଦ କୁମାର"
+description = "Associate Professor"
 weight = 5
 
 [extra]
-inspire = "https://inspirehep.net/authors/Arvind.Kumar.1"
+inspire = "https://inspirehep.net/authors/1308867"
 github = ""
-scholar = ""
-orcid = ""
-about = "Prof. Arvind Kumar is a renowned researcher at Dr. B R Ambedkar National Institute of Technology Jalandhar. His expansive work primarily encompasses nuclear theory (nucl-th) and high energy physics (hep-ph), specializing in meson properties, asymmetric nuclear mediums, and dense nuclear matter effects."
+scholar = "https://scholar.google.co.in/citations?user=Arvind_Kumar_NITJ"
+orcid = "https://orcid.org/0000-0003-1873-6094"
+about = "Dr. Arvind Kumar is an Associate Professor in the Department of Physics at Dr. B R Ambedkar National Institute of Technology Jalandhar. With a PhD from IIT Delhi in High Energy Physics, he brings deep expertise in theoretical nuclear and high energy physics—specializing in meson properties, compact stars, and dense nuclear matter. He has supervised 9+ PhD scholars, guided 30+ PG dissertations, organized numerous national and international workshops, and secured multiple DST-SERB funded research projects."
 institution = "Dr. B R Ambedkar NIT, Jalandhar"
 image = ""
 website = ""
+email = "kumara@nitj.ac.in"
 +++
 
 ## Academic Profile
 
 **Author Identifier:** Arvind.Kumar.1 (INSPIRE-HEP)  
+**Designation:** Associate Professor, Department of Physics  
 **PhD Advisor:** Amruta Mishra  
 
 ### Academic Journey
-- **2012-present:** Junior, Dr. B R Ambedkar National Institute of Technology, Jalandhar  
-- **2007-2011:** PhD, Indian Institute of Technology (IIT), New Delhi  
+- **2012-present:** Associate Professor, Dr. B R Ambedkar NIT, Jalandhar  
+- **2007-2011:** PhD (High Energy Physics), Indian Institute of Technology, Delhi  
+- **M.Sc. Physics:** Guru Nanak Dev University, Amritsar  
+- **B.Sc. Non-Medical:** Himachal Pradesh University, Shimla  
+
+### Research Interests
+- Theoretical High Energy Physics  
+- Meson Properties in Dense Nuclear Matter  
+- Compact Stars & Equation of State  
+- QCD Phase Structure & Transport Coefficients  
+- Chiral SU(3) Model Applications  
+
+### Research Projects
+- **2024-2027 (Ongoing):** "Exploring the EoS and structure of anisotropic compact stars with resonance matter" — DST-ANRF (SERB CRG Scheme), ₹24.52 Lakh  
+- **2019-2023 (Completed):** "Fluctuations and Correlations: A Hunt to QCD Critical End Point" — DST-SERB (CRG Scheme), ₹5.04 Lakh  
+- **2014-2017 (Completed):** "Strangeness and Charmness In Heavy Ion Collision Experiments" — DST-SERB (OYS Scheme), ₹11.28 Lakh  
+
+### PhD Scholars Supervised
+| Scholar | Topic | Status |
+|---------|-------|--------|
+| Harpreet Singh | Magnetic moments of hadrons at finite temperatures and density | Completed (2014-2021) |
+| Rahul Chhabra | Heavy Mesons in Hot and Dense Matter | Completed (2015-2020) |
+| Rajesh Kumar | Hadron Properties at Finite Density and Temperature | Completed (2017-2021) |
+| Manisha Kumari | Study of compact star within the framework of chiral SU(3) model | Completed (2018-2022) |
+| Nisha Chahal | Matter at extreme density and temperature | Completed (2019-2024) |
+| Dhananjay Singh | Non-extensive analysis of quark and hadronic matter properties | Ongoing (2022-) |
+| Manpreet | Meson properties in isospin asymmetric hadronic matter | Ongoing (2023-) |
+| Priyanshi | TBD by RAC | Ongoing (2025-) |
+| Bhavna Tailor | TBD by RAC | Ongoing (2026-) |
+
+### Events Organized
+- **2026:** National Workshop on Quantum Technologies (DST-ANRF Funded), NIT Jalandhar — Convener  
+- **2023:** International Workshop on Hadron Physics (HADRON-2023), NIT Jalandhar — Coordinator  
+- **2023:** Python Programming Workshop, NIT Jalandhar — Coordinator  
+- **2021:** Statistical Techniques for Data Analysis Workshop, NIT Jalandhar — Convener  
+- **2020:** National STC on Advances in High Energy Physics, NIT Jalandhar — Coordinator  
+- **2019:** National STC on Emerging Fields on High Energy Physics, NIT Jalandhar — Coordinator  
+- **2016:** National STC on Advances in Nuclear and Particle Physics, NIT Jalandhar — Coordinator  
 
 ## Selected Highly Cited Papers
 

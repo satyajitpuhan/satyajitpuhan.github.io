@@ -4,10 +4,10 @@ description = "Collaborator"
 weight = 10
 
 [extra]
-inspire = "https://inspirehep.net/authors/Anshu.Gautam.1"
+inspire = "https://inspirehep.net/authors/2935391"
 github = ""
 scholar = ""
-orcid = ""
+orcid = "https://orcid.org/0009-0000-4427-4984"
 about = "Anshu Gautam is a proactive Master's researcher at Dr. B R Ambedkar National Institute of Technology Jalandhar. Driven by a deep passion for theoretical physics, Anshu actively contributes to high-level research exploring the behavior of pions and other phenomena within asymmetric nuclear mediums."
 institution = "NIT Jalandhar"
 image = ""
