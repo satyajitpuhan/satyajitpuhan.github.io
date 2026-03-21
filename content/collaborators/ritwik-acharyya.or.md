@@ -4,7 +4,7 @@ description = "Collaborator"
 weight = 14
 
 [extra]
-institution = "NIT Jalandhar"
+institution = "Florida State University"
 image = ""
 website = "https://inspirehep.net/authors/Ritwik.Acharyya.2"
 +++
@@ -12,6 +12,9 @@ website = "https://inspirehep.net/authors/Ritwik.Acharyya.2"
 ## Academic Profile
 
 **Author Identifier:** Ritwik.Acharyya.2 (INSPIRE-HEP)  
+
+### Academic Journey
+- **Present:** PhD, Florida State University
 
 ## Selected Papers
 
