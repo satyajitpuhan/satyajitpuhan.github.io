@@ -54,8 +54,7 @@
   &-info {
     display: flex;
     justify-content: space-around;
-    background: rgba(128, 128, 128, 0.1);
-    border: 1px solid rgba(128, 128, 128, 0.2);
+    background: $secondary-color;
     border-radius: 20px;
     padding: 65px 0;
     margin: 70px 0 80px 0;
@@ -92,7 +91,7 @@
     h5 {
       margin: 0 0 10px 0;
       font-size: 20px;
-      color: var(--text-color);
+      color: $white;
       font-family: $primary-font;
     }
     p {
@@ -198,6 +197,17 @@
       .content {
         text-align: right;
       }
+    }
+  }
+
+  // Style markdown inline links (like "Read on INSPIRE")
+  p a {
+    color: $primary-color;
+    font-weight: 600;
+    text-decoration: underline;
+    transition: all 0.3s ease;
+    &:hover {
+      opacity: 0.8;
     }
   }
 }
