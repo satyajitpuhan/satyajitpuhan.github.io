@@ -2,23 +2,9 @@
 {% set data = load_data(path=path, required=false) %}
 
 {% if data %}
-<section id="skill" class="section skill">
-    <div class="skill__background_shape">
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"viewBox="0 0 600 600">
-            <defs>
-            <linearGradient id="d" x1="0.929" y1="0.111" x2="0.263" y2="0.935" gradientUnits="objectBoundingBox">
-                <stop offset="0" stop-color="#f1f6f9"/>
-                <stop offset="1" stop-color="#f1f6f9" stop-opacity="0"/>
-            </linearGradient>
-            </defs>
-            <g data-name="blob-shape (3)">
-                <path class="blob" fill="url(#d)" d="M455.4 151.1c43.1 36.7 73.4 92.8 60.8 136.3-12.7 43.5-68.1 74.4-111.3 119.4-43.1 45-74 104.1-109.8 109-35.9 5-76.7-44.2-111.8-89.2-35.2-45-64.7-85.8-70.8-132.6-6-46.8 11.6-99.6 46.7-136.3 35.2-36.6 88-57.2 142.4-58.8 54.5-1.7 110.6 15.6 153.8 52.2z"/>
-            </g>
-        </svg>
-    </div>
-    <div class="skill__background_pattern">
-        <img src="{{ get_url(path='images/service/background-pattern.svg') }}" alt="background-shape">
-    </div>
+<section id="skill" class="section skill" style="position: relative; background-image: url('/images/flowers/flower1.jpg'); background-size: cover; background-position: center; padding: 100px 0;">
+  <div style="position: absolute; inset: 0; background: rgba(20, 10, 30, 0.70); pointer-events: none;"></div>
+  <div style="position: relative; z-index: 1;">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-6">
@@ -35,18 +21,18 @@
             </div>
             <div class="col-lg-6">
                 <div class="skill__progress">
-                    <div class="skill__progress_heading">
+                    <div class="skill__progress_heading" style="color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
                         {% if data.top_title %}  
-                        <span>{{ data.top_title }}</span>
+                        <span style="color: #f39c12; font-weight: 800; letter-spacing: 2px;">{{ data.top_title }}</span>
                         {% endif %}
-                        <h1>{{ data.title }}</h1>
-                        <p>{{ data.subtitle }}</p>
+                        <h1 style="color: white; font-weight: 800;">{{ data.title }}</h1>
+                        <p style="color: #f8f9fa;">{{ data.subtitle }}</p>
                     </div>
                     {% if data.skills %}
                       {% for skill in data.skills %}
-                          <div class="skill__progress_item">
-                              <h6>{{ skill.title }}</h6>
-                              <div class="progress-value"><span>{{ skill.percent }}</span>%</div>
+                          <div class="skill__progress_item" style="background: rgba(255, 255, 255, 0.88); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-radius: 12px; padding: 20px; margin-bottom: 15px; box-shadow: 0 8px 24px rgba(0,0,0,0.2);">
+                              <h6 style="color: #00416d; font-weight: 700;">{{ skill.title }}</h6>
+                              <div class="progress-value" style="color: #f39c12; font-weight: bold;"><span>{{ skill.percent }}</span>%</div>
                               <div class="progress_item">
                                   <progress value="0" max="100" data-max="{{ skill.percent }}"></progress>
                               </div>
@@ -57,5 +43,7 @@
             </div>
         </div>
     </div>
+    </div>
+  </div>
 </section>
 {% endif %}

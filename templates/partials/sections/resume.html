@@ -3,16 +3,17 @@
 {% set data = load_data(path=path, required=false) %}
 
 {% if data %}
-<section class="section resume" id="resume">
-   <div class="resume__background"></div>
+<section class="section resume" id="resume" style="position: relative; background-image: url('/images/flowers/flower5.jpg'); background-size: cover; background-position: center; padding: 100px 0;">
+   <div style="position: absolute; inset: 0; background: rgba(30, 10, 20, 0.70); pointer-events: none;"></div>
+   <div style="position: relative; z-index: 1;">
    <div class="container">
        <div class="row">
            <div class="col-lg-6">
-               <div class="resume__heading">
-                   <span>{{ data.title }}</span>
-                   <h1>{{ data.title }}</h1>
-                   <p> {{ data.subtitle }} </p><br><br>
-                   <p> {{ data.second_subtitle }} </p>
+               <div class="resume__heading" style="color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
+                   <span style="color: #f39c12; font-weight: 800; letter-spacing: 2px;">{{ data.title }}</span>
+                   <h1 style="color: white; font-weight: 800;">{{ data.title }}</h1>
+                   <p style="color: #f8f9fa;"> {{ data.subtitle }} </p><br><br>
+                   <p style="color: #f8f9fa;"> {{ data.second_subtitle }} </p>
                    <ul class="nav nav-tabs">
                        <li>
                            <a href="#educations" class="active" data-bs-toggle="tab">
@@ -32,20 +33,20 @@
                <div class="tab-content">
                    <div class="resume__education tab-pane show active" id="educations">
                        {% for education in data.educations %}
-                           <div class="resume__education_item">
-                               <span>{{ education.time }}</span>
-                               <h4>{{ education.title }}</h4>
-                               <p>{{ education.content }}</p>
+                           <div class="resume__education_item" style="background: rgba(255, 255, 255, 0.88); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-radius: 12px; padding: 25px; margin-bottom: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.2);">
+                               <span style="color: #00416d; font-weight: bold; font-size: 0.9rem;">{{ education.time }}</span>
+                               <h4 style="color: #1e293b; font-weight: 700; margin-top: 10px;">{{ education.title }}</h4>
+                               <p style="color: #475569; margin-bottom: 0;">{{ education.content }}</p>
                            </div>
                        {% endfor %}
                    </div>
 
                    <div class="resume__education tab-pane" id="experiences">
                        {% for experience in data.experiences %}
-                           <div class="resume__education_item">
-                               <span>{{ experience.time }}</span>
-                               <h4>{{ experience.title }}</h4>
-                               <p>{{ experience.content }}</p>
+                           <div class="resume__education_item" style="background: rgba(255, 255, 255, 0.88); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-radius: 12px; padding: 25px; margin-bottom: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.2);">
+                               <span style="color: #00416d; font-weight: bold; font-size: 0.9rem;">{{ experience.time }}</span>
+                               <h4 style="color: #1e293b; font-weight: 700; margin-top: 10px;">{{ experience.title }}</h4>
+                               <p style="color: #475569; margin-bottom: 0;">{{ experience.content }}</p>
                            </div>
                        {% endfor %}
                    </div>
@@ -53,6 +54,7 @@
            </div>
 
        </div>
+   </div>
    </div>
 </section>
 {% endif %}

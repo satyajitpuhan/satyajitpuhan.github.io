@@ -3,10 +3,12 @@
 
 {% if data %}
 <section class="section conferences" id="conferences"
-    style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%); padding: 80px 0;">
+    style="position: relative; background-image: url('/images/flowers/flower6.jpg'); background-size: cover; background-position: center; padding: 80px 0;">
+  <div style="position: absolute; inset: 0; background: rgba(15, 23, 42, 0.82); pointer-events: none;"></div>
+  <div style="position: relative; z-index: 1;">
     <div class="container">
         <div class="row text-center mb-5">
-            <div class="col-lg-6 offset-lg-3">
+            <div class="col-lg-6 offset-lg-3" style="text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
                 {% if data.top_title %}
                 <span class="top-title" style="color: #38bdf8;">{{ data.top_title }}</span>
                 {% endif %}
@@ -32,17 +34,19 @@
 
                             <div class="col-lg-4 col-md-6 mb-4">
                                 <div style="
-                  background: rgba(30, 41, 59, 0.85);
-                  border: 1px solid rgba(56, 189, 248, 0.12);
+                  background: rgba(30, 41, 59, 0.55);
+                  backdrop-filter: blur(12px);
+                  -webkit-backdrop-filter: blur(12px);
+                  border: 1px solid rgba(56, 189, 248, 0.15);
                   border-radius: 16px;
                   overflow: hidden;
                   transition: all 0.35s ease;
                   height: 100%;
                   display: flex;
                   flex-direction: column;
-                  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-                " onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 12px 40px rgba(56,189,248,0.12)'; this.style.borderColor='rgba(56,189,248,0.35)';"
-                                    onmouseout="this.style.transform=''; this.style.boxShadow='0 4px 20px rgba(0,0,0,0.3)'; this.style.borderColor='rgba(56,189,248,0.12)';">
+                  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+                " onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 12px 40px rgba(56,189,248,0.2)'; this.style.borderColor='rgba(56,189,248,0.4)';"
+                                    onmouseout="this.style.transform=''; this.style.boxShadow='0 8px 32px rgba(0,0,0,0.4)'; this.style.borderColor='rgba(56,189,248,0.15)';">
 
                                     <!-- Image -->
                                     {% if event.image %}
@@ -95,18 +99,20 @@
                 <button class="carousel-control-prev" type="button" data-bs-target="#confCarousel" data-bs-slide="prev"
                     style="width: 50px; left: -50px; justify-content: center; align-items: center;">
                     <span class="carousel-control-prev-icon" aria-hidden="true"
-                        style="filter: invert(70%) sepia(85%) saturate(3000%) hue-rotate(170deg) brightness(100%) contrast(100%); width: 3rem; height: 3rem;"></span>
+                        style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8)); width: 3rem; height: 3rem;"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
                 <button class="carousel-control-next" type="button" data-bs-target="#confCarousel" data-bs-slide="next"
                     style="width: 50px; right: -50px; justify-content: center; align-items: center;">
                     <span class="carousel-control-next-icon" aria-hidden="true"
-                        style="filter: invert(70%) sepia(85%) saturate(3000%) hue-rotate(170deg) brightness(100%) contrast(100%); width: 3rem; height: 3rem;"></span>
+                        style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8)); width: 3rem; height: 3rem;"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
                 {% endif %}
             </div>
         </div>
     </div>
+    </div>
+  </div>
 </section>
 {% endif %}

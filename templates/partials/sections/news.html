@@ -112,13 +112,15 @@
     </svg>
 </div>
 
-<section id="news" class="section news-section">
+<section id="news" class="section news-section" style="position: relative; background-image: url('/images/flowers/flower2.jpg'); background-size: cover; background-position: center; padding-top: 60px; padding-bottom: 80px;">
+  <div style="position: absolute; inset: 0; background: rgba(40, 10, 15, 0.75); pointer-events: none;"></div>
+  <div style="position: relative; z-index: 1;">
     <div class="container">
         <div class="row text-center">
             <div class="col-lg-6 offset-lg-3">
-                <div class="news-section__header">
-                    <h1>{{ data.title }}</h1>
-                    {% if data.subtitle %}<p>{{ data.subtitle }}</p>{% endif %}
+                <div class="news-section__header" style="color: white; text-shadow: 0 2px 8px rgba(0,0,0,0.4); margin-bottom: 40px;">
+                    <h1 style="color: white; font-weight: 800;">{{ data.title }}</h1>
+                    {% if data.subtitle %}<p style="color: #f8c2b0; font-size: 1.1rem;">{{ data.subtitle }}</p>{% endif %}
                 </div>
             </div>
         </div>
@@ -137,7 +139,7 @@
                             {% endif %}
 
                             <div class="col-lg-4 col-md-6 mb-4">
-                                <div class="news-card" style="height: 100%; display: flex; flex-direction: column;">
+                                <div class="news-card" style="height: 100%; display: flex; flex-direction: column; background: rgba(20, 30, 40, 0.75); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-radius: 16px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1);">
                                     <div class="news-card__image">
                                         <img src="{{ get_url(path=item.image) }}" alt="{{ item.title }}">
                                     </div>
@@ -146,9 +148,9 @@
                                         {% if item.top_title %}<span class="news-card__top-title"
                                             style="display:block; text-transform:uppercase; font-size:13px; color:#5d78ff; font-weight:700; margin-bottom:5px;">{{
                                             item.top_title }}</span>{% endif %}
-                                        <span class="news-card__date">{{ item.date }}</span>
-                                        <h5 class="news-card__title">{{ item.title }}</h5>
-                                        <p class="news-card__text" style="flex: 1;">{{ item.description }}</p>
+                                        <span class="news-card__date" style="color: #a0aec0;">{{ item.date }}</span>
+                                        <h5 class="news-card__title" style="color: white; font-weight: 700;">{{ item.title }}</h5>
+                                        <p class="news-card__text" style="flex: 1; color: #e2e8f0;">{{ item.description }}</p>
 
                                         {% if item.details %}
                                         <div>
@@ -219,5 +221,7 @@
         {% endif %}
         {% endfor %}
     </div>
+    </div>
+  </div>
 </section>
 {% endif %}

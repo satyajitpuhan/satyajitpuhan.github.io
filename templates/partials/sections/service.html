@@ -2,47 +2,26 @@
 {% set data = load_data(path=path, required=false) %}
 
 {% if data %}
-<section class="section service" id="service">
-  <div class="service__background">
-      <svg viewBox="0 0 1283 1126">
-          <path fill="#f1f6f9" d="M100 0h1183v1126l-1183-80A100 100 0 010 946V100A100 100 0 01100 0z" data-name="Path 1369"/>
-      </svg>
-  </div>
-  
-  <div class="service__background_shape">
-      <svg viewBox="0 0 550 550">
-          <defs>
-              <linearGradient id="b" x1="0.209" y1="0.085" x2="1.071" y2="1.164" gradientUnits="objectBoundingBox">
-                  <stop offset="0" stop-color="#f1f6f9"/>
-                  <stop offset="1" stop-color="#f1f6f9" stop-opacity="0"/>
-              </linearGradient>
-          </defs>
-          <g data-name="blob-shape (3)">
-          <path class="blob" fill="url(#b)" d="M455.4 151.1c43.1 36.7 73.4 92.8 60.8 136.3-12.7 43.5-68.1 74.4-111.3 119.4-43.1 45-74 104.1-109.8 109-35.9 5-76.7-44.2-111.8-89.2-35.2-45-64.7-85.8-70.8-132.6-6-46.8 11.6-99.6 46.7-136.3 35.2-36.6 88-57.2 142.4-58.8 54.5-1.7 110.6 15.6 153.8 52.2z"/>
-          </g>
-      </svg>
-  </div>
-  
-  <div class="service__background_pattern">
-      <img src="{{ get_url(path='images/service/background-pattern.svg') }}" alt="background-pattern">
-  </div>
+<section class="section service" id="service" style="position: relative; background-image: url('/images/flowers/flower4.jpg'); background-size: cover; background-position: center; padding: 100px 0;">
+  <div style="position: absolute; inset: 0; background: rgba(30, 10, 20, 0.70); pointer-events: none;"></div>
+  <div style="position: relative; z-index: 1;">
 
   <div class="container">
       <div class="row">
           <div class="col-lg-6 col-md-12 col-sm-12">
-              <div class="service__header">
+              <div class="service__header" style="color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
                     {% if data.top_title %}
-                    <span>{{ data.top_title }}</span>
+                    <span style="color: #f39c12; font-weight: 800; letter-spacing: 2px;">{{ data.top_title }}</span>
                     {% endif %}
-                    <h1>{{ data.title }}</h1>
-                     <p> {{ data.subtitle }} </p>
+                    <h1 style="color: white; font-weight: 800;">{{ data.title }}</h1>
+                     <p style="color: #f8f9fa;"> {{ data.subtitle }} </p>
               </div>
           </div>
       </div>
 
               <div class="service__slider">
                   {% for service in data.services %}
-                  <div class="service__slider_item">
+                  <div class="service__slider_item" style="background: rgba(255, 255, 255, 0.88); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); border: 1px solid rgba(255,255,255,0.2); padding: 30px; margin: 15px;">
                       {% if service.image %}
                         <div class="service__slider_item-icon">
                             <div class="icon-background">
@@ -60,6 +39,7 @@
                   </div>
                   {% endfor %}
               </div>
+  </div>
   </div>
 </section>
 {% endif %}

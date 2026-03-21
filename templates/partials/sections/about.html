@@ -3,17 +3,22 @@
 {% set data = load_data(path=path, required=false) %}
 
 {% if data %} 
-<section class="section about" id="about">
+<section class="section about" id="about" style="position: relative; background-image: url('/images/flowers/flower3.jpg'); background-size: cover; background-position: center; padding: 100px 0;">
+  <div style="position: absolute; inset: 0; background: rgba(20, 15, 5, 0.75); pointer-events: none;"></div>
+  <div style="position: relative; z-index: 1;">
     <div class="container">
         <div class="row text-center">
             <div class="col-lg-6 offset-lg-3">
-                <div class="about_header mb-5">
+                <div class="about_header mb-5" style="color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
+                    <style>
+                        .about_header h1, .about_header h2, .about_header h3, .about_header p, .about_header strong { color: white !important; }
+                    </style>
                     {% if data.title %}
-                    <span class="top-title">
+                    <span class="top-title" style="color: #f39c12; font-weight: 800; letter-spacing: 2px;">
                         {{ data.title }}
                     </span>
                     {% endif %}
-                   {{ data.description | markdown(inline=true) | safe }}
+                   <div style="color: #f8f9fa; font-size: 1.1rem; line-height: 1.6;">{{ data.description | markdown(inline=true) | safe }}</div>
                 </div>
             </div>
         </div>
@@ -56,5 +61,7 @@
             </div>
         </div>
     </div>
+    </div>
+  </div>
 </section>
 {% endif %}

@@ -1,10 +1,6 @@
-<section class="contact" id="contact">
-    <div class="contact__background_shape">
-        <svg viewBox="0 0 1920 79">
-            <path d="M0 0h1920v79L0 0z" data-name="Path 1450" />
-        </svg>
-    </div>
-    <div class="container">
+<section class="contact" id="contact" style="position: relative; background-image: url('/images/flowers/flower1.jpg'); background-size: cover; background-position: center bottom; padding: 100px 0; color: white;">
+  <div style="position: absolute; inset: 0; background: rgba(20, 10, 30, 0.85); pointer-events: none;"></div>
+  <div class="container" style="position: relative; z-index: 1;">
         {% if config.extra.display_cta %}
         <div class="row">
             <div class="col-lg-12">
@@ -44,11 +40,11 @@
             </div>
             <div class="col-lg-4">
                 <div class="contact__widget_sitemap">
-                    <h3>{{ trans(key="sitemap", lang=lang) }}</h3>
+                    <h3 style="color: white; font-weight: 700;">{{ trans(key="sitemap", lang=lang) }}</h3>
                     <ul>
                         {% for sitemap in extra.sitemaps %}
                         <li>
-                            <a href="{{ sitemap.url }}">
+                            <a href="{{ sitemap.url }}" style="color: #e2e8f0; text-decoration: none;">
                                 {{ trans(key=sitemap.name, lang=lang) }}
                             </a>
                         </li>
@@ -58,28 +54,28 @@
             </div>
             <div class="col-lg-4">
                 <div class="contact__widget_address">
-                    <h3>{{ trans(key="address", lang=lang) }}</h3>
+                    <h3 style="color: white; font-weight: 700;">{{ trans(key="address", lang=lang) }}</h3>
                     <ul>
                         {% if extra.address.phone %}
                         <li>
-                            <a href="tel:{{ extra.address.phone }}">
-                                <i class="lni lni-phone"></i>{{ extra.address.phone }}
+                            <a href="tel:{{ extra.address.phone }}" style="color: #e2e8f0; text-decoration: none;">
+                                <i class="lni lni-phone" style="color: #38bdf8;"></i>{{ extra.address.phone }}
                             </a>
                         </li>
                         {% endif %}
 
                         {% if extra.address.email %}
                         <li>
-                            <a href="mailto:{{ extra.address.email }}">
-                                <i class="lni lni-envelope"></i>{{ extra.address.email }}
+                            <a href="mailto:{{ extra.address.email }}" style="color: #e2e8f0; text-decoration: none;">
+                                <i class="lni lni-envelope" style="color: #38bdf8;"></i>{{ extra.address.email }}
                             </a>
                         </li>
                         {% endif %}
 
                         {% if extra.address.address %}
                         <li>
-                            <p>
-                                <i class="lni lni-map-marker"></i>{{ extra.address.address }}
+                            <p style="color: #e2e8f0;">
+                                <i class="lni lni-map-marker" style="color: #38bdf8;"></i>{{ extra.address.address }}
                             </p>
                         </li>
                         {% endif %}
@@ -87,10 +83,10 @@
                 </div>
             </div>
         </div>
-        <div class="row contact__footer">
+        <div class="row contact__footer" style="border-top: 1px solid rgba(255,255,255,0.1); margin-top: 40px; padding-top: 20px;">
             <div class="col-lg-6">
                 <div class="contact__footer_copy">
-                    <p>{{ trans(key="copyright", lang=lang) }}</p>
+                    <p style="color: #94a3b8;">{{ trans(key="copyright", lang=lang) }}</p>
                 </div>
             </div>
             <div class="col-lg-6">
@@ -98,7 +94,7 @@
                     <ul>
                         {% for social in extra.socials %}
                         <li class="d-inline-block mx-2">
-                            <a target="_blank" href="{{ social.url }}">
+                            <a target="_blank" href="{{ social.url }}" style="color: #f39c12; font-size: 1.2rem;">
                                 <i class="lni lni-{{ social.icon }}"></i>
                             </a>
                         </li>

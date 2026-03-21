@@ -1,39 +1,45 @@
-{% set blog_section = get_section(path="blog/_index.md", lang=lang) %}
+{% set news_data = load_data(path="static/sections/news/" ~ lang ~ ".toml", required=false) %}
 {% set portfolio_section = get_section(path="portfolio/_index.md", lang=lang) %}
 
-<section class="nitj-updates-grid" style="padding: 40px 0; background-color: #f8f9fa;">
+<section class="nitj-updates-grid" style="padding: 40px 0; background-image: url('/images/flowers/flower1.jpg'); background-size: cover; background-position: center 60%; position: relative;">
+  <div style="position: absolute; inset: 0; background: rgba(10,5,20,0.60); pointer-events: none;"></div>
+  <div style="position: relative; z-index: 1;">
     <div class="container">
         <div class="row">
             <!-- Column 1: Latest Talks / Updates -->
             <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card" style="border: none; border-top: 4px solid #00416d; box-shadow: 0 4px 15px rgba(0,0,0,0.05); height: 100%;">
-                    <div class="card-header" style="background: white; border-bottom: 1px solid #eee; padding: 15px 20px;">
-                        <h4 style="margin: 0; color: #00416d; font-family: 'Roboto', sans-serif; font-weight: 700;">Latest Talks</h4>
+                <div class="card" style="border: none; border-top: 4px solid #00416d; box-shadow: 0 8px 32px rgba(0,0,0,0.2); height: 100%; background: rgba(255, 255, 255, 0.88); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);">
+                    <div class="card-header" style="background: transparent; border-bottom: 1px solid rgba(0,0,0,0.08); padding: 15px 20px;">
+                        <h4 style="margin: 0; color: #00416d; font-family: 'Roboto', sans-serif; font-weight: 700;">Latest Talks & News</h4>
                     </div>
                     <div class="card-body" style="padding: 0;">
                         <ul class="list-group list-group-flush">
-                            {% if blog_section.pages %}
-                                {% for page in blog_section.pages | slice(end=5) %}
+                            {% if news_data %}
+                                {% for item in news_data.items %}
+                                {% if loop.index <= 4 %}
                                 <li class="list-group-item" style="border-bottom: 1px dashed #ddd; padding: 15px 20px;">
-                                    <div style="font-size: 0.85rem; color: #f39c12; font-weight: bold; margin-bottom: 5px;">{{ page.date | date(format=config.extra.date_format) }}</div>
-                                    <a href="{{ page.permalink }}" style="color: #333; font-weight: 500; text-decoration: none; font-size: 0.95rem;">
-                                        {{ page.title }}
+                                    <div style="font-size: 0.85rem; color: #f39c12; font-weight: bold; margin-bottom: 5px;">{{ item.extra.subtitle | default(value=item.date) }}</div>
+                                    <a href="{{ get_url(path=item.path | default(value='#')) }}" style="color: #333; font-weight: 700; text-decoration: none; font-size: 0.95rem; display: block; margin-bottom: 5px;">
+                                        {% if item.top_title %}<span style="font-size: 0.8rem; color: #00416d; font-weight: bold; text-transform: uppercase;">{{ item.top_title }}</span><br>{% endif %}
+                                        {{ item.title }}
                                     </a>
+                                    <p style="font-size: 0.85rem; color: #555; margin: 0; line-height: 1.4;">{{ item.description | truncate(length=90) }}</p>
                                 </li>
+                                {% endif %}
                                 {% endfor %}
                             {% endif %}
                         </ul>
                     </div>
-                    <div class="card-footer" style="background: white; border-top: none; text-align: right;">
-                        <a href="{{ get_url(path='blog', lang=lang) }}" style="color: #00416d; font-weight: bold; font-size: 0.9rem;">View All →</a>
+                    <div class="card-footer" style="background: transparent; border-top: none; text-align: right;">
+                        <a href="#news" style="color: #00416d; font-weight: bold; font-size: 0.9rem;">View All →</a>
                     </div>
                 </div>
             </div>
 
             <!-- Column 2: Recent Publications -->
             <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card" style="border: none; border-top: 4px solid #f39c12; box-shadow: 0 4px 15px rgba(0,0,0,0.05); height: 100%;">
-                    <div class="card-header" style="background: white; border-bottom: 1px solid #eee; padding: 15px 20px;">
+                <div class="card" style="border: none; border-top: 4px solid #f39c12; box-shadow: 0 8px 32px rgba(0,0,0,0.2); height: 100%; background: rgba(255, 255, 255, 0.88); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);">
+                    <div class="card-header" style="background: transparent; border-bottom: 1px solid rgba(0,0,0,0.08); padding: 15px 20px;">
                         <h4 style="margin: 0; color: #00416d; font-family: 'Roboto', sans-serif; font-weight: 700;">Publications</h4>
                     </div>
                     <div class="card-body" style="padding: 0;">
@@ -50,7 +56,7 @@
                             {% endif %}
                         </ul>
                     </div>
-                    <div class="card-footer" style="background: white; border-top: none; text-align: right;">
+                    <div class="card-footer" style="background: transparent; border-top: none; text-align: right;">
                         <a href="{{ get_url(path='portfolio', lang=lang) }}" style="color: #f39c12; font-weight: bold; font-size: 0.9rem;">View All →</a>
                     </div>
                 </div>
@@ -58,32 +64,51 @@
 
             <!-- Column 3: Announcements / Highlights -->
             <div class="col-lg-4 col-md-12 mb-4">
-                <div class="card" style="border: none; border-top: 4px solid #00416d; box-shadow: 0 4px 15px rgba(0,0,0,0.05); height: 100%; background: #00416d; color: white;">
-                    <div class="card-header" style="background: transparent; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 15px 20px;">
-                        <h4 style="margin: 0; color: white; font-family: 'Roboto', sans-serif; font-weight: 700;">Highlights</h4>
+                <div class="card" style="border: none; border-top: 4px solid #f39c12; box-shadow: 0 8px 32px rgba(0,0,0,0.3); height: 100%; background: linear-gradient(160deg, rgba(0,47,80,0.85) 0%, rgba(0,65,109,0.85) 100%); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); color: white;">
+                    <div class="card-header" style="background: transparent; border-bottom: 1px solid rgba(255,255,255,0.12); padding: 16px 20px; display: flex; align-items: center; gap: 10px;">
+                        <span style="font-size: 1.3rem;">🏆</span>
+                        <h4 style="margin: 0; color: #f8e8a0; font-family: 'Roboto', sans-serif; font-weight: 800; letter-spacing: 0.5px;">Highlights</h4>
                     </div>
-                    <div class="card-body" style="padding: 20px;">
+                    <div class="card-body" style="padding: 18px 20px;">
                         <ul style="list-style: none; padding: 0; margin: 0;">
-                            <li style="margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;">
-                                <div style="color: #f39c12; font-size: 0.85rem; font-weight: bold; margin-bottom: 5px;">NEW</div>
-                                <h5 style="color: white; font-size: 0.95rem; font-weight: bold; margin-bottom: 5px;">PhD Thesis Submitted!</h5>
-                                <p style="font-size: 0.85rem; margin-bottom: 0; color: #ddd;">Thesis Submitted at Dr B R Ambedkar National Institute of Technology, Jalandhar on the topic "Tomography of light and heavy mesons using light-front dynamics".</p>
+
+                            <li style="margin-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 14px;">
+                                <span style="display: inline-block; background: #f39c12; color: #002f50; font-size: 0.72rem; font-weight: 800; padding: 2px 8px; border-radius: 20px; margin-bottom: 6px; letter-spacing: 0.5px;">🎓 PhD SUBMITTED</span>
+                                <h5 style="color: #fff; font-size: 0.92rem; font-weight: 700; margin-bottom: 4px;">Thesis: Tomography of Light &amp; Heavy Mesons</h5>
+                                <p style="font-size: 0.82rem; margin: 0; color: #b8d4e8;">NIT Jalandhar · Light-Front Dynamics &amp; 3D Hadron Structure</p>
                             </li>
-                            <li style="margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;">
-                                <div style="color: #f39c12; font-size: 0.85rem; font-weight: bold; margin-bottom: 5px;">FAREWELL</div>
-                                <h5 style="color: white; font-size: 0.95rem; font-weight: bold; margin-bottom: 5px;">Thank You IIT-Bhilai</h5>
-                                <p style="font-size: 0.85rem; margin-bottom: 0; color: #ddd;">Completed my visiting fellow at IIT Bhilai.</p>
+
+                            <li style="margin-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 14px;">
+                                <span style="display: inline-block; background: #27ae60; color: #fff; font-size: 0.72rem; font-weight: 800; padding: 2px 8px; border-radius: 20px; margin-bottom: 6px; letter-spacing: 0.5px;">🌏 NEW POSITION</span>
+                                <h5 style="color: #fff; font-size: 0.92rem; font-weight: 700; margin-bottom: 4px;">Research Assistant, Academia Sinica</h5>
+                                <p style="font-size: 0.82rem; margin: 0; color: #b8d4e8;">Institute of Physics, Taipei · Supervisor: Wen-Chen Chang</p>
                             </li>
-                            <li style="margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;">
-                                <div style="color: #f39c12; font-size: 0.85rem; font-weight: bold; margin-bottom: 5px;">CAREER UPDATE</div>
-                                <h5 style="color: white; font-size: 0.95rem; font-weight: bold; margin-bottom: 5px;">Research Assistant</h5>
-                                <p style="font-size: 0.85rem; margin-bottom: 0; color: #ddd;">Joining Institute of Physics, Academia Sinica under the supervision of Wen-Chen Chang.</p>
+
+                            <li style="margin-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 14px;">
+                                <span style="display: inline-block; background: #8e44ad; color: #fff; font-size: 0.72rem; font-weight: 800; padding: 2px 8px; border-radius: 20px; margin-bottom: 6px; letter-spacing: 0.5px;">📄 20+ PUBLICATIONS</span>
+                                <h5 style="color: #fff; font-size: 0.92rem; font-weight: 700; margin-bottom: 4px;">Phys. Rev. D · JHEP · Eur. Phys. J.</h5>
+                                <p style="font-size: 0.82rem; margin: 0; color: #b8d4e8;">Covering pion, kaon, charmonium, and Υ meson tomography</p>
                             </li>
+
+                            <li style="margin-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 14px;">
+                                <span style="display: inline-block; background: #e74c3c; color: #fff; font-size: 0.72rem; font-weight: 800; padding: 2px 8px; border-radius: 20px; margin-bottom: 6px; letter-spacing: 0.5px;">🏛️ JINR COLLABORATION</span>
+                                <h5 style="color: #fff; font-size: 0.92rem; font-weight: 700; margin-bottom: 4px;">BLTP, Dubna &amp; IIT Bhilai</h5>
+                                <p style="font-size: 0.82rem; margin: 0; color: #b8d4e8;">International collaboration on NICA &amp; EIC-relevant meson structure</p>
+                            </li>
+
+                            <li style="margin-bottom: 6px;">
+                                <span style="display: inline-block; background: #2980b9; color: #fff; font-size: 0.72rem; font-weight: 800; padding: 2px 8px; border-radius: 20px; margin-bottom: 6px; letter-spacing: 0.5px;">🏅 NATIONAL RANKS</span>
+                                <h5 style="color: #fff; font-size: 0.92rem; font-weight: 700; margin-bottom: 4px;">AIR-877 (JAM) · AIR-209 (JEST)</h5>
+                                <p style="font-size: 0.82rem; margin: 0; color: #b8d4e8;">All-India Rank in national physics entrance exams</p>
+                            </li>
+
                         </ul>
-                        <a href="{{ get_url(path='contact', lang=lang) }}" class="btn btn-warning w-100 mt-2" style="color: #00416d; font-weight: bold; border-radius: 4px;">Contact Me</a>
+                    </div>
+                    <div class="card-footer" style="background: transparent; border-top: 1px solid rgba(255,255,255,0.12); padding: 14px 20px;">
                     </div>
                 </div>
             </div>
         </div>
     </div>
+  </div>
 </section>

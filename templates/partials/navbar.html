@@ -8,6 +8,14 @@
             </div>
         </a>
         <div class="header-right d-flex align-items-center">
+            <div class="d-none d-md-flex align-items-center me-4" style="margin-right: 20px;">
+                {% for social in extra.socials %}
+                <a target="_blank" href="{{ social.url }}" style="color: #00416d; font-size: 1.2rem; margin: 0 10px; transition: color 0.3s;" onmouseover="this.style.color='#f39c12';" onmouseout="this.style.color='#00416d';">
+                    <i class="lni lni-{{ social.icon }}"></i>
+                </a>
+                {% endfor %}
+            </div>
+            <img src="{{ get_url(path='images/about/me.jpg') }}" alt="Satyajit Puhan" style="height: 60px; width: 60px; border-radius: 50%; object-fit: cover; border: 2px solid #f39c12; margin-right: 15px;">
             <!-- User Research Tomography Image -->
             <img src="{{ get_url(path='images/tomography_logo.jpg') }}" alt="Tomography Logo" style="height: 70px;">
         </div>

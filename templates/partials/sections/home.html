@@ -2,9 +2,9 @@
 {% set data = load_data(path=path, required=false) %}
 
 {% if data %}
-<section id="home" class="hero-slider-section" style="padding: 0; position: relative;">
+<section id="home" class="hero-slider-section" style="padding: 0; position: relative; overflow: hidden;">
   {% if data.gallery %}
-  <div id="mainHeroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4000">
+  <div id="mainHeroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4500">
     <!-- Indicators -->
     <div class="carousel-indicators">
       {% for item in data.gallery %}
@@ -13,22 +13,49 @@
     </div>
 
     <!-- Inner Images -->
-    <div class="carousel-inner">
+    <div class="carousel-inner" style="height: 82vh; min-height: 500px; max-height: 750px;">
       {% for item in data.gallery %}
-      <div class="carousel-item {% if loop.first %}active{% endif %}" style="height: 60vh; min-height: 400px;">
-        <img src="{{ get_url(path=item.image) }}" class="d-block w-100 h-100" style="object-fit: cover;" alt="Hero Slide">
-        <div class="carousel-caption d-none d-md-block" style="background: rgba(0, 65, 109, 0.7); padding: 20px; border-radius: 8px; bottom: 20%;">
+      <div class="carousel-item {% if loop.first %}active{% endif %}" style="height: 82vh; min-height: 500px; max-height: 750px;">
+        <img
+          src="{{ get_url(path=item.image) }}"
+          class="d-block"
+          style="width: 100%; height: 100%; object-fit: cover; object-position: center center;"
+          alt="{{ item.caption | default(value='Hero Slide') }}"
+        >
+        <!-- Dark gradient overlay for text legibility -->
+        <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.60) 0%, rgba(0,0,0,0.20) 50%, rgba(0,0,0,0.05) 100%); pointer-events: none;"></div>
+
+        <div class="carousel-caption" style="
+          bottom: 8%;
+          left: 50%;
+          transform: translateX(-50%);
+          width: min(90%, 820px);
+          text-align: left;
+          padding: 28px 36px;
+          background: rgba(0, 65, 109, 0.82);
+          backdrop-filter: blur(6px);
+          -webkit-backdrop-filter: blur(6px);
+          border-radius: 12px;
+          border-left: 5px solid #f39c12;
+          box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+        ">
           {% if loop.first and data.title %}
-          <h2 style="color: white; font-weight: bold; margin-bottom: 10px;">{{ data.title }}</h2>
-          <div style="color: #f8f9fa; font-size: 1.1rem;">
+          <h1 style="color: #fff; font-weight: 800; font-size: clamp(1.4rem, 3vw, 2.1rem); margin-bottom: 10px; letter-spacing: -0.5px;">
+            {{ data.title }}
+          </h1>
+          <div style="color: #e0e8f0; font-size: clamp(0.88rem, 1.5vw, 1.05rem); line-height: 1.65; margin-bottom: 18px;">
             {{ data.description | markdown(inline=true) | safe }}
           </div>
           {% if data.button_url %}
-          <a href="{{ get_url(path=data.button_url, lang=lang) }}" class="btn btn-warning mt-3" style="font-weight: bold; color: #00416d;">{{ data.button_name }}</a>
+          <a href="{{ get_url(path=data.button_url, lang=lang) }}" class="btn btn-warning" style="font-weight: 700; color: #00416d; padding: 10px 28px; border-radius: 6px; font-size: 1rem; box-shadow: 0 4px 12px rgba(243,156,18,0.4);">
+            {{ data.button_name }} &rarr;
+          </a>
           {% endif %}
           {% else %}
             {% if item.caption %}
-            <h4 style="color: white; margin: 0;">{{ item.caption }}</h4>
+            <h4 style="color: #fff; margin: 0; font-size: 1.2rem; font-weight: 600;">
+              <span style="color: #f39c12; margin-right: 8px;">📍</span>{{ item.caption }}
+            </h4>
             {% endif %}
           {% endif %}
         </div>
@@ -37,21 +64,21 @@
     </div>
 
     <!-- Controls -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#mainHeroCarousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true" style="background-color: rgba(0,0,0,0.5); border-radius: 50%; padding: 20px;"></span>
+    <button class="carousel-control-prev" type="button" data-bs-target="#mainHeroCarousel" data-bs-slide="prev" style="width: 60px;">
+      <span class="carousel-control-prev-icon" aria-hidden="true" style="background-color: rgba(0,65,109,0.7); border-radius: 50%; width: 48px; height: 48px; background-size: 40%;"></span>
       <span class="visually-hidden">Previous</span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#mainHeroCarousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true" style="background-color: rgba(0,0,0,0.5); border-radius: 50%; padding: 20px;"></span>
+    <button class="carousel-control-next" type="button" data-bs-target="#mainHeroCarousel" data-bs-slide="next" style="width: 60px;">
+      <span class="carousel-control-next-icon" aria-hidden="true" style="background-color: rgba(0,65,109,0.7); border-radius: 50%; width: 48px; height: 48px; background-size: 40%;"></span>
       <span class="visually-hidden">Next</span>
     </button>
   </div>
   {% else %}
   <!-- Fallback if no gallery -->
-  <div style="height: 60vh; background: #00416d; display: flex; align-items: center; justify-content: center;">
-    <div class="text-center" style="color: white;">
-      <h1>{{ data.title }}</h1>
-      <div>{{ data.description | markdown(inline=true) | safe }}</div>
+  <div style="height: 82vh; min-height: 500px; background: linear-gradient(135deg, #00416d 0%, #00274d 100%); display: flex; align-items: center; justify-content: center;">
+    <div class="text-center px-4" style="color: white; max-width: 700px;">
+      <h1 style="font-weight: 800;">{{ data.title }}</h1>
+      <div style="font-size: 1.1rem; margin-top: 16px;">{{ data.description | markdown(inline=true) | safe }}</div>
     </div>
   </div>
   {% endif %}

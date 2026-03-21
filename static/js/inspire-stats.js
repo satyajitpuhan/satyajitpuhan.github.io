@@ -57,16 +57,16 @@ document.addEventListener("DOMContentLoaded", function () {
             const statsHtml = `
                 <div class="row text-center mt-3">
                     <div class="col-md-4">
-                        <h4 style="color: #1e285a; font-weight: 700; font-size: 32px;">${hits.length}</h4>
-                        <p style="color: #666; font-size: 14px; text-transform: uppercase;">Total Papers</p>
+                        <h4 style="color: #ffffff; font-weight: 700; font-size: 32px; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">${hits.length}</h4>
+                        <p style="color: #e2e8f0; font-size: 14px; text-transform: uppercase;">Total Papers</p>
                     </div>
                     <div class="col-md-4">
-                        <h4 style="color: #1e285a; font-weight: 700; font-size: 32px;">${totalCitations}</h4>
-                        <p style="color: #666; font-size: 14px; text-transform: uppercase;">Total Citations</p>
+                        <h4 style="color: #ffffff; font-weight: 700; font-size: 32px; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">${totalCitations}</h4>
+                        <p style="color: #e2e8f0; font-size: 14px; text-transform: uppercase;">Total Citations</p>
                     </div>
                     <div class="col-md-4">
-                        <h4 style="color: #1e285a; font-weight: 700; font-size: 32px;">${hIndex}</h4>
-                        <p style="color: #666; font-size: 14px; text-transform: uppercase;">h-index</p>
+                        <h4 style="color: #ffffff; font-weight: 700; font-size: 32px; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">${hIndex}</h4>
+                        <p style="color: #e2e8f0; font-size: 14px; text-transform: uppercase;">h-index</p>
                     </div>
                 </div>
             `;
@@ -98,13 +98,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
+                    color: '#fff',
                     scales: {
-                        x: { stacked: true },
-                        y: { stacked: true, beginAtZero: true, ticks: { stepSize: 1 } }
+                        x: { stacked: true, ticks: { color: '#fff' }, grid: { color: 'rgba(255,255,255,0.1)' } },
+                        y: { stacked: true, beginAtZero: true, ticks: { stepSize: 1, color: '#fff' }, grid: { color: 'rgba(255,255,255,0.1)' } }
                     },
                     plugins: {
-                        legend: { position: 'top' },
-                        title: { display: true, text: 'Year-wise Papers & Conference Proceedings', font: { size: 16 } }
+                        legend: { position: 'top', labels: { color: '#fff' } },
+                        title: { display: true, text: 'Year-wise Papers & Conference Proceedings', font: { size: 16 }, color: '#fff' }
                     }
                 }
             });

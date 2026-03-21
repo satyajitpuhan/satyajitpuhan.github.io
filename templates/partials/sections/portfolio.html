@@ -1,13 +1,15 @@
 {% set section = get_section(path="portfolio/_index.md", lang=lang) %}
 
 {% if section.pages %}
-<section class="section portfolio" id="portfolio">
+<section class="section portfolio" id="portfolio" style="position: relative; background-image: url('/images/flowers/flower6.jpg'); background-size: cover; background-position: center; padding: 100px 0;">
+  <div style="position: absolute; inset: 0; background: rgba(20, 30, 40, 0.75); pointer-events: none;"></div>
+  <div style="position: relative; z-index: 1;">
   <div class="container">
     <div class="row text-center">
       <div class="col-lg-6 offset-lg-3">
-        <div class="portfolio__header">
-          <span>{{ section.title }}</span>
-          <h1>{{ section.description }}</h1>
+        <div class="portfolio__header" style="color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
+          <span style="color: #f39c12; font-weight: 800; letter-spacing: 2px;">{{ section.title }}</span>
+          <h1 style="color: white; font-weight: 800;">{{ section.description }}</h1>
         </div>
       </div>
     </div>
@@ -16,15 +18,17 @@
       <div class="col-12">
         <div class="publication-list">
           {% for page in section.pages %}
-          <div class="publication-item">
+          <div class="publication-item" style="background: rgba(255, 255, 255, 0.12); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-radius: 12px; padding: 25px; margin-bottom: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.15); display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease;"
+              onmouseover="this.style.transform='translateY(-4px)'; this.style.background='rgba(255,255,255,0.2)';"
+              onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(255, 255, 255, 0.12)';">
             <div class="publication-item__info">
-              <span class="publication-item__journal">{{ page.extra.service }}</span>
-              <h5 class="publication-item__title">
-                <a href="{{ page.permalink }}">{{ page.title }}</a>
+              <span class="publication-item__journal" style="color: #38bdf8; font-weight: 700; font-size: 0.85rem; display: block; margin-bottom: 8px;">{{ page.extra.service }}</span>
+              <h5 class="publication-item__title" style="margin-bottom: 8px;">
+                <a href="{{ page.permalink }}" style="color: white; font-weight: 700; text-decoration: none; font-size: 1.1rem;">{{ page.title }}</a>
               </h5>
-              <p class="publication-item__authors">{{ page.extra.client }}</p>
+              <p class="publication-item__authors" style="color: #e2e8f0; margin: 0; font-size: 0.9rem;">{{ page.extra.client }}</p>
             </div>
-            <a class="publication-item__link" href="{{ page.permalink }}">{{ trans(key="see_details", lang=lang) }}
+            <a class="publication-item__link" href="{{ page.permalink }}" style="color: #f39c12; font-weight: bold; padding: 8px 16px; background: rgba(255,255,255,0.1); border-radius: 8px; text-decoration: none;">{{ trans(key="see_details", lang=lang) }}
               →</a>
           </div>
           {% endfor %}
@@ -33,7 +37,7 @@
     </div>
     <div class="row mt-5">
       <div class="col-12 text-center">
-        <h3 class="mb-4" style="font-family: inherit; font-size: 28px; color: #1e285a; margin-top: 40px;">Citation
+        <h3 class="mb-4" style="font-family: inherit; font-size: 28px; color: white; margin-top: 40px; text-shadow: 0 2px 8px rgba(0,0,0,0.5);">Citation
           Summary</h3>
 
         <div id="inspire-stats-container" style="margin-bottom: 30px;">
@@ -41,11 +45,12 @@
         </div>
 
         <div class="citation-container"
-          style="width: 100%; height: 500px; padding: 20px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(50, 65, 141, 0.08); background: #fff;">
+          style="width: 100%; height: 500px; padding: 20px; overflow: hidden; background: transparent;">
           <canvas id="papersChart"></canvas>
         </div>
       </div>
     </div>
+  </div>
   </div>
 </section>
 <script src="{{ get_url(path='js/inspire-stats.js') }}"></script>
