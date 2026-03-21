@@ -4,10 +4,14 @@ description = "Supervisor (PhD)"
 weight = 1
 
 [extra]
+inspire = "https://inspirehep.net/authors/H.Dahiya.1"
+github = ""
+scholar = ""
+orcid = ""
 about = "Dr. Harleen Dahiya is a prominent physicist at Dr. B R Ambedkar National Institute of Technology Jalandhar. With over 218 published papers and extensive citations, her research profoundly impacts high energy physics (hep-ph), particularly in the areas of Light-Front Dynamics, Nucleon Structure, and Generalized Parton Distributions."
 institution = "Dr. B R Ambedkar NIT, Jalandhar"
 image = ""
-website = "https://inspirehep.net/authors/H.Dahiya.1"
+website = ""
 +++
 ## Academic Profile
 

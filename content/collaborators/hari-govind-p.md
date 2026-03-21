@@ -4,10 +4,14 @@ description = "Collaborator"
 weight = 15
 
 [extra]
+inspire = "https://inspirehep.net/authors/H.G.P.2"
+github = ""
+scholar = ""
+orcid = ""
 about = "Hari Govind P is an active contributor to high energy physics collaborations based out of Ambedkar National Institute of Technology. His cutting-edge research targets the extraction of unpolarized quark Transverse Momentum-Dependent (TMD) parton distributions from complex Drell-Yan experimental data."
 institution = "NIT Jalandhar"
 image = ""
-website = "https://inspirehep.net/authors/H.G.P.2"
+website = ""
 +++
 
 ## Academic Profile

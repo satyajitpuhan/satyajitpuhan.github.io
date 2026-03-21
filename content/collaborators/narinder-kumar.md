@@ -4,6 +4,10 @@ description = "Assistant Professor"
 weight = 7
 
 [extra]
+inspire = "https://inspirehep.net/authors/1054084"
+github = ""
+scholar = ""
+orcid = ""
 about = "Dr. Narinder Kumar is an Assistant Professor of Physics at Doaba College Jalandhar, bringing over a decade of research expertise in Hadron Physics, Nucleon Tomography, and Quantum Chromodynamics (QCD). He completed his PhD at NIT Jalandhar under Dr. Harleen Dahiya and later served as a National Post-Doctoral Fellow (NPDF) at IIT Kanpur. An acclaimed researcher in Light-Front QCD, he recently received the SERB Teachers Associateship Research Excellence (TARE) Award from the Government of India."
 institution = "Doaba College, Jalandhar"
 image = "images/collaborators/narinder-kumar.png"

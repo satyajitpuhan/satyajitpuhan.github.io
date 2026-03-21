@@ -61,6 +61,26 @@
                     {% endif %}
                 </div>
                 {% endif %}
+
+                {% if page.extra.inspire or page.extra.github or page.extra.scholar or page.extra.orcid %}
+                <div class="card mt-4 text-start" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.2); border-radius: 16px; padding: 25px 20px;">
+                    <h5 style="color: #f39c12; font-weight: 600; margin-bottom: 15px; font-size: 1.15rem;"><i class="lni lni-link"></i> Profiles</h5>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        {% if page.extra.inspire %}
+                        <a href="{{ page.extra.inspire }}" target="_blank" style="color: #fff; background: rgba(255,255,255,0.15); padding: 8px 12px; border-radius: 8px; text-decoration: none; font-size: 0.9rem; transition: background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">INSPIRE-HEP</a>
+                        {% endif %}
+                        {% if page.extra.scholar %}
+                        <a href="{{ page.extra.scholar }}" target="_blank" style="color: #fff; background: rgba(255,255,255,0.15); padding: 8px 12px; border-radius: 8px; text-decoration: none; font-size: 0.9rem; transition: background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'"><i class="lni lni-google"></i> Scholar</a>
+                        {% endif %}
+                        {% if page.extra.orcid %}
+                        <a href="{{ page.extra.orcid }}" target="_blank" style="color: #fff; background: rgba(255,255,255,0.15); padding: 8px 12px; border-radius: 8px; text-decoration: none; font-size: 0.9rem; transition: background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">ORCID</a>
+                        {% endif %}
+                        {% if page.extra.github %}
+                        <a href="{{ page.extra.github }}" target="_blank" style="color: #fff; background: rgba(255,255,255,0.15); padding: 8px 12px; border-radius: 8px; text-decoration: none; font-size: 0.9rem; transition: background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'"><i class="lni lni-github-original"></i> GitHub</a>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endif %}
             </div>
             
             <div class="col-lg-8">
