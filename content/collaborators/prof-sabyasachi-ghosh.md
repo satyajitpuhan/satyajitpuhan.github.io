@@ -23,9 +23,19 @@ website = "https://inspirehep.net/authors/Sabyasachi.Ghosh.1"
 
 Prof. Sabyasachi Ghosh has published **131 papers** listed on INSPIRE-HEP. He extensively researches theoretical physics, high energy physics (`hep-ph`), and nuclear theory (`nucl-th`).
 
-### Top Collaborators
-- Sourav Sarkar (33 papers)
-- Jayanta Dey (25 papers)
-- Ashutosh Dwibedi (23 papers)
-- Jan-e Alam (17 papers)
-- Sarthak Satapathy (16 papers)
+## Selected Highly Cited Papers
+
+- **Anisotropic transport properties of a hadron resonance gas in a magnetic field**  
+  *Phys.Rev.D 102 (2020) 016016* | **66 Citations**
+
+- **Shear and bulk viscosities of quark matter from quark-meson fluctuations in the Nambu-Jona-Lasinio model**  
+  *Phys.Rev.C 93 (2016) 045205* | **57 Citations**
+
+- **Transport coefficients in the Polyakov quark meson coupling model: A relaxation time approximation**  
+  *Phys.Rev.D 97 (2018) 014005* | **53 Citations**
+
+- **A real-time thermal field theoretical analysis of Kubo-type shear viscosity: Numerical understanding with simple examples**  
+  *Int.J.Mod.Phys.A 29 (2014) 1450054* | **51 Citations**
+
+- **Shear viscosity due to Landau damping from the quark-pion interaction**  
+  *Phys.Rev.C 88 (2013) 068201* | **50 Citations**
