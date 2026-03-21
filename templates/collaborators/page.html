@@ -30,6 +30,13 @@
                     <a href="{{ page.extra.website }}" target="_blank" class="btn btn-primary" style="background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); border: none; border-radius: 8px; width: 100%; font-weight: 600;"><i class="lni lni-website"></i> Visit Website</a>
                     {% endif %}
                 </div>
+                
+                {% if page.extra.about %}
+                <div class="card mt-4 text-start" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.2); border-radius: 16px; padding: 25px 20px;">
+                    <h5 style="color: #f39c12; font-weight: 600; margin-bottom: 12px; font-size: 1.15rem;"><i class="lni lni-user"></i> About</h5>
+                    <p style="color: #e2e8f0; font-size: 0.95rem; line-height: 1.6; margin: 0;">{{ page.extra.about }}</p>
+                </div>
+                {% endif %}
             </div>
             
             <div class="col-lg-8">

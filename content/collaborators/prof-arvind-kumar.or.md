@@ -4,6 +4,7 @@ description = "Collaborator"
 weight = 5
 
 [extra]
+about = "Prof. Arvind Kumar is a renowned researcher at Dr. B R Ambedkar National Institute of Technology Jalandhar. His expansive work primarily encompasses nuclear theory (nucl-th) and high energy physics (hep-ph), specializing in meson properties, asymmetric nuclear mediums, and dense nuclear matter effects."
 institution = "Dr. B R Ambedkar NIT, Jalandhar"
 image = ""
 website = "https://inspirehep.net/authors/Arvind.Kumar.1"

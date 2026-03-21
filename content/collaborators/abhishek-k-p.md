@@ -4,6 +4,7 @@ description = "Collaborator"
 weight = 16
 
 [extra]
+about = "Abhishek K. P is an intuitive researcher and physicist specializing in advanced theoretical extractions. He actively collaborates with the NIT Jalandhar research group to map unpolarized quark TMDs of the proton using sophisticated statistical tools like iminuit against Fermilab experimental datasets."
 institution = "NIT Jalandhar"
 image = ""
 website = "https://inspirehep.net/authors/A.K.P.3"
