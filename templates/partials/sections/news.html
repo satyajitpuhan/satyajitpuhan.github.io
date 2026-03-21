@@ -185,43 +185,51 @@
             </div>
         </div>
 
-        <!-- Modals -->
-        {% for item in data.items %}
-        {% if item.details %}
-        <div class="modal fade" id="newsModal{{ loop.index }}" tabindex="-1"
-            aria-labelledby="newsModalLabel{{ loop.index }}" aria-hidden="true">
-            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="newsModalLabel{{ loop.index }}"
-                            style="font-family: inherit; margin: 0;">{{ item.title }}</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body text-start" style="padding: 30px;">
-                        <span style="color: #6a82fb; font-weight: 600; display: block; margin-bottom: 20px;">{{
-                            item.date }}</span>
-                        <div class="details-content" style="color: #444; line-height: 1.7; font-size: 15px;">
-                            {{ item.details | markdown | safe }}
-                        </div>
-
-                        {% if item.extra_images %}
-                        <div class="row mt-4">
-                            {% for img in item.extra_images %}
-                            <div class="col-md-4 mb-3">
-                                <img src="{{ get_url(path=img) }}" class="img-fluid rounded shadow-sm"
-                                    alt="Extra News Image" style="width: 100%; height: 150px; object-fit: cover;">
-                            </div>
-                            {% endfor %}
-                        </div>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-        </div>
-        {% endif %}
-        {% endfor %}
     </div>
     </div>
   </div>
 </section>
+
+<!-- News Modals (placed outside the section to avoid stacking context issues) -->
+{% for item in data.items %}
+{% if item.details %}
+<div class="modal fade" id="newsModal{{ loop.index }}" tabindex="-1"
+    aria-labelledby="newsModalLabel{{ loop.index }}" aria-hidden="true"
+    style="z-index: 10050;">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content" style="border-radius: 16px; overflow: hidden;">
+            <div class="modal-header" style="background: linear-gradient(135deg, #1a1a2e, #16213e); border-bottom: 1px solid rgba(255,255,255,0.1); padding: 20px 25px;">
+                <h5 class="modal-title" id="newsModalLabel{{ loop.index }}"
+                    style="font-family: inherit; margin: 0; color: #fff; font-size: 18px; font-weight: 700;">{{ item.title }}</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-start" style="padding: 30px; max-height: 65vh; overflow-y: auto;">
+                <span style="color: #6a82fb; font-weight: 600; display: block; margin-bottom: 20px;">{{
+                    item.date }}</span>
+                <div class="details-content" style="color: #444; line-height: 1.7; font-size: 15px;">
+                    {{ item.details | markdown | safe }}
+                </div>
+
+                {% if item.extra_images %}
+                <div class="row mt-4">
+                    {% for img in item.extra_images %}
+                    <div class="col-md-4 mb-3">
+                        <img src="{{ get_url(path=img) }}" class="img-fluid rounded shadow-sm"
+                            alt="Extra News Image" style="width: 100%; height: 150px; object-fit: cover;">
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            <div class="modal-footer" style="border-top: 1px solid #eee; padding: 15px 25px; justify-content: center;">
+                <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal"
+                    style="border-radius: 25px; padding: 8px 30px; font-weight: 600;">
+                    ← Go Back
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endfor %}
 {% endif %}
