@@ -1,6 +1,6 @@
 +++
 title = "ଅନସୁ ଗ aut ତମ |"
-description = "Collaborator"
+description = "ସହକର୍ମୀ"
 weight = 10
 
 [extra]
@@ -15,19 +15,20 @@ image = ""
 website = ""
 +++
 
-## Academic Profile
 
-**Author Identifier:** Anshu.Gautam.1 (INSPIRE-HEP)  
+## ଏକାଡେମିକ୍ ପ୍ରୋଫାଇଲ୍ |
 
-### Academic Journey
-- **2023-2025:** Master, Dr. B R Ambedkar National Institute of Technology, Jalandhar  
+** ଲେଖକ ପରିଚାୟକ: ** Anshu.Gautam.1 (INSPIRE-HEP)
 
-## Selected Papers
+### ଏକାଡେମିକ୍ ଯାତ୍ରା |
+- ** 2023-2025: ** ମାଷ୍ଟର, ଡା। ବି ଆର ଆମ୍ବେଦକର ନ୍ୟାସନାଲ ଇନଷ୍ଟିଚ୍ୟୁଟ୍ ଅଫ୍ ଟେକ୍ନୋଲୋଜି, ଜଲନ୍ଦର
 
-- **Behavior of Pion in Asymmetric Nuclear Medium**  
-  *Anshu Gautam, Dhananjay Singh, Satyajit Puhan, Navpreet Kaur, Arvind Kumar et al.* (Feb 3, 2026)  
-  *Springer Proc.Phys. 432 (2026) 978-982*
+## ମନୋନୀତ କାଗଜପତ୍ର |
 
-- **D and D* Mesons in an Isospin Asymmetric Nuclear Medium**  
-  *Anshu Gautam, Dhananjay Singh, Navpreet Kaur, Satyajit Puhan, Suneel Dutt et al.* (Jun 10, 2025)  
-  *PTEP 2025 (2025) 11, 113D03* | **1 Citation**
+- ** ଅସୀମିତ ଆଣବିକ ମଧ୍ୟମ ମଧ୍ୟରେ ପିଅନର ଆଚରଣ **  
+  * ଅନସୁ ଗ aut ତମ, ଧନଞ୍ଜୟ ସିଂ, ସତ୍ୟଜିତ୍ ପୁହାନ୍, ନବପ୍ରୀତ କ ur ର, ଅରବିନ୍ଦ କୁମାର ଇତ୍ୟାଦି। (ଫେବୃଆରୀ 3, 2026)  
+  * ସ୍ପ୍ରିଞ୍ଜର ପ୍ରୋ। 432 (2026) 978-982 *
+
+- ** ଡି ଏବଂ ଡି * ଏକ ଆଇସୋସ୍ପିନ୍ ଅସୀମେଟ୍ରିକ୍ ଆଣବିକ ମଧ୍ୟମ ** ରେ ମେସନ୍ |  
+  * ଅନସୁ ଗ aut ତମ, ଧନଞ୍ଜୟ ସିଂ, ନବପ୍ରୀତ କ ur ର, ସତ୍ୟଜିତ୍ ପୁହାନ୍, ସୁନେଲ ଦତ୍ତ ଇତ୍ୟାଦି। (ଜୁନ୍ 10, 2025)  
+  * PTEP 2025 (2025) 11, 113D03 * | | ** 1 ଉଲ୍ଲେଖ **

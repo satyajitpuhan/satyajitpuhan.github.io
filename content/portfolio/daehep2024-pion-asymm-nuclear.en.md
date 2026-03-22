@@ -1,17 +1,17 @@
 +++
-title = "Pion in asymmetric nuclear medium"
-date = 2024-12-17
+title = "Behavior of pion in asymmetric nuclear medium"
+date = 2024-12-16
 
 [extra]
 thumbnail = "images/portfolio/portfolio-1.png"
 service = "DAE HEP 2024"
-client = "Navpreet Kaur, Satyajit Puhan, Arvind Kumar, and Harleen Dahiya"
-short_description = "DAE HEP 2024 Symposium."
-challenge = "We study the pion properties in asymmetric nuclear medium using the combined approach of chiral SU(3) quark mean field model and light-cone quark model. The in-medium PDFs, decay constants, and TMDs of pions are evaluated at finite baryon density and isospin asymmetry."
-solution = "This conference article presents predictions for pion properties in asymmetric nuclear environments, demonstrating how isospin asymmetry affects the pion's internal structure."
+client = "A. Gautam, D. Singh, S. Puhan, N. Kaur, A. Kumar, H. Dahiya, and S. Dutt"
+short_description = "Submitted to DAE HEP 2024 Symposium"
+challenge = "Behavior of pion in asymmetric nuclear medium"
+solution = "Research article published in DAE HEP 2024."
 +++
 
-**Authors:** Navpreet Kaur, Satyajit Puhan, Arvind Kumar, and Harleen Dahiya  
+**Authors:** A. Gautam, D. Singh, S. Puhan, N. Kaur, A. Kumar, H. Dahiya, and S. Dutt  
 **Published in:** DAE HEP 2024
 
 [View Details →](#)

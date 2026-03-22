@@ -1,6 +1,6 @@
 +++
 title = "ପ୍ରଫେସର ସୁନେଲ ଦତ୍ତ"
-description = "Collaborator"
+description = "ସହକର୍ମୀ"
 weight = 6
 
 [extra]
@@ -15,38 +15,39 @@ image = ""
 website = ""
 +++
 
-## Academic Profile
 
-**Author Identifier:** Suneel.Dutt.1 (INSPIRE-HEP)  
-**PhD Advisor:** Suman B. Beri  
+## ଏକାଡେମିକ୍ ପ୍ରୋଫାଇଲ୍ |
 
-### Academic Journey
-- **2018-present:** Junior, Dr. B R Ambedkar National Institute of Technology, Jalandhar  
-- **2014-present:** Saha Institute of Nuclear Physics  
-- **2012-2013:** Purdue University  
+** ଲେଖକ ପରିଚାୟକ: ** Suneel.Dutt.1 (INSPIRE-HEP)  
+** ପିଏଚଡି ପରାମର୍ଶଦାତା: ** ସୁମନ ବି ବେରୀ |
 
-## Selected Highly Cited Papers
+### ଏକାଡେମିକ୍ ଯାତ୍ରା |
+- ** 2018-ବର୍ତ୍ତମାନ: ** ଜୁନିଅର୍, ଡକ୍ଟର ବି ଆର ଆମ୍ବେଦକର ନ୍ୟାସନାଲ୍ ଇନଷ୍ଟିଚ୍ୟୁଟ୍ ଅଫ୍ ଟେକ୍ନୋଲୋଜି, ଜଲନ୍ଦର |  
+- ** 2014-ବର୍ତ୍ତମାନ: ** ସାହା ଆଣବିକ ପଦାର୍ଥ ବିଜ୍ଞାନ ପ୍ରତିଷ୍ଠାନ |  
+- ** 2012-2013: ** ପର୍ଡୁ ବିଶ୍ୱବିଦ୍ୟାଳୟ |
 
-- **High-charge relativistic electron bunches from a kHz laser-plasma accelerator**  
-  *Dominykas Gustas, Diego Guénot, Aline Vernier, Shankar Dutt, Frederik Böhle et al.* (Nov 17, 2017)  
-  *Phys.Rev.Accel.Beams 21 (2018) 1, 013401* | **32 Citations**
+## ଉଚ୍ଚକୋଟୀର କାଗଜପତ୍ରଗୁଡିକ ଚୟନ କରାଯାଇଛି |
 
-- **Incomplete fusion in O16+Y89 reactions at energies of ≈7 MeV/nucleon**  
-  *Muntazir Gull, Kamal Kumar, Sabir Ali, Tauseef Ahmad, S. Dutt et al.* (Sep 6, 2018)  
-  *Phys.Rev.C 98 (2018) 3, 034603* | **20 Citations**
+- ** ଏକ କେଜିଏଚ୍ ଲେଜର-ପ୍ଲାଜମା ତ୍ୱରକରୁ ଉଚ୍ଚ-ଚାର୍ଜ ଆପେକ୍ଷିକ ଇଲେକ୍ଟ୍ରନ୍ ଗୁଣ୍ଡ **  
+  * ଡୋମିନିକାସ୍ ଗୁସ୍ତାସ୍, ଡିଏଗୋ ଗୁଏନୋଟ୍, ଆଲିନ୍ ଭର୍ନିୟର୍, ଶଙ୍କର ଦତ୍ତ, ଫ୍ରେଡେରିକ୍ ବୋହଲେ ଇତ୍ୟାଦି। (ନଭେମ୍ବର 17, 2017)  
+  * Phys.Rev.Accel.Beams 21 (2018) 1, 013401 * | | ** 32 ଉଦ୍ଧୃତି **
 
-- **Pion valence quark distributions in asymmetric nuclear matter at finite temperature**  
-  *Satyajit Puhan, Navpreet Kaur, Arvind Kumar, Suneel Dutt, Harleen Dahiya* (Aug 14, 2024)  
-  *Phys.Rev.D 110 (2024) 5, 054042* | **14 Citations**
+- ** ≈7 MeV / nucleon ** ର ଶକ୍ତିରେ O16 + Y89 ପ୍ରତିକ୍ରିୟାରେ ଅସମ୍ପୂର୍ଣ୍ଣ ଫ୍ୟୁଜନ୍ **  
+  * ମୁଣ୍ଟାଜିର ଗୁଲ, କମଲ କୁମାର, ସାବୀର ଅଲି, ତୁସିଫ ଅହମ୍ମଦ, ଏସ ଦତ୍ତ ଇତ୍ୟାଦି। (ସେପ୍ଟେମ୍ବର 6, 2018)  
+  * Phys.Rev.C 98 (2018) 3, 034603 * | | ** 20 ଉଦ୍ଧୃତି **
 
-- **Magnetic moments of decuplet baryons in asymmetric strange hadronic matter at finite temperature**  
-  *Arvind Kumar, Suneel Dutt, Harleen Dahiya* (Nov 6, 2023)  
-  *Eur.Phys.J.A 60 (2024) 1, 4* | **14 Citations**
+- ** ଅସୀମିତ ପରମାଣୁ ପଦାର୍ଥରେ ସୀମିତ ତାପମାତ୍ରାରେ ପିଆନ୍ ଭାଲେନ୍ସ କ୍ୱାର୍କ ବଣ୍ଟନ **  
+  * ସତ୍ୟଜିତ୍ ପୁହାନ୍, ନବପ୍ରୀତ କ ur ର, ଅରବିନ୍ଦ କୁମାର, ସୁନୀଲ ଦତ୍ତ, ହାର୍ଲେନ୍ ଡାହିଆ * (ଅଗଷ୍ଟ 14, 2024)  
+  * Phys.Rev.D 110 (2024) 5, 054042 * | | ** 14 ଉଦ୍ଧୃତି **
 
-- **Effects of finite volume and magnetic fields on thermodynamic properties of quark matter and fluctuations of conserved charges**  
-  *Nisha Chahal, Suneel Dutt, Arvind Kumar* (Mar 29, 2023)  
-  *Phys.Rev.C 107 (2023) 4, 045203* | **13 Citations**
+- ** ସୀମିତ ତାପମାତ୍ରାରେ ଅସୀମିତ ଅଜବ ହାଡ୍ରୋନିକ୍ ପଦାର୍ଥରେ ଡିକ୍ୟୁପଲେଟ୍ ବାରିଅନର ଚୁମ୍ବକୀୟ ମୁହୂର୍ତ୍ତ **  
+  * ଅରବିନ୍ଦ କୁମାର, ସୁନୀଲ ଦତ୍ତ, ହାର୍ଲେନ ଡାହିଆ * (ନଭେମ୍ବର 6, 2023)  
+  * Eur.Phys.J.A 60 (2024) 1, 4 * | | ** 14 ଉଦ୍ଧୃତି **
 
-- **Does nuclear medium affect the transverse momentum-dependent parton distributions of valence quark of pions?**  
-  *Navpreet Kaur, Satyajit Puhan, Reetanshu Pandey, Arvind Kumar, Suneel Dutt et al.* (Sep 9, 2024)  
-  *Phys.Lett.B 859 (2024) 139114* | **11 Citations**
+- ** କ୍ୱାର୍କ ପଦାର୍ଥର ଥର୍ମୋଡାଇନାମିକ୍ ଗୁଣ ଏବଂ ସଂରକ୍ଷିତ ଚାର୍ଜର ପରିବର୍ତ୍ତନ ଉପରେ ସୀମିତ ପରିମାଣ ଏବଂ ଚୁମ୍ବକୀୟ କ୍ଷେତ୍ରର ପ୍ରଭାବ **  
+  * ନିଶା ଚହଲ, ସୁନୀଲ ଦତ୍ତ, ଅରବିନ୍ଦ କୁମାର * (ମାର୍ଚ୍ଚ 29, 2023)  
+  * Phys.Rev.C 107 (2023) 4, 045203 * | | ** 13 ଉଦ୍ଧୃତି **
+
+- ** ଆଣବିକ ମାଧ୍ୟମ ପିଆନ୍ସର ଭାଲେନ୍ସ କ୍ୱାର୍କର ଟ୍ରାନ୍ସଭର୍ସ ଗତି-ନିର୍ଭରଶୀଳ ପାର୍ଟନ୍ ବଣ୍ଟନକୁ ପ୍ରଭାବିତ କରେ କି? **  
+  * ନବପ୍ରୀତ କ ur ର, ସତ୍ୟଜିତ୍ ପୁହାନ୍, ରିତାନସୁ ପାଣ୍ଡେ, ଅରବିନ୍ଦ କୁମାର, ସୁନୀଲ ଦତ୍ତ ଇତ୍ୟାଦି। (ସେପ୍ଟେମ୍ବର 9, 2024)  
+  * Phys.Lett.B 859 (2024) 139114 * | | ** 11 ଉଦ୍ଧୃତି **

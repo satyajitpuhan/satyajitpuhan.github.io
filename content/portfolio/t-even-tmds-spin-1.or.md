@@ -1,18 +1,17 @@
 +++
-title = "ସ୍ପିନ୍ -1 ଭାରୀ ଭେକ୍ଟର ମେସନ୍ ପାଇଁ ଅଗ୍ରଣୀ ଟ୍ୱିଷ୍ଟ୍ ଟି-ଏପରିକି ଟିଏମଡିଗୁଡିକ |"
+title = "Leading twist T-even TMDs for the spin-1 heavy vector mesons"
 date = 2024-03-01
 
 [extra]
-thumbnail = "images/portfolio/papers/heavy-vector-mesons-tmds.png"
+thumbnail = "images/portfolio/portfolio-1.png"
 service = "Phys. Rev. D 109 (2024)"
-client = "Satyajit Puhan and Harleen Dahiya"
+client = "S. Puhan and H. Dahiya"
 short_description = "Physical Review D article on leading twist T-even TMDs for heavy vector mesons."
-challenge = "We present the leading twist T-even transverse momentum-dependent parton distributions (TMDs) for spin-1 heavy vector mesons (J/ψ, Υ) using the light-front quark model. The unpolarized TMD f₁, helicity TMD g₁L, and transversity TMDs h₁, h₁T⊥ are evaluated for different polarization states of the vector mesons."
-solution = "This study provides the first comprehensive analysis of leading twist T-even TMDs for heavy quarkonia vector mesons, presenting three-dimensional momentum distributions and comparing the internal quark structure of J/ψ and Υ mesons."
+challenge = "Leading twist T-even TMDs for the spin-1 heavy vector mesons"
+solution = "Research article published in Phys. Rev. D 109 (2024)."
 +++
 
+**Authors:** S. Puhan and H. Dahiya  
+**Published in:** Phys. Rev. D 109 (2024)
 
-** ଲେଖକ: ** ଏସ୍ ପୁହାନ୍ ଏବଂ ଏଚ୍ ଡାହିଆ |  
-** ରେ ପ୍ରକାଶିତ: ** ପଦାର୍ଥ | Rev. D 109 (2024)
-
-[PRD on ରେ ପ Read ଼ନ୍ତୁ] (https://journals.aps.org/prd/abstract/10.1103/PhysRevD.109.034005)
+[Read on PRD →](https://journals.aps.org/prd/abstract/10.1103/PhysRevD.109.034005)

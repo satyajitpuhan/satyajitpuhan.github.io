@@ -1,6 +1,6 @@
 +++
 title = "ହରି ଗୋବିନ୍ଦ ପି"
-description = "Collaborator"
+description = "ସହକର୍ମୀ"
 weight = 15
 
 [extra]
@@ -15,12 +15,13 @@ image = ""
 website = ""
 +++
 
-## Academic Profile
 
-**Author Identifier:** H.G.P.2 (INSPIRE-HEP)  
+## ଏକାଡେମିକ୍ ପ୍ରୋଫାଇଲ୍ |
 
-## Selected Papers
+** ଲେଖକ ପରିଚାୟକ: ** H.G.P.2 (INSPIRE-HEP)
 
-- **Extraction of f1(x,fkp2erp) quark TMDs of proton from E288 Drell-Yan data**  
-  *Hari Govind P, Reetanshu Pandey, Satyajit Puhan, Suneel Dutt, Harleen Dahiya et al.* (2026)  
-  *DAE Symp.Nucl.Phys. 69 (2026) 963-964*
+## ମନୋନୀତ କାଗଜପତ୍ର |
+
+- ** E288 ଡ୍ରେଲ୍-ୟାନ୍ ତଥ୍ୟରୁ ପ୍ରୋଟନ୍ ର f1 (x, fkp2erp) କ୍ୱାର୍କ TMD ର ନିର୍ବାହ **  
+  * ହରି ଗୋବିନ୍ଦ ପି, ରିତାନସୁ ପାଣ୍ଡେ, ସତ୍ୟଜିତ୍ ପୁହାନ୍, ସୁନେଲ ଦତ୍ତ, ହାର୍ଲିନ୍ ଡାହିଆ ଇତ୍ୟାଦି। (2026)  
+  * DAE Symp.Nucl.Phys। 69 (2026) 963-964 *

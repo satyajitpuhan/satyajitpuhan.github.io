@@ -1,6 +1,6 @@
 +++
 title = "ପ୍ରଫେସର ସାବୟାସୀ ଘୋଷ"
-description = "Collaborator"
+description = "ସହକର୍ମୀ"
 weight = 3
 
 [extra]
@@ -15,33 +15,34 @@ image = ""
 website = ""
 +++
 
-## Academic Profile
 
-**Author Identifier:** Sabyasachi.Ghosh.1 (INSPIRE-HEP)  
-**PhD Advisor:** Sourav Sarkar  
+## ଏକାଡେମିକ୍ ପ୍ରୋଫାଇଲ୍ |
 
-### Academic Journey
-- **2018-present:** Indian Institute of Technology (IIT), Bhilai  
-- **2016-2018:** Postdoctoral Researcher, Calcutta University  
-- **2015-2015:** Visitor, NISER, Bhubaneswar  
+** ଲେଖକ ପରିଚାୟକ: ** Sabyasachi.Ghosh.1 (INSPIRE-HEP)  
+** ପିଏଚଡି ପରାମର୍ଶଦାତା: ** ସ our ରଭ ସାର୍କ |
 
-## Research Profile
+### ଏକାଡେମିକ୍ ଯାତ୍ରା |
+- ** 2018-ବର୍ତ୍ତମାନ: ** ଇଣ୍ଡିଆନ୍ ଇନଷ୍ଟିଚ୍ୟୁଟ୍ ଅଫ୍ ଟେକ୍ନୋଲୋଜି (ଆଇଆଇଟି), ଭିଲାଇ |  
+- ** 2016-2018: ** ପୋଷ୍ଟଡକ୍ଟରାଲ୍ ଅନୁସନ୍ଧାନକାରୀ, କଲିକତା ବିଶ୍ୱବିଦ୍ୟାଳୟ |  
+- ** 2015-2015: ** ପରିଦର୍ଶକ, NISER, ଭୁବନେଶ୍ୱର |
 
-Prof. Sabyasachi Ghosh has published **131 papers** listed on INSPIRE-HEP. He extensively researches theoretical physics, high energy physics (`hep-ph`), and nuclear theory (`nucl-th`).
+## ଅନୁସନ୍ଧାନ ପ୍ରୋଫାଇଲ୍ |
 
-## Selected Highly Cited Papers
+ପ୍ରଫେସର ସାବୟାସୀ ଘୋଷ INSPIRE-HEP ରେ ତାଲିକାଭୁକ୍ତ ** 131 କାଗଜ ** ପ୍ରକାଶ କରିଛନ୍ତି | ସେ ତତ୍ତ୍ୱିକ ପଦାର୍ଥ ବିଜ୍ଞାନ, ଉଚ୍ଚ ଶକ୍ତି ପଦାର୍ଥ ବିଜ୍ଞାନ ("ହେପ- ph") ଏବଂ ଆଣବିକ ତତ୍ତ୍ ((nucl-th) ଉପରେ ବିସ୍ତୃତ ଭାବରେ ଅନୁସନ୍ଧାନ କରନ୍ତି |
 
-- **Anisotropic transport properties of a hadron resonance gas in a magnetic field**  
-  *Phys.Rev.D 102 (2020) 016016* | **66 Citations**
+## ଉଚ୍ଚକୋଟୀର କାଗଜପତ୍ରଗୁଡିକ ଚୟନ କରାଯାଇଛି |
 
-- **Shear and bulk viscosities of quark matter from quark-meson fluctuations in the Nambu-Jona-Lasinio model**  
-  *Phys.Rev.C 93 (2016) 045205* | **57 Citations**
+- ** ଚୁମ୍ବକୀୟ କ୍ଷେତ୍ରରେ ହାଡ୍ରନ୍ ରିଜୋନାନ୍ସ ଗ୍ୟାସର ଆନିସୋଟ୍ରୋପିକ୍ ପରିବହନ ଗୁଣ **  
+  * Phys.Rev.D 102 (2020) 016016 * | | ** 66 ଉଦ୍ଧୃତି **
 
-- **Transport coefficients in the Polyakov quark meson coupling model: A relaxation time approximation**  
-  *Phys.Rev.D 97 (2018) 014005* | **53 Citations**
+- ** ନାମ୍ବୁ-ଜୋନା-ଲାସିନିଓ ମଡେଲରେ କ୍ୱାର୍କ-ମେସନ୍ ଫ୍ଲେକଚ୍ୟୁସନରୁ କ୍ୱାର୍କ ପଦାର୍ଥର ଶିଅର୍ ଏବଂ ବଲ୍କ ସାନ୍ଦ୍ରତା **  
+  * Phys.Rev.C 93 (2016) 045205 * | | ** 57 ଉଦ୍ଧୃତି **
 
-- **A real-time thermal field theoretical analysis of Kubo-type shear viscosity: Numerical understanding with simple examples**  
-  *Int.J.Mod.Phys.A 29 (2014) 1450054* | **51 Citations**
+- ** ପଲିୟାକୋଭ୍ କ୍ୱାର୍କ ମେସନ୍ କପଲିଂ ମଡେଲରେ ପରିବହନ କୋଏଫେସିଏଣ୍ଟସ୍: ଏକ ଆରାମ ସମୟର ଆନୁମାନିକତା **  
+  * Phys.Rev.D 97 (2018) 014005 * | | ** 53 ଉଦ୍ଧୃତି **
 
-- **Shear viscosity due to Landau damping from the quark-pion interaction**  
-  *Phys.Rev.C 88 (2013) 068201* | **50 Citations**
+- ** କୁବୋ-ପ୍ରକାରର ଶିଅର ସାନ୍ଦ୍ରତାର ଏକ ବାସ୍ତବ ସମୟର ତାପଜ କ୍ଷେତ୍ର ତତ୍ତ୍ୱିକ ବିଶ୍ଳେଷଣ: ସରଳ ଉଦାହରଣ ସହିତ ସାଂଖ୍ୟିକ ବୁ understanding ାମଣା **  
+  * Int.J.Mod.Phys.A 29 (2014) 1450054 * | | ** 51 ଉଦ୍ଧୃତି **
+
+- ** କ୍ୱାର୍କ-ପିଅନ୍ ପାରସ୍ପରିକ କାର୍ଯ୍ୟକଳାପରୁ ଲାଣ୍ଡାଉ ଡ୍ୟାମ୍ପିଂ ହେତୁ ଶିଅର ସାନ୍ଦ୍ରତା **  
+  * Phys.Rev.C 88 (2013) 068201 * | | ** 50 ଉଦ୍ଧୃତି **

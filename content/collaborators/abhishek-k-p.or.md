@@ -1,6 +1,6 @@
 +++
-title = "ଅଭିଷେକ କେ ପି"
-description = "Collaborator"
+title = "ଗିରିଶ"
+description = "ସହକର୍ମୀ"
 weight = 16
 
 [extra]
@@ -15,12 +15,13 @@ image = ""
 website = ""
 +++
 
-## Academic Profile
 
-**Author Identifier:** A.K.P.3 (INSPIRE-HEP)  
+## ଏକାଡେମିକ୍ ପ୍ରୋଫାଇଲ୍ |
 
-## Selected Papers
+** ଲେଖକ ପରିଚାୟକ: ** A.K.P.3 (INSPIRE-HEP)
 
-- **Extraction of unpolarized quark TMDs of proton from FNAL-E-0605 data using iminuit**  
-  *Abhishek K. P, Reetanshu Pandey, Satyajit Puhan, Suneel Dutt, Harleen Dahiya et al.* (2026)  
-  *DAE Symp.Nucl.Phys. 69 (2026) 877-878*
+## ମନୋନୀତ କାଗଜପତ୍ର |
+
+- ** ଇମିନ୍ୟୁଟ୍ ବ୍ୟବହାର କରି FNAL-E-0605 ତଥ୍ୟରୁ ପ୍ରୋଟନର ଅଣପୋଲାରାଇଜଡ୍ କ୍ୱାର୍କ TMD ର ନିର୍ବାହ **  
+  * ଅଭିଷେକ କେ।  
+  * DAE Symp.Nucl.Phys। 69 (2026) 877-878 *

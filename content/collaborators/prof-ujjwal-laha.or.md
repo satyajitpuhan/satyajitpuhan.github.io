@@ -1,6 +1,6 @@
 +++
 title = "ପ୍ରଫେସର ଉଜୱାଲ ଲାହା"
-description = "MSc Supervisor"
+description = "MSc ସୁପରଭାଇଜର |"
 weight = 4
 
 [extra]
@@ -11,47 +11,48 @@ image = ""
 website = "https://scholar.google.com/citations?user=024012060180"
 +++
 
-## Academic Profile
 
-**Institution:** Department of Physics, National Institute of Technology, Jamshedpur  
-**Role:** Professor (Theoretical Physics)  
-**Email:** nitjsr.ac.in (Verified)
+## ଏକାଡେମିକ୍ ପ୍ରୋଫାଇଲ୍ |
 
-### Citation Highlights (Google Scholar)
-- **Total Citations:** 1374
-- **h-index:** 22
-- **i10-index:** 55
+** ଅନୁଷ୍ଠାନ: ** ପଦାର୍ଥ ବିଜ୍ଞାନ ବିଭାଗ, ନ୍ୟାସନାଲ ଇନଷ୍ଟିଚ୍ୟୁଟ୍ ଅଫ୍ ଟେକ୍ନୋଲୋଜି, ଜାମସେଦପୁର |  
+** ଭୂମିକା: ** ପ୍ରଫେସର (ତତ୍ତ୍ୱିକ ପଦାର୍ଥ ବିଜ୍ଞାନ)  
+** ଇମେଲ୍: ** nitjsr.ac.in (ଯାଞ୍ଚ କରାଯାଇଛି)
 
-## Selected Highly Cited Papers
+### ଉଲ୍ଲେଖ ହାଇଲାଇଟ୍ସ (ଗୁଗୁଲ୍ ସ୍କୋଲାର୍)
+- ** ସମୁଦାୟ ଉଦ୍ଧୃତି: ** 1374 |
+- ** h- ଇଣ୍ଡେକ୍ସ: ** 22
+- ** i10- ଇଣ୍ଡେକ୍ସ: ** 55
 
-- **Hamiltonian hierarchy and the Hulthén potential**  
-  *U. Laha, C. Bhattacharyya, K. Roy, B. Talukdar*  
-  Physical Review C 38 (1), 558 (1988) | **67 Citations**
+## ଉଚ୍ଚକୋଟୀର କାଗଜପତ୍ରଗୁଡିକ ଚୟନ କରାଯାଇଛି |
 
-- **Scattering with Manning–Rosen potential in all partial waves**  
-  *B. Khirali, A.K. Behera, J. Bhoi, U. Laha*  
-  Annals of Physics 412, 168044 (2020) | **51 Citations**
+- ** ହାମିଲଟନ୍ ହାଇରାର୍କି ଏବଂ ହୁଲଥେନ୍ ସମ୍ଭାବନା **  
+  * U। ଲାହା, ସି ଭଟ୍ଟାଚାର୍ଯ୍ୟ, କେ ରୟ, ବି ତାଲୁକଦାର *  
+  ଶାରୀରିକ ସମୀକ୍ଷା C 38 (1), 558 (1988) | | ** 67 ଉଦ୍ଧୃତି **
 
-- **Higher partial-wave potentials from supersymmetry-inspired factorization and nucleon-nucleus elastic scattering**  
-  *U. Laha, J. Bhoi*  
-  Physical Review C 91 (3), 034614 (2015) | **50 Citations**
+- ** ମ୍ୟାନିଂ ସହିତ ବିଛାଇବା all ସମସ୍ତ ଆଂଶିକ ତରଙ୍ଗରେ ରୋଜେନ ସମ୍ଭାବନା **  
+  * ବି। ଖିରାଲୀ, ଏ। ବେହେରା, ଜେ ଭୋଇ, ୟୁ ଲାହା *  
+  ପଦାର୍ଥ ବିଜ୍ଞାନର ବାର୍ଷିକ 412, 168044 (2020) | | ** 51 ଉଦ୍ଧୃତି **
 
-- **Off-shell Jost solutions for Coulomb and Coulomb-like interactions in all partial waves**  
-  *U. Laha, J. Bhoi*  
-  Journal of Mathematical Physics 54 (1) (2013) | **48 Citations**
+- ** ସୁପରସାଇମେଟ୍ରି-ପ୍ରେରିତ ଫ୍ୟାକ୍ଟ୍ରାଇଜେସନ୍ ଏବଂ ନ୍ୟୁକ୍ଲିଅନ୍-ନ୍ୟୁକ୍ଲିୟସ୍ ଇଲେଷ୍ଟିକ୍ ବିଛାଇବା ଠାରୁ ଉଚ୍ଚ ଆଂଶିକ-ତରଙ୍ଗ ସମ୍ଭାବନା **  
+  * U। ଲାହା, ଜେ ଭୋଇ *  
+  ଶାରୀରିକ ସମୀକ୍ଷା C 91 (3), 034614 (2015) | | ** 50 ଉଦ୍ଧୃତି **
 
-- **Phase-function method for Coulomb-distorted nuclear scattering**  
-  *G.C. Sett, U. Laha, B. Talukdar*  
-  Journal of Physics A: Mathematical and General 21 (18), 3643-3657 (1988) | **42 Citations**
+- ** ସମସ୍ତ ଆଂଶିକ ତରଙ୍ଗରେ କୁଲମ୍ବ ଏବଂ କୁଲମ୍ବ ପରି ପାରସ୍ପରିକ କ୍ରିୟା ପାଇଁ ଅଫ୍ ସେଲ୍ ଜୋଷ୍ଟ ସମାଧାନ **  
+  * U। ଲାହା, ଜେ ଭୋଇ *  
+  ଗଣିତ ପଦାର୍ଥ ବିଜ୍ଞାନର ଜର୍ନାଲ୍ 54 (1) (2013) | | ** 48 ଉଦ୍ଧୃତି **
 
-- **Integral transform of the Coulomb Green's function by the Hankel function and off-shell scattering**  
-  *U. Laha, J. Bhoi*  
-  Physical Review C 88 (6), 064001 (2013) | **37 Citations**
+- ** କୁଲମ୍ବ-ବିକୃତ ଆଣବିକ ବିଛାଇବା ପାଇଁ ପର୍ଯ୍ୟାୟ-କାର୍ଯ୍ୟ ପଦ୍ଧତି **  
+  * G.C ସେଟ୍, ୟୁ ଲାହା, ବି ତାଲୁକଦାର *  
+  ଜର୍ନାଲ୍ ଅଫ୍ ଫିଜିକ୍ସ ଏ: ଗାଣିତିକ ଏବଂ ସାଧାରଣ 21 (18), 3643-3657 (1988) | ** 42 ଉଦ୍ଧୃତି **
 
-- **Hamiltonian hierarchy and n–p scattering**  
-  *J. Bhoi, U. Laha*  
-  Journal of Physics G: Nuclear and Particle Physics 40 (4), 045107 (2013) | **37 Citations**
+- ** ହାନକେଲ ଫଙ୍କସନ୍ ଏବଂ ଅଫ୍ ସେଲ୍ ବିଛାଇବା ଦ୍ୱାରା କୁଲମ୍ବ ଗ୍ରୀନ୍ ର କାର୍ଯ୍ୟର ଇଣ୍ଟିଗ୍ରାଲ୍ ଟ୍ରାନ୍ସଫର୍ମ **  
+  * U। ଲାହା, ଜେ ଭୋଇ *  
+  ଶାରୀରିକ ସମୀକ୍ଷା C 88 (6), 064001 (2013) | | ** 37 ଉଦ୍ଧୃତି **
 
-- **Hulthén potential models for α−α and α−He3 elastic scattering**  
-  *J. Bhoi, U. Laha*  
-  Pramana 88 (3), 42 (2017) | **36 Citations**
+- ** ହାମିଲଟନିଆନ୍ ହାଇରାର୍କି ଏବଂ n - p ବିଛାଇବା **  
+  * ଜେ। ଭୋଇ, ୟୁ ଲାହା *  
+  ଜର୍ଣ୍ଣାଲ୍ ଅଫ୍ ଫିଜିକ୍ସ ଜି: ଆଣବିକ ଏବଂ କଣିକା ପଦାର୍ଥ ବିଜ୍ଞାନ 40 (4), 045107 (2013) | | ** 37 ଉଦ୍ଧୃତି **
+
+- ** α - α ଏବଂ α - He3 ଇଲେଷ୍ଟିକ୍ ବିଛାଇବା ପାଇଁ ହୁଲଥେନ୍ ସମ୍ଭାବ୍ୟ ମଡେଲଗୁଡିକ **  
+  * ଜେ। ଭୋଇ, ୟୁ ଲାହା *  
+  ପ୍ରେମାନା 88 (3), 42 (2017) | | ** 36 ଉଦ୍ଧୃତି **

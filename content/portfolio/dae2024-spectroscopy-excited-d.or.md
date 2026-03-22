@@ -1,18 +1,17 @@
 +++
-title = "ଉତ୍ତେଜିତ ଡି-ମେସନ୍ ର ସ୍ପେକ୍ଟ୍ରସ୍କୋପି |"
-date = 2024-12-10
+title = "Spectroscopy of excited states of D+ and D+S meson in the light-front quark model"
+date = 2024-12-09
 
 [extra]
 thumbnail = "images/portfolio/portfolio-1.png"
 service = "DAE Nuclear 2024"
-client = "Ritwik Acharyya, Satyajit Puhan, Narinder Kumar, and Harleen Dahiya"
-short_description = "DAE Nuclear 2024 Symposium."
-challenge = "We investigate the spectroscopy of radially excited D-mesons using the light-front quark model. The mass spectra, decay constants, and distribution amplitudes are computed for both ground and excited D-meson states."
-solution = "This conference article provides predictions for the spectroscopic properties of excited D-mesons, extending the LFQM analysis to the open-charm sector."
+client = "R. Acharyya, S. Puhan, Narinder Kumar, and H. Dahiya"
+short_description = "DAE Nuclear 2024 Symposium"
+challenge = "Spectroscopy of excited states of D+ and D+S meson in the light-front quark model"
+solution = "Research article published in DAE Nuclear 2024."
 +++
 
+**Authors:** R. Acharyya, S. Puhan, Narinder Kumar, and H. Dahiya  
+**Published in:** DAE Nuclear 2024
 
-** ଲେଖକ: ** ଆର ଆଚାର୍ଯ୍ୟ, ଏସ୍ ପୁହାନ୍, ଏନ କୁମାର, ଏବଂ ଏଚ୍ ଡାହିଆ |  
-** ରେ ପ୍ରକାଶିତ: ** DAE ପରମାଣୁ 2024 |
-
-[ବିବରଣୀ ଦେଖନ୍ତୁ →] (#)
+[View Details →](#)

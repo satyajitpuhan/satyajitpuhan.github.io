@@ -1,17 +1,17 @@
 +++
-title = "In-medium pseudoscalar meson properties"
-date = 2024-12-11
+title = "In-medium properties of pseudoscalar mesons in symmetric nuclear matter"
+date = 2024-12-10
 
 [extra]
 thumbnail = "images/portfolio/portfolio-1.png"
 service = "DAE Nuclear 2024"
-client = "Anshu Gautam, Satyajit Puhan, and Harleen Dahiya"
-short_description = "DAE Nuclear 2024 Symposium."
-challenge = "We study the in-medium properties of pseudoscalar mesons using the combined approach of chiral SU(3) quark mean field model and light-cone quark model. The medium-modified decay constants, distribution amplitudes, and transition form factors are evaluated."
-solution = "This conference article presents the nuclear medium effects on pseudoscalar meson properties, providing insights into how the dense nuclear environment modifies the internal structure of mesons."
+client = "A. Gautam, D. Singh, S. Puhan, N. Kaur, A. Kumar, H. Dahiya, and S. Dutt"
+short_description = "DAE Nuclear 2024 Symposium"
+challenge = "In-medium properties of pseudoscalar mesons in symmetric nuclear matter"
+solution = "Research article published in DAE Nuclear 2024."
 +++
 
-**Authors:** Anshu Gautam, Satyajit Puhan, and Harleen Dahiya  
+**Authors:** A. Gautam, D. Singh, S. Puhan, N. Kaur, A. Kumar, H. Dahiya, and S. Dutt  
 **Published in:** DAE Nuclear 2024
 
 [View Details →](#)

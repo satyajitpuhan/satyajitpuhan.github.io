@@ -1,18 +1,17 @@
 +++
-title = "ଫୋଟନ୍ ଅଗ୍ରଣୀ ଟ୍ୱିଷ୍ଟ୍ ଟ୍ରାନ୍ସଭର୍ସ ମୁହୂର୍ତ୍ତ ନିର୍ଭରଶୀଳ ପାର୍ଟନ୍ ବଣ୍ଟନ |"
+title = "Photon Leading Twist Transverse Momentum Dependent Parton Distributions"
 date = 2025-01-01
 
 [extra]
-thumbnail = "images/portfolio/papers/photon-tmds.png"
+thumbnail = "images/portfolio/portfolio-1.png"
 service = "Eur. Phys. J. A 61 (2025)"
-client = "Satyajit Puhan, Narinder Kumar and Harleen Dahiya"
+client = "S. Puhan, N. Kumar and H. Dahiya"
 short_description = "Published in EPJA special edition on Topical Spin-1 observables."
-challenge = "We investigate the leading twist transverse momentum-dependent parton distributions (TMDs) of the photon using light-front wave functions. The unpolarized, helicity, and transversity TMDs are computed at leading twist for the quark content of the photon, including both resolved and direct contributions."
-solution = "This paper provides the first comprehensive study of leading twist TMDs for the photon using light-front techniques, contributing to the topical collection on spin-1 observables in EPJA."
+challenge = "Photon Leading Twist Transverse Momentum Dependent Parton Distributions"
+solution = "Research article published in Eur. Phys. J. A 61 (2025)."
 +++
 
+**Authors:** S. Puhan, N. Kumar and H. Dahiya  
+**Published in:** Eur. Phys. J. A 61 (2025)
 
-** ଲେଖକ: ** ଏସ୍ ପୁହାନ୍, ଏନ କୁମାର ଏବଂ ଏଚ୍ ଡାହିଆ |  
-** ରେ ପ୍ରକାଶିତ: ** ୟୁରୋ | ପଦାର୍ଥ J. A 61 (2025)
-
-[ArXiv on ରେ ପ Read ଼ନ୍ତୁ] (https://arxiv.org/abs/2408.07714)
+[Read on arXiv →](https://arxiv.org/abs/2408.07714)

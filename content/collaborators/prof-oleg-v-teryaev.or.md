@@ -1,6 +1,6 @@
 +++
 title = "ପ୍ରଫେସର ଓଲେଗ ଭି ଟେରିଆଭ"
-description = "Supervisor (JINR)"
+description = "ସୁପରଭାଇଜର (JINR)"
 weight = 2
 
 [extra]
@@ -11,9 +11,10 @@ image = ""
 website = ""
 +++
 
-## Research Areas
-Specific research areas and focus of work are listed here.
 
-## Selected Papers
-- [Title of Paper 1](#)
-- [Title of Paper 2](#)
+## ଅନୁସନ୍ଧାନ କ୍ଷେତ୍ରଗୁଡିକ |
+ନିର୍ଦ୍ଦିଷ୍ଟ ଅନୁସନ୍ଧାନ କ୍ଷେତ୍ର ଏବଂ କାର୍ଯ୍ୟର ଧ୍ୟାନ ଏଠାରେ ତାଲିକାଭୁକ୍ତ |
+
+## ମନୋନୀତ କାଗଜପତ୍ର |
+- [ପେପରର ଆଖ୍ୟା 1] (#)
+- [ପେପରର ଆଖ୍ୟା 2] (#)

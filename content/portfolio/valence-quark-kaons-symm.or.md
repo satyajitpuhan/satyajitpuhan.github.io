@@ -1,19 +1,17 @@
 +++
-title = "ସମୃଦ୍ଧ ପରମାଣୁ ପଦାର୍ଥରେ ଚାର୍ଜ ହୋଇଥିବା କାଉନ୍ସର ଭାଲେନ୍ସ କ୍ୱାର୍କ ଗୁଣ |"
+title = "Valence quark properties of charged kaons in symmetric nuclear matter"
 date = 2025-05-01
 
 [extra]
-thumbnail = "images/portfolio/papers/kaons-symmetric-nuclear-matter.png"
+thumbnail = "images/portfolio/portfolio-1.png"
 service = "Eur. Phys. J. Plus 140 (2025)"
-client = "Reetanshu Pandey, Satyajit Puhan, Navpreet Kaur, Arvind Kumar, Suneel Dutt, and Harleen Dahiya"
-doi = "10.1140/epjp/s13360-025-06976-9"
+client = "R. Pandey, S. Puhan, N. Kaur, A. Kumar, S. Dutt, and H. Dahiya"
 short_description = "Published in EPJP."
-challenge = "We investigate the valence quark properties of charged kaons (K⁺, K⁻) in symmetric nuclear matter using the combined approach of the chiral SU(3) quark mean field model and the light-cone quark model. The in-medium PDFs, EMFFs, and structure functions are evaluated at different baryonic densities."
-solution = "This study demonstrates how symmetric nuclear matter modifies the internal quark structure of charged kaons, revealing notable medium effects on the parton distributions, form factors, and related observables."
+challenge = "Valence quark properties of charged kaons in symmetric nuclear matter"
+solution = "Research article published in Eur. Phys. J. Plus 140 (2025)."
 +++
 
+**Authors:** R. Pandey, S. Puhan, N. Kaur, A. Kumar, S. Dutt, and H. Dahiya  
+**Published in:** Eur. Phys. J. Plus 140 (2025)
 
-** ଲେଖକ: ** ଆର ପାଣ୍ଡେ, ଏସ୍ ପୁହାନ୍, ଏନ କ ur ର, ଏ କୁମାର, ଏସ୍ ଦତ୍ତ, ଏବଂ ଏଚ୍ ଡାହିଆ  
-** ରେ ପ୍ରକାଶିତ: ** ୟୁରୋ | ପଦାର୍ଥ ଜେ ପ୍ଲସ୍ 140 (2025)
-
-[INSPIRE on ରେ ପ Read ନ୍ତୁ →] (https://inspirehep.net/literature/2917873)
+[Read on INSPIRE →](https://inspirehep.net/literature/2917873)

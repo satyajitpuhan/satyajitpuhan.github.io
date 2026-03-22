@@ -1,17 +1,17 @@
 +++
-title = "Kaons in dense nuclear medium"
-date = 2024-12-16
+title = "Kaons structure in dense nuclear medium"
+date = 2024-12-17
 
 [extra]
 thumbnail = "images/portfolio/portfolio-1.png"
 service = "DAE HEP 2024"
-client = "Dhananjay Singh, Satyajit Puhan, Navpreet Kaur, Arvind Kumar, and Harleen Dahiya"
-short_description = "DAE HEP 2024 Symposium."
-challenge = "We investigate the properties of kaons in dense nuclear medium using the combined approach of chiral SU(3) quark mean field model and light-cone quark model. The in-medium decay constants, distribution amplitudes, and form factors of kaons are evaluated at different baryonic densities."
-solution = "This conference article presents predictions for kaon properties in dense nuclear matter, contributing to the understanding of strangeness in nuclear environments."
+client = "A. Kumar, D. Singh, S. Puhan, N. Kaur, M. Kaur, H. Dahiya, and S. Dutt"
+short_description = "Submitted to DAE HEP 2024 Symposium"
+challenge = "Kaons structure in dense nuclear medium"
+solution = "Research article published in DAE HEP 2024."
 +++
 
-**Authors:** Dhananjay Singh, Satyajit Puhan, Navpreet Kaur, Arvind Kumar, and Harleen Dahiya  
+**Authors:** A. Kumar, D. Singh, S. Puhan, N. Kaur, M. Kaur, H. Dahiya, and S. Dutt  
 **Published in:** DAE HEP 2024
 
 [View Details →](#)

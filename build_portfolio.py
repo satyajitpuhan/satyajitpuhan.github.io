@@ -348,13 +348,18 @@ confs = [
 
 from glob import glob
 for f in glob('content/portfolio/*.md'):
-    if not 'index.md' in f:
+    if 'index' not in f:
         os.remove(f)
 
 for p in pubs + confs:
-    path = f"content/portfolio/{p['id']}.en.md"
     content = file_template.format(**p)
-    with open(path, 'w', encoding='utf-8') as f:
+    
+    path_en = f"content/portfolio/{p['id']}.en.md"
+    with open(path_en, 'w', encoding='utf-8') as f:
+        f.write(content)
+        
+    path_or = f"content/portfolio/{p['id']}.or.md"
+    with open(path_or, 'w', encoding='utf-8') as f:
         f.write(content)
 
 print("Created 32 publication files in portfolio.")
