@@ -1,6 +1,6 @@
 +++
 title = "ଡ Sh ଶୁଭମ୍ ଶର୍ମା |"
-description = "Postdoctoral Researcher"
+description = "ପୋଷ୍ଟଡକ୍ଟରାଲ୍ ଅନୁସନ୍ଧାନକାରୀ |"
 weight = 8
 
 [extra]
@@ -15,38 +15,39 @@ image = "images/collaborators/shubham-sharma.jpg"
 website = ""
 +++
 
-## Academic Profile
 
-**Author Identifier:** S.Sharma.43 (INSPIRE-HEP)  
-**PhD Advisor:** Dr. Harleen Dahiya  
-**Master Advisor:** Sham S. Malik  
+## ଏକାଡେମିକ୍ ପ୍ରୋଫାଇଲ୍ |
 
-### Academic Journey
-- **2025-present:** Postdoc, Moscow Institute of Physics and Technology (MIPT), Moscow  
-- **2019-2024:** PhD, Dr. B R Ambedkar National Institute of Technology, Jalandhar  
-- **2016-2018:** Master, Guru Nanak Dev University  
+** ଲେଖକ ପରିଚାୟକ: ** S. ଶର୍ମା .43 (INSPIRE-HEP)  
+** ପିଏଚଡି ପରାମର୍ଶଦାତା: ** ଡ Har ହାର୍ଲିନ୍ ଡାହିଆ |  
+** ଗୁରୁ ପରାମର୍ଶଦାତା: ** ଶ୍ୟାମ୍ ଏସ୍ ମଲିକ୍ |
 
-## Selected Papers
-- **Investigating Skewness Effects in Proton GPD Using LFQDM**  
-  *Sameer Jain, Shubham Sharma, Harleen Dahiya* (Feb 3, 2026)  
-  *Springer Proc.Phys. 432 (2026) 1033-1036*
+### ଏକାଡେମିକ୍ ଯାତ୍ରା |
+- ** 2025-ଉପସ୍ଥିତ: ** ପୋଷ୍ଟଡୋକ, ମସ୍କୋ ଇନଷ୍ଟିଚ୍ୟୁଟ୍ ଅଫ୍ ଫିଜିକ୍ସ ଆଣ୍ଡ ଟେକ୍ନୋଲୋଜି (MIPT), ମସ୍କୋ |  
+- ** 2019-2024: ** PhD, Dr. B R Ambedkar National Institute of Technology, Jalandhar  
+- ** 2016-2018: ** ଗୁରୁ, ଗୁରୁ ନାନକ ଦେବ ବିଶ୍ୱବିଦ୍ୟାଳୟ |
 
-- **Valence quark distribution of the rho meson using a light-front quark model**  
-  *Satyajit Puhan, Shubham Sharma, Narinder Kumar, Harleen Dahiya* (Nov 14, 2025)  
-  *Phys.Rev.D 113 (2026) 3, 036030*
+## ମନୋନୀତ କାଗଜପତ୍ର |
+- ** LFQDM ବ୍ୟବହାର କରି ପ୍ରୋଟନ୍ GPD ରେ କଙ୍କାଳ ପ୍ରଭାବର ଅନୁସନ୍ଧାନ **  
+  * ସମୀର ଜେନା, ଶୁଭମ୍ ଶର୍ମା, ହାର୍ଲିନ୍ ଡାହିଆ * (ଫେବୃଆରୀ 3, 2026)  
+  * ସ୍ପ୍ରିଞ୍ଜର ପ୍ରୋ। 432 (2026) 1033-1036 *
 
-- **J/ψ production in proton-proton collisions at Spin Physics Detector energies of the JINR NICA**  
-  *Shubham Sharma, Alexey Aparin* (Nov 5, 2025)  
-  *Phys.Rev.C 113 (2026) 2, L022201*
+- ** ହାଲୁକା ସାମ୍ନା କ୍ୱାର୍କ ମଡେଲ୍ ବ୍ୟବହାର କରି ରୋ ମେସନର ଭାଲେନ୍ସ କ୍ୱାର୍କ ବଣ୍ଟନ **  
+  * ସତ୍ୟଜିତ୍ ପୁହାନ୍, ଶୁଭମ୍ ଶର୍ମା, ନରିନ୍ଦର କୁମାର, ହାର୍ଲିନ୍ ଡାହିଆ * (ନଭେମ୍ବର 14, 2025)  
+  * Phys.Rev.D 113 (2026) 3, 036030 *
 
-- **Understanding the Valence Quark Structure of the Pion through GTMDs**  
-  *Satyajit Puhan, Shubham Sharma, Narinder Kumar, Harleen Dahiya* (Apr 21, 2025)  
-  *e-Print: 2504.14982 [hep-ph]*
+- ** JINR NICA ର ସ୍ପିନ୍ ଫିଜିକ୍ସ ଡିଟେକ୍ଟର ଶକ୍ତିରେ ପ୍ରୋଟନ୍-ପ୍ରୋଟନ୍ ଧକ୍କାରେ J / ψ ଉତ୍ପାଦନ **  
+  * ଶୁଭମ୍ ଶର୍ମା, ଆଲେକ୍ସି ଆପାରିନ୍ * (ନଭେମ୍ବର 5, 2025)  
+  * Phys.Rev.C 113 (2026) 2, L022201 *
 
-- **Study of the subleading twist GTMD E21 for proton in light-front quark-diquark model**  
-  *Sameer Jain, Shubham Sharma, Harleen Dahiya* (Apr 1, 2025)  
-  *PoS QCHSC24 (2025) 071*
+- ** GTMDs ମାଧ୍ୟମରେ ପିଆର ଭାଲେନ୍ସ କ୍ୱାର୍କ ଗଠନ ବୁ ** ିବା **  
+  * ସତ୍ୟଜିତ୍ ପୁହାନ୍, ଶୁଭମ୍ ଶର୍ମା, ନରିନ୍ଦର କୁମାର, ହାର୍ଲିନ୍ ଡାହିଆ * (ଏପ୍ରିଲ୍ 21, 2025)  
+  * ଇ-ପ୍ରିଣ୍ଟ୍: 2504.14982 [ହେପ- ph] *
 
-- **Deciphering twist-3 chiral-even GPDs in the light-front quark-diquark model**  
-  *Sameer Jain, Shubham Sharma, Harleen Dahiya* (Aug 14, 2024)  
-  *Phys.Rev.D 110 (2024) 9, 094030*
+- ** ହାଲୁକା ସାମ୍ନା କ୍ୱାର୍କ-ଡିକାର୍କ ମଡେଲରେ ପ୍ରୋଟନ୍ ପାଇଁ ସବଲିଡିଂ ଟ୍ୱିଷ୍ଟ GTMD E21 ର ଅଧ୍ୟୟନ **  
+  * ସମୀର ଜ ain ନ, ଶୁଭମ୍ ଶର୍ମା, ହାରଲିନ୍ ଡାହିଆ * (ଏପ୍ରିଲ୍ 1, 2025)  
+  * PoS QCHSC24 (2025) 071 *
+
+- ** ହାଲୁକା ସାମ୍ନା କ୍ୱାର୍କ-ଡିକାର୍କ ମଡେଲରେ ଟ୍ୱିଷ୍ଟ -3 ଚିରାଲ-ଏପରିକି ଜିପିଡିଗୁଡ଼ିକୁ ଡିସିଫର୍ କରିବା **  
+  * ସମୀର ଜେନା, ଶୁଭମ୍ ଶର୍ମା, ହାର୍ଲିନ୍ ଡାହିଆ * (ଅଗଷ୍ଟ 14, 2024)  
+  * Phys.Rev.D 110 (2024) 9, 094030 *

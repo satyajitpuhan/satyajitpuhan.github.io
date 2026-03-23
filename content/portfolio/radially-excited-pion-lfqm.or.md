@@ -1,5 +1,5 @@
 +++
-title = "Distribution Functions of Radially Excited Pion using the Light-Front Quark Model"
+title = "ଲାଇଟ୍-ଫ୍ରଣ୍ଟ୍ କ୍ୱାର୍କ ମଡେଲ୍ ବ୍ୟବହାର କରି ରାଡିୟାଲ୍ ଉତ୍ତେଜିତ ପିଅନର ବଣ୍ଟନ କାର୍ଯ୍ୟ |"
 date = 2026-01-10
 
 [extra]
@@ -11,7 +11,8 @@ challenge = "Distribution Functions of Radially Excited Pion using the Light-Fro
 solution = "Research article published in Communicated in PLB."
 +++
 
-**Authors:** A. Dwivedi, S. Puhan, and S. Ghosh  
-**Published in:** Communicated in PLB
 
-[Read on arXiv →](https://arxiv.org/abs/2601.06628)
+** ଲେଖକ: ** ଏ ଦ୍ୱିବେଦୀ, ଏସ୍ ପୁହାନ୍, ଏବଂ ଏସ୍ ଘୋଷ |  
+** ରେ ପ୍ରକାଶିତ: ** PLB ରେ ଯୋଗାଯୋଗ |
+
+[ArXiv on ରେ ପ Read ଼ନ୍ତୁ] (https://arxiv.org/abs/2601.06628)

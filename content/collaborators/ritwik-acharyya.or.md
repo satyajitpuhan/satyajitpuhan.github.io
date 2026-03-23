@@ -1,6 +1,6 @@
 +++
 title = "ରିତୱିକ୍ ଆଚାର୍ଯ୍ୟ |"
-description = "Collaborator"
+description = "ସହକର୍ମୀ"
 weight = 14
 
 [extra]
@@ -15,19 +15,20 @@ image = ""
 website = ""
 +++
 
-## Academic Profile
 
-**Author Identifier:** Ritwik.Acharyya.2 (INSPIRE-HEP)  
+## ଏକାଡେମିକ୍ ପ୍ରୋଫାଇଲ୍ |
 
-### Academic Journey
-- **Present:** PhD, Florida State University
+** ଲେଖକ ପରିଚାୟକ: ** Ritwik.Acharyya.2 (INSPIRE-HEP)
 
-## Selected Papers
+### ଏକାଡେମିକ୍ ଯାତ୍ରା |
+- ** ବର୍ତ୍ତମାନ: ** PhD, ଫ୍ଲୋରିଡା ଷ୍ଟେଟ୍ ୟୁନିଭରସିଟି |
 
-- **Quark spin-orbit correlations in spin-0 and spin-1 mesons using the light-front quark model**  
-  *Ritwik Acharyya, Satyajit Puhan, Harleen Dahiya* (May 1, 2024)  
-  *Phys.Rev.D 110 (2024) 3, 034020* | **13 Citations**
+## ମନୋନୀତ କାଗଜପତ୍ର |
 
-- **Spectroscopy of excited quarkonium states in the light-front quark model**  
-  *Ritwik Acharyya, Satyajit Puhan, Harleen Dahiya, Narinder Kumar* (Aug 14, 2024)  
-  *Chin.Phys.C 49 (2025) 2, 023104* | **9 Citations**
+- ** ହାଲୁକା-ଫ୍ରଣ୍ଟ୍ କ୍ୱାର୍କ ମଡେଲ୍ ବ୍ୟବହାର କରି ସ୍ପିନ୍ -0 ଏବଂ ସ୍ପିନ୍ -1 ମେସନ୍ରେ କ୍ୱାର୍କ ସ୍ପିନ୍-କକ୍ଷପଥ ସମ୍ପର୍କ **  
+  * ରିତୱିକ୍ ଆଚାର୍ଯ୍ୟ, ସତ୍ୟଜିତ୍ ପୁହାନ୍, ହାରଲିନ୍ ଡାହିଆ * (ମେ 1, 2024)  
+  * Phys.Rev.D 110 (2024) 3, 034020 * | | ** 13 ଉଦ୍ଧୃତି **
+
+- ** ହାଲୁକା ସାମ୍ନା କ୍ୱାର୍କ ମଡେଲରେ ଉତ୍ତେଜିତ କ୍ୱାର୍କୋନିୟମ୍ ସ୍ଥିତିର ସ୍ପେକ୍ଟ୍ରସ୍କୋପି **  
+  * ରିତୱିକ୍ ଆଚାର୍ଯ୍ୟ, ସତ୍ୟଜିତ୍ ପୁହାନ୍, ହାର୍ଲେନ୍ ଡାହିଆ, ନରିନ୍ଦର କୁମାର * (ଅଗଷ୍ଟ 14, 2024)  
+  * Chin.Phys.C 49 (2025) 2, 023104 * | | ** 9 ଉଦ୍ଧୃତି **

@@ -19,7 +19,7 @@
                                 {% if loop.index <= 4 %}
                                 <li class="list-group-item" style="border-bottom: 1px dashed #ddd; padding: 15px 20px;">
                                     <div style="font-size: 0.85rem; color: #f39c12; font-weight: bold; margin-bottom: 5px;">{{ item.extra.subtitle | default(value=item.date) }}</div>
-                                    <a href="{{ get_url(path=item.path | default(value='#')) }}" style="color: #333; font-weight: 700; text-decoration: none; font-size: 0.95rem; display: block; margin-bottom: 5px;">
+                                    <a href="#news" style="color: #333; font-weight: 700; text-decoration: none; font-size: 0.95rem; display: block; margin-bottom: 5px;">
                                         {% if item.top_title %}<span style="font-size: 0.8rem; color: #00416d; font-weight: bold; text-transform: uppercase;">{{ item.top_title }}</span><br>{% endif %}
                                         {{ item.title }}
                                     </a>

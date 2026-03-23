@@ -1,5 +1,5 @@
 +++
-title = "Radiative transition of ψ(2S) → χc0(1P) + γ in LFQM"
+title = "LFQM ରେ ψ (2S) → χc0 (1P) + of ର ବିକିରଣ ପରିବର୍ତ୍ତନ |"
 date = 2024-12-07
 
 [extra]
@@ -11,7 +11,8 @@ challenge = "Radiative transition of ψ(2S) → χc0(1P) + γ in LFQM"
 solution = "Research article published in DAE Nuclear 2024."
 +++
 
-**Authors:** A. Yadav, S. Puhan, and H. Dahiya  
-**Published in:** DAE Nuclear 2024
 
-[Read on ResearchGate →](https://www.researchgate.net/publication/383878508)
+** ଲେଖକ: ** ଏ ଯାଦବ, ଏସ୍ ପୁହାନ୍, ଏବଂ ଏଚ୍ ଡାହିଆ |  
+** ରେ ପ୍ରକାଶିତ: ** DAE ପରମାଣୁ 2024 |
+
+[ରିସର୍ଚ୍ଚ ଗେଟରେ ପ →] [https://www.researchgate.net/publication/383878508)

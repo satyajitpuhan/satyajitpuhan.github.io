@@ -1,5 +1,5 @@
 +++
-title = "Spectroscopy of excited states of D+ and D+S meson in the light-front quark model"
+title = "ହାଲୁକା ସାମ୍ନା କ୍ୱାର୍କ ମଡେଲରେ D + ଏବଂ D + S ମେସନ୍ ର ଉତ୍ତେଜିତ ସ୍ଥିତିର ସ୍ପେକ୍ଟ୍ରସ୍କୋପି |"
 date = 2024-12-09
 
 [extra]
@@ -11,7 +11,8 @@ challenge = "Spectroscopy of excited states of D+ and D+S meson in the light-fro
 solution = "Research article published in DAE Nuclear 2024."
 +++
 
-**Authors:** R. Acharyya, S. Puhan, Narinder Kumar, and H. Dahiya  
-**Published in:** DAE Nuclear 2024
 
-[View Details →](#)
+** ଲେଖକ: ** ଆର ଆଚାର୍ଯ୍ୟ, ଏସ୍ ପୁହାନ୍, ନରିନ୍ଦର କୁମାର, ଏବଂ ଏଚ୍ ଡାହିଆ |  
+** ରେ ପ୍ରକାଶିତ: ** DAE ପରମାଣୁ 2024 |
+
+[ବିବରଣୀ ଦେଖନ୍ତୁ →] (#)

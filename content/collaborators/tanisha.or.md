@@ -1,6 +1,6 @@
 +++
 title = "ତନିଷା |"
-description = "Collaborator"
+description = "ସହକର୍ମୀ"
 weight = 11
 
 [extra]
@@ -15,19 +15,20 @@ image = ""
 website = ""
 +++
 
-## Academic Profile
 
-**Author Identifier:** Tanisha.1 (INSPIRE-HEP)  
+## ଏକାଡେମିକ୍ ପ୍ରୋଫାଇଲ୍ |
 
-### Academic Journey
-- **2023-present:** Master, Dr. B R Ambedkar National Institute of Technology, Jalandhar  
+** ଲେଖକ ପରିଚାୟକ: ** ତନିଶା 1 (INSPIRE-HEP)
 
-## Selected Papers
+### ଏକାଡେମିକ୍ ଯାତ୍ରା |
+- ** 2023-ବର୍ତ୍ତମାନ: ** ମାଷ୍ଟର, ଡକ୍ଟର ବି ଆର ଆମ୍ବେଦକର ନ୍ୟାସନାଲ ଇନଷ୍ଟିଚ୍ୟୁଟ୍ ଅଫ୍ ଟେକ୍ନୋଲୋଜି, ଜଲନ୍ଦର |
 
-- **Valence quark distribution of light ρ and heavy J/ψ vector mesons in a light-cone quark model**  
-  *Tanisha, Satyajit Puhan, Anurag Yadav, Harleen Dahiya* (May 14, 2025)  
-  *Phys.Rev.D 112 (2025) 5, 054035* | **6 Citations**
+## ମନୋନୀତ କାଗଜପତ୍ର |
 
-- **Quark Distribution Inside π and ρ Mesons**  
-  *Tanisha, Navpreet Kaur, Harleen Dahiya* (Feb 3, 2026)  
-  *Springer Proc.Phys. 432 (2026) 1011-1015*
+- ** ଆଲୋକର ଭାଲେନ୍ସ କ୍ୱାର୍କ ବଣ୍ଟନ light ଏବଂ ଭାରୀ J / ψ ଭେକ୍ଟର ମେସନ୍ ଏକ ହାଲୁକା କୋଣାର୍କ ମଡେଲରେ **  
+  * ତନିଶା, ସତ୍ୟଜିତ୍ ପୁହାନ୍, ଅନୁରାଗ ଯାଦବ, ହାର୍ଲେନ୍ ଡାହିଆ * (ମେ 14, 2025)  
+  * Phys.Rev.D 112 (2025) 5, 054035 * | | ** 6 ଟି ଉଲ୍ଲେଖ **
+
+- ** ଭିତରେ କ୍ୱାର୍କ ବଣ୍ଟନ π ଏବଂ ρ ମେସନ୍ **  
+  * ତନିଶା, ନବପ୍ରୀତ କ ur ର, ହାରଲିନ୍ ଡାହିଆ * (ଫେବୃଆରୀ 3, 2026)  
+  * ସ୍ପ୍ରିଞ୍ଜର ପ୍ରୋ। 432 (2026) 1011-1015 *

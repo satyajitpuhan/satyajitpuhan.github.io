@@ -7,7 +7,7 @@ thumbnail = "images/portfolio/portfolio-1.png"
 service = "DAE Nuclear 2024"
 client = "R. Acharyya, S. Puhan, Narinder Kumar, and H. Dahiya"
 short_description = "DAE Nuclear 2024 Symposium"
-challenge = "Spectroscopy of excited states of D+ and D+S meson in the light-front quark model"
+challenge = "This study presents the spectroscopy of excited states of D+ and D+_S mesons using the light-front quark model. The electromagnetic form factors, charge radii, decay constants, parton distribution functions, and distribution amplitudes for these excited meson states are investigated. The work provides insights into the nodal structures of radially excited states through 3D wave function analysis."
 solution = "Research article published in DAE Nuclear 2024."
 +++
 

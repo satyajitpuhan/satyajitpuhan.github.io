@@ -1,5 +1,5 @@
 +++
-title = "Transverse and spatial structure of light to heavy mesons in light-front dynamics"
+title = "ଆଲୋକର ସାମ୍ନା ଗତିଶୀଳତା ମଧ୍ୟରେ ଭାରୀ ମେସନରୁ ଆଲୋକର ଟ୍ରାନ୍ସଭର୍ସ ଏବଂ ସ୍ପେସାଲ୍ ଗଠନ |"
 date = 2025-01-05
 
 [extra]
@@ -11,7 +11,8 @@ challenge = "Transverse and spatial structure of light to heavy mesons in light-
 solution = "Research article published in Phys. Rev. D 111 (2025)."
 +++
 
-**Authors:** S. Puhan, N. Kaur and H. Dahiya  
-**Published in:** Phys. Rev. D 111 (2025)
 
-[Read on INSPIRE →](https://inspirehep.net/literature/2839021)
+** ଲେଖକ: ** S. Puhan, N. Kaur ଏବଂ H. Dahiya |  
+** ରେ ପ୍ରକାଶିତ: ** ପଦାର୍ଥ | Rev. D 111 (2025)
+
+[INSPIRE on ରେ ପ Read ନ୍ତୁ →] (https://inspirehep.net/literature/2839021)
