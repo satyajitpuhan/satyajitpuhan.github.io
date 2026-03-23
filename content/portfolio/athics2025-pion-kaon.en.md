@@ -8,7 +8,7 @@ service = "ATHICS 2025"
 client = "S. Puhan, and H. Dahiya"
 short_description = "Submitted to ATHICS 2025 Proceeding"
 challenge = "This work presents a comprehensive study of pion and kaon structure using light-front dynamics. The structural properties including distribution amplitudes, parton distribution functions, and form factors are investigated within the light-cone quark model framework. The results provide valuable insights into the internal structure of pseudoscalar mesons relevant for upcoming experiments at AMBER, JLab, and the Electron-Ion Collider."
-solution = "Research article published in ATHICS 2025."
+solution = "Comprehensive structural analysis of pion and kaon using light-front dynamics, covering DAs, PDFs, and form factors. Results provide predictions relevant for upcoming experiments at AMBER, JLab, and the Electron-Ion Collider."
 +++
 
 **Authors:** S. Puhan, and H. Dahiya  

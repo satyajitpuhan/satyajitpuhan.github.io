@@ -8,7 +8,7 @@ service = "DAE Nuclear 2024"
 client = "S. Puhan, Narinder Kumar, and H. Dahiya"
 short_description = "DAE Nuclear 2024 Symposium"
 challenge = "This work presents spin-1 unpolarized generalized parton distributions (GPDs) in the light-front formalism. The chiral-even vector quark GPDs of spin-1 mesons are investigated, and the charge, magnetic, and quadrupole form factors are derived from these GPDs."
-solution = "Research article published in DAE Nuclear 2024."
+solution = "Presents chiral-even vector quark GPDs for spin-1 mesons in the light-front formalism. Derives charge, magnetic, and quadrupole form factors from the unpolarized GPDs."
 +++
 
 **Authors:** S. Puhan, Narinder Kumar, and H. Dahiya  
