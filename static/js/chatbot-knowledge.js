@@ -401,7 +401,7 @@ Attended <i>"From Low to High: Particle Physics at the Frontier"</i> at Lyceum A
     },
     {
       keywords: ["help", "how", "what can you do", "what do you know", "capability"],
-      answer: `I'm <b>Bob</b> — Satyajit Puhan's virtual assistant! I can help you with:<br><br>
+      answer: `I'm <b>SatyaBot</b> — Satyajit Puhan's virtual assistant! I can help you with:<br><br>
 👤 Learn <b>about Satyajit</b> — bio, background, achievements<br>
 🔬 Explore his <b>research areas</b> — TMDs, GPDs, hadron physics<br>
 📄 Find his <b>publications</b> — papers, journals, co-authors<br>

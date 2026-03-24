@@ -7,9 +7,9 @@
   "use strict";
 
   // ── Configuration ─────────────────────────────────────────
-  const BOT_NAME = "Bob";
+  const BOT_NAME = "SatyaBot";
   const BOT_TAGLINE = "Explore. Learn. Connect with Satyajit.";
-  const WELCOME_MSG = `Hii, I am Bob `;
+  const WELCOME_MSG = `Welcome to Satyajit Puhan's official website. I am <b>SatyaBot</b>, your virtual guide. How may I assist you today?`;
   const FALLBACK_MSG = `I couldn't find that in Satyajit's profile. Please ask about his research, publications, or skills!`;
   const TYPING_DELAY = 600;
   
@@ -23,7 +23,7 @@
   function createChatbotHTML() {
     const html = `
     <div id="satyabot-tooltip" class="satyabot-tooltip">
-      <span>Hii, I am Bob </span>
+      <span>👋 Hello! Can I help you?</span>
     </div>
     <button id="satyabot-toggle" class="satyabot-toggle" aria-label="Open chat assistant">
       <svg class="satyabot-icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -310,7 +310,7 @@
 
       if (isGreeting(query)) {
         addMessage(
-          `Hii, I am Bob `,
+          `Hello! 👋 I'm <b>${BOT_NAME}</b>. How can I help you today? Feel free to ask about Satyajit's research, publications, education, or anything else!`,
           "bot"
         );
         addQuickReplies();
