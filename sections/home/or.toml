@@ -1,0 +1,45 @@
+title = "ଗିରିଜ୍"
+description = "|\n\nଏନଆଇଟି ଜଲନ୍ଧର କିର କିଜ ڭ ڭ ڭ ڭ ڭ ڭ ڭ ڭ ڭ ڭ ڭ ڭ ڭ ڭ ڭ ەر ର୍ଚ୍ଚ ର୍ଚ୍ଚ ڭ ର୍ଚ୍ଚ ର୍ଚ୍ଚ ର୍ଚ୍ଚ"
+button_name = "Contact Me"
+button_url = "contact"
+image = "images/hero/me1.jpg"
+[[gallery]]
+image = "images/gallery/switzerland-alps.jpg"
+caption = "Zuoz, Swiss Alps"
+
+[[gallery]]
+image = "images/gallery/moscow-bolshoi.jpg"
+caption = "Bolshoi Theatre, Moscow"
+
+[[gallery]]
+image = "images/gallery/red-square-moscow.jpg"
+caption = "Red Square, Moscow"
+
+[[gallery]]
+image = "images/gallery/hanoi-airport.jpg"
+caption = "Manali"
+
+[[gallery]]
+image = "images/gallery/jinr-office-dubna.jpg"
+caption = "IIT Mandi"
+
+[[gallery]]
+image = "images/gallery/adiyogi-coimbatore.jpg"
+caption = "Adiyogi, Coimbatore"
+
+[[gallery]]
+image = "images/gallery/hilltop-bengaluru.jpg"
+caption = "Nandi Hills, Bengaluru"
+
+[[gallery]]
+image = "images/gallery/moonlit-rooftop.jpg"
+caption = "BLTP, JINR Dubna"
+
+[[gallery]]
+image = "images/gallery/hilltop-sunset.jpg"
+caption = "Hilltop Sunset, Dharamshala"
+
+[[gallery]]
+image = "images/gallery/office-research.jpg"
+caption = "Research Lab, NIT Jalandhar"
+
