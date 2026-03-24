@@ -6,7 +6,7 @@ weight = 5
 [extra]
 inspire = "https://inspirehep.net/authors/1308867"
 github = ""
-scholar = "https://scholar.google.co.in/citations?user=Arvind_Kumar_NITJ"
+scholar = "https://scholar.google.com/citations?user=2O4MQ-kAAAAJ"
 orcid = "https://orcid.org/0000-0003-1873-6094"
 about = "Dr. Arvind Kumar is an Associate Professor in the Department of Physics at Dr. B R Ambedkar National Institute of Technology Jalandhar. With a PhD from IIT Delhi in High Energy Physics, he brings deep expertise in theoretical nuclear and high energy physics—specializing in meson properties, compact stars, and dense nuclear matter. He has supervised 9+ PhD scholars, guided 30+ PG dissertations, organized numerous national and international workshops, and secured multiple DST-SERB funded research projects."
 research_interests = "Theoretical High Energy Physics, Meson Properties in Dense Nuclear Matter, Compact Stars & Equation of State, QCD Phase Structure & Transport Coefficients, Chiral SU(3) Model Applications"

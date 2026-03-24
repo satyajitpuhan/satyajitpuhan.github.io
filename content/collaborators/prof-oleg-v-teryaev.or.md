@@ -1,20 +1,50 @@
 +++
-title = "ପ୍ରଫେସର ଓଲେଗ ଭି ଟେରିଆଭ"
-description = "ସୁପରଭାଇଜର (JINR)"
-weight = 2
+title = "ପ୍ରଫେସର ଓଲେଗ୍ ଭି ଟେରିଆଭ୍ |" 
+description = "ଗବେଷକ, ମିଳିତ ନ୍ୟୁକ୍ଲିୟର ଗବେଷଣା ଅନୁଷ୍ଠାନ (JINR)"
+weight = 9
 
 [extra]
-research_interests = "Nucleon Spin Structure, Axial Anomalies, Quantum Chromodynamics, Gravitational Form Factors"
-about = "Prof. Oleg V. Teryaev is an internationally recognized physicist and leading researcher at the Joint Institute for Nuclear Research (JINR) in Dubna, Russia. His unparalleled theoretical contributions have immensely shaped the global understanding of nucleon spin structures, axial anomalies, and fundamental quantum chromodynamics."
-institution = "JINR, Dubna, Russia"
-image = ""
+research_interests = "ଆକ୍ସିଆଲ୍ ଅସ୍ୱାଭାବିକତା, ସ୍ପିନ୍ ଫିଜିକ୍ସ, ହେଭି-ଆୟନ ଧକ୍କାରେ ହାଇଡ୍ରୋଡାଇନାମିକ୍ସ, ମାଧ୍ୟାକର୍ଷଣ ଫର୍ମ ଫ୍ୟାକ୍ଟର୍ସ, କାଇରାଲ୍ ପ୍ରଭାବ"
+inspire = "https://inspirehep.net/authors/992497"
+github = ""
+scholar = ""
+orcid = ""
+about = "ପ୍ରଫେସର୍ ଓଲେଗ୍ ଭି ଟେରିଆଭ୍ ଦୁବାନାର ମିଳିତ ନ୍ୟୁକ୍ଲିୟର ଗବେଷଣା ଅନୁଷ୍ଠାନ (JINR) ର ଜଣେ ସମ୍ମାନିତ ଗବେଷକ ଅଟନ୍ତି। ତାଙ୍କର ବ୍ୟାପକ ଗବେଷଣା ମଧ୍ୟରେ କ୍ୱାଣ୍ଟମ୍ ଆନୋମାଲିଜ୍, ସ୍ପିନ୍ ଫିଜିକ୍ସ, ହେଭି-ଆୟନ ଧକ୍କାରେ ହାଇଡ୍ରୋଡାଇନାମିକ୍ସ, ଏବଂ ଗ୍ରାଭିଟେସନାଲ୍ ଫର୍ମ ଫ୍ୟାକ୍ଟର୍ସ ଅନ୍ତର୍ଭୁକ୍ତ, ଯେଉଁଥିରେ ୪୪୦ ରୁ ଅଧିକ ପ୍ରକାଶିତ କାଗଜପତ୍ର ରହିଛି।"
+institution = "JINR, Dubna"
+image = "images/collaborators/placeholder.png"
 website = ""
 +++
 
+## ଏକାଡେମିକ୍ ପ୍ରୋଫାଇଲ୍ |
 
-## ଅନୁସନ୍ଧାନ କ୍ଷେତ୍ରଗୁଡିକ |
-ନିର୍ଦ୍ଦିଷ୍ଟ ଅନୁସନ୍ଧାନ କ୍ଷେତ୍ର ଏବଂ କାର୍ଯ୍ୟର ଧ୍ୟାନ ଏଠାରେ ତାଲିକାଭୁକ୍ତ |
+** ଲେଖକ ପରିଚାୟକ: ** O.V.Teryaev.1 (INSPIRE-HEP)  
+** ପିଏଚଡି ପରାମର୍ଶଦାତା: ** ଆନାଟୋଲି ଭାସିଲିଭିଚ୍ ଏଫ୍ରେମୋଭ୍ |  
+
+### ଏକାଡେମିକ୍ ଯାତ୍ରା |
+- ** ଉପସ୍ଥିତ: ** ଗବେଷକ, ମିଳିତ ନ୍ୟୁକ୍ଲିୟର ଗବେଷଣା ଅନୁଷ୍ଠାନ (JINR), ଦୁବନ |  
+- ** ଅନୁବନ୍ଧନଗୁଡ଼ିକ: ** JINR, Moscow Phys. Eng. Inst., Kurchatov Inst., Moscow, Dubna Intl. Univ., Moscow, ITEP, Ecole Polytechnique, Regensburg U., LHEP JINR, Dubna, Marseille, CPT, Moscow State U.
 
 ## ମନୋନୀତ କାଗଜପତ୍ର |
-- [ପେପରର ଆଖ୍ୟା 1] (#)
-- [ପେପରର ଆଖ୍ୟା 2] (#)
+- ** e+p → e'+B↑+X ରେ ଏକକ ସ୍ପିନ୍ ଅସମାନତା **  
+  * ୟୋସିଟାକା ହଟ୍ଟା, ଓଲେଗ୍ ଭି ଟେରିଆଭ୍ * (ଫେବୃଆରୀ 7, 2026)  
+  * ଇ-ପ୍ରିଣ୍ଟ୍: 2602.07682 [ହେପ- ph] *
+
+- ** ଆକ୍ସିଆଲ୍ ଅସ୍ୱାଭାବିକତା, ଏଣ୍ଟାଙ୍ଗଲେମେଣ୍ଟ ଏବଂ ପୋଲାରାଇଜେସନ୍ **  
+  * ଓଲେଗ୍ ଭି ଟେରିଆଭ୍ * (ଡିସେମ୍ବର 4, 2025)  
+  * PoS QCDEX2025 (2026) 028 *
+
+- ** ଏକ ଆନାଲିଟିକ୍ ଯୋଡି ସହିତ ମୋଟ ଲେୱେଲିନ୍ ସ୍ମିଥ୍ ସମଷ୍ଟି ନିୟମ **  
+  * I.R. Gabdrakhmanov, N.A. Gramotkov, A.V. Kotikov, O.V. Teryaev, D.A. Volkova ଏବଂ ଅନ୍ୟମାନେ * (ଅକ୍ଟୋବର 27, 2025)  
+  * Phys.Rev.D 113 (2026) 1, 014041 *
+
+- ** ଭାରୀ ଆୟନ ଧକ୍କାରେ ହବଲଙ୍କ ନିୟମ **  
+  * N.V. କୋଲୋମୋୟେଟ୍ସ, O.V. ଟେରିଆଭ୍, V. ଭୋରୋନିୟୁକ * (ଅଗଷ୍ଟ 22, 2025)  
+  * Phys.Rev.C 112 (2025) 6, 064920 *
+
+- ** ଅସ୍ୱାଭାବିକ ପରିବହନ ଏବଂ ହାଇଡ୍ରୋ-ଗ୍ରାଭିଟି ଡୁଆଲିଟି **  
+  * V.I. ଜାଖାରୋଭ, O.V. ଟେରିଆଭ୍, G.Yu. ପ୍ରୋଖୋରୋଭ * (ମେ 20, 2025)  
+  * Phys.Part.Nucl. 56 (2025) 2, 281-287 *
+
+- ** ହାଇଡ୍ରୋଡାଇନାମିକ୍ସରେ କାଇରାଲ୍ ପ୍ରଭାବ: ନୂତନ ଧାରା **  
+  * ଭାଲେଣ୍ଟିନ୍ ଜାଖାରୋଭ୍, ଓଲେଗ୍ ଟେରିଆଭ୍, ଜର୍ଜି ପ୍ରୋଖୋରୋଭ୍ * (ମେ 2, 2025)  
+  * କଣିକା 8 (2025) 2, 55 *
