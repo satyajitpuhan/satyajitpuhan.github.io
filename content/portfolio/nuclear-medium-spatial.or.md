@@ -4,7 +4,7 @@ date = 2025-01-20
 
 [extra]
 thumbnail = "images/portfolio/portfolio-1.png"
-service = "Nucl. Phys. B 1017 (2025)"
+service = "Nucl. Phys. B 1017 (2025) 116940"
 client = "S. Puhan, N. Kaur, A. Kumar, S. Dutt, and H. Dahiya"
 short_description = "Published in NPB."
 challenge = "Effect of nuclear medium on the spatial distribution of pions"

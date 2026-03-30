@@ -4,7 +4,7 @@ date = 2024-09-01
 
 [extra]
 thumbnail = "images/portfolio/portfolio-1.png"
-service = "Phys. Rev. D 110 (2024)"
+service = "Phys. Rev. D 110 (2024) 054042"
 client = "S. Puhan, N. Kaur, A. Kumar, S. Dutt, and H. Dahiya"
 short_description = "Published in PRD."
 challenge = "Pions valence quark distributions in asymmetric nuclear matter at finite temperature"

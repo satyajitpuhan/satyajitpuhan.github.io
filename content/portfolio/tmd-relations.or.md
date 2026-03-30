@@ -4,7 +4,7 @@ date = 2024-10-01
 
 [extra]
 thumbnail = "images/portfolio/portfolio-1.png"
-service = "PTEP ptae150 (2024)"
+service = "PTEP 2024 (2024) 103B05"
 client = "S. Sharma, S. Puhan, N. Kumar and H. Dahiya"
 short_description = "Published in PTEP."
 challenge = "TMD Relations: Insights from a Light-Front Quark-Diquark Model"

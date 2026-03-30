@@ -1,7 +1,7 @@
 +++
 title = "Prof. Oleg V. Teryaev"
 description = "Researcher, Joint Institute for Nuclear Research (JINR)"
-weight = 9
+weight = 2
 
 [extra]
 research_interests = "Axial Anomaly, Spin Physics, Hydrodynamics in Heavy-Ion Collisions, Gravitational Form Factors, Chiral Effects"

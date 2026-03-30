@@ -4,7 +4,7 @@ date = 2025-06-15
 
 [extra]
 thumbnail = "images/portfolio/portfolio-1.png"
-service = "PTEP ptaf135 (2025)"
+service = "PTEP 2025 (2025) 113D03"
 client = "A. Gautam, D. Singh, N. Kaur, S. Puhan, S. Dutt, H. Dahiya, and A. Kumar"
 short_description = "Published in PTEP."
 challenge = "D and D* mesons in isospin asymmetric nuclear medium"

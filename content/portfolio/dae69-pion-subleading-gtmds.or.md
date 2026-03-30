@@ -4,7 +4,7 @@ date = 2026-01-11
 
 [extra]
 thumbnail = "images/portfolio/portfolio-1.png"
-service = "DAE Symp. Nucl. Phys. 69 (2026)"
+service = "DAE Symp. Nucl. Phys. 69 (2026) 859"
 client = "S. Puhan, S. Sharma, N. Kumar and H. Dahiya"
 short_description = "69th DAE Symposium on Nuclear Physics."
 challenge = "This work investigates the sub-leading twist generalized transverse momentum dependent parton distributions (GTMDs) E2 of the pion in the light-front quark model. The sub-leading twist GTMDs provide complementary information to the leading twist distributions about the three-dimensional structure of the pion."
