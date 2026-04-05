@@ -2,6 +2,92 @@ title = "Recent News & Activities"
 subtitle = "Highlights from my research journey."
 
 [[items]]
+top_title = "🎓 PhD Defense Completed!"
+image = "images/gallery/defense-presenting-qcd.jpg"
+title = "Final PhD Viva Voce — Tomography of Light & Heavy Mesons Using Light-Front Dynamics"
+date = "2nd April, 2026"
+description = "Successfully defended my PhD thesis at Dr. B R Ambedkar NIT Jalandhar! The defense covered perturbative & non-perturbative QCD, hadron tomography through GPDs, TMDs, and form factors, and featured live interactive visualizations of αₛ(Q²) running coupling and pion mechanical structure."
+extra_images = [
+    "images/gallery/defense-publications-slide.png",
+    "images/gallery/defense-alpha-s-visualization.png",
+    "images/gallery/defense-pion-mechanical.png"
+]
+details = """
+**🎓 Final PhD Viva Voce — Successfully Defended!**
+
+**Thesis Title:** Tomography of Light and Heavy Mesons Using Light-Front Dynamics
+**Candidate:** Satyajit Puhan
+**Supervisor:** Dr. Harleen Dahiya
+**Institution:** Dr. B R Ambedkar National Institute of Technology, Jalandhar
+**Date:** 2nd April, 2026
+
+---
+
+### Thesis Overview
+
+The thesis presents a comprehensive investigation of the internal structure of light and heavy mesons (pion, kaon, ρ-meson, charmonium, bottomonium) using the Light-Front Quark Model (LFQM). Key contributions include:
+
+- **Parton Distribution Functions (PDFs):** Leading-twist and subleading-twist PDFs with NLO/NNLO DGLAP evolution
+- **Transverse Momentum Dependent Distributions (TMDs):** Complete sets of leading-twist TMDs including tensor-polarized TMDs for spin-1 mesons
+- **Generalized Parton Distributions (GPDs):** Full extraction of chiral-even and chiral-odd GPDs
+- **Gravitational Form Factors (GFFs):** Mass A(t) and D-term D(t) form factors revealing the mechanical structure of hadrons
+- **Nuclear Medium Effects:** Investigation of meson properties in symmetric nuclear medium at various baryonic densities
+
+### Defense Highlights
+
+The defense featured **live interactive visualizations** built for this research:
+- **αₛ(Q²) Running Coupling Constant** — Interactive 1-loop, 2-loop, and 3-loop pQCD evolution with real-time parameter adjustment
+- **Pion Mechanical Structure** — Visualization of pressure distributions, mass form factors, and D-term form factors in the LFQM
+
+### Publications
+
+The thesis work has resulted in **25 publications** in leading peer-reviewed journals including Physical Review D, JHEP, Physics Letters B, Nuclear Physics B, PTEP, European Physical Journal, and Chinese Physics C.
+
+---
+
+*With deep gratitude to my supervisor Dr. Harleen Dahiya, my collaborators, and the entire research group at NIT Jalandhar.*
+"""
+
+[[items]]
+top_title = "Celebration"
+image = "images/gallery/defense-group-photo.jpg"
+title = "Post-Defense Celebration with Research Group"
+date = "2nd April, 2026"
+description = "A heartfelt group photo after the successful PhD defense with labmates and friends at NIT Jalandhar. Grateful to everyone who supported this journey from a small village in Odisha to a PhD in High Energy Physics."
+
+[[items]]
+top_title = "📄 Paper Accepted!"
+image = "images/gallery/defense-presenting-qcd.jpg"
+title = "Internal Structure of Light Mesons Using the Power Law Wave Function — Accepted in Modern Physics Letters A"
+date = "1st April, 2026"
+description = "Our paper on the internal structure of pion and kaon using spin-improved power-law wave functions has been accepted for publication in Modern Physics Letters A (MPLA). The work covers DAs, PDFs, TMDs, GPDs, and form factors using LFWFs with ERBL and NLO DGLAP evolution."
+details = """
+**Title:** Internal Structure of Light Mesons Using the Power Law Wave Function
+**Authors:** Satyajit Puhan, Narinder Kumar, Harleen Dahiya
+**Journal:** Modern Physics Letters A (MPLA), World Scientific
+**Accepted:** April 1, 2026
+
+---
+
+### Summary
+
+We study the internal structure of the pion and kaon using spin-improved power-law wave functions within the light-front framework. Key results include:
+
+- **Distribution Amplitudes (DAs):** Leading-twist DAs evolved using LO ERBL equations; pion DA symmetric and consistent with asymptotic result 6x(1−x)
+- **Generalized Parton Distributions (GPDs):** Unpolarized GPDs at zero skewness; pion symmetric, kaon asymmetric due to heavier strange quark
+- **Transverse Momentum Dependent Distributions (TMDs):** Leading-twist unpolarized TMD f₁(x,k⊥²) for both mesons
+- **Parton Distribution Functions (PDFs):** NLO DGLAP evolved to Q² = 16 GeV²; only 41% of longitudinal momentum carried by quarks, with 60% carried by gluons
+- **Form Factors:** Charge form factors in good agreement with NA7, FNAL, and JLab experimental data
+- **Charge Radii:** r_π = 0.668 fm and r_K = 0.704 fm
+
+### Decay Constants
+- Pion: 114 MeV (PDG: 130.2±1.7 MeV, error: 12.44%)
+- Kaon: 144 MeV (PDG: 156.1±0.5 MeV, error: 7.69%)
+
+*Congratulations to the team! 🎉 As Dr. Narinder Kumar said — "Gift for Satyajit!!"*
+"""
+
+[[items]]
 top_title = "Recently participated in"
 image = "images/gallery/iitb-cteq-group.jpg"
 title = "The 2026 IITB-CFNS-CTEQ School on Perturbative QCD for EIC"
