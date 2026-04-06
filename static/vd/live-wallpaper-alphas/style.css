@@ -1,0 +1,477 @@
+/* ============================================
+   α_s(Q²) RUNNING COUPLING WALLPAPER
+   Design System
+   ============================================ */
+
+:root {
+    --bg-void: #030308;
+    --confinement: #ff2244;
+    --freedom: #22aaff;
+    --landau: #ff6622;
+    --threshold-c: #ffaa33;
+    --threshold-b: #33ddaa;
+    --threshold-t: #aa66ff;
+    --mz-color: #44ccff;
+    --plot-glow: rgba(68, 200, 255, 0.25);
+    --accent-1: #44ccff;
+    --accent-2: #ff4466;
+    --accent-warm: #ff6633;
+    --accent-cool: #3388ff;
+    --text-primary: rgba(230, 240, 255, 0.92);
+    --text-secondary: rgba(140, 170, 210, 0.45);
+    --text-accent: #44ccff;
+    --text-warm: #ff8855;
+    --glass-bg: rgba(8, 12, 30, 0.6);
+    --glass-border: rgba(68, 140, 255, 0.07);
+    --glass-shadow: rgba(0, 0, 0, 0.6);
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+    width: 100%; height: 100%;
+    overflow: hidden;
+    background: var(--bg-void);
+    font-family: var(--font-display);
+    color: var(--text-primary);
+    cursor: crosshair;
+}
+
+/* ============================================
+   CANVASES
+   ============================================ */
+
+#bg-canvas, #plot-canvas, #fx-canvas {
+    position: fixed; inset: 0;
+    width: 100%; height: 100%;
+    contain: strict;
+}
+#bg-canvas { z-index: 1; }
+#plot-canvas { z-index: 2; }
+#fx-canvas { z-index: 3; pointer-events: none; }
+
+/* ============================================
+   GLASS CARDS
+   ============================================ */
+
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(28px) saturate(1.3);
+    -webkit-backdrop-filter: blur(28px) saturate(1.3);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    box-shadow: 0 6px 28px var(--glass-shadow),
+                inset 0 1px 0 rgba(255, 255, 255, 0.025);
+    transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.glass-card:hover {
+    background: rgba(12, 18, 45, 0.65);
+    border-color: rgba(68, 160, 255, 0.12);
+    box-shadow: 0 10px 40px var(--glass-shadow),
+                0 0 15px rgba(68, 160, 255, 0.05);
+    transform: translateY(-1px);
+}
+
+/* ============================================
+   UI OVERLAY
+   ============================================ */
+
+.ui-overlay {
+    position: fixed; inset: 0; z-index: 100;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+.ui-overlay > * { pointer-events: auto; }
+.ui-overlay.hidden > *:not(.toggle-ui) {
+    opacity: 0; transform: translateY(14px) scale(0.97); pointer-events: none;
+}
+
+/* ============================================
+   TITLE CARD
+   ============================================ */
+
+.title-card {
+    position: absolute;
+    top: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 32px;
+    text-align: center;
+}
+
+.title-main {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--accent-warm), var(--accent-1), var(--accent-cool));
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradShift 6s ease infinite;
+}
+
+.title-main sub {
+    font-size: 0.9rem;
+}
+
+.title-sub {
+    font-family: var(--font-mono);
+    font-size: 0.55rem;
+    color: var(--text-secondary);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 4px;
+}
+
+@keyframes gradShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* ============================================
+   VALUE DISPLAY
+   ============================================ */
+
+.value-display {
+    position: absolute;
+    top: 100px;
+    left: 28px;
+    padding: 18px 22px;
+    width: 220px;
+}
+
+.val-header {
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(68, 140, 255, 0.06);
+}
+
+.pulse-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent-1);
+    box-shadow: 0 0 8px rgba(68, 204, 255, 0.35);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.7); }
+}
+
+.val-title {
+    font-family: var(--font-display);
+    font-size: 0.55rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 2px;
+    color: var(--text-accent);
+}
+
+.val-main-row {
+    display: flex; align-items: baseline; gap: 8px;
+    margin-bottom: 14px;
+}
+
+.val-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.val-label sub { font-size: 0.55rem; }
+
+.val-number {
+    font-family: var(--font-mono);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-accent);
+    transition: color 0.5s ease;
+}
+
+.val-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.val-cell {
+    display: flex; flex-direction: column; gap: 1px;
+}
+
+.val-key {
+    font-family: var(--font-mono);
+    font-size: 0.5rem; color: var(--text-secondary);
+}
+.val-key sub { font-size: 0.4rem; }
+
+.val-data {
+    font-family: var(--font-mono);
+    font-size: 0.9rem; font-weight: 700;
+    color: var(--text-accent);
+}
+
+.val-unit {
+    font-family: var(--font-mono);
+    font-size: 0.45rem; color: var(--text-secondary);
+}
+
+/* ============================================
+   FORMULA CARD
+   ============================================ */
+
+.formula-card {
+    position: absolute;
+    bottom: 100px;
+    left: 28px;
+    padding: 16px 20px;
+    width: 280px;
+}
+
+.formula-tabs {
+    display: flex; gap: 4px; margin-bottom: 14px;
+}
+
+.formula-tab {
+    flex: 1;
+    padding: 5px 0;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.02);
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    font-size: 0.55rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.formula-tab:hover {
+    background: rgba(68, 140, 255, 0.05);
+}
+
+.formula-tab.active {
+    background: rgba(68, 140, 255, 0.1);
+    border-color: var(--accent-1);
+    color: var(--text-accent);
+}
+
+.formula-display {
+    text-align: center;
+    padding: 8px 0;
+}
+
+.formula-text {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    line-height: 2;
+}
+
+.formula-text sub { font-size: 0.6rem; }
+
+.f-frac {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    vertical-align: middle;
+    margin: 0 4px;
+}
+
+.f-num {
+    border-bottom: 1px solid rgba(200, 220, 255, 0.4);
+    padding: 0 6px 3px;
+    font-size: 0.8rem;
+}
+
+.f-den {
+    padding: 3px 6px 0;
+    font-size: 0.7rem;
+    color: rgba(200, 220, 255, 0.7);
+}
+
+.formula-note {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    color: var(--text-secondary);
+    margin-top: 8px;
+}
+
+/* ============================================
+   CONTROLS
+   ============================================ */
+
+.controls-panel {
+    position: absolute;
+    top: 100px;
+    right: 28px;
+    padding: 20px;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.control-group {
+    display: flex; flex-direction: column; gap: 6px;
+}
+
+.control-group label {
+    font-family: var(--font-display);
+    font-size: 0.58rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1.5px;
+    color: var(--text-secondary);
+}
+
+.control-group label sub { font-size: 0.45rem; }
+
+input[type="range"] {
+    -webkit-appearance: none; appearance: none;
+    width: 100%; height: 3px;
+    background: rgba(68, 140, 255, 0.08);
+    border-radius: 3px; outline: none; cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 13px; height: 13px; border-radius: 50%;
+    background: var(--accent-1);
+    box-shadow: 0 0 10px rgba(68, 204, 255, 0.35);
+    transition: transform 0.2s;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.3); }
+
+input[type="range"]::-moz-range-thumb {
+    width: 13px; height: 13px; border-radius: 50%;
+    background: var(--accent-1); border: none;
+    box-shadow: 0 0 10px rgba(68, 204, 255, 0.35);
+}
+
+.slider-markers {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 0.4rem;
+    color: rgba(140, 170, 210, 0.3);
+    margin-top: 2px;
+}
+
+.slider-markers sub { font-size: 0.35rem; }
+
+/* ============================================
+   REGION LABELS
+   ============================================ */
+
+.region-label {
+    position: absolute;
+    display: flex; flex-direction: column; gap: 3px;
+    pointer-events: none;
+}
+
+.region-confinement {
+    left: 15%;
+    bottom: 42%;
+}
+
+.region-freedom {
+    right: 12%;
+    bottom: 25%;
+}
+
+.region-name {
+    font-family: var(--font-display);
+    font-size: 0.65rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 3px;
+    opacity: 0.2;
+}
+
+.region-confinement .region-name { color: var(--confinement); }
+.region-freedom .region-name { color: var(--freedom); }
+
+.region-desc {
+    font-family: var(--font-mono);
+    font-size: 0.5rem;
+    opacity: 0.15;
+}
+
+.region-confinement .region-desc { color: var(--confinement); }
+.region-freedom .region-desc { color: var(--freedom); }
+
+/* ============================================
+   INFO BAR
+   ============================================ */
+
+.info-bar {
+    position: absolute; bottom: 28px; left: 28px;
+    display: flex; gap: 8px;
+}
+
+.widget {
+    padding: 9px 14px;
+    display: flex; flex-direction: column; align-items: center; gap: 2px;
+    min-width: 60px;
+}
+
+.widget-label {
+    font-family: var(--font-mono);
+    font-size: 0.48rem; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 1.5px;
+    color: var(--text-secondary);
+}
+
+.widget-value {
+    font-family: var(--font-mono);
+    font-size: 1rem; font-weight: 700;
+    color: var(--text-accent);
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+.toggle-ui {
+    position: absolute; bottom: 28px; right: 28px;
+    width: 40px; height: 40px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; border: none; color: var(--text-primary); z-index: 200;
+}
+.toggle-ui:hover { color: var(--accent-1); }
+
+.fullscreen-btn {
+    position: absolute; bottom: 28px; right: 78px;
+    width: 40px; height: 40px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; border: none; color: var(--text-primary); z-index: 200;
+}
+.fullscreen-btn:hover { color: var(--accent-1); }
+
+/* ============================================
+   ENTRANCE
+   ============================================ */
+
+.glass-card { animation: enterCard 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both; }
+.title-card { animation-delay: 0s; }
+.value-display { animation-delay: 0.1s; }
+.formula-card { animation-delay: 0.2s; }
+.controls-panel { animation-delay: 0.3s; }
+
+@keyframes enterCard {
+    from { opacity: 0; transform: translateY(18px) scale(0.97); }
+    to { opacity: 1; }
+}
+
+.clock-card { animation: none; }
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 900px) {
+    .value-display { top: 80px; left: 10px; width: 180px; }
+    .controls-panel { top: auto; bottom: 100px; right: 10px; width: 200px; }
+    .formula-card { bottom: 80px; left: 10px; width: 220px; }
+    .title-main { font-size: 1.2rem; }
+    .region-label { display: none; }
+}

@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>Live Wallpaper — Dual Images + Parallax + Particles</title>
+<style>
+  :root{ --bg:#080808; --control-bg: rgba(255,255,255,0.06); --btn-border: rgba(255,255,255,0.06); }
+  html,body{ height:100%; margin:0; background:var(--bg); overflow:hidden; font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial; }
+  .wallpaper{ position:fixed; inset:0; overflow:hidden; touch-action:none; background:linear-gradient(180deg,#060606,#121212); }
+  .img-layer{ position:absolute; left:50%; top:50%; transform-origin:center center; will-change:transform,opacity,filter; pointer-events:none; user-select:none; }
+  .bg { filter: blur(20px) saturate(0.95) contrast(0.95); opacity:0.55; }
+  .fg { filter:none; opacity:1; }
+  /* support two foreground images for crossfade */
+  .fg-img { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); pointer-events:none; user-select:none; max-width:none; max-height:none; }
+  canvas#particles{ position:absolute; inset:0; pointer-events:none; mix-blend-mode:screen; opacity:0.9; }
+  .overlay{ position:absolute; inset:0; pointer-events:none; background:
+    radial-gradient(40% 50% at 50% 40%, rgba(255,255,255,0.02), transparent 20%),
+    linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.18)); mix-blend-mode:multiply; }
+  .controls{ position:fixed; right:14px; bottom:14px; z-index:60; display:flex; gap:8px; align-items:center; }
+  .panel{ background:var(--control-bg); border:1px solid var(--btn-border); padding:10px; border-radius:12px; display:flex; gap:8px; align-items:center; backdrop-filter: blur(6px); color:#fff; }
+  .btn{ background:transparent; color:#fff; padding:6px 10px; border-radius:8px; border:1px solid rgba(255,255,255,0.06); cursor:pointer; font-size:13px; }
+  .small{ font-size:12px; color:rgba(255,255,255,0.85); }
+  .select, .range{ background:transparent; color:#fff; border:1px solid rgba(255,255,255,0.05); padding:6px 8px; border-radius:8px; }
+  .label{ font-size:12px; color:rgba(255,255,255,0.85); margin-right:6px; }
+</style>
+</head>
+<body>
+  <div class="wallpaper" id="wallpaper">
+    <!-- Blurred background (single) -->
+    <img id="bgimg" class="img-layer bg" src="/mnt/data/ie.png" alt="background">
+
+    <!-- Foreground group: two images that can be crossfaded -->
+    <div id="fgGroup" style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); pointer-events:none;">
+      <img id="fgA" class="fg-img" src="/mnt/data/ie.png" alt="foreground A" style="opacity:1;">
+      <img id="fgB" class="fg-img" src="/mnt/data/A_digital_anime-style_illustration_of_a_catgirl_ch.png" alt="foreground B" style="opacity:0;">
+    </div>
+
+    <!-- Particles -->
+    <canvas id="particles"></canvas>
+    <div class="overlay"></div>
+
+    <!-- Controls -->
+    <div class="controls">
+      <div class="panel" role="toolbar" aria-label="Live wallpaper controls">
+        <button id="toggleBtn" class="btn" title="Pause / Play">Pause</button>
+
+        <div style="display:flex;flex-direction:column;gap:6px;margin-left:4px;">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span class="label">Source</span>
+            <select id="sourceSelect" class="select" aria-label="Choose image">
+              <option value="A">Original (ie.png)</option>
+              <option value="B">Catgirl (A_digital...)</option>
+              <option value="mix">Crossfade</option>
+            </select>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span class="label">Blend</span>
+            <input id="opacityRange" class="range" type="range" min="0" max="1" step="0.01" value="0" style="width:140px;">
+          </div>
+        </div>
+
+        <div style="margin-left:8px;display:flex;flex-direction:column;gap:6px;">
+          <button id="fitBtn" class="btn" title="Toggle fit mode">Mode: Cover</button>
+          <span class="small">Double-click to toggle fullscreen</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+/* Dual-image live wallpaper
+   - Uses two local images:
+     1) /mnt/data/ie.png
+     2) /mnt/data/A_digital_anime-style_illustration_of_a_catgirl_ch.png
+   - Switch between A, B, or a crossfaded mix (using the slider).
+   - Retains Ken-Burns zoom/pan, parallax & particle overlay.
+*/
+
+const PATH_A = '/mnt/data/ie.png';
+const PATH_B = '/mnt/data/A_digital_anime-style_illustration_of_a_catgirl_ch.png';
+
+const wallpaper = document.getElementById('wallpaper');
+const bgimg = document.getElementById('bgimg');
+const fgGroup = document.getElementById('fgGroup');
+const fgA = document.getElementById('fgA');
+const fgB = document.getElementById('fgB');
+
+const particlesCanvas = document.getElementById('particles');
+const ctx = particlesCanvas.getContext('2d');
+
+let width = window.innerWidth, height = window.innerHeight;
+let paused = false;
+const toggleBtn = document.getElementById('toggleBtn');
+const fitBtn = document.getElementById('fitBtn');
+const sourceSelect = document.getElementById('sourceSelect');
+const opacityRange = document.getElementById('opacityRange');
+
+toggleBtn.addEventListener('click', () => { paused = !paused; toggleBtn.textContent = paused ? 'Play' : 'Pause'; });
+fitBtn.addEventListener('click', () => { fitMode = (fitMode==='cover') ? 'contain' : 'cover'; fitBtn.textContent = 'Mode: ' + (fitMode==='cover'?'Cover':'Contain'); updateImageSizing(); });
+
+sourceSelect.addEventListener('change', applySourceMode);
+opacityRange.addEventListener('input', () => {
+  const v = parseFloat(opacityRange.value);
+  fgB.style.opacity = v;
+  fgA.style.opacity = 1 - v;
+});
+
+/* Image sizing */
+let fitMode = 'cover';
+function updateImageSizing(){
+  const baseW = width * 1.15;
+  const baseH = height * 1.15;
+  const style = `width:${baseW}px;height:${baseH}px;transform:translate(-50%,-50%)`;
+  bgimg.style.cssText = style;
+  fgA.style.cssText = style + ';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);';
+  fgB.style.cssText = style + ';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);';
+}
+updateImageSizing();
+
+/* Animation parameters */
+const loopDuration = 20000;
+const zoomStart = 1.00, zoomEnd = 1.08;
+const panRadius = Math.min(window.innerWidth, window.innerHeight) * 0.03;
+let startTime = performance.now();
+let mouseX = 0, mouseY = 0;
+
+/* Pointer for parallax */
+function onPointer(e){
+  const x = e.clientX ?? (e.touches && e.touches[0] && e.touches[0].clientX) ?? width/2;
+  const y = e.clientY ?? (e.touches && e.touches[0] && e.touches[0].clientY) ?? height/2;
+  mouseX = (x / width - 0.5) * 2;
+  mouseY = (y / height - 0.5) * 2;
+}
+window.addEventListener('pointermove', onPointer, {passive:true});
+window.addEventListener('touchmove', onPointer, {passive:true});
+window.addEventListener('deviceorientation', (ev) => {
+  if(ev.gamma !== null && ev.beta !== null){
+    mouseX = ev.gamma/30;
+    mouseY = ev.beta/60;
+  }
+}, true);
+
+/* Lerp helper */
+function lerp(a,b,t){ return a + (b-a)*t; }
+
+/* Animation loop */
+function animate(now){
+  if(!paused){
+    const t = (now - startTime) % loopDuration;
+    const progress = t / loopDuration;
+    const ease = 0.5 - 0.5*Math.cos(progress*Math.PI*2);
+    const zoom = zoomStart + (zoomEnd - zoomStart) * ease;
+    const angle = progress * Math.PI * 2;
+    const panX = Math.cos(angle) * panRadius;
+    const panY = Math.sin(angle) * panRadius * 0.6;
+
+    // smooth parallax offsets
+    const targetX = mouseX * (width/24);
+    const targetY = mouseY * (height/24);
+    const curAtx = parseFloat(fgA.dataset.tx || 0);
+    const curAty = parseFloat(fgA.dataset.ty || 0);
+    const newAtx = lerp(curAtx, panX + targetX, 0.08);
+    const newAty = lerp(curAty, panY + targetY, 0.08);
+    fgA.dataset.tx = newAtx; fgA.dataset.ty = newAty;
+
+    const curBtx = parseFloat(fgB.dataset.tx || 0);
+    const curBty = parseFloat(fgB.dataset.ty || 0);
+    const newBtx = lerp(curBtx, panX*1.05 + targetX*0.9, 0.06);
+    const newBty = lerp(curBty, panY*1.05 + targetY*0.9, 0.06);
+    fgB.dataset.tx = newBtx; fgB.dataset.ty = newBty;
+
+    const bgTx = lerp(parseFloat(bgimg.dataset.tx||0), panX*1.2 + mouseX*(width/40), 0.06);
+    const bgTy = lerp(parseFloat(bgimg.dataset.ty||0), panY*1.2 + mouseY*(height/40), 0.06);
+    bgimg.dataset.tx = bgTx; bgimg.dataset.ty = bgTy;
+
+    // Apply transforms
+    bgimg.style.transform = `translate(-50%,-50%) translate(${bgTx}px, ${bgTy}px) scale(${zoom*1.03})`;
+    fgA.style.transform = `translate(-50%,-50%) translate(${newAtx}px, ${newAty}px) scale(${zoom})`;
+    fgB.style.transform = `translate(-50%,-50%) translate(${newBtx}px, ${newBty}px) scale(${zoom})`;
+
+    // breathing effect
+    const breath = 0.96 + 0.04*Math.sin(now/1500);
+    fgA.style.opacity = (fgA.style.opacity === '') ? 1 : fgA.style.opacity; // keep managed by opacityRange when mixing
+    fgB.style.opacity = (fgB.style.opacity === '') ? 0 : fgB.style.opacity;
+    fgGroup.style.opacity = 1; // overall group visible
+    stepParticles();
+  }
+
+  renderParticles();
+  requestAnimationFrame(animate);
+}
+requestAnimationFrame(animate);
+
+/* Particles (same implementation as before) */
+const particles = [];
+let PARTICLE_COUNT = Math.round(Math.max(60, (width*height)/12000));
+function initParticles(){
+  particles.length = 0;
+  PARTICLE_COUNT = Math.round(Math.max(60, (width*height)/12000));
+  for(let i=0;i<PARTICLE_COUNT;i++) spawnParticle(true);
+}
+function spawnParticle(initial=false){
+  const s = Math.random()*2.6 + 0.6;
+  const x = Math.random()*width;
+  const y = initial ? Math.random()*height : (height + 20);
+  const vy = - (0.15 + Math.random()*0.6);
+  const life = 6 + Math.random()*12;
+  const alpha = 0.06 + Math.random()*0.12;
+  particles.push({x,y,vy,alpha,s,age:0,life});
+}
+function stepParticles(){
+  const dt = 1/60;
+  for(let i=particles.length-1;i>=0;--i){
+    const p = particles[i];
+    p.age += dt;
+    p.x += (Math.sin(p.age*2.3 + p.s)*0.2);
+    p.y += p.vy * (1 + p.s*0.15);
+    p.alpha *= 0.9996;
+    if(p.y < -30 || p.age > p.life){
+      particles.splice(i,1);
+      if(!paused) spawnParticle(false);
+    }
+  }
+}
+function renderParticles(){
+  // handle hi-dpi
+  const ratio = window.devicePixelRatio || 1;
+  particlesCanvas.width = width * ratio;
+  particlesCanvas.height = height * ratio;
+  particlesCanvas.style.width = width + 'px';
+  particlesCanvas.style.height = height + 'px';
+  ctx.setTransform(ratio,0,0,ratio,0,0);
+
+  ctx.clearRect(0,0,width,height);
+  for(let i=0;i<particles.length;i++){
+    const p = particles[i];
+    const grad = ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.s*18);
+    grad.addColorStop(0, `rgba(255,255,255,${p.alpha*0.9})`);
+    grad.addColorStop(0.5, `rgba(190,210,255,${p.alpha*0.08})`);
+    grad.addColorStop(1, `rgba(120,140,255,0)`);
+    ctx.fillStyle = grad;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.s*10, 0, Math.PI*2);
+    ctx.fill();
+  }
+  ctx.globalCompositeOperation = 'lighter';
+}
+
+/* Resize handling */
+function onResize(){
+  width = window.innerWidth; height = window.innerHeight;
+  updateImageSizing();
+  initParticles();
+}
+window.addEventListener('resize', onResize);
+onResize();
+
+/* Preload both images to avoid flicker */
+const imgA = new Image(), imgB = new Image();
+imgA.src = PATH_A; imgB.src = PATH_B;
+imgA.onload = () => { bgimg.src = PATH_A; fgA.src = PATH_A; };
+imgB.onload = () => { fgB.src = PATH_B; };
+
+/* Switch/crossfade logic */
+function applySourceMode(){
+  const mode = sourceSelect.value;
+  if(mode === 'A'){
+    fgA.style.opacity = 1;
+    fgB.style.opacity = 0;
+    bgimg.src = PATH_A;
+    opacityRange.value = 0;
+  } else if(mode === 'B'){
+    fgA.style.opacity = 0;
+    fgB.style.opacity = 1;
+    bgimg.src = PATH_B;
+    opacityRange.value = 1;
+  } else { // mix
+    // leave bg as A by default (but could choose other policy)
+    bgimg.src = PATH_A;
+    // keep the slider value
+    const v = parseFloat(opacityRange.value);
+    fgB.style.opacity = v;
+    fgA.style.opacity = 1 - v;
+  }
+}
+applySourceMode();
+
+/* Fullscreen toggle on double-click */
+wallpaper.addEventListener('dblclick', async () => {
+  try {
+    if (!document.fullscreenElement) await document.documentElement.requestFullscreen();
+    else await document.exitFullscreen();
+  } catch(e){}
+});
+
+</script>
+</body>
+</html>

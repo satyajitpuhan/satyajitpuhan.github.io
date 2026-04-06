@@ -1,0 +1,769 @@
+{% extends "base.html" %}
+
+{% block title %}Interactive Visualizations — {{ config.title }}{% endblock %}
+
+{% block stylesheets %}
+{{ super() }}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  /* ── Reset for this page ── */
+  .viz-page * { box-sizing: border-box; }
+
+  /* ── Hero Section ── */
+  .viz-hero {
+    position: relative;
+    min-height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    background: linear-gradient(135deg, #0a0a1a 0%, #0d1b2a 40%, #1b2838 70%, #0a0a1a 100%);
+  }
+
+  .viz-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 30%, rgba(14, 165, 233, 0.12) 0%, transparent 55%),
+      radial-gradient(ellipse at 50% 80%, rgba(139, 92, 246, 0.10) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  /* Animated grid lines */
+  .viz-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(99,102,241,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(99,102,241,0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+    animation: gridDrift 20s linear infinite;
+    pointer-events: none;
+  }
+
+  @keyframes gridDrift {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(60px, 60px); }
+  }
+
+  .viz-hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 80px 20px 60px;
+  }
+
+  .viz-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(99, 102, 241, 0.15);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    border-radius: 100px;
+    padding: 8px 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #a5b4fc;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    backdrop-filter: blur(8px);
+  }
+
+  .viz-hero-badge .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #6366f1;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(99,102,241,0.7); }
+    50% { opacity: 0.7; box-shadow: 0 0 0 8px rgba(99,102,241,0); }
+  }
+
+  .viz-hero h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 16px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .viz-hero h1 span {
+    background: linear-gradient(135deg, #6366f1, #0ea5e9, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .viz-hero-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    color: rgba(255,255,255, 0.6);
+    max-width: 640px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* ── Floating particles in hero ── */
+  .viz-particles {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .viz-particle {
+    position: absolute;
+    border-radius: 50%;
+    animation: floatParticle linear infinite;
+    opacity: 0;
+  }
+
+  @keyframes floatParticle {
+    0% { transform: translateY(100vh) scale(0); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-20vh) scale(1); opacity: 0; }
+  }
+
+  /* ── Gallery Grid ── */
+  .viz-gallery {
+    background: linear-gradient(180deg, #0a0a1a 0%, #0d1117 100%);
+    padding: 80px 0 120px;
+    min-height: 60vh;
+  }
+
+  .viz-gallery .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .viz-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 28px;
+  }
+
+  @media (max-width: 768px) {
+    .viz-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+  }
+
+  /* ── Visualization Card ── */
+  .viz-card {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+  }
+
+  .viz-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(99, 102, 241, 0.3);
+    box-shadow:
+      0 20px 60px rgba(0, 0, 0, 0.4),
+      0 0 40px rgba(99, 102, 241, 0.1);
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  /* ── Thumbnail preview (CSS-only, no iframe) ── */
+  .viz-card-preview {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+  }
+
+  .viz-thumb {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .viz-card:hover .viz-thumb {
+    transform: scale(1.05);
+  }
+
+  /* Shimmer animation for thumbnails */
+  .viz-thumb::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 40%,
+      rgba(255,255,255,0.03) 45%,
+      rgba(255,255,255,0.06) 50%,
+      rgba(255,255,255,0.03) 55%,
+      transparent 60%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 6s ease-in-out infinite;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  /* Per-card themed gradients */
+  .thumb-alphas {
+    background: linear-gradient(135deg, #0a0a20 0%, #1a0a2e 30%, #0c1a30 60%, #0a0a20 100%);
+  }
+  .thumb-alphas .thumb-icon { color: #ff3366; text-shadow: 0 0 20px rgba(255,51,102,0.5); }
+
+  .thumb-dglap {
+    background: linear-gradient(135deg, #050510 0%, #0a1820 40%, #081520 70%, #050510 100%);
+  }
+  .thumb-dglap .thumb-icon { color: #00ff88; text-shadow: 0 0 20px rgba(0,255,136,0.5); }
+
+  .thumb-mechanical {
+    background: linear-gradient(135deg, #0a0814 0%, #1a0e24 40%, #12081e 70%, #0a0814 100%);
+  }
+  .thumb-mechanical .thumb-icon { color: #ff6b4a; text-shadow: 0 0 20px rgba(255,107,74,0.5); }
+
+  .thumb-qcd {
+    background: linear-gradient(135deg, #020208 0%, #0a1018 40%, #060c14 70%, #020208 100%);
+  }
+  .thumb-qcd .thumb-icon { color: #33ffaa; text-shadow: 0 0 20px rgba(51,255,170,0.5); }
+
+  .thumb-gda {
+    background: linear-gradient(135deg, #14182f 0%, #1a1040 40%, #0d1530 70%, #14182f 100%);
+  }
+  .thumb-gda .thumb-icon { color: #ffe216; text-shadow: 0 0 20px rgba(255,226,22,0.5); }
+
+  .thumb-forms {
+    background: linear-gradient(135deg, #0d1a13 0%, #121828 50%, #0d1a13 100%);
+  }
+  .thumb-forms .thumb-icon { color: #8affb2; text-shadow: 0 0 15px rgba(138,255,178,0.4), 30px 0 15px rgba(42,195,249,0.4); }
+
+  .thumb-proton {
+    background: linear-gradient(135deg, #080808 0%, #121212 50%, #080808 100%);
+  }
+  .thumb-proton .thumb-icon { color: #a0c4ff; text-shadow: 0 0 20px rgba(160,196,255,0.4); }
+
+  .thumb-icon {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 2.4rem;
+    font-weight: 700;
+    opacity: 0.85;
+    z-index: 1;
+    letter-spacing: -0.02em;
+    user-select: none;
+  }
+
+  /* Decorative dots/lines on thumbnails */
+  .thumb-decor {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.08;
+    pointer-events: none;
+  }
+
+  .viz-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, 0.7) 100%);
+    z-index: 2;
+    transition: opacity 0.3s ease;
+  }
+
+  .viz-card-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    z-index: 3;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(99, 102, 241, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 8px 30px rgba(99, 102, 241, 0.4);
+  }
+
+  .viz-card:hover .viz-card-play {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  .viz-card-play svg {
+    width: 22px;
+    height: 22px;
+    fill: white;
+    margin-left: 3px;
+  }
+
+  .viz-card-body {
+    padding: 20px 24px 24px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .viz-card-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 100px;
+    margin-bottom: 12px;
+  }
+
+  .tag-interactive {
+    color: #34d399;
+    background: rgba(52, 211, 153, 0.1);
+    border: 1px solid rgba(52, 211, 153, 0.2);
+  }
+
+  .tag-animation {
+    color: #f59e0b;
+    background: rgba(245, 158, 11, 0.1);
+    border: 1px solid rgba(245, 158, 11, 0.2);
+  }
+
+  .tag-simulation {
+    color: #8b5cf6;
+    background: rgba(139, 92, 246, 0.1);
+    border: 1px solid rgba(139, 92, 246, 0.2);
+  }
+
+  .viz-card-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 8px;
+    line-height: 1.3;
+  }
+
+  .viz-card:hover .viz-card-title {
+    color: #a5b4fc;
+  }
+
+  .viz-card-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .viz-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 24px 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+  }
+
+  .viz-card-tech {
+    display: flex;
+    gap: 6px;
+  }
+
+  .viz-tech-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    color: rgba(255, 255, 255, 0.4);
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .viz-card-arrow {
+    color: rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+  }
+
+  .viz-card:hover .viz-card-arrow {
+    color: #6366f1;
+    transform: translateX(4px);
+  }
+
+  /* ── Section Counter ── */
+  .viz-counter {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    margin-bottom: 60px;
+    flex-wrap: wrap;
+  }
+
+  .viz-counter-item {
+    text-align: center;
+  }
+
+  .viz-counter-num {
+    font-family: 'Outfit', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #6366f1, #0ea5e9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .viz-counter-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-top: 4px;
+  }
+
+  /* ── Back to Home Button ── */
+  .viz-back {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 100px;
+    background: rgba(99, 102, 241, 0.9);
+    color: white;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 30px rgba(99, 102, 241, 0.4);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(99, 102, 241, 0.5);
+  }
+
+  .viz-back:hover {
+    background: rgba(99, 102, 241, 1);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(99, 102, 241, 0.5);
+    color: white;
+    text-decoration: none;
+  }
+
+  .viz-back svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* ── Scroll animation ── */
+  .viz-card {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.6s ease forwards;
+  }
+
+  .viz-card:nth-child(1) { animation-delay: 0.1s; }
+  .viz-card:nth-child(2) { animation-delay: 0.2s; }
+  .viz-card:nth-child(3) { animation-delay: 0.3s; }
+  .viz-card:nth-child(4) { animation-delay: 0.4s; }
+  .viz-card:nth-child(5) { animation-delay: 0.5s; }
+  .viz-card:nth-child(6) { animation-delay: 0.6s; }
+  .viz-card:nth-child(7) { animation-delay: 0.7s; }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="viz-hero">
+  <div class="viz-particles" id="vizParticles"></div>
+  <div class="viz-hero-content">
+    <div class="viz-hero-badge">
+      <span class="dot"></span>
+      Interactive Physics Lab
+    </div>
+    <h1>Interactive <span>Visualizations</span></h1>
+    <p class="viz-hero-desc">
+      Explore interactive real-time visualizations of quantum chromodynamics, parton evolution,
+      mechanical distributions, and relativistic kinematics — built with Canvas &amp; WebGL.
+    </p>
+  </div>
+</section>
+
+<!-- Gallery Section -->
+<section class="viz-gallery">
+  <div class="container">
+    <!-- Counters -->
+    <div class="viz-counter">
+      <div class="viz-counter-item">
+        <div class="viz-counter-num">7</div>
+        <div class="viz-counter-label">Visualizations</div>
+      </div>
+      <div class="viz-counter-item">
+        <div class="viz-counter-num">∞</div>
+        <div class="viz-counter-label">Interactions</div>
+      </div>
+      <div class="viz-counter-item">
+        <div class="viz-counter-num">60</div>
+        <div class="viz-counter-label">FPS Real-Time</div>
+      </div>
+    </div>
+
+    <!-- Grid -->
+    <div class="viz-grid">
+
+      <!-- 1. Strong Coupling α_s -->
+      <a class="viz-card" href="{{ get_url(path='vd/live-wallpaper-alphas/index.html') }}" target="_blank" id="viz-alphas">
+        <div class="viz-card-preview">
+          <div class="viz-thumb thumb-alphas">
+            <span class="thumb-icon">α<sub>s</sub>(Q²)</span>
+            <div class="thumb-decor" style="width:120px;height:120px;background:radial-gradient(circle,rgba(255,51,102,0.2),transparent);top:10%;right:-20px;"></div>
+            <div class="thumb-decor" style="width:80px;height:80px;background:radial-gradient(circle,rgba(0,255,136,0.15),transparent);bottom:10%;left:10%;"></div>
+          </div>
+          <div class="viz-card-overlay"></div>
+          <div class="viz-card-play">
+            <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+          </div>
+        </div>
+        <div class="viz-card-body">
+          <span class="viz-card-tag tag-interactive">● Interactive</span>
+          <h3 class="viz-card-title">α<sub>s</sub>(Q²) — Running Coupling</h3>
+          <p class="viz-card-desc">Explore the running of the strong coupling constant, asymptotic freedom, and confinement regime with adjustable energy scales.</p>
+        </div>
+        <div class="viz-card-footer">
+          <div class="viz-card-tech">
+            <span class="viz-tech-badge">Canvas</span>
+            <span class="viz-tech-badge">pQCD</span>
+          </div>
+          <span class="viz-card-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- 2. DGLAP Evolution -->
+      <a class="viz-card" href="{{ get_url(path='vd/live-wallpaper-dglap/index.html') }}" target="_blank" id="viz-dglap">
+        <div class="viz-card-preview">
+          <div class="viz-thumb thumb-dglap">
+            <span class="thumb-icon">DGLAP</span>
+            <div class="thumb-decor" style="width:100px;height:100px;background:radial-gradient(circle,rgba(0,255,136,0.15),transparent);top:5%;left:10%;"></div>
+            <div class="thumb-decor" style="width:90px;height:90px;background:radial-gradient(circle,rgba(153,51,255,0.15),transparent);bottom:5%;right:10%;"></div>
+          </div>
+          <div class="viz-card-overlay"></div>
+          <div class="viz-card-play">
+            <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+          </div>
+        </div>
+        <div class="viz-card-body">
+          <span class="viz-card-tag tag-interactive">● Interactive</span>
+          <h3 class="viz-card-title">DGLAP Parton Evolution</h3>
+          <p class="viz-card-desc">Watch gluon and sea-quark distributions grow and dominate over valence quarks as Q² increases via splitting kernels.</p>
+        </div>
+        <div class="viz-card-footer">
+          <div class="viz-card-tech">
+            <span class="viz-tech-badge">Canvas</span>
+            <span class="viz-tech-badge">PDFs</span>
+          </div>
+          <span class="viz-card-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- 3. Pion Mechanical Structure -->
+      <a class="viz-card" href="{{ get_url(path='vd/live-wallpaper-mechanical/index.html') }}" target="_blank" id="viz-mechanical">
+        <div class="viz-card-preview">
+          <div class="viz-thumb thumb-mechanical">
+            <span class="thumb-icon">p(b<sub>⊥</sub>)</span>
+            <div class="thumb-decor" style="width:140px;height:140px;background:radial-gradient(circle,rgba(255,107,74,0.18),transparent);top:50%;left:50%;transform:translate(-50%,-50%);"></div>
+          </div>
+          <div class="viz-card-overlay"></div>
+          <div class="viz-card-play">
+            <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+          </div>
+        </div>
+        <div class="viz-card-body">
+          <span class="viz-card-tag tag-interactive">● Interactive</span>
+          <h3 class="viz-card-title">Pion Mechanical Distribution</h3>
+          <p class="viz-card-desc">Visualize pressure, shear, and energy distributions inside the pion using the light-front quark model (LFQM).</p>
+        </div>
+        <div class="viz-card-footer">
+          <div class="viz-card-tech">
+            <span class="viz-tech-badge">Canvas</span>
+            <span class="viz-tech-badge">GFFs</span>
+          </div>
+          <span class="viz-card-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- 4. QCD Field -->
+      <a class="viz-card" href="{{ get_url(path='vd/live-wallpaper-qcdfield/index.html') }}" target="_blank" id="viz-qcd">
+        <div class="viz-card-preview">
+          <div class="viz-thumb thumb-qcd">
+            <span class="thumb-icon">QCD</span>
+            <div class="thumb-decor" style="width:60px;height:60px;background:radial-gradient(circle,rgba(51,255,170,0.2),transparent);top:20%;left:20%;"></div>
+            <div class="thumb-decor" style="width:50px;height:50px;background:radial-gradient(circle,rgba(51,255,170,0.15),transparent);bottom:20%;right:25%;"></div>
+            <div class="thumb-decor" style="width:40px;height:40px;background:radial-gradient(circle,rgba(255,100,100,0.12),transparent);top:40%;right:15%;"></div>
+          </div>
+          <div class="viz-card-overlay"></div>
+          <div class="viz-card-play">
+            <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+          </div>
+        </div>
+        <div class="viz-card-body">
+          <span class="viz-card-tag tag-simulation">● Simulation</span>
+          <h3 class="viz-card-title">QCD Quantum Field</h3>
+          <p class="viz-card-desc">Lattice QCD, flux tubes, bubble chamber tracks, and Feynman diagrams — switch between four visualization modes.</p>
+        </div>
+        <div class="viz-card-footer">
+          <div class="viz-card-tech">
+            <span class="viz-tech-badge">Canvas</span>
+            <span class="viz-tech-badge">Lattice</span>
+          </div>
+          <span class="viz-card-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- 5. Generalized Distribution Amplitude -->
+      <a class="viz-card" href="{{ get_url(path='vd/GDAs.html') }}" target="_blank" id="viz-gda">
+        <div class="viz-card-preview">
+          <div class="viz-thumb thumb-gda">
+            <span class="thumb-icon">γγ* → π⁰π⁰</span>
+            <div class="thumb-decor" style="width:100px;height:100px;background:radial-gradient(circle,rgba(255,226,22,0.18),transparent);top:50%;left:30%;transform:translateY(-50%);"></div>
+            <div class="thumb-decor" style="width:80px;height:80px;background:radial-gradient(circle,rgba(85,241,254,0.12),transparent);top:50%;right:20%;transform:translateY(-50%);"></div>
+          </div>
+          <div class="viz-card-overlay"></div>
+          <div class="viz-card-play">
+            <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+          </div>
+        </div>
+        <div class="viz-card-body">
+          <span class="viz-card-tag tag-animation">● Animation</span>
+          <h3 class="viz-card-title">Generalized Distribution Amplitude</h3>
+          <p class="viz-card-desc">Watch the γγ* → π⁰π⁰ decay process animated with photon collisions and pion pair production.</p>
+        </div>
+        <div class="viz-card-footer">
+          <div class="viz-card-tech">
+            <span class="viz-tech-badge">Canvas</span>
+            <span class="viz-tech-badge">GDAs</span>
+          </div>
+          <span class="viz-card-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- 6. Instant vs Front Form -->
+      <a class="viz-card" href="{{ get_url(path='vd/forms-comparison.html') }}" target="_blank" id="viz-forms">
+        <div class="viz-card-preview">
+          <div class="viz-thumb thumb-forms">
+            <span class="thumb-icon">IF ⟷ FF</span>
+            <div class="thumb-decor" style="width:120px;height:120px;background:radial-gradient(circle,rgba(138,255,178,0.12),transparent);top:50%;left:20%;transform:translateY(-50%);"></div>
+            <div class="thumb-decor" style="width:120px;height:120px;background:radial-gradient(circle,rgba(42,195,249,0.12),transparent);top:50%;right:20%;transform:translateY(-50%);"></div>
+          </div>
+          <div class="viz-card-overlay"></div>
+          <div class="viz-card-play">
+            <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+          </div>
+        </div>
+        <div class="viz-card-body">
+          <span class="viz-card-tag tag-animation">● Animation</span>
+          <h3 class="viz-card-title">Instant Form vs Front Form</h3>
+          <p class="viz-card-desc">Side-by-side comparison of instant form (equal-time) and front form (light-front) relativistic dynamics.</p>
+        </div>
+        <div class="viz-card-footer">
+          <div class="viz-card-tech">
+            <span class="viz-tech-badge">Canvas</span>
+            <span class="viz-tech-badge">KaTeX</span>
+          </div>
+          <span class="viz-card-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- 7. Proton Wallpaper -->
+      <a class="viz-card" href="{{ get_url(path='vd/proton2.html') }}" target="_blank" id="viz-proton">
+        <div class="viz-card-preview">
+          <div class="viz-thumb thumb-proton">
+            <span class="thumb-icon">p⁺</span>
+            <div class="thumb-decor" style="width:150px;height:150px;background:radial-gradient(circle,rgba(160,196,255,0.1),transparent);top:50%;left:50%;transform:translate(-50%,-50%);"></div>
+          </div>
+          <div class="viz-card-overlay"></div>
+          <div class="viz-card-play">
+            <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+          </div>
+        </div>
+        <div class="viz-card-body">
+          <span class="viz-card-tag tag-simulation">● Simulation</span>
+          <h3 class="viz-card-title">Proton Live Wallpaper</h3>
+          <p class="viz-card-desc">Dual-image parallax live wallpaper with particle overlay effects and Ken-Burns zoom animation.</p>
+        </div>
+        <div class="viz-card-footer">
+          <div class="viz-card-tech">
+            <span class="viz-tech-badge">Canvas</span>
+            <span class="viz-tech-badge">Parallax</span>
+          </div>
+          <span class="viz-card-arrow">→</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- Back to Home -->
+<a class="viz-back" href="{{ get_url(path='/', lang=lang) }}">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <polyline points="15 18 9 12 15 6"></polyline>
+  </svg>
+  Back to Home
+</a>
+
+<script>
+  // Create floating particles in hero (lightweight CSS-only)
+  (function() {
+    const container = document.getElementById('vizParticles');
+    if (!container) return;
+    const colors = ['#6366f1', '#0ea5e9', '#8b5cf6', '#34d399', '#f59e0b'];
+    for (let i = 0; i < 20; i++) {
+      const el = document.createElement('div');
+      el.classList.add('viz-particle');
+      const size = Math.random() * 4 + 2;
+      el.style.width = size + 'px';
+      el.style.height = size + 'px';
+      el.style.left = Math.random() * 100 + '%';
+      el.style.background = colors[Math.floor(Math.random() * colors.length)];
+      el.style.animationDuration = (Math.random() * 8 + 6) + 's';
+      el.style.animationDelay = (Math.random() * 10) + 's';
+      el.style.boxShadow = `0 0 ${size * 3}px ${el.style.background}`;
+      container.appendChild(el);
+    }
+  })();
+</script>
+{% endblock %}

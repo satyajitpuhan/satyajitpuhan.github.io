@@ -6,8 +6,8 @@ educations_tab = "Education"
 experiences_tab = "Experience"
 [[educations]]
 title = "Ph.D. ଗଣନାକାରୀ ଉଚ୍ଚ ଶକ୍ତି ପଦାର୍ଥ ବିଜ୍ଞାନରେ |"
-content = "Thesis: Tomography of Light and Heavy Mesons Using Light-front Dynamics. Supervisor: Dr. Harleen Dahiya. Courses: Particle Physics, Adv. Particle Physics, QFT, Research Methodology, Exp. HEP. CGPA: 8.75/10.0"
-time = "2022–Ongoing"
+content = "Thesis: Tomography of Light and Heavy Mesons Using Light-front Dynamics. Supervisor: Dr. Harleen Dahiya. Successfully defended on 2nd April, 2026. Courses: Particle Physics, Adv. Particle Physics, QFT, Research Methodology, Exp. HEP. CGPA: 8.75/10.0"
+time = "2022–2026"
 
 [[educations]]
 title = "Зар чин - JINR, зиз адж, Russia ଷ ଷ | |"
@@ -35,9 +35,14 @@ content = "2nd Topper in Physics in CHSE Final Examination, Odisha. Marks: 478/6
 time = "2015–2016"
 
 [[experiences]]
+title = "पोस्टडक्टोरल रिसर्चर — Institute of Physics, Academia Sinica"
+content = "Conducting research in theoretical high energy physics at the Institute of Physics, Academia Sinica, Taipei, Taiwan. Continuing work on hadron tomography, meson structure, and QCD phenomenology."
+time = "2026–Present"
+
+[[experiences]]
 title = "ରିରି ରି ରି ରି ରି ରି ରି ରି ରି ରି ରି"
-content = "Hadron tomography: TMDs, GPDs, GTMDs, GDAs, form factors, PDFs of mesons in light-front dynamics. Published 20+ papers in top journals: PRD, JHEP, PLB, NPA, NPB, PTEP, EPJP, CPC, EPJA."
-time = "2022–Present"
+content = "Hadron tomography: TMDs, GPDs, GTMDs, GDAs, form factors, PDFs of mesons in light-front dynamics. Published 25 papers in top journals: PRD, JHEP, PLB, NPA, NPB, PTEP, EPJP, CPC, EPJA."
+time = "2022–2026"
 
 [[experiences]]
 title = "ପ୍ରିମିୟର୍ ରିସର୍ଚ୍ଚ ଆୱାର୍ଡ - NIT Jalandhar"

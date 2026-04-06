@@ -66,8 +66,8 @@
 
                         {% if extra.address.email %}
                         <li>
-                            <a href="mailto:{{ extra.address.email }}" style="color: #e2e8f0; text-decoration: none;">
-                                <i class="lni lni-envelope" style="color: #38bdf8;"></i>{{ extra.address.email }}
+                            <a href="mailto:{{ extra.address.email | split(pat=' | ') | first }}" style="color: #e2e8f0; text-decoration: none;">
+                                <i class="lni lni-envelope" style="color: #38bdf8;"></i>{{ extra.address.email | split(pat=" | ") | first }}
                             </a>
                         </li>
                         {% endif %}

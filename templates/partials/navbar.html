@@ -4,7 +4,7 @@
             <img src="{{ get_url(path=extra.logo) }}" alt="Site Logo" style="height: 70px;">
             <div style="margin-left: 15px; color: #00416d;">
                 <h2 style="margin: 0; font-weight: 700; font-size: 1.5rem; color: #00416d;">Satyajit Puhan</h2>
-                <p style="margin: 0; font-size: 0.9rem; font-weight: 500; color: #4a4a4a;">Dr. B R Ambedkar National Institute of Technology Jalandhar</p>
+                <p style="margin: 0; font-size: 0.9rem; font-weight: 500; color: #4a4a4a;">Institute of Physics, Academia Sinica</p>
             </div>
         </a>
         <div class="header-right d-flex align-items-center">
@@ -38,9 +38,15 @@
             <ul class="nav navbar-nav main-navigation w-100 justify-content-start">
                 {% for menu in extra.menus %}
                 <li class="nav-item">
+                    {% if menu.name == "visualizations" %}
+                    <a href="{{ get_url(path=menu.url, lang=lang) }}" class="nav-link" style="padding: 15px 20px; font-weight: 700; font-size: 0.95rem; background: linear-gradient(135deg, #8b5cf6, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-shadow: none;">
+                        ✦ {{ trans(key=menu.name, lang=lang) }}
+                    </a>
+                    {% else %}
                     <a href="{{ get_url(path=menu.url, lang=lang) }}" class="nav-link" style="padding: 15px 20px; color: white; font-weight: 600; font-size: 0.95rem;">
                         {{ trans(key=menu.name, lang=lang) }}
                     </a>
+                    {% endif %}
                 </li>
                 {% endfor %}
                 

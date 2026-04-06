@@ -49,6 +49,7 @@ service = "Research"
 work = "Publications"
 resume = "Resume"
 blog = "Talks"
+visualizations = "Visualizations"
 contact = "Contact"
 
 # Sitemaps
@@ -97,6 +98,7 @@ service = "ଗବେଷଣା"
 work = "ପ୍ରକାଶନ"
 resume = "ବାୟୋଡାଟା"
 blog = "ଆଲୋଚନା"
+visualizations = "ଭିଜୁଆଲାଇଜେସନ୍"
 contact = "ଯୋଗାଯୋଗ"
 
 # Sitemaps
@@ -121,14 +123,15 @@ menus = [
   { name = "work", url = "#portfolio" },
   { name = "resume", url = "#resume" },
   { name = "blog", url = "#blog" },
-  { name = "contact", url = "#contact" }
+  { name = "contact", url = "#contact" },
+  { name = "visualizations", url = "/visualizations/" }
 ]
 
 sitemaps = [
-  { name = "about_me", url = "#about" },
-  { name = "frequently_ask_question", url = "#service" },
-  { name = "privacy_and_policy", url = "#portfolio" },
-  { name = "latest_article", url = "#blog" }
+  { name = "about_me", url = "/#about" },
+  { name = "frequently_ask_question", url = "/#service" },
+  { name = "privacy_and_policy", url = "/#portfolio" },
+  { name = "latest_article", url = "/#blog" }
 ]
 
 socials = [
@@ -145,9 +148,9 @@ socials = [
 [extra.address]
 phone = "+91-9776342407"
 email = "puhansatyajit@gmail.com | puhansatyajit1@gmail.com | satyajitp.ph.21@nitj.ac.in | bealonekrishan@gmail.com"
-address = "Dr. B R Ambedkar NIT, Jalandhar, Punjab, India"
+address = "Institute of Physics, Academia Sinica, Taipei, Taiwan"
 opening_hours = "Available for research collaborations"
 
 [extra.map]
-latitude = "31.3955"
-longitude = "75.5354"
+latitude = "25.0421"
+longitude = "121.6165"
