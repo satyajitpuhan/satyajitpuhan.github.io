@@ -2,6 +2,39 @@ title = "Recent News & Activities"
 subtitle = "Highlights from my research journey."
 
 [[items]]
+top_title = "🚀 New Research Chapter!"
+image = "images/gallery/academia-sinica-taiwan.jpg"
+title = "Starting a New Research Chapter in Taiwan — Joined Academia Sinica"
+date = "April, 2026"
+description = "Joined the Institute of Physics, Academia Sinica as a Research Assistant, working under the supervision of Prof. Wen-Chen Chang. My work focuses on detector development for the ePIC experiment (Zero-Degree Calorimeter) and global analysis of pion and kaon Parton Distribution Functions (PDFs)."
+details = """
+**🚀 Starting a New Research Chapter in Taiwan**
+
+I have joined the **Academia Sinica** as a **Research Assistant** at the **Institute of Physics**, working under the supervision of **Prof. Wen-Chen Chang**.
+
+---
+
+### Research Focus
+
+My work focuses on:
+
+- 🔹 **Detector development for the ePIC experiment** — specifically the Zero-Degree Calorimeter (ZDC), a key forward detector for the Electron-Ion Collider (EIC) at Brookhaven National Laboratory
+- 🔹 **Global analysis of pion and kaon Parton Distribution Functions (PDFs)** — extending our understanding of the internal structure of light mesons through next-generation QCD fits
+
+### Connection to My Research
+
+This aligns closely with my research interests in **hadron structure**, **Transverse Momentum Dependent distributions (TMDs)**, and **Quantum Chromodynamics (QCD)**, particularly in the context of the upcoming **Electron-Ion Collider (EIC)**.
+
+### Looking Ahead
+
+Excited to work at the interface of **theory, phenomenology, and experiment** — bridging first-principles QCD calculations with cutting-edge detector instrumentation and collider physics.
+
+---
+
+*#ParticlePhysics #HadronPhysics #QCD #EIC #AcademiaSinica #Research*
+"""
+
+[[items]]
 top_title = "🎓 PhD Defense Completed!"
 image = "images/gallery/defense-thesis-title-slide.png"
 title = "Final PhD Viva Voce — Tomography of Light & Heavy Mesons Using Light-Front Dynamics"
