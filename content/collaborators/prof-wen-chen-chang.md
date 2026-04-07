@@ -33,5 +33,3 @@ email = "changwc@phys.sinica.edu.tw"
 - **ePIC Experiment:** Detector development for the Electron-Ion Collider at Brookhaven National Laboratory  
 - **Parton Distribution Functions:** Global analysis and extraction of quark/gluon distributions in nucleons and mesons  
 
-### Current Supervision
-- **Satyajit Puhan** (Research Assistant, 2026–Present): Detector development for ePIC (Zero-Degree Calorimeter) and global analysis of pion and kaon PDFs  
