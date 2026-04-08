@@ -16,6 +16,6 @@ solution = "Comprehensive investigation of pion valence quark PDFs using the lig
 
 **Keywords:** Light-cone quark model, Pion PDFs, DGLAP evolution, F₂ structure function, Drell-Yan process, Electron-Ion Collider
 
-{{ resize_image(path="images/portfolio/papers/pion-pdf-lcqm-drellyan.png", width=800, op="fit_width") }}
+![Drell-Yan Cross Section](/images/portfolio/papers/pion-pdf-lcqm-drellyan.png)
 
 [Read on arXiv →](https://arxiv.org/abs/2604.05762)
