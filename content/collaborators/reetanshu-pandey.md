@@ -13,6 +13,10 @@ website = ""
 
 ## Selected Papers
 
+- **Pion Parton Distribution Functions in the Light-Cone Quark Model and Experimental Constraints**  
+  *Hari Govind P, Satyajit Puhan, Abhishek K. P, Reetanshu Pandey, Harleen Dahiya et al.* (Apr 7, 2026)  
+  *e-Print: 2604.05762 [hep-ph]*
+
 - **Does nuclear medium affect the transverse momentum-dependent parton distributions of valence quark of pions?**  
   *Navpreet Kaur, Satyajit Puhan, Reetanshu Pandey, Arvind Kumar, Suneel Dutt et al.* (Sep 9, 2024)  
   *Phys.Lett.B 859 (2024) 139114* | **11 Citations**

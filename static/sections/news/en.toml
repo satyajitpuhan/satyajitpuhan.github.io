@@ -2,6 +2,39 @@ title = "Recent News & Activities"
 subtitle = "Highlights from my research journey."
 
 [[items]]
+top_title = "📄 New Preprint!"
+image = "images/portfolio/papers/pion-pdf-lcqm-drellyan.png"
+title = "Pion Parton Distribution Functions in the Light-Cone Quark Model and Experimental Constraints"
+date = "April 7, 2026"
+description = "New preprint on arXiv! We investigate the valence quark PDFs of the pion in the LCQM with NLO DGLAP evolution, predict the F₂ structure function at NLO accuracy validated against ZEUS and H1 HERA data, and compute Drell-Yan cross-sections with EIC projections."
+details = """
+**📄 New Preprint on arXiv!**
+
+**Title:** Pion Parton Distribution Functions in the Light-Cone Quark Model and Experimental Constraints
+**Authors:** Hari Govind P, Satyajit Puhan, Abhishek K. P, Reetanshu Pandey, Harleen Dahiya, Suneel Dutt, Arvind Kumar
+**e-Print:** [2604.05762 [hep-ph]](https://arxiv.org/abs/2604.05762)
+**Pages:** 21 pages, 15 figures, 4 tables
+
+---
+
+### Key Highlights
+
+- 🔹 **Pion valence quark PDFs** calculated within the light-cone quark model (LCQM) using quark-quark correlation functions
+- 🔹 **NLO DGLAP evolution** of initial-scale PDFs to higher energy scales
+- 🔹 **First prediction of pion F₂ structure function at NLO** — compared with ZEUS and H1 data at DESY-HERA
+- 🔹 **Drell-Yan cross-sections** for forward pion production using LHAPDF nucleon PDF datasets
+- 🔹 **EIC projections** — F₂ structure function studied at electron-ion collider kinematics
+
+### Significance
+
+This work bridges theoretical predictions from the LCQM with experimental observables at HERA and future EIC, providing a comprehensive framework for understanding pion structure through PDFs, structure functions, and cross-sections.
+
+---
+
+*#PionPDFs #LCQM #DGLAP #StructureFunction #DrellYan #EIC #QCD*
+"""
+
+[[items]]
 top_title = "🚀 New Research Chapter!"
 image = "images/gallery/academia-sinica-taiwan.jpg"
 title = "Starting a New Research Chapter in Taiwan — Joined Academia Sinica"

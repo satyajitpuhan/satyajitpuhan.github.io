@@ -23,6 +23,10 @@ website = ""
 
 ## Selected Papers
 
+- **Pion Parton Distribution Functions in the Light-Cone Quark Model and Experimental Constraints**  
+  *Hari Govind P, Satyajit Puhan, Abhishek K. P, Reetanshu Pandey, Harleen Dahiya et al.* (Apr 7, 2026)  
+  *e-Print: 2604.05762 [hep-ph]*
+
 - **Extraction of f1(x, k^2_T) quark TMDs of proton from E288 Drell-Yan data**  
   *Hari Govind P, Reetanshu Pandey, Satyajit Puhan, Suneel Dutt, Harleen Dahiya et al.* (2026)  
   *DAE Symp.Nucl.Phys. 69 (2026) 963-964*
