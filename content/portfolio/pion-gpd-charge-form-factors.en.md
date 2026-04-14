@@ -3,7 +3,7 @@ title = "Extraction of Pion Unpolarized Quark Generalized Parton Distribution fr
 date = 2026-04-13
 
 [extra]
-thumbnail = "images/portfolio/portfolio-1.png"
+thumbnail = "images/portfolio/papers/pion-gpd-form-factors.png"
 service = "e-Print: 2604.11116 [hep-ph]"
 client = "S. Puhan, S. Sharma, N. Kumar, H. Dahiya"
 short_description = "Preprint on arXiv — Data-driven extraction of pion unpolarized quark GPDs at zero skewness from a global fit to electromagnetic form factor and PDF data."
@@ -15,5 +15,7 @@ solution = "Data-driven extraction of pion unpolarized quark GPDs at zero skewne
 **e-Print:** [2604.11116 [hep-ph]](https://arxiv.org/abs/2604.11116)
 
 **Keywords:** Generalized parton distributions, Pion form factor, Impact parameter space, Sullivan process, Electron-Ion Collider
+
+![Pion Form Factor and PDF](/images/portfolio/papers/pion-gpd-form-factors.png)
 
 [Read on arXiv →](https://arxiv.org/abs/2604.11116)
