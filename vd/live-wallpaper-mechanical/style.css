@@ -1,0 +1,338 @@
+/* =============================================
+   PION MECHANICAL DISTRIBUTION - LFQM WALLPAPER
+   ============================================= */
+
+:root {
+    --bg-primary: #06060f;
+    --bg-secondary: #0c0c1e;
+    --glass-bg: rgba(12, 12, 35, 0.65);
+    --glass-border: rgba(120, 120, 255, 0.12);
+    --glass-shadow: rgba(0, 0, 0, 0.4);
+    --text-primary: #e8e8f4;
+    --text-secondary: rgba(200, 200, 230, 0.7);
+    --text-dim: rgba(160, 160, 200, 0.45);
+    --accent-warm: #ff6b4a;
+    --accent-cool: #4ac8ff;
+    --accent-gold: #ffcf48;
+    --accent-violet: #a78bfa;
+    --accent-green: #34d399;
+    --glow-warm: rgba(255, 107, 74, 0.3);
+    --glow-cool: rgba(74, 200, 255, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: none;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: var(--bg-primary);
+    font-family: 'Inter', 'Outfit', sans-serif;
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ========== CANVASES ========== */
+#bg-canvas, #physics-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+#bg-canvas { z-index: 0; }
+#physics-canvas { z-index: 1; }
+
+/* ========== GLASSMORPHISM CARDS ========== */
+.glass-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    box-shadow: 0 8px 32px var(--glass-shadow),
+                inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* ========== UI OVERLAY ========== */
+.ui-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.ui-overlay > * {
+    pointer-events: auto;
+}
+
+.ui-overlay.hidden > *:not(.toggle-ui):not(.fullscreen-btn) {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+}
+
+/* ========== TITLE BAR ========== */
+.title-bar {
+    position: absolute;
+    top: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 16px 36px;
+    text-align: center;
+}
+
+.title-bar h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    background: linear-gradient(135deg, var(--accent-warm), var(--accent-gold), var(--accent-cool));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.title-bar .subtitle {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    margin-top: 4px;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+/* ========== PARAMETERS PANEL ========== */
+.params-panel {
+    position: absolute;
+    top: 120px;
+    left: 28px;
+    width: 260px;
+    padding: 20px;
+}
+
+.panel-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-cool);
+    margin-bottom: 16px;
+}
+
+.control-group {
+    margin-bottom: 14px;
+}
+
+.control-group label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.slider-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.slider-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--accent-gold);
+    min-width: 44px;
+    text-align: right;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    flex: 1;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 2px;
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--accent-cool);
+    box-shadow: 0 0 8px var(--glow-cool);
+    cursor: none;
+}
+
+.param-readouts {
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.readout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.readout-label {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.readout-val {
+    font-size: 1.15rem;
+    color: var(--accent-gold);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+}
+
+/* ========== EQUATION PANEL ========== */
+.equation-panel {
+    position: absolute;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 16px 32px;
+    text-align: center;
+}
+
+.eq-line {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    margin: 8px 0;
+    white-space: nowrap;
+}
+
+.eq-line.small {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.eq-frac {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    vertical-align: middle;
+    margin: 0 3px;
+}
+
+.eq-num {
+    border-bottom: 1px solid var(--text-dim);
+    padding-bottom: 1px;
+    font-size: 0.85em;
+}
+
+.eq-den {
+    padding-top: 1px;
+    font-size: 0.85em;
+}
+
+.eq-paren {
+    font-size: 1.2em;
+    color: var(--text-dim);
+}
+
+.vonlaue {
+    color: var(--accent-green) !important;
+}
+
+.vonlaue-badge {
+    display: inline-block;
+    background: rgba(52, 211, 153, 0.12);
+    border: 1px solid rgba(52, 211, 153, 0.3);
+    border-radius: 8px;
+    padding: 2px 10px;
+    font-size: 0.65rem;
+    margin-left: 8px;
+    color: var(--accent-green);
+    letter-spacing: 0.05em;
+}
+
+/* ========== LEGEND ========== */
+.legend-panel {
+    position: absolute;
+    bottom: 330px;
+    right: 40px;
+    padding: 16px 20px;
+    min-width: 200px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    padding: 3px 0;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.legend-color {
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+    flex-shrink: 0;
+}
+
+/* ========== BUTTONS ========== */
+.toggle-ui, .fullscreen-btn {
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    border: none;
+    cursor: none;
+    transition: all 0.3s ease;
+}
+
+.toggle-ui:hover, .fullscreen-btn:hover {
+    color: var(--accent-cool);
+    border-color: rgba(74, 200, 255, 0.25);
+}
+
+.toggle-ui {
+    bottom: 28px;
+    left: 28px;
+}
+
+.fullscreen-btn {
+    bottom: 28px;
+    left: 80px;
+}
+
+/* ========== ANIMATIONS ========== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.glass-card {
+    animation: fadeIn 0.8s ease forwards;
+}
+
+.params-panel { animation-delay: 0.1s; }
+.equation-panel { animation-delay: 0.2s; }
+.legend-panel { animation-delay: 0.3s; }
+
+/* ========== SCROLLBAR ========== */
+::-webkit-scrollbar { display: none; }
