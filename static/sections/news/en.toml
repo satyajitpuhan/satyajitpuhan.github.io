@@ -3,6 +3,66 @@ subtitle = "Highlights from my research journey."
 
 [[items]]
 top_title = "📄 New Preprint!"
+image = "images/portfolio/papers/pion-gpd-form-factors.png"
+title = "Extraction of Pion Unpolarized Quark Generalized Parton Distribution from Charge Form Factors"
+date = "April 13, 2026"
+description = "New preprint on arXiv! We report a data-driven determination of the unpolarized quark GPDs of the pion at zero skewness via a global fit to electromagnetic form factor and PDF data, providing impact-parameter-space interpretations and essential input for EIC, JLab 12 GeV, COMPASS, and AMBER experiments."
+details = """
+**📄 New Preprint on arXiv!**
+
+**Title:** Extraction of Pion Unpolarized Quark Generalized Parton Distribution from Charge Form Factors
+**Authors:** Satyajit Puhan (Taiwan, Inst. Phys.), Shubham Sharma (Moscow, ITEP & MIPT), Narinder Kumar (Ambedkar NIT & M.N. College), Harleen Dahiya (Ambedkar NIT)
+**e-Print:** [2604.11116 [hep-ph]](https://arxiv.org/abs/2604.11116)
+
+---
+
+### Key Highlights
+
+- 🔹 **Data-driven extraction** of pion unpolarized quark GPDs at zero skewness (ξ = 0) from a global fit to experimental pion form factor and PDF measurements
+- 🔹 **Flexible form factor parameterization** embedded into a GPD framework with collinear PDFs and a profile function encoding transverse dynamics
+- 🔹 **Impact-parameter-space interpretations** — spatial parton distributions revealing the internal structure of the lightest QCD bound state
+- 🔹 **Essential input for future experiments** — EIC Sullivan process, JLab 12 GeV exclusive π⁺ electroproduction, COMPASS, and AMBER pion-beam experiments
+- 🔹 **Lattice QCD connections** — results provide benchmarks for phenomenological and lattice investigations of meson structure
+
+### Significance
+
+This work provides a unified description of the pion's electromagnetic structure and spatial parton distributions, bridging global QCD fits with next-generation collider and fixed-target experiments.
+
+---
+
+*#PionGPDs #FormFactor #ImpactParameter #SullivanProcess #EIC #JLab #COMPASS #AMBER #QCD*
+"""
+
+[[items]]
+top_title = "📄 arXiv Preprint Available!"
+image = "images/gallery/mpla-pdf-ratio-plot.png"
+title = "Internal Structure of Light Mesons Using the Power Law Wave Function — Now on arXiv"
+date = "April 8, 2026"
+description = "Our paper on the internal structure of pion and kaon using spin-improved power-law wave functions, published in Modern Physics Letters A (Special Issue), is now available on arXiv as e-Print: 2604.07049 [hep-ph]."
+details = """
+**📄 arXiv Preprint Now Available!**
+
+**Title:** Internal Structure of Light Mesons Using the Power Law Wave Function
+**Authors:** Satyajit Puhan, Narinder Kumar, Harleen Dahiya
+**Published in:** Modern Physics Letters A (2026), World Scientific — Special Issue (Guest Editor: Dr. Parada Hutauruk)
+**e-Print:** [2604.07049 [hep-ph]](https://arxiv.org/abs/2604.07049)
+
+---
+
+### Key Results
+
+- 🔹 **Distribution Amplitudes, PDFs, TMDs, GPDs, and Form Factors** for pion and kaon using spin-improved power-law wave functions
+- 🔹 **ERBL and NLO DGLAP evolution** — only 41% longitudinal momentum carried by quarks at 16 GeV²
+- 🔹 **Charge radii:** r_π = 0.668 fm and r_K = 0.704 fm
+- 🔹 **Good agreement** with NA7, FNAL, JLab, and E615 experimental data
+
+---
+
+*#PowerLaw #PionStructure #KaonStructure #LightFront #FormFactors #QCD*
+"""
+
+[[items]]
+top_title = "📄 New Preprint!"
 image = "images/portfolio/papers/pion-pdf-lcqm-drellyan.png"
 title = "Pion Parton Distribution Functions in the Light-Cone Quark Model and Experimental Constraints"
 date = "April 7, 2026"
