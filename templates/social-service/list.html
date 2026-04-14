@@ -18,7 +18,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
     overflow: hidden;
     background: linear-gradient(135deg, #1a0a00 0%, #2d1810 25%, #1a2810 50%, #0a1a20 75%, #1a0a10 100%);
   }
@@ -52,11 +51,40 @@
     100% { transform: translate(80px, 80px); }
   }
 
+  .seva-hero-inner {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    max-width: 1200px;
+    width: 100%;
+    padding: 100px 30px 80px;
+    margin: 0 auto;
+  }
+
+  .seva-hero-left {
+    flex: 1;
+    text-align: left;
+  }
+
+  .seva-hero-right {
+    flex: 1;
+    max-width: 420px;
+  }
+
+  @media (max-width: 900px) {
+    .seva-hero-inner {
+      flex-direction: column;
+      text-align: center;
+    }
+    .seva-hero-left { text-align: center; }
+    .seva-hero-right { max-width: 100%; width: 100%; }
+  }
+
   .seva-hero-content {
     position: relative;
     z-index: 2;
-    padding: 100px 20px 80px;
-    max-width: 800px;
   }
 
   .seva-hero-badge {
@@ -820,18 +848,62 @@
 <!-- Hero Section -->
 <section class="seva-hero">
   <div class="seva-particles" id="sevaParticles"></div>
-  <div class="seva-hero-content">
-    <div class="seva-hero-badge">
-      <span class="heart">❤️</span>
-      Social Initiative
+  <div class="seva-hero-inner">
+    <!-- Left: Text -->
+    <div class="seva-hero-left">
+      <div class="seva-hero-content">
+        <div class="seva-hero-badge">
+          <span class="heart">❤️</span>
+          Social Initiative
+        </div>
+        <h1>Durga <span>Seva</span></h1>
+        <p class="seva-hero-subtitle">ଦୁର୍ଗା ସେବା — दुर्गा सेवा — Service of Strength &amp; Compassion</p>
+        <p class="seva-hero-desc">
+          A social service initiative founded by Satyajit Puhan to help underprivileged children
+          access quality education by providing books, school supplies, and learning resources.
+          From a small village in Odisha to the world — giving back to where it all started.
+        </p>
+      </div>
     </div>
-    <h1>Durga <span>Seva</span></h1>
-    <p class="seva-hero-subtitle">ଦୁର୍ଗା ସେବା — दुर्गा सेवा — Service of Strength & Compassion</p>
-    <p class="seva-hero-desc">
-      A social service initiative founded by Satyajit Puhan to help underprivileged children
-      access quality education by providing books, school supplies, and learning resources.
-      From a small village in Odisha to the world — giving back to where it all started.
-    </p>
+
+    <!-- Right: Form -->
+    <div class="seva-hero-right">
+      <div class="seva-form-card">
+        <h2>📝 Request <span>Help</span></h2>
+        <p class="seva-form-subtitle">
+          Need educational supplies? Fill this form — it reaches Satyajit directly.
+        </p>
+        <form class="seva-form" action="https://formsubmit.co/puhansatyajit@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="🙏 Durga Seva — New Help Request!">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="true">
+          <input type="text" name="_honey" style="display:none">
+
+          <div class="seva-form-group">
+            <label for="seva-name"><span class="label-emoji">👤</span> Your name</label>
+            <input type="text" id="seva-name" name="Name" class="seva-form-input" placeholder="e.g. Rahul Kumar" required>
+          </div>
+
+          <div class="seva-form-group">
+            <label for="seva-need"><span class="label-emoji">📚</span> What do you need?</label>
+            <textarea id="seva-need" name="What I Need" class="seva-form-textarea" placeholder="e.g. Textbooks, notebooks, school bag..." required></textarea>
+          </div>
+
+          <div class="seva-form-group">
+            <label for="seva-location"><span class="label-emoji">📍</span> Where are you from?</label>
+            <input type="text" id="seva-location" name="Location" class="seva-form-input" placeholder="e.g. Bhadrak, Odisha" required>
+          </div>
+
+          <div class="seva-form-group">
+            <label for="seva-contact"><span class="label-emoji">📞</span> Contact (optional)</label>
+            <input type="text" id="seva-contact" name="Contact" class="seva-form-input" placeholder="Phone or email">
+          </div>
+
+          <button type="submit" class="seva-form-submit">🙏 Send Request</button>
+          <p class="seva-form-note">Sent directly to Satyajit's email. We will try our best ❤️</p>
+        </form>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -926,62 +998,10 @@
       <div>
         <div class="seva-founder-name">Satyajit Puhan</div>
         <div class="seva-founder-role">Founder · Durga Seva</div>
-        <p class="seva-founder-bio">
-          Postdoctoral Researcher at Academia Sinica, Taiwan. PhD in Computational High Energy Physics
-          from NIT Jalandhar. With 28 publications in top journals, Satyajit believes that scientific
-          progress and social responsibility go hand in hand. Born in a village in Bhadrak, Odisha —
-          he founded Durga Seva to create the educational opportunities he once dreamed of.
+        <p class="seva-founder-bio" style="font-size: 1.1rem; font-weight: 600; color: rgba(255,255,255,0.8);">
+          NO child should stay away from Education ❤️
         </p>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- Request Help Form -->
-<section class="seva-form-section" id="request-help">
-  <div class="container">
-    <div class="seva-form-card">
-      <h2>📝 Request <span>Help</span></h2>
-      <p class="seva-form-subtitle">
-        If you or someone you know needs educational supplies, fill out this simple form.
-        Your request will reach Satyajit directly.
-      </p>
-
-      <form class="seva-form" action="https://formsubmit.co/puhansatyajit@gmail.com" method="POST">
-        <!-- FormSubmit config -->
-        <input type="hidden" name="_subject" value="🙏 Durga Seva — New Help Request!">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="true">
-        <input type="text" name="_honey" style="display:none">
-
-        <div class="seva-form-group">
-          <label for="seva-name"><span class="label-emoji">👤</span> What is your name?</label>
-          <input type="text" id="seva-name" name="Name" class="seva-form-input" placeholder="e.g. Rahul Kumar" required>
-        </div>
-
-        <div class="seva-form-group">
-          <label for="seva-need"><span class="label-emoji">📚</span> What do you need?</label>
-          <textarea id="seva-need" name="What I Need" class="seva-form-textarea" placeholder="e.g. Textbooks for Class 10, notebooks, school bag, pencils..." required></textarea>
-        </div>
-
-        <div class="seva-form-group">
-          <label for="seva-location"><span class="label-emoji">📍</span> Where are you from?</label>
-          <input type="text" id="seva-location" name="Location" class="seva-form-input" placeholder="e.g. Bhadrak, Odisha" required>
-        </div>
-
-        <div class="seva-form-group">
-          <label for="seva-contact"><span class="label-emoji">📞</span> Contact (phone or email) — optional</label>
-          <input type="text" id="seva-contact" name="Contact" class="seva-form-input" placeholder="e.g. +91-9876543210 or email">
-        </div>
-
-        <button type="submit" class="seva-form-submit">
-          🙏 Send Request
-        </button>
-
-        <p class="seva-form-note">
-          Your information is sent directly to Satyajit's email. We will try our best to help. ❤️
-        </p>
-      </form>
     </div>
   </div>
 </section>
