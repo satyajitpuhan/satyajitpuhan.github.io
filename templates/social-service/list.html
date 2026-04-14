@@ -646,6 +646,157 @@
     }
   }
 
+  /* ── Request Form ── */
+  .seva-form-section {
+    background: linear-gradient(180deg, #0a0a1a 0%, #0d1117 100%);
+    padding: 80px 0;
+  }
+
+  .seva-form-section .container {
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .seva-form-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .seva-form-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #f59e0b, #22c55e, #fbbf24);
+  }
+
+  .seva-form-card h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 8px;
+    text-align: center;
+  }
+
+  .seva-form-card h2 span {
+    background: linear-gradient(135deg, #fbbf24, #22c55e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .seva-form-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.45);
+    text-align: center;
+    margin-bottom: 32px;
+    line-height: 1.6;
+  }
+
+  .seva-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .seva-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .seva-form-group label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .seva-form-group label .label-emoji {
+    margin-right: 6px;
+  }
+
+  .seva-form-input,
+  .seva-form-textarea {
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.04);
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    outline: none;
+  }
+
+  .seva-form-input::placeholder,
+  .seva-form-textarea::placeholder {
+    color: rgba(255,255,255,0.25);
+  }
+
+  .seva-form-input:focus,
+  .seva-form-textarea:focus {
+    border-color: rgba(251, 191, 36, 0.5);
+    background: rgba(255,255,255,0.06);
+    box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.1);
+  }
+
+  .seva-form-textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  .seva-form-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px 32px;
+    border-radius: 100px;
+    border: none;
+    background: linear-gradient(135deg, #f59e0b, #22c55e);
+    color: #0a0a0a;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 30px rgba(245, 158, 11, 0.3);
+    margin-top: 8px;
+  }
+
+  .seva-form-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(245, 158, 11, 0.5);
+  }
+
+  .seva-form-note {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.3);
+    text-align: center;
+    margin-top: 8px;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 768px) {
+    .seva-form-card {
+      padding: 32px 20px;
+    }
+  }
+
   /* ── Responsive ── */
   @media (max-width: 768px) {
     .seva-pillar-grid {
@@ -816,6 +967,55 @@
   </div>
 </section>
 
+<!-- Request Help Form -->
+<section class="seva-form-section" id="request-help">
+  <div class="container">
+    <div class="seva-form-card">
+      <h2>📝 Request <span>Help</span></h2>
+      <p class="seva-form-subtitle">
+        If you or someone you know needs educational supplies, fill out this simple form.
+        Your request will reach Satyajit directly.
+      </p>
+
+      <form class="seva-form" action="https://formsubmit.co/puhansatyajit@gmail.com" method="POST">
+        <!-- FormSubmit config -->
+        <input type="hidden" name="_subject" value="🙏 Durga Seva — New Help Request!">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="true">
+        <input type="text" name="_honey" style="display:none">
+
+        <div class="seva-form-group">
+          <label for="seva-name"><span class="label-emoji">👤</span> What is your name?</label>
+          <input type="text" id="seva-name" name="Name" class="seva-form-input" placeholder="e.g. Rahul Kumar" required>
+        </div>
+
+        <div class="seva-form-group">
+          <label for="seva-need"><span class="label-emoji">📚</span> What do you need?</label>
+          <textarea id="seva-need" name="What I Need" class="seva-form-textarea" placeholder="e.g. Textbooks for Class 10, notebooks, school bag, pencils..." required></textarea>
+        </div>
+
+        <div class="seva-form-group">
+          <label for="seva-location"><span class="label-emoji">📍</span> Where are you from?</label>
+          <input type="text" id="seva-location" name="Location" class="seva-form-input" placeholder="e.g. Bhadrak, Odisha" required>
+        </div>
+
+        <div class="seva-form-group">
+          <label for="seva-contact"><span class="label-emoji">📞</span> Contact (phone or email) — optional</label>
+          <input type="text" id="seva-contact" name="Contact" class="seva-form-input" placeholder="e.g. +91-9876543210 or email">
+        </div>
+
+        <button type="submit" class="seva-form-submit">
+          🙏 Send Request
+        </button>
+
+        <p class="seva-form-note">
+          Your information is sent directly to Satyajit's email. We will try our best to help. ❤️
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="seva-cta">
   <div class="container">
@@ -827,7 +1027,7 @@
         a brighter future, one child at a time.
       </p>
       <div class="seva-cta-buttons">
-        <a href="mailto:puhansatyajit@gmail.com?subject=Satya%20Seva%20—%20I%20want%20to%20help" class="seva-btn seva-btn-primary">
+        <a href="mailto:puhansatyajit@gmail.com?subject=Durga%20Seva%20—%20I%20want%20to%20help" class="seva-btn seva-btn-primary">
           ❤️ Get Involved
         </a>
         <a href="{{ get_url(path='/', lang=lang) }}#contact" class="seva-btn seva-btn-secondary">
