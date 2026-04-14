@@ -50,6 +50,7 @@ work = "Publications"
 resume = "Resume"
 blog = "Talks"
 visualizations = "Visualizations"
+social_service = "Satya Seva"
 contact = "Contact"
 
 # Sitemaps
@@ -99,6 +100,7 @@ work = "ପ୍ରକାଶନ"
 resume = "ବାୟୋଡାଟା"
 blog = "ଆଲୋଚନା"
 visualizations = "ଭିଜୁଆଲାଇଜେସନ୍"
+social_service = "ସତ୍ୟ ସେବା"
 contact = "ଯୋଗାଯୋଗ"
 
 # Sitemaps
@@ -124,7 +126,8 @@ menus = [
   { name = "resume", url = "#resume" },
   { name = "blog", url = "#blog" },
   { name = "contact", url = "#contact" },
-  { name = "visualizations", url = "/visualizations/" }
+  { name = "visualizations", url = "/visualizations/" },
+  { name = "social_service", url = "/social-service/" }
 ]
 
 sitemaps = [

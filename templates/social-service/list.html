@@ -1,0 +1,866 @@
+{% extends "base.html" %}
+
+{% block title %}Satya Seva — Social Service Initiative | {{ config.title }}{% endblock %}
+
+{% block stylesheets %}
+{{ super() }}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  /* ── Reset ── */
+  .seva-page * { box-sizing: border-box; }
+
+  /* ── Hero Section ── */
+  .seva-hero {
+    position: relative;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    background: linear-gradient(135deg, #1a0a00 0%, #2d1810 25%, #1a2810 50%, #0a1a20 75%, #1a0a10 100%);
+  }
+
+  .seva-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(255, 165, 0, 0.15) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 30%, rgba(34, 197, 94, 0.12) 0%, transparent 55%),
+      radial-gradient(ellipse at 50% 80%, rgba(251, 191, 36, 0.10) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  /* Animated floating hearts */
+  .seva-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle 2px, rgba(255,165,0,0.15) 1px, transparent 1px),
+      radial-gradient(circle 1.5px, rgba(34,197,94,0.12) 1px, transparent 1px);
+    background-size: 80px 80px, 60px 60px;
+    animation: starsDrift 30s linear infinite;
+    pointer-events: none;
+  }
+
+  @keyframes starsDrift {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(80px, 80px); }
+  }
+
+  .seva-hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 100px 20px 80px;
+    max-width: 800px;
+  }
+
+  .seva-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 165, 0, 0.15);
+    border: 1px solid rgba(255, 165, 0, 0.3);
+    border-radius: 100px;
+    padding: 8px 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #fbbf24;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    backdrop-filter: blur(8px);
+  }
+
+  .seva-hero-badge .heart {
+    animation: heartbeat 1.5s ease-in-out infinite;
+    font-size: 1rem;
+  }
+
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    14% { transform: scale(1.3); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.3); }
+    56% { transform: scale(1); }
+  }
+
+  .seva-hero h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 8px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .seva-hero h1 span {
+    background: linear-gradient(135deg, #f59e0b, #22c55e, #fbbf24);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .seva-hero-subtitle {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.3rem;
+    color: rgba(255,255,255,0.7);
+    margin: 0 0 20px;
+    font-weight: 300;
+    font-style: italic;
+  }
+
+  .seva-hero-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.05rem;
+    color: rgba(255,255,255, 0.55);
+    max-width: 640px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* ── Floating particles ── */
+  .seva-particles {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .seva-particle {
+    position: absolute;
+    animation: floatParticle linear infinite;
+    opacity: 0;
+    font-size: 1.2rem;
+  }
+
+  @keyframes floatParticle {
+    0% { transform: translateY(100vh) scale(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.7; }
+    90% { opacity: 0.7; }
+    100% { transform: translateY(-20vh) scale(1) rotate(360deg); opacity: 0; }
+  }
+
+  /* ── Mission Statement ── */
+  .seva-mission {
+    background: linear-gradient(180deg, #0a1a20 0%, #0f1218 100%);
+    padding: 80px 0;
+    text-align: center;
+  }
+
+  .seva-mission .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .seva-mission-quote {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.6;
+    margin: 0 0 16px;
+    position: relative;
+    padding: 0 40px;
+  }
+
+  .seva-mission-quote::before,
+  .seva-mission-quote::after {
+    content: '"';
+    font-size: 4rem;
+    position: absolute;
+    color: rgba(251, 191, 36, 0.3);
+    font-family: Georgia, serif;
+    line-height: 1;
+  }
+  .seva-mission-quote::before { top: -10px; left: 0; }
+  .seva-mission-quote::after { content: '"'; bottom: -30px; right: 0; }
+
+  .seva-mission-author {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.4);
+    margin-top: 24px;
+  }
+
+  /* ── Stats Section ── */
+  .seva-stats {
+    background: linear-gradient(180deg, #0f1218 0%, #0d1117 100%);
+    padding: 60px 0;
+  }
+
+  .seva-stats .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .seva-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+  }
+
+  .seva-stat-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 32px 24px;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+
+  .seva-stat-card:hover {
+    border-color: rgba(251, 191, 36, 0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+  }
+
+  .seva-stat-icon {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+  }
+
+  .seva-stat-num {
+    font-family: 'Outfit', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #f59e0b, #22c55e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .seva-stat-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.45);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-top: 8px;
+  }
+
+  /* ── How It Works / Pillars ── */
+  .seva-pillars {
+    background: linear-gradient(180deg, #0d1117 0%, #0a0e14 100%);
+    padding: 80px 0 100px;
+  }
+
+  .seva-pillars .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .seva-section-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 12px;
+  }
+
+  .seva-section-title span {
+    background: linear-gradient(135deg, #f59e0b, #22c55e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .seva-section-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.45);
+    text-align: center;
+    margin-bottom: 48px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .seva-pillar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 28px;
+  }
+
+  .seva-pillar-card {
+    position: relative;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 36px 28px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+  }
+
+  .seva-pillar-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    border-radius: 16px 16px 0 0;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+  }
+
+  .seva-pillar-card:hover::before { opacity: 1; }
+  .seva-pillar-card:nth-child(1)::before { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+  .seva-pillar-card:nth-child(2)::before { background: linear-gradient(90deg, #22c55e, #4ade80); }
+  .seva-pillar-card:nth-child(3)::before { background: linear-gradient(90deg, #3b82f6, #60a5fa); }
+
+  .seva-pillar-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255,255,255,0.12);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    background: rgba(255,255,255,0.05);
+  }
+
+  .seva-pillar-icon {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+  }
+
+  .seva-pillar-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 12px;
+  }
+
+  .seva-pillar-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.7;
+  }
+
+  .seva-pillar-items {
+    list-style: none;
+    padding: 0;
+    margin: 16px 0 0;
+  }
+
+  .seva-pillar-items li {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.55);
+    padding: 6px 0;
+    padding-left: 20px;
+    position: relative;
+  }
+
+  .seva-pillar-items li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    color: #fbbf24;
+    font-size: 0.7rem;
+  }
+
+  /* ── Image Gallery / Impact Section ── */
+  .seva-impact {
+    background: linear-gradient(180deg, #0a0e14 0%, #0d1117 50%, #0a0a1a 100%);
+    padding: 80px 0;
+  }
+
+  .seva-impact .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .seva-impact-hero-img {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto 40px;
+    display: block;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 20px 80px rgba(0,0,0,0.5);
+  }
+
+  .seva-impact-text {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .seva-impact-text h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 16px;
+  }
+
+  .seva-impact-text p {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.8;
+  }
+
+  /* ── CTA / Donate Section ── */
+  .seva-cta {
+    background: linear-gradient(180deg, #0a0a1a 0%, #0d1117 100%);
+    padding: 80px 0 120px;
+    text-align: center;
+  }
+
+  .seva-cta .container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .seva-cta-box {
+    background: linear-gradient(135deg, rgba(251,191,36,0.08), rgba(34,197,94,0.08));
+    border: 1px solid rgba(251,191,36,0.2);
+    border-radius: 24px;
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .seva-cta-box::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(251,191,36,0.05), transparent 60%);
+    animation: ctaGlow 8s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+
+  @keyframes ctaGlow {
+    0% { transform: translate(-10%, -10%); }
+    100% { transform: translate(10%, 10%); }
+  }
+
+  .seva-cta h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .seva-cta h2 span {
+    background: linear-gradient(135deg, #fbbf24, #22c55e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .seva-cta p {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.7;
+    margin-bottom: 32px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .seva-cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+  }
+
+  .seva-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 32px;
+    border-radius: 100px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+  }
+
+  .seva-btn-primary {
+    background: linear-gradient(135deg, #f59e0b, #22c55e);
+    color: #0a0a0a;
+    box-shadow: 0 8px 30px rgba(245, 158, 11, 0.3);
+  }
+
+  .seva-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(245, 158, 11, 0.5);
+    color: #0a0a0a;
+    text-decoration: none;
+  }
+
+  .seva-btn-secondary {
+    background: rgba(255,255,255,0.06);
+    color: #ffffff;
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .seva-btn-secondary:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-2px);
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  /* ── Founder Section ── */
+  .seva-founder {
+    background: linear-gradient(180deg, #0d1117 0%, #0a0a1a 100%);
+    padding: 60px 0;
+  }
+
+  .seva-founder .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .seva-founder-card {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 20px;
+    padding: 32px;
+  }
+
+  @media (max-width: 600px) {
+    .seva-founder-card {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+
+  .seva-founder-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(251,191,36,0.3);
+    flex-shrink: 0;
+  }
+
+  .seva-founder-name {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 4px;
+  }
+
+  .seva-founder-role {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: #fbbf24;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+  }
+
+  .seva-founder-bio {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.7;
+  }
+
+  /* ── Back to Home Button ── */
+  .seva-back {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 100px;
+    background: rgba(245, 158, 11, 0.9);
+    color: #0a0a0a;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 30px rgba(245, 158, 11, 0.4);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(245, 158, 11, 0.5);
+  }
+
+  .seva-back:hover {
+    background: rgba(245, 158, 11, 1);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(245, 158, 11, 0.5);
+    color: #0a0a0a;
+    text-decoration: none;
+  }
+
+  .seva-back svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* ── Scroll Animations ── */
+  .seva-fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: sevaFadeInUp 0.7s ease forwards;
+  }
+
+  .seva-fade-in:nth-child(1) { animation-delay: 0.1s; }
+  .seva-fade-in:nth-child(2) { animation-delay: 0.2s; }
+  .seva-fade-in:nth-child(3) { animation-delay: 0.3s; }
+  .seva-fade-in:nth-child(4) { animation-delay: 0.4s; }
+
+  @keyframes sevaFadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .seva-pillar-grid {
+      grid-template-columns: 1fr;
+    }
+    .seva-stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .seva-mission-quote {
+      font-size: 1.2rem;
+      padding: 0 20px;
+    }
+    .seva-cta-box {
+      padding: 32px 24px;
+    }
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="seva-hero">
+  <div class="seva-particles" id="sevaParticles"></div>
+  <div class="seva-hero-content">
+    <div class="seva-hero-badge">
+      <span class="heart">❤️</span>
+      Social Initiative
+    </div>
+    <h1>Satya <span>Seva</span></h1>
+    <p class="seva-hero-subtitle">ସତ୍ୟ ସେବା — सत्य सेवा — Service through Truth</p>
+    <p class="seva-hero-desc">
+      A social service initiative founded by Satyajit Puhan to help underprivileged children
+      access quality education by providing books, school supplies, and learning resources.
+      From a small village in Odisha to the world — giving back to where it all started.
+    </p>
+  </div>
+</section>
+
+<!-- Mission Quote -->
+<section class="seva-mission">
+  <div class="container">
+    <p class="seva-mission-quote">
+      Education is the most powerful weapon which you can use to change the world.
+      Every child deserves the chance to learn, dream, and rise — regardless of where they were born.
+    </p>
+    <p class="seva-mission-author">— Inspired by the journey from a village in Odisha to international research</p>
+  </div>
+</section>
+
+<!-- Impact Stats -->
+<section class="seva-stats">
+  <div class="container">
+    <div class="seva-stats-grid">
+      <div class="seva-stat-card seva-fade-in">
+        <div class="seva-stat-icon">📚</div>
+        <div class="seva-stat-num">0+</div>
+        <div class="seva-stat-label">Books Donated</div>
+      </div>
+      <div class="seva-stat-card seva-fade-in">
+        <div class="seva-stat-icon">👧</div>
+        <div class="seva-stat-num">0+</div>
+        <div class="seva-stat-label">Children Helped</div>
+      </div>
+      <div class="seva-stat-card seva-fade-in">
+        <div class="seva-stat-icon">🎒</div>
+        <div class="seva-stat-num">0+</div>
+        <div class="seva-stat-label">Supply Kits</div>
+      </div>
+      <div class="seva-stat-card seva-fade-in">
+        <div class="seva-stat-icon">🏘️</div>
+        <div class="seva-stat-num">0+</div>
+        <div class="seva-stat-label">Villages Reached</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pillars -->
+<section class="seva-pillars">
+  <div class="container">
+    <h2 class="seva-section-title">How <span>Satya Seva</span> Works</h2>
+    <p class="seva-section-sub">Three pillars to empower every child's educational journey</p>
+
+    <div class="seva-pillar-grid">
+      <div class="seva-pillar-card seva-fade-in">
+        <div class="seva-pillar-icon">📖</div>
+        <h3 class="seva-pillar-title">Educational Supplies</h3>
+        <p class="seva-pillar-desc">
+          Providing essential learning materials to children who cannot afford them.
+        </p>
+        <ul class="seva-pillar-items">
+          <li>Textbooks and notebooks</li>
+          <li>Stationery (pens, pencils, erasers)</li>
+          <li>School bags and uniforms</li>
+          <li>Art and craft supplies</li>
+          <li>Science experiment kits</li>
+        </ul>
+      </div>
+
+      <div class="seva-pillar-card seva-fade-in">
+        <div class="seva-pillar-icon">🎓</div>
+        <h3 class="seva-pillar-title">Learning Support</h3>
+        <p class="seva-pillar-desc">
+          Beyond supplies — comprehensive learning support to help children succeed.
+        </p>
+        <ul class="seva-pillar-items">
+          <li>After-school tutoring</li>
+          <li>Mentorship from researchers</li>
+          <li>Digital learning resources</li>
+          <li>Exam preparation guidance</li>
+          <li>Science and math workshops</li>
+        </ul>
+      </div>
+
+      <div class="seva-pillar-card seva-fade-in">
+        <div class="seva-pillar-icon">🌟</div>
+        <h3 class="seva-pillar-title">Scholarship Fund</h3>
+        <p class="seva-pillar-desc">
+          Financial assistance for talented students from underprivileged backgrounds.
+        </p>
+        <ul class="seva-pillar-items">
+          <li>Merit-based scholarships</li>
+          <li>School fee support</li>
+          <li>Higher education guidance</li>
+          <li>Career counseling</li>
+          <li>Connecting with opportunities</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Impact Image Section -->
+<section class="seva-impact">
+  <div class="container">
+    <h2 class="seva-section-title">Building a <span>Brighter Future</span></h2>
+    <p class="seva-section-sub">Every book, every notebook, every pencil makes a difference</p>
+    <img src="{{ get_url(path='images/gallery/social-service-hero.png') }}" alt="Children receiving educational supplies" class="seva-impact-hero-img" loading="lazy">
+    <div class="seva-impact-text">
+      <h3>From Odisha to the World & Back</h3>
+      <p>
+        Growing up in a small village in Odisha, I understood firsthand how limited resources
+        can hold back bright minds. My journey from Bhadrak to NIT Jamshedpur, NIT Jalandhar,
+        JINR Russia, PSI Switzerland, and now Academia Sinica Taiwan was made possible by the
+        support of many. <strong>Satya Seva</strong> is my way of giving back — ensuring that
+        the next generation of curious minds from rural India gets the tools they need to succeed.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Founder Card -->
+<section class="seva-founder">
+  <div class="container">
+    <div class="seva-founder-card">
+      <img src="{{ get_url(path='images/hero/me1.jpg') }}" alt="Satyajit Puhan" class="seva-founder-avatar">
+      <div>
+        <div class="seva-founder-name">Satyajit Puhan</div>
+        <div class="seva-founder-role">Founder · Satya Seva</div>
+        <p class="seva-founder-bio">
+          Postdoctoral Researcher at Academia Sinica, Taiwan. PhD in Computational High Energy Physics
+          from NIT Jalandhar. With 28 publications in top journals, Satyajit believes that scientific
+          progress and social responsibility go hand in hand. Born in a village in Bhadrak, Odisha —
+          he founded Satya Seva to create the educational opportunities he once dreamed of.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="seva-cta">
+  <div class="container">
+    <div class="seva-cta-box">
+      <h2>Help a Child <span>Learn Today</span></h2>
+      <p>
+        Your contribution — no matter how small — can buy a notebook, a set of pencils,
+        or a textbook that could change a child's life forever. Join us in building
+        a brighter future, one child at a time.
+      </p>
+      <div class="seva-cta-buttons">
+        <a href="mailto:puhansatyajit@gmail.com?subject=Satya%20Seva%20—%20I%20want%20to%20help" class="seva-btn seva-btn-primary">
+          ❤️ Get Involved
+        </a>
+        <a href="{{ get_url(path='/', lang=lang) }}#contact" class="seva-btn seva-btn-secondary">
+          📬 Contact Satyajit
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Back to Home -->
+<a class="seva-back" href="{{ get_url(path='/', lang=lang) }}">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <polyline points="15 18 9 12 15 6"></polyline>
+  </svg>
+  Back to Home
+</a>
+
+<script>
+  // Create floating particles (hearts, stars, books)
+  (function() {
+    const container = document.getElementById('sevaParticles');
+    if (!container) return;
+    const emojis = ['❤️', '📚', '✨', '🌟', '📖', '✏️', '🎓', '💛'];
+    for (let i = 0; i < 15; i++) {
+      const el = document.createElement('div');
+      el.classList.add('seva-particle');
+      el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      el.style.left = Math.random() * 100 + '%';
+      el.style.animationDuration = (Math.random() * 10 + 8) + 's';
+      el.style.animationDelay = (Math.random() * 12) + 's';
+      container.appendChild(el);
+    }
+  })();
+</script>
+{% endblock %}

@@ -42,6 +42,10 @@
                     <a href="{{ get_url(path=menu.url, lang=lang) }}" class="nav-link" style="padding: 15px 20px; font-weight: 700; font-size: 0.95rem; background: linear-gradient(135deg, #8b5cf6, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-shadow: none;">
                         ✦ {{ trans(key=menu.name, lang=lang) }}
                     </a>
+                    {% elif menu.name == "social_service" %}
+                    <a href="{{ get_url(path=menu.url, lang=lang) }}" class="nav-link" style="padding: 15px 20px; font-weight: 700; font-size: 0.95rem; background: linear-gradient(135deg, #f59e0b, #22c55e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-shadow: none;">
+                        ❤️ {{ trans(key=menu.name, lang=lang) }}
+                    </a>
                     {% else %}
                     <a href="{{ get_url(path=menu.url, lang=lang) }}" class="nav-link" style="padding: 15px 20px; color: white; font-weight: 600; font-size: 0.95rem;">
                         {{ trans(key=menu.name, lang=lang) }}
