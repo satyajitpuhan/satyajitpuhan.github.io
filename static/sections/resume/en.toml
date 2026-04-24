@@ -41,6 +41,11 @@ content = "Conducting research in theoretical high energy physics at the Institu
 time    = "2026–Present"
 
 [[experiences]]
+title   = "Seminar at Prof. C. R. Ji's Group — Extraction of Pion GPDs (NCSU, USA)"
+content = "Presented 'Extraction of Pion GPDs' via Zoom from IOP, Academia Sinica. Discussed data-driven extraction of pion unpolarized quark GPDs, form factor fitting, and impact-parameter-space interpretations."
+time    = "Apr 2026"
+
+[[experiences]]
 title   = "Senior Research Fellow — NIT Jalandhar"
 content = "Hadron tomography: TMDs, GPDs, GTMDs, GDAs, form factors, PDFs of mesons in light-front dynamics. Published 27 papers in top journals: PRD, JHEP, PLB, NPA, NPB, PTEP, EPJP, CPC, EPJA."
 time    = "2022–2026"

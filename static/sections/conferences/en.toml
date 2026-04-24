@@ -3,6 +3,15 @@ title = "Conferences I Have Attended"
 subtitle = "Workshops, summer schools, and international conferences where I presented talks, posters, or participated."
 
 [[events]]
+title = "Seminar — Extraction of Pion GPDs (Prof. C. R. Ji's Group, NCSU)"
+date = "Apr 17, 2026"
+venue = "Prof. C. R. Ji's Research Group, NCSU, USA (via Zoom from IOP, Academia Sinica)"
+mode = "Talk"
+type = "Seminar"
+description = "Presented 'Extraction of Pion GPDs' at Prof. C. R. Ji's Research Group meeting. Discussed data-driven extraction of pion unpolarized quark GPDs at zero skewness, form factor fitting, and impact-parameter-space interpretations."
+image = "images/blog/posts/crji-seminar.png"
+
+[[events]]
 title = "ICFHEP 2025 — IIT Bhilai"
 date = "Feb 13–15, 2025"
 venue = "Indian Institute of Technology Bhilai, Chhattisgarh"

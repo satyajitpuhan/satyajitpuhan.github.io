@@ -2,6 +2,41 @@ title = "Recent News & Activities"
 subtitle = "Highlights from my research journey."
 
 [[items]]
+top_title = "🎤 Seminar Talk!"
+image = "images/blog/posts/crji-seminar.png"
+title = "Extraction of Pion GPDs — Seminar at Prof. C. R. Ji's Group (NCSU, USA)"
+date = "April 17, 2026"
+description = "Presented a seminar on 'Extraction of Pion GPDs' at Prof. C. R. Ji's Research Group, North Carolina State University, via Zoom from IOP, Academia Sinica. Discussed our recent data-driven extraction of pion unpolarized quark GPDs at zero skewness, impact-parameter-space interpretations, and implications for EIC, JLab, COMPASS, and AMBER experiments."
+details = """
+**🎤 Seminar at Prof. C. R. Ji's Research Group**
+
+**Talk Title:** Extraction of Pion GPDs
+**Speaker:** Satyajit Puhan
+**Affiliation:** IOP, Academia Sinica, Taipei, Taiwan
+**Group:** Prof. C. R. Ji's Research Group, NCSU, USA
+**Mode:** Zoom Meeting
+**Date:** 17th April, 2026
+
+---
+
+### Talk Highlights
+
+- 🔹 **Data-driven extraction** of pion unpolarized quark GPDs at zero skewness (ξ = 0) from a global fit to experimental pion form factor and PDF measurements
+- 🔹 **Flexible form factor parameterization** embedded into a GPD framework with collinear PDFs and a profile function encoding transverse dynamics
+- 🔹 **Impact-parameter-space interpretations** — spatial parton distributions revealing the internal structure of the lightest QCD bound state
+- 🔹 **Interactive parameter explorer** — live demonstration of the Pion Form Factor Interactive Parameter Explorer tool
+- 🔹 **Essential input for future experiments** — EIC Sullivan process, JLab 12 GeV, COMPASS, and AMBER pion-beam experiments
+
+### Connection to Previous Work
+
+This is the second seminar at Prof. C. R. Ji's group. The first seminar (July 2025) covered the broader internal structure of light mesons through distribution functions (PDFs, GPDs, TMDs, and mechanical properties). This talk focuses specifically on the recent data-driven extraction of pion GPDs from charge form factors.
+
+---
+
+*#PionGPDs #FormFactor #ImpactParameter #SullivanProcess #EIC #JLab #COMPASS #AMBER #QCD*
+"""
+
+[[items]]
 top_title = "📄 New Preprint!"
 image = "images/portfolio/papers/pion-gpd-form-factors.png"
 title = "Extraction of Pion Unpolarized Quark Generalized Parton Distribution from Charge Form Factors"
