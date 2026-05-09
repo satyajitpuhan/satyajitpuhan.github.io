@@ -173,138 +173,168 @@
         ctx.globalAlpha = 1.0;
         ctx.restore();
 
-        // ===== Body (hyper-3D capsule, gradients) =====
+        // ===== Body (SSS skin + 3D shading) =====
         ctx.save();
         ctx.rotate(bodyYaw);
+        // Base skin with warm SSS (subsurface scattering simulation)
         capsule(0, bodyY, fw, fh);
         let bG = ctx.createLinearGradient(-fw / 2, bodyY, fw / 2, bodyY);
-        bG.addColorStop(0, '#d7b657');
-        bG.addColorStop(0.27, '#ffe366');
-        bG.addColorStop(0.51, '#fff8dc');
-        bG.addColorStop(0.72, '#fddb17');
-        bG.addColorStop(0.98, '#b69223');
-        bG.addColorStop(1.0, '#977a0c');
+        bG.addColorStop(0,    '#b8860b');
+        bG.addColorStop(0.12, '#d4a520');
+        bG.addColorStop(0.32, '#f5d040');
+        bG.addColorStop(0.50, '#fff5b0');
+        bG.addColorStop(0.68, '#f0c030');
+        bG.addColorStop(0.88, '#c89010');
+        bG.addColorStop(1.0,  '#8a6008');
         ctx.fillStyle = bG;
-        ctx.shadowColor = 'rgba(40,25,10,0.16)';
-        ctx.shadowBlur = 18;
+        ctx.shadowColor = 'rgba(180,100,0,0.22)';
+        ctx.shadowBlur = 22;
         ctx.fill();
         ctx.shadowBlur = 0;
-
-        // Top edge highlight
+        // SSS warm glow from inside (orange rim light)
         ctx.save();
         capsule(0, bodyY, fw, fh);
         ctx.clip();
-        let hG = ctx.createLinearGradient(0, bodyY - fh / 2.205, 0, bodyY - fh / 4.6);
-        hG.addColorStop(0, 'rgba(255,255,255,0.29)');
-        hG.addColorStop(1, 'rgba(255,255,255,0)');
+        let sscG = ctx.createRadialGradient(0, bodyY, fw*0.08, 0, bodyY, fw*0.55);
+        sscG.addColorStop(0, 'rgba(255,220,80,0.13)');
+        sscG.addColorStop(0.6,'rgba(255,160,20,0.06)');
+        sscG.addColorStop(1,  'rgba(200,80,0,0.09)');
+        ctx.fillStyle = sscG;
+        ctx.fillRect(-fw/2, bodyY-fh/2, fw, fh);
+        ctx.restore();
+        // Specular highlight (glossy skin)
+        ctx.save();
+        capsule(0, bodyY, fw, fh);
+        ctx.clip();
+        let hG = ctx.createLinearGradient(-fw*0.2, bodyY-fh/2, fw*0.15, bodyY-fh/6);
+        hG.addColorStop(0, 'rgba(255,255,255,0.42)');
+        hG.addColorStop(0.4,'rgba(255,255,255,0.15)');
+        hG.addColorStop(1,  'rgba(255,255,255,0)');
         ctx.fillStyle = hG;
-        ctx.fillRect(-fw / 2, bodyY - fh / 2, fw, fh / 2.9);
+        ctx.fillRect(-fw/2, bodyY-fh/2, fw, fh/2.4);
         ctx.restore();
-
-        // Bottom shadow
+        // Ambient occlusion bottom
         ctx.save();
         capsule(0, bodyY, fw, fh);
         ctx.clip();
-        let sG = ctx.createLinearGradient(0, bodyY + fh * 0.15, 0, bodyY + fh * 0.52);
-        sG.addColorStop(0, 'rgba(0,0,0,0)');
-        sG.addColorStop(1, 'rgba(100,60,8,0.10)');
-        ctx.fillStyle = sG;
-        ctx.fillRect(-fw / 2, bodyY, fw, fh / 2);
+        let aoG = ctx.createLinearGradient(0, bodyY+fh*0.2, 0, bodyY+fh*0.52);
+        aoG.addColorStop(0, 'rgba(0,0,0,0)');
+        aoG.addColorStop(1, 'rgba(80,40,0,0.18)');
+        ctx.fillStyle = aoG;
+        ctx.fillRect(-fw/2, bodyY, fw, fh/2);
         ctx.restore();
-        ctx.strokeStyle = '#a88a11';
-        ctx.lineWidth = 1.7;
+        ctx.strokeStyle = '#9a7010';
+        ctx.lineWidth = 1.5;
         ctx.stroke();
         ctx.restore();
 
-        // ===== Overalls =====
+        // ===== Overalls (denim fabric) =====
         ctx.save();
         const ovT = CFG.H * 0.08, ovH = fh * 0.44;
+        // Main denim body with fabric-like gradient
         rr(0, ovT + ovH * 0.29, fw * 0.98, ovH, 9.5);
-        let ovG = ctx.createLinearGradient(-fw / 2, 0, fw / 2, 0);
-        ovG.addColorStop(0, '#2e3f66');
-        ovG.addColorStop(0.25, '#5e83b9');
-        ovG.addColorStop(0.68, '#3979ce');
-        ovG.addColorStop(1, '#25294e');
+        let ovG = ctx.createLinearGradient(-fw/2, ovT, fw/2, ovT+ovH);
+        ovG.addColorStop(0,    '#1a2d55');
+        ovG.addColorStop(0.18, '#2e4d88');
+        ovG.addColorStop(0.42, '#3a6ab5');
+        ovG.addColorStop(0.60, '#2d55a0');
+        ovG.addColorStop(0.80, '#1e3670');
+        ovG.addColorStop(1,    '#131e40');
         ctx.fillStyle = ovG;
-        ctx.shadowColor = 'rgba(10,16,36,0.23)';
-        ctx.shadowBlur = 4;
+        ctx.shadowColor = 'rgba(5,10,30,0.35)';
+        ctx.shadowBlur = 6;
         ctx.fill();
         ctx.shadowBlur = 0;
-        ctx.strokeStyle = '#263156';
-        ctx.lineWidth = 1;
-        ctx.stroke();
+        // Denim fabric sheen
+        ctx.save();
+        rr(0, ovT + ovH * 0.29, fw * 0.98, ovH, 9.5);
+        ctx.clip();
+        let dnG = ctx.createLinearGradient(-fw*0.3, 0, fw*0.3, ovH*0.5);
+        dnG.addColorStop(0, 'rgba(255,255,255,0.07)');
+        dnG.addColorStop(0.5,'rgba(255,255,255,0.02)');
+        dnG.addColorStop(1,  'rgba(255,255,255,0)');
+        ctx.fillStyle = dnG; ctx.fillRect(-fw/2, ovT, fw, ovH);
+        // Denim weave lines
+        ctx.strokeStyle='rgba(255,255,255,0.04)'; ctx.lineWidth=0.7;
+        for(let dy=ovT+4; dy<ovT+ovH; dy+=4){
+            ctx.beginPath(); ctx.moveTo(-fw*0.49,dy); ctx.lineTo(fw*0.49,dy); ctx.stroke();
+        }
+        ctx.restore();
+        ctx.strokeStyle = '#1a2a50'; ctx.lineWidth = 1.2; ctx.stroke();
 
         // Bib
         ctx.beginPath();
-        ctx.moveTo(-fw * 0.29, ovT - 5);
-        ctx.lineTo(fw * 0.29, ovT - 5);
-        ctx.lineTo(fw * 0.335, ovT + ovH * 0.32);
-        ctx.lineTo(-fw * 0.335, ovT + ovH * 0.32);
+        ctx.moveTo(-fw*0.29, ovT-5); ctx.lineTo(fw*0.29, ovT-5);
+        ctx.lineTo(fw*0.335, ovT+ovH*0.32); ctx.lineTo(-fw*0.335, ovT+ovH*0.32);
         ctx.closePath();
-        ctx.fillStyle = ovG;
-        ctx.globalAlpha = 0.82;
-        ctx.fill();
-        ctx.globalAlpha = 1.0;
+        ctx.fillStyle = ovG; ctx.globalAlpha = 0.88; ctx.fill(); ctx.globalAlpha = 1.0;
 
-        // Pocket
-        rr(0, ovT + 10, fw * 0.295, ovH * 0.38, 5);
-        let pkG = ctx.createLinearGradient(0, ovT + 3, 0, ovT + 24);
-        pkG.addColorStop(0, '#4269a8');
-        pkG.addColorStop(1, '#2b3c56');
-        ctx.fillStyle = pkG;
-        ctx.fill();
+        // Pocket with depth shadow
+        rr(0, ovT+10, fw*0.295, ovH*0.38, 5);
+        let pkG = ctx.createLinearGradient(0, ovT+2, 0, ovT+26);
+        pkG.addColorStop(0, '#2a4080'); pkG.addColorStop(1, '#1a2850');
+        ctx.fillStyle = pkG; ctx.fill();
+        ctx.strokeStyle='rgba(0,0,0,0.3)'; ctx.lineWidth=0.8; ctx.stroke();
+        // Pocket inner shadow
+        rr(0, ovT+10, fw*0.295, ovH*0.38, 5);
+        ctx.save(); ctx.clip();
+        let pkSh=ctx.createLinearGradient(0,ovT+2,0,ovT+8);
+        pkSh.addColorStop(0,'rgba(0,0,0,0.25)'); pkSh.addColorStop(1,'rgba(0,0,0,0)');
+        ctx.fillStyle=pkSh; ctx.fillRect(-fw*0.15,ovT+2,fw*0.3,8); ctx.restore();
 
-        // G logo
+        // G logo embroidered
         ctx.save();
-        ctx.font = 'bold 14.7px "Arial Black", Arial';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.lineWidth = 0.6;
-        ctx.strokeStyle = 'rgba(80,47,7,0.35)';
-        ctx.strokeText('G', 0, ovT + 11.2);
-        ctx.shadowColor = '#f1e7b4';
-        ctx.shadowBlur = 12;
-        ctx.fillStyle = '#ffd900';
-        ctx.fillText('G', 0, ovT + 11.2);
-        ctx.shadowBlur = 0;
-        ctx.restore();
+        ctx.font = 'bold 13px "Arial Black",Arial';
+        ctx.textAlign='center'; ctx.textBaseline='middle';
+        // Shadow/depth
+        ctx.fillStyle='rgba(0,0,0,0.4)';
+        ctx.fillText('G', 1, ovT+12.2);
+        // Gold thread
+        ctx.shadowColor='#ffd700'; ctx.shadowBlur=8;
+        ctx.fillStyle='#ffd700'; ctx.fillText('G', 0, ovT+11.2);
+        ctx.shadowBlur=0;
+        // Highlight on gold
+        ctx.globalAlpha=0.5; ctx.fillStyle='#fffbe0'; ctx.font='bold 8px Arial';
+        ctx.fillText('G', -1, ovT+10.5); ctx.globalAlpha=1; ctx.restore();
 
-        // Straps
-        ctx.lineWidth = 3.8;
-        ctx.strokeStyle = '#536fc1';
+        // Straps with shading
+        ctx.lineWidth=4.5; ctx.strokeStyle='#2a50a0';
         ctx.beginPath();
-        ctx.moveTo(-fw * 0.253, ovT + 1); ctx.lineTo(-fw * 0.37, -CFG.H * 0.17);
-        ctx.moveTo(fw * 0.252, ovT + 1); ctx.lineTo(fw * 0.37, -CFG.H * 0.17);
+        ctx.moveTo(-fw*0.253, ovT+1); ctx.lineTo(-fw*0.37, -CFG.H*0.17);
+        ctx.moveTo( fw*0.252, ovT+1); ctx.lineTo( fw*0.37, -CFG.H*0.17);
+        ctx.stroke();
+        ctx.lineWidth=1.5; ctx.strokeStyle='rgba(100,150,255,0.25)';
+        ctx.beginPath();
+        ctx.moveTo(-fw*0.248, ovT+1); ctx.lineTo(-fw*0.365, -CFG.H*0.17);
+        ctx.moveTo( fw*0.248, ovT+1); ctx.lineTo( fw*0.365, -CFG.H*0.17);
         ctx.stroke();
 
-        // Buttons (radial + shine)
-        for (let s = -1; s <= 1; s += 2) {
+        // Metal buttons
+        for (let s=-1; s<=1; s+=2) {
+            const bx2=s*fw*0.368, by2=-CFG.H*0.166;
             ctx.save();
-            ctx.beginPath();
-            ctx.arc(s * fw * 0.368, -CFG.H * 0.166, 4, 0, Math.PI * 2);
-            let btnG = ctx.createRadialGradient(s * fw * 0.368 - 0.7, -CFG.H * 0.18, 1.3, s * fw * 0.368, -CFG.H * 0.166, 4);
-            btnG.addColorStop(0, '#dedede');
-            btnG.addColorStop(0.37, '#aaa');
-            btnG.addColorStop(1, '#534a34');
-            ctx.fillStyle = btnG;
-            ctx.fill();
-            ctx.globalAlpha = 1.0;
-            ctx.beginPath();
-            ctx.ellipse(s * fw * 0.368 - 0.8, -CFG.H * 0.18 + 0.5, 1.5, 0.7, 0, 0, Math.PI * 2);
-            ctx.fillStyle = '#fff';
-            ctx.globalAlpha = 0.3;
-            ctx.fill();
-            ctx.globalAlpha = 1.0;
+            ctx.beginPath(); ctx.arc(bx2,by2,4.5,0,Math.PI*2);
+            let btnG=ctx.createRadialGradient(bx2-1,by2-1.5,0.5,bx2,by2,4.5);
+            btnG.addColorStop(0,'#f0f0f0'); btnG.addColorStop(0.4,'#b0b0b0');
+            btnG.addColorStop(0.8,'#707070'); btnG.addColorStop(1,'#404040');
+            ctx.fillStyle=btnG; ctx.fill();
+            ctx.strokeStyle='#303030'; ctx.lineWidth=0.6; ctx.stroke();
+            // Button hole cross
+            ctx.strokeStyle='rgba(40,40,40,0.7)'; ctx.lineWidth=0.8;
+            ctx.beginPath(); ctx.moveTo(bx2-1.5,by2); ctx.lineTo(bx2+1.5,by2); ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(bx2,by2-1.5); ctx.lineTo(bx2,by2+1.5); ctx.stroke();
             ctx.restore();
         }
-        // White stitching
-        ctx.setLineDash([3.5, 2]);
-        ctx.strokeStyle = 'rgba(255,255,255,0.17)';
-        ctx.lineWidth = 0.82;
-        ctx.beginPath();
-        ctx.moveTo(-fw * 0.47, ovT + ovH * 0.13);
-        ctx.lineTo(fw * 0.47, ovT + ovH * 0.13);
-        ctx.stroke();
+        // Double stitching (realistic)
+        for(let ds=0; ds<2; ds++){
+            ctx.setLineDash([4,2.5]);
+            ctx.strokeStyle=`rgba(255,255,255,${ds===0?0.14:0.07})`;
+            ctx.lineWidth=0.7;
+            ctx.beginPath();
+            ctx.moveTo(-fw*0.47, ovT+ovH*0.13+ds*2.5);
+            ctx.lineTo( fw*0.47, ovT+ovH*0.13+ds*2.5);
+            ctx.stroke();
+        }
         ctx.setLineDash([]);
         ctx.restore();
 
@@ -362,68 +392,77 @@
         }
         ctx.restore();
 
-        // ===== Eye (multi-layered) =====
+        // ===== Eye (photorealistic layered) =====
         ctx.save();
-        // Glass base
-        ctx.beginPath();
-        ctx.arc(0, gY, gR - 4.5, 0, Math.PI * 2);
-        let lensG = ctx.createRadialGradient(-6, gY - 6, 0, 0, gY, gR - 4);
-        lensG.addColorStop(0, '#f7f9fd');
-        lensG.addColorStop(0.7, '#f0f0f0');
-        lensG.addColorStop(1, '#e7e7e6');
-        ctx.fillStyle = lensG;
-        ctx.fill();
+        const eyeR = gR - 4.5;
+        // Sclera (white of eye) with subtle veins warmth
+        ctx.beginPath(); ctx.arc(0, gY, eyeR, 0, Math.PI*2);
+        let scleraG = ctx.createRadialGradient(-eyeR*0.3, gY-eyeR*0.3, 0, 0, gY, eyeR);
+        scleraG.addColorStop(0,   '#ffffff');
+        scleraG.addColorStop(0.6, '#f5f0ea');
+        scleraG.addColorStop(1,   '#e8ddd0');
+        ctx.fillStyle = scleraG; ctx.fill();
+
         if (!isBlinking) {
-            // Iris
             const ix = facing * 4;
-            ctx.beginPath();
-            ctx.arc(ix, gY, gR * 0.46, 0, Math.PI * 2);
-            let irisG = ctx.createRadialGradient(ix - 4, gY - 4, 2, ix, gY, gR * 0.46);
-            irisG.addColorStop(0, '#af8344');
-            irisG.addColorStop(0.37, '#cdb283');
-            irisG.addColorStop(1, '#462b11');
-            ctx.fillStyle = irisG;
-            ctx.fill();
-
-            // Pupil
-            ctx.beginPath();
-            ctx.arc(ix + facing * 1.1, gY, gR * 0.21, 0, Math.PI * 2);
-            ctx.fillStyle = '#0A0A0A';
-            ctx.frame = 2;
-            ctx.fill();
-
-            // Eye big highlight
-            ctx.globalAlpha = 0.77;
-            ctx.beginPath();
-            ctx.arc(ix - 4, gY - 6, gR * 0.14, 0, Math.PI * 2);
-            ctx.fillStyle = '#fff';
-            ctx.fill();
-            ctx.globalAlpha = 1.0;
-
-            // Eye second highlight
-            ctx.globalAlpha = 0.5;
-            ctx.beginPath();
-            ctx.arc(ix + 2, gY + 2, gR * 0.07, 0, Math.PI * 2);
-            ctx.fillStyle = '#fff';
-            ctx.fill();
-            ctx.globalAlpha = 1.0;
+            // Iris with realistic layers
+            ctx.beginPath(); ctx.arc(ix, gY, eyeR*0.52, 0, Math.PI*2);
+            let irisG = ctx.createRadialGradient(ix, gY, 0, ix, gY, eyeR*0.52);
+            irisG.addColorStop(0,    '#6b3a10');
+            irisG.addColorStop(0.25, '#9b6020');
+            irisG.addColorStop(0.55, '#c89040');
+            irisG.addColorStop(0.75, '#a07030');
+            irisG.addColorStop(1,    '#3a1c05');
+            ctx.fillStyle = irisG; ctx.fill();
+            // Iris texture rays
+            ctx.save(); ctx.clip();
+            for(let r=0; r<12; r++){
+                const ang=r*Math.PI/6;
+                ctx.beginPath();
+                ctx.moveTo(ix,gY);
+                ctx.lineTo(ix+Math.cos(ang)*eyeR*0.5, gY+Math.sin(ang)*eyeR*0.5);
+                ctx.strokeStyle='rgba(0,0,0,0.07)'; ctx.lineWidth=0.6; ctx.stroke();
+            }
+            ctx.restore();
+            // Limbal ring (dark edge of iris)
+            ctx.beginPath(); ctx.arc(ix, gY, eyeR*0.52, 0, Math.PI*2);
+            ctx.strokeStyle='rgba(30,10,0,0.6)'; ctx.lineWidth=2.5; ctx.stroke();
+            // Pupil with depth
+            ctx.beginPath(); ctx.arc(ix+facing*1.1, gY, eyeR*0.24, 0, Math.PI*2);
+            let pupG=ctx.createRadialGradient(ix+facing*0.5,gY-eyeR*0.05,0,ix+facing*1.1,gY,eyeR*0.24);
+            pupG.addColorStop(0,'#1a1a1a'); pupG.addColorStop(1,'#000');
+            ctx.fillStyle=pupG; ctx.fill();
+            // Catch light (large)
+            ctx.beginPath(); ctx.arc(ix-eyeR*0.18, gY-eyeR*0.22, eyeR*0.13, 0, Math.PI*2);
+            ctx.fillStyle='rgba(255,255,255,0.92)'; ctx.fill();
+            // Catch light (small)
+            ctx.beginPath(); ctx.arc(ix+eyeR*0.1, gY+eyeR*0.08, eyeR*0.055, 0, Math.PI*2);
+            ctx.fillStyle='rgba(255,255,255,0.6)'; ctx.fill();
         } else {
-            // Closed arc for blink
-            ctx.beginPath();
-            ctx.arc(0, gY, gR * 0.35, 0.1, Math.PI - 0.1);
-            ctx.strokeStyle = '#4A2D15';
-            ctx.lineWidth = 3.5;
-            ctx.lineCap = 'round';
-            ctx.stroke();
+            // Blink — eyelid crease
+            ctx.beginPath(); ctx.arc(0, gY, eyeR*0.38, 0.08, Math.PI-0.08);
+            ctx.strokeStyle='#3a1c05'; ctx.lineWidth=3.8; ctx.lineCap='round'; ctx.stroke();
+            ctx.beginPath(); ctx.arc(0, gY, eyeR*0.32, 0.15, Math.PI-0.15);
+            ctx.strokeStyle='rgba(80,30,0,0.3)'; ctx.lineWidth=1.5; ctx.stroke();
         }
-        // Lens reflection
-        ctx.globalAlpha = 0.11;
+        // Glass lens over eye (goggle glass refraction)
+        ctx.save();
+        ctx.beginPath(); ctx.arc(0, gY, eyeR, 0, Math.PI*2);
+        ctx.clip();
+        // Glass tint
+        let glTint=ctx.createLinearGradient(-eyeR, gY-eyeR, eyeR, gY+eyeR);
+        glTint.addColorStop(0,'rgba(200,230,255,0.12)');
+        glTint.addColorStop(0.5,'rgba(255,255,255,0.02)');
+        glTint.addColorStop(1,'rgba(180,210,255,0.08)');
+        ctx.fillStyle=glTint; ctx.fillRect(-eyeR,gY-eyeR,eyeR*2,eyeR*2);
+        // Glass glare streak
         ctx.beginPath();
-        ctx.arc(0, gY, gR - 3.2, Math.PI * 1.7, Math.PI * 0.3, false);
-        ctx.lineWidth = 13;
-        ctx.strokeStyle = '#fff';
-        ctx.stroke();
-        ctx.globalAlpha = 1.0;
+        ctx.arc(0, gY, eyeR*0.85, Math.PI*1.68, Math.PI*0.28, false);
+        ctx.strokeStyle='rgba(255,255,255,0.18)'; ctx.lineWidth=10; ctx.stroke();
+        // Small corner glint
+        ctx.beginPath(); ctx.arc(-eyeR*0.55, gY-eyeR*0.55, eyeR*0.12, 0, Math.PI*2);
+        ctx.fillStyle='rgba(255,255,255,0.22)'; ctx.fill();
+        ctx.restore();
         ctx.restore();
 
         // ===== Mouth =====
