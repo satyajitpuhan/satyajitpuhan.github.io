@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="QCD Quantum Field Live Wallpaper — Lattice QCD, flux tubes, bubble chamber tracks, Feynman diagrams">
+    <title>QCD Field — Live Wallpaper</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Outfit:wght@200;300;400;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Main Physics Canvas -->
+    <canvas id="field-canvas"></canvas>
+
+    <!-- Foreground Effects Canvas -->
+    <canvas id="fx-canvas"></canvas>
+
+    <!-- Glass UI -->
+    <div class="ui-overlay">
+        <!-- Clock -->
+        <div id="floating-clock" class="glass-card clock-card">
+            <div class="clock-time" id="clock-time">00:00</div>
+            <div class="clock-date" id="clock-date">Monday, January 1</div>
+            <div class="clock-meta">
+                <span class="meta-tag">Λ<sub>QCD</sub> ≈ 217 MeV</span>
+                <span class="meta-sep">·</span>
+                <span class="meta-tag">N<sub>c</sub> = <span id="nc-val">3</span></span>
+            </div>
+        </div>
+
+        <!-- Field Stats -->
+        <div class="stats-panel glass-card" id="stats-panel">
+            <div class="stats-header">
+                <div class="stats-dot pulse-dot"></div>
+                <span class="stats-title">FIELD MONITOR</span>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-cell">
+                    <span class="stat-key">α<sub>s</sub>(M<sub>Z</sub>)</span>
+                    <span class="stat-val" id="alpha-s">0.1179</span>
+                </div>
+                <div class="stat-cell">
+                    <span class="stat-key">Flux Tubes</span>
+                    <span class="stat-val" id="tube-count">0</span>
+                </div>
+                <div class="stat-cell">
+                    <span class="stat-key">Pairs</span>
+                    <span class="stat-val" id="pair-count">0</span>
+                </div>
+                <div class="stat-cell">
+                    <span class="stat-key">σ String</span>
+                    <span class="stat-val" id="string-tension">0.18</span>
+                    <span class="stat-unit">GeV²</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mode Selector -->
+        <div class="mode-panel glass-card" id="mode-panel">
+            <div class="mode-title">Visualization</div>
+            <div class="mode-options">
+                <button class="mode-btn active" data-mode="lattice" id="mode-lattice">
+                    <span class="mode-icon">◆</span>
+                    <span class="mode-name">Lattice QCD</span>
+                </button>
+                <button class="mode-btn" data-mode="bubble" id="mode-bubble">
+                    <span class="mode-icon">◎</span>
+                    <span class="mode-name">Bubble Chamber</span>
+                </button>
+                <button class="mode-btn" data-mode="feynman" id="mode-feynman">
+                    <span class="mode-icon">⟋</span>
+                    <span class="mode-name">Feynman Diagrams</span>
+                </button>
+                <button class="mode-btn" data-mode="strings" id="mode-strings">
+                    <span class="mode-icon">≋</span>
+                    <span class="mode-name">Flux Strings</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls-panel glass-card" id="controls-panel">
+            <div class="control-group">
+                <label for="density-slider">Field Density</label>
+                <input type="range" id="density-slider" min="3" max="12" step="1" value="7">
+            </div>
+            <div class="control-group">
+                <label for="energy-slider">Energy Scale</label>
+                <input type="range" id="energy-slider" min="0.3" max="2" step="0.1" value="1">
+            </div>
+            <div class="control-group">
+                <label for="depth-slider">Depth Perspective</label>
+                <input type="range" id="depth-slider" min="100" max="600" step="50" value="300">
+            </div>
+        </div>
+
+        <!-- Info Widgets -->
+        <div class="info-widgets">
+            <div class="widget glass-card">
+                <span class="widget-label">FPS</span>
+                <span class="widget-value" id="fps-value">60</span>
+            </div>
+            <div class="widget glass-card">
+                <span class="widget-label">Nodes</span>
+                <span class="widget-value" id="node-count">0</span>
+            </div>
+        </div>
+
+        <!-- Toggle UI -->
+        <button class="toggle-ui glass-card" id="toggle-ui" title="Toggle UI">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+            </svg>
+        </button>
+        <button class="fullscreen-btn glass-card" id="fullscreen-btn" title="Fullscreen">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/>
+            </svg>
+        </button>
+    </div>
+
+    <script src="qcdfield.js"></script>
+</body>
+</html>
