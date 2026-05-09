@@ -1,21 +1,22 @@
-/* ── Premium 3D Minion Bob — Roams freely across the page ── */
+// ── Premium 3D Minion Bob — Hyper-Realistic ──
 (function () {
     'use strict';
 
     const CFG = {
-        H: 110, W: 72,
-        speed: 1.6, bounce: 5,
-        legSwing: 0.5, armSwing: 0.4,
-        walkSpeed: 0.11,
-        dirMin: 140, dirMax: 400,
-        margin: 50,
-        blinkInterval: 180, blinkDur: 8,
-        idlePause: 600
+        H: 140, W: 95,
+        speed: 1.38, bounce: 8,
+        legSwing: 0.42, armSwing: 0.32,
+        walkSpeed: 0.105,
+        dirMin: 120, dirMax: 280,
+        margin: 65,
+        blinkInterval: 130, blinkDur: 8,
+        idlePause: 460
     };
 
     const canvas = document.createElement('canvas');
     canvas.id = 'minion-bob-canvas';
-    canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;';
+    canvas.style.cssText =
+        'position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:9999;';
     document.body.appendChild(canvas);
     const ctx = canvas.getContext('2d');
     let W, H, x, y, dirX = 1, dirY = 0, frame = 0;
@@ -41,7 +42,7 @@
         dirFrames = 0;
     }
 
-    /* ── Helpers ── */
+    // Helper for round-rect
     function rr(cx, cy, w, h, r) {
         const x0 = cx - w / 2, y0 = cy - h / 2;
         ctx.beginPath();
@@ -52,7 +53,6 @@
         ctx.arcTo(x0, y0, x0 + w, y0, r);
         ctx.closePath();
     }
-
     function capsule(cx, cy, w, h) {
         const r = w / 2;
         ctx.beginPath();
@@ -65,409 +65,450 @@
         ctx.closePath();
     }
 
-    /* ── Draw the 3D Minion ── */
+    /* ── 3D Minion Drawing Routine ── */
     function drawMinion(bx, by, wp, facing) {
         ctx.save();
         ctx.translate(bx, by);
         if (facing < 0) ctx.scale(-1, 1);
 
-        const la = isIdle ? 0 : Math.sin(wp) * CFG.legSwing;
-        const aa = isIdle ? Math.sin(frame * 0.03) * 0.15 : Math.sin(wp + Math.PI) * CFG.armSwing;
-        const bw = CFG.W * 0.82, bh = CFG.H * 0.62;
-        const bodyY = -bh * 0.12;
+        // Perspective float/yaw
+        const legAngle = isIdle ? 0 : Math.sin(wp) * CFG.legSwing;
+        const armAngle = isIdle ? Math.sin(frame * 0.03) * 0.20 : Math.sin(wp + Math.PI) * CFG.armSwing;
+        const bodyYaw = Math.sin(wp) * 0.07;
+        const fw = CFG.W * 0.84, fh = CFG.H * 0.67;
+        const bodyY = -fh * 0.11 + Math.sin(wp) * 2;
+        const shadowY = CFG.H * 0.52;
 
-        /* ── Shadow ── */
+        // ====== Shadow (diffuse/soft) ======
         ctx.save();
-        const sg = ctx.createRadialGradient(0, CFG.H * 0.5, 2, 0, CFG.H * 0.5, bw * 0.55);
-        sg.addColorStop(0, 'rgba(0,0,0,0.18)');
+        let sg = ctx.createRadialGradient(0, shadowY, 1, 0, shadowY, fw * 0.68);
+        sg.addColorStop(0, 'rgba(0,0,0,0.27)');
+        sg.addColorStop(0.75, 'rgba(0,0,0,0.09)');
         sg.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.globalAlpha = 0.65;
         ctx.fillStyle = sg;
         ctx.beginPath();
-        ctx.ellipse(0, CFG.H * 0.5, bw * 0.55, 7, 0, 0, Math.PI * 2);
-        ctx.fill();
+        ctx.ellipse(0, shadowY, fw * 0.66, 10, 0, 0, Math.PI * 2); ctx.fill();
+        ctx.globalAlpha = 0.33;
+        ctx.ellipse(-10, shadowY + 5, fw * 0.43, 6.5, 0, 0, Math.PI * 2); ctx.fill();
+        ctx.globalAlpha = 1.0;
         ctx.restore();
 
-        /* ── Legs ── */
+        // ====== Legs (bump shading) ======
         for (let side = -1; side <= 1; side += 2) {
             ctx.save();
-            ctx.translate(side * 9, CFG.H * 0.28);
-            ctx.rotate(side === -1 ? la : -la);
-            // Leg
-            rr(0, 11, 13, 20, 3);
-            const legG = ctx.createLinearGradient(-6, 0, 6, 0);
-            legG.addColorStop(0, '#3A6BA5');
-            legG.addColorStop(0.5, '#4A7FBF');
-            legG.addColorStop(1, '#3A6BA5');
+            ctx.translate(side * 13, CFG.H * 0.28);
+            ctx.rotate(side === -1 ? legAngle : -legAngle);
+            rr(0, 16, 17, 32, 4.5);
+            let legG = ctx.createLinearGradient(-8.5, 0, 8.5, 0);
+            legG.addColorStop(0, '#32507b');
+            legG.addColorStop(0.2, '#547ad0');
+            legG.addColorStop(0.6, '#96baff');
+            legG.addColorStop(0.8, '#4269a8');
+            legG.addColorStop(1, '#264575');
             ctx.fillStyle = legG;
+            ctx.shadowColor = 'rgba(30,40,60,0.45)';
+            ctx.shadowBlur = 3.8;
             ctx.fill();
-            ctx.strokeStyle = '#2E5580';
-            ctx.lineWidth = 0.5;
+            ctx.shadowBlur = 0;
+            ctx.strokeStyle = '#2b3c56';
+            ctx.lineWidth = 1.1;
             ctx.stroke();
+
             // Shoe
             ctx.beginPath();
-            ctx.ellipse(side * 2, 22, 10, 7, 0, 0, Math.PI * 2);
-            const shG = ctx.createRadialGradient(side * 2, 20, 1, side * 2, 22, 10);
-            shG.addColorStop(0, '#3a3a3a');
-            shG.addColorStop(1, '#111');
+            ctx.ellipse(side * 2.5, 32, 17, 10, -0.18 * side, 0, Math.PI * 2);
+            let shG = ctx.createRadialGradient(side * 2.5, 33, 5, side * 2.5, 35.5, 11);
+            shG.addColorStop(0, '#343639');
+            shG.addColorStop(0.7, '#111');
+            ctx.globalAlpha = 0.95;
             ctx.fillStyle = shG;
             ctx.fill();
-            // Shoe sole
+
+            // Shoe highlight/sole
+            ctx.globalAlpha = 0.55;
             ctx.beginPath();
-            ctx.ellipse(side * 2, 25, 9, 3, 0, 0, Math.PI);
-            ctx.fillStyle = '#555';
+            ctx.ellipse(side * 2.5 + 3, 36, 13, 3.7, 0, 0, Math.PI);
+            ctx.fillStyle = 'rgba(220,220,220,0.22)';
+            ctx.globalAlpha = 0.55;
             ctx.fill();
+            ctx.globalAlpha = 1.0;
+
             ctx.restore();
         }
 
-        /* ── Left Arm (behind) ── */
+        // ===== Left Arm (behind; AO) =====
         ctx.save();
-        ctx.translate(-bw * 0.46, -CFG.H * 0.06);
-        ctx.rotate(aa);
-        rr(0, 14, 10, 24, 4);
-        const laG = ctx.createLinearGradient(-5, 0, 5, 0);
-        laG.addColorStop(0, '#D4A017');
-        laG.addColorStop(0.4, '#F5D547');
-        laG.addColorStop(1, '#D4A017');
-        ctx.fillStyle = laG;
+        ctx.translate(-fw * 0.54, -CFG.H * 0.13);
+        ctx.rotate(armAngle - bodyYaw * 1.1);
+        rr(0, 18, 12, 34, 7.2);
+        let aG = ctx.createLinearGradient(-7, 0, 7, 0);
+        aG.addColorStop(0, '#cba82c');
+        aG.addColorStop(0.45, '#fff3be');
+        aG.addColorStop(0.7, '#e4b740');
+        aG.addColorStop(1, '#8a6e26');
+        ctx.fillStyle = aG;
+        ctx.shadowColor = 'rgba(70,51,20,0.3)';
+        ctx.shadowBlur = 8;
         ctx.fill();
-        ctx.strokeStyle = '#B8860B';
-        ctx.lineWidth = 0.6;
+        ctx.shadowBlur = 0;
+        ctx.strokeStyle = '#a18837';
+        ctx.lineWidth = 1.3;
         ctx.stroke();
+
         // Glove
         ctx.beginPath();
-        ctx.arc(0, 27, 7, 0, Math.PI * 2);
-        const glG = ctx.createRadialGradient(-1, 25, 1, 0, 27, 7);
-        glG.addColorStop(0, '#444');
-        glG.addColorStop(1, '#111');
-        ctx.fillStyle = glG;
+        ctx.arc(0, 34, 10, 0, Math.PI * 2);
+        let glvG = ctx.createRadialGradient(-2, 32, 3, 0, 37, 10);
+        glvG.addColorStop(0, '#1b1b1a');
+        glvG.addColorStop(1, '#545350');
+        ctx.globalAlpha = 1.0;
+        ctx.fillStyle = glvG;
         ctx.fill();
-        // Glove fingers
-        for (let f = -1; f <= 1; f++) {
-            ctx.beginPath();
-            ctx.ellipse(f * 4, 31, 2.5, 3, f * 0.3, 0, Math.PI * 2);
-            ctx.fillStyle = '#222';
-            ctx.fill();
-        }
+        ctx.globalAlpha = 0.2;
+        ctx.beginPath();
+        ctx.ellipse(-1, 39, 8, 2.7, -0.1, 0, Math.PI * 2);
+        ctx.fillStyle = '#eee';
+        ctx.fill();
+        ctx.globalAlpha = 1.0;
         ctx.restore();
 
-        /* ── Body (3D capsule) ── */
+        // ===== Body (hyper-3D capsule, gradients) =====
         ctx.save();
-        capsule(0, bodyY, bw, bh);
-        const bg = ctx.createLinearGradient(-bw / 2, bodyY, bw / 2, bodyY);
-        bg.addColorStop(0, '#C89520');
-        bg.addColorStop(0.15, '#E8C030');
-        bg.addColorStop(0.35, '#F5D547');
-        bg.addColorStop(0.55, '#FFEB80');
-        bg.addColorStop(0.75, '#F5D547');
-        bg.addColorStop(1, '#C89520');
-        ctx.fillStyle = bg;
+        ctx.rotate(bodyYaw);
+        capsule(0, bodyY, fw, fh);
+        let bG = ctx.createLinearGradient(-fw / 2, bodyY, fw / 2, bodyY);
+        bG.addColorStop(0, '#d7b657');
+        bG.addColorStop(0.27, '#ffe366');
+        bG.addColorStop(0.51, '#fff8dc');
+        bG.addColorStop(0.72, '#fddb17');
+        bG.addColorStop(0.98, '#b69223');
+        bG.addColorStop(1.0, '#977a0c');
+        ctx.fillStyle = bG;
+        ctx.shadowColor = 'rgba(40,25,10,0.16)';
+        ctx.shadowBlur = 18;
         ctx.fill();
-        ctx.strokeStyle = '#B8860B';
-        ctx.lineWidth = 1.2;
-        ctx.stroke();
-        // Top highlight
+        ctx.shadowBlur = 0;
+
+        // Top edge highlight
         ctx.save();
-        capsule(0, bodyY, bw, bh);
+        capsule(0, bodyY, fw, fh);
         ctx.clip();
-        const hl = ctx.createLinearGradient(0, bodyY - bh / 2, 0, bodyY - bh / 4);
-        hl.addColorStop(0, 'rgba(255,255,255,0.35)');
-        hl.addColorStop(1, 'rgba(255,255,255,0)');
-        ctx.fillStyle = hl;
-        ctx.fillRect(-bw / 2, bodyY - bh / 2, bw, bh / 3);
-        ctx.restore();
+        let hG = ctx.createLinearGradient(0, bodyY - fh / 2.205, 0, bodyY - fh / 4.6);
+        hG.addColorStop(0, 'rgba(255,255,255,0.29)');
+        hG.addColorStop(1, 'rgba(255,255,255,0)');
+        ctx.fillStyle = hG;
+        ctx.fillRect(-fw / 2, bodyY - fh / 2, fw, fh / 2.9);
         ctx.restore();
 
-        /* ── Overalls ── */
+        // Bottom shadow
         ctx.save();
-        const ovT = CFG.H * 0.04, ovH = bh * 0.44;
-        // Main overall body
-        rr(0, ovT + ovH * 0.3, bw * 0.96, ovH, 5);
-        const ovG = ctx.createLinearGradient(-bw / 2, 0, bw / 2, 0);
-        ovG.addColorStop(0, '#2E5580');
-        ovG.addColorStop(0.3, '#4A7FBF');
-        ovG.addColorStop(0.7, '#4A7FBF');
-        ovG.addColorStop(1, '#2E5580');
+        capsule(0, bodyY, fw, fh);
+        ctx.clip();
+        let sG = ctx.createLinearGradient(0, bodyY + fh * 0.15, 0, bodyY + fh * 0.52);
+        sG.addColorStop(0, 'rgba(0,0,0,0)');
+        sG.addColorStop(1, 'rgba(100,60,8,0.10)');
+        ctx.fillStyle = sG;
+        ctx.fillRect(-fw / 2, bodyY, fw, fh / 2);
+        ctx.restore();
+        ctx.strokeStyle = '#a88a11';
+        ctx.lineWidth = 1.7;
+        ctx.stroke();
+        ctx.restore();
+
+        // ===== Overalls =====
+        ctx.save();
+        const ovT = CFG.H * 0.08, ovH = fh * 0.44;
+        rr(0, ovT + ovH * 0.29, fw * 0.98, ovH, 9.5);
+        let ovG = ctx.createLinearGradient(-fw / 2, 0, fw / 2, 0);
+        ovG.addColorStop(0, '#2e3f66');
+        ovG.addColorStop(0.25, '#5e83b9');
+        ovG.addColorStop(0.68, '#3979ce');
+        ovG.addColorStop(1, '#25294e');
         ctx.fillStyle = ovG;
+        ctx.shadowColor = 'rgba(10,16,36,0.23)';
+        ctx.shadowBlur = 4;
         ctx.fill();
-        ctx.strokeStyle = '#1E3D5E';
-        ctx.lineWidth = 0.8;
+        ctx.shadowBlur = 0;
+        ctx.strokeStyle = '#263156';
+        ctx.lineWidth = 1;
         ctx.stroke();
 
         // Bib
         ctx.beginPath();
-        ctx.moveTo(-bw * 0.28, ovT - 2);
-        ctx.lineTo(bw * 0.28, ovT - 2);
-        ctx.lineTo(bw * 0.35, ovT + ovH * 0.3);
-        ctx.lineTo(-bw * 0.35, ovT + ovH * 0.3);
+        ctx.moveTo(-fw * 0.29, ovT - 5);
+        ctx.lineTo(fw * 0.29, ovT - 5);
+        ctx.lineTo(fw * 0.335, ovT + ovH * 0.32);
+        ctx.lineTo(-fw * 0.335, ovT + ovH * 0.32);
         ctx.closePath();
         ctx.fillStyle = ovG;
+        ctx.globalAlpha = 0.82;
         ctx.fill();
-        ctx.strokeStyle = '#1E3D5E';
-        ctx.lineWidth = 0.6;
-        ctx.stroke();
+        ctx.globalAlpha = 1.0;
 
         // Pocket
-        rr(0, ovT + 7, bw * 0.3, ovH * 0.3, 3);
-        const pkG = ctx.createLinearGradient(0, ovT + 2, 0, ovT + 14);
-        pkG.addColorStop(0, '#3A6BA5');
-        pkG.addColorStop(1, '#2E5580');
+        rr(0, ovT + 10, fw * 0.295, ovH * 0.38, 5);
+        let pkG = ctx.createLinearGradient(0, ovT + 3, 0, ovT + 24);
+        pkG.addColorStop(0, '#4269a8');
+        pkG.addColorStop(1, '#2b3c56');
         ctx.fillStyle = pkG;
         ctx.fill();
-        ctx.strokeStyle = '#1E3D5E';
-        ctx.lineWidth = 0.5;
-        ctx.stroke();
-        // "G" logo
-        ctx.fillStyle = '#FFE066';
-        ctx.font = 'bold 8px "Arial Black", Arial';
+
+        // G logo
+        ctx.save();
+        ctx.font = 'bold 14.7px "Arial Black", Arial';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        ctx.fillText('G', 0, ovT + 9);
+        ctx.lineWidth = 0.6;
+        ctx.strokeStyle = 'rgba(80,47,7,0.35)';
+        ctx.strokeText('G', 0, ovT + 11.2);
+        ctx.shadowColor = '#f1e7b4';
+        ctx.shadowBlur = 12;
+        ctx.fillStyle = '#ffd900';
+        ctx.fillText('G', 0, ovT + 11.2);
+        ctx.shadowBlur = 0;
+        ctx.restore();
 
         // Straps
-        ctx.lineWidth = 3.5;
-        ctx.strokeStyle = '#3A6BA5';
+        ctx.lineWidth = 3.8;
+        ctx.strokeStyle = '#536fc1';
         ctx.beginPath();
-        ctx.moveTo(-bw * 0.26, ovT); ctx.lineTo(-bw * 0.34, -CFG.H * 0.17);
+        ctx.moveTo(-fw * 0.253, ovT + 1); ctx.lineTo(-fw * 0.37, -CFG.H * 0.17);
+        ctx.moveTo(fw * 0.252, ovT + 1); ctx.lineTo(fw * 0.37, -CFG.H * 0.17);
         ctx.stroke();
-        ctx.beginPath();
-        ctx.moveTo(bw * 0.26, ovT); ctx.lineTo(bw * 0.34, -CFG.H * 0.17);
-        ctx.stroke();
-        // Buttons
+
+        // Buttons (radial + shine)
         for (let s = -1; s <= 1; s += 2) {
+            ctx.save();
             ctx.beginPath();
-            ctx.arc(s * bw * 0.34, -CFG.H * 0.17, 3, 0, Math.PI * 2);
-            const btnG = ctx.createRadialGradient(s * bw * 0.34 - 0.5, -CFG.H * 0.17 - 0.5, 0.5, s * bw * 0.34, -CFG.H * 0.17, 3);
-            btnG.addColorStop(0, '#999');
-            btnG.addColorStop(1, '#444');
+            ctx.arc(s * fw * 0.368, -CFG.H * 0.166, 4, 0, Math.PI * 2);
+            let btnG = ctx.createRadialGradient(s * fw * 0.368 - 0.7, -CFG.H * 0.18, 1.3, s * fw * 0.368, -CFG.H * 0.166, 4);
+            btnG.addColorStop(0, '#dedede');
+            btnG.addColorStop(0.37, '#aaa');
+            btnG.addColorStop(1, '#534a34');
             ctx.fillStyle = btnG;
             ctx.fill();
-            ctx.strokeStyle = '#333';
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
+            ctx.globalAlpha = 1.0;
+            ctx.beginPath();
+            ctx.ellipse(s * fw * 0.368 - 0.8, -CFG.H * 0.18 + 0.5, 1.5, 0.7, 0, 0, Math.PI * 2);
+            ctx.fillStyle = '#fff';
+            ctx.globalAlpha = 0.3;
+            ctx.fill();
+            ctx.globalAlpha = 1.0;
+            ctx.restore();
         }
-        // Stitching lines
-        ctx.setLineDash([2, 2]);
-        ctx.strokeStyle = 'rgba(255,255,255,0.2)';
-        ctx.lineWidth = 0.5;
+        // White stitching
+        ctx.setLineDash([3.5, 2]);
+        ctx.strokeStyle = 'rgba(255,255,255,0.17)';
+        ctx.lineWidth = 0.82;
         ctx.beginPath();
-        ctx.moveTo(-bw * 0.46, ovT + ovH * 0.1); ctx.lineTo(bw * 0.46, ovT + ovH * 0.1);
+        ctx.moveTo(-fw * 0.47, ovT + ovH * 0.13);
+        ctx.lineTo(fw * 0.47, ovT + ovH * 0.13);
         ctx.stroke();
         ctx.setLineDash([]);
         ctx.restore();
 
-        /* ── Goggle Band ── */
-        const gY = -CFG.H * 0.28;
-        const gR = bw * 0.30;
-
+        // ===== Goggle Band (shadows/metal) =====
+        const gY = -CFG.H * 0.296, gR = fw * 0.33;
         ctx.save();
         ctx.beginPath();
-        ctx.moveTo(-bw / 2 - 2, gY);
-        ctx.lineTo(bw / 2 + 2, gY);
-        const bandG = ctx.createLinearGradient(0, gY - 5, 0, gY + 5);
-        bandG.addColorStop(0, '#777');
-        bandG.addColorStop(0.3, '#555');
-        bandG.addColorStop(0.7, '#444');
-        bandG.addColorStop(1, '#333');
+        ctx.moveTo(-fw / 2 - 5, gY);
+        ctx.lineTo(fw / 2 + 5, gY);
+        let bandG = ctx.createLinearGradient(0, gY - 5, 0, gY + 7.5);
+        bandG.addColorStop(0, '#111');
+        bandG.addColorStop(0.15, '#888');
+        bandG.addColorStop(0.65, '#222');
+        bandG.addColorStop(1, '#aaa');
+        ctx.lineWidth = 14.5;
         ctx.strokeStyle = bandG;
-        ctx.lineWidth = 9;
+        ctx.globalAlpha = 0.88;
+        ctx.shadowColor = '#14181A';
+        ctx.shadowBlur = 8;
         ctx.stroke();
-        // Band texture
-        ctx.beginPath();
-        ctx.moveTo(-bw / 2, gY - 3);
-        ctx.lineTo(bw / 2, gY - 3);
-        ctx.strokeStyle = 'rgba(255,255,255,0.12)';
-        ctx.lineWidth = 1;
-        ctx.stroke();
+        ctx.shadowBlur = 0;
+        ctx.globalAlpha = 1.0;
         ctx.restore();
 
-        /* ── Goggle Rim (metallic) ── */
+        // ===== Goggle Rim (metallic) =====
         ctx.save();
-        // Outer ring
         ctx.beginPath();
-        ctx.arc(0, gY, gR + 5, 0, Math.PI * 2);
-        const rimOG = ctx.createLinearGradient(0, gY - gR - 5, 0, gY + gR + 5);
-        rimOG.addColorStop(0, '#CCC');
-        rimOG.addColorStop(0.2, '#999');
-        rimOG.addColorStop(0.5, '#777');
-        rimOG.addColorStop(0.8, '#555');
-        rimOG.addColorStop(1, '#888');
+        ctx.arc(0, gY, gR + 7, 0, Math.PI * 2);
+        let rimOG = ctx.createLinearGradient(0, gY - gR - 7, 0, gY + gR + 7);
+        rimOG.addColorStop(0, '#eee');
+        rimOG.addColorStop(0.31, '#cfcfcf');
+        rimOG.addColorStop(0.7, '#aaa');
+        rimOG.addColorStop(1, '#646464');
+        ctx.shadowColor = 'rgba(180,180,140,0.27)';
+        ctx.shadowBlur = 10;
         ctx.fillStyle = rimOG;
         ctx.fill();
-        ctx.strokeStyle = '#444';
-        ctx.lineWidth = 1;
+        ctx.shadowBlur = 0;
+        ctx.strokeStyle = '#adadad';
+        ctx.lineWidth = 2.2;
         ctx.stroke();
-        // Inner ring
-        ctx.beginPath();
-        ctx.arc(0, gY, gR + 2, 0, Math.PI * 2);
-        const rimIG = ctx.createLinearGradient(0, gY - gR, 0, gY + gR);
-        rimIG.addColorStop(0, '#AAA');
-        rimIG.addColorStop(0.5, '#666');
-        rimIG.addColorStop(1, '#999');
-        ctx.fillStyle = rimIG;
-        ctx.fill();
-        // Screws on goggle
+
+        // Screws/bolts
         for (let a = 0; a < 4; a++) {
             const angle = a * Math.PI / 2 + Math.PI / 4;
-            const sx = Math.cos(angle) * (gR + 3.5);
-            const sy = gY + Math.sin(angle) * (gR + 3.5);
+            const sx = Math.cos(angle) * (gR + 5.9);
+            const sy = gY + Math.sin(angle) * (gR + 6);
             ctx.beginPath();
-            ctx.arc(sx, sy, 1.5, 0, Math.PI * 2);
-            ctx.fillStyle = '#888';
+            ctx.arc(sx, sy, 2.3, 0, Math.PI * 2);
+            ctx.fillStyle = '#bbb';
             ctx.fill();
-            ctx.strokeStyle = '#555';
-            ctx.lineWidth = 0.3;
+            ctx.strokeStyle = '#777';
+            ctx.lineWidth = 1.3;
             ctx.stroke();
         }
         ctx.restore();
 
-        /* ── Eye (glass lens) ── */
+        // ===== Eye (multi-layered) =====
         ctx.save();
-        // Glass background
+        // Glass base
         ctx.beginPath();
-        ctx.arc(0, gY, gR - 2, 0, Math.PI * 2);
-        const lensG = ctx.createRadialGradient(-3, gY - 3, 1, 0, gY, gR - 2);
-        lensG.addColorStop(0, '#FFFFFF');
-        lensG.addColorStop(0.7, '#F0F0F0');
-        lensG.addColorStop(1, '#D8D8D8');
+        ctx.arc(0, gY, gR - 4.5, 0, Math.PI * 2);
+        let lensG = ctx.createRadialGradient(-6, gY - 6, 0, 0, gY, gR - 4);
+        lensG.addColorStop(0, '#f7f9fd');
+        lensG.addColorStop(0.7, '#f0f0f0');
+        lensG.addColorStop(1, '#e7e7e6');
         ctx.fillStyle = lensG;
         ctx.fill();
-
-        // Blink check
         if (!isBlinking) {
             // Iris
-            const ix = facing * 2.5;
+            const ix = facing * 4;
             ctx.beginPath();
-            ctx.arc(ix, gY, gR * 0.48, 0, Math.PI * 2);
-            const irisG = ctx.createRadialGradient(ix, gY, 1, ix, gY, gR * 0.48);
-            irisG.addColorStop(0, '#8B5E3C');
-            irisG.addColorStop(0.6, '#6B4226');
-            irisG.addColorStop(1, '#4A2D15');
+            ctx.arc(ix, gY, gR * 0.46, 0, Math.PI * 2);
+            let irisG = ctx.createRadialGradient(ix - 4, gY - 4, 2, ix, gY, gR * 0.46);
+            irisG.addColorStop(0, '#af8344');
+            irisG.addColorStop(0.37, '#cdb283');
+            irisG.addColorStop(1, '#462b11');
             ctx.fillStyle = irisG;
             ctx.fill();
 
             // Pupil
             ctx.beginPath();
-            ctx.arc(ix + facing * 0.8, gY, gR * 0.22, 0, Math.PI * 2);
+            ctx.arc(ix + facing * 1.1, gY, gR * 0.21, 0, Math.PI * 2);
             ctx.fillStyle = '#0A0A0A';
+            ctx.frame = 2;
             ctx.fill();
 
-            // Eye highlight (big)
+            // Eye big highlight
+            ctx.globalAlpha = 0.77;
             ctx.beginPath();
-            ctx.arc(ix - 3, gY - 4, gR * 0.14, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(255,255,255,0.92)';
+            ctx.arc(ix - 4, gY - 6, gR * 0.14, 0, Math.PI * 2);
+            ctx.fillStyle = '#fff';
             ctx.fill();
+            ctx.globalAlpha = 1.0;
 
-            // Eye highlight (small)
+            // Eye second highlight
+            ctx.globalAlpha = 0.5;
             ctx.beginPath();
             ctx.arc(ix + 2, gY + 2, gR * 0.07, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(255,255,255,0.7)';
+            ctx.fillStyle = '#fff';
             ctx.fill();
+            ctx.globalAlpha = 1.0;
         } else {
-            // Closed eye line
+            // Closed arc for blink
             ctx.beginPath();
             ctx.arc(0, gY, gR * 0.35, 0.1, Math.PI - 0.1);
             ctx.strokeStyle = '#4A2D15';
-            ctx.lineWidth = 2.5;
+            ctx.lineWidth = 3.5;
             ctx.lineCap = 'round';
             ctx.stroke();
         }
-
-        // Lens glass reflection
+        // Lens reflection
+        ctx.globalAlpha = 0.11;
         ctx.beginPath();
-        ctx.arc(0, gY, gR - 2, 0, Math.PI * 2);
-        const glassRef = ctx.createLinearGradient(-gR, gY - gR, gR, gY + gR);
-        glassRef.addColorStop(0, 'rgba(255,255,255,0.18)');
-        glassRef.addColorStop(0.4, 'rgba(255,255,255,0)');
-        glassRef.addColorStop(0.8, 'rgba(255,255,255,0.06)');
-        ctx.fillStyle = glassRef;
-        ctx.fill();
+        ctx.arc(0, gY, gR - 3.2, Math.PI * 1.7, Math.PI * 0.3, false);
+        ctx.lineWidth = 13;
+        ctx.strokeStyle = '#fff';
+        ctx.stroke();
+        ctx.globalAlpha = 1.0;
         ctx.restore();
 
-        /* ── Mouth ── */
+        // ===== Mouth =====
         ctx.save();
         const mY = -CFG.H * 0.07;
         if (isIdle && Math.sin(frame * 0.05) > 0.5) {
-            // Happy open mouth
+            // Laugh, teeth & tongue
             ctx.beginPath();
-            ctx.arc(0, mY, 9, 0.1, Math.PI - 0.1);
+            ctx.arc(0, mY, 13, 0.1, Math.PI - 0.1);
             ctx.fillStyle = '#8B1A1A';
             ctx.fill();
-            // Teeth
             ctx.beginPath();
-            ctx.rect(-5, mY - 1, 10, 4);
+            ctx.rect(-7, mY, 14, 6);
             ctx.fillStyle = '#FFF';
             ctx.fill();
-            ctx.strokeStyle = '#DDD';
-            ctx.lineWidth = 0.3;
-            ctx.beginPath(); ctx.moveTo(0, mY - 1); ctx.lineTo(0, mY + 3); ctx.stroke();
-            // Tongue
+            ctx.lineWidth = 0.5;
+            ctx.strokeStyle = '#ddd';
+            ctx.beginPath(); ctx.moveTo(0, mY); ctx.lineTo(0, mY + 6); ctx.stroke();
             ctx.beginPath();
-            ctx.ellipse(0, mY + 5, 4, 3, 0, 0, Math.PI);
-            ctx.fillStyle = '#D44';
+            ctx.ellipse(0, mY + 8, 6, 3, 0, 0, Math.PI);
+            ctx.fillStyle = '#d44';
+            ctx.globalAlpha = 0.7;
             ctx.fill();
+            ctx.globalAlpha = 1.0;
         } else {
-            // Normal smile
+            // Smile
             ctx.beginPath();
-            ctx.arc(0, mY - 2, 7, 0.2, Math.PI - 0.2);
-            ctx.strokeStyle = '#6B2A1A';
+            ctx.arc(0, mY - 4, 9, 0.2, Math.PI - 0.2);
+            ctx.strokeStyle = '#652b15';
             ctx.lineWidth = 2;
             ctx.lineCap = 'round';
+            ctx.globalAlpha = 1.0;
             ctx.stroke();
         }
         ctx.restore();
 
-        /* ── Hair ── */
+        // ===== Hair (wavy, deep brown, AO) =====
         ctx.save();
-        ctx.strokeStyle = '#2A1B0F';
+        ctx.strokeStyle = '#241711';
         ctx.lineCap = 'round';
-        const hb = -CFG.H * 0.47;
+        const hb = -CFG.H * 0.57;
         const hairs = [
-            { x: 0, cp1x: 3, cp1y: -10, ex: -2, ey: -16, w: 2.2 },
-            { x: -5, cp1x: -9, cp1y: -7, ex: -12, ey: -12, w: 1.8 },
-            { x: 5, cp1x: 9, cp1y: -7, ex: 12, ey: -12, w: 1.8 },
-            { x: -3, cp1x: -7, cp1y: -8, ex: -7, ey: -13, w: 1.4 },
-            { x: 3, cp1x: 7, cp1y: -8, ex: 7, ey: -13, w: 1.4 },
-            { x: -7, cp1x: -12, cp1y: -4, ex: -15, ey: -8, w: 1.2 },
-            { x: 7, cp1x: 12, cp1y: -4, ex: 15, ey: -8, w: 1.2 },
+            { x: 0, cp1x: 4, cp1y: -10, ex: -3, ey: -19, w: 2.6 },
+            { x: -5, cp1x: -13, cp1y: -8, ex: -18, ey: -16, w: 1.9 },
+            { x: 6, cp1x: 14, cp1y: -6.3, ex: 20, ey: -14, w: 1.8 },
+            { x: -8, cp1x: -11, cp1y: -15, ex: -9, ey: -21, w: 1.2 },
+            { x: 7, cp1x: 11, cp1y: -13, ex: 11, ey: -20, w: 1.2 }
         ];
-        const windOff = Math.sin(frame * 0.04) * 2;
+        const windOff = Math.sin(frame * 0.04 + bx * 0.01) * 3.6;
         hairs.forEach(h => {
             ctx.lineWidth = h.w;
             ctx.beginPath();
             ctx.moveTo(h.x, hb + 2);
-            ctx.quadraticCurveTo(h.cp1x + windOff, hb + h.cp1y, h.ex + windOff * 1.5, hb + h.ey);
+            ctx.quadraticCurveTo(h.cp1x + windOff, hb + h.cp1y, h.ex + windOff * 1.22, hb + h.ey);
             ctx.stroke();
         });
         ctx.restore();
 
-        /* ── Right Arm (front) ── */
+        // ===== Right Arm (front, AO, highlights) =====
         ctx.save();
-        ctx.translate(bw * 0.46, -CFG.H * 0.06);
-        ctx.rotate(-aa);
-        rr(0, 14, 10, 24, 4);
-        const raG = ctx.createLinearGradient(-5, 0, 5, 0);
-        raG.addColorStop(0, '#D4A017');
-        raG.addColorStop(0.5, '#F5D547');
-        raG.addColorStop(1, '#D4A017');
-        ctx.fillStyle = raG;
+        ctx.translate(fw * 0.54, -CFG.H * 0.13);
+        ctx.rotate(-armAngle - bodyYaw * 0.7);
+        rr(0, 18, 12, 34, 7.2);
+        ctx.shadowColor = 'rgba(68, 44, 8, 0.13)';
+        ctx.shadowBlur = 10;
+        ctx.fillStyle = aG;
         ctx.fill();
-        ctx.strokeStyle = '#B8860B';
-        ctx.lineWidth = 0.6;
+        ctx.shadowBlur = 0;
+        ctx.strokeStyle = '#a18837';
+        ctx.lineWidth = 1.1;
         ctx.stroke();
+
         // Glove
         ctx.beginPath();
-        ctx.arc(0, 27, 7, 0, Math.PI * 2);
-        const grG = ctx.createRadialGradient(-1, 25, 1, 0, 27, 7);
-        grG.addColorStop(0, '#444');
-        grG.addColorStop(1, '#111');
-        ctx.fillStyle = grG;
+        ctx.arc(0, 34, 10, 0, Math.PI * 2);
+        ctx.globalAlpha = 1.0;
+        ctx.fillStyle = glvG;
         ctx.fill();
-        for (let f = -1; f <= 1; f++) {
-            ctx.beginPath();
-            ctx.ellipse(f * 4, 31, 2.5, 3, f * 0.3, 0, Math.PI * 2);
-            ctx.fillStyle = '#222';
-            ctx.fill();
-        }
+        // Glove shine
+        ctx.globalAlpha = 0.21;
+        ctx.beginPath();
+        ctx.ellipse(-1, 41, 8, 2.7, -0.11, 0, Math.PI * 2);
+        ctx.fillStyle = '#fff';
+        ctx.fill();
+        ctx.globalAlpha = 1.0;
         ctx.restore();
 
         ctx.restore();
@@ -479,7 +520,6 @@
         frame++;
         dirFrames++;
 
-        // Blink logic
         blinkTimer--;
         if (blinkTimer <= 0 && !isBlinking) {
             isBlinking = true;
@@ -492,28 +532,21 @@
                 blinkTimer = rand(100, CFG.blinkInterval);
             }
         }
-
-        // Idle logic
         if (isIdle) {
             idleTimer--;
             if (idleTimer <= 0) isIdle = false;
         }
-
         const wp = frame * CFG.walkSpeed;
-        const bounce = isIdle ? Math.sin(frame * 0.05) * 2 : Math.abs(Math.sin(wp)) * CFG.bounce;
-
+        const bounce = isIdle ? Math.sin(frame * 0.05) * 3 : Math.abs(Math.sin(wp)) * CFG.bounce;
         if (dirFrames >= nextDir) pickDir();
-
         if (!isIdle) {
             x += CFG.speed * dirX;
             y += CFG.speed * 0.5 * dirY;
         }
-
         if (x > W + CFG.W) dirX = -1;
         else if (x < -CFG.W) dirX = 1;
         if (y < CFG.margin + CFG.H) { dirY = 1; y = CFG.margin + CFG.H; }
         else if (y > H - CFG.margin) { dirY = -1; y = H - CFG.margin; }
-
         drawMinion(x, y - bounce, wp, dirX);
         requestAnimationFrame(animate);
     }
