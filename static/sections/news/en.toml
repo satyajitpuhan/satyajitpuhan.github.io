@@ -3,7 +3,7 @@ subtitle = "Highlights from my research journey."
 
 [[items]]
 top_title = "📄 New Preprint!"
-image = "images/portfolio/portfolio-1.png"
+image = "images/portfolio/papers/heavy-mesons-mellin-moments.png"
 title = "An Analysis on the Parton Distribution Functions of Heavy Mesons"
 date = "May 17, 2026"
 description = "New solo-author preprint on arXiv! We investigate the constituent PDFs of the kaon and heavy pseudoscalar mesons (D, B, Bₛ, Bc, ηc, ηb) within the light-cone quark model, with NLO DGLAP evolution. Predictions include kaon NLO structure functions for the EIC and Drell–Yan cross sections for COMPASS++/AMBER with Carbon, Tungsten, and Aluminum targets."

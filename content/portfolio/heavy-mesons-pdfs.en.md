@@ -3,7 +3,7 @@ title = "An Analysis on the Parton Distribution Functions of Heavy Mesons"
 date = 2026-05-17
 
 [extra]
-thumbnail = "images/portfolio/portfolio-1.png"
+thumbnail = "images/portfolio/papers/heavy-mesons-mellin-moments.png"
 service = "e-Print: 2605.17389 [hep-ph]"
 client = "S. Puhan"
 short_description = "Preprint on arXiv — Constituent PDFs of kaon and heavy pseudoscalar mesons in the light-cone quark model with NLO DGLAP evolution."
