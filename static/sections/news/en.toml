@@ -2,6 +2,76 @@ title = "Recent News & Activities"
 subtitle = "Highlights from my research journey."
 
 [[items]]
+top_title = "📄 New Preprint!"
+image = "images/portfolio/portfolio-1.png"
+title = "An Analysis on the Parton Distribution Functions of Heavy Mesons"
+date = "May 17, 2026"
+description = "New solo-author preprint on arXiv! We investigate the constituent PDFs of the kaon and heavy pseudoscalar mesons (D, B, Bₛ, Bc, ηc, ηb) within the light-cone quark model, with NLO DGLAP evolution. Predictions include kaon NLO structure functions for the EIC and Drell–Yan cross sections for COMPASS++/AMBER with Carbon, Tungsten, and Aluminum targets."
+details = """
+**📄 New Preprint on arXiv!**
+
+**Title:** An Analysis on the Parton Distribution Functions of Heavy Mesons
+**Author:** Satyajit Puhan
+**Affiliations:** Computational High Energy Physics Lab, Dr. B.R. Ambedkar NIT, Jalandhar & Institute of Physics, Academia Sinica, Taipei, Taiwan
+**e-Print:** [2605.17389 [hep-ph]](https://arxiv.org/abs/2605.17389)
+
+---
+
+### Key Highlights
+
+- 🔹 **Constituent PDFs** of the kaon and heavy pseudoscalar mesons (D⁺, Dₛ⁺, Bc⁺, ηc, ηb, B⁺, Bₛ⁰) within the light-cone quark model
+- 🔹 **NLO DGLAP evolution** of initial-scale quark and antiquark PDFs to higher energy scales
+- 🔹 **Kaon NLO structure functions** predicted at energy scales relevant for the upcoming Electron–Ion Collider (EIC)
+- 🔹 **Drell–Yan cross-section predictions** for COMPASS++/AMBER with Carbon, Tungsten, and Aluminum nuclear targets for both isospin states of the kaon
+- 🔹 **Heavy quark dominance** demonstrated — heavier constituents carry larger momentum fractions within their respective heavy mesons
+- 🔹 **Mellin moment ratios** compared with lattice QCD and available theoretical models
+
+### Significance
+
+This is a comprehensive, solo-author investigation bridging the internal structure of light and heavy mesons, providing essential predictions for the EIC and COMPASS++/AMBER experimental programs.
+
+---
+
+*#HeavyMesons #PDFs #LCQM #DGLAP #EIC #COMPASS #AMBER #DrellYan #QCD*
+"""
+
+[[items]]
+top_title = "🎉 Paper Accepted!"
+image = "images/portfolio/papers/pion-medium-njl-model.png"
+title = "Valence Quark Distribution of the Pion Inside a Medium with Finite Baryon Density — Accepted in PTEP"
+date = "May, 2026"
+description = "Our paper on the in-medium valence quark distribution of the pion using the light-cone quark model with constituent quark masses from the two-flavor Nambu–Jona-Lasinio model has been accepted for publication in Progress of Theoretical and Experimental Physics (PTEP)."
+details = """
+**🎉 Paper Accepted in PTEP!**
+
+**Title:** Valence quark distribution of the pion inside a medium with finite baryon density: A Nambu–Jona-Lasinio model approach
+**Authors:** Ashutosh Dwibedi (IIT Bhilai), Satyajit Puhan (Ambedkar NIT), Sabyasachi Ghosh (IIT Bhilai), Harleen Dahiya (Ambedkar NIT)
+**Journal:** Progress of Theoretical and Experimental Physics (PTEP)
+**e-Print:** [2512.24921 [hep-ph]](https://arxiv.org/abs/2512.24921)
+
+---
+
+### Key Highlights
+
+- 🔹 **In-medium pion PDFs** calculated using the light-cone quark model with medium-modified constituent quark masses
+- 🔹 **Two-flavor NJL model** employed to obtain constituent quark masses at finite baryon density
+- 🔹 **NLO DGLAP evolution** of in-medium parton distribution functions from model scale to perturbative scale
+- 🔹 **Electromagnetic form factors** compared with experimental measurements and lattice QCD
+- 🔹 **Mellin moments** examined in comparison with existing extractions and theoretical model predictions
+- 🔹 **Distribution amplitudes** and in-medium modifications of pion properties
+
+### Significance
+
+This work bridges nuclear medium effects with light-front dynamics, providing the first systematic study of pion PDFs at finite baryon density using the NJL model within the LCQM framework.
+
+---
+
+*Congratulations to the team! 🎉*
+
+*#PionPDFs #NJLModel #NuclearMedium #DGLAP #PTEP #QCD*
+"""
+
+[[items]]
 top_title = "🎤 Seminar Talk!"
 image = "images/blog/posts/crji-seminar.png"
 title = "Extraction of Pion GPDs — Seminar at Prof. C. R. Ji's Group (NCSU, USA)"
