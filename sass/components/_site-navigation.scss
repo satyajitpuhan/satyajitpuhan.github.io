@@ -1,11 +1,10 @@
 .navbar {
-    padding: 15px 0;
-    background: $primary-color;
+    padding: 0;
+    background: transparent;
     transition: all .4s cubic-bezier(0.23, 1, 0.32, 1);
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 
     @include desktop {
-        background: $primary-color;
+        background: transparent;
     }
 
     @include desktop {
@@ -27,7 +26,7 @@
 
         .nav-item {
             .nav-link {
-                color: rgba(255, 255, 255, 0.85);
+                color: rgba(255, 255, 255, 0.8);
                 font-family: $secondary-font;
                 padding: 0 15px;
                 transition: all .3s ease;
@@ -41,7 +40,7 @@
                     left: 15px;
                     right: 15px;
                     height: 2px;
-                    background: $accent-gradient;
+                    background: linear-gradient(135deg, #8b5cf6, #06b6d4);
                     transform: scaleX(0);
                     transform-origin: right;
                     transition: transform .35s cubic-bezier(0.23, 1, 0.32, 1);
@@ -49,7 +48,7 @@
                 }
 
                 &:hover {
-                    color: $secondary-color; // Gold on hover
+                    color: #a78bfa;
 
                     &::after {
                         transform: scaleX(1);
@@ -69,13 +68,13 @@
             }
 
             .active {
-                color: $primary_color;
+                color: #a78bfa;
             }
         }
     }
 
     .hire_button {
-        background: $accent-gradient;
+        background: linear-gradient(135deg, #8b5cf6, #06b6d4);
         padding: 15px 30px;
         color: #fff;
         text-decoration: none;
@@ -86,10 +85,10 @@
         border: 1px solid transparent;
         transition: all .4s cubic-bezier(0.23, 1, 0.32, 1);
         transform: scale(1);
-        box-shadow: $glow-blue;
+        box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3);
 
         &:hover {
-            box-shadow: $glow-blue-lg;
+            box-shadow: 0 8px 35px rgba(139, 92, 246, 0.5);
             transform: translateY(-2px) scale(1.03);
         }
 
@@ -99,9 +98,11 @@
     }
 
     &.nav__color__change {
-        background: $primary-color;
-        padding: 15px 0;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+        background: rgba(10, 10, 15, 0.95);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        padding: 0;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
 
         @include desktop {
             padding: 10px 20px;
@@ -117,7 +118,7 @@
                 height: 2px;
                 width: 25px;
                 transition: all 0.2s;
-                background: $primary-color;
+                background: white;
                 display: block;
 
                 &:not(:last-child) {
@@ -156,6 +157,46 @@
                     }
                 }
             }
+        }
+    }
+}
+
+/* ── Antigravity Header Particle Wrapper ── */
+#header-particles-wrap {
+    position: relative;
+    overflow: hidden;
+    z-index: 100;
+}
+
+/* ── Social icon color cycling ── */
+.header-social-icon {
+    color: rgba(255, 255, 255, 0.6);
+    transition: all 0.3s ease;
+
+    &:nth-child(1) { &:hover { color: #8b5cf6; text-shadow: 0 0 12px rgba(139,92,246,0.5); } }
+    &:nth-child(2) { &:hover { color: #06b6d4; text-shadow: 0 0 12px rgba(6,182,212,0.5); } }
+    &:nth-child(3) { &:hover { color: #ec4899; text-shadow: 0 0 12px rgba(236,72,153,0.5); } }
+    &:nth-child(4) { &:hover { color: #10b981; text-shadow: 0 0 12px rgba(16,185,129,0.5); } }
+    &:nth-child(5) { &:hover { color: #f59e0b; text-shadow: 0 0 12px rgba(245,158,11,0.5); } }
+    &:nth-child(6) { &:hover { color: #3b82f6; text-shadow: 0 0 12px rgba(59,130,246,0.5); } }
+    &:nth-child(7) { &:hover { color: #a78bfa; text-shadow: 0 0 12px rgba(167,139,250,0.5); } }
+}
+
+/* ── Dropdown glassmorphism on dark bg ── */
+.navbar .dropdown-menu {
+    background: rgba(15, 15, 25, 0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+
+    .dropdown-item {
+        color: rgba(255, 255, 255, 0.75);
+        transition: all 0.2s;
+
+        &:hover, &:focus {
+            background: rgba(139, 92, 246, 0.15);
+            color: #a78bfa;
         }
     }
 }
