@@ -1,18 +1,17 @@
 +++
-title = "ସୀମିତ ବାରିୟନ୍ ସାନ୍ଧ୍ରତା ସହିତ ଏକ ମାଧ୍ୟମ ମଧ୍ୟରେ ପିଆନ୍ ର ଭାଲେନ୍ସ କ୍ୱାର୍କ ବଣ୍ଟନ: ଏକ ନାମ୍ବୁ - ଜୋନା-ଲାସିନିଓ ମଡେଲ୍ ପଦ୍ଧତି |"
+title = "Valence quark distribution of the pion inside a medium with finite baryon density: A Nambu–Jona-Lasinio model approach"
 date = 2025-12-01
 
 [extra]
 thumbnail = "images/portfolio/portfolio-1.png"
 service = "Accepted in PTEP"
-client = "A. Dwibedi, S. Puhan, S. Ghosh, and H. Dahiya"
+client = "A. Dwivedi, S. Puhan, S. Ghosh, and H. Dahiya"
 short_description = "Accepted in PTEP."
 challenge = "Valence quark distribution of the pion inside a medium with finite baryon density: A Nambu–Jona-Lasinio model approach"
-solution = "Accepted in PTEP."
+solution = "Research article published in Accepted in PTEP."
 +++
 
+**Authors:** A. Dwivedi, S. Puhan, S. Ghosh, and H. Dahiya  
+**Published in:** Accepted in PTEP
 
-** ଲେଖକ: ** ଏ ଦ୍ୱିବେଦୀ, ଏସ୍ ପୁହାନ୍, ଏସ୍ ଘୋଷ ଏବଂ ଏଚ୍ ଡାହିଆ |  
-** ରେ ପ୍ରକାଶିତ: ** PTEP ରେ ଗ୍ରହଣ ହୋଇଛି |
-
-[ArXiv on ରେ ପ Read ନ୍ତୁ →] (https://arxiv.org/abs/2512.24921)
+[Read on arXiv →](https://arxiv.org/abs/2512.24921)

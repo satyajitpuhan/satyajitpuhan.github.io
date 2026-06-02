@@ -195,9 +195,9 @@ pubs = [
         "id": "njl-model-baryon-density",
         "title": "Valence quark distribution of the pion inside a medium with finite baryon density: A Nambu–Jona-Lasinio model approach",
         "date": "2025-12-01",
-        "journal": "Communicated in PRD",
+        "journal": "Accepted in PTEP",
         "authors": "A. Dwivedi, S. Puhan, S. Ghosh, and H. Dahiya",
-        "description": "Communicated in PRD.",
+        "description": "Accepted in PTEP.",
         "link_label": "Read on arXiv",
         "link_url": "https://arxiv.org/abs/2512.24921"
     },
@@ -205,9 +205,9 @@ pubs = [
         "id": "spectroscopy-rho-symmetric",
         "title": "Spectroscopy of rho-meson in symmetric nuclear medium",
         "date": "2026-01-05",
-        "journal": "Communicated in PRD",
+        "journal": "Accepted in Physical Review D",
         "authors": "Anshu Gautam, Tanisha, S. Puhan, A. Kumar, and H. Dahiya",
-        "description": "Communicated in PRD.",
+        "description": "Accepted in Physical Review D.",
         "link_label": "Read on arXiv",
         "link_url": "https://arxiv.org/abs/2601.11082"
     },
@@ -220,6 +220,16 @@ pubs = [
         "description": "Communicated in PLB.",
         "link_label": "Read on arXiv",
         "link_url": "https://arxiv.org/abs/2601.06628"
+    },
+    {
+        "id": "gluon-helicity-jpsi-production",
+        "title": "Moderate-to-Large-x Gluon Helicity from J/psi Production at sqrt(s) = 27 GeV",
+        "date": "2026-05-29",
+        "journal": "e-Print: 2605.30945 [hep-ph]",
+        "authors": "S. Sharma, A. Aparin, S. Puhan, N. Kumar, and H. Dahiya",
+        "description": "New research article on gluon helicity from J/psi production.",
+        "link_label": "Read on arXiv",
+        "link_url": "https://arxiv.org/abs/2605.30945"
     }
 ]
 

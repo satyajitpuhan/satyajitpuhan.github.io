@@ -1,5 +1,5 @@
 +++
-title = "ହାଲୁକା ସାମ୍ନା କ୍ୱାର୍କ ମଡେଲ୍ ବ୍ୟବହାର କରି ରୋ ମେସନ୍ ର ଭାଲେନ୍ସ କ୍ୱାର୍କ ଗଠନ |"
+title = "Valence quark structure of rho meson using light-front quark model"
 date = 2025-11-01
 
 [extra]
@@ -11,8 +11,7 @@ challenge = "Valence quark structure of rho meson using light-front quark model"
 solution = "Research article published in Accepted in PRD."
 +++
 
+**Authors:** S. Puhan, S. Sharma, N. Kumar, and H. Dahiya  
+**Published in:** Accepted in PRD
 
-** ଲେଖକ: ** ଏସ୍ ପୁହାନ୍, ଏସ୍ ଶର୍ମା, ଏନ କୁମାର, ଏବଂ ଏଚ୍ ଡାହିଆ |  
-** ରେ ପ୍ରକାଶିତ: ** PRD ରେ ଗ୍ରହଣ କରାଯାଇଛି |
-
-[ArXiv on ରେ ପ Read ନ୍ତୁ →] (https://arxiv.org/abs/2511.10981)
+[Read on arXiv →](https://arxiv.org/abs/2511.10981)

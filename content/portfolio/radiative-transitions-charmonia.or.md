@@ -1,5 +1,5 @@
 +++
-title = "ଗ୍ରାଉଣ୍ଡ ଏବଂ ଉତ୍ତେଜିତ ଚାର୍ମୋନିଆ ରାଜ୍ୟଗୁଡିକ ପାଇଁ ବିକିରଣ ପରିବର୍ତ୍ତନ |"
+title = "Radiative Transitions for the Ground and Excited Charmonia States"
 date = 2025-04-10
 
 [extra]
@@ -11,8 +11,7 @@ challenge = "Radiative Transitions for the Ground and Excited Charmonia States"
 solution = "Research article published in Submitted to PRD."
 +++
 
+**Authors:** A. Yadav, S. Puhan, and H. Dahiya  
+**Published in:** Submitted to PRD
 
-** ଲେଖକ: ** ଏ ଯାଦବ, ଏସ୍ ପୁହାନ୍, ଏବଂ ଏଚ୍ ଡାହିଆ |  
-** ରେ ପ୍ରକାଶିତ: ** PRD ରେ ଦାଖଲ |
-
-[INSPIRE on ରେ ପ Read ନ୍ତୁ →] (https://inspirehep.net/literature/2914109)
+[Read on INSPIRE →](https://inspirehep.net/literature/2914109)

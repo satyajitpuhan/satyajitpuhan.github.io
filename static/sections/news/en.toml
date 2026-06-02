@@ -3,10 +3,81 @@ subtitle = "Highlights from my research journey."
 
 [[items]]
 top_title = "📄 New Preprint!"
+image = "images/portfolio/portfolio-1.png"
+title = "Moderate-to-Large-x Gluon Helicity from J/ψ Production at √s = 27 GeV"
+date = "May 29, 2026"
+description = "New preprint on arXiv! We present the first projection for constraining the moderate-to-large-x gluon helicity distribution Δg(x) through longitudinal double-spin asymmetry (A_LL) measurements of inclusive J/ψ production in polarized proton-proton collisions at √s = 27 GeV — the center-of-mass energy of the proposed SPD experiment at NICA."
+details = """
+**📄 New Preprint on arXiv!**
+
+**Title:** Moderate-to-Large-x Gluon Helicity from J/ψ Production at √s = 27 GeV
+**Authors:** Shubham Sharma (Moscow, ITEP & MIPT), Alexey Aparin (Moscow, ITEP & MIPT & JINR & Inst. Nucl. Phys., Almaty), Satyajit Puhan (Taiwan, Inst. Phys.), Narinder Kumar (M.N. College), Harleen Dahiya (Ambedkar, Nat. Inst. Technol.)
+**e-Print:** [2605.30945 [hep-ph]](https://arxiv.org/abs/2605.30945)
+**Pages:** 5 pages
+
+---
+
+### Key Highlights
+
+- 🔹 **First projection** for constraining moderate-to-large-x gluon helicity distribution Δg(x) via J/ψ production at NICA-SPD energy
+- 🔹 **Color-singlet model at LO** in perturbative QCD used to compute longitudinal double-spin asymmetry (A_LL)
+- 🔹 **Five NLO helicity PDF sets** evaluated — NNPDFpol1.1, DSSV14, JAM17, LSS10, and AAL19
+- 🔹 **A_LL as a function of p_T and rapidity** — significant discriminating power between different helicity PDF scenarios
+- 🔹 **Targeted regime:** moderate-to-large-x (x ≳ 0.1), poorly constrained by existing RHIC and EIC data
+
+### Significance
+
+This work establishes J/ψ production at √s = 27 GeV as a powerful probe for constraining the gluon helicity distribution, directly relevant for the upcoming SPD experiment at the NICA collider facility.
+
+---
+
+*#GluonHelicity #JPsi #NICA #SPD #SpinPhysics #QCD #HelicityPDFs*
+"""
+
+[[items]]
+top_title = "🎉 Paper Accepted in PRD!"
+image = "images/gallery/rho-meson-spectroscopy-0.png"
+title = "Spectroscopy of ρ-meson in Symmetric Nuclear Medium — Accepted in Physical Review D"
+date = "June, 2026"
+description = "Our paper on the spectroscopy of the ρ-meson in symmetric nuclear medium has been accepted for publication in Physical Review D! This work investigates the mass, decay constant, distribution amplitudes, decay width, and electromagnetic form factors of the ρ meson at finite baryonic density."
+details = """
+**🎉 Paper Accepted in Physical Review D!**
+
+**Title:** Spectroscopy of ρ-meson in symmetric nuclear medium
+**Authors:** Anshu Gautam, Tanisha, Satyajit Puhan, Arvind Kumar, Harleen Dahiya
+**Affiliations:** Ambedkar, Nat. Inst. Technol.
+**Journal:** Physical Review D (Accepted)
+**e-Print:** [2601.11082 [hep-ph]](https://arxiv.org/abs/2601.11082)
+
+---
+
+### Key Highlights
+
+- 🔹 **In-medium ρ-meson properties** — mass, decay constant, and distribution amplitudes at finite baryonic density
+- 🔹 **Leading-twist DAs** evolved via LO Efremov-Radyushkin-Brodsky-Lepage method
+- 🔹 **Mellin moments** and decay width of ρ⁰ → e⁺e⁻ predicted in both vacuum and medium
+- 🔹 **Electromagnetic form factors** — charge G_C(Q²), magnetic G_M(Q²), and quadrupole G_Q(Q²) in medium
+- 🔹 **Charge radii, magnetic and quadrupole moments** predicted — weaker sensitivity to baryonic density
+- 🔹 **Significant medium modifications** found for mass, decay constant, decay width, and DAs
+
+### Significance
+
+This work provides a comprehensive investigation of the ρ-meson in symmetric nuclear matter, bridging light-front dynamics with finite-density nuclear physics.
+
+---
+
+*Congratulations to the team! 🎉*
+
+*#RhoMeson #NuclearMedium #FormFactors #DistributionAmplitudes #PRD #QCD*
+"""
+
+[[items]]
+top_title = "📄 New Preprint!"
 image = "images/portfolio/papers/heavy-mesons-mellin-moments.png"
 title = "An Analysis on the Parton Distribution Functions of Heavy Mesons"
 date = "May 17, 2026"
 description = "New solo-author preprint on arXiv! We investigate the constituent PDFs of the kaon and heavy pseudoscalar mesons (D, B, Bₛ, Bc, ηc, ηb) within the light-cone quark model, with NLO DGLAP evolution. Predictions include kaon NLO structure functions for the EIC and Drell–Yan cross sections for COMPASS++/AMBER with Carbon, Tungsten, and Aluminum targets."
+
 details = """
 **📄 New Preprint on arXiv!**
 
@@ -408,9 +479,9 @@ This second edition, "Selected Topics in Effective Field Theories (EFTs)," spann
 
 [[items]]
 image = "images/gallery/rho-meson-spectroscopy-0.png"
-title = "Spectroscopy of ρ-meson in symmetric nuclear medium"
+title = "Spectroscopy of ρ-meson in symmetric nuclear medium — Accepted in PRD"
 date = "Jan 16, 2026"
-description = "Our recent paper investigating the behavior of the light vector ρ meson in the presence of a symmetric nuclear medium at zero temperature (e-Print: 2601.11082)."
+description = "Our paper investigating the behavior of the light vector ρ meson in symmetric nuclear medium at zero temperature has been accepted in Physical Review D (e-Print: 2601.11082)."
 extra_images = [
     "images/gallery/rho-meson-spectroscopy-1.png",
     "images/gallery/rho-meson-spectroscopy-2.png"

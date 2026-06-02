@@ -1,5 +1,5 @@
 +++
-title = "ହାଲୁକା ସାମ୍ନା ଗତିଶୀଳତାରେ ସ୍ପିନ୍ -1 ଅଣପୋଲାରାଇଜଡ୍ ଜିପିଡି |"
+title = "Spin-1 unpolarized GPDs in light front dynamics"
 date = 2024-12-08
 
 [extra]
@@ -11,8 +11,7 @@ challenge = "Spin-1 unpolarized GPDs in light front dynamics"
 solution = "Research article published in DAE Nuclear 2024."
 +++
 
+**Authors:** S. Puhan, Narinder Kumar, and H. Dahiya  
+**Published in:** DAE Nuclear 2024
 
-** ଲେଖକ: ** ଏସ୍ ପୁହାନ୍, ନରିନ୍ଦର କୁମାର, ଏବଂ ଏଚ୍ ଡାହିଆ |  
-** ରେ ପ୍ରକାଶିତ: ** DAE ପରମାଣୁ 2024 |
-
-[ବିବରଣୀ ଦେଖନ୍ତୁ →] (#)
+[View Details →](#)
