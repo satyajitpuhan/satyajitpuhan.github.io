@@ -76,6 +76,9 @@ SUMMARIES = {
     "hql2023-b-d-mesons.en.md": (
         "Presents unpolarized GPDs and PDFs for heavy B and D mesons in LFQM. Extracts EMFFs and GFFs from GPD moments at zero skewness, providing insights into the spatial and gravitational structure of heavy mesons."
     ),
+    "gluon-helicity-jpsi-production.en.md": (
+        "Feasibility study of longitudinal double-spin asymmetry A_LL in inclusive J/psi production at NICA SPD (sqrt(s) = 27 GeV), showing sensitivity to the moderate-to-large-x gluon helicity distribution Delta g(x)."
+    ),
     "daehep2024-pion-asymm-nuclear.en.md": (
         "Studies the pion transition form factor for gamma* gamma -> pi_0 in asymmetric nuclear medium. Calculates in-medium decay constant and distribution amplitude using LFQM with chiral SU(3) CQMF model, finding qualitative agreement with experiment."
     ),

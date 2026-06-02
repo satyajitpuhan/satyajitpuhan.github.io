@@ -229,7 +229,31 @@ pubs = [
         "authors": "S. Sharma, A. Aparin, S. Puhan, N. Kumar, and H. Dahiya",
         "description": "New research article on gluon helicity from J/psi production.",
         "link_label": "Read on arXiv",
-        "link_url": "https://arxiv.org/abs/2605.30945"
+        "link_url": "https://arxiv.org/abs/2605.30945",
+        "extra_markdown": """
+
+### Kinematics and Rapidity Coverage
+
+The partonic momentum fractions $x_{1,2}$ probed in NICA SPD kinematics ($\\sqrt{s} = 27$ GeV) as a function of rapidity $y$ for different transverse momentum $p_T$ values:
+
+<div style="text-align: center; margin: 30px 0;">
+  <img src="/images/portfolio/papers/gluon-helicity-plots.png" alt="Partonic momentum fractions x_1,2 and A_LL vs y" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.15);" />
+  <p style="font-size: 0.9rem; color: #a0aec0; margin-top: 10px;">
+    <strong>Figure 1:</strong> (Left) Partonic momentum fractions $x_{1,2}$ as a function of rapidity for various $p_T$. (Right-a) Longitudinal double-spin asymmetry $A_{LL}^{J/\\psi}$ vs $y$ for $p_T = 1.5, 3.0, 5.0$ GeV. (Right-b) Theoretical uncertainties for $p_T = 3.0$ GeV.
+  </p>
+</div>
+
+### Uncertainty Analysis
+
+The relative fractional uncertainties at ($\\sqrt{s} = 27$ GeV) and $p_T = 3$ GeV, highlighting the PDF, scale, and total uncertainties:
+
+<div style="text-align: center; margin: 30px 0;">
+  <img src="/images/portfolio/papers/gluon-helicity-uncertainties.png" alt="Relative uncertainties vs rapidity" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.15);" />
+  <p style="font-size: 0.9rem; color: #a0aec0; margin-top: 10px;">
+    <strong>Figure 2:</strong> Relative uncertainties of $A_{LL}^{J/\\psi}$ as a function of rapidity $y$ at $p_T = 3$ GeV, separating PDF uncertainty, scale uncertainty, and total uncertainty.
+  </p>
+</div>
+"""
     }
 ]
 
@@ -363,6 +387,8 @@ for f in glob('content/portfolio/*.md'):
 
 for p in pubs + confs:
     content = file_template.format(**p)
+    if "extra_markdown" in p:
+        content += p["extra_markdown"]
     
     path_en = f"content/portfolio/{p['id']}.en.md"
     with open(path_en, 'w', encoding='utf-8') as f:
