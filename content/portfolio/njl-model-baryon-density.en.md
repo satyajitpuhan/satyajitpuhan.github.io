@@ -4,7 +4,7 @@ date = 2025-12-01
 
 [extra]
 thumbnail = "images/portfolio/portfolio-1.png"
-service = "Accepted in PTEP"
+service = "PTEP ptae150 (2025)"
 client = "A. Dwivedi, S. Puhan, S. Ghosh, and H. Dahiya"
 short_description = "Accepted in PTEP."
 challenge = "We calculate the in-medium valence quark distribution of the pion immersed in a finite baryon density using the light-cone quark model. The medium-modified pion properties are obtained by using the constituent quark mass-dependent light cone wave functions. To obtain the constituent quark masses at finite baryon density, we employ the two-flavor Nambu--Jona-Lasinio model. We primarily focus on the in-medium electromagnetic form factor, distribution amplitude, and the parton distribution function of the pion. The parton distribution functions are also evolved from the model scale to a perturbative scale using next to leading order Dokshitzer-Gribov-Lipatov-Altarelli-Parisi evolution equations. Furthermore, our calculated form factors are compared with available experimental measurements and lattice quantum chromodynamics studies. We also examine the Mellin moments derived from our parton distribution functions in comparison with existing extractions and theoretical model predictions."

@@ -3,7 +3,7 @@ subtitle = "Highlights from my research journey."
 
 [[items]]
 top_title = "📄 New Preprint!"
-image = "images/portfolio/portfolio-1.png"
+image = "images/portfolio/papers/gluon-helicity-title.png"
 title = "Moderate-to-Large-x Gluon Helicity from J/ψ Production at √s = 27 GeV"
 date = "May 29, 2026"
 description = "New preprint on arXiv! We present the first projection for constraining the moderate-to-large-x gluon helicity distribution Δg(x) through longitudinal double-spin asymmetry (A_LL) measurements of inclusive J/ψ production in polarized proton-proton collisions at √s = 27 GeV — the center-of-mass energy of the proposed SPD experiment at NICA."

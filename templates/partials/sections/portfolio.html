@@ -1,57 +1,278 @@
 {% set section = get_section(path="portfolio/_index.md", lang=lang) %}
 
 {% if section.pages %}
+
+{# ── Separate articles from proceedings ── #}
+{% set articles = [] %}
+{% set proceedings = [] %}
+{% for page in section.pages %}
+  {% set svc = page.extra.service | lower %}
+  {% if "dae" in svc or "pos " in svc or "pos(" in svc or "athics" in svc or "daehep" in svc or "hql" in svc or "icfhep" in svc or "proceeding" in svc or "symposium" in svc or "hp2024" in svc %}
+    {% set_global proceedings = proceedings | concat(with=page) %}
+  {% else %}
+    {% set_global articles = articles | concat(with=page) %}
+  {% endif %}
+{% endfor %}
+
+{# ── Each slide: 4 rows × col1 + 4 rows × col2 for articles, 4 rows × col3 for proceedings ── #}
+{# ── Articles per slide: 8 (4 per col). Proceedings per slide: 4 ── #}
+{# ── Compute total slides ── #}
+{% set art_count = articles | length %}
+{% set pro_count = proceedings | length %}
+{# slides needed for articles (8 per slide), proceedings (4 per slide) #}
+{% set art_slides_needed = 1 %}
+{% if art_count > 8 %}{% set art_slides_needed = 2 %}{% endif %}
+{% if art_count > 16 %}{% set art_slides_needed = 3 %}{% endif %}
+{% if art_count > 24 %}{% set art_slides_needed = 4 %}{% endif %}
+{% if art_count > 32 %}{% set art_slides_needed = 5 %}{% endif %}
+{% if art_count > 40 %}{% set art_slides_needed = 6 %}{% endif %}
+{% set pro_slides_needed = 1 %}
+{% if pro_count > 4 %}{% set pro_slides_needed = 2 %}{% endif %}
+{% if pro_count > 8 %}{% set pro_slides_needed = 3 %}{% endif %}
+{% if pro_count > 12 %}{% set pro_slides_needed = 4 %}{% endif %}
+{% if pro_count > 16 %}{% set pro_slides_needed = 5 %}{% endif %}
+{% if pro_count > 20 %}{% set pro_slides_needed = 6 %}{% endif %}
+{% set total_slides = art_slides_needed %}
+{% if pro_slides_needed > art_slides_needed %}{% set total_slides = pro_slides_needed %}{% endif %}
+
 <section class="section portfolio" id="portfolio" style="position: relative; background-image: url('/images/flowers/flower6.jpg'); background-size: cover; background-position: center; padding: 100px 0;">
-  <div style="position: absolute; inset: 0; background: rgba(20, 30, 40, 0.75); pointer-events: none;"></div>
+  <div style="position: absolute; inset: 0; background: rgba(20, 30, 40, 0.82); pointer-events: none;"></div>
   <div style="position: relative; z-index: 1;">
-  <div class="container">
-    <div class="row text-center">
-      <div class="col-lg-6 offset-lg-3">
+  <div class="container-xl">
+
+    <!-- Section header -->
+    <div class="row text-center mb-4">
+      <div class="col-lg-8 offset-lg-2">
         <div class="portfolio__header" style="color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
-          <span style="color: #f39c12; font-weight: 800; letter-spacing: 2px;">{{ section.title }}</span>
-          <h1 style="color: white; font-weight: 800;">{{ section.description }}</h1>
+          <span style="color: #f39c12; font-weight: 800; letter-spacing: 3px; font-size: 0.85rem; text-transform: uppercase;">{{ section.title }}</span>
+          <h1 style="color: white; font-weight: 800; margin-top: 8px;">{{ section.description }}</h1>
         </div>
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-12">
-        <div class="publication-list">
-          {% for page in section.pages %}
-          <div class="publication-item" style="background: rgba(255, 255, 255, 0.12); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-radius: 12px; padding: 25px; margin-bottom: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.15); display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease;"
-              onmouseover="this.style.transform='translateY(-4px)'; this.style.background='rgba(255,255,255,0.2)';"
-              onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(255, 255, 255, 0.12)';">
-            <div class="publication-item__info">
-              <span class="publication-item__journal" style="color: #38bdf8; font-weight: 700; font-size: 0.85rem; display: block; margin-bottom: 8px;">{{ page.extra.service }}</span>
-              <h5 class="publication-item__title" style="margin-bottom: 8px;">
-                <a href="{{ page.permalink }}" style="color: white; font-weight: 700; text-decoration: none; font-size: 1.1rem;">{{ page.title }}</a>
-              </h5>
-              <p class="publication-item__authors" style="color: #e2e8f0; margin: 0; font-size: 0.9rem;">{{ page.extra.client }}</p>
-            </div>
-            <a class="publication-item__link" href="{{ page.permalink }}" style="color: #f39c12; font-weight: bold; padding: 8px 16px; background: rgba(255,255,255,0.1); border-radius: 8px; text-decoration: none;">{{ trans(key="see_details", lang=lang) }}
-              →</a>
-          </div>
-          {% endfor %}
+    <!-- Column labels -->
+    <div class="row mb-3" style="padding: 0 15px; align-items: stretch;">
+      <div class="col-lg-4 mb-2 mb-lg-0">
+        <div style="background: rgba(56,189,248,0.12); border: 1px solid rgba(56,189,248,0.35); border-radius: 10px; padding: 10px; text-align: center;">
+          <span style="color: #38bdf8; font-weight: 700; font-size: 0.8rem; letter-spacing: 1px;">📰 JOURNAL ARTICLES (I)</span>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-2 mb-lg-0">
+        <div style="background: rgba(251,191,36,0.12); border: 1px solid rgba(251,191,36,0.35); border-radius: 10px; padding: 10px; text-align: center;">
+          <span style="color: #fbbf24; font-weight: 700; font-size: 0.8rem; letter-spacing: 1px;">📰 JOURNAL ARTICLES (II)</span>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div style="background: rgba(167,139,250,0.12); border: 1px solid rgba(167,139,250,0.35); border-radius: 10px; padding: 10px; text-align: center;">
+          <span style="color: #a78bfa; font-weight: 700; font-size: 0.8rem; letter-spacing: 1px;">📋 PROCEEDINGS PAPERS</span>
         </div>
       </div>
     </div>
+
+    <!-- Carousel wrapper -->
+    <div class="pub-carousel-wrap" style="position: relative; padding: 0 60px;">
+
+      <!-- Prev arrow -->
+      <button id="pubPrev" type="button" aria-label="Previous page"
+        style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); z-index: 10;
+               width: 48px; height: 48px; border-radius: 50%; border: none; cursor: pointer;
+               background: linear-gradient(135deg, #38bdf8 0%, #a78bfa 100%);
+               box-shadow: 0 4px 18px rgba(56,189,248,0.45); display: flex; align-items: center; justify-content: center;
+               transition: transform 0.2s ease, box-shadow 0.2s ease;"
+        onmouseover="this.style.transform='translateY(-50%) scale(1.12)'; this.style.boxShadow='0 6px 25px rgba(56,189,248,0.65)';"
+        onmouseout="this.style.transform='translateY(-50%) scale(1)'; this.style.boxShadow='0 4px 18px rgba(56,189,248,0.45)';">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+
+      <!-- Next arrow -->
+      <button id="pubNext" type="button" aria-label="Next page"
+        style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); z-index: 10;
+               width: 48px; height: 48px; border-radius: 50%; border: none; cursor: pointer;
+               background: linear-gradient(135deg, #38bdf8 0%, #a78bfa 100%);
+               box-shadow: 0 4px 18px rgba(56,189,248,0.45); display: flex; align-items: center; justify-content: center;
+               transition: transform 0.2s ease, box-shadow 0.2s ease;"
+        onmouseover="this.style.transform='translateY(-50%) scale(1.12)'; this.style.boxShadow='0 6px 25px rgba(56,189,248,0.65)';"
+        onmouseout="this.style.transform='translateY(-50%) scale(1)'; this.style.boxShadow='0 4px 18px rgba(56,189,248,0.45)';">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+
+      <!-- Page counter -->
+      <div style="text-align: center; color: rgba(255,255,255,0.45); font-size: 0.78rem; margin-bottom: 14px; letter-spacing: 2px; text-transform: uppercase;">
+        Page <span id="pubCurPage">1</span> / <span id="pubTotalPages">{{ total_slides }}</span>
+      </div>
+
+      <!-- Slides -->
+      <div id="pubSlidesContainer">
+        {% for slide_idx in range(end=total_slides) %}
+        <div class="pub-slide" id="pubSlide{{ slide_idx }}"
+          style="display: {% if slide_idx == 0 %}block{% else %}none{% endif %};">
+
+          <div class="row" style="margin: 0 -6px; align-items: start;">
+
+            <!-- ── Column 1: Articles rows 0–3 ── -->
+            <div class="col-lg-4 col-md-6" style="padding: 0 6px;">
+              {% for row_idx in range(end=4) %}
+                {% set art_idx = slide_idx * 8 + row_idx %}
+                {% if art_idx < art_count %}
+                  {% set apage = articles[art_idx] %}
+                  <div class="pub-entry pub-entry-art1"
+                    onclick="window.location='{{ apage.permalink }}';"
+                    style="background: rgba(15, 30, 50, 0.80); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+                           border-radius: 12px; padding: 14px 16px; margin-bottom: 12px; cursor: pointer;
+                           box-shadow: 0 4px 20px rgba(0,0,0,0.3); border-left: 3px solid #38bdf8;
+                           border-top: 1px solid rgba(56,189,248,0.15); border-right: 1px solid rgba(56,189,248,0.1); border-bottom: 1px solid rgba(56,189,248,0.1);
+                           transition: all 0.25s ease;">
+                    <span style="color: #38bdf8; font-weight: 700; font-size: 0.72rem; display: block; margin-bottom: 5px; letter-spacing: 0.5px; text-transform: uppercase;">{{ apage.extra.service }}</span>
+                    <div style="color: white; font-weight: 600; font-size: 0.88rem; line-height: 1.35; margin-bottom: 7px;">{{ apage.title }}</div>
+                    <div style="color: #94a3b8; font-size: 0.76rem; line-height: 1.4;">
+                      {{ apage.extra.client | replace(from="S. Puhan", to='<strong style="color:#fde68a; font-weight:800; text-shadow: 0 0 8px rgba(253,230,138,0.4);">S. Puhan</strong>') | replace(from="Satyajit Puhan", to='<strong style="color:#fde68a; font-weight:800; text-shadow: 0 0 8px rgba(253,230,138,0.4);">Satyajit Puhan</strong>') | safe }}
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+
+            <!-- ── Column 2: Articles rows 4–7 ── -->
+            <div class="col-lg-4 col-md-6" style="padding: 0 6px;">
+              {% for row_idx in range(end=4) %}
+                {% set art_idx = slide_idx * 8 + 4 + row_idx %}
+                {% if art_idx < art_count %}
+                  {% set apage = articles[art_idx] %}
+                  <div class="pub-entry pub-entry-art2"
+                    onclick="window.location='{{ apage.permalink }}';"
+                    style="background: rgba(15, 30, 50, 0.80); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+                           border-radius: 12px; padding: 14px 16px; margin-bottom: 12px; cursor: pointer;
+                           box-shadow: 0 4px 20px rgba(0,0,0,0.3); border-left: 3px solid #fbbf24;
+                           border-top: 1px solid rgba(251,191,36,0.15); border-right: 1px solid rgba(251,191,36,0.1); border-bottom: 1px solid rgba(251,191,36,0.1);
+                           transition: all 0.25s ease;">
+                    <span style="color: #fbbf24; font-weight: 700; font-size: 0.72rem; display: block; margin-bottom: 5px; letter-spacing: 0.5px; text-transform: uppercase;">{{ apage.extra.service }}</span>
+                    <div style="color: white; font-weight: 600; font-size: 0.88rem; line-height: 1.35; margin-bottom: 7px;">{{ apage.title }}</div>
+                    <div style="color: #94a3b8; font-size: 0.76rem; line-height: 1.4;">
+                      {{ apage.extra.client | replace(from="S. Puhan", to='<strong style="color:#fde68a; font-weight:800; text-shadow: 0 0 8px rgba(253,230,138,0.4);">S. Puhan</strong>') | replace(from="Satyajit Puhan", to='<strong style="color:#fde68a; font-weight:800; text-shadow: 0 0 8px rgba(253,230,138,0.4);">Satyajit Puhan</strong>') | safe }}
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+
+            <!-- ── Column 3: Proceedings rows 0–3 ── -->
+            <div class="col-lg-4 col-md-12" style="padding: 0 6px;">
+              {% for row_idx in range(end=4) %}
+                {% set pro_idx = slide_idx * 4 + row_idx %}
+                {% if pro_idx < pro_count %}
+                  {% set ppage = proceedings[pro_idx] %}
+                  <div class="pub-entry pub-entry-proc"
+                    onclick="window.location='{{ ppage.permalink }}';"
+                    style="background: rgba(25, 15, 50, 0.80); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+                           border-radius: 12px; padding: 14px 16px; margin-bottom: 12px; cursor: pointer;
+                           box-shadow: 0 4px 20px rgba(0,0,0,0.3); border-left: 3px solid #a78bfa;
+                           border-top: 1px solid rgba(167,139,250,0.15); border-right: 1px solid rgba(167,139,250,0.1); border-bottom: 1px solid rgba(167,139,250,0.1);
+                           transition: all 0.25s ease;">
+                    <span style="color: #a78bfa; font-weight: 700; font-size: 0.72rem; display: block; margin-bottom: 5px; letter-spacing: 0.5px; text-transform: uppercase;">{{ ppage.extra.service }}</span>
+                    <div style="color: white; font-weight: 600; font-size: 0.88rem; line-height: 1.35; margin-bottom: 7px;">{{ ppage.title }}</div>
+                    <div style="color: #94a3b8; font-size: 0.76rem; line-height: 1.4;">
+                      {{ ppage.extra.client | replace(from="S. Puhan", to='<strong style="color:#fde68a; font-weight:800; text-shadow: 0 0 8px rgba(253,230,138,0.4);">S. Puhan</strong>') | replace(from="Satyajit Puhan", to='<strong style="color:#fde68a; font-weight:800; text-shadow: 0 0 8px rgba(253,230,138,0.4);">Satyajit Puhan</strong>') | safe }}
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+
+          </div><!-- /.row -->
+        </div><!-- /.pub-slide -->
+        {% endfor %}
+      </div><!-- /#pubSlidesContainer -->
+
+      <!-- Dot indicators -->
+      <div style="display: flex; justify-content: center; gap: 8px; margin-top: 24px;" id="pubDots">
+        {% for slide_idx in range(end=total_slides) %}
+        <button class="pub-dot" data-dot="{{ slide_idx }}"
+          style="height: 8px; width: {% if slide_idx == 0 %}26px{% else %}8px{% endif %}; border-radius: 4px; border: none; cursor: pointer; padding: 0;
+                 background: {% if slide_idx == 0 %}linear-gradient(90deg,#38bdf8,#a78bfa){% else %}rgba(255,255,255,0.22){% endif %};
+                 transition: all 0.3s ease;">
+        </button>
+        {% endfor %}
+      </div>
+
+    </div><!-- /.pub-carousel-wrap -->
+
+    <!-- Citation summary -->
     <div class="row mt-5">
       <div class="col-12 text-center">
-        <h3 class="mb-4" style="font-family: inherit; font-size: 28px; color: white; margin-top: 40px; text-shadow: 0 2px 8px rgba(0,0,0,0.5);">Citation
-          Summary</h3>
-
-        <div id="inspire-stats-container" style="margin-bottom: 30px;">
-          <!-- Fetched stats pushed here via JS -->
-        </div>
-
-        <div class="citation-container"
-          style="width: 100%; height: 500px; padding: 20px; overflow: hidden; background: transparent;">
+        <h3 class="mb-4" style="font-family: inherit; font-size: 28px; color: white; margin-top: 40px; text-shadow: 0 2px 8px rgba(0,0,0,0.5);">Citation Summary</h3>
+        <div id="inspire-stats-container" style="margin-bottom: 30px;"></div>
+        <div class="citation-container" style="width: 100%; height: 500px; padding: 20px; overflow: hidden; background: transparent;">
           <canvas id="papersChart"></canvas>
         </div>
       </div>
     </div>
-  </div>
+
+  </div><!-- /.container-xl -->
   </div>
 </section>
+
 <script src="{{ get_url(path='js/inspire-stats.js') }}"></script>
+
+<style>
+  @keyframes pubSlideIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .pub-entry:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 10px 32px rgba(0,0,0,0.45) !important;
+  }
+  .pub-entry-art1:hover { border-left-color: #7dd3fc !important; background: rgba(20, 42, 68, 0.90) !important; }
+  .pub-entry-art2:hover { border-left-color: #fcd34d !important; background: rgba(20, 42, 68, 0.90) !important; }
+  .pub-entry-proc:hover { border-left-color: #c4b5fd !important; background: rgba(38, 20, 68, 0.90) !important; }
+  @media (max-width: 992px) {
+    .pub-carousel-wrap { padding: 0 40px !important; }
+    #pubPrev { left: -5px !important; width: 36px !important; height: 36px !important; }
+    #pubNext { right: -5px !important; width: 36px !important; height: 36px !important; }
+  }
+</style>
+
+<script>
+(function() {
+  var totalSlides = {{ total_slides }};
+  var current = 0;
+
+  function getSlide(i)  { return document.getElementById('pubSlide' + i); }
+  function getDot(i)    { return document.querySelectorAll('.pub-dot')[i]; }
+  function getCurEl()   { return document.getElementById('pubCurPage'); }
+
+  function goTo(idx) {
+    var prev = current;
+    current = ((idx % totalSlides) + totalSlides) % totalSlides;
+    if (prev === current) return;
+
+    var oldSlide = getSlide(prev);
+    var newSlide = getSlide(current);
+    var oldDot   = getDot(prev);
+    var newDot   = getDot(current);
+
+    oldSlide.style.display = 'none';
+    oldDot.style.width = '8px';
+    oldDot.style.background = 'rgba(255,255,255,0.22)';
+
+    newSlide.style.display = 'block';
+    newSlide.style.animation = 'none';
+    void newSlide.offsetWidth;
+    newSlide.style.animation = 'pubSlideIn 0.4s ease forwards';
+    newDot.style.width = '26px';
+    newDot.style.background = 'linear-gradient(90deg,#38bdf8,#a78bfa)';
+
+    var curEl = getCurEl();
+    if (curEl) curEl.textContent = current + 1;
+  }
+
+  document.getElementById('pubPrev').addEventListener('click', function() { goTo(current - 1); });
+  document.getElementById('pubNext').addEventListener('click', function() { goTo(current + 1); });
+
+  document.querySelectorAll('.pub-dot').forEach(function(dot) {
+    dot.addEventListener('click', function() { goTo(parseInt(this.dataset.dot, 10)); });
+  });
+})();
+</script>
+
 {% endif %}
