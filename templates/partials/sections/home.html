@@ -19,6 +19,9 @@
   <div style="position: absolute; top: -10%; right: -10%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(139,92,246,0.12) 0%, rgba(0,0,0,0) 70%); pointer-events: none; z-index: 1;"></div>
   <div style="position: absolute; bottom: -10%; left: -10%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(6,182,212,0.1) 0%, rgba(0,0,0,0) 70%); pointer-events: none; z-index: 1;"></div>
 
+  <!-- Interactive QCD Particle Canvas -->
+  <canvas id="qcd-particle-canvas" style="position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; opacity: 0.85;"></canvas>
+
   <div class="container" style="position: relative; z-index: 2;">
     <div class="row align-items-center">
       
@@ -30,6 +33,26 @@
           </h1>
           <div class="hero-description" style="color: rgba(255, 255, 255, 0.75); font-size: clamp(0.95rem, 1.8vw, 1.05rem); line-height: 1.7; margin-bottom: 30px;">
             {{ data.description | markdown | safe }}
+          </div>
+          <!-- Interactive QCD Field Invitation Badge -->
+          <div class="qcd-hint-badge" style="
+            display: inline-flex; 
+            align-items: center; 
+            gap: 8px; 
+            background: rgba(6, 182, 212, 0.08); 
+            border: 1px solid rgba(6, 182, 212, 0.25); 
+            border-radius: 100px; 
+            padding: 8px 16px; 
+            font-size: 0.8rem; 
+            color: #06b6d4; 
+            font-family: 'JetBrains Mono', monospace; 
+            margin-bottom: 25px;
+            backdrop-filter: blur(8px);
+            user-select: none;
+            transition: all 0.3s;
+          " onmouseover="this.style.background='rgba(6, 182, 212, 0.15)';this.style.borderColor='rgba(6, 182, 212, 0.45)';" onmouseout="this.style.background='rgba(6, 182, 212, 0.08)';this.style.borderColor='rgba(6, 182, 212, 0.25)';">
+            <span style="display:inline-block; width: 6px; height: 6px; border-radius: 50%; background: #06b6d4; animation: pulse 2s infinite;"></span>
+            <span>Hover to attract quarks • Click background to collide</span>
           </div>
           {% if data.button_url %}
           <a href="{{ get_url(path=data.button_url, lang=lang) }}" class="btn btn-hero" style="
@@ -201,5 +224,220 @@
       height: 380px !important;
     }
   }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.4); }
+    50% { opacity: 0.5; box-shadow: 0 0 0 6px rgba(6, 182, 212, 0); }
+  }
 </style>
+
+<script>
+  (function() {
+    const section = document.getElementById('home');
+    const canvas = document.getElementById('qcd-particle-canvas');
+    if (!section || !canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    const maxParticles = 50;
+    
+    function resizeCanvas() {
+      canvas.width = section.clientWidth;
+      canvas.height = section.clientHeight;
+    }
+    
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    
+    const mouse = { x: null, y: null };
+    
+    section.addEventListener('mousemove', (e) => {
+      const rect = section.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+    });
+    
+    section.addEventListener('mouseleave', () => {
+      mouse.x = null;
+      mouse.y = null;
+    });
+    
+    section.addEventListener('click', (e) => {
+      if (e.target.closest('a, button, .carousel-indicators button, .carousel-control-next, .carousel-control-prev')) return;
+      
+      const rect = section.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const numSpray = 16;
+      for (let i = 0; i < numSpray; i++) {
+        particles.push(new Particle(x, y, true));
+      }
+    });
+    
+    class Particle {
+      constructor(x, y, isSpray = false) {
+        this.x = x;
+        this.y = y;
+        this.isSpray = isSpray;
+        
+        const speed = isSpray ? (Math.random() * 3.5 + 1.5) : (Math.random() * 0.6 + 0.2);
+        const angle = Math.random() * Math.PI * 2;
+        this.vx = Math.cos(angle) * speed;
+        this.vy = Math.sin(angle) * speed;
+        
+        this.origVx = this.vx;
+        this.origVy = this.vy;
+        
+        const colors = [
+          { color: 'rgba(244, 63, 94, 0.85)', glow: '#f43f5e' }, // Rose
+          { color: 'rgba(16, 185, 129, 0.85)', glow: '#10b981' }, // Emerald
+          { color: 'rgba(59, 130, 246, 0.85)', glow: '#3b82f6' }  // Blue
+        ];
+        this.colorType = colors[Math.floor(Math.random() * 3)];
+        this.radius = isSpray ? Math.random() * 1.2 + 1.2 : Math.random() * 1.8 + 2.2;
+        
+        this.life = 1.0;
+        this.decay = isSpray ? (Math.random() * 0.018 + 0.01) : 0;
+      }
+      
+      update(width, height, mouse, attDist) {
+        this.x += this.vx;
+        this.y += this.vy;
+        
+        if (this.x < 0 || this.x > width) this.vx *= -1;
+        if (this.y < 0 || this.y > height) this.vy *= -1;
+        
+        this.x = Math.max(0, Math.min(width, this.x));
+        this.y = Math.max(0, Math.min(height, this.y));
+        
+        if (this.isSpray) {
+          this.life -= this.decay;
+          this.vx *= 0.97;
+          this.vy *= 0.97;
+        } else {
+          if (mouse.x !== null) {
+            const dx = mouse.x - this.x;
+            const dy = mouse.y - this.y;
+            const dist = Math.sqrt(dx*dx + dy*dy);
+            
+            if (dist < attDist) {
+              if (dist > 35) {
+                const force = (1 - dist / attDist) * 0.12;
+                this.vx += (dx / dist) * force;
+                this.vy += (dy / dist) * force;
+                
+                const speed = Math.sqrt(this.vx*this.vx + this.vy*this.vy);
+                if (speed > 2.0) {
+                  this.vx = (this.vx / speed) * 2.0;
+                  this.vy = (this.vy / speed) * 2.0;
+                }
+              } else {
+                this.vx *= 0.94;
+                this.vy *= 0.94;
+              }
+            } else {
+              this.vx = this.vx * 0.96 + this.origVx * 0.04;
+              this.vy = this.vy * 0.96 + this.origVy * 0.04;
+            }
+          } else {
+            this.vx = this.vx * 0.96 + this.origVx * 0.04;
+            this.vy = this.vy * 0.96 + this.origVy * 0.04;
+          }
+        }
+      }
+      
+      draw(ctx) {
+        ctx.save();
+        ctx.globalAlpha = this.life;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = this.colorType.color;
+        ctx.shadowBlur = 6;
+        ctx.shadowColor = this.colorType.glow;
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+    
+    for (let i = 0; i < maxParticles; i++) {
+      particles.push(new Particle(Math.random() * window.innerWidth, Math.random() * window.innerHeight));
+    }
+    
+    function drawGluon(ctx, p1, p2, dist, maxDist) {
+      const dx = p2.x - p1.x;
+      const dy = p2.y - p1.y;
+      const angle = Math.atan2(dy, dx);
+      const segments = 10;
+      const amp = 3.0;
+      
+      ctx.save();
+      ctx.beginPath();
+      
+      ctx.translate(p1.x, p1.y);
+      ctx.rotate(angle);
+      
+      ctx.moveTo(0, 0);
+      for (let i = 0; i <= segments; i++) {
+        const pct = i / segments;
+        const x = pct * dist;
+        const y = Math.sin(pct * Math.PI * 6) * amp;
+        ctx.lineTo(x, y);
+      }
+      
+      const alpha = (1 - dist / maxDist) * 0.25 * Math.min(p1.life, p2.life);
+      const grad = ctx.createLinearGradient(0, 0, dist, 0);
+      
+      const c1 = p1.colorType.color.replace('0.85', alpha.toString());
+      const c2 = p2.colorType.color.replace('0.85', alpha.toString());
+      grad.addColorStop(0, c1);
+      grad.addColorStop(1, c2);
+      
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = 1.0;
+      ctx.stroke();
+      ctx.restore();
+    }
+    
+    function animate() {
+      // Check if element is in view to save CPU resources
+      const rect = section.getBoundingClientRect();
+      if (rect.bottom > 0 && rect.top < window.innerHeight) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        for (let i = particles.length - 1; i >= 0; i--) {
+          const p = particles[i];
+          p.update(canvas.width, canvas.height, mouse, 180);
+          
+          if (p.isSpray && p.life <= 0) {
+            particles.splice(i, 1);
+            continue;
+          }
+          
+          p.draw(ctx);
+        }
+        
+        const maxConnectionDist = 100;
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const p1 = particles[i];
+            const p2 = particles[j];
+            
+            const dx = p2.x - p1.x;
+            const dy = p2.y - p1.y;
+            const dist = Math.sqrt(dx*dx + dy*dy);
+            
+            if (dist < maxConnectionDist) {
+              drawGluon(ctx, p1, p2, dist, maxConnectionDist);
+            }
+          }
+        }
+      }
+      
+      requestAnimationFrame(animate);
+    }
+    
+    animate();
+  })();
+</script>
 {% endif %}
