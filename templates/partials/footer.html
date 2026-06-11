@@ -1,107 +1,200 @@
-<section class="contact" id="contact" style="position: relative; background-image: url('/images/flowers/flower1.jpg'); background-size: cover; background-position: center bottom; padding: 50px 0 30px 0; color: white;">
-  <div style="position: absolute; inset: 0; background: rgba(20, 10, 30, 0.85); pointer-events: none;"></div>
+<!-- ═══ Premium Dark Footer with Aurora Effect ═══ -->
+<footer id="contact" style="position: relative; background: #05050e; overflow: hidden; padding: 80px 0 0 0; color: white;">
+
+  <!-- Aurora gradient glow background -->
+  <div style="position: absolute; top: -100px; left: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(139,92,246,0.08) 0%, transparent 70%); pointer-events: none;"></div>
+  <div style="position: absolute; top: -50px; right: -100px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(6,182,212,0.07) 0%, transparent 70%); pointer-events: none;"></div>
+  <div style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 800px; height: 200px; background: radial-gradient(ellipse, rgba(139,92,246,0.06) 0%, transparent 70%); pointer-events: none;"></div>
+
+  <!-- Top shimmer line -->
+  <div style="position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(139,92,246,0.6) 30%, rgba(6,182,212,0.8) 50%, rgba(139,92,246,0.6) 70%, transparent); pointer-events: none;"></div>
+
   <div class="container" style="position: relative; z-index: 1;">
-        {% if config.extra.display_cta %}
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="contact__cta">
-                    <div class="shape-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="357" height="315.029" viewBox="0 0 357 315.029">
-                            <path data-name="Path 1449"
-                                d="M76.1-157.222C91.746-135.8 87.2-94.273 99.993-61.945c12.7 32.328 42.661 55.459 39.248 73.282-3.318 17.823-40.007 30.337-65.6 43.325-25.5 12.988-39.912 26.545-60.01 42.566-20.1 16.116-46.074 34.6-63.328 27.682-17.349-6.921-25.976-39.153-59.915-59.82s-93.1-29.768-105.325-51.478 22.373-56.028 43.609-93.949c21.331-37.921 29.2-79.35 53.563-96.793 24.459-17.444 65.414-10.9 103.9-6.921 38.396 3.982 74.326 5.404 89.965 26.829z"
-                                transform="translate(217.489 188.626)" />
-                        </svg>
-                    </div>
-                    <div class="shape-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="357" height="315.029" viewBox="0 0 357 315.029">
-                            <path data-name="Path 1449"
-                                d="M76.1-157.222C91.746-135.8 87.2-94.273 99.993-61.945c12.7 32.328 42.661 55.459 39.248 73.282-3.318 17.823-40.007 30.337-65.6 43.325-25.5 12.988-39.912 26.545-60.01 42.566-20.1 16.116-46.074 34.6-63.328 27.682-17.349-6.921-25.976-39.153-59.915-59.82s-93.1-29.768-105.325-51.478 22.373-56.028 43.609-93.949c21.331-37.921 29.2-79.35 53.563-96.793 24.459-17.444 65.414-10.9 103.9-6.921 38.396 3.982 74.326 5.404 89.965 26.829z"
-                                transform="translate(217.489 188.626)" />
-                        </svg>
-                    </div>
-                    <div class="contact__cta_content">
-                        <span>{{ trans(key="contact_me", lang=lang) }}</span>
-                        <h1>{{ trans(key="start_project", lang=lang) }}</h1>
-                    </div>
-                    <div class="contact__cta_action">
-                        <a href="{{ get_url(path='contact', lang=lang) }}">
-                            {{ trans(key="get_in_touch", lang=lang) }}
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {% endif %}
-        <div class="row contact__widget">
-            <div class="col-lg-4">
-                <div class="contact__widget_logo">
-                    <img src="{{ get_url(path=extra.footer_logo) }}" alt="widget-logo">
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="contact__widget_sitemap">
-                    <h3 style="color: white; font-weight: 700;">{{ trans(key="sitemap", lang=lang) }}</h3>
-                    <ul>
-                        {% for sitemap in extra.sitemaps %}
-                        <li>
-                            <a href="{{ sitemap.url }}" style="color: #e2e8f0; text-decoration: none;">
-                                {{ trans(key=sitemap.name, lang=lang) }}
-                            </a>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="contact__widget_address">
-                    <h3 style="color: white; font-weight: 700;">{{ trans(key="address", lang=lang) }}</h3>
-                    <ul>
-                        {% if extra.address.phone %}
-                        <li>
-                            <a href="tel:{{ extra.address.phone }}" style="color: #e2e8f0; text-decoration: none;">
-                                <i class="lni lni-phone" style="color: #38bdf8;"></i>{{ extra.address.phone }}
-                            </a>
-                        </li>
-                        {% endif %}
 
-                        {% if extra.address.email %}
-                        <li>
-                            <a href="mailto:{{ extra.address.email | split(pat=' | ') | first }}" style="color: #e2e8f0; text-decoration: none;">
-                                <i class="lni lni-envelope" style="color: #38bdf8;"></i>{{ extra.address.email | split(pat=" | ") | first }}
-                            </a>
-                        </li>
-                        {% endif %}
+    {% if config.extra.display_cta %}
+    <!-- CTA Box -->
+    <div class="row mb-5">
+      <div class="col-12">
+        <div style="
+          background: linear-gradient(135deg, rgba(40,15,80,0.9), rgba(10,30,60,0.9));
+          border: 1px solid rgba(139,92,246,0.2);
+          border-radius: 24px;
+          padding: 60px 50px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          gap: 30px;
+          backdrop-filter: blur(20px);
+          box-shadow: 0 0 60px rgba(139,92,246,0.1), 0 20px 60px rgba(0,0,0,0.5);
+          position: relative;
+          overflow: hidden;
+        ">
+          <!-- Animated shine -->
+          <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at 30% 40%, rgba(139,92,246,0.08), transparent 60%); pointer-events: none;"></div>
 
-                        {% if extra.address.address %}
-                        <li>
-                            <p style="color: #e2e8f0;">
-                                <i class="lni lni-map-marker" style="color: #38bdf8;"></i>{{ extra.address.address }}
-                            </p>
-                        </li>
-                        {% endif %}
-                    </ul>
-                </div>
-            </div>
+          <div style="position: relative; z-index: 1; max-width: 60%;">
+            <div style="
+              font-size: 0.72rem;
+              font-family: 'JetBrains Mono', monospace;
+              letter-spacing: 4px;
+              text-transform: uppercase;
+              background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+              background-clip: text;
+              margin-bottom: 12px;
+            ">{{ trans(key="contact_me", lang=lang) }}</div>
+            <h2 style="font-size: clamp(1.5rem, 4vw, 2.8rem); font-weight: 800; color: #fff; margin: 0; font-family: 'Space Grotesk', sans-serif; line-height: 1.2;">
+              {{ trans(key="start_project", lang=lang) }}
+            </h2>
+          </div>
+
+          <div style="position: relative; z-index: 1;">
+            <a href="{{ get_url(path='contact', lang=lang) }}"
+              style="
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
+                padding: 16px 36px;
+                background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+                color: white;
+                text-decoration: none;
+                border-radius: 12px;
+                font-weight: 700;
+                font-size: 1rem;
+                box-shadow: 0 6px 30px rgba(139,92,246,0.4);
+                transition: all 0.35s cubic-bezier(0.23,1,0.32,1);
+                letter-spacing: 0.3px;
+              "
+              onmouseover="this.style.transform='translateY(-3px) scale(1.04)';this.style.boxShadow='0 10px 40px rgba(139,92,246,0.6)';"
+              onmouseout="this.style.transform='';this.style.boxShadow='0 6px 30px rgba(139,92,246,0.4)';"
+            >
+              {{ trans(key="get_in_touch", lang=lang) }}
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
         </div>
-        <div class="row contact__footer" style="border-top: 1px solid rgba(255,255,255,0.1); margin-top: 40px; padding-top: 20px;">
-            <div class="col-lg-6">
-                <div class="contact__footer_copy">
-                    <p style="color: #94a3b8;">{{ trans(key="copyright", lang=lang) }}</p>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="contact__footer_social">
-                    <ul>
-                        {% for social in extra.socials %}
-                        <li class="d-inline-block mx-2">
-                            <a target="_blank" href="{{ social.url }}" style="color: #f39c12; font-size: 1.2rem;">
-                                <i class="lni lni-{{ social.icon }}"></i>
-                            </a>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
-</section>
+    {% endif %}
+
+    <!-- Widget Row -->
+    <div class="row" style="padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.06);">
+
+      <!-- Logo & Description -->
+      <div class="col-lg-4 mb-5 mb-lg-0">
+        <img src="{{ get_url(path=extra.footer_logo) }}" alt="Logo" style="height: 70px; filter: drop-shadow(0 0 12px rgba(139,92,246,0.5)); margin-bottom: 20px;">
+        <p style="color: rgba(255,255,255,0.45); font-size: 0.9rem; line-height: 1.7; max-width: 260px; margin-bottom: 24px;">
+          Theoretical Particle Physicist exploring the fundamental structure of matter at the Institute of Physics, Academia Sinica.
+        </p>
+        <!-- Social Icons -->
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+          {% for social in extra.socials %}
+          <a target="_blank" href="{{ social.url }}"
+            style="
+              width: 40px; height: 40px;
+              display: flex; align-items: center; justify-content: center;
+              border-radius: 10px;
+              border: 1px solid rgba(255,255,255,0.08);
+              color: rgba(255,255,255,0.55);
+              font-size: 1.1rem;
+              text-decoration: none;
+              background: rgba(255,255,255,0.03);
+              transition: all 0.3s ease;
+            "
+            onmouseover="this.style.borderColor='rgba(139,92,246,0.4)';this.style.background='rgba(139,92,246,0.12)';this.style.color='#a78bfa';this.style.transform='translateY(-3px)';"
+            onmouseout="this.style.borderColor='rgba(255,255,255,0.08)';this.style.background='rgba(255,255,255,0.03)';this.style.color='rgba(255,255,255,0.55)';this.style.transform='';"
+          >
+            <i class="lni lni-{{ social.icon }}"></i>
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Sitemap -->
+      <div class="col-lg-4 mb-5 mb-lg-0">
+        <h4 style="color: white; font-weight: 700; font-size: 1rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 24px; font-family: 'Space Grotesk', sans-serif;">
+          <span style="display: inline-block; width: 20px; height: 2px; background: linear-gradient(135deg, #8b5cf6, #06b6d4); vertical-align: middle; margin-right: 10px;"></span>
+          {{ trans(key="sitemap", lang=lang) }}
+        </h4>
+        <ul style="margin: 0; padding: 0; list-style: none;">
+          {% for sitemap in extra.sitemaps %}
+          <li style="margin-bottom: 12px;">
+            <a href="{{ sitemap.url }}"
+              style="color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s ease;"
+              onmouseover="this.style.color='#06b6d4';this.style.paddingLeft='6px';"
+              onmouseout="this.style.color='rgba(255,255,255,0.5)';this.style.paddingLeft='0';"
+            >
+              <span style="width: 5px; height: 1px; background: rgba(6,182,212,0.6); display: inline-block; flex-shrink: 0;"></span>
+              {{ trans(key=sitemap.name, lang=lang) }}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="col-lg-4">
+        <h4 style="color: white; font-weight: 700; font-size: 1rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 24px; font-family: 'Space Grotesk', sans-serif;">
+          <span style="display: inline-block; width: 20px; height: 2px; background: linear-gradient(135deg, #8b5cf6, #06b6d4); vertical-align: middle; margin-right: 10px;"></span>
+          {{ trans(key="address", lang=lang) }}
+        </h4>
+        <ul style="margin: 0; padding: 0; list-style: none;">
+          {% if extra.address.phone %}
+          <li style="margin-bottom: 16px;">
+            <a href="tel:{{ extra.address.phone }}"
+              style="color: rgba(255,255,255,0.55); text-decoration: none; display: flex; align-items: flex-start; gap: 12px; font-size: 0.9rem; transition: color 0.3s;"
+              onmouseover="this.style.color='#06b6d4';"
+              onmouseout="this.style.color='rgba(255,255,255,0.55)';"
+            >
+              <span style="width: 36px; height: 36px; border-radius: 8px; background: rgba(6,182,212,0.1); border: 1px solid rgba(6,182,212,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                <i class="lni lni-phone" style="color: #06b6d4; font-size: 0.9rem;"></i>
+              </span>
+              <span style="margin-top: 8px;">{{ extra.address.phone }}</span>
+            </a>
+          </li>
+          {% endif %}
+
+          {% if extra.address.email %}
+          <li style="margin-bottom: 16px;">
+            <a href="mailto:{{ extra.address.email | split(pat=' | ') | first }}"
+              style="color: rgba(255,255,255,0.55); text-decoration: none; display: flex; align-items: flex-start; gap: 12px; font-size: 0.9rem; transition: color 0.3s;"
+              onmouseover="this.style.color='#06b6d4';"
+              onmouseout="this.style.color='rgba(255,255,255,0.55)';"
+            >
+              <span style="width: 36px; height: 36px; border-radius: 8px; background: rgba(6,182,212,0.1); border: 1px solid rgba(6,182,212,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                <i class="lni lni-envelope" style="color: #06b6d4; font-size: 0.9rem;"></i>
+              </span>
+              <span style="margin-top: 8px; word-break: break-all;">{{ extra.address.email | split(pat=" | ") | first }}</span>
+            </a>
+          </li>
+          {% endif %}
+
+          {% if extra.address.address %}
+          <li>
+            <div style="color: rgba(255,255,255,0.55); display: flex; align-items: flex-start; gap: 12px; font-size: 0.9rem;">
+              <span style="width: 36px; height: 36px; border-radius: 8px; background: rgba(6,182,212,0.1); border: 1px solid rgba(6,182,212,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;">
+                <i class="lni lni-map-marker" style="color: #06b6d4; font-size: 0.9rem;"></i>
+              </span>
+              <span>{{ extra.address.address }}</span>
+            </div>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar -->
+    <div style="padding: 24px 0; border-top: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+      <p style="color: rgba(255,255,255,0.3); margin: 0; font-size: 0.85rem;">
+        {{ trans(key="copyright", lang=lang) }}
+      </p>
+      <p style="color: rgba(255,255,255,0.2); margin: 0; font-size: 0.8rem; font-family: 'JetBrains Mono', monospace;">
+        Built with ⚛️ QCD & 💜 passion
+      </p>
+    </div>
+
+  </div>
+</footer>

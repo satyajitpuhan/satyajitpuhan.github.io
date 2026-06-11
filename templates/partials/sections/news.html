@@ -112,15 +112,32 @@
     </svg>
 </div>
 
-<section id="news" class="section news-section" style="position: relative; background-image: url('/images/flowers/flower2.jpg'); background-size: cover; background-position: center; padding-top: 60px; padding-bottom: 80px;">
-  <div style="position: absolute; inset: 0; background: rgba(40, 10, 15, 0.75); pointer-events: none;"></div>
+<section id="news" class="section news-section" style="position: relative; background: #080810; padding: 80px 0; overflow: hidden;">
+  <!-- Background glows -->
+  <div style="position: absolute; top: -100px; right: 0; width: 500px; height: 500px; background: radial-gradient(circle, rgba(244,63,94,0.07) 0%, transparent 70%); pointer-events: none;"></div>
+  <div style="position: absolute; bottom: -100px; left: 0; width: 500px; height: 500px; background: radial-gradient(circle, rgba(139,92,246,0.06) 0%, transparent 70%); pointer-events: none;"></div>
+  <!-- Dot grid -->
+  <div style="position: absolute; inset: 0; pointer-events: none; opacity: 0.02; background-image: radial-gradient(rgba(255,255,255,1) 1px, transparent 1px); background-size: 24px 24px;"></div>
   <div style="position: relative; z-index: 1;">
     <div class="container">
         <div class="row text-center">
             <div class="col-lg-6 offset-lg-3">
-                <div class="news-section__header" style="color: white; text-shadow: 0 2px 8px rgba(0,0,0,0.4); margin-bottom: 40px;">
-                    <h1 style="color: white; font-weight: 800;">{{ data.title }}</h1>
-                    {% if data.subtitle %}<p style="color: #f8c2b0; font-size: 1.1rem;">{{ data.subtitle }}</p>{% endif %}
+                <div class="news-section__header" style="margin-bottom: 50px;" data-reveal="up">
+                    <div style="
+                      display: inline-flex; align-items: center; gap: 8px;
+                      background: rgba(244,63,94,0.08);
+                      border: 1px solid rgba(244,63,94,0.25);
+                      border-radius: 100px;
+                      padding: 6px 18px;
+                      font-size: 0.72rem;
+                      font-family: 'JetBrains Mono', monospace;
+                      letter-spacing: 3px;
+                      text-transform: uppercase;
+                      color: #f43f5e;
+                      margin-bottom: 16px;
+                    ">🔬 Latest Updates</div>
+                    <h2 style="color: white; font-weight: 800; font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.8rem, 3vw, 2.5rem); margin: 0;">{{ data.title }}</h2>
+                    {% if data.subtitle %}<p style="color: rgba(255,255,255,0.5); font-size: 1rem; margin-top: 12px;">{{ data.subtitle }}</p>{% endif %}
                 </div>
             </div>
         </div>
@@ -137,26 +154,47 @@
                     <div class="carousel-item">
                         <div class="row">
                             {% endif %}
-
-                            <div class="col-lg-4 col-md-6 mb-4">
-                                <div class="news-card" style="height: 100%; display: flex; flex-direction: column; background: rgba(20, 30, 40, 0.75); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-radius: 16px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1);">
-                                    <div class="news-card__image">
-                                        <img src="{{ get_url(path=item.image) }}" alt="{{ item.title }}">
+                            <div class="col-lg-4 col-md-6 mb-4" data-reveal="up">
+                                <div class="news-card" style="
+                                  height: 100%; display: flex; flex-direction: column;
+                                  background: rgba(10,10,22,0.9);
+                                  backdrop-filter: blur(16px);
+                                  -webkit-backdrop-filter: blur(16px);
+                                  border-radius: 18px;
+                                  overflow: hidden;
+                                  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+                                  border: 1px solid rgba(255,255,255,0.07);
+                                  transition: all 0.35s cubic-bezier(0.23,1,0.32,1);
+                                "
+                                  onmouseover="this.style.borderColor='rgba(139,92,246,0.3)';this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 50px rgba(139,92,246,0.15)';" 
+                                  onmouseout="this.style.borderColor='rgba(255,255,255,0.07)';this.style.transform='';this.style.boxShadow='0 8px 32px rgba(0,0,0,0.5)';"
+                                >
+                                    <div class="news-card__image" style="position: relative; overflow: hidden;">
+                                        <img src="{{ get_url(path=item.image) }}" alt="{{ item.title }}" style="transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.06)';" onmouseout="this.style.transform='';">
+                                        <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 50%, rgba(10,10,22,0.8)); pointer-events: none;"></div>
                                     </div>
-                                    <div class="news-card__body"
-                                        style="flex: 1; display: flex; flex-direction: column;">
-                                        {% if item.top_title %}<span class="news-card__top-title"
-                                            style="display:block; text-transform:uppercase; font-size:13px; color:#5d78ff; font-weight:700; margin-bottom:5px;">{{
-                                            item.top_title }}</span>{% endif %}
-                                        <span class="news-card__date" style="color: #a0aec0;">{{ item.date }}</span>
-                                        <h5 class="news-card__title" style="color: white; font-weight: 700;">{{ item.title }}</h5>
-                                        <p class="news-card__text" style="flex: 1; color: #e2e8f0;">{{ item.description }}</p>
+                                    <div class="news-card__body" style="flex: 1; display: flex; flex-direction: column; padding: 24px;">
+                                        {% if item.top_title %}<span style="display:block; text-transform:uppercase; font-size:0.7rem; color: #a78bfa; font-weight:700; margin-bottom:5px; font-family: 'JetBrains Mono', monospace; letter-spacing: 2px;">{{ item.top_title }}</span>{% endif %}
+                                        <span class="news-card__date" style="color: rgba(255,255,255,0.4); font-size: 0.8rem; margin-bottom: 10px; display: block;">{{ item.date }}</span>
+                                        <h5 class="news-card__title" style="color: white; font-weight: 700; font-family: 'Space Grotesk', sans-serif; font-size: 1rem; line-height: 1.4; margin-bottom: 12px;">{{ item.title }}</h5>
+                                        <p class="news-card__text" style="flex: 1; color: rgba(255,255,255,0.55); font-size: 0.9rem; line-height: 1.6;">{{ item.description }}</p>
 
                                         {% if item.details %}
-                                        <div>
-                                            <a href="#" class="btn btn-sm btn-outline-primary mt-3"
-                                                data-bs-toggle="modal" data-bs-target="#newsModal{{ loop.index }}">See
-                                                Details</a>
+                                        <div style="margin-top: 16px;">
+                                            <a href="#" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#newsModal{{ loop.index }}"
+                                               style="
+                                                 background: rgba(139,92,246,0.12);
+                                                 border: 1px solid rgba(139,92,246,0.3);
+                                                 color: #a78bfa;
+                                                 border-radius: 8px;
+                                                 padding: 6px 16px;
+                                                 font-size: 0.82rem;
+                                                 font-weight: 600;
+                                                 transition: all 0.3s;
+                                               "
+                                               onmouseover="this.style.background='rgba(139,92,246,0.25)';this.style.color='#c4b5fd';"
+                                               onmouseout="this.style.background='rgba(139,92,246,0.12)';this.style.color='#a78bfa';"
+                                            >View Details →</a>
                                         </div>
                                         {% endif %}
                                     </div>

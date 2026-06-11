@@ -26,10 +26,12 @@
     {% endblock %}
 
     {% block stylesheets %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="{{ get_url(path='css/bootstrap.min.css', cachebust=true) }}">
     <link rel="stylesheet" href="{{ get_url(path='main.css', cachebust=true) }}">
-    <link rel="stylesheet" href="{{ get_url(path='css/minion-bob.css', cachebust=true) }}">
     <link rel="stylesheet" href="{{ get_url(path='css/chatbot.css', cachebust=true) }}">
+    <link rel="stylesheet" href="{{ get_url(path='css/advanced-styles.css', cachebust=true) }}">
     {% endblock %}
 
     <link rel="shortcut icon" type="image/x-icon" href="{{ get_url(path='images/favicon.ico') }}">
@@ -45,10 +47,8 @@
     {% endblock %}
 
     <style>
-        /* Globally reduce excessive spacing between sections */
-        .section { padding: 50px 0 !important; }
-        .news-section { padding: 50px 0 !important; }
-        .nitj-updates-grid { padding: 50px 0 !important; }
+        /* Section spacing — let individual sections control their own padding */
+        .ae-wave-divider { overflow: hidden; line-height: 0; }
     </style>
 </head>
 
@@ -70,13 +70,15 @@
     <script src="{{ get_url(path='js/main.js') }}"></script>
     <script src="{{ get_url(path='js/wave-particles.js') }}"></script>
     <script src="{{ get_url(path='js/header-particles.js') }}"></script>
-    <script src="{{ get_url(path='js/minion-bob.js') }}"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <!-- SatyaBot Chatbot -->
     <script src="{{ get_url(path='js/chatbot-knowledge.js', cachebust=true) }}"></script>
     <script src="{{ get_url(path='js/chatbot.js', cachebust=true) }}"></script>
+
+    <!-- Advanced Visual Effects -->
+    <script src="{{ get_url(path='js/advanced-effects.js', cachebust=true) }}"></script>
     {% endblock %}
 </body>
 
