@@ -329,7 +329,7 @@
         if (entry.section) {
           const navBtn = document.createElement("div");
           navBtn.className = "satyabot-nav-link";
-          navBtn.innerHTML = `<a href="\${entry.section}">📍 Navigate to this section →</a>`;
+          navBtn.innerHTML = `<a href="${entry.section}">📍 Navigate to this section →</a>`;
           messagesDiv.appendChild(navBtn);
         }
         addQuickReplies();

@@ -16,6 +16,7 @@ solution = "Evaluates the gravitational form factors (A and D-terms) and spatial
 
 [Read on arXiv →](https://arxiv.org/abs/2606.07073)
 
+
 ### Pressure Distribution in Pseudoscalar Mesons
 
 The pressure distribution $P(z_\perp)$ in the transverse plane for the mesons $\eta_c$ (left) and $\eta_b$ (right) shows a node where it changes sign from positive (repulsive) to negative (attractive) with increasing transverse distance $z_\perp$:

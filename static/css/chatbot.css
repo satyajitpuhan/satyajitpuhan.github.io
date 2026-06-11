@@ -5,20 +5,20 @@
 
 /* ── Variables ─────────────────────────────────────────────── */
 :root {
-  --sb-primary: #007bff;
-  --sb-primary-dark: #0056b3;
-  --sb-gradient: #ffffff;
-  --sb-toggle-btn: #007bff;
-  --sb-glass-bg: #f8f9fa;
-  --sb-glass-border: #dee2e6;
-  --sb-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  --sb-radius: 12px;
-  --sb-msg-bot-bg: #ffffff;
-  --sb-msg-bot-border: #dee2e6;
-  --sb-msg-user-bg: #28a745;
+  --sb-primary: #8b5cf6;
+  --sb-primary-dark: #7c3aed;
+  --sb-gradient: linear-gradient(135deg, #0f0f15, #151525);
+  --sb-toggle-btn: linear-gradient(135deg, #8b5cf6, #06b6d4);
+  --sb-glass-bg: rgba(15, 15, 25, 0.85);
+  --sb-glass-border: rgba(255, 255, 255, 0.08);
+  --sb-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(139, 92, 246, 0.1);
+  --sb-radius: 16px;
+  --sb-msg-bot-bg: rgba(255, 255, 255, 0.05);
+  --sb-msg-bot-border: rgba(255, 255, 255, 0.06);
+  --sb-msg-user-bg: linear-gradient(135deg, #8b5cf6, #6366f1);
   --sb-msg-user-color: #fff;
-  --sb-text: #212529;
-  --sb-text-light: #6c757d;
+  --sb-text: #f3f4f6;
+  --sb-text-light: #9ca3af;
   --sb-toggle-size: 56px;
 }
 
@@ -43,7 +43,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
+  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.45);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   z-index: 3;
@@ -51,7 +51,7 @@
 
 .satyabot-toggle:hover {
   transform: scale(1.1);
-  box-shadow: 0 8px 32px rgba(102, 126, 234, 0.65);
+  box-shadow: 0 8px 32px rgba(139, 92, 246, 0.65);
 }
 
 .satyabot-toggle:active {
@@ -102,11 +102,14 @@
   position: absolute;
   bottom: calc(var(--sb-toggle-size) + 12px);
   right: 0;
-  background: #fff;
-  color: var(--sb-text);
+  background: rgba(15, 15, 25, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #fff;
   padding: 10px 18px;
   border-radius: 12px 12px 4px 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
   font-size: 14px;
   font-weight: 500;
   white-space: nowrap;
@@ -180,7 +183,7 @@
   justify-content: center;
   flex-shrink: 0;
   overflow: hidden;
-  border: 2px solid #e9ecef;
+  border: 2px solid rgba(139, 92, 246, 0.4);
 }
 
 .satyabot-avatar svg {
@@ -203,7 +206,7 @@
 
 .satyabot-home-btn {
   background: transparent;
-  border: 1px solid #dee2e6;
+  border: 1px solid rgba(255, 255, 255, 0.15);
   color: var(--sb-text-light);
   width: 36px;
   height: 36px;
@@ -216,8 +219,9 @@
 }
 
 .satyabot-home-btn:hover {
-  background: #e9ecef;
-  color: var(--sb-text);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.25);
 }
 
 .satyabot-home-btn svg {
@@ -247,7 +251,7 @@
 }
 
 .satyabot-messages::-webkit-scrollbar-thumb {
-  background: #cbd5e0;
+  background: rgba(255, 255, 255, 0.15);
   border-radius: 10px;
 }
 
@@ -263,8 +267,13 @@
   word-wrap: break-word;
 }
 
+.satyabot-msg b {
+  font-weight: 600;
+  color: #fff;
+}
+
 .satyabot-msg a {
-  color: var(--sb-primary);
+  color: #06b6d4;
   text-decoration: underline;
   text-underline-offset: 2px;
 }
@@ -284,7 +293,7 @@
 }
 
 .satyabot-msg-user a {
-  color: #e2e8f0;
+  color: #fff;
 }
 
 @keyframes satyabot-fadeIn {
@@ -330,9 +339,9 @@
 }
 
 .satyabot-qr-btn {
-  background: #fff;
-  border: 1.5px solid #e2e8f0;
-  color: var(--sb-primary);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  color: #06b6d4;
   padding: 6px 14px;
   border-radius: 20px;
   font-size: 12.5px;
@@ -343,11 +352,11 @@
 }
 
 .satyabot-qr-btn:hover {
-  background: var(--sb-primary);
+  background: linear-gradient(135deg, #8b5cf6, #06b6d4);
   color: #fff;
-  border-color: var(--sb-primary);
+  border-color: transparent;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(93, 120, 255, 0.3);
+  box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
 }
 
 /* ── Navigation Link ───────────────────────────────────────── */
@@ -358,14 +367,14 @@
 
 .satyabot-nav-link a {
   font-size: 12.5px;
-  color: var(--sb-primary);
+  color: #06b6d4;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 550;
   transition: color 0.2s;
 }
 
 .satyabot-nav-link a:hover {
-  color: var(--sb-primary-dark);
+  color: #38bdf8;
   text-decoration: underline;
 }
 
@@ -375,30 +384,30 @@
   align-items: center;
   gap: 8px;
   padding: 12px 16px;
-  border-top: 1px solid #edf2f7;
-  background: rgba(255, 255, 255, 0.6);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(10, 10, 15, 0.6);
   flex-shrink: 0;
 }
 
 #satyabot-input {
   flex: 1;
-  border: 1.5px solid #e2e8f0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   padding: 10px 16px;
   font-size: 14px;
-  color: var(--sb-text);
-  background: #fff;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.2);
   outline: none;
   transition: border-color 0.2s;
 }
 
 #satyabot-input::placeholder {
-  color: #a0aec0;
+  color: #6b7280;
 }
 
 #satyabot-input:focus {
-  border-color: var(--sb-primary);
-  box-shadow: 0 0 0 3px rgba(93, 120, 255, 0.1);
+  border-color: #06b6d4;
+  box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.15);
 }
 
 #satyabot-send {
@@ -418,7 +427,7 @@
 
 #satyabot-send:hover {
   transform: scale(1.05);
-  color: var(--sb-primary);
+  color: #06b6d4;
 }
 
 #satyabot-send svg {
