@@ -169,7 +169,7 @@ pubs = [
         "authors": "Tanisha, S. Puhan, A. Yadav, and H. Dahiya",
         "description": "Published in PRD.",
         "link_label": "Read on PRD",
-        "link_url": "https://journals.aps.org/prd/abstract/10.1103/cmbw-vcds"
+        "link_url": "https://doi.org/10.1103/PhysRevD.112.054035"
     },
     {
         "id": "d-mesons-isospin-asymm",

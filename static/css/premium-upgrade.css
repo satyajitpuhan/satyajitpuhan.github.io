@@ -1,0 +1,1004 @@
+/* ═══════════════════════════════════════════════════════════════════
+   PREMIUM UPGRADE — premium-upgrade.css
+   Next-level design enhancements for Dr. Satyajit Puhan's portfolio
+   Featuring: Glassmorphism Pro, Neon Glow System, Magnetic Hover,
+   Animated Gradient Borders, Particle Trails, 3D Transforms
+═══════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────
+   ENHANCED DESIGN TOKENS
+───────────────────────────────────────────── */
+:root {
+  /* Neon Glow Colors */
+  --neon-purple: #b06af4;
+  --neon-cyan: #22d3ee;
+  --neon-pink: #f472b6;
+  --neon-amber: #fbbf24;
+  --neon-green: #34d399;
+
+  /* Glass Effect Values */
+  --glass-bg: rgba(10, 8, 24, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-blur: blur(24px);
+  --glass-shimmer: rgba(255, 255, 255, 0.04);
+
+  /* Premium Gradients */
+  --grad-neon: linear-gradient(135deg, #b06af4 0%, #22d3ee 50%, #f472b6 100%);
+  --grad-fire: linear-gradient(135deg, #f59e0b 0%, #ef4444 50%, #ec4899 100%);
+  --grad-ocean: linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #8b5cf6 100%);
+  --grad-cosmic: linear-gradient(135deg, #8b5cf6 0%, #ec4899 50%, #f59e0b 100%);
+
+  /* Timing */
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* ─────────────────────────────────────────────
+   NAVBAR — Premium Sticky Glass Nav
+───────────────────────────────────────────── */
+#header-particles-wrap {
+  position: sticky !important;
+  top: 0;
+  z-index: 9000 !important;
+  backdrop-filter: blur(30px) !important;
+  -webkit-backdrop-filter: blur(30px) !important;
+  background: rgba(5, 5, 15, 0.92) !important;
+  box-shadow: 0 1px 40px rgba(0, 0, 0, 0.6), 0 0 1px rgba(139, 92, 246, 0.4) !important;
+  border-bottom: 1px solid rgba(139, 92, 246, 0.12) !important;
+  transition: all 0.4s var(--ease-smooth) !important;
+}
+
+/* Scrolled state — add stronger glass */
+#header-particles-wrap.scrolled {
+  background: rgba(3, 3, 10, 0.97) !important;
+  box-shadow: 0 2px 60px rgba(0, 0, 0, 0.8), 0 0 2px rgba(139, 92, 246, 0.5) !important;
+}
+
+/* Nav link hover with neon underline slide */
+.nav-link {
+  position: relative;
+  letter-spacing: 0.5px !important;
+  font-size: 0.875rem !important;
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  right: 50%;
+  height: 1.5px;
+  background: var(--grad-neon);
+  border-radius: 1px;
+  transition: left 0.35s var(--ease-smooth), right 0.35s var(--ease-smooth);
+  opacity: 0;
+}
+
+.nav-link:hover::before {
+  left: 16px;
+  right: 16px;
+  opacity: 1;
+}
+
+/* ─────────────────────────────────────────────
+   HERO SECTION — Ultra Premium
+───────────────────────────────────────────── */
+#home {
+  min-height: 88vh !important;
+}
+
+/* Floating holographic orb behind left text */
+#home::before {
+  content: '';
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  top: 50%;
+  left: -10%;
+  transform: translateY(-50%);
+  background: radial-gradient(
+    circle,
+    rgba(139, 92, 246, 0.09) 0%,
+    rgba(6, 182, 212, 0.06) 35%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  pointer-events: none;
+  animation: orb-breathe 8s ease-in-out infinite;
+  z-index: 0;
+}
+
+@keyframes orb-breathe {
+  0%, 100% { transform: translateY(-50%) scale(1); opacity: 0.8; }
+  50% { transform: translateY(-52%) scale(1.08); opacity: 1; }
+}
+
+/* Hero title — neon shimmer */
+#home h1 {
+  background: linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.9) 40%, #a78bfa 60%, #22d3ee 80%, #ffffff 100%);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: hero-title-shimmer 6s ease infinite;
+}
+
+@keyframes hero-title-shimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Enhanced carousel glow frame */
+#mainHeroCarousel {
+  box-shadow:
+    0 0 0 1px rgba(139, 92, 246, 0.3),
+    0 0 40px rgba(139, 92, 246, 0.15),
+    0 30px 80px rgba(0, 0, 0, 0.7) !important;
+  border-radius: 20px !important;
+}
+
+/* Stats bar — enhanced */
+[data-counter] {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─────────────────────────────────────────────
+   SECTION SEPARATOR — Cosmic Divider Lines
+───────────────────────────────────────────── */
+.section-cosmic-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(139, 92, 246, 0.5) 20%,
+    rgba(6, 182, 212, 0.8) 50%,
+    rgba(236, 72, 153, 0.5) 80%,
+    transparent 100%);
+  position: relative;
+  overflow: visible;
+}
+
+.section-cosmic-divider::before {
+  content: '⚛';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.9rem;
+  color: rgba(139, 92, 246, 0.7);
+  background: #080810;
+  padding: 0 12px;
+}
+
+/* ─────────────────────────────────────────────
+   ABOUT SECTION — Glassmorphism Pro
+───────────────────────────────────────────── */
+#about {
+  background: linear-gradient(180deg, #0a0818 0%, #050510 100%) !important;
+}
+
+/* About image — rotating gradient border */
+#about .col-lg-5 > div > div:last-child {
+  animation: border-spin 8s linear infinite;
+}
+
+@keyframes border-spin {
+  0% { background: linear-gradient(0deg, rgba(139,92,246,0.5), rgba(6,182,212,0.4), rgba(245,158,11,0.3)); }
+  33% { background: linear-gradient(120deg, rgba(6,182,212,0.4), rgba(245,158,11,0.3), rgba(139,92,246,0.5)); }
+  66% { background: linear-gradient(240deg, rgba(245,158,11,0.3), rgba(139,92,246,0.5), rgba(6,182,212,0.4)); }
+  100% { background: linear-gradient(360deg, rgba(139,92,246,0.5), rgba(6,182,212,0.4), rgba(245,158,11,0.3)); }
+}
+
+/* Research tag hover improvements */
+.research-spec-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  transition: all 0.35s var(--ease-bounce) !important;
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+}
+
+.research-spec-tag::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateX(-100%) skewX(-12deg);
+  transition: transform 0.4s ease;
+}
+
+.research-spec-tag:hover::before {
+  transform: translateX(100%) skewX(-12deg);
+}
+
+.research-spec-tag:hover {
+  transform: translateY(-3px) scale(1.04) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* ─────────────────────────────────────────────
+   SERVICE / RESEARCH CARDS — Holographic 3D
+───────────────────────────────────────────── */
+.research-card {
+  border-radius: 20px !important;
+  padding: 36px 28px !important;
+  transition: all 0.4s var(--ease-smooth) !important;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Shimmer sweep on hover */
+.research-card::before {
+  content: '';
+  position: absolute !important;
+  top: -50%;
+  left: -100%;
+  width: 60%;
+  height: 200%;
+  background: linear-gradient(
+    105deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.06) 40%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.06) 60%,
+    transparent 80%
+  );
+  transform: skewX(-15deg);
+  transition: left 0.6s ease;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.research-card:hover::before {
+  left: 150%;
+}
+
+.research-card:hover {
+  transform: translateY(-12px) scale(1.02) !important;
+  border-color: rgba(139, 92, 246, 0.5) !important;
+  box-shadow:
+    0 0 0 1px rgba(139, 92, 246, 0.3),
+    0 20px 60px rgba(139, 92, 246, 0.2),
+    0 40px 80px rgba(0, 0, 0, 0.5) !important;
+}
+
+.research-card__icon-wrap {
+  width: 60px !important;
+  height: 60px !important;
+  border-radius: 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 20px !important;
+  font-size: 1.6rem !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.research-card__icon-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.15), transparent 60%);
+  pointer-events: none;
+}
+
+.research-card__title {
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 12px !important;
+  font-family: 'Space Grotesk', sans-serif !important;
+}
+
+.research-card__text {
+  font-size: 0.93rem !important;
+  line-height: 1.7 !important;
+}
+
+/* ─────────────────────────────────────────────
+   SKILL SECTION — Animated Radial Bars
+───────────────────────────────────────────── */
+#skill {
+  background: linear-gradient(180deg, #080810 0%, #060610 100%) !important;
+}
+
+/* Enhanced skill bar progress animation */
+@keyframes skill-bar-fill {
+  from {
+    width: 0%;
+    box-shadow: none;
+  }
+  to {
+    box-shadow: 0 0 12px rgba(139, 92, 246, 0.6);
+  }
+}
+
+progress::-webkit-progress-value {
+  border-radius: 8px !important;
+  background: linear-gradient(90deg, #8b5cf6, #06b6d4, #10b981) !important;
+  background-size: 200% 100% !important;
+  animation: skill-progress-shimmer 2s ease infinite !important;
+  box-shadow: 0 0 12px rgba(139, 92, 246, 0.5) !important;
+}
+
+@keyframes skill-progress-shimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.skill__progress_item {
+  border-radius: 18px !important;
+  padding: 22px 28px !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Glowing dot indicator */
+.skill__progress_item .progress-value {
+  position: relative;
+}
+
+.skill__progress_item .progress-value::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #06b6d4;
+  margin-right: 6px;
+  animation: dot-pulse 2s ease infinite;
+  box-shadow: 0 0 8px #06b6d4;
+}
+
+@keyframes dot-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.7); }
+}
+
+/* ─────────────────────────────────────────────
+   PORTFOLIO / PUBLICATIONS — Enhanced Cards
+───────────────────────────────────────────── */
+#portfolio {
+  position: relative;
+}
+
+/* Pub entry cards — premium hover */
+.pub-entry {
+  transition: all 0.3s var(--ease-smooth) !important;
+  border-radius: 14px !important;
+  position: relative;
+}
+
+.pub-entry::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #38bdf8, #a78bfa);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+  border-radius: 0 0 14px 14px;
+}
+
+.pub-entry:hover::after {
+  transform: scaleX(1);
+}
+
+.pub-entry:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Column labels — neon badges */
+.col-lg-4 > div[style*="rgba(56,189,248,0.12)"],
+.col-lg-4 > div[style*="rgba(251,191,36,0.12)"],
+.col-lg-4 > div[style*="rgba(167,139,250,0.12)"] {
+  border-radius: 12px !important;
+  backdrop-filter: blur(12px) !important;
+}
+
+/* ─────────────────────────────────────────────
+   NEWS CARDS — Advanced Glass
+───────────────────────────────────────────── */
+#news {
+  background: linear-gradient(180deg, #080810 0%, #050510 100%) !important;
+}
+
+.news-card {
+  border-radius: 20px !important;
+  transition: all 0.4s var(--ease-smooth) !important;
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+/* Top gradient border on hover */
+.news-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--grad-neon);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+  z-index: 2;
+}
+
+.news-card:hover::before {
+  transform: scaleX(1);
+}
+
+.news-card:hover {
+  transform: translateY(-8px) !important;
+  border-color: rgba(139, 92, 246, 0.35) !important;
+  box-shadow:
+    0 0 0 1px rgba(139, 92, 246, 0.2),
+    0 24px 60px rgba(139, 92, 246, 0.15),
+    0 40px 80px rgba(0, 0, 0, 0.6) !important;
+}
+
+.news-card__image img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.6s ease !important;
+}
+
+.news-card:hover .news-card__image img {
+  transform: scale(1.08) !important;
+}
+
+/* ─────────────────────────────────────────────
+   COLLABORATORS SECTION — Holographic Cards
+───────────────────────────────────────────── */
+#collaborators {
+  position: relative;
+}
+
+/* Collaborator cards — premium glassmorphism */
+#collaborators [style*="rgba(255, 255, 255, 0.15)"],
+#collaborators [style*="rgba(255,255,255,0.15)"] {
+  border-radius: 18px !important;
+  background: rgba(15, 10, 40, 0.8) !important;
+  border: 1px solid rgba(139, 92, 246, 0.2) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shimmer top border on collab cards */
+#collaborators [style*="rgba(255, 255, 255, 0.15)"]::before,
+#collaborators [style*="rgba(255,255,255,0.15)"]::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.6), transparent);
+}
+
+/* Avatar image enhancements */
+#collaborators img[alt] {
+  border: 2px solid rgba(139, 92, 246, 0.4) !important;
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.2) !important;
+  transition: all 0.35s ease !important;
+}
+
+#collaborators [style*="rgba(255, 255, 255, 0.15)"]:hover img,
+#collaborators [style*="rgba(255,255,255,0.15)"]:hover img {
+  border-color: rgba(6, 182, 212, 0.7) !important;
+  box-shadow: 0 0 30px rgba(6, 182, 212, 0.35) !important;
+}
+
+/* ─────────────────────────────────────────────
+   MODALS — Premium Dark Glass
+───────────────────────────────────────────── */
+.modal-content {
+  background: rgba(8, 8, 22, 0.98) !important;
+  backdrop-filter: blur(30px) !important;
+  -webkit-backdrop-filter: blur(30px) !important;
+  border: 1px solid rgba(139, 92, 246, 0.2) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.8), 0 0 40px rgba(139, 92, 246, 0.1) !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.modal-header {
+  background: linear-gradient(135deg, rgba(30, 15, 60, 0.9), rgba(10, 25, 60, 0.9)) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07) !important;
+  padding: 24px 30px !important;
+}
+
+.modal-title {
+  color: #ffffff !important;
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 700 !important;
+}
+
+.modal-body {
+  color: rgba(255, 255, 255, 0.75) !important;
+  background: transparent !important;
+  padding: 28px 30px !important;
+}
+
+.modal-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.06) !important;
+  background: transparent !important;
+  padding: 18px 30px !important;
+}
+
+.modal-body .details-content {
+  color: rgba(255, 255, 255, 0.78) !important;
+}
+
+.modal-body .details-content strong {
+  color: #a78bfa !important;
+}
+
+.modal-backdrop {
+  background-color: rgba(0, 0, 5, 0.85) !important;
+}
+
+/* ─────────────────────────────────────────────
+   FOOTER — Premium Dark
+───────────────────────────────────────────── */
+footer#contact {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated shimmer dot in bottom bar */
+footer#contact::after {
+  content: '⚛️';
+  position: absolute;
+  bottom: 60px;
+  right: 40px;
+  font-size: 2rem;
+  opacity: 0.04;
+  animation: ae-float 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* ─────────────────────────────────────────────
+   SCROLL REVEAL ANIMATIONS — Enhanced
+───────────────────────────────────────────── */
+[data-reveal] {
+  opacity: 0;
+  transition: opacity 0.7s var(--ease-smooth), transform 0.7s var(--ease-smooth);
+  will-change: opacity, transform;
+}
+
+[data-reveal="up"] {
+  transform: translateY(50px);
+}
+
+[data-reveal="left"] {
+  transform: translateX(-50px);
+}
+
+[data-reveal="right"] {
+  transform: translateX(50px);
+}
+
+[data-reveal="scale"] {
+  transform: scale(0.9);
+}
+
+[data-reveal].revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* ─────────────────────────────────────────────
+   BUTTON SYSTEM — Premium
+───────────────────────────────────────────── */
+
+/* Global primary button */
+.btn-premium {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 30px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+  color: white;
+  border: none;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.35);
+  transition: all 0.35s var(--ease-smooth);
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.3px;
+}
+
+.btn-premium::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+
+.btn-premium:hover::before {
+  transform: translateX(100%);
+}
+
+.btn-premium:hover {
+  box-shadow: 0 8px 35px rgba(139, 92, 246, 0.55);
+  transform: translateY(-3px);
+  color: white;
+  text-decoration: none;
+}
+
+/* "View Details" buttons in news */
+a[data-bs-toggle="modal"] {
+  transition: all 0.3s var(--ease-smooth) !important;
+}
+
+a[data-bs-toggle="modal"]:hover {
+  transform: translateY(-1px) !important;
+}
+
+/* ─────────────────────────────────────────────
+   SECTION HEADERS — Unified Elegant Style
+───────────────────────────────────────────── */
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(139, 92, 246, 0.08);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  border-radius: 100px;
+  padding: 6px 18px;
+  font-size: 0.72rem;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #a78bfa;
+  margin-bottom: 16px;
+  backdrop-filter: blur(8px);
+}
+
+.section-badge .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #a78bfa;
+  animation: pulse 2s infinite;
+}
+
+/* Gradient section headings */
+.grad-heading {
+  background: linear-gradient(135deg, #ffffff 0%, #a78bfa 50%, #22d3ee 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─────────────────────────────────────────────
+   ENHANCED LOADING SKELETON
+───────────────────────────────────────────── */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+.skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent);
+  transform: translateX(-100%);
+  animation: skeleton-sweep 1.5s ease infinite;
+}
+
+@keyframes skeleton-sweep {
+  to { transform: translateX(100%); }
+}
+
+/* ─────────────────────────────────────────────
+   HEARTBEAT WAVEFORM — Enhanced
+───────────────────────────────────────────── */
+.heartbeat-container {
+  background: linear-gradient(180deg, #080810 0%, rgba(8,8,16,0) 100%) !important;
+  margin-bottom: -20px !important;
+  position: relative;
+  z-index: 2;
+}
+
+/* ─────────────────────────────────────────────
+   CHATBOT — Premium Glass Window
+───────────────────────────────────────────── */
+#chatbot-window,
+.chatbot-window {
+  border: 1px solid rgba(139, 92, 246, 0.3) !important;
+  box-shadow:
+    0 0 0 1px rgba(139, 92, 246, 0.1),
+    0 20px 80px rgba(0, 0, 0, 0.8),
+    0 0 40px rgba(139, 92, 246, 0.15) !important;
+}
+
+/* ─────────────────────────────────────────────
+   CONSTELLATION NAV — Star Sidebar
+───────────────────────────────────────────── */
+#constellation-nav {
+  right: 24px !important;
+}
+
+/* ─────────────────────────────────────────────
+   SCROLL PROGRESS BAR — Neon Trail
+───────────────────────────────────────────── */
+#ae-scroll-progress {
+  height: 2px !important;
+  background: linear-gradient(90deg, #8b5cf6, #22d3ee, #f472b6) !important;
+  box-shadow: 0 0 12px rgba(139, 92, 246, 0.8), 0 0 24px rgba(6, 182, 212, 0.5) !important;
+}
+
+/* ─────────────────────────────────────────────
+   TYPED TEXT CURSOR — Neon Blink
+───────────────────────────────────────────── */
+.ae-typewriter-cursor {
+  color: #22d3ee !important;
+  font-weight: 200 !important;
+  text-shadow: 0 0 10px #22d3ee !important;
+}
+
+/* ─────────────────────────────────────────────
+   RESUME SECTION — Timeline Enhancements
+───────────────────────────────────────────── */
+#resume {
+  position: relative;
+}
+
+.resume__education_item {
+  border-radius: 18px !important;
+  transition: all 0.4s var(--ease-smooth) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.resume__education_item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--grad-primary, linear-gradient(180deg, #8b5cf6, #06b6d4));
+  border-radius: 0 3px 3px 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.resume__education_item:hover::before {
+  opacity: 1;
+}
+
+/* ─────────────────────────────────────────────
+   CONTACT SECTION / FORM — Enhanced
+───────────────────────────────────────────── */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none !important;
+  border-color: rgba(139, 92, 246, 0.5) !important;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1), 0 0 15px rgba(139, 92, 246, 0.1) !important;
+}
+
+/* ─────────────────────────────────────────────
+   GLOBAL ENHANCEMENTS
+───────────────────────────────────────────── */
+
+/* Improved link transitions */
+a {
+  transition: color 0.25s ease, opacity 0.25s ease !important;
+}
+
+/* Smooth image rendering */
+img {
+  image-rendering: -webkit-optimize-contrast;
+}
+
+/* Premium code font for monospace elements */
+code, pre, .mono {
+  font-family: 'JetBrains Mono', 'Courier New', monospace !important;
+}
+
+/* ─────────────────────────────────────────────
+   SECTION SPACING — Balanced Rhythm
+───────────────────────────────────────────── */
+.section {
+  padding: 90px 0 !important;
+}
+
+@media (max-width: 991px) {
+  .section {
+    padding: 60px 0 !important;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   NEON GLOW UTILITIES
+───────────────────────────────────────────── */
+.neon-text-purple {
+  color: #a78bfa;
+  text-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+}
+
+.neon-text-cyan {
+  color: #22d3ee;
+  text-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+}
+
+.glow-purple {
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.4), 0 0 40px rgba(139, 92, 246, 0.2);
+}
+
+.glow-cyan {
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.4), 0 0 40px rgba(6, 182, 212, 0.2);
+}
+
+/* ─────────────────────────────────────────────
+   ANIMATED GRADIENT BORDER UTILITY
+───────────────────────────────────────────── */
+.grad-border {
+  position: relative;
+  border-radius: 16px;
+  z-index: 0;
+}
+
+.grad-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #8b5cf6, #06b6d4, #ec4899, #8b5cf6);
+  background-size: 300% 300%;
+  animation: grad-border-spin 4s ease infinite;
+  z-index: -1;
+}
+
+@keyframes grad-border-spin {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ─────────────────────────────────────────────
+   CONFETTI / FLOATING PARTICLES
+───────────────────────────────────────────── */
+.quantum-particle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  border-radius: 50%;
+  animation: quantum-float linear infinite;
+  opacity: 0;
+}
+
+@keyframes quantum-float {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.3; }
+  100% {
+    transform: translateY(-20vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   INTERACTIVE HOVER GLOW ON IMAGES
+───────────────────────────────────────────── */
+.img-hover-glow {
+  transition: all 0.4s var(--ease-smooth) !important;
+}
+
+.img-hover-glow:hover {
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.4), 0 0 60px rgba(139, 92, 246, 0.15) !important;
+  transform: scale(1.02);
+}
+
+/* ─────────────────────────────────────────────
+   SPECIAL: QUANTUM DOT LOADER
+   Used in citation/stats sections while loading
+───────────────────────────────────────────── */
+.quantum-loader {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.quantum-loader span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  animation: quantum-dot 1.2s ease-in-out infinite;
+}
+
+.quantum-loader span:nth-child(1) { background: #8b5cf6; animation-delay: 0s; }
+.quantum-loader span:nth-child(2) { background: #06b6d4; animation-delay: 0.2s; }
+.quantum-loader span:nth-child(3) { background: #f59e0b; animation-delay: 0.4s; }
+
+@keyframes quantum-dot {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.7; }
+  50% { transform: translateY(-12px) scale(1.3); opacity: 1; }
+}
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE — Mobile Perfection
+───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  #home h1 {
+    font-size: 2rem !important;
+  }
+
+  .research-card {
+    padding: 24px 20px !important;
+  }
+
+  .news-card__image img {
+    height: 180px;
+  }
+
+  #collaborators [style*="rgba(255, 255, 255, 0.15)"],
+  #collaborators [style*="rgba(255,255,255,0.15)"] {
+    padding: 18px 12px !important;
+  }
+}
+
+@media (max-width: 991px) {
+  #header-particles-wrap {
+    backdrop-filter: blur(20px) !important;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   PRINT — Clean Minimal
+───────────────────────────────────────────── */
+@media print {
+  :root {
+    --c-bg: #ffffff;
+    --c-text: #000000;
+  }
+
+  #home::before,
+  #ae-cursor,
+  #ae-scroll-progress,
+  #constellation-nav,
+  .heartbeat-container,
+  .quantum-particle,
+  .ae-mesh-bg,
+  .hero-aurora,
+  .hero-blackhole,
+  .hero-accretion-ring {
+    display: none !important;
+  }
+}

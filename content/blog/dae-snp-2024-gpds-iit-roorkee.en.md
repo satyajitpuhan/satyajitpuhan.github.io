@@ -10,7 +10,7 @@ post_image = "images/blog/posts/dae-snp-2024.png"
 
 **Talk Title:** Spin-1 unpolarized GPDs in Light-front formalism
 
-**Venue:** [68th DAE Symposium on Nuclear Physics (SNP 2024)](https://sympnp.org/snp2025/), IIT Roorkee, India
+**Venue:** [68th DAE Symposium on Nuclear Physics (SNP 2024)](http://sympnp.org/snp2024/), IIT Roorkee, India
 
 **Mode:** In person
 

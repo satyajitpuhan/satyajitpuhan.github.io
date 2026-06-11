@@ -157,3 +157,9 @@ opening_hours = "Available for research collaborations"
 [extra.map]
 latitude = "25.0421"
 longitude = "121.6165"
+
+[link_checker]
+skip_prefixes = [
+    "http://sympnp.org",
+    "https://sympnp.org",
+]

@@ -14,4 +14,4 @@ solution = "Studies unpolarized quark GPDs of rho and J/psi mesons using the LCQ
 **Authors:** Tanisha, S. Puhan, A. Yadav, and H. Dahiya  
 **Published in:** Phys. Rev. D 112 (2025)
 
-[Read on PRD →](https://journals.aps.org/prd/abstract/10.1103/cmbw-vcds)
+[Read on PRD →](https://doi.org/10.1103/PhysRevD.112.054035)

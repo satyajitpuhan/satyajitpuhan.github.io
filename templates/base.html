@@ -28,10 +28,13 @@
     {% block stylesheets %}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ get_url(path='css/bootstrap.min.css', cachebust=true) }}">
     <link rel="stylesheet" href="{{ get_url(path='main.css', cachebust=true) }}">
     <link rel="stylesheet" href="{{ get_url(path='css/chatbot.css', cachebust=true) }}">
     <link rel="stylesheet" href="{{ get_url(path='css/advanced-styles.css', cachebust=true) }}">
+    <link rel="stylesheet" href="{{ get_url(path='css/creative-styles.css', cachebust=true) }}">
+    <link rel="stylesheet" href="{{ get_url(path='css/premium-upgrade.css', cachebust=true) }}">
     {% endblock %}
 
     <link rel="shortcut icon" type="image/x-icon" href="{{ get_url(path='images/favicon.ico') }}">
@@ -79,6 +82,11 @@
 
     <!-- Advanced Visual Effects -->
     <script src="{{ get_url(path='js/advanced-effects.js', cachebust=true) }}"></script>
+
+    <!-- Creative Enhancements: Constellation Nav, Holographic Cards, Aurora, Feynman, Timeline, etc. -->
+    <script src="{{ get_url(path='js/creative-enhancements.js', cachebust=true) }}"></script>
+    <!-- Premium Interactions: Magnetic effects, 3D tilt, quantum particles, scroll physics -->
+    <script src="{{ get_url(path='js/premium-interactions.js', cachebust=true) }}"></script>
     {% endblock %}
 </body>
 
