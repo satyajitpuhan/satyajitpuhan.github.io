@@ -1,0 +1,227 @@
+<section class="section research-network" id="research-network" style="position: relative; background: #080a14; padding: 100px 0; overflow: hidden; min-height: 80vh;">
+  <!-- Grid Background -->
+  <div style="position: absolute; inset: 0; pointer-events: none; opacity: 0.03; background-image: linear-gradient(rgba(139,92,246,1) 1px, transparent 1px), linear-gradient(90deg, rgba(139,92,246,1) 1px, transparent 1px); background-size: 50px 50px;"></div>
+  
+  <div class="container" style="position: relative; z-index: 2;">
+    <!-- Section Header -->
+    <div class="row text-center mb-4">
+      <div class="col-lg-8 offset-lg-2">
+        <div class="ae-section-label" data-reveal="up">07 · D3.js Research Knowledge Graph</div>
+        <h2 style="color: white; font-weight: 800; font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.8rem, 3vw, 2.5rem); margin-bottom: 16px;">Research Network</h2>
+        <p style="color: rgba(255,255,255,0.55); font-size: 1rem; max-width: 600px; margin: 0 auto;" data-reveal="up" data-delay="100">
+          Interactive force-directed graph of all published research papers, clustered by physics area. Drag nodes to explore the network.
+        </p>
+      </div>
+    </div>
+
+    <!-- D3 Graph Container -->
+    <div class="row justify-content-center" data-reveal="up" data-delay="200">
+      <div class="col-lg-12">
+        <div style="background: rgba(10,10,22,0.85); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 10px; box-shadow: 0 8px 40px rgba(0,0,0,0.4); position: relative; overflow: hidden;">
+          <!-- Legend -->
+          <div style="position: absolute; top: 20px; right: 20px; background: rgba(0,0,0,0.6); padding: 12px; border-radius: 8px; backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.08); font-size: 0.75rem; color: #fff; pointer-events: none;">
+            <div style="margin-bottom: 6px;"><span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:#8b5cf6; margin-right:6px;"></span>GPDs & GTMDs</div>
+            <div style="margin-bottom: 6px;"><span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:#06b6d4; margin-right:6px;"></span>TMDs</div>
+            <div style="margin-bottom: 6px;"><span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:#f59e0b; margin-right:6px;"></span>Form Factors</div>
+            <div style="margin-bottom: 6px;"><span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:#10b981; margin-right:6px;"></span>Nuclear Medium</div>
+            <div style="margin-bottom: 6px;"><span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:#ec4899; margin-right:6px;"></span>Charmonium</div>
+            <div><span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:#a78bfa; margin-right:6px;"></span>Light-Front Model</div>
+          </div>
+
+          <div id="d3-graph-container" style="width: 100%; height: 500px; cursor: grab;"></div>
+          
+          <!-- Tooltip -->
+          <div id="d3-tooltip" style="position: absolute; opacity: 0; background: rgba(0,0,0,0.85); color: #fff; padding: 10px 14px; border-radius: 6px; font-size: 0.8rem; pointer-events: none; max-width: 250px; border: 1px solid rgba(139,92,246,0.3); transition: opacity 0.2s; z-index: 10;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    function initGraph() {
+      const container = document.getElementById("d3-graph-container");
+      if (!container || !window.d3) return;
+      
+      const width = container.clientWidth;
+      const height = 500;
+      
+      const svg = d3.select("#d3-graph-container")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height);
+        
+      const g = svg.append("g");
+      
+      // Add zoom
+      svg.call(d3.zoom()
+        .scaleExtent([0.5, 3])
+        .on("zoom", (event) => g.attr("transform", event.transform))
+      );
+
+      // Data structure based on real papers
+      const nodes = [
+        // Central hubs
+        { id: "GPD", group: 1, label: "GPDs / GTMDs", radius: 25, color: "#8b5cf6" },
+        { id: "TMD", group: 2, label: "TMDs", radius: 25, color: "#06b6d4" },
+        { id: "FF", group: 3, label: "Form Factors", radius: 20, color: "#f59e0b" },
+        { id: "NM", group: 4, label: "Nuclear Medium", radius: 25, color: "#10b981" },
+        { id: "CHARM", group: 5, label: "Charmonium", radius: 20, color: "#ec4899" },
+        { id: "LF", group: 6, label: "Light-Front", radius: 25, color: "#a78bfa" },
+        
+        // Papers (sample of 15 key ones to avoid clutter)
+        { id: "p1", group: 4, label: "Behavior of pion in asymmetric nuclear medium", radius: 10 },
+        { id: "p2", group: 4, label: "Kaons structure in dense nuclear medium", radius: 10 },
+        { id: "p3", group: 1, label: "Spin-1 unpolarized GPDs in light front dynamics", radius: 10 },
+        { id: "p4", group: 2, label: "Understanding photon TMDs with light-front", radius: 10 },
+        { id: "p5", group: 2, label: "T-even TMDs for spin-0 pseudo-scalar mesons", radius: 10 },
+        { id: "p6", group: 2, label: "Leading twist T-even TMDs for spin-1", radius: 10 },
+        { id: "p7", group: 2, label: "TMD Relations: Light-Front Quark-Diquark", radius: 10 },
+        { id: "p8", group: 5, label: "Moderate-to-Large-x Gluon Helicity J/psi", radius: 10 },
+        { id: "p9", group: 5, label: "Mechanical distribution of charmonium", radius: 10 },
+        { id: "p10", group: 4, label: "D and D* mesons in isospin asymmetric medium", radius: 10 },
+        { id: "p11", group: 3, label: "Scalar, vector and tensor form factors", radius: 10 },
+        { id: "p12", group: 6, label: "Valence quark structure of rho meson", radius: 10 },
+        { id: "p13", group: 1, label: "Valence Quark Structure through GTMDs", radius: 10 },
+        { id: "p14", group: 6, label: "Transverse and spatial structure of mesons", radius: 10 },
+        { id: "p15", group: 4, label: "Effect of Asymmetric Medium on Kaons", radius: 10 },
+      ];
+
+      const links = [
+        // Hub links
+        { source: "GPD", target: "LF", value: 3 },
+        { source: "TMD", target: "LF", value: 3 },
+        { source: "FF", target: "LF", value: 3 },
+        
+        // Paper links
+        { source: "p1", target: "NM", value: 1 },
+        { source: "p2", target: "NM", value: 1 },
+        { source: "p3", target: "GPD", value: 1 },
+        { source: "p3", target: "LF", value: 1 },
+        { source: "p4", target: "TMD", value: 1 },
+        { source: "p5", target: "TMD", value: 1 },
+        { source: "p6", target: "TMD", value: 1 },
+        { source: "p7", target: "TMD", value: 1 },
+        { source: "p8", target: "CHARM", value: 1 },
+        { source: "p9", target: "CHARM", value: 1 },
+        { source: "p9", target: "LF", value: 1 },
+        { source: "p10", target: "NM", value: 1 },
+        { source: "p11", target: "FF", value: 1 },
+        { source: "p12", target: "LF", value: 1 },
+        { source: "p13", target: "GPD", value: 1 },
+        { source: "p14", target: "LF", value: 1 },
+        { source: "p15", target: "NM", value: 1 },
+      ];
+
+      function getColor(group) {
+        const colors = ["#8b5cf6", "#06b6d4", "#f59e0b", "#10b981", "#ec4899", "#a78bfa"];
+        return colors[(group - 1) % colors.length];
+      }
+
+      const simulation = d3.forceSimulation(nodes)
+        .force("link", d3.forceLink(links).id(d => d.id).distance(100))
+        .force("charge", d3.forceManyBody().strength(-300))
+        .force("center", d3.forceCenter(width / 2, height / 2))
+        .force("collide", d3.forceCollide().radius(d => d.radius + 10));
+
+      const link = g.append("g")
+        .attr("stroke", "rgba(255,255,255,0.15)")
+        .attr("stroke-width", 1.5)
+        .selectAll("line")
+        .data(links)
+        .join("line");
+
+      const node = g.append("g")
+        .selectAll("g")
+        .data(nodes)
+        .join("g")
+        .call(d3.drag()
+          .on("start", dragstarted)
+          .on("drag", dragged)
+          .on("end", dragended));
+
+      node.append("circle")
+        .attr("r", d => d.radius)
+        .attr("fill", d => d.color || getColor(d.group))
+        .attr("stroke", "rgba(255,255,255,0.2)")
+        .attr("stroke-width", 2);
+
+      node.append("text")
+        .text(d => d.radius > 15 ? d.label : "")
+        .attr("x", 0)
+        .attr("y", d => d.radius + 15)
+        .attr("text-anchor", "middle")
+        .style("fill", "#fff")
+        .style("font-size", "10px")
+        .style("font-family", "Space Grotesk, sans-serif")
+        .style("pointer-events", "none");
+
+      const tooltip = d3.select("#d3-tooltip");
+
+      node.on("mouseover", function(event, d) {
+        if (d.radius <= 15) {
+          d3.select(this).select("circle").attr("stroke", "#fff").attr("stroke-width", 3);
+          tooltip.style("opacity", 1)
+                 .html(`<strong>Paper</strong><br>${d.label}`)
+                 .style("left", (event.pageX + 15) + "px")
+                 .style("top", (event.pageY - 28) + "px");
+        }
+      })
+      .on("mousemove", function(event) {
+        tooltip.style("left", (event.pageX + 15) + "px")
+               .style("top", (event.pageY - 28) + "px");
+      })
+      .on("mouseout", function(event, d) {
+        d3.select(this).select("circle").attr("stroke", "rgba(255,255,255,0.2)").attr("stroke-width", 2);
+        tooltip.style("opacity", 0);
+      });
+
+      simulation.on("tick", () => {
+        link
+          .attr("x1", d => d.source.x)
+          .attr("y1", d => d.source.y)
+          .attr("x2", d => d.target.x)
+          .attr("y2", d => d.target.y);
+
+        node
+          .attr("transform", d => `translate(${d.x},${d.y})`);
+      });
+
+      function dragstarted(event, d) {
+        if (!event.active) simulation.alphaTarget(0.3).restart();
+        d.fx = d.x;
+        d.fy = d.y;
+        container.style.cursor = "grabbing";
+      }
+
+      function dragged(event, d) {
+        d.fx = event.x;
+        d.fy = event.y;
+      }
+
+      function dragended(event, d) {
+        if (!event.active) simulation.alphaTarget(0);
+        d.fx = null;
+        d.fy = null;
+        container.style.cursor = "grab";
+      }
+    }
+
+    // Initialize graph if D3 is ready, or wait
+    if (window.d3) {
+      initGraph();
+    } else {
+      let tries = 0;
+      const interval = setInterval(() => {
+        if (window.d3) {
+          clearInterval(interval);
+          initGraph();
+        } else if (tries > 20) {
+          clearInterval(interval); // Give up after 2s
+        }
+        tries++;
+      }, 100);
+    }
+  });
+</script>

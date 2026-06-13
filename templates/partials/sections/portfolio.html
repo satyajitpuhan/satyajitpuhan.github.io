@@ -50,6 +50,67 @@
       </div>
     </div>
 
+    <!-- Publication Timeline Chart -->
+    <div class="row justify-content-center mb-5" data-reveal="up">
+      <div class="col-lg-10">
+        <div style="background: rgba(10,10,22,0.9); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 20px; box-shadow: 0 8px 30px rgba(0,0,0,0.3);">
+          <canvas id="pubTimelineChart" style="width:100%; height:250px;"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const ctx = document.getElementById('pubTimelineChart');
+        if (!ctx) return;
+        
+        // Setup data using static values retrieved earlier
+        const data = {
+          labels: ['2022', '2023', '2024', '2025', '2026'],
+          datasets: [
+            {
+              label: 'Journal Articles',
+              data: [0, 0, 7, 10, 3],
+              backgroundColor: 'rgba(56,189,248,0.85)',
+              borderRadius: 4,
+            },
+            {
+              label: 'Proceedings',
+              data: [0, 1, 3, 1, 0],
+              backgroundColor: 'rgba(167,139,250,0.85)',
+              borderRadius: 4,
+            }
+          ]
+        };
+        
+        const config = {
+          type: 'bar',
+          data: data,
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              x: { stacked: true, grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: 'rgba(255,255,255,0.7)' } },
+              y: { stacked: true, grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: 'rgba(255,255,255,0.7)', stepSize: 2 } }
+            },
+            plugins: {
+              legend: { labels: { color: 'rgba(255,255,255,0.8)' } }
+            }
+          }
+        };
+
+        let chartRendered = false;
+        const obs = new IntersectionObserver((entries) => {
+          if (entries[0].isIntersecting && !chartRendered) {
+            new Chart(ctx, config);
+            chartRendered = true;
+            obs.unobserve(ctx);
+          }
+        }, { threshold: 0.2 });
+        obs.observe(ctx);
+      });
+    </script>
+
     <!-- Column labels -->
     <div class="row mb-3" style="padding: 0 15px; align-items: stretch;">
       <div class="col-lg-4 mb-2 mb-lg-0">
