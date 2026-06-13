@@ -50,6 +50,34 @@
   --font-m: 'JetBrains Mono', 'Courier New', monospace;
 }
 
+[data-theme="light"] {
+  --bg:          #f8fafc;
+  --bg-2:        #f1f5f9;
+  --bg-3:        #e2e8f0;
+  --surface:     rgba(255, 255, 255, 0.92);
+  --surface-2:   rgba(241, 245, 249, 0.88);
+  
+  --text:        #0f172a;
+  --text-muted:  rgba(15, 23, 42, 0.7);
+  --text-dim:    rgba(15, 23, 42, 0.4);
+  --border:      rgba(15, 23, 42, 0.1);
+  --border-gold: rgba(232, 164, 68, 0.3);
+  --border-teal: rgba(46, 196, 182, 0.3);
+
+  --shadow-card: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* ── Phase Transition Effect ── */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-old(root) { z-index: 1; }
+::view-transition-new(root) { z-index: 2; }
+[data-theme="dark"]::view-transition-old(root) { z-index: 2; }
+[data-theme="dark"]::view-transition-new(root) { z-index: 1; }
+
 /* ── Base ── */
 *, *::before, *::after { box-sizing: border-box; }
 
