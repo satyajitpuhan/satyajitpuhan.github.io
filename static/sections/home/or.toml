@@ -1,16 +1,20 @@
-title = "ଗିରିଜ୍"
-description = "|\n\nଏନଆଇଟି ଜଲନ୍ଧର କିର କିଜ ڭ ڭ ڭ ڭ ڭ ڭ ڭ ڭ ڭ ڭ ڭ ڭ ڭ ڭ ڭ ەر ର୍ଚ୍ଚ ର୍ଚ୍ଚ ڭ ର୍ଚ୍ଚ ର୍ଚ୍ଚ ର୍ଚ୍ଚ"
+title       = "Hello, I am Satyajit Puhan"
+description = """
+# Postdoctoral Researcher — Academia Sinica 🎓
+
+Currently a Postdoctoral Researcher at the **Institute of Physics, Academia Sinica, Taipei, Taiwan**. Defended my PhD thesis on *Tomography of Light & Heavy Mesons Using Light-Front Dynamics* at NIT Jalandhar on **2nd April, 2026**.
+"""
 button_name = "Contact Me"
-button_url = "contact"
-image = "images/hero/me1.jpg"
+button_url  = "contact"
+image       = "images/hero/me1.jpg"
 
 [[gallery]]
 image = "images/gallery/defense-presenting-qcd.jpg"
-caption = "ପିଏଚଡି ଫାଇନାଲ ଡିଫେନ୍ସ, NIT ଜାଲନ୍ଧର"
+caption = "PhD Final Defense — Perturbative & Non-perturbative QCD, NIT Jalandhar (2nd April, 2026)"
 
 [[gallery]]
 image = "images/gallery/defense-group-photo.jpg"
-caption = "ଡିଫେନ୍ସ ପରେ ଗ୍ରୁପ ଫଟୋ, NIT ଜାଲନ୍ଧର"
+caption = "Post-Defense Celebration with Research Group, NIT Jalandhar"
 
 [[gallery]]
 image = "images/gallery/defense-friends-nitj.jpg"
@@ -26,11 +30,11 @@ caption = "Academia Sinica, Taiwan"
 
 [[gallery]]
 image = "images/gallery/colleague-selfie.jpg"
-caption = "Dr. Narinder Kumar ସହ LAB-119, NIT-J DOP ରେ"
+caption = "With Dr. Narinder Kumar at LAB-119, NIT-J DOP"
 
 [[gallery]]
 image = "images/gallery/friends-metro-selfie.jpg"
-caption = "Vidit ସହ ଦିଲ୍ଲୀ ମେଟ୍ରୋରେ"
+caption = "With Vidit at Delhi Metro"
 
 [[gallery]]
 image = "images/gallery/switzerland-alps.jpg"
@@ -71,4 +75,3 @@ caption = "Hilltop Sunset, Dharamshala"
 [[gallery]]
 image = "images/gallery/office-research.jpg"
 caption = "Research Lab, NIT Jalandhar"
-

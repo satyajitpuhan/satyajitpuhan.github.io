@@ -1,5 +1,5 @@
 +++
-title = "ପାୟନ GPD ନିଷ୍କାସନ — ପ୍ରଫେସର ସି ଆର ଜିଙ୍କ ଗୋଷ୍ଠୀ"
+title = "Extraction of Pion GPDs — Prof. C. R. Ji's Group"
 date = 2026-04-17
 
 [extra]
@@ -11,12 +11,12 @@ tags = ["seminar", "GPDs", "pion", "form factors"]
 categories = ["talks"]
 +++
 
-**କଥାବାର୍ତ୍ତା ଶୀର୍ଷକ:** ପାୟନ GPD ନିଷ୍କାସନ
+**Talk Title:** Extraction of Pion GPDs
 
-**ମୋଡ୍:** ଜୁମ୍ ମିଟିଂ | **ଗୋଷ୍ଠୀ:** ପ୍ରଫେସର ସି ଆର ଜିଙ୍କ ଅନୁସନ୍ଧାନ ଗୋଷ୍ଠୀ, NCSU, ଆମେରିକା
+**Mode:** Zoom Meeting | **Group:** Prof. C. R. Ji's Research Group, NCSU, USA
 
-[କଥାବାର୍ତ୍ତା ଦେଖନ୍ତୁ →](https://crjiresearchgroup.wordpress.ncsu.edu/group-meetings/archives-satyajit-puhan/)
+[View Talk →](https://crjiresearchgroup.wordpress.ncsu.edu/group-meetings/archives-satyajit-puhan/)
 
-## ସାରାଂଶ
+## Abstract
 
-ଏହି କଥାବାର୍ତ୍ତାରେ, ମୁଁ ଶୂନ୍ୟ ସ୍କୁନେସ୍ ରେ ପାୟନର ଅନପୋଲାରାଇଜ୍ଡ କ୍ୱାର୍କ ସାଧାରଣୀକୃତ ପାର୍ଟନ ବଣ୍ଟନ (GPDs) ର ଡାଟା-ଚାଳିତ ନିଷ୍କାସନ ଉପରେ ଆମର ସାମ୍ପ୍ରତିକ କାର୍ଯ୍ୟ ଉପସ୍ଥାପନ କରୁଛି। ପ୍ରାୟୋଗିକ ପାୟନ ଇଲେକ୍ଟ୍ରୋମ୍ୟାଗ୍ନେଟିକ୍ ଫର୍ମ ଫ୍ୟାକ୍ଟର ଏବଂ PDF ଡାଟାର ଗ୍ଲୋବାଲ ଫିଟ୍ ବ୍ୟବହାର କରି, ଆମେ GPD ଫ୍ରେମୱାର୍କରେ ଏକ ନମନୀୟ ପ୍ୟାରାମିଟ୍ରାଇଜେସନ ମାଧ୍ୟମରେ ପାୟନ GPDs ନିର୍ଧାରଣ କରୁ। ଇମ୍ପାକ୍ଟ-ପ୍ୟାରାମିଟର-ସ୍ପେସ୍ ବ୍ୟାଖ୍ୟା ଆଲୋଚନା କରାଯାଇଛି, ଯାହା QCD ର ସବୁଠାରୁ ହାଲୁକା ବାଉଣ୍ଡ ଷ୍ଟେଟର ଆଭ୍ୟନ୍ତରୀଣ ଗଠନ ପ୍ରକାଶ କରେ। ଫଳାଫଳ EIC, JLab 12 GeV, COMPASS, ଏବଂ AMBER ପରୀକ୍ଷଣ ପାଇଁ ଅତ୍ୟାବଶ୍ୟକ ଇନପୁଟ୍ ପ୍ରଦାନ କରେ।
+In this talk, I present our recent work on the data-driven extraction of the unpolarized quark Generalized Parton Distributions (GPDs) of the pion at zero skewness. Using a global fit to experimental pion electromagnetic form factor and PDF data, we determine the pion GPDs through a flexible parameterization embedded in a GPD framework with collinear PDFs and a profile function encoding transverse dynamics. Impact-parameter-space interpretations of the spatial parton distributions are discussed, revealing the internal structure of the lightest QCD bound state. The results provide essential input for future experiments at EIC, JLab 12 GeV, COMPASS, and AMBER.

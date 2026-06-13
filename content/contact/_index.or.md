@@ -1,5 +1,4 @@
 +++
-title = "ମୋ ସହିତ ଯୋଗାଯୋଗ କରନ୍ତୁ |"
+title = "Contact Me"
 template = "contact/section.html"
 +++
-

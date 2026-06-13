@@ -1,5 +1,5 @@
 +++
-title = "JINR-BLTP ଆଜିନ ଆଜିନ ଆଜ ଜିନ GFF - ଏଜ ଆଜକ, ଆଜକ ଆକା | |"
+title = "Pion GFFs at JINR-BLTP — Dubna, Moscow"
 date = 2025-08-15
 
 [extra]
@@ -7,17 +7,16 @@ feature_image = "images/blog/posts/jinr-bltp-2025.png"
 post_image = "images/blog/posts/jinr-bltp-2025.png"
 
 [taxonomies]
-tags = [ "conference", "gravitational form factors", "pion",]
-categories = [ "talks",]
+tags = ["conference", "gravitational form factors", "pion"]
+categories = ["talks"]
 +++
 
+**Talk Title:** Gravitational form factor of pion
 
-** ଆଜାନ୍ ଆବାନ୍ ଆଜ: **
+**Mode:** In person at Interplay of gravity and strong interactions at BLTP, JINR, Dubna, Moscow
 
-** କ ଡ୍ଡ୍ଡ୍ ଡ୍ଡ୍: **
+[View Conference →](https://indico.jinr.ru/event/5492/page/2510-timetable)
 
-[ଗଜିତ →]
+## About This Talk
 
-## କ କଥାବାର୍ତ୍ତା କଥାବାର୍ତ୍ତା ବିଷୟରେ ବିଷୟରେ |
-
-О ଏହି କଥାବାର୍ତ୍ତା ** ବୋଗୋଲିଓବୋଭ୍ ଲାବୋରେଟୋରୀ ଅଫ୍ ଥିଓରିଟିକାଲ୍ ଫିଜିକ୍ସ (BLTP) **, ମିଳିତ ଇନଷ୍ଟିଚ୍ୟୁଟ୍ ଫର୍ ଆଣବିକ ଅନୁସନ୍ଧାନ (JINR), ଡବ୍ନା, ମସ୍କୋରେ “ଇଣ୍ଟରପ୍ଲେ ଅଫ୍ ମାଧ୍ୟାକର୍ଷଣ ଏବଂ ଦୃ strong ପାରସ୍ପରିକ କାର୍ଯ୍ୟ” କାର୍ଯ୍ୟକ୍ରମର ଏକ ଅଂଶ ଥିଲା |
+I presented my recent work on extracting the gravitational form factors (GFFs) of the pion and discussed approaches for their experimental extraction. This talk was part of the "Interplay of gravity and strong interactions" program at the **Bogoliubov Laboratory of Theoretical Physics (BLTP)**, Joint Institute for Nuclear Research (JINR), Dubna, Moscow.

@@ -1,24 +1,21 @@
 +++
-title = "ଭାରୀ ବି ଏବଂ ଡି-ମେସନ୍ସର ଆଭ୍ୟନ୍ତରୀଣ ଗଠନ - TIFR ରେ ପୋଷ୍ଟର |"
+title = "Internal Structure of Heavy B and D-Mesons — Poster at TIFR"
 date = 2023-12-01
-
 [taxonomies]
-tags = [ "Poster", "HQL 2023", "B Mesons", "D Mesons",]
-
+tags = ["Poster", "HQL 2023", "B Mesons", "D Mesons"]
 [extra]
 feature_image = "images/blog/posts/hql-2023-poster.png"
 post_image = "images/blog/posts/hql-2023-poster.png"
 +++
 
+**Poster Title:** Internal Structure of Heavy B and D-mesons
 
-** କଜାନଜ ଆଜ ଆଜ:
+**Venue:** [HQL 2023 Conference](https://www.tifr.res.in/~hql2023/), TIFR, Mumbai, India
 
-** ବାଜି: ** [HQL 2023)]
+**Mode:** In person
 
-** କ ଡ୍ଡ୍ଡ୍ ଡ୍ଡ୍: **
+I presented a poster on the unpolarized valence quark GPDs and PDFs for heavy spin-0 B- and D-mesons using the light-front quark model.
 
-ମୁଁ ହାଲୁକା ଫ୍ରଣ୍ଟ୍ କ୍ୱାର୍କ ମଡେଲ୍ ବ୍ୟବହାର କରି ଭାରୀ ସ୍ପିନ୍ -0 ବି- ଏବଂ ଡି-ମେସନ୍ ପାଇଁ ଅଣପୋଲାରାଇଜଡ୍ ଭାଲେନ୍ସ କ୍ୱାର୍କ ଜିପିଡି ଏବଂ ପିଡିଏଫ୍ ଉପରେ ଏକ ପୋଷ୍ଟର ଉପସ୍ଥାପନ କଲି |
+<!-- more -->
 
-<! - ଗିଗା ->
-
-ଅଣପୋଲାରାଇଜଡ୍ f₁ (x, k²⊥) ଟ୍ରାନ୍ସଭର୍ସ ଗତି-ନିର୍ଭରଶୀଳ ପାର୍ଟନ୍ ବଣ୍ଟନ କାର୍ଯ୍ୟ (TMDs) ରୁ PDF ଗୁଡିକ ବାହାର କରାଯାଇଥିଲା | ଅଣପୋଲାରାଇଜଡ୍ H (x, ζ, t) GPD ପାଇଁ ଆମେ କ୍ୱାର୍କ-କ୍ୱାର୍କ ସମ୍ବନ୍ଧୀୟ କାର୍ଯ୍ୟ ସମାଧାନ କଲୁ | ବ elect ଦ୍ୟୁତିକ ଚୁମ୍ବକୀୟ ଫର୍ମ କାରକ (EMFFs) ଏବଂ ମାଧ୍ୟାକର୍ଷଣ ଫର୍ମ କାରକ (GFFs) ଶୂନ୍ୟ ସ୍କେୱେନ୍ସରେ ଅଣପୋଲାରାଇଜଡ୍ ଜିପିଡିରୁ ଉତ୍ପନ୍ନ ହୋଇଥିଲା |
+PDFs were extracted from the unpolarized f₁(x, k²⊥) transverse momentum-dependent parton distribution functions (TMDs). We solved the quark-quark correlation function for unpolarized H(x, ζ, t) GPDs. The electromagnetic form factors (EMFFs) and gravitational form factors (GFFs) were derived from the unpolarized GPDs at zero skewness.

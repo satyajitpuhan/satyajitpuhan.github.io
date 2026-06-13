@@ -7,8 +7,8 @@ thumbnail = "images/portfolio/portfolio-1.png"
 service = "e-Print: 2605.30945 [hep-ph]"
 client = "S. Sharma, A. Aparin, S. Puhan, N. Kumar, and H. Dahiya"
 short_description = "New research article on gluon helicity from J/psi production."
-challenge = "Moderate-to-Large-x Gluon Helicity from J/psi Production at sqrt(s) = 27 GeV"
-solution = "Research article published in e-Print: 2605.30945 [hep-ph]."
+challenge = "We present a feasibility study of the longitudinal double-spin asymmetry A_LL in inclusive J/psi production in polarized proton-proton collisions at sqrt(s) ~ 27 GeV at the Spin Physics Detector (SPD) of the Nuclotron-based Ion Collider fAcility (NICA). At these moderate energies, J/psi production is dominated by gluon-gluon fusion, probing gluon momentum fractions x ~ 0.1-0.2 at central rapidity and highly asymmetric configurations at forward rapidity, where one parton can reach x ~ 0.5-0.9. This provides direct sensitivity to the poorly constrained moderate- to large-x region of the gluon helicity distribution Delta g(x). We estimate A_LL as a function of transverse momentum and rapidity using polarized parton distribution functions, focusing on the underlying partonic spin asymmetry. Nonperturbative long-distance effects are treated in a simplified manner and largely cancel in the asymmetry, enabling a direct assessment of gluon polarization sensitivity. We find asymmetries reaching |A_LL| ~ 0.09 at p_T = 3 GeV, with enhanced sensitivity at forward rapidity. The dominant theoretical uncertainty arises from polarized parton distribution functions. These results demonstrate that inclusive J/psi measurements at SPD/NICA provide a sensitive and complementary probe of gluon polarization at moderate and large x, extending constraints from RHIC into a kinematic regime not directly accessible to the EIC."
+solution = "Feasibility study of longitudinal double-spin asymmetry A_LL in inclusive J/psi production at NICA SPD (sqrt(s) = 27 GeV), showing sensitivity to the moderate-to-large-x gluon helicity distribution Delta g(x)."
 +++
 
 **Authors:** S. Sharma, A. Aparin, S. Puhan, N. Kumar, and H. Dahiya  

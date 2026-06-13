@@ -1,5 +1,5 @@
 +++
-title = "🚀 ତାଇୱାନରେ ନୂଆ ଅନୁସନ୍ଧାନ ଅଧ୍ୟାୟ — ଆକାଡେମିଆ ସିନିକା"
+title = "🚀 Starting a New Research Chapter in Taiwan — Academia Sinica"
 date = 2026-04-07
 [taxonomies]
 tags = ["Academia Sinica", "ePIC", "EIC", "Research", "Taiwan"]
@@ -9,16 +9,20 @@ feature_image = "images/gallery/academia-sinica-taiwan.jpg"
 post_image = "images/gallery/academia-sinica-taiwan.jpg"
 +++
 
-ପ୍ରଫେସର ୱେନ-ଚେନ ଚାଙ୍ଗଙ୍କ ତତ୍ତ୍ୱାବଧାନରେ **ଆକାଡେମିଆ ସିନିକା**, **ଇନଷ୍ଟିଚ୍ୟୁଟ ଅଫ ଫିଜିକ୍ସ** ରେ **ଅନୁସନ୍ଧାନ ସହାୟକ** ଭାବେ ଯୋଗଦାନ କରିଛି।
+I have joined the **Academia Sinica** as a **Research Assistant** at the **Institute of Physics**, working under the supervision of **Prof. Wen-Chen Chang**.
 
-ମୋର କାର୍ଯ୍ୟ ଧ୍ୟାନ ଦେଉଛି:
-- 🔹 **ePIC ପରୀକ୍ଷଣ ପାଇଁ ଡିଟେକ୍ଟର ବିକାଶ** (ଜିରୋ-ଡିଗ୍ରୀ କ୍ୟାଲୋରିମିଟର)
-- 🔹 **ପାୟନ ଓ କାଓନ ପାର୍ଟନ ବଣ୍ଟନ ଫଙ୍କସନ (PDFs) ର ଗ୍ଲୋବାଲ ଆନାଲିସିସ**
+My work focuses on:
+- 🔹 **Detector development for the ePIC experiment** (Zero-Degree Calorimeter)
+- 🔹 **Global analysis of pion and kaon Parton Distribution Functions (PDFs)**
 
 <!-- more -->
 
-ଏହା ହାଡ୍ରନ ଗଠନ, TMDs, ଏବଂ QCD ରେ ମୋର ଅନୁସନ୍ଧାନ ଆଗ୍ରହ ସହିତ ନିକଟ ସମ୍ପର୍କିତ, ବିଶେଷ କରି ଆସନ୍ନ ଇଲେକ୍ଟ୍ରନ-ଆୟନ କୋଲାଇଡର (EIC) ପ୍ରସଙ୍ଗରେ।
+This aligns closely with my research interests in **hadron structure**, **TMDs**, and **QCD**, particularly in the context of the **Electron-Ion Collider (EIC)**.
 
-ତତ୍ତ୍ୱ, ଫେନୋମେନୋଲୋଜି ଏବଂ ପରୀକ୍ଷଣର ମିଳନ ସ୍ଥଳରେ କାର୍ଯ୍ୟ କରିବାକୁ ଉତ୍ସାହିତ।
+The ePIC experiment at BNL will be a next-generation facility for exploring the internal structure of protons, neutrons, and nuclei. The Zero-Degree Calorimeter (ZDC) is a critical forward detector for tagging spectator neutrons and photons, enabling exclusive and diffractive measurements.
+
+On the phenomenology side, the global analysis of pion and kaon PDFs will extend our understanding of the valence and sea quark structure of light mesons — connecting directly to my PhD work on meson tomography using light-front dynamics.
+
+Excited to work at the interface of **theory, phenomenology, and experiment** — bridging first-principles QCD calculations with cutting-edge detector instrumentation and collider physics.
 
 *#ParticlePhysics #HadronPhysics #QCD #EIC #AcademiaSinica #Research*

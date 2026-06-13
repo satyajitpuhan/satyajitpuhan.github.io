@@ -1,5 +1,5 @@
 +++
-title = "EIC-Asia Workshop 2026 — Academia Sinica, Taipei"
+title = "EIC-Asia Workshop on QCD and Hadron Structure 2026 — Academia Sinica, Taipei"
 date = 2026-05-01
 
 [extra]
@@ -11,37 +11,39 @@ tags = ["EIC", "QCD", "hadron structure", "workshop", "Academia Sinica", "Taiwan
 categories = ["conferences"]
 +++
 
-**କର୍ମଶାଳା:** [EIC-Asia Workshop on QCD and Hadron Structure](https://indico.phys.sinica.edu.tw/event/495/)
+**Workshop:** [EIC-Asia Workshop on QCD and Hadron Structure](https://indico.phys.sinica.edu.tw/event/495/)
 
-**ସ୍ଥାନ:** Institute of Physics, Academia Sinica, ତାଇପେଇ, ତାଇୱାନ
+**Venue:** Institute of Physics, Academia Sinica, Taipei, Taiwan
 
-**ତାରିଖ:** ଏପ୍ରିଲ ୨୯ – ମେ ୧, ୨୦୨୬
+**Dates:** April 29 – May 1, 2026
 
-**ମୋଡ୍:** ବ୍ୟକ୍ତିଗତ ଭାବେ
+**Mode:** In person
 
-ମୁଁ Academia Sinica, ତାଇପେଇରେ ଆୟୋଜିତ **EIC-Asia Workshop on QCD and Hadron Structure** ରେ ଭାଗ ନେଲି | ଏହି କର୍ମଶାଳା ଆସନ୍ନ Electron-Ion Collider (EIC) ସମ୍ବନ୍ଧୀୟ ପରୀକ୍ଷା, ଫେନୋମେନୋଲୋଜି ଏବଂ ଲାଟିସ୍ ଗଣନାରେ ବିଶେଷଜ୍ଞମାନଙ୍କୁ ଏକାଠି କରିଥିଲା |
+I attended the **EIC-Asia Workshop on QCD and Hadron Structure** hosted at the Institute of Physics, Academia Sinica, Taipei. The workshop brought together experts in experiments, phenomenology, and lattice calculations relevant to the upcoming Electron-Ion Collider (EIC).
 
 <!-- more -->
 
-## କର୍ମଶାଳା ବିଷୟରେ
+## About the Workshop
 
-Electron-Ion Collider ହାଡ୍ରନ୍ ଗଠନ ବିଷୟରେ ଆମର ବୁଝାମଣାକୁ ଉଲ୍ଲେଖନୀୟ ଭାବେ ବଢାଇବ | ଏହି କର୍ମଶାଳା QCD ଏବଂ ହାଡ୍ରନ୍ ଗଠନର ବିଭିନ୍ନ ଦିଗରେ କାର୍ଯ୍ୟ କରୁଥିବା ଗବେଷକମାନଙ୍କୁ ଏକାଠି କରିବାର ଲକ୍ଷ୍ୟ ରଖିଥିଲା |
+The Electron-Ion Collider will significantly enhance our understanding of hadron structure. This workshop aimed to bring together researchers working on various aspects of QCD and hadron structure, with topics including:
 
-- **ଲାଟିସ୍ QCD ଏବଂ ହାଡ୍ରନ୍ ଗଠନ**
-- **EIC ରେ ମେସନ୍ ଏବଂ ନ୍ୟୁକ୍ଲିୟନ୍ ଗଠନ ଅନୁସନ୍ଧାନ**
+- **Lattice QCD and hadron structure**
+- **Probing meson and nucleon structures at EIC**
 
-## ସମ୍ମେଳନ ମୁହୂର୍ତ୍ତ
+The workshop featured invited presentations from leading researchers including Constantia Alexandrou (The Cyprus Institute), Wen-Chen Chang (Academia Sinica), Luigi Del Debbio (U. of Edinburgh), Tanja Horn (Catholic U. America), Zhongbo Kang (UCLA), Yang Li (USTC), Tianbo Liu (Shandong U.), Valentin Moos (National Yang Ming Chiao Tung U.), Michael Murray (U. of Kansas), Robert Perry (MIT), and Alberto Ramos (U. of Valencia).
 
-### Institute of Physics ରେ ଗ୍ରୁପ୍ ଫଟୋ
+## Conference Moments
 
-![Institute of Physics, Academia Sinica ରେ ଗ୍ରୁପ୍ ଫଟୋ](/images/blog/posts/eic-asia-2026-group.jpg)
+### Group Photo at the Institute of Physics
 
-### ସମ୍ମେଳନ ରାତ୍ରିଭୋଜ
+![Group photo at the Institute of Physics, Academia Sinica](/images/blog/posts/eic-asia-2026-group.jpg)
 
-![ସହକର୍ମୀ ପଦାର୍ଥବିଜ୍ଞାନୀମାନଙ୍କ ସହ ରାତ୍ରିଭୋଜ — ୧](/images/blog/posts/eic-asia-2026-dinner-1.jpg)
+### Conference Dinner
 
-![ସହକର୍ମୀ ପଦାର୍ଥବିଜ୍ଞାନୀମାନଙ୍କ ସହ ରାତ୍ରିଭୋଜ — ୨](/images/blog/posts/eic-asia-2026-dinner-2.jpg)
+![Conference dinner with fellow physicists — 1](/images/blog/posts/eic-asia-2026-dinner-1.jpg)
 
-ଏହା ଏକ ଅଦ୍ଭୁତ ଅନୁଭବ ଥିଲା — ହାଡ୍ରନ୍ ଗଠନ, ଲାଟିସ୍ QCD, ଏବଂ EIC ପଦାର୍ଥବିଜ୍ଞାନ ଉପରେ କାର୍ଯ୍ୟ କରୁଥିବା ବିଶ୍ୱର ବିଶେଷଜ୍ଞମାନଙ୍କ ସହ ଆଲୋଚନା କରିବା — ଏହା ସେହି Academia Sinica ଯେଉଁଠାରେ ମୁଁ ବର୍ତ୍ତମାନ ପୋଷ୍ଟଡକ୍ଟରାଲ ଗବେଷକ ଭାବେ କାର୍ଯ୍ୟ କରୁଛି |
+![Conference dinner with fellow physicists — 2](/images/blog/posts/eic-asia-2026-dinner-2.jpg)
+
+It was a wonderful experience interacting with experts from across the globe working on hadron structure, lattice QCD, and EIC physics — right here at Academia Sinica where I am currently based as a postdoctoral researcher.
 
 *#EIC #QCD #HadronStructure #AcademiaSinica #Workshop #ParticlePhysics*
