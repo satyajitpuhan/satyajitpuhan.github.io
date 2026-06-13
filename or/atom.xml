@@ -1,0 +1,1083 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="or">
+    <title>ସତ୍ୟଜିତ ପୁହାଣ</title>
+    <link rel="self" type="application/atom+xml" href="https://satyajitpuhan.github.io/or/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2026-06-05T00:00:00+00:00</updated>
+    <id>https://satyajitpuhan.github.io/or/atom.xml</id>
+    <entry xml:lang="or">
+        <title>Mechanical distribution of the pseudoscalar charmonium and bottomonium on the light-front</title>
+        <published>2026-06-05T00:00:00+00:00</published>
+        <updated>2026-06-05T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/portfolio/pseudoscalar-charmonium-bottomonium-light-front/"/>
+        <id>https://satyajitpuhan.github.io/or/portfolio/pseudoscalar-charmonium-bottomonium-light-front/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/portfolio/pseudoscalar-charmonium-bottomonium-light-front/">&lt;p&gt;&lt;strong&gt;Authors:&lt;&#x2F;strong&gt; Ashutosh Dwibedi, Satyajit Puhan, and Sabyasachi Ghosh&lt;br &#x2F;&gt;
+&lt;strong&gt;Published in:&lt;&#x2F;strong&gt; e-Print: 2606.07073 [hep-ph]&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2606.07073&quot;&gt;Read on arXiv →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;pressure-distribution-in-pseudoscalar-mesons&quot;&gt;Pressure Distribution in Pseudoscalar Mesons&lt;&#x2F;h3&gt;
+&lt;p&gt;The pressure distribution $P(z_\perp)$ in the transverse plane for the mesons $\eta_c$ (left) and $\eta_b$ (right) shows a node where it changes sign from positive (repulsive) to negative (attractive) with increasing transverse distance $z_\perp$:&lt;&#x2F;p&gt;
+&lt;div style=&quot;text-align: center; margin: 30px 0;&quot;&gt;
+  &lt;img src=&quot;&#x2F;images&#x2F;portfolio&#x2F;papers&#x2F;pseudoscalar-charmonium-bottomonium-plots.png&quot; alt=&quot;Pressure distribution of eta_c and eta_b mesons&quot; style=&quot;max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.15);&quot; &#x2F;&gt;
+  &lt;p style=&quot;font-size: 0.9rem; color: #a0aec0; margin-top: 10px;&quot;&gt;
+    &lt;strong&gt;Figure 1:&lt;&#x2F;strong&gt; The pressure distribution in the transverse plane for the mesons $\eta_c$ (left) and $\eta_b$ (right). Also shown are the pressure range of the quark-gluon plasma (QGP) from lattice QCD simulations, the peak pressure in the proton, and the range of peak pressure values in the pion.
+  &lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>Moderate-to-Large-x Gluon Helicity from J&#x2F;psi Production at sqrt(s) = 27 GeV</title>
+        <published>2026-05-29T00:00:00+00:00</published>
+        <updated>2026-05-29T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/portfolio/gluon-helicity-jpsi-production/"/>
+        <id>https://satyajitpuhan.github.io/or/portfolio/gluon-helicity-jpsi-production/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/portfolio/gluon-helicity-jpsi-production/">&lt;p&gt;&lt;strong&gt;Authors:&lt;&#x2F;strong&gt; S. Sharma, A. Aparin, S. Puhan, N. Kumar, and H. Dahiya&lt;br &#x2F;&gt;
+&lt;strong&gt;Published in:&lt;&#x2F;strong&gt; e-Print: 2605.30945 [hep-ph]&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2605.30945&quot;&gt;Read on arXiv →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;kinematics-and-rapidity-coverage&quot;&gt;Kinematics and Rapidity Coverage&lt;&#x2F;h3&gt;
+&lt;p&gt;The partonic momentum fractions $x_{1,2}$ probed in NICA SPD kinematics ($\sqrt{s} = 27$ GeV) as a function of rapidity $y$ for different transverse momentum $p_T$ values:&lt;&#x2F;p&gt;
+&lt;div style=&quot;text-align: center; margin: 30px 0;&quot;&gt;
+  &lt;img src=&quot;&#x2F;images&#x2F;portfolio&#x2F;papers&#x2F;gluon-helicity-plots.png&quot; alt=&quot;Partonic momentum fractions x_1,2 and A_LL vs y&quot; style=&quot;max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.15);&quot; &#x2F;&gt;
+  &lt;p style=&quot;font-size: 0.9rem; color: #a0aec0; margin-top: 10px;&quot;&gt;
+    &lt;strong&gt;Figure 1:&lt;&#x2F;strong&gt; (Left) Partonic momentum fractions $x_{1,2}$ as a function of rapidity for various $p_T$. (Right-a) Longitudinal double-spin asymmetry $A_{LL}^{J&#x2F;\psi}$ vs $y$ for $p_T = 1.5, 3.0, 5.0$ GeV. (Right-b) Theoretical uncertainties for $p_T = 3.0$ GeV.
+  &lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;h3 id=&quot;uncertainty-analysis&quot;&gt;Uncertainty Analysis&lt;&#x2F;h3&gt;
+&lt;p&gt;The relative fractional uncertainties at ($\sqrt{s} = 27$ GeV) and $p_T = 3$ GeV, highlighting the PDF, scale, and total uncertainties:&lt;&#x2F;p&gt;
+&lt;div style=&quot;text-align: center; margin: 30px 0;&quot;&gt;
+  &lt;img src=&quot;&#x2F;images&#x2F;portfolio&#x2F;papers&#x2F;gluon-helicity-uncertainties.png&quot; alt=&quot;Relative uncertainties vs rapidity&quot; style=&quot;max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.15);&quot; &#x2F;&gt;
+  &lt;p style=&quot;font-size: 0.9rem; color: #a0aec0; margin-top: 10px;&quot;&gt;
+    &lt;strong&gt;Figure 2:&lt;&#x2F;strong&gt; Relative uncertainties of $A_{LL}^{J&#x2F;\psi}$ as a function of rapidity $y$ at $p_T = 3$ GeV, separating PDF uncertainty, scale uncertainty, and total uncertainty.
+  &lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>EIC-Asia Workshop on QCD and Hadron Structure 2026 — Academia Sinica, Taipei</title>
+        <published>2026-05-01T00:00:00+00:00</published>
+        <updated>2026-05-01T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/blog/eic-asia-2026-qcd-hadron-structure/"/>
+        <id>https://satyajitpuhan.github.io/or/blog/eic-asia-2026-qcd-hadron-structure/</id>
+        
+        <summary type="html">&lt;p&gt;&lt;strong&gt;Workshop:&lt;&#x2F;strong&gt; &lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;indico.phys.sinica.edu.tw&#x2F;event&#x2F;495&#x2F;&quot;&gt;EIC-Asia Workshop on QCD and Hadron Structure&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Venue:&lt;&#x2F;strong&gt; Institute of Physics, Academia Sinica, Taipei, Taiwan&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Dates:&lt;&#x2F;strong&gt; April 29 – May 1, 2026&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Mode:&lt;&#x2F;strong&gt; In person&lt;&#x2F;p&gt;
+&lt;p&gt;I attended the &lt;strong&gt;EIC-Asia Workshop on QCD and Hadron Structure&lt;&#x2F;strong&gt; hosted at the Institute of Physics, Academia Sinica, Taipei. The workshop brought together experts in experiments, phenomenology, and lattice calculations relevant to the upcoming Electron-Ion Collider (EIC).&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>Extraction of Pion GPDs — Prof. C. R. Ji&#x27;s Group</title>
+        <published>2026-04-17T00:00:00+00:00</published>
+        <updated>2026-04-17T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/blog/seminar-crji-group-pion-gpds-2026/"/>
+        <id>https://satyajitpuhan.github.io/or/blog/seminar-crji-group-pion-gpds-2026/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/blog/seminar-crji-group-pion-gpds-2026/">&lt;p&gt;&lt;strong&gt;Talk Title:&lt;&#x2F;strong&gt; Extraction of Pion GPDs&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Mode:&lt;&#x2F;strong&gt; Zoom Meeting | &lt;strong&gt;Group:&lt;&#x2F;strong&gt; Prof. C. R. Ji&#x27;s Research Group, NCSU, USA&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;crjiresearchgroup.wordpress.ncsu.edu&#x2F;group-meetings&#x2F;archives-satyajit-puhan&#x2F;&quot;&gt;View Talk →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;abstract&quot;&gt;Abstract&lt;&#x2F;h2&gt;
+&lt;p&gt;In this talk, I present our recent work on the data-driven extraction of the unpolarized quark Generalized Parton Distributions (GPDs) of the pion at zero skewness. Using a global fit to experimental pion electromagnetic form factor and PDF data, we determine the pion GPDs through a flexible parameterization embedded in a GPD framework with collinear PDFs and a profile function encoding transverse dynamics. Impact-parameter-space interpretations of the spatial parton distributions are discussed, revealing the internal structure of the lightest QCD bound state. The results provide essential input for future experiments at EIC, JLab 12 GeV, COMPASS, and AMBER.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>🚀 Starting a New Research Chapter in Taiwan — Academia Sinica</title>
+        <published>2026-04-07T00:00:00+00:00</published>
+        <updated>2026-04-07T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/blog/new-research-chapter-academia-sinica/"/>
+        <id>https://satyajitpuhan.github.io/or/blog/new-research-chapter-academia-sinica/</id>
+        
+        <summary type="html">&lt;p&gt;I have joined the &lt;strong&gt;Academia Sinica&lt;&#x2F;strong&gt; as a &lt;strong&gt;Research Assistant&lt;&#x2F;strong&gt; at the &lt;strong&gt;Institute of Physics&lt;&#x2F;strong&gt;, working under the supervision of &lt;strong&gt;Prof. Wen-Chen Chang&lt;&#x2F;strong&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;My work focuses on:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;🔹 &lt;strong&gt;Detector development for the ePIC experiment&lt;&#x2F;strong&gt; (Zero-Degree Calorimeter)&lt;&#x2F;li&gt;
+&lt;li&gt;🔹 &lt;strong&gt;Global analysis of pion and kaon Parton Distribution Functions (PDFs)&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>PhD Thesis — Acknowledgements</title>
+        <published>2026-04-05T00:00:00+00:00</published>
+        <updated>2026-04-05T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/blog/phd-acknowledgements/"/>
+        <id>https://satyajitpuhan.github.io/or/blog/phd-acknowledgements/</id>
+        
+        <summary type="html">&lt;p&gt;A heartfelt note of gratitude to everyone who shaped my PhD journey — my mentors, collaborators, friends, and institutions.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>Distribution Functions of Radially Excited Pion using the Light-Front Quark Model</title>
+        <published>2026-01-10T00:00:00+00:00</published>
+        <updated>2026-01-10T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/portfolio/radially-excited-pion-lfqm/"/>
+        <id>https://satyajitpuhan.github.io/or/portfolio/radially-excited-pion-lfqm/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/portfolio/radially-excited-pion-lfqm/">&lt;p&gt;&lt;strong&gt;Authors:&lt;&#x2F;strong&gt; A. Dwivedi, S. Puhan, and S. Ghosh&lt;br &#x2F;&gt;
+&lt;strong&gt;Published in:&lt;&#x2F;strong&gt; Communicated in PLB&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2601.06628&quot;&gt;Read on arXiv →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>Spectroscopy of rho-meson in symmetric nuclear medium</title>
+        <published>2026-01-05T00:00:00+00:00</published>
+        <updated>2026-01-05T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/portfolio/spectroscopy-rho-symmetric/"/>
+        <id>https://satyajitpuhan.github.io/or/portfolio/spectroscopy-rho-symmetric/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/portfolio/spectroscopy-rho-symmetric/">&lt;p&gt;&lt;strong&gt;Authors:&lt;&#x2F;strong&gt; Anshu Gautam, Tanisha, S. Puhan, A. Kumar, and H. Dahiya&lt;br &#x2F;&gt;
+&lt;strong&gt;Published in:&lt;&#x2F;strong&gt; Accepted in Physical Review D&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2601.11082&quot;&gt;Read on arXiv →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>Impact of isospin asymmetric nuclear medium on pseudoscalar and vector B-mesons</title>
+        <published>2026-01-01T00:00:00+00:00</published>
+        <updated>2026-01-01T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/portfolio/isospin-asymm-b-mesons/"/>
+        <id>https://satyajitpuhan.github.io/or/portfolio/isospin-asymm-b-mesons/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/portfolio/isospin-asymm-b-mesons/">&lt;p&gt;&lt;strong&gt;Authors:&lt;&#x2F;strong&gt; Tanisha, S. Puhan, N. Kaur, A. Kumar and H. Dahiya&lt;br &#x2F;&gt;
+&lt;strong&gt;Published in:&lt;&#x2F;strong&gt; Nucl. Phys. A 1068 (2026)&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;inspirehep.net&#x2F;literature&#x2F;2916907&quot;&gt;Read on INSPIRE →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>Valence quark distribution of the pion inside a medium with finite baryon density: A Nambu–Jona-Lasinio model approach</title>
+        <published>2025-12-01T00:00:00+00:00</published>
+        <updated>2025-12-01T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/portfolio/njl-model-baryon-density/"/>
+        <id>https://satyajitpuhan.github.io/or/portfolio/njl-model-baryon-density/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/portfolio/njl-model-baryon-density/">&lt;p&gt;&lt;strong&gt;Authors:&lt;&#x2F;strong&gt; A. Dwivedi, S. Puhan, S. Ghosh, and H. Dahiya&lt;br &#x2F;&gt;
+&lt;strong&gt;Published in:&lt;&#x2F;strong&gt; Accepted in PTEP&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2512.24921&quot;&gt;Read on arXiv →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>Valence quark structure of rho meson using light-front quark model</title>
+        <published>2025-11-01T00:00:00+00:00</published>
+        <updated>2025-11-01T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/portfolio/valence-quark-rho-lfqm/"/>
+        <id>https://satyajitpuhan.github.io/or/portfolio/valence-quark-rho-lfqm/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/portfolio/valence-quark-rho-lfqm/">&lt;p&gt;&lt;strong&gt;Authors:&lt;&#x2F;strong&gt; S. Puhan, S. Sharma, N. Kumar, and H. Dahiya&lt;br &#x2F;&gt;
+&lt;strong&gt;Published in:&lt;&#x2F;strong&gt; Accepted in PRD&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2511.10981&quot;&gt;Read on arXiv →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>Pion GFFs at JINR-BLTP — Dubna, Moscow</title>
+        <published>2025-08-15T00:00:00+00:00</published>
+        <updated>2025-08-15T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/blog/jinr-bltp-2025-pion-gffs/"/>
+        <id>https://satyajitpuhan.github.io/or/blog/jinr-bltp-2025-pion-gffs/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/blog/jinr-bltp-2025-pion-gffs/">&lt;p&gt;&lt;strong&gt;Talk Title:&lt;&#x2F;strong&gt; Gravitational form factor of pion&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Mode:&lt;&#x2F;strong&gt; In person at Interplay of gravity and strong interactions at BLTP, JINR, Dubna, Moscow&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;indico.jinr.ru&#x2F;event&#x2F;5492&#x2F;page&#x2F;2510-timetable&quot;&gt;View Conference →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;about-this-talk&quot;&gt;About This Talk&lt;&#x2F;h2&gt;
+&lt;p&gt;I presented my recent work on extracting the gravitational form factors (GFFs) of the pion and discussed approaches for their experimental extraction. This talk was part of the &quot;Interplay of gravity and strong interactions&quot; program at the &lt;strong&gt;Bogoliubov Laboratory of Theoretical Physics (BLTP)&lt;&#x2F;strong&gt;, Joint Institute for Nuclear Research (JINR), Dubna, Moscow.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>Internal Structure of Light Mesons — Prof. C. R. Ji&#x27;s Group</title>
+        <published>2025-07-04T00:00:00+00:00</published>
+        <updated>2025-07-04T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/blog/seminar-crji-group-light-mesons/"/>
+        <id>https://satyajitpuhan.github.io/or/blog/seminar-crji-group-light-mesons/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/blog/seminar-crji-group-light-mesons/">&lt;p&gt;&lt;strong&gt;Talk Title:&lt;&#x2F;strong&gt; Internal Structure of Light Mesons through Distribution Functions&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Mode:&lt;&#x2F;strong&gt; Zoom Meeting | &lt;strong&gt;Group:&lt;&#x2F;strong&gt; Prof. C. R. Ji&#x27;s Research Group, NCSU, USA&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;crjiresearchgroup.wordpress.ncsu.edu&#x2F;group-meetings&#x2F;archives-satyajit-puhan&#x2F;&quot;&gt;View Talk →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;abstract&quot;&gt;Abstract&lt;&#x2F;h2&gt;
+&lt;p&gt;In this talk, I discuss the internal structure of light mesons such as the pion, kaon, and rho using light-front models. The study focuses on valence quark-level Parton Distribution Functions (PDFs), Generalized Parton Distributions (GPDs), and Transverse Momentum Dependent distributions (TMDs). Additionally, I highlight the mechanical properties of the pion and explore how these distributions behave in a nuclear medium.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>D and D* mesons in isospin asymmetric nuclear medium</title>
+        <published>2025-06-15T00:00:00+00:00</published>
+        <updated>2025-06-15T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/portfolio/d-mesons-isospin-asymm/"/>
+        <id>https://satyajitpuhan.github.io/or/portfolio/d-mesons-isospin-asymm/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/portfolio/d-mesons-isospin-asymm/">&lt;p&gt;&lt;strong&gt;Authors:&lt;&#x2F;strong&gt; A. Gautam, D. Singh, N. Kaur, S. Puhan, S. Dutt, H. Dahiya, and A. Kumar&lt;br &#x2F;&gt;
+&lt;strong&gt;Published in:&lt;&#x2F;strong&gt; PTEP ptaf135 (2025)&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;inspirehep.net&#x2F;literature&#x2F;2932525&quot;&gt;Read on INSPIRE →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>Valence quark distribution of light rho and heavy J&#x2F;psi vector mesons in light-cone quark model</title>
+        <published>2025-06-01T00:00:00+00:00</published>
+        <updated>2025-06-01T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/portfolio/valence-quark-rho-jpsi/"/>
+        <id>https://satyajitpuhan.github.io/or/portfolio/valence-quark-rho-jpsi/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/portfolio/valence-quark-rho-jpsi/">&lt;p&gt;&lt;strong&gt;Authors:&lt;&#x2F;strong&gt; Tanisha, S. Puhan, A. Yadav, and H. Dahiya&lt;br &#x2F;&gt;
+&lt;strong&gt;Published in:&lt;&#x2F;strong&gt; Phys. Rev. D 112 (2025)&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;doi.org&#x2F;10.1103&#x2F;PhysRevD.112.054035&quot;&gt;Read on PRD →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>Scalar, vector and tensor electromagnetic form factors of pion and kaon</title>
+        <published>2025-05-15T00:00:00+00:00</published>
+        <updated>2025-05-15T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/portfolio/emffs-pion-kaon/"/>
+        <id>https://satyajitpuhan.github.io/or/portfolio/emffs-pion-kaon/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/portfolio/emffs-pion-kaon/">&lt;p&gt;&lt;strong&gt;Authors:&lt;&#x2F;strong&gt; S. Puhan and H. Dahiya&lt;br &#x2F;&gt;
+&lt;strong&gt;Published in:&lt;&#x2F;strong&gt; Phys. Rev. D 111 (2025)&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;inspirehep.net&#x2F;literature&#x2F;2918260&quot;&gt;Read on INSPIRE →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>Valence quark properties of charged kaons in symmetric nuclear matter</title>
+        <published>2025-05-01T00:00:00+00:00</published>
+        <updated>2025-05-01T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/portfolio/valence-quark-kaons-symm/"/>
+        <id>https://satyajitpuhan.github.io/or/portfolio/valence-quark-kaons-symm/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/portfolio/valence-quark-kaons-symm/">&lt;p&gt;&lt;strong&gt;Authors:&lt;&#x2F;strong&gt; R. Pandey, S. Puhan, N. Kaur, A. Kumar, S. Dutt, and H. Dahiya&lt;br &#x2F;&gt;
+&lt;strong&gt;Published in:&lt;&#x2F;strong&gt; Eur. Phys. J. Plus 140 (2025)&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;inspirehep.net&#x2F;literature&#x2F;2917873&quot;&gt;Read on INSPIRE →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>Radiative Transitions for the Ground and Excited Charmonia States</title>
+        <published>2025-04-10T00:00:00+00:00</published>
+        <updated>2025-04-10T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/portfolio/radiative-transitions-charmonia/"/>
+        <id>https://satyajitpuhan.github.io/or/portfolio/radiative-transitions-charmonia/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/portfolio/radiative-transitions-charmonia/">&lt;p&gt;&lt;strong&gt;Authors:&lt;&#x2F;strong&gt; A. Yadav, S. Puhan, and H. Dahiya&lt;br &#x2F;&gt;
+&lt;strong&gt;Published in:&lt;&#x2F;strong&gt; Submitted to PRD&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;inspirehep.net&#x2F;literature&#x2F;2914109&quot;&gt;Read on INSPIRE →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>Understanding the Valence Quark Structure of the Pion through GTMDs</title>
+        <published>2025-04-01T00:00:00+00:00</published>
+        <updated>2025-04-01T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/portfolio/valence-quark-pion-gtmd/"/>
+        <id>https://satyajitpuhan.github.io/or/portfolio/valence-quark-pion-gtmd/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/portfolio/valence-quark-pion-gtmd/">&lt;p&gt;&lt;strong&gt;Authors:&lt;&#x2F;strong&gt; S. Puhan, S. Sharma, N. Kumar and H. Dahiya&lt;br &#x2F;&gt;
+&lt;strong&gt;Published in:&lt;&#x2F;strong&gt; PTEP ptaf100 (2025)&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;inspirehep.net&#x2F;literature&#x2F;2914151&quot;&gt;Read on INSPIRE →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>Internal structure of pion, kaon, and ρ meson — JINR Seminar</title>
+        <published>2025-03-28T00:00:00+00:00</published>
+        <updated>2025-03-28T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/blog/jinr-seminar-meson-structure/"/>
+        <id>https://satyajitpuhan.github.io/or/blog/jinr-seminar-meson-structure/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/blog/jinr-seminar-meson-structure/">&lt;p&gt;&lt;strong&gt;Talk Title:&lt;&#x2F;strong&gt; Internal structure of pion, kaon, and ρ meson in light front dynamics&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Mode:&lt;&#x2F;strong&gt; Zoom Meeting | &lt;strong&gt;Place:&lt;&#x2F;strong&gt; JINR, Dubna, Moscow&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.jinr.ru&#x2F;posts&#x2F;214775&#x2F;&quot;&gt;View Talk →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;abstract&quot;&gt;Abstract&lt;&#x2F;h2&gt;
+&lt;p&gt;The talk focuses on studying the internal structure of pion, kaon, and ρ mesons within light-front models. We systematically explore transverse momentum-dependent parton distributions (TMDs), generalised parton distributions (GPDs), form factors (FFs), and parton distribution functions (PDFs) for these particles.&lt;&#x2F;p&gt;
+&lt;p&gt;Additionally, the mechanical properties of the pion and kaon are investigated by calculating pressure and shear distributions through GPDs. The charge radii of these particles are predicted as well, providing insight into their spatial structure.&lt;&#x2F;p&gt;
+&lt;p&gt;To further understand the behaviour of the pion and kaon in nuclear environments, these distributions are studied in medium using the chiral SU(3) quark mean field model. The PDFs are evolved to higher Q² scales to facilitate comparison with experimental data.&lt;&#x2F;p&gt;
+&lt;p&gt;The upcoming &lt;strong&gt;Electron-Ion Collider&lt;&#x2F;strong&gt; and &lt;strong&gt;NICA&lt;&#x2F;strong&gt; will serve as crucial platforms to test and refine these theoretical predictions.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>Effect of Asymmetric Nuclear Medium on the Valence Quark Structure of the Kaons</title>
+        <published>2025-03-01T00:00:00+00:00</published>
+        <updated>2025-03-01T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/portfolio/asymmetric-nuclear-kaons/"/>
+        <id>https://satyajitpuhan.github.io/or/portfolio/asymmetric-nuclear-kaons/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/portfolio/asymmetric-nuclear-kaons/">&lt;p&gt;&lt;strong&gt;Authors:&lt;&#x2F;strong&gt; D. Singh, S. Puhan, N. Kaur, M. Kaur, S. Dutt, A. Kumar, and H. Dahiya&lt;br &#x2F;&gt;
+&lt;strong&gt;Published in:&lt;&#x2F;strong&gt; Phys. Rev. D 111 (2025)&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;inspirehep.net&#x2F;literature&#x2F;2843133&quot;&gt;Read on INSPIRE →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>ICFHEP 2025 — IIT Bhilai, Chhattisgarh</title>
+        <published>2025-02-14T00:00:00+00:00</published>
+        <updated>2025-02-14T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/blog/icfhep-2025-iit-bhilai/"/>
+        <id>https://satyajitpuhan.github.io/or/blog/icfhep-2025-iit-bhilai/</id>
+        
+        <summary type="html">&lt;p&gt;&lt;strong&gt;Event:&lt;&#x2F;strong&gt; International Conference on Frontiers of High Energy Physics (ICFHEP)&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Venue:&lt;&#x2F;strong&gt; Indian Institute of Technology Bhilai, Chhattisgarh (Feb 13–15, 2025)&lt;&#x2F;p&gt;
+&lt;p&gt;Participated in this international conference during my visiting fellowship at IIT Bhilai, where I also worked with Prof. Sabyasachi Ghosh on applications of the NJL model for understanding hadron structure.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>Spectroscopy of radially excited charmonia and bottomonia in light-front quark model</title>
+        <published>2025-02-01T00:00:00+00:00</published>
+        <updated>2025-02-01T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/portfolio/spectroscopy-radially-excited/"/>
+        <id>https://satyajitpuhan.github.io/or/portfolio/spectroscopy-radially-excited/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/portfolio/spectroscopy-radially-excited/">&lt;p&gt;&lt;strong&gt;Authors:&lt;&#x2F;strong&gt; R. Acharyya, S. Puhan, N. Kumar and H. Dahiya&lt;br &#x2F;&gt;
+&lt;strong&gt;Published in:&lt;&#x2F;strong&gt; Chin. Phys. C 49 (2025)&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2408.07715&quot;&gt;Read on arXiv →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>Effect of nuclear medium on the spatial distribution of pions</title>
+        <published>2025-01-20T00:00:00+00:00</published>
+        <updated>2025-01-20T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/portfolio/nuclear-medium-spatial/"/>
+        <id>https://satyajitpuhan.github.io/or/portfolio/nuclear-medium-spatial/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/portfolio/nuclear-medium-spatial/">&lt;p&gt;&lt;strong&gt;Authors:&lt;&#x2F;strong&gt; S. Puhan, N. Kaur, A. Kumar, S. Dutt, and H. Dahiya&lt;br &#x2F;&gt;
+&lt;strong&gt;Published in:&lt;&#x2F;strong&gt; Nucl. Phys. B 1017 (2025)&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;inspirehep.net&#x2F;literature&#x2F;2873357&quot;&gt;Read on INSPIRE →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>Leading-twist TMDs for pion and kaon using power law wave functions</title>
+        <published>2025-01-10T00:00:00+00:00</published>
+        <updated>2025-01-10T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/portfolio/athics2025-pion-kaon/"/>
+        <id>https://satyajitpuhan.github.io/or/portfolio/athics2025-pion-kaon/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/portfolio/athics2025-pion-kaon/">&lt;p&gt;&lt;strong&gt;Authors:&lt;&#x2F;strong&gt; S. Puhan, and H. Dahiya&lt;br &#x2F;&gt;
+&lt;strong&gt;Published in:&lt;&#x2F;strong&gt; ATHICS 2025&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;#&quot;&gt;View Details →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>Transverse and spatial structure of light to heavy mesons in light-front dynamics</title>
+        <published>2025-01-05T00:00:00+00:00</published>
+        <updated>2025-01-05T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/portfolio/transverse-spatial-light-heavy/"/>
+        <id>https://satyajitpuhan.github.io/or/portfolio/transverse-spatial-light-heavy/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/portfolio/transverse-spatial-light-heavy/">&lt;p&gt;&lt;strong&gt;Authors:&lt;&#x2F;strong&gt; S. Puhan, N. Kaur and H. Dahiya&lt;br &#x2F;&gt;
+&lt;strong&gt;Published in:&lt;&#x2F;strong&gt; Phys. Rev. D 111 (2025)&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;inspirehep.net&#x2F;literature&#x2F;2839021&quot;&gt;Read on INSPIRE →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>Photon Leading Twist Transverse Momentum Dependent Parton Distributions</title>
+        <published>2025-01-01T00:00:00+00:00</published>
+        <updated>2025-01-01T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/portfolio/photon-leading-twist/"/>
+        <id>https://satyajitpuhan.github.io/or/portfolio/photon-leading-twist/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/portfolio/photon-leading-twist/">&lt;p&gt;&lt;strong&gt;Authors:&lt;&#x2F;strong&gt; S. Puhan, N. Kumar and H. Dahiya&lt;br &#x2F;&gt;
+&lt;strong&gt;Published in:&lt;&#x2F;strong&gt; Eur. Phys. J. A 61 (2025)&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2408.07714&quot;&gt;Read on arXiv →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>Kaons structure in dense nuclear medium</title>
+        <published>2024-12-17T00:00:00+00:00</published>
+        <updated>2024-12-17T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/portfolio/daehep2024-kaons-dense/"/>
+        <id>https://satyajitpuhan.github.io/or/portfolio/daehep2024-kaons-dense/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/portfolio/daehep2024-kaons-dense/">&lt;p&gt;&lt;strong&gt;Authors:&lt;&#x2F;strong&gt; A. Kumar, D. Singh, S. Puhan, N. Kaur, M. Kaur, H. Dahiya, and S. Dutt&lt;br &#x2F;&gt;
+&lt;strong&gt;Published in:&lt;&#x2F;strong&gt; DAE HEP 2024&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;#&quot;&gt;View Details →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>Behavior of pion in asymmetric nuclear medium</title>
+        <published>2024-12-16T00:00:00+00:00</published>
+        <updated>2024-12-16T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/portfolio/daehep2024-pion-asymm-nuclear/"/>
+        <id>https://satyajitpuhan.github.io/or/portfolio/daehep2024-pion-asymm-nuclear/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/portfolio/daehep2024-pion-asymm-nuclear/">&lt;p&gt;&lt;strong&gt;Authors:&lt;&#x2F;strong&gt; A. Gautam, D. Singh, S. Puhan, N. Kaur, A. Kumar, H. Dahiya, and S. Dutt&lt;br &#x2F;&gt;
+&lt;strong&gt;Published in:&lt;&#x2F;strong&gt; DAE HEP 2024&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;#&quot;&gt;View Details →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>Valence quark structure of pion using light front dynamics</title>
+        <published>2024-12-15T00:00:00+00:00</published>
+        <updated>2024-12-15T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/portfolio/daehep2024-pion-lf-dynamics/"/>
+        <id>https://satyajitpuhan.github.io/or/portfolio/daehep2024-pion-lf-dynamics/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/portfolio/daehep2024-pion-lf-dynamics/">&lt;p&gt;&lt;strong&gt;Authors:&lt;&#x2F;strong&gt; S. Puhan and H. Dahiya&lt;br &#x2F;&gt;
+&lt;strong&gt;Published in:&lt;&#x2F;strong&gt; DAE HEP 2024&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;#&quot;&gt;View Details →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>In-medium properties of pseudoscalar mesons in symmetric nuclear matter</title>
+        <published>2024-12-10T00:00:00+00:00</published>
+        <updated>2024-12-10T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/portfolio/dae2024-in-medium-pseudoscalar/"/>
+        <id>https://satyajitpuhan.github.io/or/portfolio/dae2024-in-medium-pseudoscalar/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/portfolio/dae2024-in-medium-pseudoscalar/">&lt;p&gt;&lt;strong&gt;Authors:&lt;&#x2F;strong&gt; A. Gautam, D. Singh, S. Puhan, N. Kaur, A. Kumar, H. Dahiya, and S. Dutt&lt;br &#x2F;&gt;
+&lt;strong&gt;Published in:&lt;&#x2F;strong&gt; DAE Nuclear 2024&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;#&quot;&gt;View Details →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>Spectroscopy of excited states of D+ and D+S meson in the light-front quark model</title>
+        <published>2024-12-09T00:00:00+00:00</published>
+        <updated>2024-12-09T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/portfolio/dae2024-spectroscopy-excited-d/"/>
+        <id>https://satyajitpuhan.github.io/or/portfolio/dae2024-spectroscopy-excited-d/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/portfolio/dae2024-spectroscopy-excited-d/">&lt;p&gt;&lt;strong&gt;Authors:&lt;&#x2F;strong&gt; R. Acharyya, S. Puhan, Narinder Kumar, and H. Dahiya&lt;br &#x2F;&gt;
+&lt;strong&gt;Published in:&lt;&#x2F;strong&gt; DAE Nuclear 2024&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;#&quot;&gt;View Details →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>Spin-1 unpolarized GPDs in light front dynamics</title>
+        <published>2024-12-08T00:00:00+00:00</published>
+        <updated>2024-12-08T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/portfolio/dae2024-unpolarized-gpds/"/>
+        <id>https://satyajitpuhan.github.io/or/portfolio/dae2024-unpolarized-gpds/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/portfolio/dae2024-unpolarized-gpds/">&lt;p&gt;&lt;strong&gt;Authors:&lt;&#x2F;strong&gt; S. Puhan, Narinder Kumar, and H. Dahiya&lt;br &#x2F;&gt;
+&lt;strong&gt;Published in:&lt;&#x2F;strong&gt; DAE Nuclear 2024&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;#&quot;&gt;View Details →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>Spin-1 Unpolarized GPDs — DAE SNP 2024, IIT Roorkee</title>
+        <published>2024-12-07T00:00:00+00:00</published>
+        <updated>2024-12-07T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/blog/dae-snp-2024-gpds-iit-roorkee/"/>
+        <id>https://satyajitpuhan.github.io/or/blog/dae-snp-2024-gpds-iit-roorkee/</id>
+        
+        <summary type="html">&lt;p&gt;&lt;strong&gt;Talk Title:&lt;&#x2F;strong&gt; Spin-1 unpolarized GPDs in Light-front formalism&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Venue:&lt;&#x2F;strong&gt; &lt;a rel=&quot;external&quot; href=&quot;http:&#x2F;&#x2F;sympnp.org&#x2F;snp2024&#x2F;&quot;&gt;68th DAE Symposium on Nuclear Physics (SNP 2024)&lt;&#x2F;a&gt;, IIT Roorkee, India&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Mode:&lt;&#x2F;strong&gt; In person&lt;&#x2F;p&gt;
+&lt;p&gt;I presented our work on the spin-1 unpolarized generalized parton distributions (GPDs) in the light-front formalism. The talk covered the chiral-even vector quark GPDs of the ρ meson derived using the light-cone quark model, along with the structure functions corresponding to the Rosenbluth scattering cross section.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>Radiative transition of ψ(2S) → χc0(1P) + γ in LFQM</title>
+        <published>2024-12-07T00:00:00+00:00</published>
+        <updated>2024-12-07T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/portfolio/dae2024-radiative-psi/"/>
+        <id>https://satyajitpuhan.github.io/or/portfolio/dae2024-radiative-psi/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/portfolio/dae2024-radiative-psi/">&lt;p&gt;&lt;strong&gt;Authors:&lt;&#x2F;strong&gt; A. Yadav, S. Puhan, and H. Dahiya&lt;br &#x2F;&gt;
+&lt;strong&gt;Published in:&lt;&#x2F;strong&gt; DAE Nuclear 2024&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.researchgate.net&#x2F;publication&#x2F;383878508&quot;&gt;Read on ResearchGate →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>Understanding photon TMDs with light-front wave function</title>
+        <published>2024-11-20T00:00:00+00:00</published>
+        <updated>2024-11-20T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/portfolio/hp2024-photon-tmds/"/>
+        <id>https://satyajitpuhan.github.io/or/portfolio/hp2024-photon-tmds/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/portfolio/hp2024-photon-tmds/">&lt;p&gt;&lt;strong&gt;Authors:&lt;&#x2F;strong&gt; S. Puhan, N. Kaur, and H. Dahiya&lt;br &#x2F;&gt;
+&lt;strong&gt;Published in:&lt;&#x2F;strong&gt; HP 2024&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;#&quot;&gt;View Details →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>Pion and Kaon Structure at HHIQCD 2024 — Kyoto University</title>
+        <published>2024-11-01T00:00:00+00:00</published>
+        <updated>2024-11-01T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/blog/hhiqcd-2024-pion-kaon-structure/"/>
+        <id>https://satyajitpuhan.github.io/or/blog/hhiqcd-2024-pion-kaon-structure/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/blog/hhiqcd-2024-pion-kaon-structure/">&lt;p&gt;&lt;strong&gt;Talk Title:&lt;&#x2F;strong&gt; Structural analysis of Pion and Kaon with distribution functions&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Mode:&lt;&#x2F;strong&gt; In person at HHIQCD, Kyoto University, Japan&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;indico.yukawa.kyoto-u.ac.jp&#x2F;event&#x2F;27&#x2F;&quot;&gt;View Talk →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;abstract&quot;&gt;Abstract&lt;&#x2F;h2&gt;
+&lt;p&gt;Pion and kaon are one of the simplest meson structures to study the distribution function. In this work, we have calculated the time reversal quark transverse momentum-dependent parton distribution functions (TMDs) in the light-front based holographic model (LFHM) and quark model (LFQM) up to twist-4.&lt;&#x2F;p&gt;
+&lt;p&gt;We have presented the three dimensional structure of T-even TMDs for both the particles in both models. The transverse structure have been discussed with the help of two dimensional contour plot distribution in momentum space and average quark momenta in both the models. The T-even TMDs have also been compared for both the models and evolved to higher Q² to compare with available TMDs extraction data for the case of pion.&lt;&#x2F;p&gt;
+&lt;p&gt;The collinear parton distribution functions (PDFs) have also been investigated. The unpolarized f₁(x) PDF have been evolved through DGLAP evolution from Q² = 1 GeV² to 16 GeV² and found significant behavior with experimental results. The spatial structure have also been studied through leading twist GPDs and have been implicated to understand the form factors (FFs).&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>Does nuclear medium affect the transverse momentum-dependent parton distributions of valence quark of pions?</title>
+        <published>2024-11-01T00:00:00+00:00</published>
+        <updated>2024-11-01T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/portfolio/pion-nuclear-medium/"/>
+        <id>https://satyajitpuhan.github.io/or/portfolio/pion-nuclear-medium/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/portfolio/pion-nuclear-medium/">&lt;p&gt;&lt;strong&gt;Authors:&lt;&#x2F;strong&gt; N. Kaur, S. Puhan, A. Kumar, S. Dutt, and H. Dahiya&lt;br &#x2F;&gt;
+&lt;strong&gt;Published in:&lt;&#x2F;strong&gt; Phys. Lett. B 859 (2024)&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;doi.org&#x2F;10.1016&#x2F;j.physletb.2024.139114&quot;&gt;Read on ScienceDirect →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>TMD Relations: Insights from a Light-Front Quark-Diquark Model</title>
+        <published>2024-10-01T00:00:00+00:00</published>
+        <updated>2024-10-01T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/portfolio/tmd-relations/"/>
+        <id>https://satyajitpuhan.github.io/or/portfolio/tmd-relations/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/portfolio/tmd-relations/">&lt;p&gt;&lt;strong&gt;Authors:&lt;&#x2F;strong&gt; S. Sharma, S. Puhan, N. Kumar and H. Dahiya&lt;br &#x2F;&gt;
+&lt;strong&gt;Published in:&lt;&#x2F;strong&gt; PTEP ptae150 (2024)&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;inspirehep.net&#x2F;literature&#x2F;2789229&quot;&gt;Read on INSPIRE →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>Pions valence quark distributions in asymmetric nuclear matter at finite temperature</title>
+        <published>2024-09-01T00:00:00+00:00</published>
+        <updated>2024-09-01T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/portfolio/pion-valence-asymm/"/>
+        <id>https://satyajitpuhan.github.io/or/portfolio/pion-valence-asymm/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/portfolio/pion-valence-asymm/">&lt;p&gt;&lt;strong&gt;Authors:&lt;&#x2F;strong&gt; S. Puhan, N. Kaur, A. Kumar, S. Dutt, and H. Dahiya&lt;br &#x2F;&gt;
+&lt;strong&gt;Published in:&lt;&#x2F;strong&gt; Phys. Rev. D 110 (2024)&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;inspirehep.net&#x2F;literature&#x2F;2818000&quot;&gt;Read on INSPIRE →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>PSI Particle Physics Summer School — Zuoz, Switzerland</title>
+        <published>2024-08-05T00:00:00+00:00</published>
+        <updated>2024-08-05T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/blog/psi-summer-school-2024-zuoz/"/>
+        <id>https://satyajitpuhan.github.io/or/blog/psi-summer-school-2024-zuoz/</id>
+        
+        <summary type="html">&lt;p&gt;&lt;strong&gt;Event:&lt;&#x2F;strong&gt; PSI Particle Physics Summer School — &lt;em&gt;From Low to High: Particle Physics at the Frontier&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Venue:&lt;&#x2F;strong&gt; Lyceum Alpinum, Zuoz, Switzerland (Aug 4–10, 2024)&lt;&#x2F;p&gt;
+&lt;p&gt;Attended this prestigious international summer school covering cutting-edge topics at the frontiers of particle physics, from precision measurements to high-energy collider experiments.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>Quark spin-orbit correlations in spin-0 and spin-1 mesons using the light-front quark model</title>
+        <published>2024-05-15T00:00:00+00:00</published>
+        <updated>2024-05-15T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/portfolio/spin-orbit-correlations/"/>
+        <id>https://satyajitpuhan.github.io/or/portfolio/spin-orbit-correlations/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/portfolio/spin-orbit-correlations/">&lt;p&gt;&lt;strong&gt;Authors:&lt;&#x2F;strong&gt; R. Acharyya, S. Puhan and H. Dahiya&lt;br &#x2F;&gt;
+&lt;strong&gt;Published in:&lt;&#x2F;strong&gt; Phys. Rev. D 110 (2024)&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;inspirehep.net&#x2F;literature&#x2F;2782544&quot;&gt;Read on INSPIRE →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>Leading twist T-even TMDs for the spin-1 heavy vector mesons</title>
+        <published>2024-03-01T00:00:00+00:00</published>
+        <updated>2024-03-01T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/portfolio/t-even-tmds-spin-1/"/>
+        <id>https://satyajitpuhan.github.io/or/portfolio/t-even-tmds-spin-1/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/portfolio/t-even-tmds-spin-1/">&lt;p&gt;&lt;strong&gt;Authors:&lt;&#x2F;strong&gt; S. Puhan and H. Dahiya&lt;br &#x2F;&gt;
+&lt;strong&gt;Published in:&lt;&#x2F;strong&gt; Phys. Rev. D 109 (2024)&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;journals.aps.org&#x2F;prd&#x2F;abstract&#x2F;10.1103&#x2F;PhysRevD.109.034005&quot;&gt;Read on PRD →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>T-even TMDs for the spin-0 pseudo-scalar mesons upto twist-4 using light-front formalism</title>
+        <published>2024-02-15T00:00:00+00:00</published>
+        <updated>2024-02-15T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/portfolio/t-even-tmds-spin-0/"/>
+        <id>https://satyajitpuhan.github.io/or/portfolio/t-even-tmds-spin-0/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/portfolio/t-even-tmds-spin-0/">&lt;p&gt;&lt;strong&gt;Authors:&lt;&#x2F;strong&gt; S. Puhan, S. Sharma, N. Kaur, N. Kumar and H. Dahiya&lt;br &#x2F;&gt;
+&lt;strong&gt;Published in:&lt;&#x2F;strong&gt; JHEP 075 (2024)&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;link.springer.com&#x2F;article&#x2F;10.1007&#x2F;JHEP02(2024)075&quot;&gt;Read Paper →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>Pion Structure at ICTS-TIFR 2024 — Bengaluru</title>
+        <published>2024-02-01T00:00:00+00:00</published>
+        <updated>2024-02-01T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/blog/icts-tifr-2024-pion-structure/"/>
+        <id>https://satyajitpuhan.github.io/or/blog/icts-tifr-2024-pion-structure/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/blog/icts-tifr-2024-pion-structure/">&lt;p&gt;&lt;strong&gt;Talk Title:&lt;&#x2F;strong&gt; Structural analysis of pion with distribution functions (TMDs, GPDs and GDAs)&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Mode:&lt;&#x2F;strong&gt; In person at ICTS, Bengaluru, India&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=R3M5XIhKjFQ&quot;&gt;Watch the Talk on YouTube →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;about-this-talk&quot;&gt;About This Talk&lt;&#x2F;h2&gt;
+&lt;p&gt;I presented my research on identifying the internal structure of the pion using three complementary types of distribution functions: Transverse Momentum Dependent distributions (TMDs), Generalized Parton Distributions (GPDs), and Generalized Distribution Amplitudes (GDAs).&lt;&#x2F;p&gt;
+&lt;p&gt;This talk was part of the program at the &lt;strong&gt;International Centre for Theoretical Sciences (ICTS-TIFR)&lt;&#x2F;strong&gt;, Bengaluru, India.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>Internal Structure of Heavy B and D-Mesons — Poster at TIFR</title>
+        <published>2023-12-01T00:00:00+00:00</published>
+        <updated>2023-12-01T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/blog/hql-2023-poster-tifr/"/>
+        <id>https://satyajitpuhan.github.io/or/blog/hql-2023-poster-tifr/</id>
+        
+        <summary type="html">&lt;p&gt;&lt;strong&gt;Poster Title:&lt;&#x2F;strong&gt; Internal Structure of Heavy B and D-mesons&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Venue:&lt;&#x2F;strong&gt; &lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.tifr.res.in&#x2F;~hql2023&#x2F;&quot;&gt;HQL 2023 Conference&lt;&#x2F;a&gt;, TIFR, Mumbai, India&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Mode:&lt;&#x2F;strong&gt; In person&lt;&#x2F;p&gt;
+&lt;p&gt;I presented a poster on the unpolarized valence quark GPDs and PDFs for heavy spin-0 B- and D-mesons using the light-front quark model.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>Spatial and Transverse structure of Heavy B-and D-mesons</title>
+        <published>2023-11-28T00:00:00+00:00</published>
+        <updated>2023-11-28T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/portfolio/hql2023-b-d-mesons/"/>
+        <id>https://satyajitpuhan.github.io/or/portfolio/hql2023-b-d-mesons/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/portfolio/hql2023-b-d-mesons/">&lt;p&gt;&lt;strong&gt;Authors:&lt;&#x2F;strong&gt; S. Puhan and H. Dahiya&lt;br &#x2F;&gt;
+&lt;strong&gt;Published in:&lt;&#x2F;strong&gt; PoS HQL2023&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2408.07717&quot;&gt;Read on arXiv →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+</feed>

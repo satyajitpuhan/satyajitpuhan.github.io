@@ -1,0 +1,1069 @@
+/* ═══════════════════════════════════════════════════════════════════
+   Advanced Design System — advanced-styles.css
+   Premium dark theme enhancements, custom cursor, animations, etc.
+═══════════════════════════════════════════════════════════════════ */
+
+/* ── Google Fonts ── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ─────────────────────────────────────────────
+   CSS Custom Properties (Design Tokens)
+───────────────────────────────────────────── */
+:root {
+  --c-bg:          #080810;
+  --c-surface:     #10101e;
+  --c-surface-2:   #15152a;
+  --c-purple:      #8b5cf6;
+  --c-violet:      #7c3aed;
+  --c-cyan:        #06b6d4;
+  --c-sky:         #38bdf8;
+  --c-amber:       #f59e0b;
+  --c-rose:        #f43f5e;
+  --c-emerald:     #10b981;
+  --c-text:        rgba(255,255,255,0.92);
+  --c-text-muted:  rgba(255,255,255,0.55);
+  --c-border:      rgba(255,255,255,0.07);
+  --c-glow-purple: rgba(139,92,246,0.35);
+  --c-glow-cyan:   rgba(6,182,212,0.3);
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --shadow-glow-purple: 0 0 30px rgba(139,92,246,0.25), 0 8px 32px rgba(0,0,0,0.5);
+  --shadow-glow-cyan:   0 0 30px rgba(6,182,212,0.2), 0 8px 32px rgba(0,0,0,0.5);
+  --grad-primary: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%);
+  --grad-gold:    linear-gradient(135deg, #f59e0b 0%, #f43f5e 100%);
+  --grad-cosmic:  linear-gradient(135deg, #8b5cf6 0%, #ec4899 50%, #06b6d4 100%);
+  --font-heading: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', 'Courier New', monospace;
+  --transition-base: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* ─────────────────────────────────────────────
+   Base Resets & Body
+───────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  background: var(--c-bg) !important;
+  color: var(--c-text);
+  font-family: var(--font-body);
+  cursor: none !important;
+  overflow-x: hidden;
+}
+
+body * { cursor: none !important; }
+
+h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); }
+
+/* ─────────────────────────────────────────────
+   Scroll Progress Bar
+───────────────────────────────────────────── */
+#ae-scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: var(--grad-primary);
+  z-index: 99999;
+  transition: width 0.1s linear;
+  box-shadow: 0 0 10px rgba(139,92,246,0.7);
+}
+
+/* ─────────────────────────────────────────────
+   Custom Cursor
+───────────────────────────────────────────── */
+#ae-cursor {
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 99998;
+}
+
+.ae-cursor-dot {
+  position: absolute;
+  width: 8px; height: 8px;
+  background: var(--c-cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--c-cyan);
+  transition: transform 0.1s, opacity 0.3s;
+}
+
+.ae-cursor-ring {
+  position: absolute;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(6,182,212,0.6);
+  transition: transform 0.4s cubic-bezier(0.23,1,0.32,1), border-color 0.3s, background 0.3s;
+}
+
+/* ─────────────────────────────────────────────
+   Keyframe Animations
+───────────────────────────────────────────── */
+@keyframes ae-float-label {
+  0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
+  33%       { transform: translateY(-18px) rotate(3deg); opacity: 1; }
+  66%       { transform: translateY(-8px) rotate(-2deg); opacity: 0.7; }
+}
+
+@keyframes ae-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@keyframes ae-shimmer {
+  from { background-position: -200% center; }
+  to   { background-position: 200% center; }
+}
+
+@keyframes ae-pulse-ring {
+  0%   { box-shadow: 0 0 0 0 var(--c-glow-purple); }
+  70%  { box-shadow: 0 0 0 15px rgba(139,92,246,0); }
+  100% { box-shadow: 0 0 0 0 rgba(139,92,246,0); }
+}
+
+@keyframes ae-orbit {
+  from { transform: rotate(0deg) translateX(120px) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(120px) rotate(-360deg); }
+}
+
+@keyframes ae-gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
+}
+
+@keyframes ae-glow-pulse {
+  0%, 100% { filter: drop-shadow(0 0 8px rgba(139,92,246,0.6)); }
+  50%       { filter: drop-shadow(0 0 20px rgba(6,182,212,0.8)); }
+}
+
+@keyframes ae-float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-12px); }
+}
+
+@keyframes ae-glitch-1 {
+  0%, 90%, 100% { clip-path: none; transform: none; }
+  91% { clip-path: polygon(0 15%, 100% 15%, 100% 30%, 0 30%); transform: translate(-3px, 0); }
+  93% { clip-path: polygon(0 60%, 100% 60%, 100% 75%, 0 75%); transform: translate(3px, 0); }
+  95% { clip-path: none; transform: none; }
+}
+
+@keyframes ae-neon-flicker {
+  0%, 94%, 96%, 100% { opacity: 1; text-shadow: 0 0 10px #8b5cf6, 0 0 20px #8b5cf6; }
+  95%                 { opacity: 0.85; text-shadow: none; }
+}
+
+/* ─────────────────────────────────────────────
+   Section Shimmer Top Border
+───────────────────────────────────────────── */
+.ae-section-shimmer {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(139,92,246,0.6) 30%,
+    rgba(6,182,212,0.8) 50%,
+    rgba(139,92,246,0.6) 70%,
+    transparent 100%);
+  background-size: 200% 100%;
+  animation: ae-shimmer 4s linear infinite;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* ─────────────────────────────────────────────
+   Glitch Text (for name)
+───────────────────────────────────────────── */
+.ae-glitch {
+  position: relative;
+  animation: ae-neon-flicker 8s ease-in-out infinite;
+}
+.ae-glitch::before,
+.ae-glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0; left: 0;
+  color: inherit;
+  font: inherit;
+  pointer-events: none;
+}
+.ae-glitch::before {
+  color: rgba(6,182,212,0.6);
+  animation: ae-glitch-1 12s ease-in-out infinite;
+  animation-delay: -2s;
+}
+.ae-glitch::after {
+  color: rgba(139,92,246,0.5);
+  animation: ae-glitch-1 10s ease-in-out infinite;
+  animation-delay: -5s;
+}
+
+/* ─────────────────────────────────────────────
+   Navbar Enhancements
+───────────────────────────────────────────── */
+.nav-link {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 6px; left: 20px; right: 20px;
+  height: 1px;
+  background: var(--grad-primary);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.23,1,0.32,1);
+}
+
+.nav-link:hover::after { transform: scaleX(1); transform-origin: left; }
+
+/* Active nav item indicator */
+.nav-item.active .nav-link::after { transform: scaleX(1); }
+
+/* Hire Me button pulse */
+.hire_button {
+  animation: ae-pulse-ring 3s ease-out infinite;
+}
+
+/* ─────────────────────────────────────────────
+   Hero Section Upgrades
+───────────────────────────────────────────── */
+#home {
+  min-height: 90vh;
+}
+
+/* Animated gradient border on hero carousel */
+#mainHeroCarousel {
+  position: relative;
+}
+
+#mainHeroCarousel::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 18px;
+  padding: 2px;
+  background: linear-gradient(135deg, #8b5cf6, #06b6d4, #f59e0b, #8b5cf6);
+  background-size: 300% 300%;
+  animation: ae-gradient-shift 5s ease infinite;
+  z-index: -1;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+}
+
+/* QCD hint badge pulse */
+.qcd-hint-badge {
+  animation: ae-float 6s ease-in-out infinite;
+}
+
+/* ─────────────────────────────────────────────
+   About Section Enhanced
+───────────────────────────────────────────── */
+#about {
+  background-attachment: fixed !important;
+}
+
+.about_content-inner {
+  background: rgba(8,8,20,0.85) !important;
+  border: 1px solid rgba(139,92,246,0.2) !important;
+  box-shadow: var(--shadow-glow-purple) !important;
+  backdrop-filter: blur(20px) !important;
+}
+
+/* ─────────────────────────────────────────────
+   Research / Service Cards
+───────────────────────────────────────────── */
+.research-card {
+  background: rgba(10,10,22,0.85) !important;
+  border: 1px solid rgba(255,255,255,0.07) !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4) !important;
+  transition: var(--transition-base) !important;
+  color: var(--c-text) !important;
+  overflow: hidden;
+}
+
+.research-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--grad-primary);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+}
+
+.research-card:hover {
+  border-color: rgba(139,92,246,0.4) !important;
+  box-shadow: var(--shadow-glow-purple) !important;
+  transform: translateY(-8px) scale(1.01) !important;
+}
+
+.research-card > * { position: relative; z-index: 1; }
+
+.research-card__title { color: #ffffff !important; }
+.research-card__text  { color: rgba(255,255,255,0.7) !important; }
+
+.research-card__icon-wrap {
+  background: rgba(139,92,246,0.15) !important;
+  border: 1px solid rgba(139,92,246,0.25);
+  box-shadow: 0 0 20px rgba(139,92,246,0.1);
+}
+
+.research-card:hover .research-card__icon-wrap {
+  background: var(--grad-primary) !important;
+  box-shadow: 0 0 25px var(--c-glow-purple);
+}
+
+.research-card:hover .research-card__icon-wrap i { color: #fff !important; }
+.research-card__icon-wrap i { color: var(--c-purple) !important; }
+
+/* ─────────────────────────────────────────────
+   News Cards
+───────────────────────────────────────────── */
+.news-card {
+  background: rgba(10,10,22,0.85) !important;
+  border: 1px solid rgba(255,255,255,0.06) !important;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4) !important;
+  color: var(--c-text) !important;
+  transition: var(--transition-base) !important;
+}
+
+.news-card:hover {
+  border-color: rgba(6,182,212,0.3) !important;
+  box-shadow: var(--shadow-glow-cyan) !important;
+}
+
+.news-card__title { color: #ffffff !important; }
+.news-card__text  { color: rgba(255,255,255,0.65) !important; }
+.news-card__date  { color: var(--c-cyan) !important; }
+
+/* ─────────────────────────────────────────────
+   News Section background
+───────────────────────────────────────────── */
+.news-section {
+  background: var(--c-bg) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.news-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(139,92,246,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.news-section__header span {
+  background: var(--grad-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.news-section__header h1 {
+  color: #ffffff !important;
+  font-family: var(--font-heading) !important;
+  font-weight: 800 !important;
+}
+
+/* ─────────────────────────────────────────────
+   Skill Section Enhanced
+───────────────────────────────────────────── */
+.skill__progress_item {
+  background: rgba(10,10,22,0.9) !important;
+  border: 1px solid rgba(255,255,255,0.07) !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3) !important;
+  transition: var(--transition-base) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill__progress_item::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--grad-primary);
+}
+
+.skill__progress_item:hover {
+  border-color: rgba(139,92,246,0.25) !important;
+  transform: translateX(4px);
+  box-shadow: 0 6px 30px rgba(139,92,246,0.15) !important;
+}
+
+.skill__progress_item h6 { color: var(--c-text) !important; font-family: var(--font-body) !important; }
+.skill__progress_item .progress-value { color: var(--c-cyan) !important; font-family: var(--font-mono) !important; }
+
+/* Animated progress bars */
+progress::-webkit-progress-value {
+  background: var(--grad-primary) !important;
+  border-radius: 8px;
+  transition: width 1.2s cubic-bezier(0.23,1,0.32,1);
+  box-shadow: 0 0 8px rgba(139,92,246,0.5);
+}
+progress::-webkit-progress-bar { background: rgba(255,255,255,0.06) !important; }
+progress::-moz-progress-bar    { background: var(--grad-primary) !important; border-radius: 8px; }
+
+/* ─────────────────────────────────────────────
+   Publication / Portfolio Cards
+───────────────────────────────────────────── */
+#portfolio {
+  background-attachment: fixed !important;
+}
+
+.pub-entry {
+  transition: var(--transition-base) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.pub-entry::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background: linear-gradient(135deg, rgba(139,92,246,0.05), rgba(6,182,212,0.05));
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.pub-entry:hover::after { opacity: 1; }
+
+/* ─────────────────────────────────────────────
+   Collaborator Cards
+───────────────────────────────────────────── */
+.collaborator-card {
+  background: rgba(10,10,22,0.85) !important;
+  border: 1px solid rgba(255,255,255,0.06) !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4) !important;
+  transition: var(--transition-base) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.collaborator-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top center, rgba(139,92,246,0.08), transparent 70%);
+  pointer-events: none;
+}
+
+.collaborator-card:hover {
+  border-color: rgba(139,92,246,0.3) !important;
+  box-shadow: var(--shadow-glow-purple) !important;
+}
+
+.collaborator-card__photo {
+  border: 2px solid rgba(139,92,246,0.4) !important;
+  box-shadow: 0 0 20px rgba(139,92,246,0.2);
+  transition: var(--transition-base);
+}
+
+.collaborator-card:hover .collaborator-card__photo {
+  border-color: var(--c-cyan) !important;
+  box-shadow: 0 0 25px rgba(6,182,212,0.3);
+}
+
+.collaborator-card__name { color: #ffffff !important; }
+.collaborator-card__role { color: var(--c-text-muted) !important; }
+.collaborator-card__inst { color: rgba(255,255,255,0.4) !important; }
+
+.collaborators { background: var(--c-bg) !important; }
+.collaborators__header h1 { color: #ffffff !important; font-family: var(--font-heading) !important; }
+.collaborators__header span {
+  background: var(--grad-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─────────────────────────────────────────────
+   Resume Section
+───────────────────────────────────────────── */
+.resume__background {
+  background: linear-gradient(135deg, rgba(8,8,20,0.96), rgba(30,15,60,0.96)) !important;
+}
+
+.resume__heading h1 { font-family: var(--font-heading) !important; }
+
+.resume__education_item {
+  background: rgba(10,10,22,0.9) !important;
+  border: 1px solid rgba(255,255,255,0.07) !important;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4) !important;
+  transition: var(--transition-base) !important;
+}
+
+.resume__education_item:hover {
+  border-color: rgba(139,92,246,0.25) !important;
+  box-shadow: var(--shadow-glow-purple) !important;
+}
+
+.resume__education_item h4 { color: #ffffff !important; }
+.resume__education_item p  { color: rgba(255,255,255,0.7) !important; }
+
+/* ─────────────────────────────────────────────
+   Contact CTA Button
+───────────────────────────────────────────── */
+.contact__cta {
+  background: linear-gradient(135deg, rgba(40,15,80,0.95), rgba(10,30,60,0.95)) !important;
+  border: 1px solid rgba(139,92,246,0.2) !important;
+  box-shadow: var(--shadow-glow-purple) !important;
+  backdrop-filter: blur(20px);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact__cta::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle at center, rgba(139,92,246,0.08), transparent 60%);
+  animation: ae-gradient-shift 8s linear infinite;
+  pointer-events: none;
+}
+
+.contact__cta_action a {
+  background: var(--grad-primary) !important;
+  color: #fff !important;
+  border-radius: 10px !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 20px rgba(139,92,246,0.4) !important;
+  transition: var(--transition-base) !important;
+  letter-spacing: 0.5px;
+}
+
+.contact__cta_action a:hover {
+  box-shadow: 0 8px 35px rgba(139,92,246,0.6) !important;
+  transform: translateY(-3px) scale(1.04) !important;
+}
+
+/* ─────────────────────────────────────────────
+   Footer
+───────────────────────────────────────────── */
+#contact {
+  position: relative;
+  background-color: rgba(5,5,15,0.97) !important;
+  overflow: hidden;
+}
+
+#contact::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 300px;
+  background: radial-gradient(ellipse at bottom center, rgba(139,92,246,0.12), transparent 70%);
+  pointer-events: none;
+}
+
+.contact__footer_social li a {
+  transition: var(--transition-base) !important;
+  display: inline-block;
+}
+
+.contact__footer_social li a:hover {
+  color: var(--c-cyan) !important;
+  transform: translateY(-4px) scale(1.2) !important;
+  text-shadow: 0 0 15px var(--c-cyan);
+}
+
+.contact__widget_sitemap a {
+  transition: var(--transition-base) !important;
+  display: inline-block;
+}
+
+.contact__widget_sitemap a:hover {
+  color: var(--c-cyan) !important;
+  transform: translateX(4px);
+  text-shadow: 0 0 8px rgba(6,182,212,0.5);
+}
+
+/* ─────────────────────────────────────────────
+   Taxonomy Pages
+───────────────────────────────────────────── */
+.page-title-area {
+  background: var(--c-bg) !important;
+}
+
+/* ─────────────────────────────────────────────
+   Blog / Single Post Page
+───────────────────────────────────────────── */
+.blog__item-content {
+  background: rgba(10,10,22,0.92) !important;
+  border: 1px solid rgba(255,255,255,0.07) !important;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.5) !important;
+}
+
+/* ─────────────────────────────────────────────
+   Stat counter blocks
+───────────────────────────────────────────── */
+.inspire-stat-box {
+  background: rgba(10,10,22,0.9) !important;
+  border: 1px solid rgba(255,255,255,0.07) !important;
+  transition: var(--transition-base) !important;
+}
+
+.inspire-stat-box:hover {
+  border-color: rgba(139,92,246,0.3) !important;
+  box-shadow: var(--shadow-glow-purple) !important;
+}
+
+/* ─────────────────────────────────────────────
+   Generic Section Header Enhancement
+───────────────────────────────────────────── */
+.portfolio__header span,
+.service__header span,
+.skill__progress_heading span {
+  font-family: var(--font-mono) !important;
+  letter-spacing: 3px !important;
+  font-size: 0.75rem !important;
+  text-transform: uppercase;
+  background: var(--grad-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700 !important;
+}
+
+/* ─────────────────────────────────────────────
+   Fancy Dividers Between Sections
+───────────────────────────────────────────── */
+.ae-wave-divider {
+  display: block;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.ae-wave-divider svg {
+  display: block;
+  width: 100%;
+}
+
+/* ─────────────────────────────────────────────
+   Scrollbar Styling
+───────────────────────────────────────────── */
+::-webkit-scrollbar       { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--c-bg); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--c-purple), var(--c-cyan));
+  border-radius: 3px;
+}
+
+/* ─────────────────────────────────────────────
+   Text Selection
+───────────────────────────────────────────── */
+::selection {
+  background: rgba(139,92,246,0.35);
+  color: #fff;
+}
+
+/* ─────────────────────────────────────────────
+   Loading Animation (body entry)
+───────────────────────────────────────────── */
+body {
+  animation: ae-body-enter 0.6s ease both;
+}
+
+@keyframes ae-body-enter {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ─────────────────────────────────────────────
+   Enhanced Social Icons in header
+───────────────────────────────────────────── */
+.header-social-icon {
+  position: relative;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.6) !important;
+  transition: var(--transition-base) !important;
+  text-decoration: none;
+  background: rgba(255,255,255,0.03);
+}
+
+.header-social-icon:hover {
+  color: #ffffff !important;
+  border-color: var(--c-purple);
+  background: rgba(139,92,246,0.15);
+  box-shadow: 0 0 15px rgba(139,92,246,0.3);
+  transform: translateY(-2px) scale(1.1);
+}
+
+/* ─────────────────────────────────────────────
+   Responsive Fixes
+───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  #ae-cursor { display: none; }
+  body { cursor: auto !important; }
+  body * { cursor: auto !important; }
+}
+
+/* ─────────────────────────────────────────────
+   Typewriter cursor blink
+───────────────────────────────────────────── */
+.ae-typewriter-cursor {
+  color: var(--c-cyan);
+  animation: ae-blink 1s step-end infinite;
+  font-weight: 300;
+  font-size: 1.1em;
+}
+
+/* ─────────────────────────────────────────────
+   Animated gradient background mesh
+   (used as overlay in hero and other sections)
+───────────────────────────────────────────── */
+.ae-mesh-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(139,92,246,0.07) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(6,182,212,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 60% 80%, rgba(245,158,11,0.04) 0%, transparent 50%);
+  pointer-events: none;
+  animation: ae-gradient-shift 12s ease infinite;
+  background-size: 200% 200%;
+}
+
+/* ─────────────────────────────────────────────
+   Enhanced hero button
+───────────────────────────────────────────── */
+.btn-hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.btn-hero:hover::before { transform: translateX(100%); }
+
+/* ─────────────────────────────────────────────
+   Nitj grid section fixes
+───────────────────────────────────────────── */
+.nitj-updates-grid { background: var(--c-bg) !important; }
+
+/* ─────────────────────────────────────────────
+   INSPIRE chart section
+───────────────────────────────────────────── */
+.citation-container {
+  border-radius: var(--radius-lg) !important;
+  border: 1px solid rgba(255,255,255,0.07) !important;
+  background: rgba(10,10,22,0.85) !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4) !important;
+}
+
+/* ─────────────────────────────────────────────
+   Enhanced Publication Entry Cards
+   Gradient left border on hover
+───────────────────────────────────────────── */
+.pub-entry {
+  border-left: 3px solid transparent !important;
+  transition: var(--transition-base), border-left-color 0.3s !important;
+}
+
+.pub-entry:hover {
+  border-left-color: var(--c-purple) !important;
+  padding-left: calc(1rem + 3px) !important;
+}
+
+/* ─────────────────────────────────────────────
+   Enhanced Section Headings
+   Gradient underline on all h1 in portfolio/news
+───────────────────────────────────────────── */
+.portfolio__header h1,
+.news-section__header h1,
+.collaborators__header h1 {
+  font-family: var(--font-heading) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.5px;
+}
+
+/* ─────────────────────────────────────────────
+   Improved news card badge
+───────────────────────────────────────────── */
+.news-card__type {
+  background: rgba(139,92,246,0.1) !important;
+  border: 1px solid rgba(139,92,246,0.2) !important;
+  color: var(--c-purple) !important;
+  font-family: var(--font-mono) !important;
+  font-size: 0.7rem !important;
+  letter-spacing: 1.5px !important;
+  border-radius: 6px !important;
+  padding: 3px 10px !important;
+}
+
+/* ─────────────────────────────────────────────
+   Footer bottom formula text — enhanced
+───────────────────────────────────────────── */
+#contact .container > div:last-child p:last-child {
+  background: var(--grad-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 500 !important;
+  opacity: 0.8;
+}
+
+/* ─────────────────────────────────────────────
+   Subtle grid overlay for portfolio section
+───────────────────────────────────────────── */
+#portfolio {
+  position: relative;
+}
+
+#portfolio::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(139,92,246,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139,92,246,0.015) 1px, transparent 1px);
+  background-size: 80px 80px;
+  z-index: 0;
+}
+
+#portfolio > * { position: relative; z-index: 1; }
+
+/* ─────────────────────────────────────────────
+   Glassmorphism section divider dots
+───────────────────────────────────────────── */
+.ae-section-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 24px 0;
+}
+
+.ae-section-dot {
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: rgba(139,92,246,0.4);
+}
+
+.ae-section-dot:nth-child(2) {
+  width: 6px; height: 6px;
+  background: rgba(6,182,212,0.5);
+}
+
+.ae-section-dot:nth-child(3) {
+  width: 4px; height: 4px;
+  background: rgba(245,158,11,0.4);
+}
+
+/* ─────────────────────────────────────────────
+   Animated gradient border on skill section
+───────────────────────────────────────────── */
+#skill::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(139,92,246,0.5) 25%,
+    rgba(6,182,212,0.7) 50%,
+    rgba(139,92,246,0.5) 75%,
+    transparent 100%);
+  background-size: 200% 100%;
+  animation: ae-shimmer 5s linear infinite;
+}
+
+/* ─────────────────────────────────────────────
+   Research Carousel — Premium Arrow Buttons
+───────────────────────────────────────────── */
+.research-carousel-arrow {
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 50% !important;
+  background: linear-gradient(135deg, rgba(139,92,246,0.2), rgba(6,182,212,0.2)) !important;
+  border: 1px solid rgba(139,92,246,0.3) !important;
+  opacity: 1 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  backdrop-filter: blur(10px) !important;
+  transition: all 0.3s ease !important;
+}
+
+.research-carousel-arrow:hover {
+  background: linear-gradient(135deg, rgba(139,92,246,0.5), rgba(6,182,212,0.5)) !important;
+  border-color: rgba(139,92,246,0.6) !important;
+  box-shadow: 0 0 20px rgba(139,92,246,0.3) !important;
+  transform: translateY(-50%) scale(1.08) !important;
+}
+
+.research-carousel-arrow.carousel-control-prev { left: 0 !important; }
+.research-carousel-arrow.carousel-control-next { right: 0 !important; }
+
+.research-carousel-arrow__icon {
+  color: white !important;
+  font-size: 1.5rem !important;
+  line-height: 1 !important;
+  font-weight: 300 !important;
+}
+
+/* Research carousel dot indicators */
+.research-carousel-dots {
+  margin-top: 30px;
+}
+
+.research-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.2);
+  margin: 0 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.research-dot.active {
+  width: 26px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #8b5cf6, #06b6d4);
+}
+
+/* ─────────────────────────────────────────────
+   Research Card — Complete Premium Style
+───────────────────────────────────────────── */
+.research-card {
+  border-radius: 20px !important;
+  padding: 36px 28px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0 !important;
+  margin: 8px !important;
+  height: calc(100% - 16px) !important;
+}
+
+.research-card__icon-wrap {
+  width: 62px !important;
+  height: 62px !important;
+  border-radius: 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 22px !important;
+  font-size: 1.5rem !important;
+}
+
+.research-card__icon-wrap i {
+  font-size: 1.5rem !important;
+}
+
+.research-card__title {
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 14px !important;
+  line-height: 1.3 !important;
+  font-family: 'Space Grotesk', sans-serif !important;
+}
+
+.research-card__text {
+  font-size: 0.93rem !important;
+  line-height: 1.7 !important;
+  flex: 1 !important;
+}
+
+/* ─────────────────────────────────────────────
+   Section: Portfolio background overlay
+───────────────────────────────────────────── */
+#portfolio > div[style*="position: absolute"] {
+  background: rgba(10, 16, 26, 0.85) !important;
+}
+
+/* ─────────────────────────────────────────────
+   Enhanced collaborators header
+───────────────────────────────────────────── */
+.collaborators__header {
+  text-align: left;
+  margin-bottom: 40px !important;
+}
+
+.collaborators__header span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(139,92,246,0.08);
+  border: 1px solid rgba(139,92,246,0.25);
+  border-radius: 100px;
+  padding: 6px 18px;
+  font-size: 0.72rem;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #a78bfa !important;
+  margin-bottom: 14px;
+}
+
+/* ─────────────────────────────────────────────
+   Collaborator carousel arrows
+───────────────────────────────────────────── */
+.carousel-control-prev[data-bs-target="#collaboratorsCarousel"],
+.carousel-control-next[data-bs-target="#collaboratorsCarousel"] {
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 50% !important;
+  background: linear-gradient(135deg, rgba(139,92,246,0.25), rgba(6,182,212,0.2)) !important;
+  border: 1px solid rgba(139,92,246,0.3) !important;
+  backdrop-filter: blur(12px) !important;
+  opacity: 1 !important;
+  transition: all 0.3s ease !important;
+}
+
+.carousel-control-prev[data-bs-target="#collaboratorsCarousel"]:hover,
+.carousel-control-next[data-bs-target="#collaboratorsCarousel"]:hover {
+  background: linear-gradient(135deg, rgba(139,92,246,0.5), rgba(6,182,212,0.4)) !important;
+  box-shadow: 0 0 20px rgba(139,92,246,0.4) !important;
+  transform: translateY(-50%) scale(1.1) !important;
+}
+
+/* ─────────────────────────────────────────────
+   News carousel arrows premium
+───────────────────────────────────────────── */
+.carousel-control-prev[data-bs-target="#newsCarousel"],
+.carousel-control-next[data-bs-target="#newsCarousel"] {
+  width: 48px !important;
+  height: 48px !important;
+  background: linear-gradient(135deg, rgba(139,92,246,0.2), rgba(6,182,212,0.2)) !important;
+  border: 1px solid rgba(139,92,246,0.3) !important;
+  border-radius: 50% !important;
+  backdrop-filter: blur(10px) !important;
+  opacity: 1 !important;
+  top: 40% !important;
+  transition: all 0.3s ease !important;
+}

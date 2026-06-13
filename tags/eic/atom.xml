@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Satyajit Puhan - EIC</title>
+    <link rel="self" type="application/atom+xml" href="https://satyajitpuhan.github.io/tags/eic/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2026-05-01T00:00:00+00:00</updated>
+    <id>https://satyajitpuhan.github.io/tags/eic/atom.xml</id>
+    <entry xml:lang="en">
+        <title>EIC-Asia Workshop on QCD and Hadron Structure 2026 — Academia Sinica, Taipei</title>
+        <published>2026-05-01T00:00:00+00:00</published>
+        <updated>2026-05-01T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/blog/eic-asia-2026-qcd-hadron-structure-en/"/>
+        <id>https://satyajitpuhan.github.io/blog/eic-asia-2026-qcd-hadron-structure-en/</id>
+        
+        <summary type="html">&lt;p&gt;&lt;strong&gt;Workshop:&lt;&#x2F;strong&gt; &lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;indico.phys.sinica.edu.tw&#x2F;event&#x2F;495&#x2F;&quot;&gt;EIC-Asia Workshop on QCD and Hadron Structure&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Venue:&lt;&#x2F;strong&gt; Institute of Physics, Academia Sinica, Taipei, Taiwan&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Dates:&lt;&#x2F;strong&gt; April 29 – May 1, 2026&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Mode:&lt;&#x2F;strong&gt; In person&lt;&#x2F;p&gt;
+&lt;p&gt;I attended the &lt;strong&gt;EIC-Asia Workshop on QCD and Hadron Structure&lt;&#x2F;strong&gt; hosted at the Institute of Physics, Academia Sinica, Taipei. The workshop brought together experts in experiments, phenomenology, and lattice calculations relevant to the upcoming Electron-Ion Collider (EIC).&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>🚀 Starting a New Research Chapter in Taiwan — Academia Sinica</title>
+        <published>2026-04-07T00:00:00+00:00</published>
+        <updated>2026-04-07T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/blog/new-research-chapter-academia-sinica-en/"/>
+        <id>https://satyajitpuhan.github.io/blog/new-research-chapter-academia-sinica-en/</id>
+        
+        <summary type="html">&lt;p&gt;I have joined the &lt;strong&gt;Academia Sinica&lt;&#x2F;strong&gt; as a &lt;strong&gt;Research Assistant&lt;&#x2F;strong&gt; at the &lt;strong&gt;Institute of Physics&lt;&#x2F;strong&gt;, working under the supervision of &lt;strong&gt;Prof. Wen-Chen Chang&lt;&#x2F;strong&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;My work focuses on:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;🔹 &lt;strong&gt;Detector development for the ePIC experiment&lt;&#x2F;strong&gt; (Zero-Degree Calorimeter)&lt;&#x2F;li&gt;
+&lt;li&gt;🔹 &lt;strong&gt;Global analysis of pion and kaon Parton Distribution Functions (PDFs)&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;</summary>
+        
+    </entry>
+</feed>
