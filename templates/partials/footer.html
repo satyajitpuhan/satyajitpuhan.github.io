@@ -1,110 +1,95 @@
-<!-- ═══ Premium Dark Footer with Aurora Effect ═══ -->
-<footer id="contact" style="position: relative; background: #05050e; overflow: hidden; padding: 80px 0 0 0; color: white;">
+<!-- ═══ Academic Dark Footer ═══ -->
+<footer id="contact" style="position: relative; background: #03060c; overflow: hidden; color: white;">
 
-  <!-- Aurora gradient glow background -->
-  <div style="position: absolute; top: -100px; left: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(139,92,246,0.08) 0%, transparent 70%); pointer-events: none;"></div>
-  <div style="position: absolute; top: -50px; right: -100px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(6,182,212,0.07) 0%, transparent 70%); pointer-events: none;"></div>
-  <div style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 800px; height: 200px; background: radial-gradient(ellipse, rgba(139,92,246,0.06) 0%, transparent 70%); pointer-events: none;"></div>
+  <!-- Top accent line -->
+  <div style="position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(232,164,68,0.6) 30%, rgba(46,196,182,0.6) 60%, transparent); pointer-events: none;"></div>
 
-  <!-- Top shimmer line -->
-  <div style="position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(139,92,246,0.6) 30%, rgba(6,182,212,0.8) 50%, rgba(139,92,246,0.6) 70%, transparent); pointer-events: none;"></div>
+  <!-- Subtle background glow -->
+  <div style="position: absolute; top: -80px; right: -100px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(232,164,68,0.04) 0%, transparent 70%); pointer-events: none;"></div>
+  <div style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 700px; height: 180px; background: radial-gradient(ellipse, rgba(232,164,68,0.05) 0%, transparent 70%); pointer-events: none;"></div>
 
-  <div class="container" style="position: relative; z-index: 1;">
+  <div class="container" style="position: relative; z-index: 1; padding-top: 56px; padding-bottom: 0;">
 
     {% if config.extra.display_cta %}
-    <!-- CTA Box -->
-    <div class="row mb-5">
-      <div class="col-12">
-        <div style="
-          background: linear-gradient(135deg, rgba(40,15,80,0.9), rgba(10,30,60,0.9));
-          border: 1px solid rgba(139,92,246,0.2);
-          border-radius: 24px;
-          padding: 60px 50px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          flex-wrap: wrap;
-          gap: 30px;
-          backdrop-filter: blur(20px);
-          box-shadow: 0 0 60px rgba(139,92,246,0.1), 0 20px 60px rgba(0,0,0,0.5);
-          position: relative;
-          overflow: hidden;
-        ">
-          <!-- Animated shine -->
-          <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at 30% 40%, rgba(139,92,246,0.08), transparent 60%); pointer-events: none;"></div>
+    <!-- Compact CTA Strip -->
+    <div style="
+      background: linear-gradient(135deg, rgba(36,20,4,0.95), rgba(4,20,36,0.95));
+      border: 1px solid rgba(232,164,68,0.18);
+      border-radius: 16px;
+      padding: 36px 44px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 24px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 0 50px rgba(232,164,68,0.07), 0 16px 48px rgba(0,0,0,0.5);
+      margin-bottom: 52px;
+      position: relative; overflow: hidden;
+    ">
+      <!-- CTA glow accent -->
+      <div style="position: absolute; top: -40%; left: -10%; width: 60%; height: 200%; background: radial-gradient(circle at 30% 50%, rgba(232,164,68,0.06), transparent 60%); pointer-events: none;"></div>
 
-          <div style="position: relative; z-index: 1; max-width: 60%;">
-            <div style="
-              font-size: 0.72rem;
-              font-family: 'JetBrains Mono', monospace;
-              letter-spacing: 4px;
-              text-transform: uppercase;
-              background: linear-gradient(135deg, #8b5cf6, #06b6d4);
-              -webkit-background-clip: text;
-              -webkit-text-fill-color: transparent;
-              background-clip: text;
-              margin-bottom: 12px;
-            ">{{ trans(key="contact_me", lang=lang) }}</div>
-            <h2 style="font-size: clamp(1.5rem, 4vw, 2.8rem); font-weight: 800; color: #fff; margin: 0; font-family: 'Space Grotesk', sans-serif; line-height: 1.2;">
-              {{ trans(key="start_project", lang=lang) }}
-            </h2>
-          </div>
-
-          <div style="position: relative; z-index: 1;">
-            <a href="{{ get_url(path='contact', lang=lang) }}"
-              style="
-                display: inline-flex;
-                align-items: center;
-                gap: 10px;
-                padding: 16px 36px;
-                background: linear-gradient(135deg, #8b5cf6, #06b6d4);
-                color: white;
-                text-decoration: none;
-                border-radius: 12px;
-                font-weight: 700;
-                font-size: 1rem;
-                box-shadow: 0 6px 30px rgba(139,92,246,0.4);
-                transition: all 0.35s cubic-bezier(0.23,1,0.32,1);
-                letter-spacing: 0.3px;
-              "
-              onmouseover="this.style.transform='translateY(-3px) scale(1.04)';this.style.boxShadow='0 10px 40px rgba(139,92,246,0.6)';"
-              onmouseout="this.style.transform='';this.style.boxShadow='0 6px 30px rgba(139,92,246,0.4)';"
-            >
-              {{ trans(key="get_in_touch", lang=lang) }}
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-          </div>
+      <div style="position: relative; z-index: 1;">
+        <div style="font-size: 0.68rem; font-family: 'JetBrains Mono', monospace; letter-spacing: 4px; text-transform: uppercase; color: rgba(232,164,68,0.7); margin-bottom: 10px;">
+          {{ trans(key="contact_me", lang=lang) }}
         </div>
+        <h2 style="font-size: clamp(1.35rem, 3.5vw, 2.2rem); font-weight: 800; color: #fff; margin: 0; font-family: 'Space Grotesk', sans-serif; line-height: 1.2;">
+          {{ trans(key="start_project", lang=lang) }}
+        </h2>
+      </div>
+
+      <div style="position: relative; z-index: 1;">
+        <a href="{{ get_url(path='contact', lang=lang) }}"
+          style="
+            display: inline-flex; align-items: center; gap: 9px;
+            padding: 13px 32px;
+            background: linear-gradient(135deg, #e8a444, #f5c266);
+            color: #1a1000;
+            text-decoration: none; border-radius: 10px;
+            font-weight: 700; font-size: 0.95rem;
+            box-shadow: 0 5px 24px rgba(232,164,68,0.35);
+            transition: all 0.35s cubic-bezier(0.23,1,0.32,1);
+          "
+          onmouseover="this.style.transform='translateY(-3px) scale(1.04)';this.style.boxShadow='0 10px 36px rgba(232,164,68,0.55)';"
+          onmouseout="this.style.transform='';this.style.boxShadow='0 5px 24px rgba(232,164,68,0.35)';"
+        >
+          {{ trans(key="get_in_touch", lang=lang) }}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
       </div>
     </div>
     {% endif %}
 
-    <!-- Widget Row -->
-    <div class="row" style="padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.06);">
+    <!-- Main Footer Grid -->
+    <div class="row" style="padding-bottom: 48px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 40px; row-gap: 40px;">
 
-      <!-- Logo & Description -->
-      <div class="col-lg-4 mb-5 mb-lg-0">
-        <img src="{{ get_url(path=extra.footer_logo) }}" alt="Logo" style="height: 70px; filter: drop-shadow(0 0 12px rgba(139,92,246,0.5)); margin-bottom: 20px;">
-        <p style="color: rgba(255,255,255,0.45); font-size: 0.9rem; line-height: 1.7; max-width: 260px; margin-bottom: 24px;">
-          Theoretical Particle Physicist exploring the fundamental structure of matter at the Institute of Physics, Academia Sinica.
+      <!-- Column 1: Identity -->
+      <div class="col-lg-4 col-md-6">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 18px;">
+          <img src="{{ get_url(path=extra.footer_logo) }}" alt="Logo"
+            style="height: 52px; filter: drop-shadow(0 0 8px rgba(232,164,68,0.4));">
+          <div>
+            <div style="font-weight: 700; font-size: 1rem; color: #fff; font-family: 'Space Grotesk', sans-serif;">Satyajit Puhan</div>
+            <div style="font-size: 0.72rem; color: rgba(232,164,68,0.65); font-family: 'JetBrains Mono', monospace; margin-top: 2px;">Theoretical Particle Physics</div>
+          </div>
+        </div>
+        <p style="color: rgba(255,255,255,0.4); font-size: 0.88rem; line-height: 1.7; max-width: 260px; margin-bottom: 22px;">
+          Exploring the fundamental structure of matter through QCD, hadronic physics, and Dyson–Schwinger equations at Academia Sinica.
         </p>
         <!-- Social Icons -->
-        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
           {% for social in extra.socials %}
           <a target="_blank" href="{{ social.url }}"
             style="
-              width: 40px; height: 40px;
+              width: 36px; height: 36px;
               display: flex; align-items: center; justify-content: center;
-              border-radius: 10px;
-              border: 1px solid rgba(255,255,255,0.08);
-              color: rgba(255,255,255,0.55);
-              font-size: 1.1rem;
-              text-decoration: none;
-              background: rgba(255,255,255,0.03);
+              border-radius: 8px;
+              border: 1px solid rgba(255,255,255,0.07);
+              color: rgba(255,255,255,0.45);
+              font-size: 1rem; text-decoration: none;
+              background: rgba(255,255,255,0.025);
               transition: all 0.3s ease;
             "
-            onmouseover="this.style.borderColor='rgba(139,92,246,0.4)';this.style.background='rgba(139,92,246,0.12)';this.style.color='#a78bfa';this.style.transform='translateY(-3px)';"
-            onmouseout="this.style.borderColor='rgba(255,255,255,0.08)';this.style.background='rgba(255,255,255,0.03)';this.style.color='rgba(255,255,255,0.55)';this.style.transform='';"
+            onmouseover="this.style.borderColor='rgba(232,164,68,0.35)';this.style.background='rgba(232,164,68,0.08)';this.style.color='#e8a444';this.style.transform='translateY(-2px)';"
+            onmouseout="this.style.borderColor='rgba(255,255,255,0.07)';this.style.background='rgba(255,255,255,0.025)';this.style.color='rgba(255,255,255,0.45)';this.style.transform='';"
           >
             <i class="lni lni-{{ social.icon }}"></i>
           </a>
@@ -112,21 +97,21 @@
         </div>
       </div>
 
-      <!-- Sitemap -->
-      <div class="col-lg-4 mb-5 mb-lg-0">
-        <h4 style="color: white; font-weight: 700; font-size: 1rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 24px; font-family: 'Space Grotesk', sans-serif;">
-          <span style="display: inline-block; width: 20px; height: 2px; background: linear-gradient(135deg, #8b5cf6, #06b6d4); vertical-align: middle; margin-right: 10px;"></span>
+      <!-- Column 2: Sitemap -->
+      <div class="col-lg-3 col-md-6 offset-lg-1">
+        <h4 style="color: white; font-weight: 700; font-size: 0.78rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 22px; font-family: 'Space Grotesk', sans-serif; display: flex; align-items: center; gap: 10px;">
+          <span style="display: inline-block; width: 18px; height: 1.5px; background: linear-gradient(90deg, #e8a444, #2ec4b6);"></span>
           {{ trans(key="sitemap", lang=lang) }}
         </h4>
         <ul style="margin: 0; padding: 0; list-style: none;">
           {% for sitemap in extra.sitemaps %}
-          <li style="margin-bottom: 12px;">
+          <li style="margin-bottom: 10px;">
             <a href="{{ sitemap.url }}"
-              style="color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s ease;"
-              onmouseover="this.style.color='#06b6d4';this.style.paddingLeft='6px';"
-              onmouseout="this.style.color='rgba(255,255,255,0.5)';this.style.paddingLeft='0';"
+              style="color: rgba(255,255,255,0.42); text-decoration: none; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s ease;"
+              onmouseover="this.style.color='#e8a444';this.style.paddingLeft='5px';"
+              onmouseout="this.style.color='rgba(255,255,255,0.42)';this.style.paddingLeft='0';"
             >
-              <span style="width: 5px; height: 1px; background: rgba(6,182,212,0.6); display: inline-block; flex-shrink: 0;"></span>
+              <span style="width: 4px; height: 1px; background: rgba(232,164,68,0.5); display: inline-block; flex-shrink: 0;"></span>
               {{ trans(key=sitemap.name, lang=lang) }}
             </a>
           </li>
@@ -134,48 +119,46 @@
         </ul>
       </div>
 
-      <!-- Contact Info -->
-      <div class="col-lg-4">
-        <h4 style="color: white; font-weight: 700; font-size: 1rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 24px; font-family: 'Space Grotesk', sans-serif;">
-          <span style="display: inline-block; width: 20px; height: 2px; background: linear-gradient(135deg, #8b5cf6, #06b6d4); vertical-align: middle; margin-right: 10px;"></span>
+      <!-- Column 3: Contact Info -->
+      <div class="col-lg-4 col-md-12">
+        <h4 style="color: white; font-weight: 700; font-size: 0.78rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 22px; font-family: 'Space Grotesk', sans-serif; display: flex; align-items: center; gap: 10px;">
+          <span style="display: inline-block; width: 18px; height: 1.5px; background: linear-gradient(90deg, #e8a444, #2ec4b6);"></span>
           {{ trans(key="address", lang=lang) }}
         </h4>
-        <ul style="margin: 0; padding: 0; list-style: none;">
+        <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 14px;">
           {% if extra.address.phone %}
-          <li style="margin-bottom: 16px;">
+          <li>
             <a href="tel:{{ extra.address.phone }}"
-              style="color: rgba(255,255,255,0.55); text-decoration: none; display: flex; align-items: flex-start; gap: 12px; font-size: 0.9rem; transition: color 0.3s;"
-              onmouseover="this.style.color='#06b6d4';"
-              onmouseout="this.style.color='rgba(255,255,255,0.55)';"
+              style="color: rgba(255,255,255,0.45); text-decoration: none; display: flex; align-items: flex-start; gap: 12px; font-size: 0.88rem; transition: color 0.3s;"
+              onmouseover="this.style.color='#e8a444';"
+              onmouseout="this.style.color='rgba(255,255,255,0.45)';"
             >
-              <span style="width: 36px; height: 36px; border-radius: 8px; background: rgba(6,182,212,0.1); border: 1px solid rgba(6,182,212,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                <i class="lni lni-phone" style="color: #06b6d4; font-size: 0.9rem;"></i>
+              <span style="width: 32px; height: 32px; border-radius: 7px; background: rgba(232,164,68,0.08); border: 1px solid rgba(232,164,68,0.18); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                <i class="lni lni-phone" style="color: #e8a444; font-size: 0.85rem;"></i>
               </span>
-              <span style="margin-top: 8px;">{{ extra.address.phone }}</span>
+              <span style="margin-top: 6px;">{{ extra.address.phone }}</span>
             </a>
           </li>
           {% endif %}
-
           {% if extra.address.email %}
-          <li style="margin-bottom: 16px;">
+          <li>
             <a href="mailto:{{ extra.address.email | split(pat=' | ') | first }}"
-              style="color: rgba(255,255,255,0.55); text-decoration: none; display: flex; align-items: flex-start; gap: 12px; font-size: 0.9rem; transition: color 0.3s;"
-              onmouseover="this.style.color='#06b6d4';"
-              onmouseout="this.style.color='rgba(255,255,255,0.55)';"
+              style="color: rgba(255,255,255,0.45); text-decoration: none; display: flex; align-items: flex-start; gap: 12px; font-size: 0.88rem; transition: color 0.3s;"
+              onmouseover="this.style.color='#e8a444';"
+              onmouseout="this.style.color='rgba(255,255,255,0.45)';"
             >
-              <span style="width: 36px; height: 36px; border-radius: 8px; background: rgba(6,182,212,0.1); border: 1px solid rgba(6,182,212,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                <i class="lni lni-envelope" style="color: #06b6d4; font-size: 0.9rem;"></i>
+              <span style="width: 32px; height: 32px; border-radius: 7px; background: rgba(232,164,68,0.08); border: 1px solid rgba(232,164,68,0.18); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                <i class="lni lni-envelope" style="color: #e8a444; font-size: 0.85rem;"></i>
               </span>
-              <span style="margin-top: 8px; word-break: break-all;">{{ extra.address.email | split(pat=" | ") | first }}</span>
+              <span style="margin-top: 6px; word-break: break-all;">{{ extra.address.email | split(pat=" | ") | first }}</span>
             </a>
           </li>
           {% endif %}
-
           {% if extra.address.address %}
           <li>
-            <div style="color: rgba(255,255,255,0.55); display: flex; align-items: flex-start; gap: 12px; font-size: 0.9rem;">
-              <span style="width: 36px; height: 36px; border-radius: 8px; background: rgba(6,182,212,0.1); border: 1px solid rgba(6,182,212,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;">
-                <i class="lni lni-map-marker" style="color: #06b6d4; font-size: 0.9rem;"></i>
+            <div style="color: rgba(255,255,255,0.45); display: flex; align-items: flex-start; gap: 12px; font-size: 0.88rem;">
+              <span style="width: 32px; height: 32px; border-radius: 7px; background: rgba(232,164,68,0.08); border: 1px solid rgba(232,164,68,0.18); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;">
+                <i class="lni lni-map-marker" style="color: #e8a444; font-size: 0.85rem;"></i>
               </span>
               <span>{{ extra.address.address }}</span>
             </div>
@@ -187,14 +170,15 @@
     </div>
 
     <!-- Bottom Bar -->
-    <div style="padding: 24px 0; border-top: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
-      <p style="color: rgba(255,255,255,0.3); margin: 0; font-size: 0.85rem;">
+    <div style="padding: 20px 0; border-top: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+      <p style="color: rgba(255,255,255,0.25); margin: 0; font-size: 0.82rem;">
         {{ trans(key="copyright", lang=lang) }}
       </p>
-      <p style="color: rgba(255,255,255,0.2); margin: 0; font-size: 0.8rem; font-family: 'JetBrains Mono', monospace;">
-        Built with ⚛️ QCD & 💜 passion
+      <p style="color: rgba(232,164,68,0.4); margin: 0; font-size: 0.75rem; font-family: 'JetBrains Mono', monospace;">
+        Built with ⚛ QCD · <span style="color: rgba(46,196,182,0.45);">Academia Sinica</span>
       </p>
     </div>
 
   </div>
 </footer>
+<!-- ═══ End Footer ═══ -->

@@ -15,7 +15,7 @@
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="theme-color" content="#ffffff">
+    <meta name="theme-color" content="#050911">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta itemprop="name" content="{{ page.title | default(value=config.title) }}">
     <meta itemprop="description" content="{{ page.description | default(value=config.description) }}">
@@ -26,21 +26,19 @@
     {% endblock %}
 
     {% block stylesheets %}
+    <!-- Two fonts only: Space Grotesk + Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ get_url(path='css/bootstrap.min.css', cachebust=true) }}">
     <link rel="stylesheet" href="{{ get_url(path='main.css', cachebust=true) }}">
+    <!-- Single consolidated CSS (replaces 3 heavy files) -->
+    <link rel="stylesheet" href="{{ get_url(path='css/site-core.css', cachebust=true) }}">
     <link rel="stylesheet" href="{{ get_url(path='css/chatbot.css', cachebust=true) }}">
-    <link rel="stylesheet" href="{{ get_url(path='css/advanced-styles.css', cachebust=true) }}">
-    <link rel="stylesheet" href="{{ get_url(path='css/creative-styles.css', cachebust=true) }}">
-    <link rel="stylesheet" href="{{ get_url(path='css/premium-upgrade.css', cachebust=true) }}">
     {% endblock %}
 
     <link rel="shortcut icon" type="image/x-icon" href="{{ get_url(path='images/favicon.ico') }}">
     <link rel="icon" type="image/x-icon" href="{{ get_url(path='images/favicon.ico') }}">
-
-
 
     {% block seo %}
     {{ macros::ms_application(path="static/images/logo.png") }}
@@ -50,7 +48,6 @@
     {% endblock %}
 
     <style>
-        /* Section spacing — let individual sections control their own padding */
         .ae-wave-divider { overflow: hidden; line-height: 0; }
     </style>
 </head>
@@ -71,8 +68,6 @@
     {% block javascripts %}
     <script src="{{ get_url(path='js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ get_url(path='js/main.js') }}"></script>
-    <script src="{{ get_url(path='js/wave-particles.js') }}"></script>
-    <script src="{{ get_url(path='js/header-particles.js') }}"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -80,13 +75,23 @@
     <script src="{{ get_url(path='js/chatbot-knowledge.js', cachebust=true) }}"></script>
     <script src="{{ get_url(path='js/chatbot.js', cachebust=true) }}"></script>
 
-    <!-- Advanced Visual Effects -->
+    <!-- Core effects: scroll reveal, counters, cursor, typewriter -->
     <script src="{{ get_url(path='js/advanced-effects.js', cachebust=true) }}"></script>
+    <!-- Advanced v2: typewriter, counters, gauge animation, parallax, back-to-top -->
+    <script src="{{ get_url(path='js/advanced-v2.js', cachebust=true) }}"></script>
 
-    <!-- Creative Enhancements: Constellation Nav, Holographic Cards, Aurora, Feynman, Timeline, etc. -->
-    <script src="{{ get_url(path='js/creative-enhancements.js', cachebust=true) }}"></script>
-    <!-- Premium Interactions: Magnetic effects, 3D tilt, quantum particles, scroll physics -->
-    <script src="{{ get_url(path='js/premium-interactions.js', cachebust=true) }}"></script>
+    <!-- Sticky navbar scroll class -->
+    <script>
+    (function() {
+      const nav = document.getElementById('header-particles-wrap');
+      if (!nav) return;
+      function onScroll() {
+        nav.classList.toggle('scrolled', window.scrollY > 60);
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+    </script>
     {% endblock %}
 </body>
 

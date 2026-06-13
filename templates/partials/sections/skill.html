@@ -8,139 +8,87 @@
   <!-- Background decorations -->
   <div style="position: absolute; top: 50%; right: -200px; transform: translateY(-50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(139,92,246,0.07) 0%, transparent 70%); pointer-events: none;"></div>
   <div style="position: absolute; top: 10%; left: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(6,182,212,0.06) 0%, transparent 70%); pointer-events: none;"></div>
-
-  <!-- Grid texture -->
-  <div style="
-    position: absolute; inset: 0; pointer-events: none; opacity: 0.025;
-    background-image: radial-gradient(rgba(139,92,246,1) 1px, transparent 1px);
-    background-size: 30px 30px;
-  "></div>
+  <!-- Dot-grid texture -->
+  <div style="position: absolute; inset: 0; pointer-events: none; opacity: 0.025; background-image: radial-gradient(rgba(139,92,246,1) 1px, transparent 1px); background-size: 30px 30px;"></div>
 
   <div style="position: relative; z-index: 1;">
     <div class="container">
-      <div class="row align-items-center" style="row-gap: 40px;">
 
-        <!-- Left: Image -->
-        <div class="col-lg-5 col-12" data-reveal="left">
-          <div class="skill__thumb" style="position: relative;">
-
-            <!-- Hexagon background decoration -->
-            <div style="position: absolute; top: -30px; left: -30px; width: 200px; height: 200px; opacity: 0.1;">
-              <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <polygon points="100,10 185,55 185,145 100,190 15,145 15,55" fill="none" stroke="#8b5cf6" stroke-width="1"/>
-                <polygon points="100,30 170,65 170,135 100,170 30,135 30,65" fill="none" stroke="#06b6d4" stroke-width="0.5"/>
-              </svg>
-            </div>
-
-            <!-- Image with glow frame -->
-            <div style="position: relative; border-radius: 20px; overflow: hidden; box-shadow: 0 0 40px rgba(139,92,246,0.15), 0 20px 60px rgba(0,0,0,0.5);">
-              <div style="position: absolute; inset: 0; background: linear-gradient(to bottom right, rgba(139,92,246,0.1), rgba(6,182,212,0.05)); pointer-events: none; z-index: 1;"></div>
-              <img src="{{ get_url(path=data.image) }}"
-                   alt="skill-img"
-                   style="width: 100%; display: block; mask: url({{ get_url(path='images/skill/skill-mask-svg.svg') }}); mask-repeat: no-repeat; mask-size: contain; mask-position: center center;">
-            </div>
-
-            <!-- Floating skill badges -->
-            <div style="
-              position: absolute; bottom: 20px; right: -20px;
-              background: rgba(10,8,24,0.9);
-              backdrop-filter: blur(16px);
-              border: 1px solid rgba(6,182,212,0.3);
-              border-radius: 12px;
-              padding: 12px 16px;
-              display: flex; align-items: center; gap: 10px;
-              box-shadow: 0 8px 30px rgba(0,0,0,0.4);
-              animation: ae-float 5s ease-in-out infinite;
-            ">
-              <div style="width: 36px; height: 36px; border-radius: 8px; background: linear-gradient(135deg, #8b5cf6, #06b6d4); display: flex; align-items: center; justify-content: center;">
-                <span style="font-size: 1.2rem;">⚛️</span>
-              </div>
-              <div>
-                <div style="color: rgba(255,255,255,0.5); font-size: 0.65rem; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 1.5px;">Expertise</div>
-                <div style="color: white; font-weight: 700; font-size: 0.85rem; font-family: 'Space Grotesk', sans-serif;">Particle Physics</div>
-              </div>
-            </div>
-
+      <!-- Section Header -->
+      <div class="row text-center mb-5" data-reveal="up">
+        <div class="col-lg-6 offset-lg-3">
+          {% if data.top_title %}
+          <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(139,92,246,0.08); border: 1px solid rgba(139,92,246,0.25); border-radius: 100px; padding: 6px 18px; font-size: 0.72rem; font-family: 'JetBrains Mono', monospace; letter-spacing: 3px; text-transform: uppercase; color: #a78bfa; margin-bottom: 16px;">
+            <span style="width:5px;height:5px;border-radius:50%;background:#a78bfa;animation:pulse 2s infinite;display:inline-block;"></span>
+            01 · {{ data.top_title }}
           </div>
+          {% endif %}
+          <h2 style="color: white; font-weight: 800; font-size: clamp(1.8rem,3vw,2.6rem); font-family: 'Space Grotesk', sans-serif; margin-bottom: 14px; line-height: 1.2;">{{ data.title }}</h2>
+          <p style="color: rgba(255,255,255,0.5); font-size: 1rem; line-height: 1.7; max-width: 500px; margin: 0 auto;">{{ data.subtitle }}</p>
         </div>
-
-        <!-- Right: Skills -->
-        <div class="col-lg-7 col-12" data-reveal="right">
-          <div class="skill__progress">
-
-            <!-- Header -->
-            <div class="skill__progress_heading" style="margin-bottom: 40px;">
-              {% if data.top_title %}
-              <div style="
-                display: inline-flex; align-items: center; gap: 8px;
-                background: rgba(139,92,246,0.08);
-                border: 1px solid rgba(139,92,246,0.25);
-                border-radius: 100px;
-                padding: 6px 18px;
-                font-size: 0.72rem;
-                font-family: 'JetBrains Mono', monospace;
-                letter-spacing: 3px;
-                text-transform: uppercase;
-                color: #a78bfa;
-                margin-bottom: 16px;
-              ">{{ data.top_title }}</div>
-              {% endif %}
-              <h2 style="color: white; font-weight: 800; font-size: clamp(1.8rem, 3vw, 2.5rem); font-family: 'Space Grotesk', sans-serif; margin-bottom: 12px; line-height: 1.2;">
-                {{ data.title }}
-              </h2>
-              <p style="color: rgba(255,255,255,0.55); font-size: 1rem; line-height: 1.7;">{{ data.subtitle }}</p>
-            </div>
-
-            <!-- Skill bars -->
-            {% if data.skills %}
-            <div style="display: flex; flex-direction: column; gap: 16px;">
-              {% for skill in data.skills %}
-              <div class="skill__progress_item"
-                style="
-                  background: rgba(10,10,22,0.9);
-                  border: 1px solid rgba(255,255,255,0.07);
-                  border-radius: 14px;
-                  padding: 20px 24px;
-                  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-                  transition: all 0.35s cubic-bezier(0.23,1,0.32,1);
-                  position: relative;
-                  overflow: hidden;
-                "
-                onmouseover="this.style.borderColor='rgba(139,92,246,0.3)';this.style.transform='translateX(6px)';this.style.boxShadow='0 8px 30px rgba(139,92,246,0.12)';"
-                onmouseout="this.style.borderColor='rgba(255,255,255,0.07)';this.style.transform='';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.3)';"
-              >
-                <!-- Top accent line -->
-                <div style="position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, #8b5cf6, #06b6d4); opacity: 0.6;"></div>
-
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                  <h6 style="color: white; font-weight: 600; font-size: 0.95rem; margin: 0; font-family: 'Space Grotesk', sans-serif;">{{ skill.title }}</h6>
-                  <span style="
-                    color: #06b6d4;
-                    font-weight: 700;
-                    font-size: 0.9rem;
-                    font-family: 'JetBrains Mono', monospace;
-                    background: rgba(6,182,212,0.08);
-                    border: 1px solid rgba(6,182,212,0.2);
-                    padding: 2px 10px;
-                    border-radius: 100px;
-                  ">{{ skill.percent }}%</span>
-                </div>
-
-                <!-- Progress track -->
-                <div style="height: 6px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden;">
-                  <progress value="0" max="100" data-max="{{ skill.percent }}"
-                    style="width: 100%; height: 6px; appearance: none; border: none; background: transparent; display: block;">
-                  </progress>
-                </div>
-              </div>
-              {% endfor %}
-            </div>
-            {% endif %}
-
-          </div>
-        </div>
-
       </div>
+
+      <!-- Circular Gauge Grid -->
+      {% if data.skills %}
+      <div class="row justify-content-center" style="row-gap: 28px;">
+        {% for skill in data.skills %}
+        {% set pct = skill.percent | int %}
+
+        {# Pick accent color cycling through palette #}
+        {% if loop.index == 1 %}{% set color = "#8b5cf6" %}{% set glow = "rgba(139,92,246,0.35)" %}{% set track = "rgba(139,92,246,0.12)" %}
+        {% elif loop.index == 2 %}{% set color = "#06b6d4" %}{% set glow = "rgba(6,182,212,0.35)" %}{% set track = "rgba(6,182,212,0.12)" %}
+        {% elif loop.index == 3 %}{% set color = "#f59e0b" %}{% set glow = "rgba(245,158,11,0.35)" %}{% set track = "rgba(245,158,11,0.12)" %}
+        {% elif loop.index == 4 %}{% set color = "#10b981" %}{% set glow = "rgba(16,185,129,0.35)" %}{% set track = "rgba(16,185,129,0.12)" %}
+        {% elif loop.index == 5 %}{% set color = "#ec4899" %}{% set glow = "rgba(236,72,153,0.35)" %}{% set track = "rgba(236,72,153,0.12)" %}
+        {% elif loop.index == 6 %}{% set color = "#f43f5e" %}{% set glow = "rgba(244,63,94,0.35)" %}{% set track = "rgba(244,63,94,0.12)" %}
+        {% elif loop.index == 7 %}{% set color = "#a78bfa" %}{% set glow = "rgba(167,139,250,0.35)" %}{% set track = "rgba(167,139,250,0.12)" %}
+        {% else %}{% set color = "#38bdf8" %}{% set glow = "rgba(56,189,248,0.35)" %}{% set track = "rgba(56,189,248,0.12)" %}
+        {% endif %}
+
+        {% set delay_ms = loop.index0 * 70 %}
+        <div class="col-6 col-md-4 col-lg-3" data-reveal="up" data-delay="{{ delay_ms }}">
+          <div class="ae-skill-gauge-card"
+            style="background: rgba(10,10,22,0.9); border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; padding: 28px 20px; text-align: center; transition: all 0.35s cubic-bezier(0.23,1,0.32,1);"
+            onmouseover="this.style.borderColor='{{ color }}44';this.style.boxShadow='0 8px 40px {{ glow }}';this.style.transform='translateY(-6px)';"
+            onmouseout="this.style.borderColor='rgba(255,255,255,0.06)';this.style.boxShadow='none';this.style.transform='';"
+          >
+            <!-- SVG Circular Gauge -->
+            <div style="position: relative; width: 110px; height: 110px; margin: 0 auto 18px;">
+              <svg width="110" height="110" viewBox="0 0 110 110" style="transform: rotate(-90deg);">
+                <!-- Track -->
+                <circle cx="55" cy="55" r="40"
+                  fill="none"
+                  stroke="{{ track }}"
+                  stroke-width="7"
+                />
+                <!-- Fill (animated via JS) -->
+                <circle cx="55" cy="55" r="40"
+                  fill="none"
+                  stroke="{{ color }}"
+                  stroke-width="7"
+                  stroke-linecap="round"
+                  stroke-dasharray="251.2"
+                  stroke-dashoffset="251.2"
+                  class="ae-gauge-fill"
+                  data-gauge-target="{{ pct }}"
+                  data-circumference="251.2"
+                  style="transition: stroke-dashoffset 0.1s linear; filter: drop-shadow(0 0 6px {{ color }});"
+                />
+              </svg>
+              <!-- Percentage label in center -->
+              <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                <span style="color: {{ color }}; font-size: 1.3rem; font-weight: 800; font-family: 'Space Grotesk', sans-serif; line-height: 1;">{{ pct }}</span>
+                <span style="color: rgba(255,255,255,0.4); font-size: 0.6rem; font-family: 'JetBrains Mono', monospace; letter-spacing: 1px;">%</span>
+              </div>
+            </div>
+            <!-- Skill name -->
+            <h6 style="color: white; font-weight: 600; font-size: 0.82rem; font-family: 'Space Grotesk', sans-serif; margin: 0; line-height: 1.4;">{{ skill.title }}</h6>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
     </div>
   </div>
 </section>
