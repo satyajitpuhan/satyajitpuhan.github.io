@@ -104,29 +104,22 @@
                 {% endfor %}
 
                 {% if config.languages | length >= 1 %}
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"
-                       style="padding: 16px 18px; color: rgba(255,255,255,0.55); font-size: 0.82rem; font-family: 'JetBrains Mono', monospace;">
-                        {{ lang | upper }}
+                <li class="nav-item d-flex align-items-center" style="padding-left: 10px;">
+                    <a href="{{ get_url(path='/', lang='en') }}"
+                       style="padding: 6px 10px; font-size: 0.82rem; font-family: 'JetBrains Mono', monospace; font-weight: 700; text-decoration: none; border-radius: 6px; transition: all 0.2s;
+                              {% if lang == 'en' %}color: #fff; background: rgba(139,92,246,0.3);{% else %}color: rgba(255,255,255,0.4);{% endif %}"
+                       onmouseover="{% if lang != 'en' %}this.style.color='#fff';{% endif %}"
+                       onmouseout="{% if lang != 'en' %}this.style.color='rgba(255,255,255,0.4)';{% endif %}">
+                        EN
                     </a>
-                    <ul class="dropdown-menu"
-                        style="background: rgba(8,8,22,0.98); backdrop-filter: blur(24px);
-                               -webkit-backdrop-filter: blur(24px);
-                               border: 1px solid rgba(255,255,255,0.08);
-                               border-radius: 12px;
-                               padding: 6px;
-                               box-shadow: 0 20px 60px rgba(0,0,0,0.6);">
-                        {% for language, _ in config.languages %}
-                        <li>
-                            <a class="dropdown-item" href="{{ get_url(path='/', lang=language) }}"
-                               style="color: rgba(255,255,255,0.7); border-radius: 8px; padding: 10px 16px; font-size: 0.9rem; transition: all 0.2s;"
-                               onmouseover="this.style.background='rgba(139,92,246,0.15)';this.style.color='#a78bfa';"
-                               onmouseout="this.style.background='transparent';this.style.color='rgba(255,255,255,0.7)';">
-                                {{ language | upper }}
-                            </a>
-                        </li>
-                        {% endfor %}
-                    </ul>
+                    <span style="color: rgba(255,255,255,0.2); margin: 0 4px;">|</span>
+                    <a href="{{ get_url(path='/', lang='or') }}"
+                       style="padding: 6px 10px; font-size: 0.82rem; font-family: 'JetBrains Mono', monospace; font-weight: 700; text-decoration: none; border-radius: 6px; transition: all 0.2s;
+                              {% if lang == 'or' %}color: #fff; background: rgba(139,92,246,0.3);{% else %}color: rgba(255,255,255,0.4);{% endif %}"
+                       onmouseover="{% if lang != 'or' %}this.style.color='#fff';{% endif %}"
+                       onmouseout="{% if lang != 'or' %}this.style.color='rgba(255,255,255,0.4)';{% endif %}">
+                        OR
+                    </a>
                 </li>
                 {% endif %}
             </ul>
