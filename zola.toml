@@ -162,4 +162,6 @@ longitude = "121.6165"
 skip_prefixes = [
     "http://sympnp.org",
     "https://sympnp.org",
+    "https://doi.org/10.1103/",
 ]
+

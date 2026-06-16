@@ -314,21 +314,24 @@
     const section = document.getElementById('home');
     const canvas = document.getElementById('qcd-particle-canvas');
     if (!section || !canvas) return;
-    
+
+    // Bug fix: Skip 2D canvas if three-quark.js has already claimed it as WebGL
+    // Trying getContext('2d') after WebGL returns null in all browsers
     const ctx = canvas.getContext('2d');
+    if (!ctx) return; // WebGL context already active — three-quark.js owns this canvas
+
     let particles = [];
-    const maxParticles = 50;
-    
+    const maxParticles = 25; // authoritative value
+
     function resizeCanvas() {
       canvas.width = section.clientWidth;
       canvas.height = section.clientHeight;
     }
-    
+
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
-    
+
     const mouse = { x: null, y: null };
-    const maxParticles = 25; // Reduced from 50
     
     section.addEventListener('mousemove', (e) => {
       const rect = section.getBoundingClientRect();

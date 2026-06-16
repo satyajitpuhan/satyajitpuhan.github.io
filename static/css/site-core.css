@@ -172,6 +172,11 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-h); }
   0%,94%,96%,100% { opacity:1; }
   95% { opacity:0.85; }
 }
+/* Bug fix: rippleAnim was referenced in interactions.js but never defined */
+@keyframes rippleAnim {
+  from { transform: scale(0); opacity: 1; }
+  to   { transform: scale(1); opacity: 0; }
+}
 @keyframes lni-is-spinning { from { transform:rotate(0deg); } to { transform:rotate(360deg); } }
 @keyframes heroBgFade {
   0%   { opacity:0; transform:scale(1.06); }

@@ -168,130 +168,11 @@
     });
   })();
 
-  /* ── 5. Tilt Cards (3D hover) ── */
-  (function initTiltCards() {
-    const TILT_MAX = 10;
+  /* ── 5. Tilt Cards — handled by interactions.js (removed duplicate) ── */
 
-    document.querySelectorAll('.research-card, .news-card, .collaborator-card').forEach(card => {
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width;
-        const y = (e.clientY - rect.top) / rect.height;
-        const rotX = (y - 0.5) * -TILT_MAX * 2;
-        const rotY = (x - 0.5) * TILT_MAX * 2;
-        card.style.transform = `perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-6px) scale(1.02)`;
-        card.style.transition = 'none';
+  /* ── 6. Navbar Scroll Effect — handled by CSS sticky (removed JS conflict) ── */
 
-        // Highlight following mouse
-        const shine = card.querySelector('.ae-card-shine');
-        if (shine) {
-          shine.style.background = `radial-gradient(circle at ${x * 100}% ${y * 100}%, rgba(255,255,255,0.1), transparent 70%)`;
-        }
-      });
-
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = '';
-        card.style.transition = 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)';
-        const shine = card.querySelector('.ae-card-shine');
-        if (shine) shine.style.background = '';
-      });
-
-      // Add shine layer
-      const shine = document.createElement('div');
-      shine.className = 'ae-card-shine';
-      shine.style.cssText = 'position:absolute;inset:0;pointer-events:none;border-radius:inherit;z-index:2;transition:background 0.1s;';
-      card.style.position = card.style.position || 'relative';
-      card.appendChild(shine);
-    });
-  })();
-
-  /* ── 6. Navbar Scroll Effect ── */
-  (function initNavbarScroll() {
-    const header = document.getElementById('site-header');
-    const nav = document.querySelector('nav.navbar');
-    if (!header && !nav) return;
-
-    let lastY = 0;
-    window.addEventListener('scroll', () => {
-      const y = window.scrollY;
-      const wrap = document.getElementById('header-particles-wrap');
-
-      if (y > 80) {
-        if (wrap) {
-          wrap.style.position = 'sticky';
-          wrap.style.top = '0';
-          wrap.style.zIndex = '1000';
-          wrap.style.background = 'rgba(5,5,12,0.92)';
-          wrap.style.backdropFilter = 'blur(24px)';
-          wrap.style.webkitBackdropFilter = 'blur(24px)';
-          wrap.style.boxShadow = '0 4px 30px rgba(0,0,0,0.5)';
-          wrap.style.borderBottom = '1px solid rgba(139,92,246,0.15)';
-        }
-      } else {
-        if (wrap) {
-          wrap.style.position = 'relative';
-          wrap.style.top = '';
-          wrap.style.zIndex = '';
-          wrap.style.background = '#0a0a0f';
-          wrap.style.backdropFilter = '';
-          wrap.style.webkitBackdropFilter = '';
-          wrap.style.boxShadow = '';
-          wrap.style.borderBottom = '';
-        }
-      }
-
-      lastY = y;
-    }, { passive: true });
-  })();
-
-  /* ── 7. Typewriter for hero subtitle ── */
-  (function initTypewriter() {
-    const target = document.querySelector('.hero-description p');
-    if (!target || target.hasAttribute('data-tw-done')) return;
-
-    const phrases = [
-      'Theoretical Particle Physicist',
-      'QCD & Hadronic Physics Expert',
-      'Researcher at Academia Sinica',
-    ];
-
-    const wrapper = document.createElement('span');
-    wrapper.className = 'ae-typewriter';
-    wrapper.style.cssText = 'color: #a78bfa; font-weight: 700; display: inline-block;';
-    target.insertAdjacentElement('afterend', wrapper);
-
-    let phraseIdx = 0, charIdx = 0, deleting = false;
-
-    function type() {
-      const phrase = phrases[phraseIdx];
-      if (!deleting) {
-        wrapper.textContent = phrase.slice(0, ++charIdx);
-        if (charIdx === phrase.length) {
-          setTimeout(() => { deleting = true; type(); }, 2000);
-          return;
-        }
-        setTimeout(type, 75);
-      } else {
-        wrapper.textContent = phrase.slice(0, --charIdx);
-        if (charIdx === 0) {
-          deleting = false;
-          phraseIdx = (phraseIdx + 1) % phrases.length;
-          setTimeout(type, 400);
-          return;
-        }
-        setTimeout(type, 40);
-      }
-    }
-
-    // Blinking cursor
-    const cursor = document.createElement('span');
-    cursor.style.cssText = 'color: #06b6d4; animation: ae-blink 1s step-end infinite; font-weight: 300; font-size: 1.2em; margin-left: 2px;';
-    cursor.textContent = '|';
-    wrapper.insertAdjacentElement('afterend', cursor);
-
-    target.setAttribute('data-tw-done', '1');
-    setTimeout(type, 1200);
-  })();
+  /* ── 7. Typewriter — handled by advanced-v2.js (removed duplicate) ── */
 
   /* ── 8. Progress bars animate on scroll ── */
   (function initProgressBars() {
@@ -338,7 +219,7 @@
         z-index: 1;
         left: ${(5 + Math.random() * 85).toFixed(1)}%;
         top: ${(10 + Math.random() * 75).toFixed(1)}%;
-        animation: ae-float-label ${(8 + Math.random() * 6).toFixed(1)}s ease-in-out infinite;
+        animation: ae-float ${(8 + Math.random() * 6).toFixed(1)}s ease-in-out infinite;
         animation-delay: ${(i * 0.7).toFixed(1)}s;
       `;
       section.appendChild(el);
@@ -362,17 +243,6 @@
     nameEl.setAttribute('data-text', nameEl.textContent);
   })();
 
-  /* ── 12. Scroll progress bar ── */
-  (function initScrollProgress() {
-    const bar = document.createElement('div');
-    bar.id = 'ae-scroll-progress';
-    document.body.appendChild(bar);
-
-    window.addEventListener('scroll', () => {
-      const total = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = total > 0 ? (window.scrollY / total) * 100 : 0;
-      bar.style.width = progress + '%';
-    }, { passive: true });
-  })();
+  /* ── 12. Scroll Progress Bar — handled by advanced-v2.js (removed duplicate) ── */
 
 })();
