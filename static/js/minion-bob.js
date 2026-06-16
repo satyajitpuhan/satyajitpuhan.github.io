@@ -1,17 +1,17 @@
 /**
  * minion-bob.js
  * ─────────────────────────────────────────────────────────────────
- * A fully 3-D Minion Bob mascot built with Three.js r128.
- * Bob enters from below the viewport and wanders around the bottom
- * of the page, fleeing the mouse, blinking, waving and chatting.
+ * 3-D Minion Bob mascot (Three.js r128).
+ * Bob walks into the page from below, wanders around, flees the
+ * mouse, blinks, waves, and shows speech bubbles.
  * ─────────────────────────────────────────────────────────────────
  */
 (function () {
   'use strict';
 
-  /* wait until Three.js CDN has loaded */
+  /* poll until Three.js CDN has finished loading */
   function whenThree(fn, n) {
-    if (window.THREE) return fn();
+    if (window.THREE) { fn(); return; }
     if ((n = (n || 0)) > 80) return;
     setTimeout(function () { whenThree(fn, n + 1); }, 120);
   }
@@ -19,57 +19,44 @@
   whenThree(spawnBob);
 
   /* ═══════════════════════════════════════════════════════════════
-     MAIN INIT
+     MAIN
   ═══════════════════════════════════════════════════════════════ */
   function spawnBob() {
-    var T  = window.THREE;
-    var CW = 170, CH = 220;          /* canvas pixel size          */
-    var vW = window.innerWidth;
-    var vH = window.innerHeight;
+    var T   = window.THREE;
+    var CW  = 170, CH = 220;     /* canvas size in CSS pixels */
+    var vW  = window.innerWidth;
+    var vH  = window.innerHeight;
 
-    /* ── wrapper div ─────────────────────────────────────────── */
+    /* ── DOM wrapper ─────────────────────────────────────────── */
     var wrap = document.createElement('div');
     wrap.id  = 'minion-bob';
     wrap.style.cssText =
       'position:fixed;' +
-      'width:'  + CW + 'px;' +
-      'height:' + CH + 'px;' +
+      'width:'   + CW + 'px;height:' + CH + 'px;' +
       'z-index:7500;pointer-events:none;' +
-      'left:'   + (vW - CW - 200) + 'px;' +
-      'top:'    + (vH + 20)       + 'px;'; /* start fully off-screen */
+      'left:'    + (vW - CW - 200) + 'px;' +
+      'top:'     + (vH + 20)       + 'px;';  /* start below viewport */
     document.body.appendChild(wrap);
 
     /* ── speech bubble ───────────────────────────────────────── */
     var bub = document.createElement('div');
     bub.style.cssText =
-      'position:absolute;bottom:' + (CH + 8) + 'px;' +
-      'left:50%;transform:translateX(-50%);' +
+      'position:absolute;' +
+      'bottom:' + (CH + 8) + 'px;left:50%;transform:translateX(-50%);' +
       'background:#fff;border:2.5px solid #444;border-radius:14px;' +
       'padding:6px 13px;white-space:nowrap;' +
       'font-family:\'Space Grotesk\',system-ui,sans-serif;' +
       'font-size:12px;font-weight:700;color:#222;' +
       'opacity:0;transition:opacity 0.38s ease;' +
       'box-shadow:0 6px 22px rgba(0,0,0,.22);pointer-events:none;';
-
-    /* bubble tail (two triangles: border + fill) */
     bub.innerHTML =
-      '<span class="bob-bub-text">Bello!</span>' +
-      '<div style="position:absolute;bottom:-10px;left:50%;' +
-        'transform:translateX(-50%);width:0;height:0;' +
-        'border:9px solid transparent;border-top:10px solid #444;' +
-        'border-bottom:0"></div>' +
-      '<div style="position:absolute;bottom:-6px;left:50%;' +
-        'transform:translateX(-50%);width:0;height:0;' +
-        'border:7px solid transparent;border-top:7px solid #fff;' +
-        'border-bottom:0"></div>';
+      '<span id="bob-bub-inner">Bello!</span>' +
+      '<div style="position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);width:0;height:0;border:9px solid transparent;border-top:10px solid #444;border-bottom:0"></div>' +
+      '<div style="position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);width:0;height:0;border:7px solid transparent;border-top:7px solid #fff;border-bottom:0"></div>';
     wrap.appendChild(bub);
 
-    var bubTxt = bub.querySelector('.bob-bub-text');
-    var PHRASES = [
-      'Bello! 👋', 'Me like! ⚛️', 'Poopaye! 🍌',
-      'Tulaliloo! ✨', 'Bee do! 🚨', 'Tank yu! 😊',
-      'Papagena! 🎵', 'Me want banana! 🍌'
-    ];
+    var bubTxt = bub.querySelector('#bob-bub-inner');
+    var PHRASES = ['Bello! 👋','Me like! ⚛️','Poopaye! 🍌','Tulaliloo! ✨','Bee do! 🚨','Tank yu! 😊','Papagena! 🎵','Me want banana! 🍌'];
 
     function showBub(txt) {
       bubTxt.textContent = txt;
@@ -92,311 +79,255 @@
     cam.position.set(0, 0.6, 9.2);
     cam.lookAt(0, 0, 0);
 
-    /* ── lighting ────────────────────────────────────────────── */
+    /* ── lights ──────────────────────────────────────────────── */
     sc.add(new T.AmbientLight(0xffffff, 0.5));
+    var sun  = new T.DirectionalLight(0xfff5dd, 1.4);  sun.position.set(4, 7, 6);  sc.add(sun);
+    var fill = new T.DirectionalLight(0x88aaff, 0.38); fill.position.set(-4, 1, 3); sc.add(fill);
+    var rim  = new T.DirectionalLight(0xffffff, 0.15); rim.position.set(0, -4, -2); sc.add(rim);
 
-    var sun = new T.DirectionalLight(0xfff5dd, 1.4);
-    sun.position.set(4, 7, 6);
-    sc.add(sun);
-
-    var fill = new T.DirectionalLight(0x88aaff, 0.38);
-    fill.position.set(-4, 1, 3);
-    sc.add(fill);
-
-    var rim = new T.DirectionalLight(0xffffff, 0.15);
-    rim.position.set(0, -4, -2);
-    sc.add(rim);
-
-    /* ── material factory ────────────────────────────────────── */
-    function M(hex, sh, specHex) {
-      return new T.MeshPhongMaterial({
-        color:     new T.Color(hex),
-        shininess: sh || 40,
-        specular:  new T.Color(specHex || 0x111111)
-      });
+    /* ── materials ───────────────────────────────────────────── */
+    function mat(hex, sh, sp) {
+      return new T.MeshPhongMaterial({ color: new T.Color(hex), shininess: sh, specular: new T.Color(sp || 0x111111) });
     }
-    var mY  = M(0xF9C21A, 60,  0x443300); /* minion yellow          */
-    var mBl = M(0x2255BB, 30,  0x001133); /* overall blue           */
-    var mDn = M(0x1B3A7A, 12);            /* denim pocket           */
-    var mW  = M(0xFFFFFF, 95,  0x999999); /* white (gloves, eyes)   */
-    var mK  = M(0x111111, 20);            /* black (pupils, mouth)  */
-    var mGr = M(0xBBBBBB, 130, 0xCCCCCC);/* goggle metal gray      */
-    var mBr = M(0x5C3A1E, 18);            /* brown hair             */
-    var mSh = M(0x181818, 95,  0x555555); /* shoe dark              */
+    var mY  = mat(0xF9C21A, 60,  0x443300);
+    var mBl = mat(0x2255BB, 30,  0x001133);
+    var mDn = mat(0x1B3A7A, 12,  0x000000);
+    var mW  = mat(0xFFFFFF, 95,  0x999999);
+    var mK  = mat(0x111111, 20,  0x000000);
+    var mGr = mat(0xBBBBBB, 130, 0xCCCCCC);
+    var mBr = mat(0x5C3A1E, 18,  0x000000);
+    var mSh = mat(0x181818, 95,  0x555555);
 
-    /* ── character root ─────────────────────────────────────── */
-    var bob = new T.Group();
+    /* ── character root ──────────────────────────────────────── */
+    var bob  = new T.Group();
     sc.add(bob);
+    function mk(g, m) { return new T.Mesh(g, m); }
 
-    function mk(geo, mat)  { return new T.Mesh(geo, mat); }
-    function badd(o)       { bob.add(o); return o; }
-
-    /* ─── ground shadow ─────────────────────────────────────── */
-    var shdwMat = new T.MeshBasicMaterial({
-      color: 0x000000, transparent: true,
-      opacity: 0.14, side: T.DoubleSide
-    });
+    /* shadow */
+    var shdwMat = new T.MeshBasicMaterial({ color:0, transparent:true, opacity:0.13, side:T.DoubleSide });
     var shdw = mk(new T.CircleGeometry(0.62, 32), shdwMat);
-    shdw.rotation.x = -Math.PI / 2;
-    shdw.position.y = -1.70;
-    badd(shdw);
+    shdw.rotation.x = -Math.PI / 2;  shdw.position.y = -1.70;
+    bob.add(shdw);
 
-    /* ─── body (elongated sphere) ───────────────────────────── */
+    /* body */
     var bodyM = mk(new T.SphereGeometry(0.78, 32, 24), mY);
     bodyM.scale.y = 1.24;
-    badd(bodyM);
+    bob.add(bodyM);
 
-    /* ─── overalls – pants ──────────────────────────────────── */
+    /* overalls – pants */
     var pantsM = mk(new T.CylinderGeometry(0.75, 0.71, 0.78, 24), mBl);
     pantsM.position.y = -0.58;
-    badd(pantsM);
+    bob.add(pantsM);
 
-    /* ─── overalls – bib ────────────────────────────────────── */
+    /* overalls – bib */
     var bibM = mk(new T.BoxGeometry(0.88, 0.72, 0.12), mBl);
     bibM.position.set(0, -0.05, 0.72);
-    badd(bibM);
+    bob.add(bibM);
 
-    /* ─── overalls – straps ─────────────────────────────────── */
-    [[-0.22, 0.17], [0.22, -0.17]].forEach(function (s) {
+    /* straps */
+    [[-0.22, 0.17],[0.22, -0.17]].forEach(function (s) {
       var st = mk(new T.BoxGeometry(0.12, 0.48, 0.09), mBl);
-      st.position.set(s[0], 0.32, 0.72);
-      st.rotation.z = s[1];
-      badd(st);
+      st.position.set(s[0], 0.32, 0.72); st.rotation.z = s[1];
+      bob.add(st);
     });
 
-    /* ─── pocket ────────────────────────────────────────────── */
+    /* pocket */
     var pktM = mk(new T.BoxGeometry(0.26, 0.16, 0.04), mDn);
     pktM.position.set(0, -0.19, 0.80);
-    badd(pktM);
+    bob.add(pktM);
 
-    /* ═══ HEAD GROUP ════════════════════════════════════════════ */
+    /* ── head group ──────────────────────────────────────────── */
     var hG = new T.Group();
     hG.position.y = 1.26;
     bob.add(hG);
 
-    /* head sphere */
-    var headM = mk(new T.SphereGeometry(0.75, 32, 32), mY);
-    hG.add(headM);
+    hG.add(mk(new T.SphereGeometry(0.75, 32, 32), mY));
 
-    /* ─── hair (Bob's single spike) ─────────────────────────── */
+    /* hair */
     var hairM = mk(new T.ConeGeometry(0.09, 0.52, 8), mBr);
-    hairM.position.set(0.15, 0.81, 0.06);
-    hairM.rotation.z = -0.22;
+    hairM.position.set(0.15, 0.81, 0.06); hairM.rotation.z = -0.22;
     hG.add(hairM);
 
-    /* ─── goggle strap (full torus ring around head) ─────────── */
+    /* goggle strap ring */
     var strapM = mk(new T.TorusGeometry(0.75, 0.052, 8, 48), mGr);
     strapM.rotation.x = Math.PI / 2;
     hG.add(strapM);
 
-    /* ─── goggle bridge ─────────────────────────────────────── */
+    /* goggle bridge */
     var brM = mk(new T.CylinderGeometry(0.038, 0.038, 0.31, 8), mGr);
-    brM.rotation.z = Math.PI / 2;
-    brM.position.set(0, 0.025, 0.72);
+    brM.rotation.z = Math.PI / 2; brM.position.set(0, 0.025, 0.72);
     hG.add(brM);
 
-    /* ═══ EYES ══════════════════════════════════════════════════ */
-    function mkEye(r, px, py, pz) {
+    /* ── eyes ────────────────────────────────────────────────── */
+    /* NOTE: parameters use 'er,ex,ey,ez' to avoid shadowing outer px/py */
+    function mkEye(er, ex, ey, ez) {
       var g = new T.Group();
-      g.position.set(px, py, pz);
+      g.position.set(ex, ey, ez);
 
-      var ew  = mk(new T.SphereGeometry(r, 22, 22), mW);
-      var pup = mk(new T.SphereGeometry(r * 0.52, 16, 16), mBr);
-      pup.position.z = r * 0.68;
-      var irs = mk(new T.SphereGeometry(r * 0.28, 14, 14), mK);
-      irs.position.z = r * 0.86;
-      var hl  = mk(new T.SphereGeometry(r * 0.115, 8, 8), mW);
-      hl.position.set(r * 0.18, r * 0.23, r * 0.94);
-      var ring = mk(new T.TorusGeometry(r + 0.068, 0.052, 8, 24), mGr);
+      var ew   = mk(new T.SphereGeometry(er, 22, 22), mW);
+      var pup  = mk(new T.SphereGeometry(er * 0.52, 16, 16), mBr);
+      pup.position.z = er * 0.68;
+      var iris = mk(new T.SphereGeometry(er * 0.28, 14, 14), mK);
+      iris.position.z = er * 0.86;
+      var hl   = mk(new T.SphereGeometry(er * 0.115, 8, 8), mW);
+      hl.position.set(er * 0.18, er * 0.23, er * 0.94);
+      var ring = mk(new T.TorusGeometry(er + 0.068, 0.052, 8, 24), mGr);
 
-      [ew, pup, irs, hl, ring].forEach(function (m) { g.add(m); });
+      [ew, pup, iris, hl, ring].forEach(function (m) { g.add(m); });
       hG.add(g);
-      return { ew: ew, pup: pup, irs: irs };
+      return { ew: ew, pup: pup, iris: iris };
     }
 
-    /* Bob's signature: one larger eye (L) + one smaller eye (R) */
+    /* Bob's asymmetric eyes: big left, small right */
     var eL = mkEye(0.268, -0.205,  0.065, 0.68);
     var eR = mkEye(0.208,  0.245,  0.010, 0.68);
 
-    /* ─── smile ──────────────────────────────────────────────── */
+    /* smile */
     var smM = mk(new T.TorusGeometry(0.215, 0.044, 8, 22, Math.PI), mK);
-    smM.position.set(0, -0.325, 0.70);
-    smM.rotation.z = Math.PI;
+    smM.position.set(0, -0.325, 0.70); smM.rotation.z = Math.PI;
     hG.add(smM);
 
-    /* ═══ ARMS ══════════════════════════════════════════════════ */
+    /* ── arms ────────────────────────────────────────────────── */
     function mkArm(sign) {
       var g = new T.Group();
       g.position.set(sign * 0.84, 0.10, 0);
-
-      /* cylinder segment */
       var cyl = mk(new T.CylinderGeometry(0.13, 0.13, 0.50, 12), mY);
-      cyl.rotation.z   = Math.PI / 2;
-      cyl.position.x   = sign * 0.25;
+      cyl.rotation.z = Math.PI / 2; cyl.position.x = sign * 0.25;
       g.add(cyl);
-
-      /* shoulder cap */
-      var cs = mk(new T.SphereGeometry(0.13, 14, 14), mY);
-      g.add(cs);
-
-      /* wrist cap */
-      var cw = mk(new T.SphereGeometry(0.13, 14, 14), mY);
-      cw.position.x = sign * 0.50;
-      g.add(cw);
-
-      /* glove */
+      g.add(mk(new T.SphereGeometry(0.13, 14, 14), mY));         /* shoulder cap */
+      var wc = mk(new T.SphereGeometry(0.13, 14, 14), mY);
+      wc.position.x = sign * 0.50; g.add(wc);                    /* wrist cap    */
       var gl = mk(new T.SphereGeometry(0.18, 16, 16), mW);
-      gl.position.x = sign * 0.69;
-      g.add(gl);
-
-      bob.add(g);
-      return g;
+      gl.position.x = sign * 0.69; g.add(gl);                    /* glove        */
+      bob.add(g); return g;
     }
     var aL = mkArm(-1), aR = mkArm(1);
 
-    /* ═══ LEGS ══════════════════════════════════════════════════ */
+    /* ── legs ────────────────────────────────────────────────── */
     function mkLeg(sign) {
       var g = new T.Group();
       g.position.set(sign * 0.31, -1.10, 0);
-
-      /* thigh cylinder */
-      var cyl = mk(new T.CylinderGeometry(0.21, 0.20, 0.36, 16), mY);
-      g.add(cyl);
-
-      /* knee / ankle round cap */
+      g.add(mk(new T.CylinderGeometry(0.21, 0.20, 0.36, 16), mY));
       var bc = mk(new T.SphereGeometry(0.20, 16, 16), mY);
-      bc.position.y = -0.18;
-      g.add(bc);
-
-      /* shoe – squashed + elongated sphere */
+      bc.position.y = -0.18; g.add(bc);
       var shoe = mk(new T.SphereGeometry(0.23, 16, 12), mSh);
-      shoe.scale.set(1, 0.62, 1.45);
-      shoe.position.set(0, -0.42, 0.10);
+      shoe.scale.set(1, 0.62, 1.45); shoe.position.set(0, -0.42, 0.10);
       g.add(shoe);
-
-      bob.add(g);
-      return g;
+      bob.add(g); return g;
     }
     var lL = mkLeg(-1), lR = mkLeg(1);
 
-    /* ═══════════════════════════════════════════════════════════
-       WANDERING / PAGE-POSITION STATE
-    ═══════════════════════════════════════════════════════════ */
-    /* CSS coordinates for the wrapper */
-    var px = vW - CW - 200;          /* initial X (near right edge)  */
-    var py = vH + 20;                 /* off-screen below             */
-    var tX = px;
-    var tY = vH - CH - 50;           /* first wander target          */
+    /* ── page-position state ─────────────────────────────────── */
+    var bobX = vW - CW - 200;   /* CSS left  (starts near right edge) */
+    var bobY = vH + 20;          /* CSS top   (starts off-screen)      */
+    var tgtX = bobX;
+    var tgtY = vH - CH - 50;
     var spd    = 1.3;
     var dirTmr = 0;
-    var entering = true;              /* entrance animation flag      */
+    var entering = true;
 
     function pickTarget() {
       var mg = 80;
-      tX = mg + Math.random() * (vW - CW - mg * 2);
-      tY = vH * 0.55 + Math.random() * (vH * 0.36);
+      tgtX = mg + Math.random() * (vW - CW - mg * 2);
+      tgtY = vH * 0.55 + Math.random() * (vH * 0.36);
       dirTmr = 90 + Math.random() * 170;
     }
 
-    var mPX = vW / 2, mPY = vH / 2;  /* mouse page-coords            */
+    /* mouse position */
+    var mouseX = vW / 2, mouseY = vH / 2;
     document.addEventListener('mousemove', function (e) {
-      mPX = e.clientX; mPY = e.clientY;
+      mouseX = e.clientX; mouseY = e.clientY;
     }, { passive: true });
 
     window.addEventListener('resize', function () {
       vW = window.innerWidth; vH = window.innerHeight;
     }, { passive: true });
 
-    /* ═══════════════════════════════════════════════════════════
-       ANIMATION LOOP
-    ═══════════════════════════════════════════════════════════ */
+    /* ── animation state ─────────────────────────────────────── */
     var t   = 0;
-    var fac = 1;     /* facing: +1=right, -1=left  */
+    var fac = 1;      /* facing +1=right / -1=left */
     var mov = false;
 
-    /* blink state-machine */
-    var blT = 80 + Math.random() * 80;
+    var blT      = 80 + Math.random() * 80;
     var blinking = false, blPh = 0;
 
-    /* wave state-machine */
-    var waT = 220 + Math.random() * 300;
+    var waT    = 220 + Math.random() * 300;
     var waving = false, waPh = 0;
 
-    /* tilt on entry – looks like Bob is walking INTO the page */
+    /* entrance tilt: Bob leans forward as if walking onto the page */
     bob.rotation.x = 0.30;
-    bob.scale.set(0.5, 0.5, 0.5);   /* start small, grow in */
+    bob.scale.set(0.5, 0.5, 0.5);
 
+    /* ── main loop ───────────────────────────────────────────── */
     function loop() {
       requestAnimationFrame(loop);
       t += 0.04;
 
-      /* ── PAGE POSITION ─────────────────────────────────────── */
+      /* PAGE POSITION ─────────────────────────────────────────── */
       if (entering) {
-        py  -= 2.0;                               /* walk upward          */
-        bob.rotation.x *= 0.96;                  /* straighten            */
-        var scl = Math.min(1, bob.scale.x + 0.015); /* grow to full size   */
-        bob.scale.set(scl, scl, scl);
+        bobY -= 2.0;                                   /* walk up  */
+        bob.rotation.x *= 0.96;                        /* straighten */
+        var ns = Math.min(1.0, bob.scale.x + 0.015);  /* grow in    */
+        bob.scale.set(ns, ns, ns);
         mov = true;
 
-        if (py <= vH - CH - 50) {
-          py = vH - CH - 50;
+        if (bobY <= vH - CH - 50) {
+          bobY = vH - CH - 50;
           entering = false;
           pickTarget();
           setTimeout(function () { showBub('Bello! 👋'); }, 500);
         }
       } else {
-        /* wander toward target */
         dirTmr--;
         if (dirTmr <= 0) pickTarget();
 
-        var dx = tX - px, dy = tY - py;
+        var dx = tgtX - bobX, dy = tgtY - bobY;
         var d  = Math.sqrt(dx * dx + dy * dy);
         mov = d > 8;
         if (mov) {
-          px += (dx / d) * spd;
-          py += (dy / d) * spd;
+          bobX += (dx / d) * spd;
+          bobY += (dy / d) * spd;
           fac = dx > 0 ? 1 : -1;
         }
 
-        /* flee mouse cursor ─ Bob is scared! */
-        var fx = px + CW / 2 - mPX;
-        var fy = py + CH / 2 - mPY;
+        /* flee mouse */
+        var fx = bobX + CW / 2 - mouseX;
+        var fy = bobY + CH / 2 - mouseY;
         var fd = Math.sqrt(fx * fx + fy * fy);
         if (fd > 0 && fd < 150) {
           var fl = ((150 - fd) / 150) * 3.8;
-          px += (fx / fd) * fl;
-          py += (fy / fd) * fl;
+          bobX += (fx / fd) * fl;
+          bobY += (fy / fd) * fl;
           fac = fx > 0 ? 1 : -1;
           mov = true;
           if (fd < 65 && Math.random() < 0.008) {
             showBub('Bee do bee do! 🚨');
-            dirTmr = 0; /* immediately pick a new escape target */
+            dirTmr = 0;
           }
         }
 
-        /* clamp inside viewport */
-        px = Math.max(40, Math.min(vW - CW - 40, px));
-        py = Math.max(40, Math.min(vH - CH - 40, py));
+        /* clamp */
+        bobX = Math.max(40, Math.min(vW - CW - 40, bobX));
+        bobY = Math.max(40, Math.min(vH - CH - 40, bobY));
       }
 
-      /* apply CSS position */
-      wrap.style.left   = Math.round(px) + 'px';
-      wrap.style.top    = Math.round(py) + 'px';
+      /* update DOM */
+      wrap.style.left   = Math.round(bobX) + 'px';
+      wrap.style.top    = Math.round(bobY) + 'px';
       wrap.style.right  = 'auto';
       wrap.style.bottom = 'auto';
 
-      /* ── 3-D WALK / IDLE ───────────────────────────────────── */
+      /* 3-D WALK CYCLE ────────────────────────────────────────── */
       if (mov) {
         var cyc = t * 5.0;
-        bob.position.y   = Math.abs(Math.sin(cyc)) * 0.10; /* bounce   */
-        lL.rotation.x    =  Math.sin(cyc) * 0.44;          /* left leg  */
-        lR.rotation.x    = -Math.sin(cyc) * 0.44;          /* right leg */
+        bob.position.y   = Math.abs(Math.sin(cyc)) * 0.10;
+        lL.rotation.x    =  Math.sin(cyc) * 0.44;
+        lR.rotation.x    = -Math.sin(cyc) * 0.44;
         if (!waving) {
-          aL.rotation.z  =  Math.sin(cyc) * 0.30;          /* arm swing */
+          aL.rotation.z  =  Math.sin(cyc) * 0.30;
           aR.rotation.z  = -Math.sin(cyc) * 0.30;
         }
-        bodyM.rotation.z = Math.sin(cyc) * 0.032;          /* body sway */
-        /* shadow shrinks when Bob is in the air */
+        bodyM.rotation.z = Math.sin(cyc) * 0.032;
         shdw.scale.setScalar(1.0 - bob.position.y * 0.18);
       } else {
         /* idle breathing */
@@ -404,17 +335,16 @@
         bodyM.scale.y    = 1.24 + br * 0.022;
         bodyM.scale.x    = 1.00 - br * 0.008;
         bob.position.y   = br * 0.038;
-        /* ease legs / arms back to rest */
         lL.rotation.x   *= 0.87; lR.rotation.x *= 0.87;
         if (!waving) { aL.rotation.z *= 0.9; aR.rotation.z *= 0.9; }
         bodyM.rotation.z *= 0.88;
         shdw.scale.setScalar(1.0);
       }
 
-      /* smooth facing direction */
+      /* smooth facing */
       bob.rotation.y += (fac * 0.18 - bob.rotation.y) * 0.1;
 
-      /* ── WAVING ────────────────────────────────────────────── */
+      /* WAVING ─────────────────────────────────────────────────── */
       waT--;
       if (waT <= 0 && !waving) {
         waving = true; waPh = 0;
@@ -425,18 +355,12 @@
       if (waving) {
         waPh += 0.07;
         aR.rotation.z = -0.6 - Math.abs(Math.sin(waPh * 2.9)) * 1.35;
-        if (waPh > Math.PI * 1.85) {
-          waving = false;
-          aR.rotation.z = 0;
-        }
+        if (waPh > Math.PI * 1.85) { waving = false; aR.rotation.z = 0; }
       }
 
-      /* ── BLINKING ──────────────────────────────────────────── */
+      /* BLINKING ───────────────────────────────────────────────── */
       blT--;
-      if (blT <= 0 && !blinking) {
-        blinking = true; blPh = 0;
-        blT = 70 + Math.random() * 110;
-      }
+      if (blT <= 0 && !blinking) { blinking = true; blPh = 0; blT = 70 + Math.random() * 110; }
       if (blinking) {
         blPh += 0.30;
         var sc = Math.max(0.04, Math.cos(blPh * Math.PI));
@@ -449,18 +373,18 @@
         }
       }
 
-      /* ── EYE TRACKING (Bob watches the mouse) ─────────────── */
+      /* EYE TRACKING ───────────────────────────────────────────── */
+      /* Use bobX/bobY (not the shadowed px/py params from mkEye!) */
       var ex = Math.max(-0.13, Math.min(0.13,
-        (mPX - (px + CW / 2)) / vW * 0.42));
+        (mouseX - (bobX + CW / 2)) / vW * 0.42));
       var ey = Math.max(-0.13, Math.min(0.13,
-        -(mPY - (py + CH / 2)) / vH * 0.42));
+        -(mouseY - (bobY + CH / 2)) / vH * 0.42));
 
-      eL.pup.position.x = ex;      eL.pup.position.y = ey;
-      eL.irs.position.x = ex*1.35; eL.irs.position.y = ey*1.35;
-      eR.pup.position.x = ex*0.80; eR.pup.position.y = ey*0.80;
-      eR.irs.position.x = ex*1.10; eR.irs.position.y = ey*1.10;
+      eL.pup.position.x  = ex;      eL.pup.position.y  = ey;
+      eL.iris.position.x = ex*1.35; eL.iris.position.y = ey*1.35;
+      eR.pup.position.x  = ex*0.80; eR.pup.position.y  = ey*0.80;
+      eR.iris.position.x = ex*1.10; eR.iris.position.y = ey*1.10;
 
-      /* slight head turn toward mouse */
       hG.rotation.y = ex * 0.36;
       hG.rotation.x = -ey * 0.28;
 
