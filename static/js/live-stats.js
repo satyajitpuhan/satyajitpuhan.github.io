@@ -8,9 +8,9 @@
   
     // Fallback data in case the API rate limits or fails
     const FALLBACK_DATA = {
-      citations: 342,
-      hindex: 11,
-      papers: 34
+      citations: 176,
+      hindex: 7,
+      papers: 41
     };
   
     async function fetchInspireStats() {
@@ -21,10 +21,9 @@
       if (!citeEl || !hindexEl || !papersEl) return;
   
       try {
-        // Query Inspire-HEP for author "Satyajit Puhan" or "S.Puhan.1"
-        // The /api/literature endpoint with facet author can give us citation counts.
-        // Actually, the easiest is to query the author API directly if we have the exact name.
-        const response = await fetch('https://inspirehep.net/api/literature?q=a%20"S.Puhan.1"+or+a+"Satyajit+Puhan"');
+        // Query Inspire-HEP using exact author recid to avoid false matches
+        // (e.g. NOvA collaboration papers from a different "Puhan")
+        const response = await fetch('https://inspirehep.net/api/literature?q=a+Satyajit.Puhan.1&size=250');
         if (!response.ok) throw new Error('API response not ok');
         
         const data = await response.json();
