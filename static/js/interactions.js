@@ -57,7 +57,7 @@
      Buttons magnetically attract the cursor
   ══════════════════════════════════════════════ */
   function initMagnetic() {
-    if (isMobile) return;
+    if (isMobile || window.__ultraEngineLoaded) return;
     const RADIUS = 80; // px — activation radius
     const STRENGTH = 0.38;
 
@@ -122,6 +122,7 @@
   }
 
   function initScramble() {
+    if (window.__ultraEngineLoaded) return;
     const headings = document.querySelectorAll(
       '#service h2, #skill h2, #portfolio h2, #resume h2, #research-network h2'
     );

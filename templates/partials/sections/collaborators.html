@@ -7,9 +7,9 @@
   <div style="position: absolute; inset: 0; background: rgba(30, 10, 20, 0.75); pointer-events: none;"></div>
   <div style="position: relative; z-index: 1;">
     <div class="container">
-        <div class="collaborators__header" style="color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.5); padding-bottom: 30px;">
+        <div class="collaborators__header" data-spring-reveal="up" style="color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.5); padding-bottom: 30px;">
             {% if data.top_title %}<span style="color: #f39c12; font-weight: 800; letter-spacing: 2px;">{{ data.top_title }}</span>{% endif %}
-            <h1 style="color: white; font-weight: 800;">{{ data.title }}</h1>
+            <h1 data-scramble style="color: white; font-weight: 800;">{{ data.title }}</h1>
             {% if data.subtitle %}<p style="color: #f8f9fa;">{{ data.subtitle }}</p>{% endif %}
         </div>
 

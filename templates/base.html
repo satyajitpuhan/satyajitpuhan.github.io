@@ -37,6 +37,8 @@
     <link rel="stylesheet" href="{{ get_url(path='css/chatbot.css', cachebust=true) }}">
     <!-- Light Theme overrides -->
     <link rel="stylesheet" href="{{ get_url(path='css/light-theme.css', cachebust=true) }}">
+    <!-- Ultra V3: next-level visual layer -->
+    <link rel="stylesheet" href="{{ get_url(path='css/ultra-v3.css', cachebust=true) }}">
     {% endblock %}
 
     <link rel="shortcut icon" type="image/x-icon" href="{{ get_url(path='images/favicon.ico') }}">
@@ -55,6 +57,21 @@
 </head>
 
 <body>
+
+    <!-- ── Skip to Content (Accessibility) ── -->
+    <a href="#content" class="ae-skip-link" style="position: absolute; top: -40px; left: 0; background: var(--gold, #e8a444); color: #000; padding: 8px 16px; font-weight: 700; font-size: 0.85rem; z-index: 100000; text-decoration: none; border-radius: 0 0 8px 0; transition: top 0.3s;" onfocus="this.style.top='0'" onblur="this.style.top='-40px'">Skip to content</a>
+
+    <!-- ── Ultra V3 Loading Screen ── -->
+    <div id="ae-loading-screen" aria-hidden="true">
+        <div class="ae-loading-spinner"></div>
+        <div class="ae-loading-text">Initializing Portfolio</div>
+    </div>
+
+    <!-- ── Film Grain Noise Overlay ── -->
+    <div class="ae-noise-overlay" aria-hidden="true"></div>
+
+    <!-- ── Scroll Progress (Right Edge) ── -->
+    <div id="ae-scroll-progress-v2" aria-hidden="true"></div>
 
     <!-- ── Reading Progress Bar ── -->
     <div id="ae-scroll-progress" role="progressbar" aria-label="Reading progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
@@ -128,6 +145,11 @@
       onScroll();
     })();
     </script>
+
+    <!-- ════════════════════════════════════════════
+         ULTRA V3 ENGINE — Next-Level Interactions
+         ════════════════════════════════════════════ -->
+    <script src="{{ get_url(path='js/ultra-engine.js', cachebust=true) }}"></script>
     {% endblock %}
 </body>
 

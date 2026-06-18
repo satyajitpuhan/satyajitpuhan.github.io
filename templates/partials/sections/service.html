@@ -5,8 +5,8 @@
 <section class="section service" id="service"
   style="position: relative; background: #0a0818; padding: 100px 0; overflow: hidden;">
   <!-- Background glows -->
-  <div style="position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 800px; height: 400px; background: radial-gradient(ellipse, rgba(139,92,246,0.08) 0%, transparent 70%); pointer-events: none;"></div>
-  <div style="position: absolute; bottom: 0; right: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(6,182,212,0.06) 0%, transparent 70%); pointer-events: none;"></div>
+  <div data-parallax="0.15" style="position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 800px; height: 400px; background: radial-gradient(ellipse, rgba(139,92,246,0.08) 0%, transparent 70%); pointer-events: none;"></div>
+  <div data-parallax="0.25" style="position: absolute; bottom: 0; right: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(6,182,212,0.06) 0%, transparent 70%); pointer-events: none;"></div>
   <!-- Circuit board lines decoration -->
   <div style="position: absolute; inset: 0; pointer-events: none; opacity: 0.025; background-image: linear-gradient(rgba(139,92,246,1) 1px, transparent 1px), linear-gradient(90deg, rgba(139,92,246,1) 1px, transparent 1px); background-size: 80px 80px;"></div>
   <div style="position: relative; z-index: 1;">
@@ -14,7 +14,7 @@
       <!-- Header -->
       <div class="row">
         <div class="col-lg-8 offset-lg-2 text-center" style="margin-bottom: 60px;">
-          <div class="service__header" data-reveal="up">
+          <div class="service__header" data-spring-reveal="up">
             {% if data.top_title %}
             <div style="
               display: inline-flex; align-items: center; gap: 8px;
