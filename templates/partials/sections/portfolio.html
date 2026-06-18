@@ -52,12 +52,46 @@
 
     <!-- Publication Timeline Chart & Live Dashboard -->
     <div class="row justify-content-center mb-5" data-reveal="up">
-      <!-- Timeline Chart -->
+      <!-- Timeline Chart with Filter Tabs -->
       <div class="col-lg-8 mb-4 mb-lg-0">
-        <div style="background: rgba(10,10,22,0.9); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 20px; box-shadow: 0 8px 30px rgba(0,0,0,0.3); height: 100%;">
-          <canvas id="pubTimelineChart" style="width:100%; height:250px;"></canvas>
+        <div style="background: rgba(10,10,22,0.9); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 20px 24px 24px; box-shadow: 0 8px 30px rgba(0,0,0,0.3); height: 100%;">
+
+          <!-- Chart Header -->
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 16px;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+              <span style="color: rgba(255,255,255,0.7); font-size: 0.8rem; font-family:'JetBrains Mono',monospace; letter-spacing:1.5px; text-transform:uppercase;">Publications by Year</span>
+            </div>
+            <!-- Filter Tab Buttons -->
+            <div class="pub-filter-tabs" id="pubFilterTabs" style="display:flex; gap:6px; flex-wrap:wrap;">
+              <button class="pub-filter-tab active" data-filter="all" id="tab-all"
+                onclick="setPubFilter('all')" aria-pressed="true">
+                ◈ All
+              </button>
+              <button class="pub-filter-tab" data-filter="articles" id="tab-articles"
+                onclick="setPubFilter('articles')" aria-pressed="false">
+                📰 Articles
+              </button>
+              <button class="pub-filter-tab" data-filter="proceedings" id="tab-proceedings"
+                onclick="setPubFilter('proceedings')" aria-pressed="false">
+                📋 Proceedings
+              </button>
+            </div>
+          </div>
+
+          <!-- Chart Summary Chips -->
+          <div id="pub-chart-summary" style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px;">
+            <span class="pub-chip" id="chip-total" style="background:rgba(56,189,248,0.12); border:1px solid rgba(56,189,248,0.3); color:#38bdf8;">Total: <strong id="chip-total-val">34</strong></span>
+            <span class="pub-chip" id="chip-articles" style="background:rgba(251,191,36,0.1); border:1px solid rgba(251,191,36,0.3); color:#fbbf24;">Articles: <strong id="chip-articles-val">22</strong></span>
+            <span class="pub-chip" id="chip-proceedings" style="background:rgba(167,139,250,0.1); border:1px solid rgba(167,139,250,0.3); color:#a78bfa;">Proceedings: <strong id="chip-proc-val">12</strong></span>
+          </div>
+
+          <div style="position:relative; height:230px;">
+            <canvas id="pubTimelineChart"></canvas>
+          </div>
         </div>
       </div>
+
       <!-- Inspire-HEP Live Dashboard -->
       <div class="col-lg-4">
         <div style="background: rgba(10,10,22,0.9); border: 1px solid rgba(139,92,246,0.3); border-radius: 16px; padding: 24px; box-shadow: 0 8px 30px rgba(0,0,0,0.3); height: 100%; display: flex; flex-direction: column; justify-content: center;">
@@ -84,49 +118,134 @@
     </div>
 
     <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        const ctx = document.getElementById('pubTimelineChart');
-        if (!ctx) return;
-        
-        // Setup data using static values retrieved earlier
-        const data = {
-          labels: ['2023', '2024', '2025', '2026'],
-          datasets: [
-            {
-              label: 'Publications',
-              data: [1, 14, 14, 5],
-              backgroundColor: 'rgba(56,189,248,0.85)',
-              borderRadius: 4,
-            }
-          ]
-        };
-        
-        const config = {
-          type: 'bar',
-          data: data,
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-              x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: 'rgba(255,255,255,0.7)' } },
-              y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: 'rgba(255,255,255,0.7)', stepSize: 2 } }
-            },
-            plugins: {
-              legend: { display: false } // Hide legend since there's only one dataset
-            }
-          }
-        };
+    // ── Publication Timeline: Filterable Chart ──
+    // Data breakdown: articles vs proceedings per year
+    const PUB_DATA = {
+      labels: ['2023', '2024', '2025', '2026'],
+      all:         [1, 14, 14, 5],
+      articles:    [0, 12, 10, 0],
+      proceedings: [1,  2,  4, 5]
+    };
 
-        let chartRendered = false;
-        const obs = new IntersectionObserver((entries) => {
-          if (entries[0].isIntersecting && !chartRendered) {
-            new Chart(ctx, config);
-            chartRendered = true;
-            obs.unobserve(ctx);
-          }
-        }, { threshold: 0.2 });
-        obs.observe(ctx);
+    // Article counts by year (adjust to match actual data)
+    const CHIP_VALS = {
+      all:   { total: 34, articles: 22, proceedings: 12 },
+      articles: { total: 22, articles: 22, proceedings: 0 },
+      proceedings: { total: 12, articles: 0, proceedings: 12 }
+    };
+
+    let pubChart = null;
+    let currentFilter = 'all';
+
+    function setPubFilter(filter) {
+      if (!pubChart || filter === currentFilter) return;
+      currentFilter = filter;
+
+      // Update tab active states
+      document.querySelectorAll('.pub-filter-tab').forEach(function(btn) {
+        var isActive = btn.dataset.filter === filter;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
       });
+
+      // Pick colors
+      var bgColor, borderColor;
+      if (filter === 'articles') {
+        bgColor = 'rgba(251,191,36,0.82)';
+        borderColor = 'rgba(251,191,36,1)';
+      } else if (filter === 'proceedings') {
+        bgColor = 'rgba(167,139,250,0.82)';
+        borderColor = 'rgba(167,139,250,1)';
+      } else {
+        bgColor = 'rgba(56,189,248,0.82)';
+        borderColor = 'rgba(56,189,248,1)';
+      }
+
+      // Animate data update
+      pubChart.data.datasets[0].data = PUB_DATA[filter];
+      pubChart.data.datasets[0].backgroundColor = bgColor;
+      pubChart.data.datasets[0].borderColor = borderColor;
+      pubChart.data.datasets[0].label = filter === 'all' ? 'All Publications' : filter === 'articles' ? 'Journal Articles' : 'Proceedings';
+      pubChart.update('active');
+
+      // Update chips
+      var cv = CHIP_VALS[filter];
+      document.getElementById('chip-total-val').textContent    = cv.total;
+      document.getElementById('chip-articles-val').textContent = cv.articles;
+      document.getElementById('chip-proc-val').textContent     = cv.proceedings;
+
+      // Highlight visible chips
+      document.getElementById('chip-total').style.opacity      = '1';
+      document.getElementById('chip-articles').style.opacity   = (filter === 'proceedings') ? '0.4' : '1';
+      document.getElementById('chip-proceedings').style.opacity = (filter === 'articles') ? '0.4' : '1';
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+      var canvas = document.getElementById('pubTimelineChart');
+      if (!canvas || typeof Chart === 'undefined') return;
+
+      var config = {
+        type: 'bar',
+        data: {
+          labels: PUB_DATA.labels,
+          datasets: [{
+            label: 'All Publications',
+            data: PUB_DATA.all,
+            backgroundColor: 'rgba(56,189,248,0.82)',
+            borderColor: 'rgba(56,189,248,1)',
+            borderWidth: 1.5,
+            borderRadius: 6,
+            borderSkipped: false,
+            hoverBackgroundColor: 'rgba(56,189,248,1)',
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          animation: { duration: 600, easing: 'easeInOutQuart' },
+          scales: {
+            x: {
+              grid: { color: 'rgba(255,255,255,0.04)' },
+              ticks: { color: 'rgba(255,255,255,0.7)', font: { family: "'JetBrains Mono', monospace", size: 11 } },
+              border: { color: 'rgba(255,255,255,0.06)' }
+            },
+            y: {
+              grid: { color: 'rgba(255,255,255,0.04)' },
+              ticks: { color: 'rgba(255,255,255,0.7)', stepSize: 2, font: { family: "'JetBrains Mono', monospace", size: 11 } },
+              border: { color: 'rgba(255,255,255,0.06)' }
+            }
+          },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: 'rgba(10,10,22,0.95)',
+              borderColor: 'rgba(56,189,248,0.35)',
+              borderWidth: 1,
+              titleColor: 'rgba(255,255,255,0.9)',
+              bodyColor: 'rgba(255,255,255,0.65)',
+              titleFont: { family: "'Space Grotesk', sans-serif", weight: '700', size: 13 },
+              bodyFont: { family: "'JetBrains Mono', monospace", size: 12 },
+              padding: 12,
+              cornerRadius: 10,
+              callbacks: {
+                title: function(items) { return '📅 Year ' + items[0].label; },
+                label: function(item) { return '  ' + item.dataset.label + ': ' + item.raw; }
+              }
+            }
+          }
+        }
+      };
+
+      var chartRendered = false;
+      var obs = new IntersectionObserver(function(entries) {
+        if (entries[0].isIntersecting && !chartRendered) {
+          pubChart = new Chart(canvas, config);
+          chartRendered = true;
+          obs.unobserve(canvas);
+        }
+      }, { threshold: 0.15 });
+      obs.observe(canvas);
+    });
     </script>
 
     <!-- Column labels -->
@@ -309,6 +428,62 @@
     #pubPrev { left: -5px !important; width: 36px !important; height: 36px !important; }
     #pubNext { right: -5px !important; width: 36px !important; height: 36px !important; }
   }
+
+  /* ── Publication Filter Tabs ── */
+  .pub-filter-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 14px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.04);
+    color: rgba(255,255,255,0.55);
+    font-size: 0.76rem;
+    font-weight: 600;
+    font-family: 'JetBrains Mono', monospace;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.23,1,0.32,1);
+    white-space: nowrap;
+    letter-spacing: 0.3px;
+  }
+  .pub-filter-tab:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.25);
+    color: rgba(255,255,255,0.85);
+    transform: translateY(-1px);
+  }
+  .pub-filter-tab.active {
+    background: linear-gradient(135deg, rgba(56,189,248,0.25), rgba(167,139,250,0.2));
+    border-color: rgba(56,189,248,0.5);
+    color: #38bdf8;
+    box-shadow: 0 0 16px rgba(56,189,248,0.2);
+  }
+  .pub-filter-tab[data-filter="articles"].active {
+    background: linear-gradient(135deg, rgba(251,191,36,0.2), rgba(251,191,36,0.1));
+    border-color: rgba(251,191,36,0.5);
+    color: #fbbf24;
+    box-shadow: 0 0 16px rgba(251,191,36,0.2);
+  }
+  .pub-filter-tab[data-filter="proceedings"].active {
+    background: linear-gradient(135deg, rgba(167,139,250,0.2), rgba(167,139,250,0.1));
+    border-color: rgba(167,139,250,0.5);
+    color: #a78bfa;
+    box-shadow: 0 0 16px rgba(167,139,250,0.2);
+  }
+
+  /* ── Summary Chips ── */
+  .pub-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 0.72rem;
+    font-family: 'JetBrains Mono', monospace;
+    transition: opacity 0.3s ease;
+  }
+  .pub-chip strong { font-weight: 800; margin-left: 2px; }
 </style>
 
 <script>

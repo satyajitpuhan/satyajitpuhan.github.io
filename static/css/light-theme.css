@@ -1,0 +1,375 @@
+/* ═══════════════════════════════════════════════════════════
+   LIGHT-THEME.CSS  — Satyajit Puhan Portfolio
+   Comprehensive light-mode overrides activated by [data-theme="light"]
+   Applied via the Quantum Theme Toggle (theme-engine.js)
+════════════════════════════════════════════════════════════ */
+
+/* ── Global Transitions ── */
+[data-theme="light"] * {
+  transition-property: background-color, border-color, color, box-shadow, opacity;
+  transition-duration: 0.35s;
+  transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+}
+[data-theme="light"] canvas,
+[data-theme="light"] .hero-bg-slideshow,
+[data-theme="light"] .hero-aurora,
+[data-theme="light"] .hero-blackhole,
+[data-theme="light"] .hero-accretion-ring {
+  transition: none !important;
+}
+
+/* ── Navbar ── */
+[data-theme="light"] #header-particles-wrap {
+  background: #ffffff !important;
+  border-bottom: 1px solid rgba(0,0,0,0.08) !important;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.08) !important;
+}
+[data-theme="light"] #site-header {
+  background: #ffffff !important;
+  border-bottom: 1px solid rgba(0,0,0,0.06) !important;
+}
+[data-theme="light"] #site-header h2 {
+  color: #0f172a !important;
+}
+[data-theme="light"] #site-header p {
+  color: rgba(15,23,42,0.55) !important;
+}
+[data-theme="light"] .navbar {
+  background: rgba(255,255,255,0.96) !important;
+  border-top: 1px solid rgba(0,0,0,0.04) !important;
+  border-bottom: 1px solid rgba(0,0,0,0.06) !important;
+}
+[data-theme="light"] .nav-link {
+  color: rgba(15,23,42,0.75) !important;
+}
+[data-theme="light"] .nav-link:hover {
+  color: #0f172a !important;
+}
+[data-theme="light"] #quantum-theme-toggle {
+  background: rgba(0,0,0,0.05) !important;
+  border-color: rgba(0,0,0,0.12) !important;
+}
+[data-theme="light"] #header-particles-wrap::before {
+  opacity: 0.6;
+}
+
+/* ── Hero Section ── */
+[data-theme="light"] #home {
+  background: #f0f4ff !important;
+}
+[data-theme="light"] .hero-bg-slideshow {
+  opacity: 0.3 !important;
+}
+[data-theme="light"] .hero-aurora {
+  opacity: 0.4 !important;
+}
+[data-theme="light"] .hero-blackhole,
+[data-theme="light"] .hero-accretion-ring {
+  opacity: 0.15 !important;
+}
+[data-theme="light"] .hero-formula {
+  color: rgba(100,80,160,0.5) !important;
+  border-color: rgba(100,80,160,0.15) !important;
+}
+[data-theme="light"] .hero-formula-field {
+  opacity: 0.5;
+}
+[data-theme="light"] #ae-hero-typewriter {
+  color: #0284c7 !important;
+}
+[data-theme="light"] .ae-typewriter-cursor {
+  color: #0284c7 !important;
+}
+[data-theme="light"] .hero-content-wrap h1 {
+  color: #0f172a !important;
+  text-shadow: none !important;
+}
+[data-theme="light"] .hero-description {
+  color: rgba(15,23,42,0.72) !important;
+}
+[data-theme="light"] .hero-description p {
+  color: rgba(15,23,42,0.65) !important;
+}
+[data-theme="light"] .hero-description strong {
+  color: #7c3aed !important;
+}
+[data-theme="light"] .hero-keyword-tag {
+  background: rgba(139,92,246,0.08) !important;
+  border-color: rgba(139,92,246,0.25) !important;
+  color: #7c3aed !important;
+}
+[data-theme="light"] .qcd-hint-badge {
+  background: rgba(232,164,68,0.1) !important;
+  border-color: rgba(232,164,68,0.35) !important;
+  color: #b45309 !important;
+}
+
+/* Hero stats bar */
+[data-theme="light"] #home .row .col-6 > div,
+[data-theme="light"] #home .row .col-md-3 > div {
+  border-color: rgba(0,0,0,0.08) !important;
+}
+[data-theme="light"] #home .row .col-6 div div:last-child,
+[data-theme="light"] #home .row .col-md-3 div div:last-child {
+  color: rgba(15,23,42,0.5) !important;
+}
+
+/* ── About Section ── */
+[data-theme="light"] .about {
+  background: #f8f6ff !important;
+}
+[data-theme="light"] .about_header > div:first-child {
+  background: rgba(139,92,246,0.06) !important;
+  border-color: rgba(139,92,246,0.2) !important;
+}
+[data-theme="light"] .about .col-lg-7 > div {
+  background: rgba(255,255,255,0.95) !important;
+  border-color: rgba(139,92,246,0.15) !important;
+  box-shadow: 0 0 40px rgba(139,92,246,0.06), 0 12px 40px rgba(0,0,0,0.06) !important;
+}
+[data-theme="light"] .about .col-lg-7 .text-light {
+  color: rgba(15,23,42,0.82) !important;
+}
+[data-theme="light"] .about .col-lg-7 .text-light * {
+  color: rgba(15,23,42,0.75) !important;
+}
+
+/* ── Skills Section ── */
+[data-theme="light"] .skill {
+  background: #f4f7ff !important;
+}
+[data-theme="light"] .ae-skill-gauge-card {
+  background: rgba(255,255,255,0.97) !important;
+  border-color: rgba(0,0,0,0.07) !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06) !important;
+}
+[data-theme="light"] .ae-skill-gauge-card h6 {
+  color: #0f172a !important;
+}
+
+/* ── News Section ── */
+[data-theme="light"] #news {
+  background: #f8fafc !important;
+}
+[data-theme="light"] #news .card,
+[data-theme="light"] #news [style*="background: rgba"] {
+  background: #ffffff !important;
+  border-color: rgba(0,0,0,0.07) !important;
+  color: #0f172a !important;
+}
+
+/* ── Portfolio / Publications Section ── */
+[data-theme="light"] .portfolio {
+  background-color: #1a2744 !important;
+  /* keep background image for visual interest, darken overlay slightly */
+}
+[data-theme="light"] .portfolio > div:first-child {
+  background: rgba(10,15,30,0.75) !important;
+}
+
+/* ── Blog Section ── */
+[data-theme="light"] #blog {
+  background: #f4f7ff !important;
+}
+[data-theme="light"] #blog [style*="rgba(10"] {
+  background: rgba(255,255,255,0.95) !important;
+  color: #0f172a !important;
+}
+
+/* ── Conferences Section ── */
+/* Keep dark overlay over background image */
+[data-theme="light"] .conferences > div:first-child {
+  background: rgba(10,15,30,0.70) !important;
+}
+
+/* ── Service Section ── */
+[data-theme="light"] #service {
+  background: #f8fafc !important;
+}
+[data-theme="light"] #service [style*="rgba(10"] {
+  background: rgba(255,255,255,0.95) !important;
+}
+[data-theme="light"] #service h6,
+[data-theme="light"] #service p {
+  color: #0f172a !important;
+}
+
+/* ── Resume Section ── */
+[data-theme="light"] #resume {
+  background: #f0f4ff !important;
+}
+[data-theme="light"] #resume [style*="rgba(10"] {
+  background: rgba(255,255,255,0.93) !important;
+  border-color: rgba(139,92,246,0.1) !important;
+}
+[data-theme="light"] #resume h4, [data-theme="light"] #resume h5,
+[data-theme="light"] #resume p, [data-theme="light"] #resume span {
+  color: rgba(15,23,42,0.85) !important;
+}
+
+/* ── NITJ Grid ── */
+[data-theme="light"] #nitj-grid {
+  background: #f8fafc !important;
+}
+[data-theme="light"] #nitj-grid [style*="rgba(10"] {
+  background: rgba(255,255,255,0.95) !important;
+}
+
+/* ── Collaborators / Research Network ── */
+[data-theme="light"] #collaborators {
+  background: #f4f7ff !important;
+}
+[data-theme="light"] #research-network {
+  background: #f8fafc !important;
+}
+
+/* ── Footer ── */
+[data-theme="light"] footer {
+  background: #0f172a !important;
+}
+[data-theme="light"] footer p,
+[data-theme="light"] footer a,
+[data-theme="light"] footer h4,
+[data-theme="light"] footer div {
+  /* keep dark footer in light mode for contrast */
+}
+
+/* ── Blog Post / Single Page ── */
+[data-theme="light"] .breadCrumb {
+  background: #f0f4ff !important;
+  color: #0f172a !important;
+}
+[data-theme="light"] .breadCrumb h3,
+[data-theme="light"] .breadCrumb .breadcrumb-item {
+  color: #0f172a !important;
+}
+[data-theme="light"] .breadCrumb .breadcrumb-item a {
+  color: #7c3aed !important;
+}
+[data-theme="light"] .post-meta li {
+  color: rgba(15,23,42,0.6) !important;
+}
+[data-theme="light"] .post-meta a {
+  color: #7c3aed !important;
+}
+[data-theme="light"] .singleBlog {
+  background: #f8fafc !important;
+}
+[data-theme="light"] .singleBlog__content {
+  color: #1e293b !important;
+}
+[data-theme="light"] .singleBlog__content h1,
+[data-theme="light"] .singleBlog__content h2,
+[data-theme="light"] .singleBlog__content h3,
+[data-theme="light"] .singleBlog__content h4 {
+  color: #0f172a !important;
+}
+[data-theme="light"] .singleBlog__content p {
+  color: #334155 !important;
+}
+[data-theme="light"] .singleBlog__content a {
+  color: #7c3aed !important;
+}
+[data-theme="light"] .singleBlog__content code {
+  background: rgba(139,92,246,0.08) !important;
+  color: #7c3aed !important;
+}
+[data-theme="light"] .singleBlog__content pre {
+  background: #1e1e2e !important;
+  border: 1px solid rgba(0,0,0,0.1) !important;
+}
+[data-theme="light"] .singleBlog__content blockquote {
+  border-left-color: #7c3aed !important;
+  background: rgba(139,92,246,0.05) !important;
+  color: #334155 !important;
+}
+
+/* ── Chatbot ── */
+[data-theme="light"] #satyabot-toggle-btn {
+  background: linear-gradient(135deg, #7c3aed, #0ea5e9) !important;
+}
+[data-theme="light"] #satyabot-window {
+  background: #ffffff !important;
+  border: 1px solid rgba(0,0,0,0.1) !important;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15) !important;
+}
+[data-theme="light"] #satyabot-header {
+  background: linear-gradient(135deg, #7c3aed, #0ea5e9) !important;
+}
+[data-theme="light"] #satyabot-messages {
+  background: #f8fafc !important;
+}
+[data-theme="light"] .satyabot-msg.bot {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid rgba(0,0,0,0.07) !important;
+}
+[data-theme="light"] .satyabot-msg.user {
+  background: linear-gradient(135deg, #7c3aed, #0ea5e9) !important;
+  color: #fff !important;
+}
+[data-theme="light"] #satyabot-input-area {
+  background: #f1f5f9 !important;
+  border-top: 1px solid rgba(0,0,0,0.07) !important;
+}
+[data-theme="light"] #satyabot-input {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid rgba(0,0,0,0.1) !important;
+}
+
+/* ── Reading Progress Bar ── */
+[data-theme="light"] #ae-scroll-progress {
+  background: linear-gradient(90deg, #7c3aed, #0ea5e9) !important;
+  box-shadow: 0 0 8px rgba(124,58,237,0.5) !important;
+}
+
+/* ── Social Share Buttons ── */
+[data-theme="light"] .social-share-section {
+  background: #f0f4ff !important;
+  border-color: rgba(139,92,246,0.15) !important;
+}
+[data-theme="light"] .social-share-section h4 {
+  color: #0f172a !important;
+}
+[data-theme="light"] .social-share-btn.copy-link {
+  background: rgba(0,0,0,0.05) !important;
+  border-color: rgba(0,0,0,0.12) !important;
+  color: #334155 !important;
+}
+
+/* ── Pub Filter Tabs (Timeline) ── */
+[data-theme="light"] .pub-filter-tab {
+  background: rgba(0,0,0,0.04) !important;
+  border-color: rgba(0,0,0,0.12) !important;
+  color: #334155 !important;
+}
+[data-theme="light"] .pub-filter-tab.active {
+  background: linear-gradient(135deg, #7c3aed, #0ea5e9) !important;
+  color: white !important;
+}
+
+/* ── Wave Dividers adapt to light backgrounds ── */
+[data-theme="light"] .ae-wave-divider svg path[fill="#0a0818"] {
+  fill: #f8f6ff;
+}
+[data-theme="light"] .ae-wave-divider svg path[fill="#080810"] {
+  fill: #f4f7ff;
+}
+[data-theme="light"] .ae-wave-divider svg path[fill="#0a0a0f"] {
+  fill: #f8fafc;
+}
+
+/* ── Scrollbar for light mode ── */
+[data-theme="light"] ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+[data-theme="light"] ::selection {
+  background: rgba(124,58,237,0.2);
+  color: #0f172a;
+}
+
+/* ── Generic helper: force white text on gradient buttons in light mode ── */
+[data-theme="light"] .btn-hero {
+  color: #1a1000 !important;
+}

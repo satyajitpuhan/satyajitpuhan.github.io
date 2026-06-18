@@ -35,6 +35,8 @@
     <!-- Single consolidated CSS (replaces 3 heavy files) -->
     <link rel="stylesheet" href="{{ get_url(path='css/site-core.css', cachebust=true) }}">
     <link rel="stylesheet" href="{{ get_url(path='css/chatbot.css', cachebust=true) }}">
+    <!-- Light Theme overrides -->
+    <link rel="stylesheet" href="{{ get_url(path='css/light-theme.css', cachebust=true) }}">
     {% endblock %}
 
     <link rel="shortcut icon" type="image/x-icon" href="{{ get_url(path='images/favicon.ico') }}">
@@ -53,6 +55,24 @@
 </head>
 
 <body>
+
+    <!-- ── Reading Progress Bar ── -->
+    <div id="ae-scroll-progress" role="progressbar" aria-label="Reading progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+    <script>
+    (function() {
+      var bar = document.getElementById('ae-scroll-progress');
+      if (!bar) return;
+      function updateProgress() {
+        var scrollTop = window.scrollY || document.documentElement.scrollTop;
+        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        var pct = docHeight > 0 ? Math.min(100, (scrollTop / docHeight) * 100) : 0;
+        bar.style.width = pct + '%';
+        bar.setAttribute('aria-valuenow', Math.round(pct));
+      }
+      window.addEventListener('scroll', updateProgress, { passive: true });
+      updateProgress();
+    })();
+    </script>
     {% block navbar %}
     {% include "partials/navbar.html" %}
     {% endblock %}
