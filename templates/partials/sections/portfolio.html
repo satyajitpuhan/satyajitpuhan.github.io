@@ -45,7 +45,7 @@
       <div class="col-lg-8 offset-lg-2">
         <div class="portfolio__header" style="color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
           <span style="color: #f39c12; font-weight: 800; letter-spacing: 3px; font-size: 0.85rem; text-transform: uppercase;">{{ section.title }}</span>
-          <h1 data-scramble style="color: white; font-weight: 800; margin-top: 8px;">{{ section.description }}</h1>
+          <h1 data-scramble class="wc-kinetic-title" style="color: white; font-weight: 800; margin-top: 8px;">{{ section.description }}</h1>
         </div>
       </div>
     </div>
@@ -123,15 +123,15 @@
     const PUB_DATA = {
       labels: ['2023', '2024', '2025', '2026'],
       all:         [1, 14, 14, 5],
-      articles:    [0, 12, 10, 0],
-      proceedings: [1,  2,  4, 5]
+      articles:    [0, 6, 13, 5],
+      proceedings: [1,  8,  1, 0]
     };
 
     // Article counts by year (adjust to match actual data)
     const CHIP_VALS = {
-      all:   { total: 34, articles: 22, proceedings: 12 },
-      articles: { total: 22, articles: 22, proceedings: 0 },
-      proceedings: { total: 12, articles: 0, proceedings: 12 }
+      all:   { total: 34, articles: 24, proceedings: 10 },
+      articles: { total: 24, articles: 24, proceedings: 0 },
+      proceedings: { total: 10, articles: 0, proceedings: 10 }
     };
 
     let pubChart = null;

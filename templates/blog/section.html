@@ -43,7 +43,7 @@
 		<div class="d-flex justify-content-center flex-wrap">
 			{% for page in paginator.pages %}
 			<div class="card col-lg-3 m-2">
-			    <img class="card-img-top" src="{{ get_url(path=page.extra.feature_image) }}" alt="post-image">
+			    <img class="card-img-top" src="{{ get_url(path=page.extra.feature_image) }}" alt="{{ page.title }} thumbnail">
 				<div class="card-body">
                     <a class="text-reset text-decoration-none" href="{{ page.permalink }}">
                         <h5 class="card-title">{{ page.title }}</h5>

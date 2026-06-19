@@ -4,111 +4,111 @@ import os
 import re
 
 SUMMARIES = {
-    "t-even-tmds-spin-0.en.md": (
+    "t-even-tmds-spin-0.md": (
         "First comprehensive calculation of all T-even TMDs for pion and kaon up to twist-4 in light-front holographic and quark models. Predicts higher-twist kaon properties for the first time and verifies sum rules across both frameworks."
     ),
-    "t-even-tmds-spin-1.en.md": (
+    "t-even-tmds-spin-1.md": (
         "Presents leading twist TMDs for J/psi and Upsilon mesons in both LFHM and LFQM, showing LFQM predictions align well with Bethe-Salpeter model results. Includes k_perp moment calculations and PDF analysis."
     ),
-    "tmd-relations.en.md": (
+    "tmd-relations.md": (
         "Establishes systematic relations between T-even proton TMDs up to twist-4 using a light-front quark-diquark model. Introduces a novel helicity-based parameterization table for deriving and classifying proton TMDs."
     ),
-    "spin-orbit-correlations.en.md": (
+    "spin-orbit-correlations.md": (
         "First study of quark spin-orbit correlations in light and heavy spin-1 mesons. Extends previous spin-0 analysis to include rho, J/psi, and Upsilon mesons using GTMDs and GPDs in the LFQM framework."
     ),
-    "pion-valence-asymm.en.md": (
+    "pion-valence-asymm.md": (
         "Investigates how isospin asymmetry and temperature modify pion valence quark DAs and PDFs in nuclear matter. Shows baryon density has a dominant effect compared to temperature and isospin asymmetry, with results evolved to Q^2 = 10 and 16 GeV^2."
     ),
-    "photon-leading-twist.en.md": (
+    "photon-leading-twist.md": (
         "Calculates all leading-twist T-even photon TMDs using light-front wave functions, treating the photon as a quark-antiquark Fock state. Compares results for real vs. virtual photons and discusses spin-spin correlations."
     ),
-    "spectroscopy-radially-excited.en.md": (
+    "spectroscopy-radially-excited.md": (
         "First LFQM study of the 3S and 1P excited states of charmonia and bottomonia. Presents EMFFs, charge radii, decay constants, PDFs, and DAs along with 3D wave function visualizations showing nodal structures."
     ),
-    "transverse-spatial-light-heavy.en.md": (
+    "transverse-spatial-light-heavy.md": (
         "Unified study of light (pion, kaon) and heavy (eta_c, eta_b, B, D) pseudoscalar meson structure through TMDs and GPDs. Derives EMFFs and GFFs compatible with lattice QCD and verifies the PDF sum rule."
     ),
-    "emffs-pion-kaon.en.md": (
+    "emffs-pion-kaon.md": (
         "Calculates scalar, vector, and tensor form factors for pion and kaon from twist-2 and twist-3 GPDs in the LCQM. Predicts scalar radii of 0.528 fm (pion) and 0.409 fm (kaon), consistent with experimental data and lattice results."
     ),
-    "valence-quark-rho-jpsi.en.md": (
+    "valence-quark-rho-jpsi.md": (
         "Studies unpolarized quark GPDs of rho and J/psi mesons using the LCQM. Derives charge, magnetic, and quadrupole form factors and Rosenbluth structure functions, with PDFs evolved to 5 GeV^2 via NNLO DGLAP."
     ),
-    "valence-quark-kaons-symm.en.md": (
+    "valence-quark-kaons-symm.md": (
         "Calculates leading-twist TMDs and GPDs of charged kaons in symmetric nuclear matter using LCQM with chiral SU(3) CQMF model inputs. Derives in-medium EMFFs, charge radii, and average momenta in good agreement with data."
     ),
-    "valence-quark-pion-gtmd.en.md": (
+    "valence-quark-pion-gtmd.md": (
         "Comprehensive GTMD analysis of the pion up to twist-4 in LCQM. Finds 12 of 16 possible GTMDs are nonzero, extracts TMDs, GPDs, FFs, and PDFs, and reports a pion charge radius of 0.558 fm."
     ),
-    "radiative-transitions-charmonia.en.md": (
+    "radiative-transitions-charmonia.md": (
         "Calculates decay constants, radiative transition form factors, decay widths, and branching ratios for ground and excited charmonia states. Results for chi_c0 -> J/psi + gamma and psi(2S) transitions agree well with experimental data."
     ),
-    "isospin-asymm-b-mesons.en.md": (
+    "isospin-asymm-b-mesons.md": (
         "Studies how isospin asymmetry and temperature modify B and B* meson properties using LFQM with chiral SU(3) CQMF model. Vacuum predictions for masses and decay constants agree with experimental data."
     ),
-    "d-mesons-isospin-asymm.en.md": (
+    "d-mesons-isospin-asymm.md": (
         "Investigates in-medium properties of pseudoscalar D and vector D* mesons in asymmetric nuclear matter. Finds significant medium effects for mesons with u/d quarks, while strange-quark mesons show reduced sensitivity."
     ),
-    "asymmetric-nuclear-kaons.en.md": (
+    "asymmetric-nuclear-kaons.md": (
         "Analyzes the impact of baryonic density, isospin asymmetry, and temperature on kaon/antikaon DAs and PDFs using LCQM + CQMF. Baryon density dominates over temperature and isospin effects; PDFs evolved to Q^2 = 16 GeV^2."
     ),
-    "pion-nuclear-medium.en.md": (
+    "pion-nuclear-medium.md": (
         "Calculates valence quark TMDs of pions in isospin asymmetric nuclear matter using LCQM with in-medium quark masses from chiral SU(3) CQMF model. Analyzes spin densities at different momentum fractions and baryonic densities."
     ),
-    "nuclear-medium-spatial.en.md": (
+    "nuclear-medium-spatial.md": (
         "Studies the spatial distribution of pions in asymmetric nuclear matter through GPDs. Calculates in-medium EMFFs and charge radii using LCQM with chiral SU(3) CQMF inputs, finding agreement with experiment."
     ),
-    "valence-quark-rho-lfqm.en.md": (
+    "valence-quark-rho-lfqm.md": (
         "Comprehensive study of rho meson partonic structure using two distinct spin wave functions in LFQM. Computes all nine leading-twist TMDs including three tensor TMDs unique to spin-1, and evolves PDFs via NLO DGLAP."
     ),
-    "radially-excited-pion-lfqm.en.md": (
+    "radially-excited-pion-lfqm.md": (
         "Studies the 1S, 2S, and 3S pion states using harmonic-oscillator and mixed wave functions optimized via a QCD-motivated Hamiltonian. Shows 3S observables are highly sensitive to state mixing, with evolved PDFs matching experimental data."
     ),
-    "spectroscopy-rho-symmetric.en.md": (
+    "spectroscopy-rho-symmetric.md": (
         "Investigates rho meson properties in symmetric nuclear matter including mass, decay constant, DAs, decay width, and electromagnetic form factors. Finds significant medium effects on mass and DAs, but weaker sensitivity in charge radii and moments."
     ),
-    "njl-model-baryon-density.en.md": (
+    "njl-model-baryon-density.md": (
         "Calculates in-medium pion properties using LCQM with constituent quark masses from the NJL model. Evolves PDFs via NLO DGLAP and compares EMFFs with experiment and lattice QCD. Mellin moments agree with existing theoretical extractions."
     ),
-    "hp2024-photon-tmds.en.md": (
+    "hp2024-photon-tmds.md": (
         "Presents all 9 T-even photon TMDs using light-front wave functions for a quark-antiquark Fock state. Finds only 3 TMDs are nonzero for real photons vs. 8 for virtual photons. Discusses unpolarized, longitudinal, transverse, and tensor-polarized TMDs."
     ),
-    "hql2023-b-d-mesons.en.md": (
+    "hql2023-b-d-mesons.md": (
         "Presents unpolarized GPDs and PDFs for heavy B and D mesons in LFQM. Extracts EMFFs and GFFs from GPD moments at zero skewness, providing insights into the spatial and gravitational structure of heavy mesons."
     ),
-    "gluon-helicity-jpsi-production.en.md": (
+    "gluon-helicity-jpsi-production.md": (
         "Feasibility study of longitudinal double-spin asymmetry A_LL in inclusive J/psi production at NICA SPD (sqrt(s) = 27 GeV), showing sensitivity to the moderate-to-large-x gluon helicity distribution Delta g(x)."
     ),
-    "pseudoscalar-charmonium-bottomonium-light-front.en.md": (
+    "pseudoscalar-charmonium-bottomonium-light-front.md": (
         "Evaluates the gravitational form factors (A and D-terms) and spatial mechanical distributions (pressure, shear stress, momentum/force/energy density) in the transverse plane for pseudoscalar charmonium and bottomonium using LFQM."
     ),
-    "daehep2024-pion-asymm-nuclear.en.md": (
+    "daehep2024-pion-asymm-nuclear.md": (
         "Studies the pion transition form factor for gamma* gamma -> pi_0 in asymmetric nuclear medium. Calculates in-medium decay constant and distribution amplitude using LFQM with chiral SU(3) CQMF model, finding qualitative agreement with experiment."
     ),
-    "daehep2024-kaons-dense.en.md": (
+    "daehep2024-kaons-dense.md": (
         "Investigates medium-modified kaon and antikaon properties in dense nuclear matter using combined CQMF and LCQM approach. Analyzes the impact of finite isospin asymmetry and temperature on distribution amplitudes and decay constants."
     ),
-    "daehep2024-pion-lf-dynamics.en.md": (
+    "daehep2024-pion-lf-dynamics.md": (
         "Calculates pion valence quark TMDs and PDFs using S-wave and P-wave states in LCQM. Finds S-wave contributes 94% while P-wave contributes only 6%, and computes Mellin and inverse moments for the valence quark."
     ),
-    "dae2024-spectroscopy-excited-d.en.md": (
+    "dae2024-spectroscopy-excited-d.md": (
         "Studies the spectroscopy of excited D+ and D+_S meson states in LFQM, analyzing EMFFs, charge radii, decay constants, PDFs, and DAs. Visualizes nodal structures of radially excited states through 3D wave functions."
     ),
-    "dae2024-radiative-psi.en.md": (
+    "dae2024-radiative-psi.md": (
         "Calculates the radiative transition form factor and decay width for psi(2S) -> chi_c0(1P) + gamma in the LFQM. Compares predictions with experimental data and other theoretical models."
     ),
-    "dae2024-in-medium-pseudoscalar.en.md": (
+    "dae2024-in-medium-pseudoscalar.md": (
         "Examines in-medium pseudoscalar meson properties using LFQM combined with chiral SU(3) CQMF model. Analyzes density and temperature dependence of effective masses, decay constants, and distribution amplitudes."
     ),
-    "dae2024-unpolarized-gpds.en.md": (
+    "dae2024-unpolarized-gpds.md": (
         "Presents chiral-even vector quark GPDs for spin-1 mesons in the light-front formalism. Derives charge, magnetic, and quadrupole form factors from the unpolarized GPDs."
     ),
-    "athics2025-pion-kaon.en.md": (
+    "athics2025-pion-kaon.md": (
         "Comprehensive structural analysis of pion and kaon using light-front dynamics, covering DAs, PDFs, and form factors. Results provide predictions relevant for upcoming experiments at AMBER, JLab, and the Electron-Ion Collider."
     ),
 }
 
-PORTFOLIO_DIR = r"c:\Users\SATYAJIT\my-website\content\portfolio"
+PORTFOLIO_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "content", "portfolio")
 
 def update_file(filepath, summary):
     with open(filepath, 'r', encoding='utf-8') as f:

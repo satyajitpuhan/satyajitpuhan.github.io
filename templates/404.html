@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}
+Page Not Found — {{ config.title }}
+{% endblock %}
+
+{% block content %}
+<section style="min-height: 80vh; display: flex; align-items: center; justify-content: center; position: relative; background: #050911; overflow: hidden;">
+  <!-- Ambient glows -->
+  <div style="position: absolute; top: -10%; right: -10%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(139,92,246,0.1) 0%, transparent 70%); pointer-events: none;"></div>
+  <div style="position: absolute; bottom: -10%; left: -10%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(6,182,212,0.08) 0%, transparent 70%); pointer-events: none;"></div>
+
+  <div class="container" style="position: relative; z-index: 1; text-align: center;">
+    <div style="margin-bottom: 30px;">
+      <div style="font-size: clamp(6rem, 15vw, 12rem); font-weight: 800; line-height: 1; background: linear-gradient(135deg, #8b5cf6, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-family: 'Space Grotesk', sans-serif; letter-spacing: -4px; opacity: 0.85;">
+        404
+      </div>
+    </div>
+
+    <h1 style="color: #ffffff; font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 700; margin-bottom: 16px; font-family: 'Space Grotesk', sans-serif;">
+      Page Not Found
+    </h1>
+    <p style="color: rgba(255,255,255,0.55); font-size: 1.05rem; max-width: 480px; margin: 0 auto 32px; line-height: 1.7;">
+      The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
+    </p>
+
+    <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px;">
+      <a href="{{ get_url(path='/', lang=lang) }}" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border-radius: 10px; background: linear-gradient(135deg, #e8a444, #f5c266); color: #1a1000; font-weight: 700; text-decoration: none; font-size: 0.95rem; transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(232,164,68,0.3);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 30px rgba(232,164,68,0.5)';" onmouseout="this.style.transform=''; this.style.boxShadow='0 4px 20px rgba(232,164,68,0.3)';">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1"/></svg>
+        Back to Home
+      </a>
+      <a href="{{ get_url(path='blog', lang=lang) }}" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border-radius: 10px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); color: #ffffff; font-weight: 600; text-decoration: none; font-size: 0.95rem; transition: all 0.3s ease;" onmouseover="this.style.borderColor='rgba(139,92,246,0.5)'; this.style.background='rgba(139,92,246,0.1)';" onmouseout="this.style.borderColor='rgba(255,255,255,0.15)'; this.style.background='rgba(255,255,255,0.05)';">
+        Browse Talks
+      </a>
+      <a href="{{ get_url(path='portfolio', lang=lang) }}" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border-radius: 10px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); color: #ffffff; font-weight: 600; text-decoration: none; font-size: 0.95rem; transition: all 0.3s ease;" onmouseover="this.style.borderColor='rgba(6,182,212,0.5)'; this.style.background='rgba(6,182,212,0.1)';" onmouseout="this.style.borderColor='rgba(255,255,255,0.15)'; this.style.background='rgba(255,255,255,0.05)';">
+        Publications
+      </a>
+    </div>
+
+    <!-- Quick links grid -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; max-width: 600px; margin: 0 auto;">
+      <a href="{{ get_url(path='/', lang=lang) }}#about" style="display: block; padding: 14px 16px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.85rem; transition: all 0.3s ease;" onmouseover="this.style.borderColor='rgba(232,164,68,0.3)'; this.style.color='#e8a444';" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'; this.style.color='rgba(255,255,255,0.6)';">
+        👤 About Me
+      </a>
+      <a href="{{ get_url(path='/', lang=lang) }}#portfolio" style="display: block; padding: 14px 16px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.85rem; transition: all 0.3s ease;" onmouseover="this.style.borderColor='rgba(139,92,246,0.3)'; this.style.color='#a78bfa';" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'; this.style.color='rgba(255,255,255,0.6)';">
+        📄 Publications
+      </a>
+      <a href="{{ get_url(path='/', lang=lang) }}#contact" style="display: block; padding: 14px 16px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.85rem; transition: all 0.3s ease;" onmouseover="this.style.borderColor='rgba(6,182,212,0.3)'; this.style.color='#06b6d4';" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'; this.style.color='rgba(255,255,255,0.6)';">
+        ✉️ Contact
+      </a>
+      <a href="{{ get_url(path='visualizations', lang=lang) }}" style="display: block; padding: 14px 16px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.85rem; transition: all 0.3s ease;" onmouseover="this.style.borderColor='rgba(16,185,129,0.3)'; this.style.color='#10b981';" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'; this.style.color='rgba(255,255,255,0.6)';">
+        📊 Visualizations
+      </a>
+    </div>
+  </div>
+</section>
+{% endblock %}

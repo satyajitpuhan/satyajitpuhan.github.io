@@ -1,13 +1,8 @@
-title       = "Hello, I am Satyajit Puhan"
-description = """
-# Postdoctoral Researcher — Academia Sinica 🎓
-
-Currently a Postdoctoral Researcher at the **Institute of Physics, Academia Sinica, Taipei, Taiwan**. Defended my PhD thesis on *Tomography of Light & Heavy Mesons Using Light-Front Dynamics* at NIT Jalandhar on **2nd April, 2026**.
-"""
+title = "ଗିରି,"
+description = "# Куار чу зу чу зу зу - азу а а аж кыр ିକା |\n\nЗ ** ** 2 କାନୁ, 2026 **"
 button_name = "Contact Me"
-button_url  = "contact"
-image       = "images/hero/me1.jpg"
-
+button_url = "contact"
+image = "images/hero/me1.jpg"
 [[gallery]]
 image = "images/gallery/defense-presenting-qcd.jpg"
 caption = "PhD Final Defense — Perturbative & Non-perturbative QCD, NIT Jalandhar (2nd April, 2026)"
@@ -75,3 +70,4 @@ caption = "Hilltop Sunset, Dharamshala"
 [[gallery]]
 image = "images/gallery/office-research.jpg"
 caption = "Research Lab, NIT Jalandhar"
+

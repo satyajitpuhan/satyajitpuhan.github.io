@@ -17,8 +17,27 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="theme-color" content="#050911">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{ page.description | default(value=config.description) | striptags | truncate(length=160) }}">
     <meta itemprop="name" content="{{ page.title | default(value=config.title) }}">
     <meta itemprop="description" content="{{ page.description | default(value=config.description) }}">
+
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:title" content="{{ page.title | default(value=config.title) }}">
+    <meta property="og:description" content="{{ page.description | default(value=config.description) | striptags | truncate(length=160) }}">
+    <meta property="og:type" content="{% if page %}article{% else %}website{% endif %}">
+    <meta property="og:url" content="{{ page.permalink | default(value=config.base_url) }}">
+    <meta property="og:image" content="{{ get_url(path='images/about/me.jpg') }}">
+    <meta property="og:site_name" content="{{ config.title }}">
+    <meta property="og:locale" content="{{ lang }}_{{ lang | upper }}">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ page.title | default(value=config.title) }}">
+    <meta name="twitter:description" content="{{ page.description | default(value=config.description) | striptags | truncate(length=160) }}">
+    <meta name="twitter:image" content="{{ get_url(path='images/about/me.jpg') }}">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ page.permalink | default(value=config.base_url) }}">
     {% block rss %}
     {% if config.generate_feeds %}
     {{ macros::feeds() }}
@@ -39,6 +58,8 @@
     <link rel="stylesheet" href="{{ get_url(path='css/light-theme.css', cachebust=true) }}">
     <!-- Ultra V3: next-level visual layer -->
     <link rel="stylesheet" href="{{ get_url(path='css/ultra-v3.css', cachebust=true) }}">
+    <!-- World-Class: ultimate premium layer -->
+    <link rel="stylesheet" href="{{ get_url(path='css/world-class.css', cachebust=true) }}">
     {% endblock %}
 
     <link rel="shortcut icon" type="image/x-icon" href="{{ get_url(path='images/favicon.ico') }}">
@@ -150,7 +171,153 @@
          ULTRA V3 ENGINE — Next-Level Interactions
          ════════════════════════════════════════════ -->
     <script src="{{ get_url(path='js/ultra-engine.js', cachebust=true) }}"></script>
+    
+    <!-- ════════════════════════════════════════════
+         WORLD-CLASS ENGINE — Ultimate Premium Layer
+         ════════════════════════════════════════════ -->
+    <script src="{{ get_url(path='js/world-class.js', cachebust=true) }}"></script>
     {% endblock %}
+
+    <!-- ════════════════════════════════════════════
+         COOKIE CONSENT BANNER
+         ════════════════════════════════════════════ -->
+    <div id="cookie-consent" style="
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100000;
+      background: rgba(10, 10, 22, 0.95);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      border-radius: 14px;
+      padding: 16px 24px;
+      max-width: 90vw;
+      width: 480px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+      display: none;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.75);
+    ">
+      <span style="flex: 1; min-width: 200px;">
+        🍪 We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.
+      </span>
+      <button id="cookie-accept" style="
+        background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+        color: white;
+        border: none;
+        padding: 8px 20px;
+        border-radius: 8px;
+        font-weight: 700;
+        cursor: pointer;
+        font-size: 0.8rem;
+        transition: all 0.3s ease;
+        white-space: nowrap;
+      ">Accept</button>
+    </div>
+    <script>
+    (function() {
+      var banner = document.getElementById('cookie-consent');
+      var acceptBtn = document.getElementById('cookie-accept');
+      if (!banner || !acceptBtn) return;
+      if (!localStorage.getItem('cookie-consent')) {
+        banner.style.display = 'flex';
+      }
+      acceptBtn.addEventListener('click', function() {
+        localStorage.setItem('cookie-consent', 'accepted');
+        banner.style.opacity = '0';
+        banner.style.transform = 'translateX(-50%) translateY(20px)';
+        setTimeout(function() { banner.style.display = 'none'; }, 300);
+      });
+    })();
+    </script>
+
+    <!-- ════════════════════════════════════════════
+         NOSCRIPT FALLBACK
+         ════════════════════════════════════════════ -->
+    <noscript>
+      <div style="
+        position: fixed;
+        inset: 0;
+        z-index: 100001;
+        background: #050911;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 16px;
+        padding: 40px;
+        text-align: center;
+      ">
+        <div style="font-size: 3rem; font-weight: 800; color: #e8a444; font-family: 'Space Grotesk', sans-serif;">⚠ JavaScript Required</div>
+        <p style="color: rgba(255,255,255,0.6); max-width: 480px; font-size: 1rem; line-height: 1.6;">
+          This website uses advanced interactive features that require JavaScript to function properly.<br>
+          Please enable JavaScript in your browser settings to continue.
+        </p>
+        <a href="{{ get_url(path='/', lang=lang) }}" style="
+          display: inline-block;
+          padding: 12px 28px;
+          background: linear-gradient(135deg, #e8a444, #f5c266);
+          color: #1a1000;
+          border-radius: 10px;
+          font-weight: 700;
+          text-decoration: none;
+          font-size: 0.95rem;
+        ">Reload Page</a>
+      </div>
+    </noscript>
+
+    <!-- ════════════════════════════════════════════
+         SCHEMA.ORG JSON-LD STRUCTURED DATA
+         ════════════════════════════════════════════ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Satyajit Puhan",
+      "alternateName": "ସତ୍ୟଜିତ ପୁହାଣ",
+      "jobTitle": "Senior Research Fellow",
+      "description": "Theoretical Particle Physicist specializing in QCD, hadronic physics, and Dyson–Schwinger equations at Academia Sinica.",
+      "url": "{{ config.base_url }}",
+      "image": "{{ get_url(path='images/about/me.jpg') }}",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "Institute of Physics, Academia Sinica",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Taipei",
+          "addressCountry": "Taiwan"
+        }
+      },
+      "alumniOf": {
+        "@type": "Organization",
+        "name": "Dr. B R Ambedkar NIT Jalandhar"
+      },
+      "knowsAbout": [
+        "Quantum Chromodynamics",
+        "Hadronic Physics",
+        "Parton Distribution Functions",
+        "Transverse Momentum Dependent Distributions",
+        "Generalized Parton Distributions",
+        "Light-Front Quark Model",
+        "Dyson–Schwinger Equations"
+      ],
+      "sameAs": [
+        "https://github.com/satyajitpuhan",
+        "https://www.linkedin.com/in/satyajit-puhan-b9889a162/",
+        "https://scholar.google.com/citations?hl=en&user=pKbmhZQAAAAJ",
+        "https://www.researchgate.net/profile/Satyajit-Puhan",
+        "https://inspirehep.net/authors/2695282",
+        "https://www.facebook.com/satyajit.puhan",
+        "https://orcid.org/0009-0004-9766-5005",
+        "https://www.instagram.com/puhan_satyaji/"
+      ]
+    }
+    </script>
 </body>
 
 </html>

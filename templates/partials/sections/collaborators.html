@@ -4,12 +4,14 @@
 
 {% if data and section %}
 <section id="collaborators" class="section collaborators" style="position: relative; background-image: url('/images/flowers/flower2.jpg'); background-size: cover; background-position: center; padding: 100px 0;">
+  <!-- Constellation Network Background -->
+  <canvas id="wc-constellation-canvas" class="wc-constellation-bg" style="position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: auto;"></canvas>
   <div style="position: absolute; inset: 0; background: rgba(30, 10, 20, 0.75); pointer-events: none;"></div>
   <div style="position: relative; z-index: 1;">
     <div class="container">
         <div class="collaborators__header" data-spring-reveal="up" style="color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.5); padding-bottom: 30px;">
             {% if data.top_title %}<span style="color: #f39c12; font-weight: 800; letter-spacing: 2px;">{{ data.top_title }}</span>{% endif %}
-            <h1 data-scramble style="color: white; font-weight: 800;">{{ data.title }}</h1>
+            <h1 data-scramble class="wc-kinetic-title" style="color: white; font-weight: 800;">{{ data.title }}</h1>
             {% if data.subtitle %}<p style="color: #f8f9fa;">{{ data.subtitle }}</p>{% endif %}
         </div>
 
@@ -43,7 +45,7 @@
                     <div class="row g-3">
                         {% for person in section.pages %}
                         {% if loop.index <= 8 %} <div class="col-lg-3 col-md-4 col-6">
-                            <div style="
+                            <div class="wc-3d-card" style="
                                 background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: 0 8px 32px rgba(0,0,0,0.2);
                                 border: 1px solid rgba(255,255,255,0.2);
                                 border-radius: 14px;
@@ -92,7 +94,7 @@
                     {% for person in section.pages %}
                     {% if loop.index > 8 %}
                     <div class="col-lg-3 col-md-4 col-6">
-                        <div style="
+                        <div class="wc-3d-card" style="
                                 background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: 0 8px 32px rgba(0,0,0,0.2);
                                 border: 1px solid rgba(255,255,255,0.2);
                                 border-radius: 14px;
