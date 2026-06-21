@@ -19,12 +19,7 @@
   'use strict';
 
   /* ── 1. Scroll Progress Bar ─────────────────────────── */
-  const progressBar = document.getElementById('ae-scroll-progress');
-  if (!progressBar) {
-    const bar = document.createElement('div');
-    bar.id = 'ae-scroll-progress';
-    document.body.prepend(bar);
-  }
+  // Note: the bar element is already injected by base.html — don't create a duplicate.
   window.addEventListener('scroll', () => {
     const el = document.getElementById('ae-scroll-progress');
     if (!el) return;
@@ -44,6 +39,9 @@
       }
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+
+  // Expose so advanced-effects.js can register newly tagged elements
+  window.__advancedV2RevealObserver = revealObserver;
 
   document.querySelectorAll('[data-reveal]').forEach(el => revealObserver.observe(el));
 

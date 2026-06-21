@@ -17,14 +17,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="theme-color" content="#050911">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="{{ page.description | default(value=config.description) | striptags | truncate(length=160) }}">
+    <meta name="description" content="{{ page.description | default(value=config.description) | default(value='') | striptags | truncate(length=160) }}">
     <meta itemprop="name" content="{{ page.title | default(value=config.title) }}">
-    <meta itemprop="description" content="{{ page.description | default(value=config.description) }}">
+    <meta itemprop="description" content="{{ page.description | default(value=config.description) | default(value='') }}">
 
     <!-- Open Graph / Social Sharing -->
     <meta property="og:title" content="{{ page.title | default(value=config.title) }}">
-    <meta property="og:description" content="{{ page.description | default(value=config.description) | striptags | truncate(length=160) }}">
-    <meta property="og:type" content="{% if page %}article{% else %}website{% endif %}">
+    <meta property="og:description" content="{{ page.description | default(value=config.description) | default(value='') | striptags | truncate(length=160) }}">
+    <meta property="og:type" content="{% if page.title %}article{% else %}website{% endif %}">
     <meta property="og:url" content="{{ page.permalink | default(value=config.base_url) }}">
     <meta property="og:image" content="{{ get_url(path='images/about/me.jpg') }}">
     <meta property="og:site_name" content="{{ config.title }}">
@@ -33,7 +33,7 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ page.title | default(value=config.title) }}">
-    <meta name="twitter:description" content="{{ page.description | default(value=config.description) | striptags | truncate(length=160) }}">
+    <meta name="twitter:description" content="{{ page.description | default(value=config.description) | default(value='') | striptags | truncate(length=160) }}">
     <meta name="twitter:image" content="{{ get_url(path='images/about/me.jpg') }}">
 
     <!-- Canonical URL -->
@@ -280,7 +280,7 @@
       "@type": "Person",
       "name": "Satyajit Puhan",
       "alternateName": "ସତ୍ୟଜିତ ପୁହାଣ",
-      "jobTitle": "Senior Research Fellow",
+      "jobTitle": "Postdoctoral Researcher",
       "description": "Theoretical Particle Physicist specializing in QCD, hadronic physics, and Dyson–Schwinger equations at Academia Sinica.",
       "url": "{{ config.base_url }}",
       "image": "{{ get_url(path='images/about/me.jpg') }}",

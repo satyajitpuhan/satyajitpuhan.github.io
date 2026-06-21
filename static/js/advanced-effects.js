@@ -54,8 +54,11 @@
     animate();
   })();
 
-  /* ── 2. Scroll Reveal (Intersection Observer) ── */
-  (function initScrollReveal() {
+  /* ── 2. Scroll Reveal (data-reveal auto-tagging) ── */
+  // NOTE: The IntersectionObserver that adds .ae-revealed is run in advanced-v2.js.
+  // This block only auto-tags elements with data-reveal attributes so advanced-v2.js
+  // can pick them up. Do NOT add a second observer here.
+  (function autoTagReveal() {
     const revealStyle = document.createElement('style');
     revealStyle.textContent = `
       [data-reveal] {
@@ -76,7 +79,7 @@
     `;
     document.head.appendChild(revealStyle);
 
-    // Auto-tag sections
+    // Auto-tag sections so advanced-v2.js can observe them
     const tagMap = [
       { sel: '.hero-words-wrapper', dir: 'up' },
       { sel: '.about_header', dir: 'up' },
@@ -102,45 +105,18 @@
       });
     });
 
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('ae-revealed');
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-
-    document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+    // Re-observe any newly tagged elements that advanced-v2.js may have missed
+    // (advanced-v2.js runs after DOMContentLoaded; this runs after it)
+    if (window.__advancedV2RevealObserver) {
+      document.querySelectorAll('[data-reveal]:not(.ae-revealed)').forEach(el =>
+        window.__advancedV2RevealObserver.observe(el)
+      );
+    }
   })();
 
   /* ── 3. Animated Counters ── */
-  (function initCounters() {
-    const counters = document.querySelectorAll('[data-counter]');
-    if (!counters.length) return;
-
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        const el = entry.target;
-        const target = parseInt(el.getAttribute('data-counter'), 10);
-        const duration = 1800;
-        const start = performance.now();
-
-        function tick(now) {
-          const progress = Math.min((now - start) / duration, 1);
-          const ease = 1 - Math.pow(1 - progress, 4);
-          el.textContent = Math.round(ease * target);
-          if (progress < 1) requestAnimationFrame(tick);
-          else el.textContent = target;
-        }
-        requestAnimationFrame(tick);
-        io.unobserve(el);
-      });
-    }, { threshold: 0.5 });
-
-    counters.forEach(el => io.observe(el));
-  })();
+  // NOTE: Counter animation is fully handled by advanced-v2.js to avoid double-firing.
+  // This section intentionally left empty.
 
   /* ── 4. Magnetic Button Effect ── */
   (function initMagnetic() {

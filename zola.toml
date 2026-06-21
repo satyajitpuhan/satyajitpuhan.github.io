@@ -12,6 +12,7 @@ default_language = "en"
 
 [languages.en]
 title = "Satyajit Puhan"
+description = "Theoretical Particle Physicist specializing in QCD, hadronic physics, and Dyson–Schwinger equations at Academia Sinica, Taipei, Taiwan."
 generate_feeds = true
 build_search_index = false
 
@@ -62,6 +63,7 @@ latest_article = "Latest Talks"
 
 [languages.or]
 title = "ସତ୍ୟଜିତ ପୁହାଣ"
+description = "ଅକ୍ଟୋବର ସିଣା, ତାଇଭାନର ଉଚ୍ଚଭୁମି ଭୂତବିଦ୍ଜ୍ଞାନ, QCD ଓ ହାଡ୍ରୋନିକ୍ ଫିଜିକ୍ସର ବିଶେଷଜ୍ଞାସତ୍ଯଜିତ ପୁହାଣର ବ୍ଯକ୍ତିଗତ ଓଡ଼ିଆ ବେସଭୂମିହି (/Satyajit Puhan)."
 generate_feeds = true
 build_search_index = false
 
