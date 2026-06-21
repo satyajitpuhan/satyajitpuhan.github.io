@@ -105,12 +105,23 @@
       });
     });
 
-    // Re-observe any newly tagged elements that advanced-v2.js may have missed
-    // (advanced-v2.js runs after DOMContentLoaded; this runs after it)
+    // Re-observe any newly tagged elements
+    // advanced-v2.js now loads first, so the observer should exist.
+    // Fallback: create a local observer for any elements not yet watched.
+    const newlyTagged = document.querySelectorAll('[data-reveal]:not(.ae-revealed)');
     if (window.__advancedV2RevealObserver) {
-      document.querySelectorAll('[data-reveal]:not(.ae-revealed)').forEach(el =>
-        window.__advancedV2RevealObserver.observe(el)
-      );
+      newlyTagged.forEach(el => window.__advancedV2RevealObserver.observe(el));
+    } else {
+      // Fallback observer — runs if advanced-v2.js somehow isn't loaded yet
+      const fallbackIo = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('ae-revealed');
+            fallbackIo.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      newlyTagged.forEach(el => fallbackIo.observe(el));
     }
   })();
 
