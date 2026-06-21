@@ -33,9 +33,9 @@
         const cy    = rect.top  + rect.height / 2;
         const dx    = (e.clientX - cx) / (rect.width  / 2);
         const dy    = (e.clientY - cy) / (rect.height / 2);
-        const rotX  = -dy * 8;   // max 8deg
-        const rotY  =  dx * 8;
-        card.style.transform = `perspective(700px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateZ(4px) scale(1.02)`;
+        const rotX  = -dy * 4;   // max 4deg
+        const rotY  =  dx * 4;
+        card.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateZ(4px) scale(1.02)`;
         card.style.boxShadow = `
           ${-rotY * 0.5}px ${rotX * 0.5}px 30px rgba(139,92,246,0.18),
           0 20px 60px rgba(0,0,0,0.4)`;

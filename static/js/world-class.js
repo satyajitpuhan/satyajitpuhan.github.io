@@ -278,8 +278,8 @@
         const x = (e.clientX - rect.left) / rect.width;
         const y = (e.clientY - rect.top) / rect.height;
 
-        const rotateX = (y - 0.5) * -20; // -10 to 10 deg
-        const rotateY = (x - 0.5) * 20;  // -10 to 10 deg
+        const rotateX = (y - 0.5) * -8; // -4 to 4 deg
+        const rotateY = (x - 0.5) * 8;  // -4 to 4 deg
 
         card.style.setProperty('--wc-rotate-x', rotateX + 'deg');
         card.style.setProperty('--wc-rotate-y', rotateY + 'deg');
