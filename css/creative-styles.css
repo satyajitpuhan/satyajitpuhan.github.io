@@ -1,0 +1,504 @@
+/* ═══════════════════════════════════════════════════════════════════
+   Creative Styles — creative-styles.css
+   Constellation Nav, Holographic Cards, Aurora, 3D Timeline,
+   Chatbot Upgrade, Black Hole Hero, Live Badge, Mouse Trail
+═══════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────
+   Extended Design Tokens
+───────────────────────────────────────────── */
+:root {
+  --c-neon-green:  #10b981;
+  --c-hot-pink:    #ec4899;
+  --c-orange:      #f97316;
+  --font-display:  'Outfit', 'Space Grotesk', sans-serif;
+  --aurora-speed:  20s;
+  --holo-intensity: 0.12;
+}
+
+
+/* ─────────────────────────────────────────────
+   CONSTELLATION NAVIGATION
+───────────────────────────────────────────── */
+#constellation-nav {
+  transition: opacity 0.3s ease;
+}
+
+#constellation-nav:hover {
+  opacity: 1 !important;
+}
+
+/* Twinkling stars behind constellation dots */
+#constellation-nav::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(139,92,246,0.04) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  animation: constellation-glow 4s ease-in-out infinite;
+}
+
+@keyframes constellation-glow {
+  0%, 100% { opacity: 0.5; }
+  50%       { opacity: 1; }
+}
+
+
+/* ─────────────────────────────────────────────
+   HOLOGRAPHIC CARD SHIMMER (base setup)
+───────────────────────────────────────────── */
+.research-card,
+.news-card,
+.collaborator-card,
+.pub-entry {
+  isolation: isolate;
+}
+
+.holo-sheen {
+  will-change: background, filter;
+  transition: opacity 0.35s ease !important;
+}
+
+/* Enhanced card borders on hover */
+.research-card:hover,
+.news-card:hover,
+.collaborator-card:hover {
+  border-image: linear-gradient(135deg, #8b5cf6, #06b6d4, #f59e0b, #ec4899) 1 !important;
+}
+
+
+/* ─────────────────────────────────────────────
+   BLACK HOLE / GRAVITATIONAL LENS HERO EFFECT
+───────────────────────────────────────────── */
+.hero-blackhole {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  top: 50%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-blackhole::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(0,0,0,0.95) 20%,
+    rgba(139,92,246,0.3) 50%,
+    rgba(6,182,212,0.2) 65%,
+    rgba(245,158,11,0.15) 75%,
+    transparent 90%
+  );
+  animation: blackhole-spin 20s linear infinite;
+}
+
+.hero-blackhole::after {
+  content: '';
+  position: absolute;
+  inset: -30px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(139,92,246,0.12) 60deg,
+    transparent 90deg,
+    rgba(6,182,212,0.1) 150deg,
+    transparent 180deg,
+    rgba(245,158,11,0.08) 240deg,
+    transparent 270deg,
+    rgba(244,63,94,0.1) 330deg,
+    transparent 360deg
+  );
+  animation: blackhole-spin 8s linear infinite reverse;
+  filter: blur(8px);
+}
+
+@keyframes blackhole-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Accretion disk rings */
+.hero-accretion-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  pointer-events: none;
+  top: 50%;
+  left: 20%;
+  transform: translate(-50%, -50%) rotateX(70deg);
+  animation: ring-spin linear infinite;
+}
+
+.hero-accretion-ring:nth-child(1) {
+  width: 280px; height: 280px;
+  border-color: rgba(139,92,246,0.3);
+  animation-duration: 6s;
+  box-shadow: 0 0 20px rgba(139,92,246,0.1) inset;
+}
+.hero-accretion-ring:nth-child(2) {
+  width: 360px; height: 360px;
+  border-color: rgba(6,182,212,0.2);
+  animation-duration: 10s;
+  animation-direction: reverse;
+}
+.hero-accretion-ring:nth-child(3) {
+  width: 450px; height: 450px;
+  border-color: rgba(245,158,11,0.12);
+  animation-duration: 15s;
+  border-style: dashed;
+}
+
+@keyframes ring-spin {
+  from { transform: translate(-50%, -50%) rotateX(70deg) rotateZ(0deg); }
+  to   { transform: translate(-50%, -50%) rotateX(70deg) rotateZ(360deg); }
+}
+
+
+/* ─────────────────────────────────────────────
+   AURORA BOREALIS LAYERS
+───────────────────────────────────────────── */
+.aurora-layer {
+  will-change: transform, opacity;
+}
+
+/* Extra aurora shimmer for hero */
+.hero-aurora {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.hero-aurora-band {
+  position: absolute;
+  width: 200%;
+  height: 300px;
+  left: -50%;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.06;
+}
+
+.hero-aurora-band:nth-child(1) {
+  top: 10%;
+  background: linear-gradient(90deg, #8b5cf6, #06b6d4, #8b5cf6);
+  animation: aurora-sweep 18s ease-in-out infinite;
+}
+.hero-aurora-band:nth-child(2) {
+  top: 40%;
+  background: linear-gradient(90deg, #ec4899, #8b5cf6, #06b6d4);
+  animation: aurora-sweep 24s ease-in-out infinite reverse;
+  animation-delay: -6s;
+}
+.hero-aurora-band:nth-child(3) {
+  bottom: 10%;
+  background: linear-gradient(90deg, #06b6d4, #10b981, #06b6d4);
+  animation: aurora-sweep 20s ease-in-out infinite;
+  animation-delay: -12s;
+}
+
+@keyframes aurora-sweep {
+  0%   { transform: translateX(-20%) scaleY(0.8); opacity: 0.04; }
+  33%  { transform: translateX(10%)  scaleY(1.4); opacity: 0.10; }
+  66%  { transform: translateX(25%)  scaleY(0.9); opacity: 0.07; }
+  100% { transform: translateX(-20%) scaleY(0.8); opacity: 0.04; }
+}
+
+
+/* ─────────────────────────────────────────────
+   LIVE RESEARCH STATUS BADGE
+───────────────────────────────────────────── */
+#live-research-badge {
+  transition: all 0.5s cubic-bezier(0.23,1,0.32,1);
+}
+
+#live-research-badge:hover {
+  transform: scale(1.02);
+}
+
+/* On mobile, hide or move to different position */
+@media (max-width: 991px) {
+  #live-research-badge {
+    top: auto;
+    bottom: 20px;
+    right: 50%;
+    transform: translateX(50%);
+    max-width: 90vw;
+  }
+}
+
+
+/* ─────────────────────────────────────────────
+   TEXT SCRAMBLE EFFECT — headings during scramble
+───────────────────────────────────────────── */
+section h2,
+section h3 {
+  transition: opacity 0.2s ease;
+}
+
+/* Ensure heading text scramble chars don't break layout */
+section h2 span,
+section h3 span {
+  display: inline;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+
+/* ─────────────────────────────────────────────
+   3D CAREER TIMELINE
+───────────────────────────────────────────── */
+#timeline-3d-track {
+  padding-bottom: 30px !important;
+}
+
+.timeline-card-3d {
+  will-change: transform, box-shadow;
+}
+
+/* Connecting line at bottom of timeline */
+#timeline-3d-track::after {
+  content: '';
+  position: absolute;
+  bottom: 16px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(139,92,246,0.3), rgba(6,182,212,0.4), rgba(139,92,246,0.3), transparent);
+  pointer-events: none;
+}
+
+
+/* ─────────────────────────────────────────────
+   FEYNMAN DIAGRAM WIDGET
+───────────────────────────────────────────── */
+#feynman-widget {
+  transition: all 0.4s cubic-bezier(0.23,1,0.32,1);
+}
+
+#feynman-widget:hover {
+  border-color: rgba(139,92,246,0.3) !important;
+  box-shadow: 0 12px 60px rgba(0,0,0,0.5), 0 0 40px rgba(139,92,246,0.1) !important;
+}
+
+#feynman-canvas {
+  border: 1px solid rgba(255,255,255,0.05);
+  background: rgba(5,5,15,0.8);
+}
+
+
+/* ─────────────────────────────────────────────
+   CITATION NETWORK GRAPH
+───────────────────────────────────────────── */
+#citation-graph-container {
+  transition: all 0.4s ease;
+}
+
+#citation-graph-container:hover {
+  border-color: rgba(139,92,246,0.25) !important;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 30px rgba(139,92,246,0.08) !important;
+}
+
+
+/* ─────────────────────────────────────────────
+   CHATBOT PREMIUM UPGRADE
+───────────────────────────────────────────── */
+
+/* Enhanced chatbot FAB */
+#chatbot-toggle,
+.chatbot-fab-btn,
+[id*="chatbot"][id*="toggle"],
+[class*="chatbot"][class*="toggle"] {
+  background: linear-gradient(135deg, #8b5cf6, #06b6d4) !important;
+  box-shadow: 0 6px 30px rgba(139,92,246,0.5) !important;
+  border: none !important;
+  border-radius: 50% !important;
+  transition: all 0.3s cubic-bezier(0.23,1,0.32,1) !important;
+}
+
+/* Chatbot window */
+.chatbot-container,
+#chatbot-window,
+[id*="chatbot"][id*="window"],
+[class*="chatbot"][class*="container"] {
+  background: rgba(8,8,22,0.97) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border: 1px solid rgba(139,92,246,0.2) !important;
+  border-radius: 20px !important;
+  overflow: hidden !important;
+}
+
+/* Chatbot messages area */
+.chatbot-messages,
+#chatbot-messages,
+[id*="chatbot"][id*="messages"],
+[class*="chatbot"][class*="messages"] {
+  background: transparent !important;
+  padding: 16px !important;
+}
+
+/* Chatbot input area */
+.chatbot-input-area,
+.chatbot-footer,
+[class*="chatbot"][class*="input-area"],
+[class*="chatbot"][class*="footer"] {
+  background: rgba(10,10,22,0.9) !important;
+  border-top: 1px solid rgba(139,92,246,0.1) !important;
+  padding: 12px 16px !important;
+}
+
+
+/* ─────────────────────────────────────────────
+   ENHANCED SECTION TRANSITIONS
+   Smooth gradient shifts between sections
+───────────────────────────────────────────── */
+section {
+  position: relative;
+}
+
+/* Gradient transition between hero and about */
+#home + .ae-wave-divider + section,
+#home + section {
+  position: relative;
+}
+
+/* Glowing section headers */
+.portfolio__header h1,
+.news-section__header h1,
+.collaborators__header h1,
+.skill__progress_heading h2 {
+  position: relative;
+  display: inline-block;
+}
+
+.portfolio__header h1::after,
+.news-section__header h1::after,
+.collaborators__header h1::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #8b5cf6, #06b6d4, transparent);
+  border-radius: 1px;
+}
+
+
+/* ─────────────────────────────────────────────
+   PREMIUM MICRO ANIMATIONS
+───────────────────────────────────────────── */
+
+/* Staggered entrance for skill bars */
+.skill__progress_item:nth-child(1) { animation-delay: 0.05s; }
+.skill__progress_item:nth-child(2) { animation-delay: 0.10s; }
+.skill__progress_item:nth-child(3) { animation-delay: 0.15s; }
+.skill__progress_item:nth-child(4) { animation-delay: 0.20s; }
+.skill__progress_item:nth-child(5) { animation-delay: 0.25s; }
+.skill__progress_item:nth-child(6) { animation-delay: 0.30s; }
+
+/* Staggered entrance for research cards */
+.research-card:nth-child(1) { animation-delay: 0.05s; }
+.research-card:nth-child(2) { animation-delay: 0.12s; }
+.research-card:nth-child(3) { animation-delay: 0.19s; }
+.research-card:nth-child(4) { animation-delay: 0.26s; }
+.research-card:nth-child(5) { animation-delay: 0.33s; }
+.research-card:nth-child(6) { animation-delay: 0.40s; }
+
+/* Pulsing highlight on active nav link */
+.nav-link.active-section {
+  color: #ffffff !important;
+}
+
+
+/* ─────────────────────────────────────────────
+   HERO ENHANCEMENTS
+   Floating keyword tags
+───────────────────────────────────────────── */
+.hero-keyword-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(139,92,246,0.08);
+  border: 1px solid rgba(139,92,246,0.2);
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.6);
+  font-family: 'JetBrains Mono', monospace;
+  margin: 3px;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.hero-keyword-tag:hover {
+  background: rgba(139,92,246,0.15);
+  border-color: rgba(139,92,246,0.4);
+  color: rgba(255,255,255,0.85);
+  transform: translateY(-2px);
+}
+
+.hero-keywords-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 20px;
+}
+
+
+/* ─────────────────────────────────────────────
+   MOUSE TRAIL PARTICLES
+───────────────────────────────────────────── */
+.mouse-trail-particle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 99999;
+  font-family: 'JetBrains Mono', monospace;
+  user-select: none;
+  will-change: transform, opacity;
+}
+
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE OVERRIDES
+───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  #constellation-nav { display: none !important; }
+  .hero-blackhole { display: none; }
+  .hero-accretion-ring { display: none; }
+  #feynman-widget { padding: 16px; }
+  #feynman-canvas { height: 130px !important; }
+}
+
+@media (max-width: 991px) {
+  .timeline-card-3d { width: 120px !important; }
+}
+
+
+/* ─────────────────────────────────────────────
+   PRINT STYLES — hide decorative elements
+───────────────────────────────────────────── */
+@media print {
+  #constellation-nav,
+  .aurora-layer,
+  #feynman-widget,
+  #citation-graph-container,
+  #live-research-badge,
+  .holo-sheen { display: none !important; }
+}

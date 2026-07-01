@@ -1,0 +1,556 @@
+/* ═══════════════════════════════════════════════════════════════════════════════
+   WORLD-CLASS.CSS  —  Satyajit Puhan Portfolio  —  Ultra-Premium Visual Layer
+   Adds: 3D holographic cards, scroll velocity skew, kinetic typography,
+         WebGL shader containers, neon glows, clip-path reveals,
+         CSS scroll-driven animations, advanced cursor states
+   Layers ON TOP of ultra-v3.css and site-core.css.
+═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ── 1. @property Declarations (Animatable Custom Properties) ── */
+@property --wc-hue {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+@property --wc-shine-x {
+  syntax: '<percentage>';
+  initial-value: 0%;
+  inherits: false;
+}
+@property --wc-shine-y {
+  syntax: '<percentage>';
+  initial-value: 0%;
+  inherits: false;
+}
+@property --wc-glow-opacity {
+  syntax: '<number>';
+  initial-value: 0;
+  inherits: false;
+}
+@property --wc-border-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+@property --wc-rotate-x {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+@property --wc-rotate-y {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+/* ── 2. WebGL Shader Container ── */
+.wc-shader-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+.wc-shader-canvas.interactive {
+  pointer-events: auto;
+}
+
+/* ── 3. 3D Holographic Card System ── */
+.wc-3d-card-wrap {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+.wc-3d-card {
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease-out;
+  will-change: transform;
+  position: relative;
+  overflow: hidden;
+}
+.wc-3d-card-inner {
+  transform-style: preserve-3d;
+  transition: transform 0.5s var(--ease);
+}
+
+/* Holographic shine overlay */
+.wc-3d-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    800px circle at var(--wc-shine-x) var(--wc-shine-y),
+    rgba(255, 255, 255, 0.06),
+    transparent 40%
+  );
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.wc-3d-card:hover::before {
+  opacity: 1;
+}
+
+/* Holographic border gradient */
+.wc-3d-card::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(
+    from var(--wc-border-angle) at 50% 50%,
+    rgba(232, 164, 68, 0.4),
+    rgba(46, 196, 182, 0.4),
+    rgba(224, 92, 122, 0.4),
+    rgba(139, 92, 246, 0.4),
+    rgba(232, 164, 68, 0.4)
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  animation: wc-border-spin 4s linear infinite;
+  animation-play-state: paused;
+}
+.wc-3d-card:hover::after {
+  opacity: 1;
+  animation-play-state: running;
+}
+@keyframes wc-border-spin {
+  to { --wc-border-angle: 360deg; }
+}
+
+/* ── 4. Scroll Velocity Skew ── */
+.wc-velocity-skew {
+  transition: transform 0.15s ease-out;
+  will-change: transform;
+}
+
+/* ── 5. Kinetic Typography ── */
+.wc-kinetic-title {
+  font-family: var(--font-h);
+  font-variation-settings: 'wght' 400;
+  transition: font-variation-settings 0.4s ease;
+  background: linear-gradient(
+    90deg,
+    var(--gold, #e8a444),
+    var(--teal, #2ec4b6),
+    var(--rose, #e05c7a),
+    var(--gold, #e8a444)
+  );
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: wc-kinetic-shift 5s linear infinite;
+}
+.wc-kinetic-title:hover {
+  font-variation-settings: 'wght' 700;
+}
+@keyframes wc-kinetic-shift {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+/* Glitch text effect v2 */
+.wc-glitch-text {
+  position: relative;
+  display: inline-block;
+}
+.wc-glitch-text::before,
+.wc-glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+.wc-glitch-text:hover::before {
+  animation: wc-glitch-1 0.4s ease both;
+  color: #e05c7a;
+  opacity: 0.8;
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+}
+.wc-glitch-text:hover::after {
+  animation: wc-glitch-2 0.4s ease both;
+  color: #2ec4b6;
+  opacity: 0.8;
+  clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+}
+@keyframes wc-glitch-1 {
+  0% { transform: translate(0); }
+  20% { transform: translate(-3px, 2px); }
+  40% { transform: translate(3px, -2px); }
+  60% { transform: translate(-2px, 1px); }
+  80% { transform: translate(2px, -1px); }
+  100% { transform: translate(0); opacity: 0; }
+}
+@keyframes wc-glitch-2 {
+  0% { transform: translate(0); }
+  20% { transform: translate(3px, -2px); }
+  40% { transform: translate(-3px, 2px); }
+  60% { transform: translate(2px, -1px); }
+  80% { transform: translate(-2px, 1px); }
+  100% { transform: translate(0); opacity: 0; }
+}
+
+/* ── 6. Neon Glow System ── */
+.wc-neon-glow {
+  position: relative;
+}
+.wc-neon-glow::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, var(--gold), var(--teal), var(--rose));
+  filter: blur(16px);
+  opacity: var(--wc-glow-opacity, 0);
+  z-index: -1;
+  transition: opacity 0.4s ease;
+}
+.wc-neon-glow:hover::before {
+  --wc-glow-opacity: 0.5;
+}
+
+/* ── 7. Clip-Path Reveal Animations ── */
+.wc-reveal-clip {
+  clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+  transition: clip-path 0.8s var(--ease);
+}
+.wc-reveal-clip.visible {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+.wc-reveal-clip-right {
+  clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+  transition: clip-path 0.8s var(--ease);
+}
+.wc-reveal-clip-right.visible {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+/* ── 8. Advanced Scroll-Driven Section Reveals ── */
+@supports (animation-timeline: scroll()) {
+  .wc-scroll-reveal {
+    animation: wc-scroll-fade-up 1s var(--ease) both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 30%;
+  }
+  .wc-scroll-reveal-scale {
+    animation: wc-scroll-scale-in 1s var(--ease) both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 40%;
+  }
+  .wc-scroll-reveal-left {
+    animation: wc-scroll-slide-left 1s var(--ease) both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 30%;
+  }
+  .wc-scroll-reveal-right {
+    animation: wc-scroll-slide-right 1s var(--ease) both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 30%;
+  }
+}
+@keyframes wc-scroll-fade-up {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes wc-scroll-scale-in {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes wc-scroll-slide-left {
+  from { opacity: 0; transform: translateX(-50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes wc-scroll-slide-right {
+  from { opacity: 0; transform: translateX(50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* JS fallback for browsers without scroll-timeline */
+@supports not (animation-timeline: scroll()) {
+  .wc-scroll-reveal,
+  .wc-scroll-reveal-scale,
+  .wc-scroll-reveal-left,
+  .wc-scroll-reveal-right {
+    opacity: 0;
+  }
+  .wc-scroll-reveal.visible,
+  .wc-scroll-reveal-scale.visible,
+  .wc-scroll-reveal-left.visible,
+  .wc-scroll-reveal-right.visible {
+    opacity: 1;
+  }
+}
+
+/* ── 9. Magnetic Typography ── */
+.wc-magnetic-text {
+  display: inline-block;
+  transition: transform 0.3s var(--ease);
+  will-change: transform;
+}
+
+/* ── 10. Advanced Cursor States ── */
+.wc-cursor-expand {
+  cursor: none;
+}
+.wc-cursor-expand:hover ~ #ae-cursor .ae-cursor-ring,
+.wc-cursor-expand:hover ~ #ae-cursor .ae-cursor-dot {
+  transform: scale(2);
+}
+
+/* ── 11. Particle Trail Container ── */
+.wc-particle-trail {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9997;
+}
+
+/* ── 12. Iridescent/Holographic Surface ── */
+.wc-iridescent {
+  position: relative;
+  overflow: hidden;
+}
+.wc-iridescent::before {
+  content: '';
+  position: absolute;
+  inset: -50%;
+  background: conic-gradient(
+    from var(--wc-hue) at 50% 50%,
+    rgba(232, 164, 68, 0.1),
+    rgba(46, 196, 182, 0.1),
+    rgba(224, 92, 122, 0.1),
+    rgba(139, 92, 246, 0.1),
+    rgba(232, 164, 68, 0.1)
+  );
+  animation: wc-iridescent-spin 6s linear infinite;
+  z-index: 0;
+  pointer-events: none;
+}
+@keyframes wc-iridescent-spin {
+  to { --wc-hue: 360deg; }
+}
+
+/* ── 13. Advanced Button Shine Sweep ── */
+.wc-shine-sweep {
+  position: relative;
+  overflow: hidden;
+}
+.wc-shine-sweep::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+  transform: skewX(-25deg);
+  transition: left 0.6s var(--ease);
+}
+.wc-shine-sweep:hover::after {
+  left: 150%;
+}
+
+/* ── 14. Floating Label Animation ── */
+.wc-float-label {
+  animation: wc-float-y 6s ease-in-out infinite;
+}
+.wc-float-label-delay-1 { animation-delay: -1s; }
+.wc-float-label-delay-2 { animation-delay: -2s; }
+.wc-float-label-delay-3 { animation-delay: -3s; }
+.wc-float-label-delay-4 { animation-delay: -4s; }
+@keyframes wc-float-y {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-8px) rotate(1deg); }
+  75% { transform: translateY(6px) rotate(-1deg); }
+}
+
+/* ── 15. Mesh Gradient Background v2 ── */
+.wc-mesh-bg-v2 {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(at 40% 20%, rgba(139, 92, 246, 0.15) 0px, transparent 50%),
+    radial-gradient(at 80% 0%, rgba(6, 182, 212, 0.1) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, rgba(232, 164, 68, 0.08) 0px, transparent 50%),
+    radial-gradient(at 80% 50%, rgba(224, 92, 122, 0.08) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(6, 182, 212, 0.12) 0px, transparent 50%);
+  filter: blur(60px);
+  z-index: 0;
+  pointer-events: none;
+  animation: wc-mesh-breathe 10s ease-in-out infinite alternate;
+}
+@keyframes wc-mesh-breathe {
+  0% { transform: scale(1) rotate(0deg); opacity: 0.8; }
+  50% { transform: scale(1.1) rotate(2deg); opacity: 1; }
+  100% { transform: scale(1) rotate(-2deg); opacity: 0.8; }
+}
+
+/* ── 16. Section Morph Divider ── */
+.wc-morph-divider {
+  position: relative;
+  height: 80px;
+  overflow: hidden;
+  line-height: 0;
+}
+.wc-morph-divider svg {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+.wc-morph-divider path {
+  transition: d 1.5s var(--ease);
+}
+
+/* ── 17. Typing Cursor v2 ── */
+.wc-type-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: var(--gold, #e8a444);
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: wc-blink-cursor 1s step-end infinite;
+}
+@keyframes wc-blink-cursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ── 18. Constellation Network Background ── */
+.wc-constellation-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── 19. Premium Scrollbar v2 ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg, #050911);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, var(--gold, #e8a444), var(--teal, #2ec4b6));
+  border-radius: 3px;
+  box-shadow: 0 0 6px rgba(232, 164, 68, 0.3);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, var(--gold-light, #f5c266), var(--teal, #2ec4b6));
+}
+
+/* ── 20. Loading Animation v2 ── */
+.wc-loading-ring {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  position: relative;
+}
+.wc-loading-ring::before,
+.wc-loading-ring::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid transparent;
+}
+.wc-loading-ring::before {
+  inset: 0;
+  border-top-color: var(--gold, #e8a444);
+  border-right-color: var(--teal, #2ec4b6);
+  animation: wc-spin 1.5s linear infinite;
+}
+.wc-loading-ring::after {
+  inset: 8px;
+  border-bottom-color: var(--rose, #e05c7a);
+  border-left-color: var(--sky, #64a8d1);
+  animation: wc-spin 1.5s linear infinite reverse;
+}
+@keyframes wc-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── 21. Page Transition Overlay ── */
+.wc-page-transition {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: var(--bg, #050911);
+  clip-path: circle(0% at 50% 50%);
+  transition: clip-path 0.8s var(--ease);
+  pointer-events: none;
+}
+.wc-page-transition.active {
+  clip-path: circle(150% at 50% 50%);
+}
+
+/* ── 22. Parallax Layers v2 ── */
+.wc-parallax-slow {
+  will-change: transform;
+  transition: transform 0.1s linear;
+}
+.wc-parallax-fast {
+  will-change: transform;
+  transition: transform 0.1s linear;
+}
+
+/* ── 23. Reduced Motion Support ── */
+@media (prefers-reduced-motion: reduce) {
+  .wc-3d-card,
+  .wc-3d-card-inner,
+  .wc-velocity-skew,
+  .wc-kinetic-title,
+  .wc-magnetic-text,
+  .wc-float-label,
+  .wc-mesh-bg-v2,
+  .wc-iridescent::before {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+  .wc-shader-canvas {
+    display: none;
+  }
+}
+
+/* ── 24. Mobile Optimizations ── */
+@media (max-width: 768px) {
+  .wc-3d-card::before,
+  .wc-3d-card::after {
+    display: none;
+  }
+  .wc-3d-card {
+    transform: none !important;
+  }
+  .wc-velocity-skew {
+    transform: none !important;
+  }
+  .wc-mesh-bg-v2 {
+    filter: blur(30px);
+  }
+}
+
+/* ── 25. High Contrast Support ── */
+@media (prefers-contrast: more) {
+  .wc-3d-card::after,
+  .wc-neon-glow::before,
+  .wc-iridescent::before {
+    display: none;
+  }
+}
