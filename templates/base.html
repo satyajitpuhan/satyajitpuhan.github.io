@@ -45,21 +45,16 @@
     {% endblock %}
 
     {% block stylesheets %}
-    <!-- Two fonts only: Space Grotesk + Inter -->
+    <!-- Fonts: Inter + Space Grotesk only, minimal weights -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ get_url(path='css/bootstrap.min.css', cachebust=true) }}">
     <link rel="stylesheet" href="{{ get_url(path='main.css', cachebust=true) }}">
-    <!-- Single consolidated CSS (replaces 3 heavy files) -->
     <link rel="stylesheet" href="{{ get_url(path='css/site-core.css', cachebust=true) }}">
     <link rel="stylesheet" href="{{ get_url(path='css/chatbot.css', cachebust=true) }}">
     <!-- Light Theme overrides -->
     <link rel="stylesheet" href="{{ get_url(path='css/light-theme.css', cachebust=true) }}">
-    <!-- Ultra V3: next-level visual layer -->
-    <link rel="stylesheet" href="{{ get_url(path='css/ultra-v3.css', cachebust=true) }}">
-    <!-- World-Class: ultimate premium layer -->
-    <link rel="stylesheet" href="{{ get_url(path='css/world-class.css', cachebust=true) }}">
     {% endblock %}
 
     <link rel="shortcut icon" type="image/x-icon" href="{{ get_url(path='images/favicon.ico') }}">
@@ -124,40 +119,26 @@
     {% endblock %}
 
     {% block javascripts %}
-    <script src="{{ get_url(path='js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ get_url(path='js/main.js') }}"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ get_url(path='js/bootstrap.bundle.min.js') }}" defer></script>
+    <script src="{{ get_url(path='js/main.js') }}" defer></script>
 
     <!-- SatyaBot Chatbot -->
-    <script src="{{ get_url(path='js/chatbot-knowledge.js', cachebust=true) }}"></script>
-    <script src="{{ get_url(path='js/chatbot.js', cachebust=true) }}"></script>
+    <script src="{{ get_url(path='js/chatbot-knowledge.js', cachebust=true) }}" defer></script>
+    <script src="{{ get_url(path='js/chatbot.js', cachebust=true) }}" defer></script>
 
-    <!-- Advanced v2: scroll reveal observer, counters, gauge animation, parallax, back-to-top -->
-    <script src="{{ get_url(path='js/advanced-v2.js', cachebust=true) }}"></script>
-    <!-- Core effects: auto-tag scroll reveal, cursor, typewriter, magnetic -->
-    <script src="{{ get_url(path='js/advanced-effects.js', cachebust=true) }}"></script>
-    
-    <!-- Three.js and D3.js (for elite features) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script src="//unpkg.com/globe.gl"></script>
-    
-    <!-- Ultra-advanced features -->
-    <script src="{{ get_url(path='js/three-quark.js', cachebust=true) }}"></script>
-    <script src="{{ get_url(path='js/interactions.js', cachebust=true) }}"></script>
-    <script src="{{ get_url(path='js/globe-collab.js', cachebust=true) }}"></script>
-    <script src="{{ get_url(path='js/live-stats.js', cachebust=true) }}"></script>
-    <script src="{{ get_url(path='js/theme-engine.js', cachebust=true) }}"></script>
+    <!-- Scroll reveal, counters, parallax, back-to-top -->
+    <script src="{{ get_url(path='js/advanced-v2.js', cachebust=true) }}" defer></script>
+    <!-- Core effects: scroll reveal, typewriter -->
+    <script src="{{ get_url(path='js/advanced-effects.js', cachebust=true) }}" defer></script>
 
-    <!-- 3D Minion Bob mascot — walks into the page and wanders around -->
-    <script src="{{ get_url(path='js/minion-bob.js', cachebust=true) }}"></script>
+    <!-- Interactions & theme -->
+    <script src="{{ get_url(path='js/interactions.js', cachebust=true) }}" defer></script>
+    <script src="{{ get_url(path='js/theme-engine.js', cachebust=true) }}" defer></script>
 
     <!-- Sticky navbar scroll class -->
-
     <script>
     (function() {
-      const nav = document.getElementById('header-particles-wrap');
+      var nav = document.getElementById('header-particles-wrap');
       if (!nav) return;
       function onScroll() {
         nav.classList.toggle('scrolled', window.scrollY > 60);
@@ -166,16 +147,6 @@
       onScroll();
     })();
     </script>
-
-    <!-- ════════════════════════════════════════════
-         ULTRA V3 ENGINE — Next-Level Interactions
-         ════════════════════════════════════════════ -->
-    <script src="{{ get_url(path='js/ultra-engine.js', cachebust=true) }}"></script>
-    
-    <!-- ════════════════════════════════════════════
-         WORLD-CLASS ENGINE — Ultimate Premium Layer
-         ════════════════════════════════════════════ -->
-    <script src="{{ get_url(path='js/world-class.js', cachebust=true) }}"></script>
     {% endblock %}
 
     <!-- ════════════════════════════════════════════

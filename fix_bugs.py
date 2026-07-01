@@ -36,7 +36,7 @@ def remove_redundant_index_en():
                     print(f"REMOVED redundant: {redundant}")
                     removed += 1
     if removed:
-        print(f"--- Removed {redundant} redundant _index.en.md files ---\n")
+        print(f"--- Removed {removed} redundant _index.en.md files ---\n")
     return removed
 
 
@@ -98,11 +98,6 @@ def run_script(name, args=None, timeout=60):
     except subprocess.TimeoutExpired:
         print(f"WARNING: {name} timed out after {timeout}s")
         return False, ""
-    except subprocess.CalledProcessError as e:
-        print(f"ERROR running {name}:")
-        print(e.stdout)
-        print(e.stderr)
-        return False, e.stdout + e.stderr
 
 
 def copy_md_to_or():

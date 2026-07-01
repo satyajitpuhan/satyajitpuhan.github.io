@@ -7,7 +7,7 @@
  * - Sticky nav scroll state
  * - Counter animations
  * - Skill bar reveal with glow
- * - Card 3D tilt effects
+ * - Card 3D tilt effects (removed for performance)
  * - Floating quantum particles
  * - Section intersection animations
  */
@@ -160,43 +160,6 @@
     progressEls.forEach(el => observer.observe(el));
   }
 
-  /* ─────────────────────────────────────────────
-     6. CARD 3D TILT — Research cards
-  ───────────────────────────────────────────── */
-  function initCardTilt() {
-    const cards = $$('.research-card');
-    
-    cards.forEach(card => {
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        
-        const rotX = ((y - centerY) / centerY) * -6;
-        const rotY = ((x - centerX) / centerX) * 6;
-        
-        card.style.transform = `translateY(-12px) scale(1.02) perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
-        
-        // Dynamic highlight
-        const highlightEl = card.querySelector('.card-highlight');
-        if (highlightEl) {
-          highlightEl.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255,255,255,0.1) 0%, transparent 60%)`;
-        }
-      });
-      
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = '';
-        card.style.transition = 'all 0.5s cubic-bezier(0.23, 1, 0.32, 1)';
-      });
-      
-      card.addEventListener('mouseenter', () => {
-        card.style.transition = 'box-shadow 0.4s ease, border-color 0.4s ease';
-      });
-    });
-  }
 
   /* ─────────────────────────────────────────────
      7. FLOATING QUANTUM PARTICLES
@@ -419,7 +382,6 @@
 
     // Delay non-critical inits
     setTimeout(() => {
-      initCardTilt();
       initQuantumParticles();
     }, 500);
   }

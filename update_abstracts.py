@@ -118,10 +118,8 @@ def update_file(filepath, abstract):
     with open(filepath, 'r', encoding='utf-8') as f:
         content = f.read()
 
-    # Escape special TOML chars in abstract - wrap in triple quotes
-    # Replace the challenge line
-    # Match: challenge = "..." (could be multi-line with triple quotes)
-    pattern = r'challenge\s*=\s*"[^"]*"'
+    # Match: challenge = "..." including values with escaped quotes/backslashes
+    pattern = r'challenge\s*=\s*"(?:[^"\\]|\\.)*"'
     
     # Escape any literal backslashes and quotes in the abstract
     safe_abstract = abstract.replace('\\', '\\\\').replace('"', '\\"')

@@ -115,7 +115,7 @@ def update_file(filepath, summary):
         content = f.read()
 
     safe_summary = summary.replace('\\', '\\\\').replace('"', '\\"')
-    pattern = r'solution\s*=\s*"[^"]*"'
+    pattern = r'solution\s*=\s*"(?:[^"\\]|\\.)*"'
     replacement = f'solution = "{safe_summary}"'
     new_content = re.sub(pattern, replacement, content, count=1)
 

@@ -83,11 +83,13 @@ def translate_md_file(filepath):
             with open(filepath, 'w', encoding='utf-8') as f:
                 f.write(new_content)
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 if __name__ == "__main__":
-    toml_files = glob.glob('static/sections/**/or.toml', recursive=True)
+    toml_files = glob.glob(os.path.join(BASE_DIR, 'static', 'sections', '**', 'or.toml'), recursive=True)
     for f in toml_files:
         translate_toml_file(f)
         
-    md_files = glob.glob('content/**/*.or.md', recursive=True)
+    md_files = glob.glob(os.path.join(BASE_DIR, 'content', '**', '*.or.md'), recursive=True)
     for f in md_files:
         translate_md_file(f)

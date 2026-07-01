@@ -1,56 +1,12 @@
 /**
  * interactions.js — Premium Micro-Interactions
- * Features: 3D card tilt, magnetic buttons, text scramble reveal, ripple effect
+ * Features: magnetic buttons, text scramble reveal, ripple effect
  * Pure vanilla JS — zero dependencies
  */
 (function () {
   'use strict';
 
   const isMobile = window.matchMedia('(max-width: 768px)').matches;
-
-  /* ══════════════════════════════════════════════
-     1. 3D CARD TILT
-     Applies perspective tilt to cards on mousemove
-  ══════════════════════════════════════════════ */
-  function initTilt() {
-    if (isMobile) return;
-    const SELECTORS = [
-      '.research-card',
-      '.collaborator-card',
-      '.ae-skill-gauge-card',
-      '.news-card',
-      '.ae-timeline-card',
-    ];
-    const cards = document.querySelectorAll(SELECTORS.join(','));
-
-    cards.forEach(card => {
-      card.style.transformStyle = 'preserve-3d';
-      card.style.transition = 'transform 0.12s ease, box-shadow 0.3s ease';
-
-      card.addEventListener('mousemove', (e) => {
-        const rect  = card.getBoundingClientRect();
-        const cx    = rect.left + rect.width  / 2;
-        const cy    = rect.top  + rect.height / 2;
-        const dx    = (e.clientX - cx) / (rect.width  / 2);
-        const dy    = (e.clientY - cy) / (rect.height / 2);
-        const rotX  = -dy * 4;   // max 4deg
-        const rotY  =  dx * 4;
-        card.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateZ(4px) scale(1.02)`;
-        card.style.boxShadow = `
-          ${-rotY * 0.5}px ${rotX * 0.5}px 30px rgba(139,92,246,0.18),
-          0 20px 60px rgba(0,0,0,0.4)`;
-      });
-
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = '';
-        card.style.boxShadow = '';
-        card.style.transition = 'transform 0.5s ease, box-shadow 0.5s ease';
-        setTimeout(() => {
-          card.style.transition = 'transform 0.12s ease, box-shadow 0.3s ease';
-        }, 500);
-      });
-    });
-  }
 
   /* ══════════════════════════════════════════════
      2. MAGNETIC BUTTONS
@@ -230,14 +186,12 @@
   ══════════════════════════════════════════════ */
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
-      initTilt();
       initMagnetic();
       initScramble();
       initRipple();
       initSectionIndicator();
     });
   } else {
-    initTilt();
     initMagnetic();
     initScramble();
     initRipple();
