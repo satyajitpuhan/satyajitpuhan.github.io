@@ -1,294 +1,140 @@
-{% import 'macros.html' as macros %}
-
-{% set extra = config.extra %}
-
 <!DOCTYPE html>
-
 <html lang="{{ lang }}">
-
 <head>
-    <title>
-        {% block title %}
-        {{ page.title | default(value=config.title) }}
-        {% endblock %}
-    </title>
-
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Satyajit Puhan</title>
+    <meta name="description" content="We hide not from society from our own demon.">
     <meta name="theme-color" content="#050911">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="{{ page.description | default(value=config.description) | default(value='') | striptags | truncate(length=160) }}">
-    <meta itemprop="name" content="{{ page.title | default(value=config.title) }}">
-    <meta itemprop="description" content="{{ page.description | default(value=config.description) | default(value='') }}">
-
-    <!-- Open Graph / Social Sharing -->
-    <meta property="og:title" content="{{ page.title | default(value=config.title) }}">
-    <meta property="og:description" content="{{ page.description | default(value=config.description) | default(value='') | striptags | truncate(length=160) }}">
-    <meta property="og:type" content="{% if page.title %}article{% else %}website{% endif %}">
-    <meta property="og:url" content="{{ page.permalink | default(value=config.base_url) }}">
-    <meta property="og:image" content="{{ get_url(path='images/about/me.jpg') }}">
-    <meta property="og:site_name" content="{{ config.title }}">
-    <meta property="og:locale" content="{{ lang }}_{{ lang | upper }}">
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{ page.title | default(value=config.title) }}">
-    <meta name="twitter:description" content="{{ page.description | default(value=config.description) | default(value='') | striptags | truncate(length=160) }}">
-    <meta name="twitter:image" content="{{ get_url(path='images/about/me.jpg') }}">
-
-    <!-- Canonical URL -->
-    <link rel="canonical" href="{{ page.permalink | default(value=config.base_url) }}">
-    {% block rss %}
-    {% if config.generate_feeds %}
-    {{ macros::feeds() }}
-    {% endif %}
-    {% endblock %}
-
-    {% block stylesheets %}
-    <!-- Fonts: Inter + Space Grotesk only, minimal weights -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ get_url(path='css/bootstrap.min.css', cachebust=true) }}">
-    <link rel="stylesheet" href="{{ get_url(path='main.css', cachebust=true) }}">
-    <link rel="stylesheet" href="{{ get_url(path='css/site-core.css', cachebust=true) }}">
-    <link rel="stylesheet" href="{{ get_url(path='css/chatbot.css', cachebust=true) }}">
-    <!-- Light Theme overrides -->
-    <link rel="stylesheet" href="{{ get_url(path='css/light-theme.css', cachebust=true) }}">
-    {% endblock %}
-
-    <link rel="shortcut icon" type="image/x-icon" href="{{ get_url(path='images/favicon.ico') }}">
-    <link rel="icon" type="image/x-icon" href="{{ get_url(path='images/favicon.ico') }}">
-
-    {% block seo %}
-    {{ macros::ms_application(path="static/images/logo.png") }}
-    {{ macros::icons(path="static/images/logo.png", apple=true, sizes=[57, 72, 76, 114, 120, 144, 152, 180]) }}
-    {{ macros::icons(path="static/images/logo.png", sizes=[16, 32, 36, 48, 72, 96, 144, 192]) }}
-    {{ macros::analytics() }}
-    {% endblock %}
-
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <style>
-        .ae-wave-divider { overflow: hidden; line-height: 0; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@500;700&display=swap');
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { height: 100%; overflow: hidden; }
+
+        body {
+            background: #050911;
+            color: #fff;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .bg-canvas { position: fixed; inset: 0; z-index: 0; }
+        .bg-canvas::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 80% 60% at 20% 40%, rgba(139, 92, 246, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 80% at 80% 60%, rgba(6, 182, 212, 0.06) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 50% at 50% 50%, rgba(232, 164, 68, 0.04) 0%, transparent 70%);
+            animation: nebulaPulse 12s ease-in-out infinite alternate;
+        }
+        @keyframes nebulaPulse { 0% { opacity: 0.6; transform: scale(1); } 100% { opacity: 1; transform: scale(1.05); } }
+
+        .noise {
+            position: fixed; inset: 0; z-index: 1; opacity: 0.03; pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+            background-repeat: repeat; background-size: 256px 256px;
+        }
+
+        .particles { position: fixed; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
+        .particle {
+            position: absolute; width: 2px; height: 2px;
+            background: rgba(255, 255, 255, 0.15); border-radius: 50%;
+            animation: floatUp linear infinite;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) translateX(0) scale(0); opacity: 0; }
+            10% { opacity: 1; transform: translateY(90vh) translateX(10px) scale(1); }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-10vh) translateX(-20px) scale(0.3); opacity: 0; }
+        }
+
+        .content {
+            position: relative; z-index: 10; text-align: center;
+            padding: 40px 24px; max-width: 720px;
+            animation: fadeInUp 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0;
+        }
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(40px) scale(0.97); filter: blur(8px); }
+            100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+        }
+
+        .accent-line {
+            width: 60px; height: 2px; margin: 0 auto 40px;
+            background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.6), rgba(6, 182, 212, 0.6), transparent);
+            border-radius: 2px; animation: lineGlow 4s ease-in-out infinite alternate;
+        }
+        @keyframes lineGlow { 0% { opacity: 0.4; width: 40px; } 100% { opacity: 1; width: 80px; } }
+
+        .quote {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1.4rem, 4vw, 2.8rem); font-weight: 700;
+            line-height: 1.3; letter-spacing: -0.5px;
+            color: rgba(255, 255, 255, 0.92); margin-bottom: 32px; position: relative;
+        }
+        .quote .highlight { background: linear-gradient(135deg, #8b5cf6, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .quote .highlight-warm { background: linear-gradient(135deg, #e8a444, #f5c266); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .quote::before {
+            content: '\201C'; position: absolute; top: -30px; left: 50%; transform: translateX(-50%);
+            font-size: 5rem; font-family: Georgia, serif;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(6, 182, 212, 0.1));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            line-height: 1; pointer-events: none; user-select: none;
+        }
+
+        .attribution { font-size: 0.85rem; color: rgba(255, 255, 255, 0.3); font-weight: 300; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 48px; }
+        .bottom-line { width: 40px; height: 1px; margin: 0 auto; background: linear-gradient(90deg, transparent, rgba(232, 164, 68, 0.4), transparent); border-radius: 1px; }
+
+        .glow-orb {
+            position: absolute; width: 300px; height: 300px; border-radius: 50%;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.08), transparent 70%);
+            top: 50%; left: 50%; transform: translate(-50%, -50%);
+            animation: breathe 6s ease-in-out infinite; pointer-events: none; z-index: -1;
+        }
+        @keyframes breathe { 0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; } 50% { transform: translate(-50%, -50%) scale(1.3); opacity: 1; } }
+
+        .cursor { display: inline-block; width: 2px; height: 0.85em; background: rgba(139, 92, 246, 0.7); margin-left: 4px; vertical-align: text-bottom; animation: blink 1.2s step-end infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        @media (max-width: 480px) { .quote::before { font-size: 3rem; top: -20px; } }
     </style>
 </head>
-
 <body>
-
-    <!-- ── Skip to Content (Accessibility) ── -->
-    <a href="#content" class="ae-skip-link" style="position: absolute; top: -40px; left: 0; background: var(--gold, #e8a444); color: #000; padding: 8px 16px; font-weight: 700; font-size: 0.85rem; z-index: 100000; text-decoration: none; border-radius: 0 0 8px 0; transition: top 0.3s;" onfocus="this.style.top='0'" onblur="this.style.top='-40px'">Skip to content</a>
-
-    <!-- ── Ultra V3 Loading Screen ── -->
-    <div id="ae-loading-screen" aria-hidden="true">
-        <div class="ae-loading-spinner"></div>
-        <div class="ae-loading-text">Initializing Portfolio</div>
-    </div>
-
-    <!-- ── Film Grain Noise Overlay ── -->
-    <div class="ae-noise-overlay" aria-hidden="true"></div>
-
-    <!-- ── Scroll Progress (Right Edge) ── -->
-    <div id="ae-scroll-progress-v2" aria-hidden="true"></div>
-
-    <!-- ── Reading Progress Bar ── -->
-    <div id="ae-scroll-progress" role="progressbar" aria-label="Reading progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-    <script>
-    (function() {
-      var bar = document.getElementById('ae-scroll-progress');
-      if (!bar) return;
-      function updateProgress() {
-        var scrollTop = window.scrollY || document.documentElement.scrollTop;
-        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        var pct = docHeight > 0 ? Math.min(100, (scrollTop / docHeight) * 100) : 0;
-        bar.style.width = pct + '%';
-        bar.setAttribute('aria-valuenow', Math.round(pct));
-      }
-      window.addEventListener('scroll', updateProgress, { passive: true });
-      updateProgress();
-    })();
-    </script>
-    {% block navbar %}
-    {% include "partials/navbar.html" %}
-    {% endblock %}
-
-    <div id="content">
-        {% block content %}{% endblock %}
-    </div>
-
-    {% block footer %}
-    {% include "partials/footer.html" %}
-    {% endblock %}
-
-    {% block javascripts %}
-    <script src="{{ get_url(path='js/bootstrap.bundle.min.js') }}" defer></script>
-    <script src="{{ get_url(path='js/main.js') }}" defer></script>
-
-    <!-- SatyaBot Chatbot -->
-    <script src="{{ get_url(path='js/chatbot-knowledge.js', cachebust=true) }}" defer></script>
-    <script src="{{ get_url(path='js/chatbot.js', cachebust=true) }}" defer></script>
-
-    <!-- Scroll reveal, counters, parallax, back-to-top -->
-    <script src="{{ get_url(path='js/advanced-v2.js', cachebust=true) }}" defer></script>
-    <!-- Core effects: scroll reveal, typewriter -->
-    <script src="{{ get_url(path='js/advanced-effects.js', cachebust=true) }}" defer></script>
-
-    <!-- Interactions & theme -->
-    <script src="{{ get_url(path='js/interactions.js', cachebust=true) }}" defer></script>
-    <script src="{{ get_url(path='js/theme-engine.js', cachebust=true) }}" defer></script>
-
-    <!-- Sticky navbar scroll class -->
-    <script>
-    (function() {
-      var nav = document.getElementById('header-particles-wrap');
-      if (!nav) return;
-      function onScroll() {
-        nav.classList.toggle('scrolled', window.scrollY > 60);
-      }
-      window.addEventListener('scroll', onScroll, { passive: true });
-      onScroll();
-    })();
-    </script>
-    {% endblock %}
-
-    <!-- ════════════════════════════════════════════
-         COOKIE CONSENT BANNER
-         ════════════════════════════════════════════ -->
-    <div id="cookie-consent" style="
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 100000;
-      background: rgba(10, 10, 22, 0.95);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(139, 92, 246, 0.3);
-      border-radius: 14px;
-      padding: 16px 24px;
-      max-width: 90vw;
-      width: 480px;
-      box-shadow: 0 8px 40px rgba(0,0,0,0.6);
-      display: none;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.75);
-    ">
-      <span style="flex: 1; min-width: 200px;">
-        🍪 We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.
-      </span>
-      <button id="cookie-accept" style="
-        background: linear-gradient(135deg, #8b5cf6, #06b6d4);
-        color: white;
-        border: none;
-        padding: 8px 20px;
-        border-radius: 8px;
-        font-weight: 700;
-        cursor: pointer;
-        font-size: 0.8rem;
-        transition: all 0.3s ease;
-        white-space: nowrap;
-      ">Accept</button>
-    </div>
-    <script>
-    (function() {
-      var banner = document.getElementById('cookie-consent');
-      var acceptBtn = document.getElementById('cookie-accept');
-      if (!banner || !acceptBtn) return;
-      if (!localStorage.getItem('cookie-consent')) {
-        banner.style.display = 'flex';
-      }
-      acceptBtn.addEventListener('click', function() {
-        localStorage.setItem('cookie-consent', 'accepted');
-        banner.style.opacity = '0';
-        banner.style.transform = 'translateX(-50%) translateY(20px)';
-        setTimeout(function() { banner.style.display = 'none'; }, 300);
-      });
-    })();
-    </script>
-
-    <!-- ════════════════════════════════════════════
-         NOSCRIPT FALLBACK
-         ════════════════════════════════════════════ -->
-    <noscript>
-      <div style="
-        position: fixed;
-        inset: 0;
-        z-index: 100001;
-        background: #050911;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        gap: 16px;
-        padding: 40px;
-        text-align: center;
-      ">
-        <div style="font-size: 3rem; font-weight: 800; color: #e8a444; font-family: 'Space Grotesk', sans-serif;">⚠ JavaScript Required</div>
-        <p style="color: rgba(255,255,255,0.6); max-width: 480px; font-size: 1rem; line-height: 1.6;">
-          This website uses advanced interactive features that require JavaScript to function properly.<br>
-          Please enable JavaScript in your browser settings to continue.
+    <div class="bg-canvas"></div>
+    <div class="noise"></div>
+    <div class="particles" id="particles"></div>
+    <div class="content">
+        <div class="glow-orb"></div>
+        <div class="accent-line"></div>
+        <p class="quote">
+            We hide not from <span class="highlight">society</span><br>
+            from our own <span class="highlight-warm">demon</span><span class="cursor"></span>
         </p>
-        <a href="{{ get_url(path='/', lang=lang) }}" style="
-          display: inline-block;
-          padding: 12px 28px;
-          background: linear-gradient(135deg, #e8a444, #f5c266);
-          color: #1a1000;
-          border-radius: 10px;
-          font-weight: 700;
-          text-decoration: none;
-          font-size: 0.95rem;
-        ">Reload Page</a>
-      </div>
-    </noscript>
-
-    <!-- ════════════════════════════════════════════
-         SCHEMA.ORG JSON-LD STRUCTURED DATA
-         ════════════════════════════════════════════ -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Satyajit Puhan",
-      "alternateName": "ସତ୍ୟଜିତ ପୁହାଣ",
-      "jobTitle": "Postdoctoral Researcher",
-      "description": "Theoretical Particle Physicist specializing in QCD, hadronic physics, and Dyson–Schwinger equations at Academia Sinica.",
-      "url": "{{ config.base_url }}",
-      "image": "{{ get_url(path='images/about/me.jpg') }}",
-      "affiliation": {
-        "@type": "Organization",
-        "name": "Institute of Physics, Academia Sinica",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Taipei",
-          "addressCountry": "Taiwan"
-        }
-      },
-      "alumniOf": {
-        "@type": "Organization",
-        "name": "Dr. B R Ambedkar NIT Jalandhar"
-      },
-      "knowsAbout": [
-        "Quantum Chromodynamics",
-        "Hadronic Physics",
-        "Parton Distribution Functions",
-        "Transverse Momentum Dependent Distributions",
-        "Generalized Parton Distributions",
-        "Light-Front Quark Model",
-        "Dyson–Schwinger Equations"
-      ],
-      "sameAs": [
-        "https://github.com/satyajitpuhan",
-        "https://www.linkedin.com/in/satyajit-puhan-b9889a162/",
-        "https://scholar.google.com/citations?hl=en&user=pKbmhZQAAAAJ",
-        "https://www.researchgate.net/profile/Satyajit-Puhan",
-        "https://inspirehep.net/authors/2695282",
-        "https://www.facebook.com/satyajit.puhan",
-        "https://orcid.org/0009-0004-9766-5005",
-        "https://www.instagram.com/puhan_satyaji/"
-      ]
-    }
+        <div class="attribution">— S . P</div>
+        <div class="bottom-line"></div>
+    </div>
+    <script>
+        (function() {
+            var c = document.getElementById('particles');
+            if (!c) return;
+            for (var i = 0; i < 40; i++) {
+                var p = document.createElement('div');
+                p.className = 'particle';
+                p.style.left = Math.random() * 100 + '%';
+                p.style.animationDuration = (8 + Math.random() * 16) + 's';
+                p.style.animationDelay = (Math.random() * 12) + 's';
+                p.style.width = p.style.height = (1 + Math.random() * 2) + 'px';
+                p.style.opacity = 0.05 + Math.random() * 0.15;
+                c.appendChild(p);
+            }
+        })();
     </script>
 </body>
-
 </html>
