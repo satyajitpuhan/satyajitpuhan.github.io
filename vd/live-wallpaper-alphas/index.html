@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Strong Coupling Constant α_s(Q²) — Running coupling, asymptotic freedom, confinement visualization">
+    <title>α_s(Q²) — Running of the Strong Coupling</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background canvas (energy field + quarks) -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Main plot canvas -->
+    <canvas id="plot-canvas"></canvas>
+
+    <!-- Foreground effects -->
+    <canvas id="fx-canvas"></canvas>
+
+    <!-- Glass UI -->
+    <div class="ui-overlay">
+
+        <!-- Title Card -->
+        <div class="title-card glass-card" id="title-card">
+            <div class="title-main">α<sub>s</sub>(Q²)</div>
+            <div class="title-sub">Running of the Strong Coupling Constant</div>
+        </div>
+
+        <!-- Current Value Display -->
+        <div class="value-display glass-card" id="value-display">
+            <div class="val-header">
+                <div class="pulse-dot"></div>
+                <span class="val-title">COUPLING MONITOR</span>
+            </div>
+            <div class="val-main-row">
+                <span class="val-label">α<sub>s</sub>(Q) =</span>
+                <span class="val-number" id="alpha-current">0.1179</span>
+            </div>
+            <div class="val-grid">
+                <div class="val-cell">
+                    <span class="val-key">Q</span>
+                    <span class="val-data" id="q-current">91.2</span>
+                    <span class="val-unit">GeV</span>
+                </div>
+                <div class="val-cell">
+                    <span class="val-key">n<sub>f</sub></span>
+                    <span class="val-data" id="nf-current">5</span>
+                </div>
+                <div class="val-cell">
+                    <span class="val-key">Λ<sub>QCD</sub></span>
+                    <span class="val-data" id="lambda-val">217</span>
+                    <span class="val-unit">MeV</span>
+                </div>
+                <div class="val-cell">
+                    <span class="val-key">β₀</span>
+                    <span class="val-data" id="beta0-val">23</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Formula Card -->
+        <div class="formula-card glass-card" id="formula-card">
+            <div class="formula-tabs">
+                <button class="formula-tab active" data-order="1">1-loop</button>
+                <button class="formula-tab" data-order="2">2-loop</button>
+                <button class="formula-tab" data-order="3">3-loop</button>
+            </div>
+            <div class="formula-display" id="formula-display">
+                <div class="formula-text" id="formula-1loop">
+                    α<sub>s</sub>(Q²) = <span class="f-frac"><span class="f-num">4π</span><span class="f-den">β₀ · ln(Q²/Λ²)</span></span>
+                </div>
+                <div class="formula-note" id="formula-note">
+                    β₀ = 11 − ⅔ n<sub>f</sub>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls-panel glass-card" id="controls-panel">
+            <div class="control-group">
+                <label for="q-slider">Energy Scale Q (GeV)</label>
+                <input type="range" id="q-slider" min="0.5" max="1000" step="0.5" value="91.2">
+                <div class="slider-markers">
+                    <span>0.5</span>
+                    <span>Λ<sub>QCD</sub></span>
+                    <span>m<sub>c</sub></span>
+                    <span>m<sub>b</sub></span>
+                    <span>M<sub>Z</sub></span>
+                    <span>m<sub>t</sub></span>
+                    <span>1 TeV</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="nf-slider">Active Flavors n<sub>f</sub></label>
+                <input type="range" id="nf-slider" min="3" max="6" step="1" value="5">
+            </div>
+            <div class="control-group">
+                <label for="lambda-slider">Λ<sub>QCD</sub> (MeV)</label>
+                <input type="range" id="lambda-slider" min="100" max="400" step="5" value="217">
+            </div>
+        </div>
+
+        <!-- Region Labels -->
+        <div class="region-label region-confinement" id="label-confinement">
+            <span class="region-name">CONFINEMENT</span>
+            <span class="region-desc">α<sub>s</sub> → ∞ · Quarks bound</span>
+        </div>
+        <div class="region-label region-freedom" id="label-freedom">
+            <span class="region-name">ASYMPTOTIC FREEDOM</span>
+            <span class="region-desc">α<sub>s</sub> → 0 · Quarks free</span>
+        </div>
+
+        <!-- Info Bar -->
+        <div class="info-bar">
+            <div class="widget glass-card">
+                <span class="widget-label">FPS</span>
+                <span class="widget-value" id="fps-value">60</span>
+            </div>
+            <div class="widget glass-card">
+                <span class="widget-label">Regime</span>
+                <span class="widget-value" id="regime-value">pQCD</span>
+            </div>
+        </div>
+
+        <!-- Toggle -->
+        <button class="toggle-ui glass-card" id="toggle-ui" title="Toggle UI">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+            </svg>
+        </button>
+        <button class="fullscreen-btn glass-card" id="fullscreen-btn" title="Fullscreen">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/>
+            </svg>
+        </button>
+    </div>
+
+    <script src="alphas.js"></script>
+</body>
+</html>
