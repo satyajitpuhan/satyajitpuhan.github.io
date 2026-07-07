@@ -1,1 +1,168 @@
 {% extends 'base.html' %}
+
+{% block content %}
+<!-- Hero Banner -->
+<div class="paper-hero">
+  <div class="paper-hero__overlay"></div>
+  <div class="paper-hero__particles"></div>
+  <div class="container" style="position: relative; z-index: 2;">
+    <div class="row">
+      <div class="col-lg-10 offset-lg-1 text-center">
+        <span class="paper-hero__badge">
+          <i class="lni lni-graduation"></i> Research Publication
+        </span>
+        <h1 class="paper-hero__title">{{ page.title }}</h1>
+        <p class="paper-hero__subtitle">{{ page.extra.short_description }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="section case-details">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 offset-lg-1">
+
+        <!-- Info Cards -->
+        <div class="paper-info-strip">
+          <div class="paper-info-card">
+            <div class="paper-info-card__icon">
+              <i class="lni lni-users"></i>
+            </div>
+            <div class="paper-info-card__content">
+              <span class="paper-info-card__label">Authors</span>
+              <p class="paper-info-card__value">{{ page.extra.client }}</p>
+            </div>
+          </div>
+          <div class="paper-info-card">
+            <div class="paper-info-card__icon">
+              <i class="lni lni-book"></i>
+            </div>
+            <div class="paper-info-card__content">
+              <span class="paper-info-card__label">Journal</span>
+              <p class="paper-info-card__value">{{ page.extra.service }}</p>
+            </div>
+          </div>
+          <div class="paper-info-card">
+            <div class="paper-info-card__icon">
+              <i class="lni lni-calendar"></i>
+            </div>
+            <div class="paper-info-card__content">
+              <span class="paper-info-card__label">Date</span>
+              <p class="paper-info-card__value">{{ page.date | date(format="%B %d, %Y") }}</p>
+            </div>
+          </div>
+          {% if page.extra.doi %}
+          <div class="paper-info-card">
+            <div class="paper-info-card__icon">
+              <i class="lni lni-link"></i>
+            </div>
+            <div class="paper-info-card__content">
+              <span class="paper-info-card__label">DOI</span>
+              <p class="paper-info-card__value">
+                <a href="https://doi.org/{{ page.extra.doi }}" target="_blank">{{ page.extra.doi }}</a>
+              </p>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+
+        <!-- Citation & Actions -->
+        <div class="row mt-4 mb-4">
+          <div class="col-lg-10 offset-lg-1">
+            <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;">
+              <button class="btn-cite" onclick="copyCitation()"
+                style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 10px; background: linear-gradient(135deg, #8b5cf6, #06b6d4); color: white; border: none; font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 18px rgba(139,92,246,0.35);"
+                onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 28px rgba(139,92,246,0.55)';"
+                onmouseout="this.style.transform=''; this.style.boxShadow='0 4px 18px rgba(139,92,246,0.35)';">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path></svg>
+                <span id="cite-btn-text">Copy Citation</span>
+              </button>
+              <button class="btn-print" onclick="window.print()"
+                style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 10px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.85); font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease;"
+                onmouseover="this.style.borderColor='rgba(232,164,68,0.5)'; this.style.background='rgba(232,164,68,0.1)'; this.style.color='#e8a444';"
+                onmouseout="this.style.borderColor='rgba(255,255,255,0.15)'; this.style.background='rgba(255,255,255,0.05)'; this.style.color='rgba(255,255,255,0.85)';">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+                Print Paper
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <script>
+        function copyCitation() {
+          var authors = {{ page.extra.client | json_encode }};
+          var title = {{ page.title | json_encode }};
+          var journal = {{ page.extra.service | json_encode }};
+          var year = {{ page.date | date(format="%Y") | json_encode }};
+          var citation = authors + ', "' + title + '", ' + journal + ' (' + year + ').';
+          navigator.clipboard.writeText(citation).then(function() {
+            var btn = document.getElementById('cite-btn-text');
+            var original = btn.textContent;
+            btn.textContent = 'Copied!';
+            setTimeout(function() { btn.textContent = original; }, 2000);
+          });
+        }
+        </script>
+
+        <!-- Abstract & Summary -->
+        <div class="row paper-sections">
+          <div class="col-lg-6">
+            <div class="paper-section-card paper-section-card--abstract">
+              <div class="paper-section-card__header">
+                <span class="paper-section-card__icon"><i class="lni lni-text-format"></i></span>
+                <h3>Abstract</h3>
+              </div>
+              <p>{{ page.extra.challenge }}</p>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="paper-section-card paper-section-card--summary">
+              <div class="paper-section-card__header">
+                <span class="paper-section-card__icon"><i class="lni lni-bulb"></i></span>
+                <h3>Summary</h3>
+              </div>
+              <p>{{ page.extra.solution }}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Markdown content -->
+        <div class="paper-body-content">
+          {{ page.content | safe }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="row">
+      <div class="col-lg-10 offset-lg-1">
+        <div class="paper-nav">
+          {% if page.lower %}
+          <a href="{{ page.lower.permalink }}" class="paper-nav__link paper-nav__link--prev">
+            <span class="paper-nav__arrow">←</span>
+            <div class="paper-nav__info">
+              <span class="paper-nav__label">Prev paper</span>
+              <span class="paper-nav__title">{{ page.lower.title }}</span>
+            </div>
+          </a>
+          {% else %}
+          <div></div>
+          {% endif %}
+
+          {% if page.higher %}
+          <a href="{{ page.higher.permalink }}" class="paper-nav__link paper-nav__link--next">
+            <div class="paper-nav__info" style="text-align: right;">
+              <span class="paper-nav__label">Next paper</span>
+              <span class="paper-nav__title">{{ page.higher.title }}</span>
+            </div>
+            <span class="paper-nav__arrow">→</span>
+          </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+{% endblock %}
