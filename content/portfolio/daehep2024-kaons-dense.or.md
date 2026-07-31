@@ -3,7 +3,7 @@ title = "Kaons structure in dense nuclear medium"
 date = 2024-12-17
 
 [extra]
-thumbnail = "images/portfolio/portfolio-1.png"
+thumbnail = "images/portfolio/portfolio-1.webp"
 service = "DAE HEP 2024"
 client = "A. Kumar, D. Singh, S. Puhan, N. Kaur, M. Kaur, H. Dahiya, and S. Dutt"
 short_description = "DAE HEP 2024 contribution on kaon structure in dense nuclear matter, analyzing the impact of isospin asymmetry and temperature."
@@ -11,9 +11,12 @@ challenge = "In the present work, we investigated the impact of the finite densi
 solution = "Investigates medium-modified kaon and antikaon properties in dense nuclear matter using combined CQMF and LCQM approach. Analyzes the impact of finite isospin asymmetry and temperature on distribution amplitudes and decay constants."
 tags = ["Kaon", "Nuclear Medium", "Dense Matter", "Conference"]
 categories = ["Conference Proceeding"]
+doi = "10.1007/978-981-95-1513-4_253"
+inspire = "3116482"
+citations = 0
 +++
 
 **Authors:** A. Kumar, D. Singh, S. Puhan, N. Kaur, M. Kaur, H. Dahiya, and S. Dutt  
 **Published in:** DAE HEP 2024
 
-[View Details →](#)
+[DOI: 10.1007/978-981-95-1513-4_253](https://doi.org/10.1007/978-981-95-1513-4_253) · [INSPIRE-HEP record](https://inspirehep.net/literature/3116482)

@@ -3,7 +3,7 @@
 {% block content %}
 <header class="breadCrumb">
   <div class="svg-img">
-    <img src="{{ get_url(path='images/hero/figure-svg.svg') }}" alt="bg">
+    <img decoding="async" loading="eager" fetchpriority="high" src="{{ get_url(path='images/hero/figure-svg.svg') }}" alt="bg">
   </div>
   <div class="animate-shape">
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 600 600">
@@ -20,7 +20,7 @@
     </svg>
   </div>
   <div class="animate-pattern">
-    <img src="{{ get_url(path='images/service/background-pattern.svg') }}" alt="background-shape">
+    <img decoding="async" loading="lazy" src="{{ get_url(path='images/service/background-pattern.svg') }}" alt="background-shape">
   </div>
   <div class="container">
     <div class="row">
@@ -52,7 +52,7 @@
               </svg>
             </div>
             <div class="icon">
-              <img src="{{ get_url(path='images/contact/location.svg') }}" alt="location" />
+              <img decoding="async" loading="lazy" src="{{ get_url(path='images/contact/location.svg') }}" alt="location" />
             </div>
           </div>
           <h4>{{ trans(key='address', lang=lang) }}</h4>
@@ -73,7 +73,7 @@
               </svg>
             </div>
             <div class="icon">
-              <img src="{{ get_url(path='images/contact/phone.svg') }}" alt="phone" />
+              <img decoding="async" loading="lazy" src="{{ get_url(path='images/contact/phone.svg') }}" alt="phone" />
             </div>
           </div>
           <h4>{{ trans(key="phone", lang=lang) }} & {{ trans(key="email", lang=lang) }}</h4>
@@ -96,7 +96,7 @@
               </svg>
             </div>
             <div class="icon">
-              <img src="{{ get_url(path='images/contact/time.svg') }}" alt="time" />
+              <img decoding="async" loading="lazy" src="{{ get_url(path='images/contact/time.svg') }}" alt="time" />
             </div>
           </div>
           <h4>{{ trans(key="opening_hours", lang=lang) }}</h4>

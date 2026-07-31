@@ -139,15 +139,18 @@ sitemaps = [
   { name = "latest_article", url = "/#blog" }
 ]
 
+inspire_author_id = "2695282"
+inspire_author_url = "https://inspirehep.net/authors/2695282"
+
 socials = [
-  { icon = "github-original", url = "https://github.com/satyajitpuhan" },
-  { icon = "linkedin-original", url = "https://www.linkedin.com/in/satyajit-puhan-b9889a162/" },
-  { icon = "graduation", url = "https://scholar.google.com/citations?hl=en&user=pKbmhZQAAAAJ/" },
-  { icon = "link", url = "https://www.researchgate.net/profile/Satyajit-Puhan/" },
-  { icon = "book", url = "https://inspirehep.net/authors/2695282" },
-  { icon = "facebook-original", url = "https://www.facebook.com/satyajit.puhan" },
-  { icon = "certificate", url = "https://orcid.org/0009-0004-9766-5005" },
-  { icon = "instagram-original", url = "https://www.instagram.com/puhan_satyaji/" }
+  { icon = "inspire", name = "INSPIRE-HEP", url = "https://inspirehep.net/authors/2695282" },
+  { icon = "scholar", name = "Google Scholar", url = "https://scholar.google.com/citations?hl=en&user=pKbmhZQAAAAJ" },
+  { icon = "orcid", name = "ORCID", url = "https://orcid.org/0009-0004-9766-5005" },
+  { icon = "researchgate", name = "ResearchGate", url = "https://www.researchgate.net/profile/Satyajit-Puhan" },
+  { icon = "github", name = "GitHub", url = "https://github.com/satyajitpuhan" },
+  { icon = "linkedin", name = "LinkedIn", url = "https://www.linkedin.com/in/satyajit-puhan-b9889a162/" },
+  { icon = "facebook", name = "Facebook", url = "https://www.facebook.com/satyajit.puhan" },
+  { icon = "instagram", name = "Instagram", url = "https://www.instagram.com/puhan_satyaji/" }
 ]
 
 [extra.address]

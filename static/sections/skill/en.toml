@@ -1,7 +1,7 @@
 top_title = "Skills"
 title = "Technical Skills & Tools"
 subtitle = "Theoretical frameworks, computational tools, and programming languages used in my research."
-image = "images/about/me.jpg"
+image = "images/about/me.webp"
 
 [[skills]]
 title = "Mathematica (Expert)"

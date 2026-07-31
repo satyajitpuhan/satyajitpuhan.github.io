@@ -3,8 +3,8 @@ title = "Pion Structure at ICTS-TIFR 2024 — Bengaluru"
 date = 2024-02-01
 
 [extra]
-feature_image = "images/blog/posts/icts-tifr-2024.png"
-post_image = "images/blog/posts/icts-tifr-2024.png"
+feature_image = "images/blog/posts/icts-tifr-2024.webp"
+post_image = "images/blog/posts/icts-tifr-2024.webp"
 
 [taxonomies]
 tags = ["conference", "TMDs", "GPDs", "GDAs", "pion"]

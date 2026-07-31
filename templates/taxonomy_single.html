@@ -9,7 +9,7 @@
 {% block content %}
 <header class="breadCrumb">
   <div class="svg-img">
-    <img src="{{ get_url(path='images/hero/figure-svg.svg') }}" alt="">
+    <img decoding="async" loading="eager" fetchpriority="high" src="{{ get_url(path='images/hero/figure-svg.svg') }}" alt="">
   </div>
   <div class="animate-shape">
     <svg
@@ -40,7 +40,7 @@
     </svg>
   </div>
   <div class="animate-pattern">
-    <img src="{{ get_url(path='images/service/background-pattern.svg') }}"
+    <img decoding="async" loading="lazy" src="{{ get_url(path='images/service/background-pattern.svg') }}"
     alt="background-shape">
   </div>
   <div class="container">
@@ -62,7 +62,7 @@
     <div class="d-flex justify-content-center flex-wrap">
       {% for page in term.pages %}
       <div class="card col-lg-3 m-2">
-        <img class="card-img-top" src="{{ get_url(path=page.extra.feature_image) }}" alt="post-image">
+        <img decoding="async" loading="lazy" class="card-img-top" src="{{ get_url(path=page.extra.feature_image) }}" alt="post-image">
         <div class="card-body">
             <a class="text-reset text-decoration-none" href="{{ page.permalink }}">
                 <h5 class="card-title">{{ page.title }}</h5>

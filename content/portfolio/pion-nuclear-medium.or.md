@@ -3,15 +3,18 @@ title = "Does nuclear medium affect the transverse momentum-dependent parton dis
 date = 2024-11-01
 
 [extra]
-thumbnail = "images/portfolio/papers/pion-tmds-nuclear-medium.png"
+thumbnail = "images/portfolio/papers/pion-tmds-nuclear-medium.webp"
 service = "Phys. Lett. B 859 (2024)"
 client = "N. Kaur, S. Puhan, A. Kumar, S. Dutt, and H. Dahiya"
 short_description = "Investigating whether nuclear matter distorts the pion’s transverse momentum landscape, using chiral SU(3) mean-field inputs to light-cone quark dynamics."
 challenge = "We calculate the valence quark transverse momentum-dependent parton distributions (TMDs) of the lightest pseudoscalar meson, pions, in isospin asymmetric nuclear matter at zero temperature by employing a light-cone quark model. The medium modifications in the pion unpolarized TMDs are induced through the effective quark masses computed using the chiral SU(3) quark mean field model. The spin densities at different momentum fraction (x) have also been calculated at different baryonic densities."
 solution = "Calculates valence quark TMDs of pions in isospin asymmetric nuclear matter using LCQM with in-medium quark masses from chiral SU(3) CQMF model. Analyzes spin densities at different momentum fractions and baryonic densities."
-doi = "10.1016/j.physletb.2024.139114"
 tags = ["TMDs", "Pion", "Nuclear Medium", "Isospin Asymmetry"]
 categories = ["Journal Article"]
+arxiv = "2409.05394"
+doi = "10.1016/j.physletb.2024.139114"
+inspire = "2826279"
+citations = 12
 +++
 
 **Authors:** N. Kaur, S. Puhan, A. Kumar, S. Dutt, and H. Dahiya  

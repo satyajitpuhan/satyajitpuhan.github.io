@@ -3,7 +3,7 @@ title = "Behavior of pion in asymmetric nuclear medium"
 date = 2024-12-16
 
 [extra]
-thumbnail = "images/portfolio/portfolio-4.png"
+thumbnail = "images/portfolio/portfolio-4.webp"
 service = "DAE HEP 2024"
 client = "A. Gautam, D. Singh, S. Puhan, N. Kaur, A. Kumar, H. Dahiya, and S. Dutt"
 short_description = "DAE HEP 2024 contribution on pion behavior in asymmetric nuclear medium, exploring decay constants and transition form factors in-medium."
@@ -11,9 +11,12 @@ challenge = "We investigate the in-medium properties of pion in the light-front 
 solution = "Studies the pion transition form factor for gamma* gamma -> pi_0 in asymmetric nuclear medium. Calculates in-medium decay constant and distribution amplitude using LFQM with chiral SU(3) CQMF model, finding qualitative agreement with experiment."
 tags = ["Pion", "Nuclear Medium", "Asymmetric Matter", "Conference"]
 categories = ["Conference Proceeding"]
+doi = "10.1007/978-981-95-1513-4_224"
+inspire = "3116481"
+citations = 0
 +++
 
 **Authors:** A. Gautam, D. Singh, S. Puhan, N. Kaur, A. Kumar, H. Dahiya, and S. Dutt  
 **Published in:** DAE HEP 2024
 
-[View Details →](#)
+[DOI: 10.1007/978-981-95-1513-4_224](https://doi.org/10.1007/978-981-95-1513-4_224) · [INSPIRE-HEP record](https://inspirehep.net/literature/3116481)

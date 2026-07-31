@@ -9,7 +9,7 @@
     <div class="container d-flex justify-content-between align-items-center">
         <a href="{{ get_url(path='/', lang=lang) }}" class="d-flex align-items-center text-decoration-none" style="gap: 14px;">
             <div style="position: relative;">
-                <img src="{{ get_url(path=extra.logo) }}" alt="Site Logo" style="height: 66px; filter: drop-shadow(0 0 10px rgba(139,92,246,0.6));">
+                <img decoding="async" loading="eager" fetchpriority="high" src="{{ get_url(path=extra.logo) }}" alt="Site Logo" style="height: 66px; filter: drop-shadow(0 0 10px rgba(139,92,246,0.6));">
                 <!-- Spinning ring around logo -->
                 <div style="position: absolute; inset: -8px; border-radius: 50%; border-top: 1px solid rgba(139,92,246,0.5); border-right: 1px solid transparent; border-bottom: 1px solid transparent; border-left: 1px solid transparent; pointer-events: none; animation: lni-is-spinning 4s linear infinite;"></div>
                 <div style="position: absolute; inset: -4px; border-radius: 50%; border-top: 1px solid transparent; border-right: 1px solid transparent; border-bottom: 1px solid rgba(6,182,212,0.4); border-left: 1px solid transparent; pointer-events: none; animation: lni-is-spinning 3s linear infinite reverse;"></div>
@@ -24,14 +24,15 @@
         <div class="header-right d-flex align-items-center" style="gap: 16px;">
             <div class="d-none d-md-flex align-items-center" style="gap: 6px;">
                 {% for social in extra.socials %}
-                <a target="_blank" href="{{ social.url }}" class="header-social-icon" title="{{ social.icon }}" aria-label="{{ social.icon }}">
-                    <i class="lni lni-{{ social.icon }}"></i>
+                <a target="_blank" rel="noopener" href="{{ social.url }}" class="header-social-icon social--{{ social.icon }}"
+                   title="{{ social.name }}" aria-label="{{ social.name }}">
+                    {{ si::icon(id=social.icon) }}
                 </a>
                 {% endfor %}
             </div>
             <!-- Avatar -->
             <div style="position: relative;">
-                <img src="{{ get_url(path='images/about/me.jpg') }}" alt="Satyajit Puhan"
+                <img decoding="async" loading="eager" fetchpriority="high" src="{{ get_url(path='images/about/me.webp') }}" alt="Satyajit Puhan"
                     style="height: 56px; width: 56px; border-radius: 50%; object-fit: cover;
                            border: 2px solid rgba(139,92,246,0.5);
                            box-shadow: 0 0 20px rgba(139,92,246,0.25);
@@ -42,7 +43,7 @@
                 <div style="position: absolute; bottom: 2px; right: 2px; width: 12px; height: 12px; border-radius: 50%; background: #10b981; border: 2px solid #0a0a0f; box-shadow: 0 0 8px rgba(16,185,129,0.6);"></div>
             </div>
             <!-- Institution logo -->
-            <img src="{{ get_url(path='images/tomography_logo.jpg') }}" alt="Institute Logo"
+            <img decoding="async" loading="eager" fetchpriority="high" src="{{ get_url(path='images/tomography_logo.webp') }}" alt="Institute Logo"
                 style="height: 60px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);
                        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
                        transition: all 0.3s ease; opacity: 0.85;"
@@ -62,7 +63,7 @@
     <div class="container">
         <!-- Mobile Logo -->
         <a href="{{ get_url(path='/', lang=lang) }}" class="navbar-brand d-lg-none" style="padding: 10px 0;">
-            <img src="{{ get_url(path=extra.logo) }}" alt="site-logo" style="height: 40px; filter: drop-shadow(0 0 8px rgba(139,92,246,0.7));">
+            <img decoding="async" loading="eager" fetchpriority="high" src="{{ get_url(path=extra.logo) }}" alt="site-logo" style="height: 40px; filter: drop-shadow(0 0 8px rgba(139,92,246,0.7));">
         </a>
 
         <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"

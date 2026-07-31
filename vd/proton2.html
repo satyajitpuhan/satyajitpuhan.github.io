@@ -28,12 +28,12 @@
 <body>
   <div class="wallpaper" id="wallpaper">
     <!-- Blurred background (single) -->
-    <img id="bgimg" class="img-layer bg" src="/mnt/data/ie.png" alt="background">
+    <img id="bgimg" class="img-layer bg" src="/images/hero/hero_bg2.webp" alt="background">
 
     <!-- Foreground group: two images that can be crossfaded -->
     <div id="fgGroup" style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); pointer-events:none;">
-      <img id="fgA" class="fg-img" src="/mnt/data/ie.png" alt="foreground A" style="opacity:1;">
-      <img id="fgB" class="fg-img" src="/mnt/data/A_digital_anime-style_illustration_of_a_catgirl_ch.png" alt="foreground B" style="opacity:0;">
+      <img id="fgA" class="fg-img" src="/images/hero/hero_bg2.webp" alt="foreground A" style="opacity:1;">
+      <img id="fgB" class="fg-img" src="/images/hero/hero_bg4.webp" alt="foreground B" style="opacity:0;">
     </div>
 
     <!-- Particles -->
@@ -71,14 +71,14 @@
 <script>
 /* Dual-image live wallpaper
    - Uses two local images:
-     1) /mnt/data/ie.png
-     2) /mnt/data/A_digital_anime-style_illustration_of_a_catgirl_ch.png
+     1) /images/hero/hero_bg2.webp
+     2) /images/hero/hero_bg4.webp
    - Switch between A, B, or a crossfaded mix (using the slider).
    - Retains Ken-Burns zoom/pan, parallax & particle overlay.
 */
 
-const PATH_A = '/mnt/data/ie.png';
-const PATH_B = '/mnt/data/A_digital_anime-style_illustration_of_a_catgirl_ch.png';
+const PATH_A = '/images/hero/hero_bg2.webp';
+const PATH_B = '/images/hero/hero_bg4.webp';
 
 const wallpaper = document.getElementById('wallpaper');
 const bgimg = document.getElementById('bgimg');

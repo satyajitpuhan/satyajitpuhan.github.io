@@ -3,7 +3,7 @@ title = "TMD Relations: Insights from a Light-Front Quark-Diquark Model"
 date = 2024-10-01
 
 [extra]
-thumbnail = "images/portfolio/papers/tmd-relations-lfqdm.png"
+thumbnail = "images/portfolio/papers/tmd-relations-lfqdm.webp"
 service = "PTEP ptae150 (2024)"
 client = "S. Sharma, S. Puhan, N. Kumar and H. Dahiya"
 short_description = "Establishing a systematic atlas of T-even proton TMD relations up to twist-4, introducing a novel helicity-based parameterization table for the community."
@@ -11,6 +11,10 @@ challenge = "In this work, we have established the relations between the T-even 
 solution = "Establishes systematic relations between T-even proton TMDs up to twist-4 using a light-front quark-diquark model. Introduces a novel helicity-based parameterization table for deriving and classifying proton TMDs."
 tags = ["TMDs", "Proton Structure", "Light-Front Dynamics", "Quark-Diquark Model"]
 categories = ["Journal Article"]
+arxiv = "2405.13727"
+doi = "10.1093/ptep/ptae150"
+inspire = "2789229"
+citations = 6
 +++
 
 **Authors:** S. Sharma, S. Puhan, N. Kumar and H. Dahiya  

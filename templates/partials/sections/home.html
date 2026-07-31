@@ -5,9 +5,9 @@
 <section id="home" class="hero-section" style="padding: 100px 0 80px 0; background: #050911; position: relative; overflow: hidden; min-height: 80vh; display: flex; align-items: center;">
   <!-- Hero Background Slideshow (3 slides) -->
   <div class="hero-bg-slideshow">
-    <div class="hero-bg-slide" style="background-image: url('{{ get_url(path='images/hero/hero_bg1.jpg') }}');"></div>
-    <div class="hero-bg-slide" style="background-image: url('{{ get_url(path='images/hero/hero_bg3.jpg') }}');"></div>
-    <div class="hero-bg-slide" style="background-image: url('{{ get_url(path='images/hero/hero_bg5.jpg') }}');"></div>
+    <div class="hero-bg-slide" style="background-image: url('{{ get_url(path='images/hero/hero_bg1.webp') }}');"></div>
+    <div class="hero-bg-slide" style="background-image: url('{{ get_url(path='images/hero/hero_bg3.webp') }}');"></div>
+    <div class="hero-bg-slide" style="background-image: url('{{ get_url(path='images/hero/hero_bg5.webp') }}');"></div>
     <!-- Dark overlay -->
     <div style="position: absolute; inset: 0; background: radial-gradient(circle at center, rgba(5, 9, 17, 0.1) 0%, #050911 96%); z-index: 1;"></div>
     <div style="position: absolute; inset: 0; background: rgba(5, 9, 17, 0.6); z-index: 1;"></div>
@@ -144,7 +144,7 @@
           <div class="carousel-inner" style="height: 500px;">
             {% for item in data.gallery %}
             <div class="carousel-item {% if loop.first %}active{% endif %}" style="height: 500px; position: relative;">
-              <img
+              <img decoding="async" loading="lazy"
                 src="{{ get_url(path=item.image) }}"
                 class="d-block w-100 h-100"
                 style="object-fit: cover; object-position: center center;"

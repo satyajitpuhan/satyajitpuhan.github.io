@@ -3,7 +3,7 @@ title = "Photon Leading Twist Transverse Momentum Dependent Parton Distributions
 date = 2025-01-01
 
 [extra]
-thumbnail = "images/portfolio/papers/photon-tmds.png"
+thumbnail = "images/portfolio/papers/photon-tmds.webp"
 service = "Eur. Phys. J. A 61 (2025)"
 client = "S. Puhan, N. Kumar and H. Dahiya"
 short_description = "Unlocking the photon’s inner life as a quark-antiquark Fock state — calculating all leading-twist T-even TMDs for real and virtual photons."
@@ -11,6 +11,10 @@ challenge = "In this work, we have calculated the photon leading-twist T-even tr
 solution = "Calculates all leading-twist T-even photon TMDs using light-front wave functions, treating the photon as a quark-antiquark Fock state. Compares results for real vs. virtual photons and discusses spin-spin correlations."
 tags = ["TMDs", "Photon", "Light-Front Dynamics", "QCD"]
 categories = ["Journal Article"]
+arxiv = "2408.07714"
+doi = "10.1140/epja/s10050-025-01527-3"
+inspire = "2818270"
+citations = 1
 +++
 
 **Authors:** S. Puhan, N. Kumar and H. Dahiya  

@@ -3,8 +3,8 @@ title = "EIC-Asia Workshop on QCD and Hadron Structure 2026 — Academia Sinica,
 date = 2026-05-01
 
 [extra]
-feature_image = "images/blog/posts/eic-asia-2026-group.jpg"
-post_image = "images/blog/posts/eic-asia-2026-group.jpg"
+feature_image = "images/blog/posts/eic-asia-2026-group.webp"
+post_image = "images/blog/posts/eic-asia-2026-group.webp"
 
 [taxonomies]
 tags = ["EIC", "QCD", "hadron structure", "workshop", "Academia Sinica", "Taiwan"]
@@ -36,13 +36,13 @@ The workshop featured invited presentations from leading researchers including C
 
 ### Group Photo at the Institute of Physics
 
-![Group photo at the Institute of Physics, Academia Sinica](/images/blog/posts/eic-asia-2026-group.jpg)
+![Group photo at the Institute of Physics, Academia Sinica](/images/blog/posts/eic-asia-2026-group.webp)
 
 ### Conference Dinner
 
-![Conference dinner with fellow physicists — 1](/images/blog/posts/eic-asia-2026-dinner-1.jpg)
+![Conference dinner with fellow physicists — 1](/images/blog/posts/eic-asia-2026-dinner-1.webp)
 
-![Conference dinner with fellow physicists — 2](/images/blog/posts/eic-asia-2026-dinner-2.jpg)
+![Conference dinner with fellow physicists — 2](/images/blog/posts/eic-asia-2026-dinner-2.webp)
 
 It was a wonderful experience interacting with experts from across the globe working on hadron structure, lattice QCD, and EIC physics — right here at Academia Sinica where I am currently based as a postdoctoral researcher.
 

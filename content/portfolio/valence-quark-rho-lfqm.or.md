@@ -3,7 +3,7 @@ title = "Valence quark structure of rho meson using light-front quark model"
 date = 2025-11-01
 
 [extra]
-thumbnail = "images/portfolio/papers/rho-meson-valence-quark.png"
+thumbnail = "images/portfolio/papers/rho-meson-valence-quark.webp"
 service = "Accepted in PRD"
 client = "S. Puhan, S. Sharma, N. Kumar, and H. Dahiya"
 short_description = "A comprehensive partonic portrait of the rho meson in light-front quark model, featuring all nine leading-twist TMDs — including tensor polarizations unique to spin-1."
@@ -11,6 +11,10 @@ challenge = "We investigate the partonic structure of the rho meson, the lightes
 solution = "Comprehensive study of rho meson partonic structure using two distinct spin wave functions in LFQM. Computes all nine leading-twist TMDs including three tensor TMDs unique to spin-1, and evolves PDFs via NLO DGLAP."
 tags = ["TMDs", "PDFs", "Rho Meson", "Tensor Polarization", "Light-Front Dynamics"]
 categories = ["Preprint"]
+arxiv = "2511.10981"
+doi = "10.1103/xjkc-l5tr"
+inspire = "3083453"
+citations = 5
 +++
 
 **Authors:** S. Puhan, S. Sharma, N. Kumar, and H. Dahiya  

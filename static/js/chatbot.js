@@ -39,7 +39,7 @@
       <div class="satyabot-header">
         <div class="satyabot-header-info">
           <div class="satyabot-avatar">
-            <img src="/images/about/me.jpg" alt="Satyajit Puhan" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" />
+            <img src="/images/about/me.webp" alt="Satyajit Puhan" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" />
           </div>
           <div>
             <div class="satyabot-header-name">${BOT_NAME}</div>

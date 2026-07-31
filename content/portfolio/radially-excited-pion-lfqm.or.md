@@ -3,7 +3,7 @@ title = "Distribution Functions of Radially Excited Pion using the Light-Front Q
 date = 2026-01-10
 
 [extra]
-thumbnail = "images/portfolio/papers/radially-excited-pion-lfqm.png"
+thumbnail = "images/portfolio/papers/radially-excited-pion-lfqm.webp"
 service = "Communicated in PLB"
 client = "A. Dwivedi, S. Puhan, and S. Ghosh"
 short_description = "Exploring the radially excited 1S, 2S, and 3S pion states with mixed harmonic-oscillator wave functions, showing how state mixing shapes distribution amplitudes and PDFs."
@@ -11,6 +11,9 @@ challenge = "We investigate the internal structure of the ground (1S) and the fi
 solution = "Studies the 1S, 2S, and 3S pion states using harmonic-oscillator and mixed wave functions optimized via a QCD-motivated Hamiltonian. Shows 3S observables are highly sensitive to state mixing, with evolved PDFs matching experimental data."
 tags = ["PDFs", "DAs", "EMFFs", "Pion", "Radial Excitations", "Light-Front Dynamics"]
 categories = ["Preprint"]
+arxiv = "2601.06628"
+inspire = "3103134"
+citations = 1
 +++
 
 **Authors:** A. Dwivedi, S. Puhan, and S. Ghosh  

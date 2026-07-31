@@ -3,7 +3,7 @@ title = "Effect of Asymmetric Nuclear Medium on the Valence Quark Structure of t
 date = 2025-03-01
 
 [extra]
-thumbnail = "images/portfolio/papers/kaons-asymmetric-nuclear-medium.png"
+thumbnail = "images/portfolio/papers/kaons-asymmetric-nuclear-medium.webp"
 service = "Phys. Rev. D 111 (2025)"
 client = "D. Singh, S. Puhan, N. Kaur, M. Kaur, S. Dutt, A. Kumar, and H. Dahiya"
 short_description = "Decoding how baryon density, isospin asymmetry, and temperature rewrite the kaon’s valence quark story inside the nuclear medium."
@@ -11,6 +11,10 @@ challenge = "The role of asymmetric nuclear medium on the properties of kaon is 
 solution = "Analyzes the impact of baryonic density, isospin asymmetry, and temperature on kaon/antikaon DAs and PDFs using LCQM + CQMF. Baryon density dominates over temperature and isospin effects; PDFs evolved to Q^2 = 16 GeV^2."
 tags = ["PDFs", "DAs", "Kaon", "Nuclear Medium", "Isospin Asymmetry", "Finite Temperature"]
 categories = ["Journal Article"]
+arxiv = "2410.20181"
+doi = "10.1103/PhysRevD.111.054001"
+inspire = "2843133"
+citations = 10
 +++
 
 **Authors:** D. Singh, S. Puhan, N. Kaur, M. Kaur, S. Dutt, A. Kumar, and H. Dahiya  

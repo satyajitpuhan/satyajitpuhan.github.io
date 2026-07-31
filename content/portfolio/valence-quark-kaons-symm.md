@@ -3,7 +3,7 @@ title = "Valence quark properties of charged kaons in symmetric nuclear matter"
 date = 2025-05-01
 
 [extra]
-thumbnail = "images/portfolio/papers/kaons-symmetric-nuclear-matter.png"
+thumbnail = "images/portfolio/papers/kaons-symmetric-nuclear-matter.webp"
 service = "Eur. Phys. J. Plus 140 (2025)"
 client = "R. Pandey, S. Puhan, N. Kaur, A. Kumar, S. Dutt, and H. Dahiya"
 short_description = "Charting the leading-twist TMDs and GPDs of charged kaons in symmetric nuclear matter, from vacuum to high baryonic density."
@@ -11,6 +11,10 @@ challenge = "We calculate the leading twist valence quark transverse momentum pa
 solution = "Calculates leading-twist TMDs and GPDs of charged kaons in symmetric nuclear matter using LCQM with chiral SU(3) CQMF model inputs. Derives in-medium EMFFs, charge radii, and average momenta in good agreement with data."
 tags = ["TMDs", "GPDs", "EMFFs", "Kaon", "Nuclear Medium", "Symmetric Matter"]
 categories = ["Journal Article"]
+arxiv = "2505.01202"
+doi = "10.1140/epjp/s13360-025-06976-9"
+inspire = "2917873"
+citations = 2
 +++
 
 **Authors:** R. Pandey, S. Puhan, N. Kaur, A. Kumar, S. Dutt, and H. Dahiya  

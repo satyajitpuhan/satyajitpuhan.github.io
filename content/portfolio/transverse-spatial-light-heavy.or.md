@@ -3,7 +3,7 @@ title = "Transverse and spatial structure of light to heavy mesons in light-fron
 date = 2025-01-05
 
 [extra]
-thumbnail = "images/portfolio/papers/pseudoscalar-mesons-structure.png"
+thumbnail = "images/portfolio/papers/pseudoscalar-mesons-structure.webp"
 service = "Phys. Rev. D 111 (2025)"
 client = "S. Puhan, N. Kaur and H. Dahiya"
 short_description = "A unified portrait of light and heavy pseudoscalar mesons — from transverse momentum maps to gravitational form factors — painted with light-cone quark model brushes."
@@ -11,6 +11,10 @@ challenge = "In this work, we have investigated the transverse and spatial struc
 solution = "Unified study of light (pion, kaon) and heavy (eta_c, eta_b, B, D) pseudoscalar meson structure through TMDs and GPDs. Derives EMFFs and GFFs compatible with lattice QCD and verifies the PDF sum rule."
 tags = ["TMDs", "GPDs", "EMFFs", "GFFs", "Pion", "Kaon", "B Meson", "D Meson", "Light-Front Dynamics"]
 categories = ["Journal Article"]
+arxiv = "2410.07596"
+doi = "10.1103/PhysRevD.111.014008"
+inspire = "2839021"
+citations = 12
 +++
 
 **Authors:** S. Puhan, N. Kaur and H. Dahiya  

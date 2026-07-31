@@ -3,8 +3,8 @@ title = "PhD Thesis — Acknowledgements"
 date = 2026-04-05
 
 [extra]
-feature_image = "images/blog/posts/phd-acknowledgement.png"
-post_image = "images/blog/posts/phd-acknowledgement.png"
+feature_image = "images/blog/posts/phd-acknowledgement.webp"
+post_image = "images/blog/posts/phd-acknowledgement.webp"
 
 [taxonomies]
 tags = ["PhD", "Acknowledgements", "Gratitude", "Thesis"]

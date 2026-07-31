@@ -3,8 +3,8 @@ title = "Pion GFFs at JINR-BLTP — Dubna, Moscow"
 date = 2025-08-15
 
 [extra]
-feature_image = "images/blog/posts/jinr-bltp-2025.png"
-post_image = "images/blog/posts/jinr-bltp-2025.png"
+feature_image = "images/blog/posts/jinr-bltp-2025.webp"
+post_image = "images/blog/posts/jinr-bltp-2025.webp"
 
 [taxonomies]
 tags = ["conference", "gravitational form factors", "pion"]

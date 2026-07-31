@@ -52,18 +52,48 @@
               <p class="paper-info-card__value">{{ page.date | date(format="%B %d, %Y") }}</p>
             </div>
           </div>
-          {% if page.extra.doi %}
+          {% if page.extra.citations %}
           <div class="paper-info-card">
             <div class="paper-info-card__icon">
-              <i class="lni lni-link"></i>
+              <i class="lni lni-bar-chart"></i>
             </div>
             <div class="paper-info-card__content">
-              <span class="paper-info-card__label">DOI</span>
-              <p class="paper-info-card__value">
-                <a href="https://doi.org/{{ page.extra.doi }}" target="_blank">{{ page.extra.doi }}</a>
-              </p>
+              <span class="paper-info-card__label">Citations</span>
+              <p class="paper-info-card__value">{{ page.extra.citations }}</p>
             </div>
           </div>
+          {% endif %}
+        </div>
+
+        <!-- Paper links: arXiv / DOI / INSPIRE-HEP -->
+        <div class="paper-links" role="navigation" aria-label="Paper links">
+          {% if page.extra.arxiv %}
+          <a class="paper-link paper-link--arxiv" target="_blank" rel="noopener"
+             href="https://arxiv.org/abs/{{ page.extra.arxiv }}">
+            <span class="paper-link__tag">arXiv</span>
+            <span class="paper-link__val">{{ page.extra.arxiv }}</span>
+          </a>
+          {% endif %}
+          {% if page.extra.doi %}
+          <a class="paper-link paper-link--doi" target="_blank" rel="noopener"
+             href="https://doi.org/{{ page.extra.doi }}">
+            <span class="paper-link__tag">DOI</span>
+            <span class="paper-link__val">{{ page.extra.doi }}</span>
+          </a>
+          {% endif %}
+          {% if page.extra.inspire %}
+          <a class="paper-link paper-link--inspire" target="_blank" rel="noopener"
+             href="https://inspirehep.net/literature/{{ page.extra.inspire }}">
+            <span class="paper-link__tag">INSPIRE-HEP</span>
+            <span class="paper-link__val">Record {{ page.extra.inspire }}</span>
+          </a>
+          {% endif %}
+          {% if page.extra.arxiv %}
+          <a class="paper-link paper-link--pdf" target="_blank" rel="noopener"
+             href="https://arxiv.org/pdf/{{ page.extra.arxiv }}">
+            <span class="paper-link__tag">PDF</span>
+            <span class="paper-link__val">Full text</span>
+          </a>
           {% endif %}
         </div>
 

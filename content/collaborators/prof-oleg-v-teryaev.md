@@ -11,7 +11,7 @@ scholar = ""
 orcid = ""
 about = "Prof. Oleg V. Teryaev is a distinguished researcher at the Joint Institute for Nuclear Research (JINR) in Dubna, Russia. His extensive research spans quantum anomalies, spin physics, hydrodynamics in heavy-ion collisions, and gravitational form factors, with over 440 published papers and numerous citations."
 institution = "JINR, Dubna"
-image = "images/collaborators/placeholder.png"
+image = "images/collaborators/placeholder.webp"
 website = ""
 +++
 

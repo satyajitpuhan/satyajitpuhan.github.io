@@ -3,7 +3,7 @@ title = "Radiative Transitions for the Ground and Excited Charmonia States"
 date = 2025-04-10
 
 [extra]
-thumbnail = "images/portfolio/papers/charmonia-radiative-transitions.png"
+thumbnail = "images/portfolio/papers/charmonia-radiative-transitions.webp"
 service = "Submitted to PRD"
 client = "A. Yadav, S. Puhan, and H. Dahiya"
 short_description = "Calculating radiative transition form factors and decay widths for ground and excited charmonia, with predictions benchmarked against experiment and lattice QCD."
@@ -11,6 +11,9 @@ challenge = "In this work, we have investigated the physical properties like dec
 solution = "Calculates decay constants, radiative transition form factors, decay widths, and branching ratios for ground and excited charmonia states. Results for chi_c0 -> J/psi + gamma and psi(2S) transitions agree well with experimental data."
 tags = ["Charmonia", "Spectroscopy", "Radiative Transitions", "Decay Widths", "Light-Front Dynamics"]
 categories = ["Preprint"]
+arxiv = "2504.14864"
+inspire = "2914109"
+citations = 2
 +++
 
 **Authors:** A. Yadav, S. Puhan, and H. Dahiya  

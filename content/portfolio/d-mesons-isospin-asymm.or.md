@@ -3,7 +3,7 @@ title = "D and D* mesons in isospin asymmetric nuclear medium"
 date = 2025-06-15
 
 [extra]
-thumbnail = "images/portfolio/papers/d-mesons-nuclear-medium.png"
+thumbnail = "images/portfolio/papers/d-mesons-nuclear-medium.webp"
 service = "PTEP ptaf135 (2025)"
 client = "A. Gautam, D. Singh, N. Kaur, S. Puhan, S. Dutt, H. Dahiya, and A. Kumar"
 short_description = "Tracking how isospin asymmetric nuclear matter reshapes the properties of D and D* mesons, highlighting the role of up/down vs. strange quark content."
@@ -11,6 +11,10 @@ challenge = "We investigate the properties of pseudoscalar D and vector D* meson
 solution = "Investigates in-medium properties of pseudoscalar D and vector D* mesons in asymmetric nuclear matter. Finds significant medium effects for mesons with u/d quarks, while strange-quark mesons show reduced sensitivity."
 tags = ["D Meson", "Nuclear Medium", "Isospin Asymmetry", "Finite Temperature", "Light-Front Dynamics"]
 categories = ["Journal Article"]
+arxiv = "2506.08707"
+doi = "10.1093/ptep/ptaf135"
+inspire = "2932525"
+citations = 1
 +++
 
 **Authors:** A. Gautam, D. Singh, N. Kaur, S. Puhan, S. Dutt, H. Dahiya, and A. Kumar  

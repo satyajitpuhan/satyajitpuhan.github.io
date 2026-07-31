@@ -3,7 +3,7 @@
 
 {% if data %}
 <section class="section conferences" id="conferences"
-    style="position: relative; background-image: url('/images/flowers/flower6.jpg'); background-size: cover; background-position: center; padding: 80px 0;">
+    style="position: relative; background-image: url('/images/flowers/flower6.webp'); background-size: cover; background-position: center; padding: 80px 0;">
   <div style="position: absolute; inset: 0; background: rgba(15, 23, 42, 0.82); pointer-events: none;"></div>
   <div style="position: relative; z-index: 1;">
     <div class="container">
@@ -51,7 +51,7 @@
                                     <!-- Image -->
                                     {% if event.image %}
                                     <div style="height: 170px; overflow: hidden;">
-                                        <img src="{{ get_url(path=event.image) }}" alt="{{ event.title }}"
+                                        <img decoding="async" loading="lazy" src="{{ get_url(path=event.image) }}" alt="{{ event.title }}"
                                             style="width:100%; height:100%; object-fit:cover;">
                                     </div>
                                     {% endif %}

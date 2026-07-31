@@ -5,8 +5,8 @@ date = 2026-04-07
 tags = ["Academia Sinica", "ePIC", "EIC", "Research", "Taiwan"]
 categories = ["news"]
 [extra]
-feature_image = "images/gallery/academia-sinica-taiwan.jpg"
-post_image = "images/gallery/academia-sinica-taiwan.jpg"
+feature_image = "images/gallery/academia-sinica-taiwan.webp"
+post_image = "images/gallery/academia-sinica-taiwan.webp"
 +++
 
 I have joined the **Academia Sinica** as a **Research Assistant** at the **Institute of Physics**, working under the supervision of **Prof. Wen-Chen Chang**.

@@ -3,8 +3,8 @@ title = "Pion and Kaon Structure at HHIQCD 2024 — Kyoto University"
 date = 2024-11-01
 
 [extra]
-feature_image = "images/blog/posts/hhiqcd-2024.png"
-post_image = "images/blog/posts/hhiqcd-2024.png"
+feature_image = "images/blog/posts/hhiqcd-2024.webp"
+post_image = "images/blog/posts/hhiqcd-2024.webp"
 
 [taxonomies]
 tags = ["conference", "TMDs", "GPDs", "pion", "kaon"]

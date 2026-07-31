@@ -3,7 +3,7 @@ subtitle = "Highlights from my research journey."
 
 [[items]]
 top_title = "📄 New Preprint!"
-image = "images/portfolio/papers/gluon-helicity-title.png"
+image = "images/portfolio/papers/gluon-helicity-title.webp"
 title = "Moderate-to-Large-x Gluon Helicity from J/ψ Production at √s = 27 GeV"
 date = "May 29, 2026"
 description = "New preprint on arXiv! We present the first projection for constraining the moderate-to-large-x gluon helicity distribution Δg(x) through longitudinal double-spin asymmetry (A_LL) measurements of inclusive J/ψ production in polarized proton-proton collisions at √s = 27 GeV — the center-of-mass energy of the proposed SPD experiment at NICA."
@@ -36,7 +36,7 @@ This work establishes J/ψ production at √s = 27 GeV as a powerful probe for c
 
 [[items]]
 top_title = "🎉 Paper Accepted in PRD!"
-image = "images/gallery/rho-meson-spectroscopy-0.png"
+image = "images/gallery/rho-meson-spectroscopy-0.webp"
 title = "Spectroscopy of ρ-meson in Symmetric Nuclear Medium — Accepted in Physical Review D"
 date = "June, 2026"
 description = "Our paper on the spectroscopy of the ρ-meson in symmetric nuclear medium has been accepted for publication in Physical Review D! This work investigates the mass, decay constant, distribution amplitudes, decay width, and electromagnetic form factors of the ρ meson at finite baryonic density."
@@ -73,7 +73,7 @@ This work provides a comprehensive investigation of the ρ-meson in symmetric nu
 
 [[items]]
 top_title = "📄 New Preprint!"
-image = "images/portfolio/papers/heavy-mesons-mellin-moments.png"
+image = "images/portfolio/papers/heavy-mesons-mellin-moments.webp"
 title = "An Analysis on the Parton Distribution Functions of Heavy Mesons"
 date = "May 17, 2026"
 description = "New solo-author preprint on arXiv! We investigate the constituent PDFs of the kaon and heavy pseudoscalar mesons (D, B, Bₛ, Bc, ηc, ηb) within the light-cone quark model, with NLO DGLAP evolution. Predictions include kaon NLO structure functions for the EIC and Drell–Yan cross sections for COMPASS++/AMBER with Carbon, Tungsten, and Aluminum targets."
@@ -108,7 +108,7 @@ This is a comprehensive, solo-author investigation bridging the internal structu
 
 [[items]]
 top_title = "🎉 Paper Accepted!"
-image = "images/portfolio/papers/pion-medium-njl-model.png"
+image = "images/portfolio/papers/pion-medium-njl-model.webp"
 title = "Valence Quark Distribution of the Pion Inside a Medium with Finite Baryon Density — Accepted in PTEP"
 date = "May, 2026"
 description = "Our paper on the in-medium valence quark distribution of the pion using the light-cone quark model with constituent quark masses from the two-flavor Nambu–Jona-Lasinio model has been accepted for publication in Progress of Theoretical and Experimental Physics (PTEP)."
@@ -144,7 +144,7 @@ This work bridges nuclear medium effects with light-front dynamics, providing th
 
 [[items]]
 top_title = "🎤 Seminar Talk!"
-image = "images/blog/posts/crji-seminar.png"
+image = "images/blog/posts/crji-seminar.webp"
 title = "Extraction of Pion GPDs — Seminar at Prof. C. R. Ji's Group (NCSU, USA)"
 date = "April 17, 2026"
 description = "Presented a seminar on 'Extraction of Pion GPDs' at Prof. C. R. Ji's Research Group, North Carolina State University, via Zoom from IOP, Academia Sinica. Discussed our recent data-driven extraction of pion unpolarized quark GPDs at zero skewness, impact-parameter-space interpretations, and implications for EIC, JLab, COMPASS, and AMBER experiments."
@@ -179,7 +179,7 @@ This is the second seminar at Prof. C. R. Ji's group. The first seminar (July 20
 
 [[items]]
 top_title = "📄 New Preprint!"
-image = "images/portfolio/papers/pion-gpd-form-factors.png"
+image = "images/portfolio/papers/pion-gpd-form-factors.webp"
 title = "Extraction of Pion Unpolarized Quark Generalized Parton Distribution from Charge Form Factors"
 date = "April 13, 2026"
 description = "New preprint on arXiv! We report a data-driven determination of the unpolarized quark GPDs of the pion at zero skewness via a global fit to electromagnetic form factor and PDF data, providing impact-parameter-space interpretations and essential input for EIC, JLab 12 GeV, COMPASS, and AMBER experiments."
@@ -211,7 +211,7 @@ This work provides a unified description of the pion's electromagnetic structure
 
 [[items]]
 top_title = "📄 arXiv Preprint Available!"
-image = "images/gallery/mpla-pdf-ratio-plot.png"
+image = "images/gallery/mpla-pdf-ratio-plot.webp"
 title = "Internal Structure of Light Mesons Using the Power Law Wave Function — Now on arXiv"
 date = "April 8, 2026"
 description = "Our paper on the internal structure of pion and kaon using spin-improved power-law wave functions, published in Modern Physics Letters A (Special Issue), is now available on arXiv as e-Print: 2604.07049 [hep-ph]."
@@ -239,7 +239,7 @@ details = """
 
 [[items]]
 top_title = "📄 New Preprint!"
-image = "images/portfolio/papers/pion-pdf-lcqm-drellyan.png"
+image = "images/portfolio/papers/pion-pdf-lcqm-drellyan.webp"
 title = "Pion Parton Distribution Functions in the Light-Cone Quark Model and Experimental Constraints"
 date = "April 7, 2026"
 description = "New preprint on arXiv! We investigate the valence quark PDFs of the pion in the LCQM with NLO DGLAP evolution, predict the F₂ structure function at NLO accuracy validated against ZEUS and H1 HERA data, and compute Drell-Yan cross-sections with EIC projections."
@@ -272,7 +272,7 @@ This work bridges theoretical predictions from the LCQM with experimental observ
 
 [[items]]
 top_title = "🚀 New Research Chapter!"
-image = "images/gallery/academia-sinica-taiwan.jpg"
+image = "images/gallery/academia-sinica-taiwan.webp"
 title = "Starting a New Research Chapter in Taiwan — Joined Academia Sinica"
 date = "April, 2026"
 description = "Joined the Institute of Physics, Academia Sinica as a Postdoctoral Researcher, working under the supervision of Prof. Wen-Chen Chang. My work focuses on detector development for the ePIC experiment (Zero-Degree Calorimeter) and global analysis of pion and kaon Parton Distribution Functions (PDFs)."
@@ -305,14 +305,14 @@ Excited to work at the interface of **theory, phenomenology, and experiment** �
 
 [[items]]
 top_title = "🎓 PhD Defense Completed!"
-image = "images/gallery/defense-thesis-title-slide.png"
+image = "images/gallery/defense-thesis-title-slide.webp"
 title = "Final PhD Viva Voce — Tomography of Light & Heavy Mesons Using Light-Front Dynamics"
 date = "2nd April, 2026"
 description = "Successfully defended my PhD thesis at Dr. B R Ambedkar NIT Jalandhar! The defense covered perturbative & non-perturbative QCD, hadron tomography through GPDs, TMDs, and form factors, and featured live interactive visualizations of αₛ(Q²) running coupling and pion mechanical structure."
 extra_images = [
-    "images/gallery/defense-publications-slide.png",
-    "images/gallery/defense-alpha-s-visualization.png",
-    "images/gallery/defense-pion-mechanical.png"
+    "images/gallery/defense-publications-slide.webp",
+    "images/gallery/defense-alpha-s-visualization.webp",
+    "images/gallery/defense-pion-mechanical.webp"
 ]
 details = """
 **🎓 Final PhD Viva Voce — Successfully Defended!**
@@ -352,14 +352,14 @@ The thesis work has resulted in **29 publications** in leading peer-reviewed jou
 
 [[items]]
 top_title = "Celebration"
-image = "images/gallery/defense-group-photo.jpg"
+image = "images/gallery/defense-group-photo.webp"
 title = "Post-Defense Celebration with Research Group"
 date = "2nd April, 2026"
 description = "A heartfelt group photo after the successful PhD defense with labmates and friends at NIT Jalandhar. Grateful to everyone who supported this journey from a small village in Odisha to a PhD in High Energy Physics."
 
 [[items]]
 top_title = "📄 Paper Accepted!"
-image = "images/gallery/mpla-pdf-ratio-plot.png"
+image = "images/gallery/mpla-pdf-ratio-plot.webp"
 title = "Internal Structure of Light Mesons Using the Power Law Wave Function — Accepted in Modern Physics Letters A (Special Issue)"
 date = "1st April, 2026"
 description = "Our paper on the internal structure of pion and kaon using spin-improved power-law wave functions has been accepted for publication in a Special Issue of Modern Physics Letters A (MPLA), guest-edited by Dr. Parada Hutauruk. The work covers DAs, PDFs, TMDs, GPDs, and form factors using LFWFs with ERBL and NLO DGLAP evolution."
@@ -392,14 +392,14 @@ We study the internal structure of the pion and kaon using spin-improved power-l
 
 [[items]]
 top_title = "Recently participated in"
-image = "images/gallery/iitb-cteq-group.jpg"
+image = "images/gallery/iitb-cteq-group.webp"
 title = "The 2026 IITB-CFNS-CTEQ School on Perturbative QCD for EIC"
 date = "Feb 8–15, 2026"
 description = "Participated in the school hosted by Indian Institute of Technology Bombay (IITB) in collaboration with CTEQ Collaboration and CFNS of Stony Brook University. The curriculum explored perturbative quantum chromodynamics, experimental results, and hands-on tutorials on Monte Carlo event generators."
 extra_images = [
-    "images/gallery/iitb-cteq-fun.jpg",
-    "images/gallery/iitb-cteq-gateway.jpg",
-    "images/gallery/iitb-cteq-poster.jpg"
+    "images/gallery/iitb-cteq-fun.webp",
+    "images/gallery/iitb-cteq-gateway.webp",
+    "images/gallery/iitb-cteq-poster.webp"
 ]
 details = """
 The school will be hosted by the Indian Institute of Technology Bombay (IITB) in collaboration with CTEQ Collaboration and the Center for Frontiers in Nuclear Science (CFNS) of Stony Brook University.
@@ -438,7 +438,7 @@ Asmita Mukherjee, Manibrata Sen, Vikram Rentala, Debojit Sarkar
 """
 
 [[items]]
-image = "images/gallery/prd-paper-accepted.png"
+image = "images/gallery/prd-paper-accepted.webp"
 title = "Recent Paper Published in Physical Review D"
 date = "27 Feb, 2026"
 description = "Our recent paper 'Valence quark distribution of the rho meson using a light-front quark model' has been published in Phys. Rev. D 113, 036030 (2026)."
@@ -454,7 +454,7 @@ We investigate the partonic structure of the ρ meson, the lightest spin-1 vecto
 """
 
 [[items]]
-image = "images/gallery/icts-satpp-group.jpg"
+image = "images/gallery/icts-satpp-group.webp"
 title = "School for Advanced Topics in Particle Physics (SATPP)"
 date = "19 Jan – 30 Jan, 2026"
 description = "Participated in the School for Advanced Topics in Particle Physics (SATPP) at ICTS Bengaluru, focusing on Quantum Chromodynamics, Effective Field Theories, and Nuclear Physics."
@@ -478,13 +478,13 @@ This second edition, "Selected Topics in Effective Field Theories (EFTs)," spann
 """
 
 [[items]]
-image = "images/gallery/rho-meson-spectroscopy-0.png"
+image = "images/gallery/rho-meson-spectroscopy-0.webp"
 title = "Spectroscopy of ρ-meson in symmetric nuclear medium — Accepted in PRD"
 date = "Jan 16, 2026"
 description = "Our paper investigating the behavior of the light vector ρ meson in symmetric nuclear medium at zero temperature has been accepted in Physical Review D (e-Print: 2601.11082)."
 extra_images = [
-    "images/gallery/rho-meson-spectroscopy-1.png",
-    "images/gallery/rho-meson-spectroscopy-2.png"
+    "images/gallery/rho-meson-spectroscopy-1.webp",
+    "images/gallery/rho-meson-spectroscopy-2.webp"
 ]
 details = """
 **Title:** Spectroscopy of ρ-meson in symmetric nuclear medium  

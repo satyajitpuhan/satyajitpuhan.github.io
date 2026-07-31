@@ -3,7 +3,7 @@ title = "Effect of nuclear medium on the spatial distribution of pions"
 date = 2025-01-20
 
 [extra]
-thumbnail = "images/portfolio/papers/pion-gpds-nuclear-medium.png"
+thumbnail = "images/portfolio/papers/pion-gpds-nuclear-medium.webp"
 service = "Nucl. Phys. B 1017 (2025)"
 client = "S. Puhan, N. Kaur, A. Kumar, S. Dutt, and H. Dahiya"
 short_description = "Mapping the spatial distribution of pions inside asymmetric nuclear matter through generalized parton distributions and electromagnetic form factors."
@@ -11,6 +11,10 @@ challenge = "We calculate the valence quark generalized parton distributions (GP
 solution = "Studies the spatial distribution of pions in asymmetric nuclear matter through GPDs. Calculates in-medium EMFFs and charge radii using LCQM with chiral SU(3) CQMF inputs, finding agreement with experiment."
 tags = ["GPDs", "EMFFs", "Pion", "Nuclear Medium", "Isospin Asymmetry"]
 categories = ["Journal Article"]
+arxiv = "2501.16706"
+doi = "10.1016/j.nuclphysb.2025.116940"
+inspire = "2873357"
+citations = 7
 +++
 
 **Authors:** S. Puhan, N. Kaur, A. Kumar, S. Dutt, and H. Dahiya  

@@ -3,7 +3,7 @@ title = "Valence quark distribution of the pion inside a medium with finite bary
 date = 2025-12-01
 
 [extra]
-thumbnail = "images/portfolio/papers/pion-medium-njl-model.png"
+thumbnail = "images/portfolio/papers/pion-medium-njl-model.webp"
 service = "Accepted in PTEP"
 client = "A. Dwivedi, S. Puhan, S. Ghosh, and H. Dahiya"
 short_description = "Using the Nambu–Jona-Lasinio model to feed finite baryon density into light-cone quark dynamics, revealing how the pion’s PDFs and form factors evolve with density."
@@ -11,6 +11,10 @@ challenge = "We calculate the in-medium valence quark distribution of the pion i
 solution = "Calculates in-medium pion properties using LCQM with constituent quark masses from the NJL model. Evolves PDFs via NLO DGLAP and compares EMFFs with experiment and lattice QCD. Mellin moments agree with existing theoretical extractions."
 tags = ["PDFs", "DAs", "EMFFs", "Pion", "NJL Model", "Nuclear Medium", "Finite Baryon Density"]
 categories = ["Preprint"]
+arxiv = "2512.24921"
+doi = "10.1093/ptep/ptag089"
+inspire = "3096412"
+citations = 3
 +++
 
 **Authors:** A. Dwivedi, S. Puhan, S. Ghosh, and H. Dahiya  

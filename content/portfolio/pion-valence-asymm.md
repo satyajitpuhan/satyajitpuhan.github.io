@@ -3,7 +3,7 @@ title = "Pions valence quark distributions in asymmetric nuclear matter at finit
 date = 2024-09-01
 
 [extra]
-thumbnail = "images/portfolio/papers/pion-distributions-finite-temperature.png"
+thumbnail = "images/portfolio/papers/pion-distributions-finite-temperature.webp"
 service = "Phys. Rev. D 110 (2024)"
 client = "S. Puhan, N. Kaur, A. Kumar, S. Dutt, and H. Dahiya"
 short_description = "Probing how isospin asymmetry and temperature reshape the pion’s valence quark distributions inside nuclear matter, with predictions evolved to high Q² scales."
@@ -11,6 +11,10 @@ challenge = "We have calculated the valence quark distributions of the lightest 
 solution = "Investigates how isospin asymmetry and temperature modify pion valence quark DAs and PDFs in nuclear matter. Shows baryon density has a dominant effect compared to temperature and isospin asymmetry, with results evolved to Q^2 = 10 and 16 GeV^2."
 tags = ["PDFs", "DAs", "Pion", "Nuclear Medium", "Isospin Asymmetry", "Finite Temperature"]
 categories = ["Journal Article"]
+arxiv = "2408.07334"
+doi = "10.1103/PhysRevD.110.054042"
+inspire = "2818000"
+citations = 15
 +++
 
 **Authors:** S. Puhan, N. Kaur, A. Kumar, S. Dutt, and H. Dahiya  

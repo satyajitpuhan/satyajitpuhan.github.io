@@ -3,7 +3,7 @@ title = "Quark spin-orbit correlations in spin-0 and spin-1 mesons using the lig
 date = 2024-05-15
 
 [extra]
-thumbnail = "images/portfolio/papers/spin-orbit-correlations-mesons.png"
+thumbnail = "images/portfolio/papers/spin-orbit-correlations-mesons.webp"
 service = "Phys. Rev. D 110 (2024)"
 client = "R. Acharyya, S. Puhan and H. Dahiya"
 short_description = "First-ever exploration of quark spin-orbit correlations inside light and heavy spin-1 mesons, revealing how angular momentum is shared between quarks and the hadron skeleton."
@@ -11,6 +11,10 @@ challenge = "We have investigated the spin-orbital angular momentum correlations
 solution = "First study of quark spin-orbit correlations in light and heavy spin-1 mesons. Extends previous spin-0 analysis to include rho, J/psi, and Upsilon mesons using GTMDs and GPDs in the LFQM framework."
 tags = ["GTMDs", "GPDs", "Spin-Orbit", "Vector Mesons", "Light-Front Dynamics"]
 categories = ["Journal Article"]
+arxiv = "2405.00446"
+doi = "10.1103/PhysRevD.110.034020"
+inspire = "2782544"
+citations = 15
 +++
 
 **Authors:** R. Acharyya, S. Puhan and H. Dahiya  

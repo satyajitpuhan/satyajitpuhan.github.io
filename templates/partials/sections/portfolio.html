@@ -35,7 +35,7 @@
 {% set total_slides = art_slides_needed %}
 {% if pro_slides_needed > art_slides_needed %}{% set total_slides = pro_slides_needed %}{% endif %}
 
-<section class="section portfolio" id="portfolio" style="position: relative; background-image: url('/images/flowers/flower6.jpg'); background-size: cover; background-position: center; padding: 100px 0;">
+<section class="section portfolio" id="portfolio" style="position: relative; background-image: url('/images/flowers/flower6.webp'); background-size: cover; background-position: center; padding: 100px 0;">
   <div style="position: absolute; inset: 0; background: rgba(20, 30, 40, 0.82); pointer-events: none;"></div>
   <div style="position: relative; z-index: 1;">
   <div class="container-xl">
@@ -113,6 +113,17 @@
               <div id="inspire-papers" style="color: white; font-size: 1.8rem; font-weight: 800; font-family: 'JetBrains Mono', monospace;">--</div>
             </div>
           </div>
+          <a href="{{ config.extra.inspire_author_url }}" target="_blank" rel="noopener" class="inspire-profile-link"
+             style="margin-top:18px; display:inline-flex; align-items:center; justify-content:center; gap:8px;
+                    padding:11px 18px; border-radius:10px; text-decoration:none; font-weight:700; font-size:.88rem;
+                    color:#e9d5ff; background:rgba(139,92,246,.16); border:1px solid rgba(139,92,246,.42);
+                    transition:background .25s ease, border-color .25s ease, transform .25s ease;"
+             onmouseover="this.style.background='rgba(139,92,246,.3)';this.style.borderColor='rgba(139,92,246,.7)';this.style.transform='translateY(-2px)';"
+             onmouseout="this.style.background='rgba(139,92,246,.16)';this.style.borderColor='rgba(139,92,246,.42)';this.style.transform='';">
+            {{ si::icon(id="inspire") }}
+            <span>View full profile on INSPIRE-HEP</span>
+            <span aria-hidden="true">&rarr;</span>
+          </a>
         </div>
       </div>
     </div>
@@ -239,9 +250,11 @@
       var chartRendered = false;
       var obs = new IntersectionObserver(function(entries) {
         if (entries[0].isIntersecting && !chartRendered) {
-          pubChart = new Chart(canvas, config);
           chartRendered = true;
           obs.unobserve(canvas);
+          (window.chartJsReady || Promise.resolve()).then(function () {
+            pubChart = new Chart(canvas, config);
+          }).catch(function (e) { console.warn('[chart] Chart.js unavailable:', e.message); });
         }
       }, { threshold: 0.15 });
       obs.observe(canvas);

@@ -9,7 +9,7 @@ venue = "Prof. C. R. Ji's Research Group, NCSU, USA (via Zoom from IOP, Academia
 mode = "Talk"
 type = "Seminar"
 description = "Presented 'Extraction of Pion GPDs' at Prof. C. R. Ji's Research Group meeting. Discussed data-driven extraction of pion unpolarized quark GPDs at zero skewness, form factor fitting, and impact-parameter-space interpretations."
-image = "images/blog/posts/crji-seminar.png"
+image = "images/blog/posts/crji-seminar.webp"
 
 [[events]]
 title = "ICFHEP 2025 — IIT Bhilai"
@@ -18,7 +18,7 @@ venue = "Indian Institute of Technology Bhilai, Chhattisgarh"
 mode = "In Person"
 type = "Conference"
 description = "Participated in the International Conference on Frontiers of High Energy Physics (ICFHEP)."
-image = "images/blog/posts/icfhep-2025.png"
+image = "images/blog/posts/icfhep-2025.webp"
 
 [[events]]
 title = "68th DAE SNP 2024 — IIT Roorkee"
@@ -27,7 +27,7 @@ venue = "Indian Institute of Technology Roorkee, Uttarakhand"
 mode = "Talk"
 type = "Symposium"
 description = "Delivered a talk on 'Spin-1 unpolarized GPDs in Light-front formalism' at the 68th DAE Symposium on Nuclear Physics."
-image = "images/blog/posts/dae-snp-2024.png"
+image = "images/blog/posts/dae-snp-2024.webp"
 
 [[events]]
 title = "HHIQCD 2024 — Kyoto University"
@@ -36,7 +36,7 @@ venue = "Yukawa Institute for Theoretical Physics, Kyoto University, Japan"
 mode = "Talk"
 type = "Workshop"
 description = "Delivered a talk on 'Structural analysis of Pion and Kaon with distribution functions' at Hadrons and Hadron Interactions in QCD 2024."
-image = "images/blog/posts/hhiqcd-2024.png"
+image = "images/blog/posts/hhiqcd-2024.webp"
 
 [[events]]
 title = "PSI Summer School 2024 — Zuoz"
@@ -45,7 +45,7 @@ venue = "Lyceum Alpinum, Zuoz, Switzerland"
 mode = "Participant"
 type = "Summer School"
 description = "Attended the PSI Particle Physics Summer School — 'From Low to High: Particle Physics at the Frontier'."
-image = "images/blog/posts/psi-zuoz-2024.png"
+image = "images/blog/posts/psi-zuoz-2024.webp"
 
 [[events]]
 title = "ICTS-TIFR 2024 — Bengaluru"
@@ -54,7 +54,7 @@ venue = "International Centre for Theoretical Sciences (ICTS-TIFR), Bengaluru, I
 mode = "Talk"
 type = "School & Workshop"
 description = "Delivered a talk on 'Structural analysis of pion with distribution functions (TMDs, GPDs and GDAs)' during the International School and Workshop on Probing Hadron Structure at the Electron-Ion Collider."
-image = "images/blog/posts/icts-tifr-2024.png"
+image = "images/blog/posts/icts-tifr-2024.webp"
 
 [[events]]
 title = "HQL 2023 — TIFR Mumbai"
@@ -63,7 +63,7 @@ venue = "Tata Institute of Fundamental Research (TIFR), Mumbai, India"
 mode = "Poster"
 type = "Conference"
 description = "Presented a poster at the 16th International Conference on Heavy Quarks and Leptons (HQL 2023)."
-image = "images/blog/posts/hql-2023-poster.png"
+image = "images/blog/posts/hql-2023-poster.webp"
 
 [[events]]
 title = "Shivalik HEPCATs Meetings 2023"
@@ -72,7 +72,7 @@ venue = "IIT Mandi & NIT Jalandhar"
 mode = "Participant"
 type = "Meeting"
 description = "Attended the Shivalik HEPCATs meeting at IIT Mandi and NIT Jalandhar."
-image = "images/blog/posts/shivalik-hepcats-2023.png"
+image = "images/blog/posts/shivalik-hepcats-2023.webp"
 
 [[events]]
 title = "Workshop on Hadron Physics 2023"
@@ -81,7 +81,7 @@ venue = "Dr. B R Ambedkar NIT, Jalandhar"
 mode = "Participant"
 type = "Workshop"
 description = "Attended the Workshop on Hadron Physics, 2023 organized by NIT Jalandhar."
-image = "images/blog/posts/hadron-physics-2023.png"
+image = "images/blog/posts/hadron-physics-2023.webp"
 
 [[events]]
 title = "Celebrating a Decade of the Higgs"
@@ -90,4 +90,4 @@ venue = "TIFR, Mumbai (Online)"
 mode = "Online"
 type = "Webinar"
 description = "Participated through online mode in the webinar celebrating a decade of the Higgs boson discovery, organized by TIFR, Mumbai."
-image = "images/blog/posts/higgs-decade-tifr-2022.png"
+image = "images/blog/posts/higgs-decade-tifr-2022.webp"

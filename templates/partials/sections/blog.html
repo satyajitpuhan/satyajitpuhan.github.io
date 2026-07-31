@@ -3,7 +3,7 @@
 {% if section.pages %}
 <section class="section blog" id="blog">
   <div class="blog__shape">
-    <img src="{{ get_url(path='images/blog/blog-shape.svg') }}" alt="blog shape" />
+    <img decoding="async" loading="lazy" src="{{ get_url(path='images/blog/blog-shape.svg') }}" alt="blog shape" />
   </div>
   <div class="container">
     <div class="row mb-5">
@@ -27,7 +27,7 @@
           <div class="col-lg-4">
             <div class="blog__item wc-3d-card">
               <div class="blog__item-thumb">
-                <img src="{{ get_url(path=page.extra.feature_image) }}" alt="post-image">
+                <img decoding="async" loading="lazy" src="{{ get_url(path=page.extra.feature_image) }}" alt="post-image">
               </div>
               <div class="blog__item-content">
                 <span>{{ page.date | date(format=config.extra.date_format) }}</span>

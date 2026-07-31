@@ -3,7 +3,7 @@ title = "Scalar, vector and tensor electromagnetic form factors of pion and kaon
 date = 2025-05-15
 
 [extra]
-thumbnail = "images/portfolio/papers/form-factors-pion-kaon.png"
+thumbnail = "images/portfolio/papers/form-factors-pion-kaon.webp"
 service = "Phys. Rev. D 111 (2025)"
 client = "S. Puhan and H. Dahiya"
 short_description = "Extracting scalar, vector, and tensor electromagnetic form factors of pion and kaon from twist-2 and twist-3 GPDs, matching lattice and experimental benchmarks."
@@ -11,6 +11,10 @@ challenge = "We calculate the possible scalar, vector, and tensor form factors (
 solution = "Calculates scalar, vector, and tensor form factors for pion and kaon from twist-2 and twist-3 GPDs in the LCQM. Predicts scalar radii of 0.528 fm (pion) and 0.409 fm (kaon), consistent with experimental data and lattice results."
 tags = ["Form Factors", "GPDs", "Pion", "Kaon", "Light-Front Dynamics"]
 categories = ["Journal Article"]
+arxiv = "2505.02507"
+doi = "10.1103/2wpb-jgkc"
+inspire = "2918260"
+citations = 14
 +++
 
 **Authors:** S. Puhan and H. Dahiya  

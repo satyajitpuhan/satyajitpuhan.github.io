@@ -3,7 +3,7 @@ title = "Radiative transition of ψ(2S) → χc0(1P) + γ in LFQM"
 date = 2024-12-07
 
 [extra]
-thumbnail = "images/portfolio/portfolio-3.png"
+thumbnail = "images/portfolio/portfolio-3.webp"
 service = "DAE Nuclear 2024"
 client = "A. Yadav, S. Puhan, and H. Dahiya"
 short_description = "Symposium contribution on the radiative transition ψ(2S) → χ_c0(1P) + γ in LFQM, with transition form factors and decay width analysis."
@@ -11,6 +11,8 @@ challenge = "This work investigates the radiative transition of psi(2S) to chi_c
 solution = "Calculates the radiative transition form factor and decay width for psi(2S) -> chi_c0(1P) + gamma in the LFQM. Compares predictions with experimental data and other theoretical models."
 tags = ["Charmonia", "Radiative Transitions", "Spectroscopy", "Conference"]
 categories = ["Conference Proceeding"]
+inspire = "2872861"
+citations = 0
 +++
 
 **Authors:** A. Yadav, S. Puhan, and H. Dahiya  

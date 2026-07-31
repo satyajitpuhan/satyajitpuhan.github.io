@@ -5,8 +5,8 @@ date = 2025-02-14
 tags = ["Conference", "ICFHEP", "IIT Bhilai"]
 categories = ["conferences"]
 [extra]
-feature_image = "images/blog/posts/icfhep-2025.png"
-post_image = "images/blog/posts/icfhep-2025.png"
+feature_image = "images/blog/posts/icfhep-2025.webp"
+post_image = "images/blog/posts/icfhep-2025.webp"
 +++
 
 **Event:** International Conference on Frontiers of High Energy Physics (ICFHEP)

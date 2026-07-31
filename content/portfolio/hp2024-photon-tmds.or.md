@@ -3,7 +3,7 @@ title = "Understanding photon TMDs with light-front wave function"
 date = 2024-11-20
 
 [extra]
-thumbnail = "images/portfolio/portfolio-2.png"
+thumbnail = "images/portfolio/portfolio-2.webp"
 service = "HP 2024"
 client = "S. Puhan, N. Kaur, and H. Dahiya"
 short_description = "HP 2024 proceeding on photon TMDs using light-front wave functions, contrasting real vs. virtual photon transverse structure."
@@ -11,9 +11,12 @@ challenge = "In this work, we try to understand the transverse structure of phot
 solution = "Presents all 9 T-even photon TMDs using light-front wave functions for a quark-antiquark Fock state. Finds only 3 TMDs are nonzero for real photons vs. 8 for virtual photons. Discusses unpolarized, longitudinal, transverse, and tensor-polarized TMDs."
 tags = ["Photon", "TMDs", "Light-Front Dynamics", "Conference"]
 categories = ["Conference Proceeding"]
+arxiv = "2504.01419"
+inspire = "2907230"
+citations = 0
 +++
 
 **Authors:** S. Puhan, N. Kaur, and H. Dahiya  
 **Published in:** HP 2024
 
-[View Details →](#)
+[arXiv:2504.01419](https://arxiv.org/abs/2504.01419) · [INSPIRE-HEP record](https://inspirehep.net/literature/2907230)

@@ -3,7 +3,7 @@ title = "Understanding the Valence Quark Structure of the Pion through GTMDs"
 date = 2025-04-01
 
 [extra]
-thumbnail = "images/portfolio/papers/pion-generalized-tmds.png"
+thumbnail = "images/portfolio/papers/pion-generalized-tmds.webp"
 service = "PTEP ptaf100 (2025)"
 client = "S. Puhan, S. Sharma, N. Kumar and H. Dahiya"
 short_description = "A deep dive into the pion’s generalized transverse-momentum structure, extracting 12 nonzero GTMDs and predicting a charge radius of 0.558 fm in light-cone dynamics."
@@ -11,6 +11,10 @@ challenge = "We investigate the internal structure of the pion using generalized
 solution = "Comprehensive GTMD analysis of the pion up to twist-4 in LCQM. Finds 12 of 16 possible GTMDs are nonzero, extracts TMDs, GPDs, FFs, and PDFs, and reports a pion charge radius of 0.558 fm."
 tags = ["GTMDs", "TMDs", "GPDs", "PDFs", "Pion", "Light-Front Dynamics"]
 categories = ["Journal Article"]
+arxiv = "2504.14982"
+doi = "10.1093/ptep/ptaf100"
+inspire = "2914151"
+citations = 11
 +++
 
 **Authors:** S. Puhan, S. Sharma, N. Kumar and H. Dahiya  

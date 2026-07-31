@@ -3,7 +3,7 @@ title = "Spatial and Transverse structure of Heavy B-and D-mesons"
 date = 2023-11-28
 
 [extra]
-thumbnail = "images/portfolio/portfolio-2.png"
+thumbnail = "images/portfolio/portfolio-2.webp"
 service = "PoS HQL2023"
 client = "S. Puhan and H. Dahiya"
 short_description = "Conference proceeding on the spatial and transverse structure of heavy B and D mesons, connecting GPDs and PDFs through TMDs in light-front dynamics."
@@ -11,6 +11,10 @@ challenge = "We have investigated the unpolarized valence quark generalized part
 solution = "Presents unpolarized GPDs and PDFs for heavy B and D mesons in LFQM. Extracts EMFFs and GFFs from GPD moments at zero skewness, providing insights into the spatial and gravitational structure of heavy mesons."
 tags = ["GPDs", "PDFs", "B Meson", "D Meson", "Heavy Mesons", "Conference"]
 categories = ["Conference Proceeding"]
+arxiv = "2408.07717"
+doi = "10.22323/1.462.0089"
+inspire = "2777432"
+citations = 3
 +++
 
 **Authors:** S. Puhan and H. Dahiya  

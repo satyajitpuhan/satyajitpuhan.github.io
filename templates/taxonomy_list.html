@@ -4,7 +4,7 @@
 {% block content %}
 <header class="breadCrumb">
   <div class="svg-img">
-    <img src="{{ get_url(path='images/hero/figure-svg.svg') }}" alt="">
+    <img decoding="async" loading="eager" fetchpriority="high" src="{{ get_url(path='images/hero/figure-svg.svg') }}" alt="">
   </div>
   <div class="animate-shape">
     <svg
@@ -35,7 +35,7 @@
     </svg>
   </div>
     <div class="animate-pattern">
-        <img src="{{ get_url(path='images/service/background-pattern.svg') }}" alt="background-shape">
+        <img decoding="async" loading="lazy" src="{{ get_url(path='images/service/background-pattern.svg') }}" alt="background-shape">
     </div>
     <div class="container">
         <div class="row">

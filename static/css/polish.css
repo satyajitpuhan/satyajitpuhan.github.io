@@ -223,3 +223,41 @@ li a:not(.btn):not(.hire_button):hover {
     display: none;
   }
 }
+
+/* ─────────────────────────────────────────────
+   Paper links (arXiv / DOI / INSPIRE-HEP / PDF)
+   ───────────────────────────────────────────── */
+.paper-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:26px 0 8px}
+.paper-link{display:inline-flex;align-items:center;gap:9px;padding:9px 15px;border-radius:10px;
+  text-decoration:none;font-size:.84rem;line-height:1;border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.04);color:rgba(255,255,255,.78);
+  transition:transform .22s ease,border-color .22s ease,background .22s ease,box-shadow .22s ease}
+.paper-link:hover{transform:translateY(-2px);color:#fff;text-decoration:none}
+.paper-link__tag{font-weight:800;letter-spacing:.4px;text-transform:uppercase;font-size:.68rem;
+  padding:4px 8px;border-radius:6px;background:rgba(255,255,255,.09);white-space:nowrap}
+.paper-link__val{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-weight:600;opacity:.9;overflow-wrap:anywhere}
+.paper-link--arxiv:hover{border-color:rgba(179,31,31,.7);background:rgba(179,31,31,.16);box-shadow:0 6px 20px rgba(179,31,31,.25)}
+.paper-link--arxiv .paper-link__tag{background:rgba(179,31,31,.3);color:#ffb3b3}
+.paper-link--doi:hover{border-color:rgba(6,182,212,.7);background:rgba(6,182,212,.14);box-shadow:0 6px 20px rgba(6,182,212,.22)}
+.paper-link--doi .paper-link__tag{background:rgba(6,182,212,.25);color:#a5f3fc}
+.paper-link--inspire:hover{border-color:rgba(139,92,246,.75);background:rgba(139,92,246,.16);box-shadow:0 6px 20px rgba(139,92,246,.28)}
+.paper-link--inspire .paper-link__tag{background:rgba(139,92,246,.28);color:#ddd6fe}
+.paper-link--pdf:hover{border-color:rgba(232,164,68,.7);background:rgba(232,164,68,.14);box-shadow:0 6px 20px rgba(232,164,68,.22)}
+.paper-link--pdf .paper-link__tag{background:rgba(232,164,68,.25);color:#fde68a}
+@media (max-width:576px){.paper-links{gap:8px}.paper-link{font-size:.78rem;padding:8px 12px}}
+
+/* Social icons: inline SVG replaces the icon font */
+.header-social-icon,.header-social-icon svg{display:inline-flex;align-items:center;justify-content:center}
+.header-social-icon svg{width:17px;height:17px}
+.header-social-icon{width:32px;height:32px;border-radius:8px;color:rgba(255,255,255,.5);
+  transition:color .25s ease,background .25s ease,transform .25s ease}
+.header-social-icon:hover{color:#e8a444;background:rgba(232,164,68,.1);transform:translateY(-2px)}
+.social--inspire:hover{color:#a78bfa;background:rgba(139,92,246,.12)}
+.social--orcid:hover{color:#a6ce39;background:rgba(166,206,57,.12)}
+.social--scholar:hover{color:#4285f4;background:rgba(66,133,244,.12)}
+.social--researchgate:hover{color:#00d0af;background:rgba(0,208,175,.12)}
+.inspire-profile-link svg{width:17px;height:17px;flex:0 0 auto}
+
+/* Prevent layout shift while lazy images decode */
+img[loading="lazy"]{background:rgba(255,255,255,.03)}

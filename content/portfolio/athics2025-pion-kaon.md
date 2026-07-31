@@ -3,7 +3,7 @@ title = "Leading-twist TMDs for pion and kaon using power law wave functions"
 date = 2025-01-10
 
 [extra]
-thumbnail = "images/portfolio/portfolio-3.png"
+thumbnail = "images/portfolio/portfolio-3.webp"
 service = "ATHICS 2025"
 client = "S. Puhan, and H. Dahiya"
 short_description = "ATHICS 2025 proceeding on leading-twist TMDs for pion and kaon with power-law wave functions, with predictions for AMBER, JLab, and EIC experiments."
@@ -11,9 +11,13 @@ challenge = "This work presents a comprehensive study of pion and kaon structure
 solution = "Comprehensive structural analysis of pion and kaon using light-front dynamics, covering DAs, PDFs, and form factors. Results provide predictions relevant for upcoming experiments at AMBER, JLab, and the Electron-Ion Collider."
 tags = ["Pion", "Kaon", "TMDs", "Power-Law Wave Functions", "Conference"]
 categories = ["Conference Proceeding"]
+arxiv = "2604.07049"
+doi = "10.1142/S0217732326420113"
+inspire = "3141833"
+citations = 0
 +++
 
 **Authors:** S. Puhan, and H. Dahiya  
 **Published in:** ATHICS 2025
 
-[View Details →](#)
+[arXiv:2604.07049](https://arxiv.org/abs/2604.07049) · [DOI: 10.1142/S0217732326420113](https://doi.org/10.1142/S0217732326420113) · [INSPIRE-HEP record](https://inspirehep.net/literature/3141833)

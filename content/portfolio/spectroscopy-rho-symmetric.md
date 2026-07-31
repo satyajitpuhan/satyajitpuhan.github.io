@@ -3,7 +3,7 @@ title = "Spectroscopy of rho-meson in symmetric nuclear medium"
 date = 2026-01-05
 
 [extra]
-thumbnail = "images/portfolio/papers/rho-meson-nuclear-medium.png"
+thumbnail = "images/portfolio/papers/rho-meson-nuclear-medium.webp"
 service = "Accepted in Physical Review D"
 client = "Anshu Gautam, Tanisha, S. Puhan, A. Kumar, and H. Dahiya"
 short_description = "Studying the rho meson’s spectroscopy in symmetric nuclear matter: mass shifts, decay constants, distribution amplitudes, and electromagnetic form factors."
@@ -11,6 +11,10 @@ challenge = "In this work, we investigate the behavior of the light vector rho m
 solution = "Investigates rho meson properties in symmetric nuclear matter including mass, decay constant, DAs, decay width, and electromagnetic form factors. Finds significant medium effects on mass and DAs, but weaker sensitivity in charge radii and moments."
 tags = ["Spectroscopy", "Rho Meson", "Nuclear Medium", "Symmetric Matter", "Light-Front Dynamics"]
 categories = ["Preprint"]
+arxiv = "2601.11082"
+doi = "10.1103/mhyf-cqzx"
+inspire = "3108526"
+citations = 1
 +++
 
 **Authors:** Anshu Gautam, Tanisha, S. Puhan, A. Kumar, and H. Dahiya  

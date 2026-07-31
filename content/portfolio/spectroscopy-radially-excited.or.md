@@ -3,7 +3,7 @@ title = "Spectroscopy of radially excited charmonia and bottomonia in light-fron
 date = 2025-02-01
 
 [extra]
-thumbnail = "images/portfolio/papers/quarkonium-spectroscopy-lfqm.png"
+thumbnail = "images/portfolio/papers/quarkonium-spectroscopy-lfqm.webp"
 service = "Chin. Phys. C 49 (2025)"
 client = "R. Acharyya, S. Puhan, N. Kumar and H. Dahiya"
 short_description = "First light-front quark model study of 3S and 1P excited states of charmonia and bottomonia, complete with 3D wave function visualizations and nodal structure analysis."
@@ -11,6 +11,10 @@ challenge = "We have investigated the ground state (1S), radially excited states
 solution = "First LFQM study of the 3S and 1P excited states of charmonia and bottomonia. Presents EMFFs, charge radii, decay constants, PDFs, and DAs along with 3D wave function visualizations showing nodal structures."
 tags = ["Spectroscopy", "Charmonia", "Bottomonia", "Light-Front Dynamics", "PDFs", "DAs"]
 categories = ["Journal Article"]
+arxiv = "2408.07715"
+doi = "10.1088/1674-1137/ad8ec3"
+inspire = "2818257"
+citations = 12
 +++
 
 **Authors:** R. Acharyya, S. Puhan, N. Kumar and H. Dahiya  

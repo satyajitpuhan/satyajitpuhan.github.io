@@ -3,15 +3,18 @@ title = "Leading twist T-even TMDs for the spin-1 heavy vector mesons"
 date = 2024-03-01
 
 [extra]
-thumbnail = "images/portfolio/papers/heavy-vector-mesons-tmds.png"
+thumbnail = "images/portfolio/papers/heavy-vector-mesons-tmds.webp"
 service = "Phys. Rev. D 109 (2024)"
 client = "S. Puhan and H. Dahiya"
 short_description = "Pioneering the leading-twist TMD landscape for heavy spin-1 mesons, bridging light-front holographic and quark models with Bethe-Salpeter predictions."
 challenge = "We have presented the leading twist quark transverse momentum-dependent parton distribution functions (TMDs) for the spin-1 heavy vector mesons J/psi-meson and Upsilon-meson using the overlap of the light-front wave functions. We have computed their TMDs in the light-front holographic model (LFHM) as well as the light-front quark model (LFQM) and further compared the results with the Bethe-Salpeter (BSE) model. We have discussed the behavior of the TMDs with respect to momentum fraction carried by active quark (x) and the transverse quark momenta (k_perp) in both the models. We have also calculated the k_perp moments of the quark in both the models and have compared the results with the BSE model. The predictions of LFQM are found to be in accord with the BSE model. Further, we have analyzed the leading twist parton distribution functions (PDFs) for both the heavy mesons in both the models and the results are found to be in accord with the basic light-front quantization (BLFQ) and BSE model."
 solution = "Presents leading twist TMDs for J/psi and Upsilon mesons in both LFHM and LFQM, showing LFQM predictions align well with Bethe-Salpeter model results. Includes k_perp moment calculations and PDF analysis."
-doi = "10.1103/PhysRevD.109.034005"
 tags = ["TMDs", "Heavy Mesons", "J/psi", "Upsilon", "Light-Front Dynamics"]
 categories = ["Journal Article"]
+arxiv = "2310.03465"
+doi = "10.1103/PhysRevD.109.034005"
+inspire = "2706501"
+citations = 22
 +++
 
 **Authors:** S. Puhan and H. Dahiya  

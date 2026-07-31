@@ -3,7 +3,7 @@ title = "Valence quark structure of pion using light front dynamics"
 date = 2024-12-15
 
 [extra]
-thumbnail = "images/portfolio/portfolio-3.png"
+thumbnail = "images/portfolio/portfolio-3.webp"
 service = "DAE HEP 2024"
 client = "S. Puhan and H. Dahiya"
 short_description = "DAE HEP 2024 contribution on pion valence quark structure using light-front dynamics, highlighting S-wave dominance and Mellin moment predictions."
@@ -11,9 +11,12 @@ challenge = "In this work, we investigate the leading twist valence quark distri
 solution = "Calculates pion valence quark TMDs and PDFs using S-wave and P-wave states in LCQM. Finds S-wave contributes 94% while P-wave contributes only 6%, and computes Mellin and inverse moments for the valence quark."
 tags = ["Pion", "TMDs", "PDFs", "Light-Front Dynamics", "Conference"]
 categories = ["Conference Proceeding"]
+doi = "10.1007/978-981-95-1513-4_148"
+inspire = "3116443"
+citations = 0
 +++
 
 **Authors:** S. Puhan and H. Dahiya  
 **Published in:** DAE HEP 2024
 
-[View Details →](#)
+[DOI: 10.1007/978-981-95-1513-4_148](https://doi.org/10.1007/978-981-95-1513-4_148) · [INSPIRE-HEP record](https://inspirehep.net/literature/3116443)

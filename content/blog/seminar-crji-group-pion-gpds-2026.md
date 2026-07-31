@@ -3,8 +3,8 @@ title = "Extraction of Pion GPDs — Prof. C. R. Ji's Group"
 date = 2026-04-17
 
 [extra]
-feature_image = "images/blog/posts/crji-seminar.png"
-post_image = "images/blog/posts/crji-seminar.png"
+feature_image = "images/blog/posts/crji-seminar.webp"
+post_image = "images/blog/posts/crji-seminar.webp"
 
 [taxonomies]
 tags = ["seminar", "GPDs", "pion", "form factors"]

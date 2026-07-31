@@ -8,8 +8,8 @@
   
     // Fallback data in case the API rate limits or fails
     const FALLBACK_DATA = {
-      citations: 176,
-      hindex: 7,
+      citations: 201,
+      hindex: 10,
       papers: 41
     };
   
@@ -27,13 +27,16 @@
         if (!response.ok) throw new Error('API response not ok');
         
         const data = await response.json();
-        const papers = data.hits.total;
+        // Exclude records that belong to a different "Puhan" (NOvA collaboration)
+        const EXCLUDED = [3168377];
+        const hits = (data.hits.hits || []).filter(h => !EXCLUDED.includes(h.metadata.control_number));
+        const papers = hits.length;
         
         // Sum up citations
         let totalCitations = 0;
         let citationsArray = [];
-        if (data.hits.hits) {
-          data.hits.hits.forEach(hit => {
+        if (hits.length) {
+          hits.forEach(hit => {
             const citeCount = hit.metadata.citation_count || 0;
             totalCitations += citeCount;
             if (citeCount > 0) citationsArray.push(citeCount);
