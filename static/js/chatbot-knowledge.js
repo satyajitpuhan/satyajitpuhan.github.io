@@ -170,7 +170,7 @@ His calculations of GPDs, TMDs, and form factors provide theoretical predictions
     {
       keywords: ["inspire", "inspirehep", "google scholar", "citation", "h-index"],
       answer: `You can find Satyajit's full publication record on:<br>
-• <a href="https://inspirehep.net/authors/2695282" target="_blank">INSPIRE-HEP →</a><br>
+• <a href="https://inspirehep.net/authors/2706496" target="_blank">INSPIRE-HEP →</a><br>
 • <a href="https://scholar.google.com/citations?hl=en&user=pKbmhZQAAAAJ/" target="_blank">Google Scholar →</a><br>
 • <a href="https://orcid.org/0009-0004-9766-5005" target="_blank">ORCID →</a> 📚`,
       section: "#portfolio"
@@ -323,7 +323,7 @@ He also presented a seminar on <i>"Internal structure of pion, kaon, and ρ meso
 🔗 <a href="https://github.com/satyajitpuhan" target="_blank">GitHub</a> · 
 <a href="https://www.linkedin.com/in/satyajit-puhan-b9889a162/" target="_blank">LinkedIn</a> · 
 <a href="https://scholar.google.com/citations?hl=en&user=pKbmhZQAAAAJ/" target="_blank">Google Scholar</a> · 
-<a href="https://inspirehep.net/authors/2695282" target="_blank">INSPIRE-HEP</a> · 
+<a href="https://inspirehep.net/authors/2706496" target="_blank">INSPIRE-HEP</a> · 
 <a href="https://orcid.org/0009-0004-9766-5005" target="_blank">ORCID</a>`,
       section: "#contact"
     },
