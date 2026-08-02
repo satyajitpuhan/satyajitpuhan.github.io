@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Generated image derivatives and raw wallpaper bundles carry no useful text.
+Disallow: /processed_images/
+
+Sitemap: https://satyajitpuhan.github.io/sitemap.xml

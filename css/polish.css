@@ -1,0 +1,507 @@
+/* ═══════════════════════════════════════════════════════════
+   POLISH LAYER — subtle beauty refinements
+   Loaded last; additive only. Uses site-core.css tokens.
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Smooth scrolling (respects reduced motion) ── */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* ── Anchor offset under the sticky header ─────────────────────────
+   #header-particles-wrap is `position: sticky; top: 0` and roughly 130px
+   tall on desktop, but nothing compensated for it. Every nav anchor
+   (#about, #service, #portfolio, …) therefore scrolled the section's
+   heading up underneath the header, out of sight. scroll-padding-top on
+   the scroll container fixes all of them at once, and scroll-margin-top
+   on the targets covers browsers that ignore it.
+─────────────────────────────────────────────────────────────────── */
+html {
+  scroll-padding-top: 140px;
+}
+section[id],
+footer[id],
+[id^="ae-tab-"] {
+  scroll-margin-top: 140px;
+}
+@media (max-width: 991.98px) {
+  html { scroll-padding-top: 80px; }
+  section[id], footer[id] { scroll-margin-top: 80px; }
+}
+
+/* ── Layout stability ──────────────────────────────────────────────
+   None of the 35 <img> tags on the site carry intrinsic dimensions, so
+   every card thumbnail collapsed to zero height and then jumped once the
+   bitmap arrived. Fixed aspect boxes reserve the space up front.
+─────────────────────────────────────────────────────────────────── */
+img { max-width: 100%; }
+.blog-card img,
+.news-card img,
+.pub-entry img,
+.portfolio__card img,
+.blog__thumb img {
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+}
+.collaborator-card img,
+.author__thumb img {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+/* ── Rendering cost of off-screen sections ─────────────────────────
+   The homepage stacks twelve full sections with canvases, carousels and
+   gradients. Letting the browser skip layout and paint for the ones far
+   below the fold cuts real work off first render, and
+   contain-intrinsic-size keeps the scrollbar length honest.
+
+   Deliberately limited to #skill and #blog. Sections holding a Bootstrap
+   carousel (#news, #service, #collaborators, #conferences, #portfolio) or
+   the D3 force graph (#research-network) are excluded: those widgets
+   measure their container on init, and a container the browser has
+   skipped reports zero width, which would leave them collapsed.
+─────────────────────────────────────────────────────────────────── */
+@supports (content-visibility: auto) {
+  section#skill,
+  section#blog {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 900px;
+  }
+}
+
+/* ── Motion preferences (site-wide backstop) ───────────────────────
+   A lot of animation on this site is declared in inline style attributes
+   and keyframes that no media query could reach. This turns the whole
+   lot off for visitors who have asked for reduced motion.
+─────────────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .hero-aurora,
+  .hero-blackhole,
+  .hero-accretion-ring,
+  .hero-formula-field,
+  .ae-mesh-bg,
+  .wc-mesh-bg-v2,
+  #ae-cursor {
+    display: none !important;
+  }
+}
+
+/* ── Skip link ─────────────────────────────────────────────────────
+   Was styled entirely inline with JS onfocus/onblur handlers, so it did
+   nothing when scripting was off. Pure CSS now.
+─────────────────────────────────────────────────────────────────── */
+.ae-skip-link:focus,
+.ae-skip-link:focus-visible {
+  top: 0 !important;
+}
+
+/* Give programmatically focused sections no focus ring — they receive
+   focus only so the keyboard caret follows an in-page jump. */
+section[tabindex="-1"]:focus { outline: none; }
+
+/* ── Text selection ── */
+::selection {
+  background: var(--gold, #e8a444);
+  color: #1a1000;
+  text-shadow: none;
+}
+
+/* ── Refined scrollbar ── */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg, #050911);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(232, 164, 68, 0.55), rgba(46, 196, 182, 0.55));
+  border-radius: 8px;
+  border: 2px solid var(--bg, #050911);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #e8a444, #2ec4b6);
+}
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(232, 164, 68, 0.5) transparent;
+}
+
+/* ── Crisper typography ── */
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, .wc-kinetic-title {
+  letter-spacing: -0.02em;
+}
+
+/* ── Accessible, on-brand focus rings ── */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--gold, #e8a444);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ── Section heading accent line ── */
+.section .service__header h2::after,
+.section-title::after {
+  content: '';
+  display: block;
+  width: 56px;
+  height: 3px;
+  margin: 14px auto 0;
+  border-radius: 3px;
+  background: var(--grad-full, linear-gradient(135deg, #e8a444, #2ec4b6));
+  opacity: 0.85;
+}
+
+/* ── Card elevation & glow on hover ── */
+.research-card,
+.card,
+.blog-card,
+.portfolio-card,
+.news-card,
+.collab-card {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.35s ease,
+              border-color 0.35s ease;
+  will-change: transform;
+}
+
+.research-card:hover,
+.card:hover,
+.blog-card:hover,
+.portfolio-card:hover,
+.news-card:hover,
+.collab-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-gold, rgba(232, 164, 68, 0.2));
+  box-shadow:
+    0 18px 44px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(232, 164, 68, 0.12),
+    0 0 32px rgba(232, 164, 68, 0.07);
+}
+
+/* ── Icon lift inside research cards ── */
+.research-card:hover .research-card__icon-wrap {
+  transform: translateY(-3px) scale(1.06);
+}
+.research-card__icon-wrap {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ── Animated link underlines in text content ── */
+p a:not(.btn):not(.hire_button),
+li a:not(.btn):not(.hire_button) {
+  background-image: linear-gradient(90deg, var(--gold, #e8a444), var(--teal, #2ec4b6));
+  background-size: 0% 2px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.3s ease;
+}
+p a:not(.btn):not(.hire_button):hover,
+li a:not(.btn):not(.hire_button):hover {
+  background-size: 100% 2px;
+}
+
+/* ── Button sheen sweep ── */
+.btn,
+.hire_button,
+.btn-hero {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.btn:hover,
+.hire_button:hover,
+.btn-hero:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(232, 164, 68, 0.22);
+}
+.btn:active,
+.hire_button:active,
+.btn-hero:active {
+  transform: translateY(0);
+}
+.hire_button::after,
+.btn-hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.22), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.55s ease;
+  pointer-events: none;
+}
+.hire_button:hover::after,
+.btn-hero:hover::after {
+  left: 130%;
+}
+
+/* ── Social icons: gentle pop ── */
+.header-social-icon {
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.25s ease;
+}
+.header-social-icon:hover {
+  transform: translateY(-3px) scale(1.15);
+  color: var(--gold, #e8a444);
+}
+
+/* ── Nav link hover glow ── */
+.main-navigation .nav-item > a {
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+.main-navigation .nav-item > a:hover {
+  text-shadow: 0 0 18px rgba(232, 164, 68, 0.45);
+}
+
+/* ── Images inside cards: subtle zoom ── */
+.card img,
+.blog-card img,
+.portfolio-card img,
+.news-card img {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.card:hover img,
+.blog-card:hover img,
+.portfolio-card:hover img,
+.news-card:hover img {
+  transform: scale(1.04);
+}
+
+/* ── Carousel arrows & dots refinement ── */
+.research-carousel-arrow {
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  opacity: 0.7;
+}
+.research-carousel-arrow:hover {
+  transform: scale(1.12);
+  opacity: 1;
+}
+.research-dot {
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+.research-dot:hover {
+  transform: scale(1.3);
+}
+
+/* ── Reduced motion: switch off decorative movement ── */
+@media (prefers-reduced-motion: reduce) {
+  .research-card,
+  .card,
+  .btn,
+  .hire_button,
+  .btn-hero,
+  .header-social-icon,
+  .card img {
+    transition: none !important;
+    transform: none !important;
+  }
+  .hire_button::after,
+  .btn-hero::after {
+    display: none;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   Paper links (arXiv / DOI / INSPIRE-HEP / PDF)
+   ───────────────────────────────────────────── */
+.paper-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:26px 0 8px}
+.paper-link{display:inline-flex;align-items:center;gap:9px;padding:9px 15px;border-radius:10px;
+  text-decoration:none;font-size:.84rem;line-height:1;border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.04);color:rgba(255,255,255,.78);
+  transition:transform .22s ease,border-color .22s ease,background .22s ease,box-shadow .22s ease}
+.paper-link:hover{transform:translateY(-2px);color:#fff;text-decoration:none}
+.paper-link__tag{font-weight:800;letter-spacing:.4px;text-transform:uppercase;font-size:.68rem;
+  padding:4px 8px;border-radius:6px;background:rgba(255,255,255,.09);white-space:nowrap}
+.paper-link__val{font-family:var(--font-mono);
+  font-weight:600;opacity:.9;overflow-wrap:anywhere}
+.paper-link--arxiv:hover{border-color:rgba(179,31,31,.7);background:rgba(179,31,31,.16);box-shadow:0 6px 20px rgba(179,31,31,.25)}
+.paper-link--arxiv .paper-link__tag{background:rgba(179,31,31,.3);color:#ffb3b3}
+.paper-link--doi:hover{border-color:rgba(6,182,212,.7);background:rgba(6,182,212,.14);box-shadow:0 6px 20px rgba(6,182,212,.22)}
+.paper-link--doi .paper-link__tag{background:rgba(6,182,212,.25);color:#a5f3fc}
+.paper-link--inspire:hover{border-color:rgba(139,92,246,.75);background:rgba(139,92,246,.16);box-shadow:0 6px 20px rgba(139,92,246,.28)}
+.paper-link--inspire .paper-link__tag{background:rgba(139,92,246,.28);color:#ddd6fe}
+.paper-link--pdf:hover{border-color:rgba(232,164,68,.7);background:rgba(232,164,68,.14);box-shadow:0 6px 20px rgba(232,164,68,.22)}
+.paper-link--pdf .paper-link__tag{background:rgba(232,164,68,.25);color:#fde68a}
+@media (max-width:576px){.paper-links{gap:8px}.paper-link{font-size:.78rem;padding:8px 12px}}
+
+/* Social icons: inline SVG replaces the icon font */
+.header-social-icon,.header-social-icon svg{display:inline-flex;align-items:center;justify-content:center}
+.header-social-icon svg{width:17px;height:17px}
+.header-social-icon{width:32px;height:32px;border-radius:8px;color:rgba(255,255,255,.5);
+  transition:color .25s ease,background .25s ease,transform .25s ease}
+.header-social-icon:hover{color:#e8a444;background:rgba(232,164,68,.1);transform:translateY(-2px)}
+.social--inspire:hover{color:#a78bfa;background:rgba(139,92,246,.12)}
+.social--orcid:hover{color:#a6ce39;background:rgba(166,206,57,.12)}
+.social--scholar:hover{color:#4285f4;background:rgba(66,133,244,.12)}
+.social--researchgate:hover{color:#00d0af;background:rgba(0,208,175,.12)}
+.inspire-profile-link svg{width:17px;height:17px;flex:0 0 auto}
+
+/* Prevent layout shift while lazy images decode */
+img[loading="lazy"]{background:rgba(255,255,255,.03)}
+
+/* ═══════════════════════════════════════════════════════════════════
+   VISUAL REFINEMENT LAYER
+   Additive only. Targets classes rather than the inline styles that
+   dominate this codebase, so nothing existing is fought over.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── Typography rhythm ──
+   (font-smoothing and heading letter-spacing are set further up this file;
+   these are the additions, not a repeat.) */
+h1, h2, h3, h4 { text-wrap: balance; }
+p, li { text-wrap: pretty; }
+
+.wc-kinetic-title,
+.hero-content-wrap h1 {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  line-height: 1.12;
+}
+
+/* ── Section eyebrow rule ──
+   A thin gradient hairline under section headings, tying the amber/teal
+   palette together without touching any inline background. */
+.portfolio__header::after,
+.about_header::after,
+.blog__header::after {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 2px;
+  margin: 14px auto 0;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--gold, #e8a444), var(--teal, #2ec4b6));
+  opacity: 0.85;
+}
+
+/* ── Card interaction ──
+   One consistent lift instead of the assortment of per-card inline
+   onmouseover handlers. */
+.research-card,
+.news-card,
+.collaborator-card,
+.pub-entry,
+.paper-section-card {
+  transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1),
+              box-shadow 0.35s cubic-bezier(0.23, 1, 0.32, 1),
+              border-color 0.35s ease;
+  will-change: transform;
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .research-card:hover,
+  .news-card:hover,
+  .collaborator-card:hover,
+  .pub-entry:hover,
+  .paper-section-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 46px rgba(0, 0, 0, 0.42),
+                0 0 0 1px rgba(232, 164, 68, 0.18);
+  }
+}
+
+/* ── Animated underline for body links ── */
+.singleBlog__content a:not(.paper-link):not(.btn),
+.paper-section-card a:not(.paper-link) {
+  background-image: linear-gradient(var(--gold, #e8a444), var(--gold, #e8a444));
+  background-size: 0 1.5px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  text-decoration: none;
+}
+.singleBlog__content a:not(.paper-link):not(.btn):hover,
+.paper-section-card a:not(.paper-link):hover {
+  background-size: 100% 1.5px;
+}
+
+/* ── Back-to-top ── */
+#ae-back-to-top {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(232, 164, 68, 0.3);
+  border-radius: 12px;
+  background: rgba(10, 10, 22, 0.85);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  color: var(--gold, #e8a444);
+  cursor: pointer;
+  z-index: 9500;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px) scale(0.9);
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+#ae-back-to-top.ae-btt-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+}
+#ae-back-to-top:hover {
+  border-color: rgba(232, 164, 68, 0.65);
+  background: rgba(232, 164, 68, 0.14);
+}
+[data-theme="light"] #ae-back-to-top {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(124, 58, 237, 0.28);
+  color: #7c3aed;
+}
+[data-theme="light"] #ae-section-dots button { background: rgba(15, 23, 42, 0.22); }
+
+/* Keep the floating controls clear of the chatbot launcher on phones */
+@media (max-width: 575px) {
+  #ae-back-to-top { right: 16px; bottom: 84px; width: 40px; height: 40px; }
+  #ae-section-dots { display: none; }
+}
+
+/* rippleAnim keyframe already lives in site-core.css — not repeated here. */
+
+/* ── Print ──
+   Publication pages are printed and emailed; strip the chrome. */
+@media print {
+  #header-particles-wrap,
+  footer,
+  #ae-back-to-top,
+  #ae-section-dots,
+  #ae-scroll-progress,
+  #ae-cursor,
+  #cookie-consent,
+  .ae-palette-overlay,
+  .ae-noise-overlay,
+  #satyabot-toggle-btn,
+  #satyabot-window,
+  canvas { display: none !important; }
+
+  body, .singleBlog, section { background: #fff !important; color: #000 !important; }
+  a { color: #000 !important; text-decoration: underline; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.8em; word-break: break-all; }
+  .paper-section-card { break-inside: avoid; border: 1px solid #ccc !important; }
+}

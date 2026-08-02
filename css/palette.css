@@ -1,0 +1,233 @@
+/* ═══════════════════════════════════════════════════════════
+   palette.css — command palette / site search (⌘K)
+   Paired with static/js/command-palette.js
+═══════════════════════════════════════════════════════════ */
+
+.ae-palette-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100002;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: clamp(48px, 12vh, 140px) 16px 24px;
+  background: rgba(4, 6, 14, 0.72);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+.ae-palette-overlay.is-open { opacity: 1; }
+.ae-palette-overlay[hidden] { display: none; }
+
+.ae-palette {
+  width: min(640px, 100%);
+  max-height: min(60vh, 520px);
+  display: flex;
+  flex-direction: column;
+  background: #0d1020;
+  border: 1px solid rgba(139, 92, 246, 0.28);
+  border-radius: 16px;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+  overflow: hidden;
+  transform: translateY(-8px) scale(0.985);
+  transition: transform 0.18s cubic-bezier(0.23, 1, 0.32, 1);
+  font-family: 'Inter', system-ui, sans-serif;
+}
+.ae-palette-overlay.is-open .ae-palette { transform: none; }
+
+/* ── Input row ── */
+.ae-palette-inputrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  flex-shrink: 0;
+}
+.ae-palette-icon { color: rgba(139, 92, 246, 0.9); flex-shrink: 0; }
+.ae-palette-input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 1rem;
+  font-family: inherit;
+  min-width: 0;
+}
+.ae-palette-input::placeholder { color: rgba(255, 255, 255, 0.35); }
+.ae-palette-esc {
+  font-size: 0.68rem;
+  padding: 3px 7px;
+  border-radius: 5px;
+  color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  flex-shrink: 0;
+}
+
+/* ── Results ── */
+.ae-palette-list {
+  list-style: none;
+  margin: 0;
+  padding: 8px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  flex: 1;
+}
+.ae-palette-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.12s ease;
+}
+.ae-palette-item.is-active { background: rgba(139, 92, 246, 0.16); }
+.ae-palette-kind {
+  width: 30px; height: 30px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  background: color-mix(in srgb, var(--k, #8b5cf6) 16%, transparent);
+  border: 1px solid color-mix(in srgb, var(--k, #8b5cf6) 38%, transparent);
+}
+.ae-palette-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1; }
+.ae-palette-title {
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 0.9rem;
+  font-weight: 600;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.ae-palette-sub {
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 0.76rem;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.ae-palette-tag {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.68rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.ae-palette-empty {
+  margin: 0;
+  padding: 28px 18px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.88rem;
+}
+
+/* ── Footer ── */
+.ae-palette-foot {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 9px 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.32);
+  font-size: 0.7rem;
+  flex-shrink: 0;
+}
+.ae-palette-foot kbd {
+  display: inline-block;
+  padding: 1px 5px;
+  margin-right: 3px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.68rem;
+}
+.ae-palette-count { margin-left: auto; }
+
+/* ── Navbar trigger ── */
+.ae-search-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+.ae-search-trigger:hover {
+  color: #fff;
+  border-color: rgba(139, 92, 246, 0.45);
+  background: rgba(139, 92, 246, 0.1);
+}
+.ae-search-trigger kbd {
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.68rem;
+}
+
+/* ── Light theme ── */
+[data-theme="light"] .ae-palette-overlay { background: rgba(226, 232, 240, 0.7); }
+[data-theme="light"] .ae-palette {
+  background: #ffffff;
+  border-color: rgba(124, 58, 237, 0.25);
+  box-shadow: 0 30px 90px rgba(15, 23, 42, 0.22);
+}
+[data-theme="light"] .ae-palette-inputrow { border-bottom-color: rgba(0, 0, 0, 0.08); }
+[data-theme="light"] .ae-palette-input { color: #0f172a; }
+[data-theme="light"] .ae-palette-input::placeholder { color: rgba(15, 23, 42, 0.4); }
+[data-theme="light"] .ae-palette-title { color: #0f172a; }
+[data-theme="light"] .ae-palette-sub { color: rgba(15, 23, 42, 0.55); }
+[data-theme="light"] .ae-palette-tag { color: rgba(15, 23, 42, 0.4); }
+[data-theme="light"] .ae-palette-item.is-active { background: rgba(124, 58, 237, 0.1); }
+[data-theme="light"] .ae-palette-foot,
+[data-theme="light"] .ae-palette-empty { color: rgba(15, 23, 42, 0.5); }
+[data-theme="light"] .ae-palette-foot { border-top-color: rgba(0, 0, 0, 0.07); }
+[data-theme="light"] .ae-palette-foot kbd,
+[data-theme="light"] .ae-palette-esc {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.1);
+  color: rgba(15, 23, 42, 0.6);
+}
+[data-theme="light"] .ae-search-trigger {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.12);
+  color: rgba(15, 23, 42, 0.6);
+}
+[data-theme="light"] .ae-search-trigger kbd {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+/* ── Focus visibility (site-wide) ──────────────────────────
+   Keyboard focus was effectively invisible across the site. */
+:focus-visible {
+  outline: 2px solid #8b5cf6;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+[data-theme="light"] :focus-visible { outline-color: #7c3aed; }
+.ae-palette-item:focus-visible { outline-offset: -2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ae-palette-overlay,
+  .ae-palette { transition: none !important; }
+}
+
+@media (max-width: 575px) {
+  .ae-palette { max-height: 72vh; }
+  .ae-palette-tag { display: none; }
+  .ae-palette-foot span:not(.ae-palette-count) { display: none; }
+}
