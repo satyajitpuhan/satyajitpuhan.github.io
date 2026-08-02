@@ -23,10 +23,12 @@
 {% macro feeds(path="") %}
 {% for filename in config.feed_filenames %}
     {% set type = filename | replace(from=".xml", to="") %}
-    {% set url = get_url(path=path ~ "/" ~ filename, trailing_slash=false) %}
-    
+    {# Build "<path>/<filename>" without producing a leading double slash when path is empty. #}
+    {% if path %}{% set rel = path ~ "/" ~ filename %}{% else %}{% set rel = filename %}{% endif %}
+    {% set url = get_url(path=rel, lang=lang, trailing_slash=false) %}
+
     {% if type in ["atom", "rss"] %}
-    <link rel="alternate" type="application/{{ type }}+xml" title="{{ type | title }}" href="{{ url }}">
+    <link rel="alternate" type="application/{{ type }}+xml" title="{{ config.title }} — {{ type | upper }}" href="{{ url }}">
     {% endif %}
 {% endfor %}
 {% endmacro %}
@@ -63,8 +65,9 @@
 {% macro icons(path, sizes, apple=false, op="scale") %}
     {% for size in sizes %}
         {% set image = resize_image(path=path, width=size, height=size, format="png", op=op) %}
-        
-        <link {% if apple %}rel="icon" type="image/png"{% else %}rel="apple-touch-icon"{% endif %} sizes="{{ size }}x{{ size }}" href="{{ image.url }}">
+
+        {# NOTE: this used to be inverted — apple=true emitted rel="icon" and vice versa. #}
+        <link {% if apple %}rel="apple-touch-icon"{% else %}rel="icon" type="image/png"{% endif %} sizes="{{ size }}x{{ size }}" href="{{ image.url }}">
     {% endfor %}
 {% endmacro %}
 

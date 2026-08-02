@@ -1,7 +1,9 @@
 {% set news_data = load_data(path="static/sections/news/" ~ lang ~ ".toml", required=false) %}
 {% set portfolio_section = get_section(path="portfolio/_index.md", lang=lang) %}
 
-<section class="nitj-updates-grid" style="padding: 40px 0; background-image: url('/images/flowers/flower1.webp'); background-size: cover; background-position: center 60%; position: relative;">
+{# id was missing entirely, so the #nitj-grid rules in light-theme.css never
+   matched and this band stayed dark in light mode. #}
+<section id="nitj-grid" class="nitj-updates-grid" style="padding: 40px 0; background-image: url('/images/flowers/flower1.webp'); background-size: cover; background-position: center 60%; position: relative;">
   <div style="position: absolute; inset: 0; background: rgba(10,5,20,0.60); pointer-events: none;"></div>
   <div style="position: relative; z-index: 1;">
     <div class="container">

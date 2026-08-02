@@ -108,6 +108,13 @@
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path></svg>
                 <span id="cite-btn-text">Copy Citation</span>
               </button>
+              <button class="btn-cite" onclick="copyBibtex()"
+                style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 10px; background: rgba(232,164,68,0.12); border: 1px solid rgba(232,164,68,0.4); color: #e8a444; font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease;"
+                onmouseover="this.style.background='rgba(232,164,68,0.2)'; this.style.transform='translateY(-2px)';"
+                onmouseout="this.style.background='rgba(232,164,68,0.12)'; this.style.transform='';">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"></path></svg>
+                <span id="bibtex-btn-text">Copy BibTeX</span>
+              </button>
               <button class="btn-print" onclick="window.print()"
                 style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 10px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.85); font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease;"
                 onmouseover="this.style.borderColor='rgba(232,164,68,0.5)'; this.style.background='rgba(232,164,68,0.1)'; this.style.color='#e8a444';"
@@ -120,19 +127,96 @@
         </div>
 
         <script>
-        function copyCitation() {
-          var authors = {{ page.extra.client | json_encode }};
-          var title = {{ page.title | json_encode }};
-          var journal = {{ page.extra.service | json_encode }};
-          var year = {{ page.date | date(format="%Y") | json_encode }};
-          var citation = authors + ', "' + title + '", ' + journal + ' (' + year + ').';
-          navigator.clipboard.writeText(citation).then(function() {
-            var btn = document.getElementById('cite-btn-text');
-            var original = btn.textContent;
-            btn.textContent = 'Copied!';
-            setTimeout(function() { btn.textContent = original; }, 2000);
-          });
-        }
+        (function () {
+          // Every field is guarded: not all portfolio entries carry a client,
+          // service, arXiv id or DOI, and a missing key is a hard build error
+          // in Tera rather than an empty string.
+          var PAPER = {
+            authors: {{ page.extra.client | default(value="S. Puhan") | json_encode | safe }},
+            title:   {{ page.title | json_encode | safe }},
+            journal: {{ page.extra.service | default(value="") | json_encode | safe }},
+            year:    {% if page.year %}{{ page.year }}{% else %}0{% endif %},
+            arxiv:   {{ page.extra.arxiv | default(value="") | json_encode | safe }},
+            doi:     {{ page.extra.doi | default(value="") | json_encode | safe }},
+            url:     {{ page.permalink | json_encode | safe }}
+          };
+
+          /* Clipboard with a fallback.
+             navigator.clipboard is undefined on any non-secure origin and in
+             older browsers; the previous version called it unconditionally and
+             the button silently did nothing (an unhandled promise rejection).  */
+          function copy(text) {
+            if (navigator.clipboard && window.isSecureContext) {
+              return navigator.clipboard.writeText(text);
+            }
+            return new Promise(function (resolve, reject) {
+              var ta = document.createElement('textarea');
+              ta.value = text;
+              ta.setAttribute('readonly', '');
+              ta.style.cssText = 'position:fixed;top:-1000px;opacity:0;';
+              document.body.appendChild(ta);
+              ta.select();
+              var ok = false;
+              try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+              document.body.removeChild(ta);
+              ok ? resolve() : reject(new Error('copy blocked'));
+            });
+          }
+
+          function flash(id, msg) {
+            var btn = document.getElementById(id);
+            if (!btn) return;
+            if (btn._t) { clearTimeout(btn._t); } else { btn._orig = btn.textContent; }
+            btn.textContent = msg;
+            btn._t = setTimeout(function () {
+              btn.textContent = btn._orig;
+              btn._t = null;
+            }, 2000);
+          }
+
+          window.copyCitation = function () {
+            var bits = [PAPER.authors, '"' + PAPER.title + '"'];
+            if (PAPER.journal) bits.push(PAPER.journal);
+            var cite = bits.join(', ') + (PAPER.year ? ' (' + PAPER.year + ')' : '') + '.';
+            if (PAPER.doi) cite += ' doi:' + PAPER.doi;
+            copy(cite)
+              .then(function () { flash('cite-btn-text', 'Copied!'); })
+              .catch(function () { flash('cite-btn-text', 'Press ⌘C'); });
+          };
+
+          /* BibTeX export — the thing anyone actually wants from a
+             publication page, and which this site had no way to produce. */
+          window.copyBibtex = function () {
+            var first = PAPER.authors.split(/,| and /)[0].trim().split(/\s+/).pop() || 'Puhan';
+            var word = PAPER.title.replace(/[^A-Za-z ]/g, '').split(/\s+/)
+                        .filter(function (w) { return w.length > 3; })[0] || 'paper';
+            var key = (first + PAPER.year + word).toLowerCase().replace(/[^a-z0-9]/g, '');
+
+            // BibTeX takes "Last, First and Last, First"; the frontmatter stores
+            // a comma-separated display string, so normalise the separators.
+            var authors = PAPER.authors
+              .replace(/\s+and\s+/gi, ', ')
+              .split(',')
+              .map(function (a) { return a.trim(); })
+              .filter(Boolean)
+              .join(' and ');
+
+            var lines = ['@article{' + key + ','];
+            lines.push('  author  = {' + authors + '},');
+            lines.push('  title   = {{' + PAPER.title + '}},');
+            if (PAPER.journal) lines.push('  journal = {' + PAPER.journal + '},');
+            if (PAPER.year) lines.push('  year    = {' + PAPER.year + '},');
+            if (PAPER.doi) lines.push('  doi     = {' + PAPER.doi + '},');
+            if (PAPER.arxiv) lines.push('  eprint  = {' + PAPER.arxiv + '},');
+            if (PAPER.arxiv) lines.push('  archivePrefix = {arXiv},');
+            lines.push('  url     = {' + PAPER.url + '}');
+            lines.push('}');
+
+            copy(lines.join('\n'))
+              .then(function () { flash('bibtex-btn-text', 'BibTeX copied!'); })
+              .catch(function () { flash('bibtex-btn-text', 'Copy failed'); });
+          };
+        })();
         </script>
 
         <!-- Abstract & Summary -->

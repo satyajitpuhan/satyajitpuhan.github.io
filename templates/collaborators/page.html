@@ -28,7 +28,7 @@
                     <p style="color: #c4b5fd; font-size: 0.95rem; margin-bottom: 20px;"><i class="lni lni-apartment"></i> {{ page.extra.institution }}</p>
                     
                     {% if page.extra.website %}
-                    <a href="{{ page.extra.website }}" target="_blank" class="btn btn-primary" style="background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); border: none; border-radius: 10px; width: 100%; font-weight: 600; padding: 10px; box-shadow: 0 4px 15px rgba(99,102,241,0.4);"><i class="lni lni-website"></i> Visit Website</a>
+                    <a href="{{ page.extra.website }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); border: none; border-radius: 10px; width: 100%; font-weight: 600; padding: 10px; box-shadow: 0 4px 15px rgba(99,102,241,0.4);"><i class="lni lni-website"></i> Visit Website</a>
                     {% endif %}
                 </div>
                 
@@ -83,16 +83,16 @@
                     <h5 style="color: #f472b6; font-weight: 600; margin-bottom: 15px; font-size: 1.15rem;"><i class="lni lni-link"></i> Profiles</h5>
                     <div style="display: flex; gap: 10px; flex-wrap: wrap;">
                         {% if page.extra.inspire %}
-                        <a href="{{ page.extra.inspire }}" target="_blank" style="color: #fce7f3; background: rgba(244,114,182,0.15); padding: 8px 14px; border-radius: 10px; text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: all 0.3s; border: 1px solid rgba(244,114,182,0.2);" onmouseover="this.style.background='rgba(244,114,182,0.3)'" onmouseout="this.style.background='rgba(244,114,182,0.15)'">INSPIRE-HEP</a>
+                        <a href="{{ page.extra.inspire }}" target="_blank" rel="noopener noreferrer" style="color: #fce7f3; background: rgba(244,114,182,0.15); padding: 8px 14px; border-radius: 10px; text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: all 0.3s; border: 1px solid rgba(244,114,182,0.2);" onmouseover="this.style.background='rgba(244,114,182,0.3)'" onmouseout="this.style.background='rgba(244,114,182,0.15)'">INSPIRE-HEP</a>
                         {% endif %}
                         {% if page.extra.scholar %}
-                        <a href="{{ page.extra.scholar }}" target="_blank" style="color: #fce7f3; background: rgba(244,114,182,0.15); padding: 8px 14px; border-radius: 10px; text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: all 0.3s; border: 1px solid rgba(244,114,182,0.2);" onmouseover="this.style.background='rgba(244,114,182,0.3)'" onmouseout="this.style.background='rgba(244,114,182,0.15)'"><i class="lni lni-google"></i> Scholar</a>
+                        <a href="{{ page.extra.scholar }}" target="_blank" rel="noopener noreferrer" style="color: #fce7f3; background: rgba(244,114,182,0.15); padding: 8px 14px; border-radius: 10px; text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: all 0.3s; border: 1px solid rgba(244,114,182,0.2);" onmouseover="this.style.background='rgba(244,114,182,0.3)'" onmouseout="this.style.background='rgba(244,114,182,0.15)'"><i class="lni lni-google"></i> Scholar</a>
                         {% endif %}
                         {% if page.extra.orcid %}
-                        <a href="{{ page.extra.orcid }}" target="_blank" style="color: #fce7f3; background: rgba(244,114,182,0.15); padding: 8px 14px; border-radius: 10px; text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: all 0.3s; border: 1px solid rgba(244,114,182,0.2);" onmouseover="this.style.background='rgba(244,114,182,0.3)'" onmouseout="this.style.background='rgba(244,114,182,0.15)'">ORCID</a>
+                        <a href="{{ page.extra.orcid }}" target="_blank" rel="noopener noreferrer" style="color: #fce7f3; background: rgba(244,114,182,0.15); padding: 8px 14px; border-radius: 10px; text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: all 0.3s; border: 1px solid rgba(244,114,182,0.2);" onmouseover="this.style.background='rgba(244,114,182,0.3)'" onmouseout="this.style.background='rgba(244,114,182,0.15)'">ORCID</a>
                         {% endif %}
                         {% if page.extra.github %}
-                        <a href="{{ page.extra.github }}" target="_blank" style="color: #fce7f3; background: rgba(244,114,182,0.15); padding: 8px 14px; border-radius: 10px; text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: all 0.3s; border: 1px solid rgba(244,114,182,0.2);" onmouseover="this.style.background='rgba(244,114,182,0.3)'" onmouseout="this.style.background='rgba(244,114,182,0.15)'"><i class="lni lni-github-original"></i> GitHub</a>
+                        <a href="{{ page.extra.github }}" target="_blank" rel="noopener noreferrer" style="color: #fce7f3; background: rgba(244,114,182,0.15); padding: 8px 14px; border-radius: 10px; text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: all 0.3s; border: 1px solid rgba(244,114,182,0.2);" onmouseover="this.style.background='rgba(244,114,182,0.3)'" onmouseout="this.style.background='rgba(244,114,182,0.15)'"><i class="lni lni-github-original"></i> GitHub</a>
                         {% endif %}
                     </div>
                 </div>

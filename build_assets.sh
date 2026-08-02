@@ -22,6 +22,7 @@ cat /tmp/_purged.css \
     static/css/site-core.css \
     static/css/chatbot.css \
     static/css/light-theme.css \
+    static/css/palette.css \
     static/css/polish.css > /tmp/_bundle.css
 
 "$BIN/cleancss" -O2 -o static/css/site.min.css /tmp/_bundle.css
@@ -35,9 +36,11 @@ echo "› building JS bundle"
   static/js/theme-engine.js \
   static/js/chatbot-knowledge.js \
   static/js/chatbot.js \
+  static/js/command-palette.js \
   --bundle=false --minify --outdir=/tmp/_js --log-level=warning
 cat /tmp/_js/main.js /tmp/_js/advanced-v2.js /tmp/_js/advanced-effects.js \
     /tmp/_js/interactions.js /tmp/_js/theme-engine.js \
+    /tmp/_js/command-palette.js \
     /tmp/_js/chatbot-knowledge.js /tmp/_js/chatbot.js > static/js/site.min.js
 
 echo

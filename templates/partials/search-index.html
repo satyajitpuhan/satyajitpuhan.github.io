@@ -1,0 +1,66 @@
+{# ══════════════════════════════════════════════════════════════════════
+   search-index.html
+
+   Emits a compact JSON index of every publication, talk and collaborator so
+   the command palette (static/js/command-palette.js) can search the whole
+   site without a network round-trip.
+
+   Kept deliberately lean — title, url, kind, one line of meta and a short
+   description only, no abstracts — so the whole thing stays a few KB gzipped.
+   Zola cannot write a standalone .json asset from a template, so it is
+   inlined as a non-executing <script type="application/json"> block.
+
+   Note on the guards below: `default()` only substitutes for keys that are
+   absent. Zola sets `description` and `year` to *null* rather than dropping
+   them when a page has no description or date, and a null renders as the
+   empty string — which would emit `"y":,` and break JSON.parse for the whole
+   index. Hence the explicit `{% if %}` around every optional field rather
+   than a `default()` chain.
+   ══════════════════════════════════════════════════════════════════════ #}
+
+<script type="application/json" id="ae-search-index">
+[
+{%- set_global ns_first = true -%}
+
+{%- set pubs = get_section(path="portfolio/_index.md", lang=lang) -%}
+{%- for p in pubs.pages -%}
+  {%- if not ns_first %},{% endif -%}
+  {%- set_global ns_first = false -%}
+  {%- set_global f_meta = "" -%}
+  {%- if p.extra.service -%}{%- set_global f_meta = p.extra.service -%}{%- endif -%}
+  {%- set_global f_desc = "" -%}
+  {%- if p.extra.short_description -%}{%- set_global f_desc = p.extra.short_description | truncate(length=140) -%}{%- endif -%}
+  {%- set_global f_year = 0 -%}
+  {%- if p.year -%}{%- set_global f_year = p.year -%}{%- endif -%}
+  {%- set_global f_tags = [] -%}
+  {%- if p.taxonomies.tags -%}{%- set_global f_tags = p.taxonomies.tags -%}{%- endif -%}
+  {"t":{{ p.title | json_encode | safe }},"u":{{ p.permalink | json_encode | safe }},"k":"publication","m":{{ f_meta | json_encode | safe }},"d":{{ f_desc | json_encode | safe }},"y":{{ f_year }},"g":{{ f_tags | json_encode | safe }}}
+{%- endfor -%}
+
+{%- set talks = get_section(path="blog/_index.md", lang=lang) -%}
+{%- for p in talks.pages -%}
+  {%- if not ns_first %},{% endif -%}
+  {%- set_global ns_first = false -%}
+  {%- set_global f_desc = "" -%}
+  {%- if p.description -%}{%- set_global f_desc = p.description | truncate(length=140) -%}{%- endif -%}
+  {%- set_global f_year = 0 -%}
+  {%- if p.year -%}{%- set_global f_year = p.year -%}{%- endif -%}
+  {%- set_global f_tags = [] -%}
+  {%- if p.taxonomies.tags -%}{%- set_global f_tags = p.taxonomies.tags -%}{%- endif -%}
+  {%- set_global f_meta = f_tags | join(sep=", ") -%}
+  {"t":{{ p.title | json_encode | safe }},"u":{{ p.permalink | json_encode | safe }},"k":"talk","m":{{ f_meta | json_encode | safe }},"d":{{ f_desc | json_encode | safe }},"y":{{ f_year }},"g":{{ f_tags | json_encode | safe }}}
+{%- endfor -%}
+
+{%- set people = get_section(path="collaborators/_index.md", lang=lang) -%}
+{%- for p in people.pages -%}
+  {%- if not ns_first %},{% endif -%}
+  {%- set_global ns_first = false -%}
+  {%- set_global f_meta = "" -%}
+  {%- if p.extra.institution -%}{%- set_global f_meta = p.extra.institution -%}
+  {%- elif p.description -%}{%- set_global f_meta = p.description -%}{%- endif -%}
+  {%- set_global f_desc = "" -%}
+  {%- if p.extra.research_interests -%}{%- set_global f_desc = p.extra.research_interests | truncate(length=140) -%}{%- endif -%}
+  {"t":{{ p.title | json_encode | safe }},"u":{{ p.permalink | json_encode | safe }},"k":"collaborator","m":{{ f_meta | json_encode | safe }},"d":{{ f_desc | json_encode | safe }},"y":0,"g":[]}
+{%- endfor -%}
+]
+</script>

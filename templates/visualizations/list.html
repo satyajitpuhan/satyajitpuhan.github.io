@@ -66,7 +66,7 @@
     border: 1px solid rgba(99, 102, 241, 0.3);
     border-radius: 100px;
     padding: 8px 20px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-mono);
     font-size: 0.75rem;
     font-weight: 500;
     color: #a5b4fc;
@@ -266,7 +266,7 @@
   .thumb-proton .thumb-icon { color: #a0c4ff; text-shadow: 0 0 20px rgba(160,196,255,0.4); }
 
   .thumb-icon {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-mono);
     font-size: 2.4rem;
     font-weight: 700;
     opacity: 0.85;
@@ -332,7 +332,7 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-mono);
     font-size: 0.65rem;
     font-weight: 500;
     letter-spacing: 1.5px;
@@ -395,7 +395,7 @@
   }
 
   .viz-tech-badge {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-mono);
     font-size: 0.6rem;
     color: rgba(255, 255, 255, 0.4);
     padding: 2px 8px;
@@ -546,7 +546,7 @@
     <div class="viz-grid">
 
       <!-- 1. Strong Coupling α_s -->
-      <a class="viz-card" href="{{ get_url(path='vd/live-wallpaper-alphas/index.html') }}" target="_blank" id="viz-alphas">
+      <a class="viz-card" href="{{ get_url(path='vd/live-wallpaper-alphas/index.html') }}" target="_blank" rel="noopener noreferrer" id="viz-alphas">
         <div class="viz-card-preview">
           <div class="viz-thumb thumb-alphas">
             <span class="thumb-icon">α<sub>s</sub>(Q²)</span>
@@ -573,7 +573,7 @@
       </a>
 
       <!-- 2. DGLAP Evolution -->
-      <a class="viz-card" href="{{ get_url(path='vd/live-wallpaper-dglap/index.html') }}" target="_blank" id="viz-dglap">
+      <a class="viz-card" href="{{ get_url(path='vd/live-wallpaper-dglap/index.html') }}" target="_blank" rel="noopener noreferrer" id="viz-dglap">
         <div class="viz-card-preview">
           <div class="viz-thumb thumb-dglap">
             <span class="thumb-icon">DGLAP</span>
@@ -600,7 +600,7 @@
       </a>
 
       <!-- 3. Pion Mechanical Structure -->
-      <a class="viz-card" href="{{ get_url(path='vd/live-wallpaper-mechanical/index.html') }}" target="_blank" id="viz-mechanical">
+      <a class="viz-card" href="{{ get_url(path='vd/live-wallpaper-mechanical/index.html') }}" target="_blank" rel="noopener noreferrer" id="viz-mechanical">
         <div class="viz-card-preview">
           <div class="viz-thumb thumb-mechanical">
             <span class="thumb-icon">p(b<sub>⊥</sub>)</span>
@@ -626,7 +626,7 @@
       </a>
 
       <!-- 4. QCD Field -->
-      <a class="viz-card" href="{{ get_url(path='vd/live-wallpaper-qcdfield/index.html') }}" target="_blank" id="viz-qcd">
+      <a class="viz-card" href="{{ get_url(path='vd/live-wallpaper-qcdfield/index.html') }}" target="_blank" rel="noopener noreferrer" id="viz-qcd">
         <div class="viz-card-preview">
           <div class="viz-thumb thumb-qcd">
             <span class="thumb-icon">QCD</span>
@@ -654,7 +654,7 @@
       </a>
 
       <!-- 5. Generalized Distribution Amplitude -->
-      <a class="viz-card" href="{{ get_url(path='vd/GDAs.html') }}" target="_blank" id="viz-gda">
+      <a class="viz-card" href="{{ get_url(path='vd/GDAs.html') }}" target="_blank" rel="noopener noreferrer" id="viz-gda">
         <div class="viz-card-preview">
           <div class="viz-thumb thumb-gda">
             <span class="thumb-icon">γγ* → π⁰π⁰</span>
@@ -681,7 +681,7 @@
       </a>
 
       <!-- 6. Instant vs Front Form -->
-      <a class="viz-card" href="{{ get_url(path='vd/forms-comparison.html') }}" target="_blank" id="viz-forms">
+      <a class="viz-card" href="{{ get_url(path='vd/forms-comparison.html') }}" target="_blank" rel="noopener noreferrer" id="viz-forms">
         <div class="viz-card-preview">
           <div class="viz-thumb thumb-forms">
             <span class="thumb-icon">IF ⟷ FF</span>
@@ -708,7 +708,7 @@
       </a>
 
       <!-- 7. Proton Wallpaper -->
-      <a class="viz-card" href="{{ get_url(path='vd/proton2.html') }}" target="_blank" id="viz-proton">
+      <a class="viz-card" href="{{ get_url(path='vd/proton2.html') }}" target="_blank" rel="noopener noreferrer" id="viz-proton">
         <div class="viz-card-preview">
           <div class="viz-thumb thumb-proton">
             <span class="thumb-icon">p⁺</span>

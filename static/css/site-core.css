@@ -7,6 +7,17 @@
 
 /* ── Design Tokens ── */
 :root {
+  /* Monospace stack.
+     53 places across the templates asked for 'JetBrains Mono' — a font this
+     site has never actually loaded, from Google Fonts or anywhere else — so
+     every one of them silently fell back to the browser's default monospace
+     (usually Courier). Rather than pay for a third webfont, this stack prefers
+     JetBrains Mono when the visitor happens to have it installed and otherwise
+     uses the platform's good UI monospace. */
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, 'SF Mono',
+               'Cascadia Mono', 'Segoe UI Mono', Menlo, Consolas,
+               'Liberation Mono', monospace;
+
   --bg:          #050911;
   --bg-2:        #0c1120;
   --bg-3:        #111928;
@@ -47,7 +58,7 @@
 
   --font-h: 'Space Grotesk', system-ui, sans-serif;
   --font-b: 'Inter', system-ui, sans-serif;
-  --font-m: 'JetBrains Mono', 'Courier New', monospace;
+  --font-m: var(--font-mono);
 }
 
 [data-theme="light"] {
@@ -509,7 +520,7 @@ progress::-moz-progress-bar      { background: var(--grad-gold) !important; bord
   position: absolute;
   left: var(--x);
   top: var(--y);
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono);
   font-size: clamp(0.55rem, 1vw, 0.72rem);
   color: rgba(139, 92, 246, 0.28);
   white-space: nowrap;
@@ -594,7 +605,7 @@ progress::-moz-progress-bar      { background: var(--grad-gold) !important; bord
   border-radius: 100px;
   padding: 6px 18px;
   font-size: 0.72rem;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono);
   letter-spacing: 3px;
   text-transform: uppercase;
   color: #a78bfa;

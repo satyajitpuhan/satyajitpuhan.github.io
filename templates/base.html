@@ -3,6 +3,15 @@
 
 {% set extra = config.extra %}
 
+{# Resolve the current page's own URL once, up front. Written as explicit
+   if-blocks rather than a default() chain because Tera evaluates default()'s
+   argument eagerly — `default(value=section.permalink)` throws on templates
+   where `section` is not in context at all. #}
+{%- set_global self_url = config.base_url -%}
+{%- if page -%}{%- set_global self_url = page.permalink -%}
+{%- elif section -%}{%- set_global self_url = section.permalink -%}
+{%- endif -%}
+
 <!DOCTYPE html>
 
 <html lang="{{ lang }}" data-site-base="{{ get_url(path='/') }}">
@@ -16,8 +25,27 @@
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="theme-color" content="#050911">
+    <meta name="theme-color" content="#050911" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#f4f7ff" media="(prefers-color-scheme: light)">
+    <meta name="color-scheme" content="dark light">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Satyajit Puhan">
+
+    <!-- ── Theme bootstrap: runs before first paint so light mode never flashes dark ── -->
+    <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('ae-theme');
+        var theme = saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+        window.__aeInitialTheme = theme;
+      } catch (e) { /* private mode / storage disabled — fall back to dark */ }
+      // Expose motion + pointer capabilities once, so scripts don't each re-query.
+      var mm = window.matchMedia;
+      window.__aeReducedMotion = !!(mm && mm('(prefers-reduced-motion: reduce)').matches);
+      window.__aeCoarsePointer = !!(mm && mm('(hover: none), (pointer: coarse)').matches);
+    })();
+    </script>
     <meta name="description" content="{{ page.description | default(value=config.description) | default(value='') | striptags | truncate(length=160) }}">
     <meta itemprop="name" content="{{ page.title | default(value=config.title) }}">
     <meta itemprop="description" content="{{ page.description | default(value=config.description) | default(value='') }}">
@@ -26,10 +54,12 @@
     <meta property="og:title" content="{{ page.title | default(value=config.title) }}">
     <meta property="og:description" content="{{ page.description | default(value=config.description) | default(value='') | striptags | truncate(length=160) }}">
     <meta property="og:type" content="{% if page.title %}article{% else %}website{% endif %}">
-    <meta property="og:url" content="{{ page.permalink | default(value=config.base_url) }}">
+    <meta property="og:url" content="{{ self_url }}">
     <meta property="og:image" content="{{ get_url(path='images/about/me.webp') }}">
     <meta property="og:site_name" content="{{ config.title }}">
-    <meta property="og:locale" content="{{ lang }}_{{ lang | upper }}">
+    {# og:locale must be a real locale — "en_EN" (the old value) is not one. #}
+    <meta property="og:locale" content="{% if lang == 'or' %}or_IN{% else %}en_US{% endif %}">
+    <meta property="og:locale:alternate" content="{% if lang == 'or' %}en_US{% else %}or_IN{% endif %}">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
@@ -38,7 +68,23 @@
     <meta name="twitter:image" content="{{ get_url(path='images/about/me.webp') }}">
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="{{ page.permalink | default(value=config.base_url) }}">
+    <link rel="canonical" href="{{ self_url }}">
+
+    <!-- ── hreflang alternates (were missing entirely) ── -->
+    {% if page %}
+      <link rel="alternate" hreflang="{{ lang }}" href="{{ page.permalink }}">
+      {% for t in page.translations %}<link rel="alternate" hreflang="{{ t.lang }}" href="{{ t.permalink }}">
+      {% endfor %}
+    {% elif section %}
+      <link rel="alternate" hreflang="{{ lang }}" href="{{ section.permalink }}">
+      {% for t in section.translations %}<link rel="alternate" hreflang="{{ t.lang }}" href="{{ t.permalink }}">
+      {% endfor %}
+    {% else %}
+      <link rel="alternate" hreflang="en" href="{{ get_url(path='/', lang='en') }}">
+      <link rel="alternate" hreflang="or" href="{{ get_url(path='/', lang='or') }}">
+    {% endif %}
+    <link rel="alternate" hreflang="x-default" href="{{ get_url(path='/', lang='en') }}">
+
     {% block rss %}
     {% if config.generate_feeds %}
     {{ macros::feeds() }}
@@ -74,35 +120,62 @@
 <body>
 
     <!-- ── Skip to Content (Accessibility) ── -->
-    <a href="#content" class="ae-skip-link" style="position: absolute; top: -40px; left: 0; background: var(--gold, #e8a444); color: #000; padding: 8px 16px; font-weight: 700; font-size: 0.85rem; z-index: 100000; text-decoration: none; border-radius: 0 0 8px 0; transition: top 0.3s;" onfocus="this.style.top='0'" onblur="this.style.top='-40px'">Skip to content</a>
+    {# The show/hide used to live in inline onfocus/onblur handlers, so the link
+       was permanently off-screen whenever scripting was disabled. It is now
+       driven by :focus-visible in polish.css. #}
+    <a href="#content" class="ae-skip-link" style="position: absolute; top: -40px; left: 0; background: var(--gold, #e8a444); color: #000; padding: 8px 16px; font-weight: 700; font-size: 0.85rem; z-index: 100000; text-decoration: none; border-radius: 0 0 8px 0; transition: top 0.3s;">Skip to content</a>
 
     <!-- ── Film Grain Noise Overlay ── -->
     <div class="ae-noise-overlay" aria-hidden="true"></div>
 
     <!-- ── Reading Progress Bar ── -->
     <div id="ae-scroll-progress" role="progressbar" aria-label="Reading progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+
+    <!-- ══════════════════════════════════════════════════════════════
+         SCROLL BUS — one passive listener + one rAF frame for the whole
+         page. Previously five separate scripts each bound their own
+         scroll handler and read layout inside it, which forced a reflow
+         several times per frame. Everything now subscribes here.
+         ══════════════════════════════════════════════════════════════ -->
     <script>
-    (function() {
-      var bar = document.getElementById('ae-scroll-progress');
-      if (!bar) return;
-      function updateProgress() {
-        var scrollTop = window.scrollY || document.documentElement.scrollTop;
-        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        var pct = docHeight > 0 ? Math.min(100, (scrollTop / docHeight) * 100) : 0;
-        bar.style.width = pct + '%';
-        bar.setAttribute('aria-valuenow', Math.round(pct));
+    (function () {
+      var subs = [];
+      var ticking = false;
+      function frame() {
+        ticking = false;
+        var y = window.scrollY || document.documentElement.scrollTop || 0;
+        for (var i = 0; i < subs.length; i++) {
+          try { subs[i](y); } catch (e) { /* one bad subscriber must not kill the rest */ }
+        }
       }
-      window.addEventListener('scroll', updateProgress, { passive: true });
-      updateProgress();
+      function onScroll() {
+        if (!ticking) { ticking = true; requestAnimationFrame(frame); }
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll, { passive: true });
+      window.aeOnScroll = function (fn) { subs.push(fn); onScroll(); };
+
+      // Reading progress
+      var bar = document.getElementById('ae-scroll-progress');
+      if (bar) {
+        window.aeOnScroll(function (y) {
+          var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          var pct = docHeight > 0 ? Math.min(100, Math.max(0, (y / docHeight) * 100)) : 0;
+          bar.style.width = pct + '%';
+          bar.setAttribute('aria-valuenow', Math.round(pct));
+        });
+      }
     })();
     </script>
     {% block navbar %}
     {% include "partials/navbar.html" %}
     {% endblock %}
 
-    <div id="content">
+    {# tabindex="-1" so the skip link actually moves keyboard focus here rather
+       than just scrolling the viewport. #}
+    <main id="content" tabindex="-1">
         {% block content %}{% endblock %}
-    </div>
+    </main>
 
     {% block footer %}
     {% include "partials/footer.html" %}
@@ -113,18 +186,18 @@
     <!-- Single bundled + minified site script (see build_assets.sh) -->
     <script src="{{ get_url(path='js/site.min.js', cachebust=true) }}" defer></script>
 
-    <!-- Sticky navbar scroll class -->
+    <!-- Sticky navbar scroll class (rides the shared scroll bus) -->
     <script>
     (function() {
       var nav = document.getElementById('header-particles-wrap');
-      if (!nav) return;
-      function onScroll() {
-        nav.classList.toggle('scrolled', window.scrollY > 60);
-      }
-      window.addEventListener('scroll', onScroll, { passive: true });
-      onScroll();
+      if (!nav || !window.aeOnScroll) return;
+      window.aeOnScroll(function (y) { nav.classList.toggle('scrolled', y > 60); });
     })();
     </script>
+
+    <!-- Search index for the command palette (⌘K / Ctrl-K).
+         The palette code itself ships inside site.min.js — see build_assets.sh. -->
+    {% include "partials/search-index.html" ignore missing %}
     {% endblock %}
 
     <!-- ════════════════════════════════════════════
@@ -188,35 +261,20 @@
     <!-- ════════════════════════════════════════════
          NOSCRIPT FALLBACK
          ════════════════════════════════════════════ -->
+    {# The old <noscript> painted an opaque full-screen wall, which hid every word of
+       the site from non-JS readers, text browsers and any crawler that doesn't execute
+       scripts. All the content here is static HTML and reads perfectly fine without JS,
+       so this is now a non-blocking notice. #}
     <noscript>
       <div style="
-        position: fixed;
-        inset: 0;
-        z-index: 100001;
-        background: #050911;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        gap: 16px;
-        padding: 40px;
-        text-align: center;
+        position: relative; z-index: 99999;
+        background: rgba(232,164,68,0.12);
+        border-bottom: 1px solid rgba(232,164,68,0.35);
+        color: #f5c266; padding: 12px 20px; text-align: center;
+        font-size: 0.88rem; line-height: 1.5;
       ">
-        <div style="font-size: 3rem; font-weight: 800; color: #e8a444; font-family: 'Space Grotesk', sans-serif;">⚠ JavaScript Required</div>
-        <p style="color: rgba(255,255,255,0.6); max-width: 480px; font-size: 1rem; line-height: 1.6;">
-          This website uses advanced interactive features that require JavaScript to function properly.<br>
-          Please enable JavaScript in your browser settings to continue.
-        </p>
-        <a href="{{ get_url(path='/', lang=lang) }}" style="
-          display: inline-block;
-          padding: 12px 28px;
-          background: linear-gradient(135deg, #e8a444, #f5c266);
-          color: #1a1000;
-          border-radius: 10px;
-          font-weight: 700;
-          text-decoration: none;
-          font-size: 0.95rem;
-        ">Reload Page</a>
+        JavaScript is disabled — the page is fully readable, but interactive extras
+        (search, 3D globe, live citation counts, theme toggle) are turned off.
       </div>
     </noscript>
 
@@ -264,7 +322,27 @@
         "https://www.facebook.com/satyajit.puhan",
         "https://orcid.org/0009-0004-9766-5005",
         "https://www.instagram.com/puhan_satyaji/"
+      ],
+      "identifier": [
+        { "@type": "PropertyValue", "propertyID": "ORCID", "value": "0009-0004-9766-5005" },
+        { "@type": "PropertyValue", "propertyID": "INSPIRE-HEP", "value": "{{ config.extra.inspire_author_id }}" }
       ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": {{ config.title | json_encode | safe }},
+      "url": "{{ config.base_url }}",
+      "inLanguage": "{{ lang }}",
+      "author": { "@type": "Person", "name": "Satyajit Puhan" },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": { "@type": "EntryPoint", "urlTemplate": "{{ config.base_url }}?q={search_term_string}" },
+        "query-input": "required name=search_term_string"
+      }
     }
     </script>
 </body>

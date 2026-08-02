@@ -10,6 +10,107 @@
   }
 }
 
+/* ── Anchor offset under the sticky header ─────────────────────────
+   #header-particles-wrap is `position: sticky; top: 0` and roughly 130px
+   tall on desktop, but nothing compensated for it. Every nav anchor
+   (#about, #service, #portfolio, …) therefore scrolled the section's
+   heading up underneath the header, out of sight. scroll-padding-top on
+   the scroll container fixes all of them at once, and scroll-margin-top
+   on the targets covers browsers that ignore it.
+─────────────────────────────────────────────────────────────────── */
+html {
+  scroll-padding-top: 140px;
+}
+section[id],
+footer[id],
+[id^="ae-tab-"] {
+  scroll-margin-top: 140px;
+}
+@media (max-width: 991.98px) {
+  html { scroll-padding-top: 80px; }
+  section[id], footer[id] { scroll-margin-top: 80px; }
+}
+
+/* ── Layout stability ──────────────────────────────────────────────
+   None of the 35 <img> tags on the site carry intrinsic dimensions, so
+   every card thumbnail collapsed to zero height and then jumped once the
+   bitmap arrived. Fixed aspect boxes reserve the space up front.
+─────────────────────────────────────────────────────────────────── */
+img { max-width: 100%; }
+.blog-card img,
+.news-card img,
+.pub-entry img,
+.portfolio__card img,
+.blog__thumb img {
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+}
+.collaborator-card img,
+.author__thumb img {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+/* ── Rendering cost of off-screen sections ─────────────────────────
+   The homepage stacks twelve full sections with canvases, carousels and
+   gradients. Letting the browser skip layout and paint for the ones far
+   below the fold cuts real work off first render, and
+   contain-intrinsic-size keeps the scrollbar length honest.
+
+   Deliberately limited to #skill and #blog. Sections holding a Bootstrap
+   carousel (#news, #service, #collaborators, #conferences, #portfolio) or
+   the D3 force graph (#research-network) are excluded: those widgets
+   measure their container on init, and a container the browser has
+   skipped reports zero width, which would leave them collapsed.
+─────────────────────────────────────────────────────────────────── */
+@supports (content-visibility: auto) {
+  section#skill,
+  section#blog {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 900px;
+  }
+}
+
+/* ── Motion preferences (site-wide backstop) ───────────────────────
+   A lot of animation on this site is declared in inline style attributes
+   and keyframes that no media query could reach. This turns the whole
+   lot off for visitors who have asked for reduced motion.
+─────────────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .hero-aurora,
+  .hero-blackhole,
+  .hero-accretion-ring,
+  .hero-formula-field,
+  .ae-mesh-bg,
+  .wc-mesh-bg-v2,
+  #ae-cursor {
+    display: none !important;
+  }
+}
+
+/* ── Skip link ─────────────────────────────────────────────────────
+   Was styled entirely inline with JS onfocus/onblur handlers, so it did
+   nothing when scripting was off. Pure CSS now.
+─────────────────────────────────────────────────────────────────── */
+.ae-skip-link:focus,
+.ae-skip-link:focus-visible {
+  top: 0 !important;
+}
+
+/* Give programmatically focused sections no focus ring — they receive
+   focus only so the keyboard caret follows an in-page jump. */
+section[tabindex="-1"]:focus { outline: none; }
+
 /* ── Text selection ── */
 ::selection {
   background: var(--gold, #e8a444);
@@ -235,7 +336,7 @@ li a:not(.btn):not(.hire_button):hover {
 .paper-link:hover{transform:translateY(-2px);color:#fff;text-decoration:none}
 .paper-link__tag{font-weight:800;letter-spacing:.4px;text-transform:uppercase;font-size:.68rem;
   padding:4px 8px;border-radius:6px;background:rgba(255,255,255,.09);white-space:nowrap}
-.paper-link__val{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+.paper-link__val{font-family:var(--font-mono);
   font-weight:600;opacity:.9;overflow-wrap:anywhere}
 .paper-link--arxiv:hover{border-color:rgba(179,31,31,.7);background:rgba(179,31,31,.16);box-shadow:0 6px 20px rgba(179,31,31,.25)}
 .paper-link--arxiv .paper-link__tag{background:rgba(179,31,31,.3);color:#ffb3b3}
@@ -261,3 +362,146 @@ li a:not(.btn):not(.hire_button):hover {
 
 /* Prevent layout shift while lazy images decode */
 img[loading="lazy"]{background:rgba(255,255,255,.03)}
+
+/* ═══════════════════════════════════════════════════════════════════
+   VISUAL REFINEMENT LAYER
+   Additive only. Targets classes rather than the inline styles that
+   dominate this codebase, so nothing existing is fought over.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── Typography rhythm ──
+   (font-smoothing and heading letter-spacing are set further up this file;
+   these are the additions, not a repeat.) */
+h1, h2, h3, h4 { text-wrap: balance; }
+p, li { text-wrap: pretty; }
+
+.wc-kinetic-title,
+.hero-content-wrap h1 {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  line-height: 1.12;
+}
+
+/* ── Section eyebrow rule ──
+   A thin gradient hairline under section headings, tying the amber/teal
+   palette together without touching any inline background. */
+.portfolio__header::after,
+.about_header::after,
+.blog__header::after {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 2px;
+  margin: 14px auto 0;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--gold, #e8a444), var(--teal, #2ec4b6));
+  opacity: 0.85;
+}
+
+/* ── Card interaction ──
+   One consistent lift instead of the assortment of per-card inline
+   onmouseover handlers. */
+.research-card,
+.news-card,
+.collaborator-card,
+.pub-entry,
+.paper-section-card {
+  transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1),
+              box-shadow 0.35s cubic-bezier(0.23, 1, 0.32, 1),
+              border-color 0.35s ease;
+  will-change: transform;
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .research-card:hover,
+  .news-card:hover,
+  .collaborator-card:hover,
+  .pub-entry:hover,
+  .paper-section-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 46px rgba(0, 0, 0, 0.42),
+                0 0 0 1px rgba(232, 164, 68, 0.18);
+  }
+}
+
+/* ── Animated underline for body links ── */
+.singleBlog__content a:not(.paper-link):not(.btn),
+.paper-section-card a:not(.paper-link) {
+  background-image: linear-gradient(var(--gold, #e8a444), var(--gold, #e8a444));
+  background-size: 0 1.5px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  text-decoration: none;
+}
+.singleBlog__content a:not(.paper-link):not(.btn):hover,
+.paper-section-card a:not(.paper-link):hover {
+  background-size: 100% 1.5px;
+}
+
+/* ── Back-to-top ── */
+#ae-back-to-top {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(232, 164, 68, 0.3);
+  border-radius: 12px;
+  background: rgba(10, 10, 22, 0.85);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  color: var(--gold, #e8a444);
+  cursor: pointer;
+  z-index: 9500;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px) scale(0.9);
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+#ae-back-to-top.ae-btt-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+}
+#ae-back-to-top:hover {
+  border-color: rgba(232, 164, 68, 0.65);
+  background: rgba(232, 164, 68, 0.14);
+}
+[data-theme="light"] #ae-back-to-top {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(124, 58, 237, 0.28);
+  color: #7c3aed;
+}
+[data-theme="light"] #ae-section-dots button { background: rgba(15, 23, 42, 0.22); }
+
+/* Keep the floating controls clear of the chatbot launcher on phones */
+@media (max-width: 575px) {
+  #ae-back-to-top { right: 16px; bottom: 84px; width: 40px; height: 40px; }
+  #ae-section-dots { display: none; }
+}
+
+/* rippleAnim keyframe already lives in site-core.css — not repeated here. */
+
+/* ── Print ──
+   Publication pages are printed and emailed; strip the chrome. */
+@media print {
+  #header-particles-wrap,
+  footer,
+  #ae-back-to-top,
+  #ae-section-dots,
+  #ae-scroll-progress,
+  #ae-cursor,
+  #cookie-consent,
+  .ae-palette-overlay,
+  .ae-noise-overlay,
+  #satyabot-toggle-btn,
+  #satyabot-window,
+  canvas { display: none !important; }
+
+  body, .singleBlog, section { background: #fff !important; color: #000 !important; }
+  a { color: #000 !important; text-decoration: underline; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.8em; word-break: break-all; }
+  .paper-section-card { break-inside: avoid; border: 1px solid #ccc !important; }
+}

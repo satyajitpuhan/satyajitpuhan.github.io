@@ -9,14 +9,14 @@
     <div class="container d-flex justify-content-between align-items-center">
         <a href="{{ get_url(path='/', lang=lang) }}" class="d-flex align-items-center text-decoration-none" style="gap: 14px;">
             <div style="position: relative;">
-                <img decoding="async" loading="eager" fetchpriority="high" src="{{ get_url(path=extra.logo) }}" alt="Site Logo" style="height: 66px; filter: drop-shadow(0 0 10px rgba(139,92,246,0.6));">
+                <img decoding="async" loading="eager" fetchpriority="high" width="295" height="66" src="{{ get_url(path=extra.logo) }}" alt="Satyajit Puhan" style="height: 66px; width: auto; filter: drop-shadow(0 0 10px rgba(139,92,246,0.6));">
                 <!-- Spinning ring around logo -->
                 <div style="position: absolute; inset: -8px; border-radius: 50%; border-top: 1px solid rgba(139,92,246,0.5); border-right: 1px solid transparent; border-bottom: 1px solid transparent; border-left: 1px solid transparent; pointer-events: none; animation: lni-is-spinning 4s linear infinite;"></div>
                 <div style="position: absolute; inset: -4px; border-radius: 50%; border-top: 1px solid transparent; border-right: 1px solid transparent; border-bottom: 1px solid rgba(6,182,212,0.4); border-left: 1px solid transparent; pointer-events: none; animation: lni-is-spinning 3s linear infinite reverse;"></div>
             </div>
             <div>
                 <h2 class="ae-glitch" data-text="Satyajit Puhan" style="margin: 0; font-weight: 800; font-size: 1.4rem; color: #ffffff; letter-spacing: -0.5px; font-family: 'Space Grotesk', sans-serif;">Satyajit Puhan</h2>
-                <p style="margin: 0; font-size: 0.8rem; font-weight: 400; color: rgba(255,255,255,0.45); font-family: 'JetBrains Mono', monospace; letter-spacing: 1px;">
+                <p style="margin: 0; font-size: 0.8rem; font-weight: 400; color: rgba(255,255,255,0.45); font-family: var(--font-mono); letter-spacing: 1px;">
                     <span style="color: rgba(6,182,212,0.7);">@</span>Institute of Physics, Academia Sinica
                 </p>
             </div>
@@ -32,7 +32,7 @@
             </div>
             <!-- Avatar -->
             <div style="position: relative;">
-                <img decoding="async" loading="eager" fetchpriority="high" src="{{ get_url(path='images/about/me.webp') }}" alt="Satyajit Puhan"
+                <img decoding="async" loading="eager" fetchpriority="high" width="56" height="56" src="{{ get_url(path='images/about/me.webp') }}" alt="Portrait of Satyajit Puhan"
                     style="height: 56px; width: 56px; border-radius: 50%; object-fit: cover;
                            border: 2px solid rgba(139,92,246,0.5);
                            box-shadow: 0 0 20px rgba(139,92,246,0.25);
@@ -43,7 +43,7 @@
                 <div style="position: absolute; bottom: 2px; right: 2px; width: 12px; height: 12px; border-radius: 50%; background: #10b981; border: 2px solid #0a0a0f; box-shadow: 0 0 8px rgba(16,185,129,0.6);"></div>
             </div>
             <!-- Institution logo -->
-            <img decoding="async" loading="eager" fetchpriority="high" src="{{ get_url(path='images/tomography_logo.webp') }}" alt="Institute Logo"
+            <img decoding="async" loading="eager" fetchpriority="high" width="95" height="60" src="{{ get_url(path='images/tomography_logo.webp') }}" alt="Institute of Physics, Academia Sinica"
                 style="height: 60px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);
                        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
                        transition: all 0.3s ease; opacity: 0.85;"
@@ -63,7 +63,7 @@
     <div class="container">
         <!-- Mobile Logo -->
         <a href="{{ get_url(path='/', lang=lang) }}" class="navbar-brand d-lg-none" style="padding: 10px 0;">
-            <img decoding="async" loading="eager" fetchpriority="high" src="{{ get_url(path=extra.logo) }}" alt="site-logo" style="height: 40px; filter: drop-shadow(0 0 8px rgba(139,92,246,0.7));">
+            <img decoding="async" loading="eager" fetchpriority="high" width="179" height="40" src="{{ get_url(path=extra.logo) }}" alt="Satyajit Puhan" style="height: 40px; width: auto; filter: drop-shadow(0 0 8px rgba(139,92,246,0.7));">
         </a>
 
         <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
@@ -107,7 +107,7 @@
                 {% if config.languages | length >= 1 %}
                 <li class="nav-item d-flex align-items-center" style="padding-left: 10px;">
                     <a href="{{ get_url(path='/', lang='en') }}"
-                       style="padding: 6px 10px; font-size: 0.82rem; font-family: 'JetBrains Mono', monospace; font-weight: 700; text-decoration: none; border-radius: 6px; transition: all 0.2s;
+                       style="padding: 6px 10px; font-size: 0.82rem; font-family: var(--font-mono); font-weight: 700; text-decoration: none; border-radius: 6px; transition: all 0.2s;
                               {% if lang == 'en' %}color: #fff; background: rgba(139,92,246,0.3);{% else %}color: rgba(255,255,255,0.4);{% endif %}"
                        onmouseover="{% if lang != 'en' %}this.style.color='#fff';{% endif %}"
                        onmouseout="{% if lang != 'en' %}this.style.color='rgba(255,255,255,0.4)';{% endif %}">
@@ -115,7 +115,7 @@
                     </a>
                     <span style="color: rgba(255,255,255,0.2); margin: 0 4px;">|</span>
                     <a href="{{ get_url(path='/', lang='or') }}"
-                       style="padding: 6px 10px; font-size: 0.82rem; font-family: 'JetBrains Mono', monospace; font-weight: 700; text-decoration: none; border-radius: 6px; transition: all 0.2s;
+                       style="padding: 6px 10px; font-size: 0.82rem; font-family: var(--font-mono); font-weight: 700; text-decoration: none; border-radius: 6px; transition: all 0.2s;
                               {% if lang == 'or' %}color: #fff; background: rgba(139,92,246,0.3);{% else %}color: rgba(255,255,255,0.4);{% endif %}"
                        onmouseover="{% if lang != 'or' %}this.style.color='#fff';{% endif %}"
                        onmouseout="{% if lang != 'or' %}this.style.color='rgba(255,255,255,0.4)';{% endif %}">
@@ -125,7 +125,15 @@
                 {% endif %}
             </ul>
 
-            <div class="navbar-nav d-flex flex-row align-items-center" style="gap: 16px; flex-shrink: 0;">
+            <div class="navbar-nav d-flex flex-row align-items-center" style="gap: 12px; flex-shrink: 0;">
+                <!-- Site search / command palette (⌘K) -->
+                <button type="button" class="ae-search-trigger" data-open-palette
+                        aria-label="Search publications, talks and collaborators">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+                    <span class="d-none d-xl-inline">Search</span>
+                    <kbd class="d-none d-xl-inline">⌘K</kbd>
+                </button>
+
                 <!-- Quantum Theme Toggle -->
                 <button id="quantum-theme-toggle" class="btn" aria-label="Toggle dark/light theme" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; color: #a855f7; transition: all 0.3s ease;" title="Phase Transition Theme">
                     <svg id="theme-icon-dark" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>

@@ -130,7 +130,7 @@
                       border-radius: 100px;
                       padding: 6px 18px;
                       font-size: 0.72rem;
-                      font-family: 'JetBrains Mono', monospace;
+                      font-family: var(--font-mono);
                       letter-spacing: 3px;
                       text-transform: uppercase;
                       color: #f43f5e;
@@ -174,7 +174,7 @@
                                         <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 50%, rgba(10,10,22,0.8)); pointer-events: none;"></div>
                                     </div>
                                     <div class="news-card__body" style="flex: 1; display: flex; flex-direction: column; padding: 24px;">
-                                        {% if item.top_title %}<span style="display:block; text-transform:uppercase; font-size:0.7rem; color: #a78bfa; font-weight:700; margin-bottom:5px; font-family: 'JetBrains Mono', monospace; letter-spacing: 2px;">{{ item.top_title }}</span>{% endif %}
+                                        {% if item.top_title %}<span style="display:block; text-transform:uppercase; font-size:0.7rem; color: #a78bfa; font-weight:700; margin-bottom:5px; font-family: var(--font-mono); letter-spacing: 2px;">{{ item.top_title }}</span>{% endif %}
                                         <span class="news-card__date" style="color: rgba(255,255,255,0.4); font-size: 0.8rem; margin-bottom: 10px; display: block;">{{ item.date }}</span>
                                         <h5 class="news-card__title" style="color: white; font-weight: 700; font-family: 'Space Grotesk', sans-serif; font-size: 1rem; line-height: 1.4; margin-bottom: 12px;">{{ item.title }}</h5>
                                         <p class="news-card__text" style="flex: 1; color: rgba(255,255,255,0.55); font-size: 0.9rem; line-height: 1.6;">{{ item.description }}</p>

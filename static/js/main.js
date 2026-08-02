@@ -1,37 +1,31 @@
 // main.js — Satyajit Puhan Portfolio
+//
+// Kept deliberately tiny. Two things used to live here that no longer do:
+//
+//  * animateProgress() — a setInterval-based progress-bar animation. Two OTHER
+//    files (advanced-v2.js and advanced-effects.js) also animated the very same
+//    `progress[data-max]` elements, so three timers fought over `value` and the
+//    bars stuttered or settled on the wrong number. advanced-v2.js is now the
+//    single owner of that animation.
+//  * a raw `scroll` listener — everything now rides the shared scroll bus that
+//    base.html installs (window.aeOnScroll), so the page reads layout once per
+//    frame instead of once per handler per event.
 
-// Progress bar animation for #skill section
-function animateProgress() {
-    document.querySelectorAll("#skill progress").forEach(function(el) {
-        if (el.dataset.max) {
-            var max = parseInt(el.dataset.max, 10);
-            var val = parseInt(el.getAttribute("value") || "0", 10);
-            var id = setInterval(function() {
-                if (val <= max) {
-                    el.setAttribute("value", val++);
-                } else {
-                    clearInterval(id);
-                }
-            }, 10);
-        }
-    });
-}
+(function () {
+  'use strict';
 
-// Sticky nav colour change on scroll
-function changeNavbarColor() {
-    var navbar = document.querySelector("nav");
-    if (!navbar) return;
-    if (window.scrollY > 200) {
-        navbar.classList.add("nav__color__change");
-    } else {
-        navbar.classList.remove("nav__color__change");
-    }
-}
+  var navbar = document.querySelector('nav');
+  if (!navbar) return;
 
-// Use addEventListener so we don't overwrite other scripts' handlers
-window.addEventListener("load", function() {
-    changeNavbarColor();
-    animateProgress();
-});
+  function apply(y) {
+    navbar.classList.toggle('nav__color__change', y > 200);
+  }
 
-window.addEventListener("scroll", changeNavbarColor, { passive: true });
+  if (window.aeOnScroll) {
+    window.aeOnScroll(apply);
+  } else {
+    // Defensive fallback in case base.html's bus ever fails to install.
+    window.addEventListener('scroll', function () { apply(window.scrollY); }, { passive: true });
+    apply(window.scrollY);
+  }
+})();
