@@ -1,10 +1,36 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="refresh" content="0; url=/#collaborators" />
-    <title>Redirecting...</title>
-</head>
-<body>
-    <p>If you are not redirected automatically, follow this <a href="/#collaborators">link to our Collaborators</a>.</p>
-</body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+<header class="page-head">
+  <div class="page-head__glow" aria-hidden="true"></div>
+  <div class="wrap">
+    <nav class="crumbs"><a href="{{ get_url(path='/', lang=lang) }}">{{ trans(key='home', lang=lang) }}</a> › <span>{{ section.title }}</span></nav>
+    <h1 class="h-1">{{ section.title }}</h1>
+  </div>
+</header>
+
+<section class="section">
+  <div class="wrap">
+    <div class="grid grid--3">
+      {% for p in section.pages %}
+        <a class="card reveal" href="{{ p.permalink }}">
+          <div class="card__body">
+            <div class="person" style="border:0;background:none;padding:0">
+              {% if p.extra.image %}
+                <img class="person__avatar" src="{{ get_url(path=p.extra.image) }}" alt="" loading="lazy" width="48" height="48">
+              {% else %}
+                <span class="person__avatar" aria-hidden="true">{{ p.title | truncate(length=1, end="") }}</span>
+              {% endif %}
+              <span style="min-width:0">
+                <span class="person__name">{{ p.title }}</span>
+                <span class="person__role">{{ p.description | default(value="") }}</span>
+              </span>
+            </div>
+            {% if p.extra.institution %}<p class="card__meta">{{ p.extra.institution }}</p>{% endif %}
+            {% if p.extra.research_interests %}<p class="card__text">{{ p.extra.research_interests | truncate(length=120) }}</p>{% endif %}
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

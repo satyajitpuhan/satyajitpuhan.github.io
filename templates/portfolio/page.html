@@ -1,282 +1,94 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+{% import 'partials/icons.html' as ic %}
 
 {% block content %}
-<!-- Hero Banner -->
-<div class="paper-hero">
-  <div class="paper-hero__overlay"></div>
-  <div class="paper-hero__particles"></div>
-  <div class="container" style="position: relative; z-index: 2;">
-    <div class="row">
-      <div class="col-lg-10 offset-lg-1 text-center">
-        <span class="paper-hero__badge">
-          <i class="lni lni-graduation"></i> Research Publication
-        </span>
-        <h1 class="paper-hero__title">{{ page.title }}</h1>
-        <p class="paper-hero__subtitle">{{ page.extra.short_description }}</p>
+{%- set cats = page.extra.categories | default(value=[]) -%}
+{%- set cat = cats | first | default(value="Journal Article") -%}
+
+<header class="page-head">
+  <div class="page-head__glow" aria-hidden="true"></div>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="{{ get_url(path='/', lang=lang) }}">{{ trans(key='home', lang=lang) }}</a> ›
+      <a href="{{ get_url(path='/portfolio/', lang=lang) }}">{{ trans(key='work', lang=lang) }}</a> ›
+      <span>{{ cat }}</span>
+    </nav>
+
+    <div class="paper-hero">
+      <div>
+        {% if page.extra.thumbnail %}
+          <a class="paper-hero__thumb" href="{{ get_url(path=page.extra.thumbnail) }}"
+             data-lightbox="{{ get_url(path=page.extra.thumbnail) }}" data-caption="{{ page.title }}">
+            <img src="{{ get_url(path=page.extra.thumbnail) }}" alt="First page of the paper" width="360" height="466">
+          </a>
+        {% endif %}
+        <div class="pub-card__links" style="margin-top:14px">
+          {% if page.extra.inspire %}
+            <a class="link-pill link-pill--inspire" href="https://inspirehep.net/literature/{{ page.extra.inspire }}">INSPIRE-HEP</a>
+          {% endif %}
+          {% if page.extra.arxiv %}
+            <a class="link-pill link-pill--arxiv" href="https://arxiv.org/abs/{{ page.extra.arxiv }}">arXiv:{{ page.extra.arxiv }}</a>
+          {% endif %}
+          {% if page.extra.doi %}
+            <a class="link-pill link-pill--doi" href="https://doi.org/{{ page.extra.doi }}">DOI</a>
+          {% endif %}
+        </div>
+      </div>
+
+      <div>
+        <span class="chip {% if cat == 'Preprint' %}chip--violet{% elif cat == 'Conference Proceeding' %}chip--cyan{% else %}chip--accent{% endif %}">{{ cat }}</span>
+        <h1 class="h-1" style="margin:14px 0 16px">{{ page.title }}</h1>
+
+        <dl class="kv">
+          {% if page.extra.client %}<dt>{% if lang == 'or' %}ଲେଖକ{% else %}Authors{% endif %}</dt><dd>{{ page.extra.client }}</dd>{% endif %}
+          {% if page.extra.service %}<dt>{% if lang == 'or' %}ପ୍ରକାଶିତ{% else %}Published{% endif %}</dt><dd>{{ page.extra.service }}</dd>{% endif %}
+          {% if page.date %}<dt>{% if lang == 'or' %}ତାରିଖ{% else %}Date{% endif %}</dt><dd>{{ page.date | date(format=config.extra.date_format) }}</dd>{% endif %}
+          {% if page.extra.citations %}<dt>{% if lang == 'or' %}ସାଇଟେସନ୍{% else %}Citations{% endif %}</dt><dd>{{ page.extra.citations }} <span class="dim">(INSPIRE-HEP)</span></dd>{% endif %}
+        </dl>
+
+        {% if page.extra.short_description %}
+          <p class="lede" style="margin-top:18px">{{ page.extra.short_description }}</p>
+        {% endif %}
+
+        {% if page.extra.tags %}
+          <div class="chips" style="margin-top:18px">
+            {% for t in page.extra.tags %}<span class="chip">{{ t }}</span>{% endfor %}
+          </div>
+        {% endif %}
       </div>
     </div>
   </div>
-</div>
+</header>
 
-<section class="section case-details">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-10 offset-lg-1">
-
-        <!-- Info Cards -->
-        <div class="paper-info-strip">
-          <div class="paper-info-card">
-            <div class="paper-info-card__icon">
-              <i class="lni lni-users"></i>
-            </div>
-            <div class="paper-info-card__content">
-              <span class="paper-info-card__label">Authors</span>
-              <p class="paper-info-card__value">{{ page.extra.client }}</p>
-            </div>
+<section class="section section--tight">
+  <div class="wrap">
+    {% if page.extra.challenge or page.extra.solution %}
+      <div class="grid grid--2" style="margin-bottom:34px">
+        {% if page.extra.challenge %}
+          <div class="callout">
+            <h4>{% if lang == 'or' %}ପ୍ରଶ୍ନ{% else %}The question{% endif %}</h4>
+            <p class="muted">{{ page.extra.challenge }}</p>
           </div>
-          <div class="paper-info-card">
-            <div class="paper-info-card__icon">
-              <i class="lni lni-book"></i>
-            </div>
-            <div class="paper-info-card__content">
-              <span class="paper-info-card__label">Journal</span>
-              <p class="paper-info-card__value">{{ page.extra.service }}</p>
-            </div>
+        {% endif %}
+        {% if page.extra.solution %}
+          <div class="callout" style="border-left-color:var(--cyan)">
+            <h4 style="color:var(--cyan)">{% if lang == 'or' %}ଫଳାଫଳ{% else %}What we found{% endif %}</h4>
+            <p class="muted">{{ page.extra.solution }}</p>
           </div>
-          <div class="paper-info-card">
-            <div class="paper-info-card__icon">
-              <i class="lni lni-calendar"></i>
-            </div>
-            <div class="paper-info-card__content">
-              <span class="paper-info-card__label">Date</span>
-              <p class="paper-info-card__value">{{ page.date | date(format="%B %d, %Y") }}</p>
-            </div>
-          </div>
-          {% if page.extra.citations %}
-          <div class="paper-info-card">
-            <div class="paper-info-card__icon">
-              <i class="lni lni-bar-chart"></i>
-            </div>
-            <div class="paper-info-card__content">
-              <span class="paper-info-card__label">Citations</span>
-              <p class="paper-info-card__value">{{ page.extra.citations }}</p>
-            </div>
-          </div>
-          {% endif %}
-        </div>
-
-        <!-- Paper links: arXiv / DOI / INSPIRE-HEP -->
-        <div class="paper-links" role="navigation" aria-label="Paper links">
-          {% if page.extra.arxiv %}
-          <a class="paper-link paper-link--arxiv" target="_blank" rel="noopener"
-             href="https://arxiv.org/abs/{{ page.extra.arxiv }}">
-            <span class="paper-link__tag">arXiv</span>
-            <span class="paper-link__val">{{ page.extra.arxiv }}</span>
-          </a>
-          {% endif %}
-          {% if page.extra.doi %}
-          <a class="paper-link paper-link--doi" target="_blank" rel="noopener"
-             href="https://doi.org/{{ page.extra.doi }}">
-            <span class="paper-link__tag">DOI</span>
-            <span class="paper-link__val">{{ page.extra.doi }}</span>
-          </a>
-          {% endif %}
-          {% if page.extra.inspire %}
-          <a class="paper-link paper-link--inspire" target="_blank" rel="noopener"
-             href="https://inspirehep.net/literature/{{ page.extra.inspire }}">
-            <span class="paper-link__tag">INSPIRE-HEP</span>
-            <span class="paper-link__val">Record {{ page.extra.inspire }}</span>
-          </a>
-          {% endif %}
-          {% if page.extra.arxiv %}
-          <a class="paper-link paper-link--pdf" target="_blank" rel="noopener"
-             href="https://arxiv.org/pdf/{{ page.extra.arxiv }}">
-            <span class="paper-link__tag">PDF</span>
-            <span class="paper-link__val">Full text</span>
-          </a>
-          {% endif %}
-        </div>
-
-        <!-- Citation & Actions -->
-        <div class="row mt-4 mb-4">
-          <div class="col-lg-10 offset-lg-1">
-            <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;">
-              <button class="btn-cite" onclick="copyCitation()"
-                style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 10px; background: linear-gradient(135deg, #8b5cf6, #06b6d4); color: white; border: none; font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 18px rgba(139,92,246,0.35);"
-                onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 28px rgba(139,92,246,0.55)';"
-                onmouseout="this.style.transform=''; this.style.boxShadow='0 4px 18px rgba(139,92,246,0.35)';">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path></svg>
-                <span id="cite-btn-text">Copy Citation</span>
-              </button>
-              <button class="btn-cite" onclick="copyBibtex()"
-                style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 10px; background: rgba(232,164,68,0.12); border: 1px solid rgba(232,164,68,0.4); color: #e8a444; font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease;"
-                onmouseover="this.style.background='rgba(232,164,68,0.2)'; this.style.transform='translateY(-2px)';"
-                onmouseout="this.style.background='rgba(232,164,68,0.12)'; this.style.transform='';">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"></path></svg>
-                <span id="bibtex-btn-text">Copy BibTeX</span>
-              </button>
-              <button class="btn-print" onclick="window.print()"
-                style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 10px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.85); font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease;"
-                onmouseover="this.style.borderColor='rgba(232,164,68,0.5)'; this.style.background='rgba(232,164,68,0.1)'; this.style.color='#e8a444';"
-                onmouseout="this.style.borderColor='rgba(255,255,255,0.15)'; this.style.background='rgba(255,255,255,0.05)'; this.style.color='rgba(255,255,255,0.85)';">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
-                Print Paper
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <script>
-        (function () {
-          // Every field is guarded: not all portfolio entries carry a client,
-          // service, arXiv id or DOI, and a missing key is a hard build error
-          // in Tera rather than an empty string.
-          var PAPER = {
-            authors: {{ page.extra.client | default(value="S. Puhan") | json_encode | safe }},
-            title:   {{ page.title | json_encode | safe }},
-            journal: {{ page.extra.service | default(value="") | json_encode | safe }},
-            year:    {% if page.year %}{{ page.year }}{% else %}0{% endif %},
-            arxiv:   {{ page.extra.arxiv | default(value="") | json_encode | safe }},
-            doi:     {{ page.extra.doi | default(value="") | json_encode | safe }},
-            url:     {{ page.permalink | json_encode | safe }}
-          };
-
-          /* Clipboard with a fallback.
-             navigator.clipboard is undefined on any non-secure origin and in
-             older browsers; the previous version called it unconditionally and
-             the button silently did nothing (an unhandled promise rejection).  */
-          function copy(text) {
-            if (navigator.clipboard && window.isSecureContext) {
-              return navigator.clipboard.writeText(text);
-            }
-            return new Promise(function (resolve, reject) {
-              var ta = document.createElement('textarea');
-              ta.value = text;
-              ta.setAttribute('readonly', '');
-              ta.style.cssText = 'position:fixed;top:-1000px;opacity:0;';
-              document.body.appendChild(ta);
-              ta.select();
-              var ok = false;
-              try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
-              document.body.removeChild(ta);
-              ok ? resolve() : reject(new Error('copy blocked'));
-            });
-          }
-
-          function flash(id, msg) {
-            var btn = document.getElementById(id);
-            if (!btn) return;
-            if (btn._t) { clearTimeout(btn._t); } else { btn._orig = btn.textContent; }
-            btn.textContent = msg;
-            btn._t = setTimeout(function () {
-              btn.textContent = btn._orig;
-              btn._t = null;
-            }, 2000);
-          }
-
-          window.copyCitation = function () {
-            var bits = [PAPER.authors, '"' + PAPER.title + '"'];
-            if (PAPER.journal) bits.push(PAPER.journal);
-            var cite = bits.join(', ') + (PAPER.year ? ' (' + PAPER.year + ')' : '') + '.';
-            if (PAPER.doi) cite += ' doi:' + PAPER.doi;
-            copy(cite)
-              .then(function () { flash('cite-btn-text', 'Copied!'); })
-              .catch(function () { flash('cite-btn-text', 'Press ⌘C'); });
-          };
-
-          /* BibTeX export — the thing anyone actually wants from a
-             publication page, and which this site had no way to produce. */
-          window.copyBibtex = function () {
-            var first = PAPER.authors.split(/,| and /)[0].trim().split(/\s+/).pop() || 'Puhan';
-            var word = PAPER.title.replace(/[^A-Za-z ]/g, '').split(/\s+/)
-                        .filter(function (w) { return w.length > 3; })[0] || 'paper';
-            var key = (first + PAPER.year + word).toLowerCase().replace(/[^a-z0-9]/g, '');
-
-            // BibTeX takes "Last, First and Last, First"; the frontmatter stores
-            // a comma-separated display string, so normalise the separators.
-            var authors = PAPER.authors
-              .replace(/\s+and\s+/gi, ', ')
-              .split(',')
-              .map(function (a) { return a.trim(); })
-              .filter(Boolean)
-              .join(' and ');
-
-            var lines = ['@article{' + key + ','];
-            lines.push('  author  = {' + authors + '},');
-            lines.push('  title   = {{' + PAPER.title + '}},');
-            if (PAPER.journal) lines.push('  journal = {' + PAPER.journal + '},');
-            if (PAPER.year) lines.push('  year    = {' + PAPER.year + '},');
-            if (PAPER.doi) lines.push('  doi     = {' + PAPER.doi + '},');
-            if (PAPER.arxiv) lines.push('  eprint  = {' + PAPER.arxiv + '},');
-            if (PAPER.arxiv) lines.push('  archivePrefix = {arXiv},');
-            lines.push('  url     = {' + PAPER.url + '}');
-            lines.push('}');
-
-            copy(lines.join('\n'))
-              .then(function () { flash('bibtex-btn-text', 'BibTeX copied!'); })
-              .catch(function () { flash('bibtex-btn-text', 'Copy failed'); });
-          };
-        })();
-        </script>
-
-        <!-- Abstract & Summary -->
-        <div class="row paper-sections">
-          <div class="col-lg-6">
-            <div class="paper-section-card paper-section-card--abstract">
-              <div class="paper-section-card__header">
-                <span class="paper-section-card__icon"><i class="lni lni-text-format"></i></span>
-                <h3>Abstract</h3>
-              </div>
-              <p>{{ page.extra.challenge }}</p>
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="paper-section-card paper-section-card--summary">
-              <div class="paper-section-card__header">
-                <span class="paper-section-card__icon"><i class="lni lni-bulb"></i></span>
-                <h3>Summary</h3>
-              </div>
-              <p>{{ page.extra.solution }}</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Markdown content -->
-        <div class="paper-body-content">
-          {{ page.content | safe }}
-        </div>
+        {% endif %}
       </div>
-    </div>
+    {% endif %}
 
-    <!-- Navigation -->
-    <div class="row">
-      <div class="col-lg-10 offset-lg-1">
-        <div class="paper-nav">
-          {% if page.lower %}
-          <a href="{{ page.lower.permalink }}" class="paper-nav__link paper-nav__link--prev">
-            <span class="paper-nav__arrow">←</span>
-            <div class="paper-nav__info">
-              <span class="paper-nav__label">Prev paper</span>
-              <span class="paper-nav__title">{{ page.lower.title }}</span>
-            </div>
-          </a>
-          {% else %}
-          <div></div>
-          {% endif %}
+    <div class="prose">{{ page.content | safe }}</div>
 
-          {% if page.higher %}
-          <a href="{{ page.higher.permalink }}" class="paper-nav__link paper-nav__link--next">
-            <div class="paper-nav__info" style="text-align: right;">
-              <span class="paper-nav__label">Next paper</span>
-              <span class="paper-nav__title">{{ page.higher.title }}</span>
-            </div>
-            <span class="paper-nav__arrow">→</span>
-          </a>
-          {% endif %}
-        </div>
-      </div>
-    </div>
+    <nav class="pager">
+      {% if page.lower %}<a class="btn btn--ghost btn--sm" href="{{ page.lower.permalink }}">← {{ page.lower.title | truncate(length=46) }}</a>{% else %}<span></span>{% endif %}
+      {% if page.higher %}<a class="btn btn--ghost btn--sm" href="{{ page.higher.permalink }}">{{ page.higher.title | truncate(length=46) }} →</a>{% endif %}
+    </nav>
 
+    <p style="margin-top:26px">
+      <a class="btn btn--ghost" href="{{ get_url(path='/', lang=lang) }}#portfolio">← {% if lang == 'or' %}ସବୁ ପ୍ରକାଶନ{% else %}All publications{% endif %}</a>
+    </p>
   </div>
 </section>
 {% endblock %}

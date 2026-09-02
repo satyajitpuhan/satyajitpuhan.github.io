@@ -1,0 +1,83 @@
+name: Build, sync and deploy
+
+# Three ways this runs:
+#   • every push to main            → rebuild and deploy
+#   • every day at 03:15 UTC        → pull new papers from INSPIRE-HEP first
+#   • manually (Actions → Run)      → same as the daily run
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "15 3 * * *"
+  workflow_dispatch:
+    inputs:
+      force_sync:
+        description: "Run the INSPIRE-HEP sync before building"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: site-deploy
+  cancel-in-progress: false
+
+env:
+  ZOLA_VERSION: "0.22.0"
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # ── 1. Pull anything new from INSPIRE-HEP ────────────────────────────
+      - name: Install PDF and WebP tools
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils webp
+
+      - name: Sync publications from INSPIRE-HEP
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        run: python3 tools/sync_inspire.py
+
+      - name: Commit anything the sync produced
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        run: |
+          git config user.name  "inspire-sync[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A content/portfolio static/sections/news static/data static/images/portfolio/papers
+          if git diff --cached --quiet; then
+            echo "Nothing new on INSPIRE-HEP today."
+          else
+            git commit -m "chore(sync): pull new papers and citation counts from INSPIRE-HEP"
+            git push
+          fi
+
+      # ── 2. Build ─────────────────────────────────────────────────────────
+      - name: Install Zola
+        run: |
+          curl -sSL "https://github.com/getzola/zola/releases/download/v${ZOLA_VERSION}/zola-v${ZOLA_VERSION}-x86_64-unknown-linux-gnu.tar.gz" \
+            | tar xz -C /usr/local/bin zola
+          zola --version
+
+      - name: Build site
+        run: zola --config zola.toml build --minify
+
+      - name: Check internal links and templates
+        run: zola --config zola.toml check --skip-external-links || true
+
+      # ── 3. Deploy ────────────────────────────────────────────────────────
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          publish_branch: gh-pages
+          cname: ""
+          user_name: "github-actions[bot]"
+          user_email: "41898282+github-actions[bot]@users.noreply.github.com"
+          commit_message: "deploy: ${{ github.event.head_commit.message || 'scheduled rebuild' }}"

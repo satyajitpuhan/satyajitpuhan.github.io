@@ -1,0 +1,26 @@
+{%- set d = load_data(path="static/sections/service/" ~ lang ~ ".toml", required=false) -%}
+{% if d %}
+<section class="section" id="service">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">{{ d.top_title | default(value="What I do") }}</p>
+      <h2 class="h-1">{{ d.title }}</h2>
+      {% if d.subtitle %}<p>{{ d.subtitle }}</p>{% endif %}
+    </div>
+
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))">
+      {% for s in d.services %}
+        <article class="card reveal">
+          <div class="card__body">
+            <span class="chip chip--{% if loop.index0 % 4 == 0 %}accent{% elif loop.index0 % 4 == 1 %}cyan{% elif loop.index0 % 4 == 2 %}violet{% else %}mint{% endif %}">
+              {{ loop.index }} / {{ d.services | length }}
+            </span>
+            <h3 class="card__title" style="font-size:1.12rem">{{ s.title }}</h3>
+            <p class="card__text">{{ s.content }}</p>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}

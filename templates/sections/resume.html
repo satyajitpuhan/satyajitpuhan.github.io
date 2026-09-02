@@ -1,0 +1,41 @@
+{%- set d = load_data(path="static/sections/resume/" ~ lang ~ ".toml", required=false) -%}
+{% if d %}
+<section class="section" id="resume">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">{{ d.top_title | default(value="Resume") }}</p>
+      <h2 class="h-1">{{ d.title }}</h2>
+      {% if d.subtitle %}<p>{{ d.subtitle }}</p>{% endif %}
+    </div>
+
+    <div class="tabs reveal" data-tabs role="tablist" aria-label="Resume">
+      <button class="tab" role="tab" aria-selected="true" aria-controls="tab-edu" id="tabbtn-edu">{{ d.educations_tab | default(value="Education") }}</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="tab-exp" id="tabbtn-exp">{{ d.experiences_tab | default(value="Experience") }}</button>
+    </div>
+
+    <div id="tab-edu" role="tabpanel" aria-labelledby="tabbtn-edu">
+      <ol class="timeline">
+        {% for e in d.educations %}
+          <li class="tl-item reveal">
+            <p class="tl-item__time">{{ e.time }}</p>
+            <h3 class="tl-item__title">{{ e.title }}</h3>
+            <p class="tl-item__text">{{ e.content }}</p>
+          </li>
+        {% endfor %}
+      </ol>
+    </div>
+
+    <div id="tab-exp" role="tabpanel" aria-labelledby="tabbtn-exp" hidden>
+      <ol class="timeline">
+        {% for e in d.experiences %}
+          <li class="tl-item reveal">
+            <p class="tl-item__time">{{ e.time }}</p>
+            <h3 class="tl-item__title">{{ e.title }}</h3>
+            <p class="tl-item__text">{{ e.content }}</p>
+          </li>
+        {% endfor %}
+      </ol>
+    </div>
+  </div>
+</section>
+{% endif %}

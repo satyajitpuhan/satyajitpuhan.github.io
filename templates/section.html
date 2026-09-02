@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<header class="page-head">
+  <div class="page-head__glow" aria-hidden="true"></div>
+  <div class="wrap">
+    <nav class="crumbs"><a href="{{ get_url(path='/', lang=lang) }}">{{ trans(key='home', lang=lang) }}</a> › <span>{{ section.title }}</span></nav>
+    <h1 class="h-1">{{ section.title }}</h1>
+    {% if section.description %}<p class="lede" style="margin-top:12px">{{ section.description }}</p>{% endif %}
+  </div>
+</header>
+<section class="section section--tight">
+  <div class="wrap">
+    {% if section.content %}<div class="prose">{{ section.content | safe }}</div>{% endif %}
+    {% if section.pages %}
+      <div class="grid grid--3" style="margin-top:26px">
+        {% for p in section.pages %}
+          <a class="card reveal" href="{{ p.permalink }}"><div class="card__body">
+            <h2 class="card__title">{{ p.title }}</h2>
+            {% if p.description %}<p class="card__text">{{ p.description }}</p>{% endif %}
+          </div></a>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

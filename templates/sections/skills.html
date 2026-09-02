@@ -1,0 +1,25 @@
+{%- set d = load_data(path="static/sections/skill/" ~ lang ~ ".toml", required=false) -%}
+{% if d and d.skills %}
+<section class="section" id="skills">
+  <div class="wrap">
+    <div class="grid" style="grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:center">
+      <div class="reveal">
+        <p class="eyebrow">{{ d.top_title | default(value="Skills") }}</p>
+        <h2 class="h-1">{{ d.title }}</h2>
+        {% if d.subtitle %}<p class="lede" style="margin-top:12px">{{ d.subtitle }}</p>{% endif %}
+      </div>
+      <div class="reveal">
+        {% for s in d.skills %}
+          <div class="skill">
+            <div class="skill__head">
+              <span>{{ s.title }}</span>
+              <span class="skill__pct">{{ s.percent }}%</span>
+            </div>
+            <div class="skill__track"><div class="skill__fill" data-pct="{{ s.percent }}"></div></div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}

@@ -1,6 +1,6 @@
-top_title = "Skills"
-title = "Technical Skills & Tools"
-subtitle = "Theoretical frameworks, computational tools, and programming languages used in my research."
+top_title = "ଦକ୍ଷତା"
+title = "ବୈଷୟିକ ଦକ୍ଷତା ଓ ଉପକରଣ"
+subtitle = "ମୋ ଗବେଷଣାରେ ବ୍ୟବହୃତ ତତ୍ତ୍ୱଗତ କାଠାମୋ, ଗଣନାତ୍ମକ ଉପକରଣ ଓ ପ୍ରୋଗ୍ରାମିଂ ଭାଷା।"
 image = "images/about/me.webp"
 
 [[skills]]
