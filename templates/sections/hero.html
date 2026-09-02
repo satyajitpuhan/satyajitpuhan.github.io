@@ -1,0 +1,76 @@
+{% import 'partials/icons.html' as ic %}
+{%- set d = load_data(path="static/sections/home/" ~ lang ~ ".toml", required=false) -%}
+{%- set stats = load_data(path="static/data/inspire-stats.json", required=false) -%}
+{%- set pubs = get_section(path="portfolio/_index.md", lang=lang) -%}
+
+<section class="hero" id="home">
+  <div class="hero__glow" aria-hidden="true"></div>
+  <div class="hero__grid-lines" aria-hidden="true"></div>
+
+  <div class="wrap hero__inner">
+    <div class="reveal">
+      <p class="eyebrow">{% if lang == 'or' %}ଆକାଡେମିଆ ସିନିକା · ତାଇପେ{% else %}Institute of Physics · Academia Sinica · Taipei{% endif %}</p>
+
+      <h1 class="h-hero">{% if lang == 'or' %}ନମସ୍କାର, ମୁଁ <span class="grad-text">ସତ୍ୟଜିତ ପୁହାଣ</span>{% else %}Hello, I am <span class="grad-text">Satyajit Puhan</span>{% endif %}</h1>
+
+      <p class="hero__role">
+        {% if lang == 'or' %}<strong>ପୋଷ୍ଟଡକ୍ଟୋରାଲ୍ ଗବେଷକ</strong> — ଆକାଡେମିଆ ସିନିକା{% else %}<strong>Postdoctoral Researcher</strong> — hadron structure &amp; light-front QCD{% endif %}
+      </p>
+
+      <p class="hero__desc">
+        {% if lang == 'or' %}
+          ମୁଁ ପାଇଅନ୍, କାଅନ୍ ଓ ଭାରୀ ମେସନ୍‌ର ଅନ୍ତର୍ନିହିତ ଗଠନ — TMD, GPD ଓ ଫର୍ମ ଫ୍ୟାକ୍ଟର୍ ମାଧ୍ୟମରେ ଅଧ୍ୟୟନ କରେ। NIT ଜାଲନ୍ଧରରେ ୨ ଏପ୍ରିଲ ୨୦୨୬ରେ ପିଏଚ୍‌ଡି ଡିଫେଣ୍ଡ କରିଛି।
+        {% else %}
+          I map the inside of hadrons — pions, kaons, ρ mesons and quarkonia — using transverse-momentum-dependent and generalized parton distributions, form factors and light-front dynamics. PhD defended at NIT Jalandhar on 2 April 2026; now continuing that work at Academia Sinica.
+        {% endif %}
+      </p>
+
+      <div class="hero__actions">
+        <a class="btn btn--inspire" href="{{ config.extra.inspire_author_url }}">
+          {{ ic::social(name="inspire") }}
+          <span>{% if lang == 'or' %}INSPIRE-HEP ପ୍ରୋଫାଇଲ୍{% else %}INSPIRE-HEP profile{% endif %}</span>
+          {{ ic::ui(name="external") }}
+        </a>
+        <a class="btn btn--primary" href="#portfolio">
+          {% if lang == 'or' %}ପ୍ରକାଶନ ଦେଖନ୍ତୁ{% else %}Browse publications{% endif %} {{ ic::ui(name="arrow") }}
+        </a>
+        <a class="btn btn--ghost" href="#contact">{{ trans(key='contact_me', lang=lang) }}</a>
+      </div>
+
+      <div class="chips" style="margin-bottom:26px">
+        <span class="chip chip--accent">QCD</span>
+        <span class="chip chip--cyan">TMDs &amp; GPDs</span>
+        <span class="chip chip--violet">Light-front dynamics</span>
+        <span class="chip chip--mint">Nuclear medium</span>
+      </div>
+
+      <div class="stats" id="stats">
+        <div class="stat">
+          <div class="stat__num" data-stat="papers" data-count="{{ stats.papers | default(value=pubs.pages | length) }}">0</div>
+          <div class="stat__label">{% if lang == 'or' %}ପ୍ରକାଶନ{% else %}Publications{% endif %}</div>
+        </div>
+        <div class="stat">
+          <div class="stat__num" data-stat="citations" data-count="{{ stats.citations | default(value=0) }}">0</div>
+          <div class="stat__label">{% if lang == 'or' %}ସାଇଟେସନ୍{% else %}Citations{% endif %}</div>
+        </div>
+        <div class="stat">
+          <div class="stat__num" data-stat="hindex" data-count="{{ stats.hindex | default(value=0) }}">0</div>
+          <div class="stat__label">h-index</div>
+        </div>
+        <div class="stat">
+          <div class="stat__num" data-count="10">0</div>
+          <div class="stat__label">{% if lang == 'or' %}ଆଲୋଚନା{% else %}Talks &amp; posters{% endif %}</div>
+        </div>
+      </div>
+      <p class="stats__note dim mono" id="stats-note">
+        {% if lang == 'or' %}INSPIRE-HEP ରୁ ଦୈନିକ ସିଙ୍କ୍{% else %}Synced from INSPIRE-HEP{% endif %}{% if stats.updated %} · {{ stats.updated }}{% endif %}
+      </p>
+    </div>
+
+    <div class="hero__portrait reveal">
+      <img src="{{ get_url(path=d.image | default(value='images/hero/me1.webp')) }}"
+           alt="Satyajit Puhan" width="640" height="800" fetchpriority="high" decoding="async">
+      <div class="hero__badge"><span class="dot"></span>{% if lang == 'or' %}ସହଯୋଗ ପାଇଁ ଉପଲବ୍ଧ{% else %}Open to collaborations{% endif %}</div>
+    </div>
+  </div>
+</section>

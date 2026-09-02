@@ -1,66 +1,70 @@
-{# ══════════════════════════════════════════════════════════════════════
-   search-index.html
-
-   Emits a compact JSON index of every publication, talk and collaborator so
-   the command palette (static/js/command-palette.js) can search the whole
-   site without a network round-trip.
-
-   Kept deliberately lean — title, url, kind, one line of meta and a short
-   description only, no abstracts — so the whole thing stays a few KB gzipped.
-   Zola cannot write a standalone .json asset from a template, so it is
-   inlined as a non-executing <script type="application/json"> block.
-
-   Note on the guards below: `default()` only substitutes for keys that are
-   absent. Zola sets `description` and `year` to *null* rather than dropping
-   them when a page has no description or date, and a null renders as the
-   empty string — which would emit `"y":,` and break JSON.parse for the whole
-   index. Hence the explicit `{% if %}` around every optional field rather
-   than a `default()` chain.
-   ══════════════════════════════════════════════════════════════════════ #}
-
-<script type="application/json" id="ae-search-index">
-[
-{%- set_global ns_first = true -%}
-
+{#- Search index + client-side data. Generated at build time, so it can never
+    drift from the content. -#}
 {%- set pubs = get_section(path="portfolio/_index.md", lang=lang) -%}
-{%- for p in pubs.pages -%}
-  {%- if not ns_first %},{% endif -%}
-  {%- set_global ns_first = false -%}
-  {%- set_global f_meta = "" -%}
-  {%- if p.extra.service -%}{%- set_global f_meta = p.extra.service -%}{%- endif -%}
-  {%- set_global f_desc = "" -%}
-  {%- if p.extra.short_description -%}{%- set_global f_desc = p.extra.short_description | truncate(length=140) -%}{%- endif -%}
-  {%- set_global f_year = 0 -%}
-  {%- if p.year -%}{%- set_global f_year = p.year -%}{%- endif -%}
-  {%- set_global f_tags = [] -%}
-  {%- if p.taxonomies.tags -%}{%- set_global f_tags = p.taxonomies.tags -%}{%- endif -%}
-  {"t":{{ p.title | json_encode | safe }},"u":{{ p.permalink | json_encode | safe }},"k":"publication","m":{{ f_meta | json_encode | safe }},"d":{{ f_desc | json_encode | safe }},"y":{{ f_year }},"g":{{ f_tags | json_encode | safe }}}
-{%- endfor -%}
+{%- set posts = get_section(path="blog/_index.md", lang=lang) -%}
+{%- set stats = load_data(path="static/data/inspire-stats.json", required=false) -%}
+{%- set home_url = get_url(path='/', lang=lang) -%}
 
-{%- set talks = get_section(path="blog/_index.md", lang=lang) -%}
-{%- for p in talks.pages -%}
-  {%- if not ns_first %},{% endif -%}
-  {%- set_global ns_first = false -%}
-  {%- set_global f_desc = "" -%}
-  {%- if p.description -%}{%- set_global f_desc = p.description | truncate(length=140) -%}{%- endif -%}
-  {%- set_global f_year = 0 -%}
-  {%- if p.year -%}{%- set_global f_year = p.year -%}{%- endif -%}
-  {%- set_global f_tags = [] -%}
-  {%- if p.taxonomies.tags -%}{%- set_global f_tags = p.taxonomies.tags -%}{%- endif -%}
-  {%- set_global f_meta = f_tags | join(sep=", ") -%}
-  {"t":{{ p.title | json_encode | safe }},"u":{{ p.permalink | json_encode | safe }},"k":"talk","m":{{ f_meta | json_encode | safe }},"d":{{ f_desc | json_encode | safe }},"y":{{ f_year }},"g":{{ f_tags | json_encode | safe }}}
-{%- endfor -%}
+<script>
+{% if stats %}window.INSPIRE_STATS = {{ stats | json_encode | safe }};{% else %}window.INSPIRE_STATS = {};{% endif %}
+{% if stats and stats.exclude %}window.INSPIRE_EXCLUDE = {{ stats.exclude | json_encode | safe }};{% else %}window.INSPIRE_EXCLUDE = [];{% endif %}
 
-{%- set people = get_section(path="collaborators/_index.md", lang=lang) -%}
-{%- for p in people.pages -%}
-  {%- if not ns_first %},{% endif -%}
-  {%- set_global ns_first = false -%}
-  {%- set_global f_meta = "" -%}
-  {%- if p.extra.institution -%}{%- set_global f_meta = p.extra.institution -%}
-  {%- elif p.description -%}{%- set_global f_meta = p.description -%}{%- endif -%}
-  {%- set_global f_desc = "" -%}
-  {%- if p.extra.research_interests -%}{%- set_global f_desc = p.extra.research_interests | truncate(length=140) -%}{%- endif -%}
-  {"t":{{ p.title | json_encode | safe }},"u":{{ p.permalink | json_encode | safe }},"k":"collaborator","m":{{ f_meta | json_encode | safe }},"d":{{ f_desc | json_encode | safe }},"y":0,"g":[]}
-{%- endfor -%}
-]
+window.SITE_SEARCH_INDEX = [
+{% for item in config.extra.menus -%}
+  {%- set url = item.url -%}
+  {%- if url is starting_with("#") -%}{%- set url = home_url ~ url -%}
+  {%- elif url is starting_with("/") -%}{%- set url = get_url(path=url, lang=lang) -%}{%- endif -%}
+  { "title": {{ trans(key=item.name, lang=lang) | json_encode | safe }}, "url": {{ url | json_encode | safe }}, "kind": "Page", "meta": "" },
+{% endfor -%}
+
+{% for p in pubs.pages -%}
+  { "title": {{ p.title | json_encode | safe }},
+    "url": {{ p.permalink | json_encode | safe }},
+    "kind": "Publication",
+    "meta": {{ p.extra.service | default(value="") | json_encode | safe }},
+    "body": {{ p.extra.short_description | default(value="") | truncate(length=200) | json_encode | safe }} },
+{% endfor -%}
+
+{% for p in posts.pages -%}
+  { "title": {{ p.title | json_encode | safe }},
+    "url": {{ p.permalink | json_encode | safe }},
+    "kind": "Talk / news",
+    "meta": {{ p.date | default(value="") | json_encode | safe }},
+    "body": {{ p.description | default(value="") | truncate(length=200) | json_encode | safe }} }{% if not loop.last %},{% endif %}
+{% endfor -%}
+];
+
+window.ASSISTANT_KB = {
+  greeting: "Hi — I'm Satyajit's site assistant. Ask about his <b>research</b>, <b>publications</b>, <b>education</b> or <b>contact</b> details, or press <kbd>Ctrl</kbd>+<kbd>K</kbd> to search everything.",
+  entries: [
+    { k: ["about","who","bio","background","satyajit","yourself"],
+      a: "<b>Satyajit Puhan</b> is a Postdoctoral Researcher at the <b>Institute of Physics, Academia Sinica</b>, Taipei. He defended his PhD — <i>Tomography of Light and Heavy Mesons Using Light-Front Dynamics</i> — at NIT Jalandhar on <b>2 April 2026</b> under Dr. Harleen Dahiya. Born 15 May 1999 in Chhatara, Balasore, Odisha." },
+    { k: ["research","work on","area","topic","interest","tmd","gpd","qcd","hadron"],
+      a: "His research covers <b>TMDs</b>, <b>GPDs &amp; GTMDs</b>, electromagnetic and gravitational <b>form factors</b>, distribution amplitudes, quarkonium spectroscopy, and <b>nuclear-medium modification</b> of hadron structure — mostly in the light-front quark model, plus NJL and neural-network extractions." },
+    { k: ["publication","paper","preprint","article","how many paper","journal","prd","jhep"],
+      a: "{{ stats.papers | default(value=42) }} records on INSPIRE-HEP with {{ stats.citations | default(value=209) }} citations (h-index {{ stats.hindex | default(value=10) }}) — in Phys. Rev. D, JHEP, Phys. Lett. B, Nucl. Phys. A/B, PTEP, EPJ A/Plus and Chin. Phys. C. See the <a href='{{ home_url }}#publications'>publications section</a>." },
+    { k: ["inspire","inspirehep","citation","h-index","scholar","orcid","profile","record"],
+      a: "Full record: <a href='{{ config.extra.inspire_author_url }}'>INSPIRE-HEP</a> · <a href='https://scholar.google.com/citations?hl=en&user=pKbmhZQAAAAJ'>Google Scholar</a> · <a href='https://orcid.org/0009-0004-9766-5005'>ORCID</a>. The site re-syncs from INSPIRE every day." },
+    { k: ["education","degree","phd","msc","study","studied","college","university","school"],
+      a: "<b>PhD</b> (2022–2026) NIT Jalandhar · <b>Visiting Fellow</b> JINR Dubna (2025) · <b>M.Sc.</b> NIT Jamshedpur (2019–21) · <b>B.Sc.</b> Bhadrak Autonomous College (2016–19). Ranks: AIR-877 JAM, AIR-209 JEST, AIR-1544 GATE." },
+    { k: ["experience","job","position","postdoc","fellow","career"],
+      a: "Postdoctoral Researcher at Academia Sinica (2026–present); Senior Research Fellow at NIT Jalandhar (2022–2026); Visiting Fellow at JINR Dubna and IIT Bhilai." },
+    { k: ["skill","tool","software","mathematica","python","programming","code"],
+      a: "Mathematica, Python (NumPy/SciPy), light-front quark model, NJL / DS-BSE / spectator models, LHAPDF, xFitter, DGLAP &amp; CSS evolution, neural networks, Pythia Monte-Carlo, LaTeX, C++/Linux/Git." },
+    { k: ["collaborator","co-author","supervisor","group","team","dahiya","teryaev"],
+      a: "Key collaborators: Dr. Harleen Dahiya (NIT Jalandhar, PhD supervisor), Prof. Oleg V. Teryaev (JINR Dubna), Prof. Wen-Chen Chang (Academia Sinica), Prof. Sabyasachi Ghosh (IIT Bhilai), Prof. Arvind Kumar and Prof. Suneel Dutt, plus many co-authors — see the <a href='{{ home_url }}#collaborators'>collaborators section</a>." },
+    { k: ["conference","talk","seminar","presented","attend","workshop","school"],
+      a: "Talks and posters at Kyoto (HHIQCD 2024), Zuoz (PSI Summer School 2024), JINR Dubna (2025), ICTS-TIFR Bengaluru, IIT Roorkee (DAE-SNP 2024), TIFR Mumbai (HQL 2023), IIT Bhilai (ICFHEP 2025) and NCSU seminars. See <a href='{{ home_url }}#talks'>talks &amp; news</a>." },
+    { k: ["contact","email","reach","mail","write","hire","collaborate"],
+      a: "Email <a href='mailto:puhansatyajit@gmail.com'>puhansatyajit@gmail.com</a> — or use the <a href='{{ home_url }}#contact'>contact form</a>. Based at the Institute of Physics, Academia Sinica, Taipei, Taiwan." },
+    { k: ["seva","durga","social","charity","children","donate","help"],
+      a: "<b>Durga Seva</b> is his social-service initiative helping underprivileged children in Odisha with books and school supplies — <a href='{{ get_url(path='/social-service/', lang=lang) }}'>read more</a>." },
+    { k: ["visuali","interactive","simulation","demo","3d","animation"],
+      a: "There are seven interactive physics visualisations — running coupling, DGLAP evolution, pion mechanical structure, QCD field, GDAs and more: <a href='{{ get_url(path='/visualizations/', lang=lang) }}'>open the lab</a>." },
+    { k: ["thesis","defend","defense","viva"],
+      a: "PhD thesis <i>Tomography of Light and Heavy Mesons Using Light-Front Dynamics</i>, defended <b>2 April 2026</b> at Dr. B R Ambedkar NIT Jalandhar." },
+    { k: ["help","what can you do","capability","commands"],
+      a: "Try: <b>research</b>, <b>publications</b>, <b>education</b>, <b>experience</b>, <b>skills</b>, <b>collaborators</b>, <b>conferences</b>, <b>contact</b>, <b>INSPIRE</b>, <b>Durga Seva</b>, <b>visualizations</b>." }
+  ]
+};
 </script>

@@ -1,0 +1,80 @@
+{% import 'partials/icons.html' as ic %}
+{%- set a = config.extra.address -%}
+<section class="section" id="contact">
+  <div class="wrap">
+    <div class="sec-head sec-head--center reveal">
+      <p class="eyebrow" style="justify-content:center">{{ trans(key='get_in_touch', lang=lang) }}</p>
+      <h2 class="h-1">{{ trans(key='contact_me', lang=lang) }}</h2>
+      <p>{% if lang == 'or' %}ଗବେଷଣା ସହଯୋଗ, ଆଲୋଚନା କିମ୍ବା ପ୍ରଶ୍ନ ପାଇଁ ଲେଖନ୍ତୁ।{% else %}Questions about a paper, an invitation to speak, or a collaboration — write any time.{% endif %}</p>
+    </div>
+
+    <div class="grid" style="grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);align-items:start">
+      <div class="reveal">
+        <div class="contact-line">
+          <span class="contact-line__icon">{{ ic::ui(name="pin") }}</span>
+          <span>
+            <span class="contact-line__label">{{ trans(key='address', lang=lang) }}</span>
+            <span class="contact-line__value">{{ a.address }}</span>
+          </span>
+        </div>
+        <div class="contact-line">
+          <span class="contact-line__icon">{{ ic::ui(name="mail") }}</span>
+          <span>
+            <span class="contact-line__label">{{ trans(key='email', lang=lang) }}</span>
+            <span class="contact-line__value">
+              <a href="mailto:puhansatyajit@gmail.com">puhansatyajit@gmail.com</a><br>
+              <span class="dim" style="font-size:.82rem">satyajitp.ph.21@nitj.ac.in</span>
+            </span>
+          </span>
+        </div>
+        <div class="contact-line">
+          <span class="contact-line__icon">{{ ic::ui(name="phone") }}</span>
+          <span>
+            <span class="contact-line__label">{{ trans(key='phone', lang=lang) }}</span>
+            <span class="contact-line__value">{{ a.phone }}</span>
+          </span>
+        </div>
+        <div class="contact-line">
+          <span class="contact-line__icon">{{ ic::ui(name="clock") }}</span>
+          <span>
+            <span class="contact-line__label">{{ trans(key='opening_hours', lang=lang) }}</span>
+            <span class="contact-line__value">{{ a.opening_hours }}</span>
+          </span>
+        </div>
+
+        <div class="socials" style="margin-top:22px">
+          {% for s in config.extra.socials %}
+            <a class="social" href="{{ s.url }}" aria-label="{{ s.name }}" title="{{ s.name }}">{{ ic::social(name=s.icon) }}</a>
+          {% endfor %}
+        </div>
+      </div>
+
+      <form class="card reveal" style="padding:24px" action="{{ config.extra.formspree_url }}" method="POST">
+        <input type="hidden" name="_subject" value="Website contact — new message">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="true">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <h3 class="h-3" style="margin-bottom:18px">{{ trans(key='form_title', lang=lang) }}</h3>
+
+        <label class="field">
+          <span>{{ trans(key='form_input_name', lang=lang) }}</span>
+          <input type="text" name="Name" required autocomplete="name">
+        </label>
+        <label class="field">
+          <span>{{ trans(key='form_input_email', lang=lang) }}</span>
+          <input type="email" name="Email" required autocomplete="email">
+        </label>
+        <label class="field">
+          <span>{{ trans(key='form_input_message', lang=lang) }}</span>
+          <textarea name="Message" required></textarea>
+        </label>
+
+        <button class="btn btn--primary" type="submit" style="width:100%">
+          {{ trans(key='form_button', lang=lang) }} {{ ic::ui(name="arrow") }}
+        </button>
+        <p class="dim" style="font-size:.78rem;margin-top:12px">{{ trans(key='form_input_agreement', lang=lang) }}</p>
+      </form>
+    </div>
+  </div>
+</section>

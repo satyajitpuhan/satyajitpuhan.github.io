@@ -1,23 +1,19 @@
 {% extends "base.html" %}
+{% block title %}{{ config.title }} — {% if lang == 'or' %}ପଦାର୍ଥ ବିଜ୍ଞାନୀ{% else %}Theoretical Particle Physicist{% endif %}{% endblock %}
 
 {% block content %}
-{% include "partials/sections/home.html" ignore missing %}
-{% include "partials/sections/nitj-grid.html" ignore missing %}
-{% include "partials/sections/news.html" ignore missing %}
-{% include "partials/sections/about.html" ignore missing %}
-{% include "partials/sections/service.html" ignore missing %}
-{% include "partials/sections/resume.html" ignore missing %}
-{% include "partials/sections/portfolio.html" ignore missing %}
-{% include "partials/sections/skill.html" ignore missing %}
-{% include "partials/sections/collaborators.html" ignore missing %}
-{% include "partials/sections/research-network.html" ignore missing %}
-{% include "partials/sections/blog.html" ignore missing %}
-{% include "partials/sections/conferences.html" ignore missing %}
-{% endblock %}
-
-{% block javascripts %}
-{{ super() }}
-<!-- Chart.js, three.js and globe.gl are fetched on demand by lazy-libs.js -->
-<script src="{{ get_url(path='js/lazy-libs.js', cachebust=true) }}" defer></script>
-<script src="{{ get_url(path='js/live-stats.js', cachebust=true) }}" defer></script>
+{% include "sections/hero.html" %}
+{% include "sections/news.html" %}
+{% include "sections/about.html" %}
+{% include "sections/research.html" %}
+{% set pub_limit = 9 %}
+{% include "sections/publications.html" %}
+{% set pub_limit = 0 %}
+{% include "sections/resume.html" %}
+{% include "sections/skills.html" %}
+{% include "sections/reviewer.html" %}
+{% include "sections/collaborators.html" %}
+{% include "sections/conferences.html" %}
+{% include "sections/talks.html" %}
+{% include "sections/contact.html" %}
 {% endblock %}

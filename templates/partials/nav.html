@@ -1,0 +1,47 @@
+{% import 'partials/icons.html' as ic %}
+{%- set home_url = get_url(path='/', lang=lang) -%}
+{%- set is_home = false -%}
+{%- if section and section.path == "/" %}{% set_global is_home = true %}{% endif -%}
+
+<header class="nav" id="site-nav">
+  <div class="nav__inner">
+    <a class="brand" href="{{ home_url }}" aria-label="{{ config.title }} — home">
+      <span class="brand__mark" aria-hidden="true">SP</span>
+      <span class="brand__text">
+        <span class="brand__name">{{ config.title }}</span>
+        <span class="brand__role">{% if lang == 'or' %}ପଦାର୍ଥ ବିଜ୍ଞାନୀ{% else %}Hadron Physics{% endif %}</span>
+      </span>
+    </a>
+
+    <nav class="nav__links" id="nav-links" aria-label="Primary">
+      {% for item in config.extra.menus %}
+        {%- set url = item.url -%}
+        {%- if url is starting_with("#") -%}
+          {%- set url = home_url ~ url -%}
+        {%- elif url is starting_with("/") -%}
+          {%- set url = get_url(path=url, lang=lang) -%}
+        {%- endif -%}
+        <a class="nav__link" href="{{ url }}">{{ trans(key=item.name, lang=lang) }}</a>
+      {% endfor %}
+    </nav>
+
+    <div class="nav__tools">
+      <button class="icon-btn" data-palette-open aria-label="Search this site (Ctrl K)" title="Search — Ctrl K">
+        {{ ic::ui(name="search") }}
+      </button>
+
+      <button class="icon-btn" data-theme-toggle aria-label="Switch theme">
+        <span data-theme-icon aria-hidden="true" style="font-size:14px;line-height:1">☀️</span>
+      </button>
+
+      <div class="lang-switch" role="group" aria-label="Language">
+        <a href="{{ get_url(path='/', lang='en') }}" class="{% if lang == 'en' %}is-active{% endif %}" hreflang="en">EN</a>
+        <a href="{{ get_url(path='/', lang='or') }}" class="{% if lang == 'or' %}is-active{% endif %}" hreflang="or">ଓଡ଼ି</a>
+      </div>
+
+      <button class="icon-btn nav__burger" data-nav-toggle aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+        {{ ic::ui(name="menu") }}
+      </button>
+    </div>
+  </div>
+</header>

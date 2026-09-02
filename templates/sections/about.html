@@ -1,0 +1,35 @@
+{%- set d = load_data(path="static/sections/about/" ~ lang ~ ".toml", required=false) -%}
+{%- set home = load_data(path="static/sections/home/" ~ lang ~ ".toml", required=false) -%}
+{% if d %}
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="grid" style="grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);align-items:start">
+      <div class="reveal">
+        <img src="{{ get_url(path=d.image | default(value='images/about/me.webp')) }}"
+             alt="Satyajit Puhan"
+             style="width:100%;border-radius:22px;border:1px solid var(--line-2);box-shadow:var(--shadow-2);aspect-ratio:4/5;object-fit:cover"
+             loading="lazy" decoding="async" width="560" height="700">
+      </div>
+      <div class="reveal">
+        <p class="eyebrow">{% if lang == 'or' %}ମୋ ବିଷୟରେ{% else %}About me{% endif %}</p>
+        <div class="prose">{{ d.description | markdown | safe }}</div>
+        <div class="prose" style="margin-top:14px">{{ d.content | markdown | safe }}</div>
+      </div>
+    </div>
+
+    {% if home and home.gallery %}
+      <h3 class="h-3" style="margin:44px 0 16px">{% if lang == 'or' %}ଯାତ୍ରାର କିଛି ମୁହୂର୍ତ୍ତ{% else %}Moments from the journey{% endif %}</h3>
+      <div class="gallery reveal">
+        {% for g in home.gallery %}
+          <a class="gallery__item" href="{{ get_url(path=g.image) }}"
+             data-lightbox="{{ get_url(path=g.image) }}" data-caption="{{ g.caption }}" tabindex="0"
+             aria-label="{{ g.caption }}">
+            <img src="{{ get_url(path=g.image) }}" alt="{{ g.caption }}" loading="lazy" decoding="async" width="420" height="315">
+            <span class="gallery__cap">{{ g.caption }}</span>
+          </a>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+{% endif %}

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<header class="page-head">
+  <div class="page-head__glow" aria-hidden="true"></div>
+  <div class="wrap">
+    <nav class="crumbs"><a href="{{ get_url(path='/', lang=lang) }}">{{ trans(key='home', lang=lang) }}</a> › <span>{{ page.title }}</span></nav>
+    <h1 class="h-1">{{ page.title }}</h1>
+  </div>
+</header>
+<section class="section section--tight">
+  <div class="wrap"><div class="prose">{{ page.content | safe }}</div></div>
+</section>
+{% endblock %}

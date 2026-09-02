@@ -1,0 +1,32 @@
+{%- set d = load_data(path="static/sections/conferences/" ~ lang ~ ".toml", required=false) -%}
+{% if d and d.events %}
+<section class="section" id="conferences">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">{{ d.top_title | default(value="Academic") }}</p>
+      <h2 class="h-1">{{ d.title }}</h2>
+      {% if d.subtitle %}<p>{{ d.subtitle }}</p>{% endif %}
+    </div>
+
+    <div class="grid grid--3">
+      {% for e in d.events %}
+        <article class="card reveal">
+          {% if e.image %}
+            <div class="card__media"><img src="{{ get_url(path=e.image) }}" alt="" loading="lazy" decoding="async" width="420" height="262"></div>
+          {% endif %}
+          <div class="card__body">
+            <div class="chips">
+              <span class="chip chip--accent">{{ e.mode }}</span>
+              <span class="chip">{{ e.type }}</span>
+            </div>
+            <h3 class="card__title">{{ e.title }}</h3>
+            <p class="card__meta">{{ e.date }}</p>
+            <p class="card__meta dim">{{ e.venue }}</p>
+            <p class="card__text">{{ e.description }}</p>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}

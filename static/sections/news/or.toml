@@ -1,5 +1,79 @@
-title = "Recent News & Activities"
-subtitle = "Highlights from my research journey."
+title = "ସଦ୍ୟତମ ଖବର ଓ କାର୍ଯ୍ୟକଳାପ"
+subtitle = "ମୋ ଗବେଷଣା ଯାତ୍ରାର ମୁଖ୍ୟ ମୁହୂର୍ତ୍ତଗୁଡ଼ିକ।"
+
+[[items]]
+top_title = "📄 ନୂଆ ଗବେଷଣା ପତ୍ର!"
+image = "images/portfolio/papers/extraction-of-pion-unpolarized-quark-and-gluon-generalized-cover.svg"
+title = "Extraction of Pion Unpolarized Quark and Gluon Generalized Parton Distributions using Deep Neural-Networks"
+date = "2026-08-07"
+description = "We present a deep neural-network (DNN) extraction of the pion unpolarized quark and gluon generalized parton distributions (GPDs) using the corresponding parton distribution functions (PDFs) from the JAM21 and…"
+details = """
+**📄 ନୂଆ ଗବେଷଣା ପତ୍ର!**
+
+**Title:** Extraction of Pion Unpolarized Quark and Gluon Generalized Parton Distributions using Deep Neural-Networks
+**Authors:** S. Puhan, S. Sharma, N. Kumar
+**Published in:** e-Print: 2608.07085 [hep-ph]
+**e-Print:** [2608.07085 [hep-ph]](https://arxiv.org/abs/2608.07085)
+**INSPIRE-HEP:** [record 3188657](https://inspirehep.net/literature/3188657)
+
+### ସାରାଂଶ
+
+We present a deep neural-network (DNN) extraction of the pion unpolarized quark and gluon generalized parton distributions (GPDs) using the corresponding parton distribution functions (PDFs) from the JAM21 and xFitter analysis, together with experimental measurements of the pion electromagnetic form factor (EMFF) and lattice quantum chromodynamics (QCD) results. The GPDs are parameterized using a physics-informed neural-network (PINN) that incorporates the known PDF behavior, an exponential momentum-transfer dependence, and a trainable neural network (NN) component. The network parameters are determined by minimizing a χ^2-based loss function. For the valence-quark GPDs, the loss function includes contributions from the EMFF, squared EMFF, charge-normalization constraints, and regularization terms. For the gluon GPDs, it incorporates constraints from the gluon gravitational form factors together with regularization. This framework enables a flexible, nonparametric extraction while preserving the essential theoretical and phenomenological constraints. By employing the full ensemble of available PDF replicas, we quantify the uncertainties of the extracted GPDs over a broad kinematic range in the longitudinal momentum fraction and momentum transfer, with the uncertainty bands corresponding to the 1σ confidence interval. The extracted valence-quark GPDs are found to be in good agreement with available lattice-QCD calculations. Our study demonstrates that DNN-based methods provide a flexible and robust framework for extracting pion GPDs and probing the multidimensional internal structure of the pion, offering a promising avenue for future investigations of hadron tomography
+
+---
+
+*INSPIRE-HEP ରୁ ସ୍ୱୟଂଚାଳିତ ଭାବେ ଯୋଡ଼ାଯାଇଛି*
+"""
+
+[[items]]
+top_title = "🎉 ନୂଆ ପ୍ରକାଶନ!"
+image = "images/portfolio/papers/analysis-on-the-parton-distribution-functions-of-heavy-cover.svg"
+title = "Analysis on the parton distribution functions of heavy mesons"
+date = "2026-05-17"
+description = "In this work, we investigate the constituent parton distribution functions (PDFs) of the kaon and heavy pseudoscalar mesons within the light-cone quark model."
+details = """
+**🎉 ନୂଆ ପ୍ରକାଶନ!**
+
+**Title:** Analysis on the parton distribution functions of heavy mesons
+**Authors:** S. Puhan
+**Published in:** Phys. Rev. D 114 (2026)
+**e-Print:** [2605.17389 [hep-ph]](https://arxiv.org/abs/2605.17389)
+**INSPIRE-HEP:** [record 3157139](https://inspirehep.net/literature/3157139)
+**DOI:** [10.1103/6gjf-24ll](https://doi.org/10.1103/6gjf-24ll)
+
+### ସାରାଂଶ
+
+In this work, we investigate the constituent parton distribution functions (PDFs) of the kaon and heavy pseudoscalar mesons within the light-cone quark model. Starting from the initial-scale quark and antiquark PDFs, obtained by evaluating the quark-quark correlation functions for individual mesons, we perform QCD evolution to determine their partonic structure at higher energy scales. The QCD evolution is carried out using the next-to-leading-order (NLO) Dokshitzer-Gribov-Lipatov-Altarelli-Parisi equations. We further compute the average longitudinal momentum fractions carried by the individual constituents at both the model and evolved scales. In addition, we predict the NLO structure functions of the kaon at energy scales relevant to the upcoming Electron-Ion Collider (EIC). For the COMPASS++/AMBER experiment, we also present detailed predictions for the NLO Drell-Yan cross sections induced by both K+ and K- beams, using carbon, tungsten, and aluminum as nuclear targets. Finally, we demonstrate the dominance of the heavier constituents over the lighter constituents in heavy mesons in terms of the momentum fractions they carry
+
+---
+
+*INSPIRE-HEP ରୁ ସ୍ୱୟଂଚାଳିତ ଭାବେ ଯୋଡ଼ାଯାଇଛି*
+"""
+
+[[items]]
+top_title = "🎉 ନୂଆ ପ୍ରକାଶନ!"
+image = "images/portfolio/papers/pion-parton-distribution-functions-in-the-light-cone-quark-cover.svg"
+title = "Pion parton distribution functions in the light-cone quark model and experimental constraints"
+date = "2026-04-07"
+description = "In this work, we investigate the valence quark parton distribution functions (PDFs) of the pion within the light-cone quark model."
+details = """
+**🎉 ନୂଆ ପ୍ରକାଶନ!**
+
+**Title:** Pion parton distribution functions in the light-cone quark model and experimental constraints
+**Authors:** H. G. P, S. Puhan, A. K. P., R. Pandey, H. Dahiya, A. Kumar, S. Dutt
+**Published in:** Phys. Rev. D 114 (2026)
+**e-Print:** [2604.05762 [hep-ph]](https://arxiv.org/abs/2604.05762)
+**INSPIRE-HEP:** [record 3140657](https://inspirehep.net/literature/3140657)
+**DOI:** [10.1103/q5rc-999c](https://doi.org/10.1103/q5rc-999c)
+
+### ସାରାଂଶ
+
+In this work, we investigate the valence quark parton distribution functions (PDFs) of the pion within the light-cone quark model. The initial quark PDFs are calculated by solving the quark-quark correlation function for the pseudoscalar mesons. The initial quark PDFs have been evolved to higher energy scales through the Dokshitzer-Gribov-Lipatov-Altarelli-Parisi (DGLAP) evolution equations. We also find that our calculated evolved PDFs match experimental and available theoretical extraction data. For the first time, we have also predicted the F2 structure function at next-to-leading (NLO) order accuracy. The calculated F2 structure function has been compared with the available ZEUS and H1 experimental data at DESY-HERA over a wide range of energy scales. Additionally, we display the forward pion production cross-section for the Drell-Yan process caused by pions using the pion PDFs that were calculated and the target nucleon PDFs from the LHAPDF nucleus datasets. The evolved F2 structure function of the pion has been studied at the upcoming electron-ion collider energy kinematics. Overall, it was observed that the quark PDFs of pions computed using the light-cone quark model are consistent with the experimental results
+
+---
+
+*INSPIRE-HEP ରୁ ସ୍ୱୟଂଚାଳିତ ଭାବେ ଯୋଡ଼ାଯାଇଛି*
+"""
 
 [[items]]
 top_title = "📄 New Preprint!"

@@ -1,201 +1,70 @@
-<!-- ═══ Academic Dark Footer ═══ -->
-<footer id="contact" style="position: relative; background: #03060c; overflow: hidden; color: white;">
+{% import 'partials/icons.html' as ic %}
+{%- set home_url = get_url(path='/', lang=lang) -%}
 
-  <!-- Top accent line -->
-  <div style="position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(232,164,68,0.6) 30%, rgba(46,196,182,0.6) 60%, transparent); pointer-events: none;"></div>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <a class="brand" href="{{ home_url }}" style="margin-bottom:16px">
+          <span class="brand__mark" aria-hidden="true">SP</span>
+          <span class="brand__text">
+            <span class="brand__name">{{ config.title }}</span>
+            <span class="brand__role">{% if lang == 'or' %}ଆକାଡେମିଆ ସିନିକା{% else %}Academia Sinica, Taipei{% endif %}</span>
+          </span>
+        </a>
+        <p class="muted" style="max-width:44ch;font-size:.9rem;margin-top:14px">
+          {{ config.description | striptags | truncate(length=180) }}
+        </p>
 
-  <!-- Subtle background glow -->
-  <div style="position: absolute; top: -80px; right: -100px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(232,164,68,0.04) 0%, transparent 70%); pointer-events: none;"></div>
-  <div style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 700px; height: 180px; background: radial-gradient(ellipse, rgba(232,164,68,0.05) 0%, transparent 70%); pointer-events: none;"></div>
-
-  <div class="container" style="position: relative; z-index: 1; padding-top: 56px; padding-bottom: 0;">
-
-    {% if config.extra.display_cta %}
-    <!-- Compact CTA Strip -->
-    <div style="
-      background: linear-gradient(135deg, rgba(36,20,4,0.95), rgba(4,20,36,0.95));
-      border: 1px solid rgba(232,164,68,0.18);
-      border-radius: 16px;
-      padding: 36px 44px;
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 24px;
-      backdrop-filter: blur(16px);
-      box-shadow: 0 0 50px rgba(232,164,68,0.07), 0 16px 48px rgba(0,0,0,0.5);
-      margin-bottom: 52px;
-      position: relative; overflow: hidden;
-    ">
-      <!-- CTA glow accent -->
-      <div style="position: absolute; top: -40%; left: -10%; width: 60%; height: 200%; background: radial-gradient(circle at 30% 50%, rgba(232,164,68,0.06), transparent 60%); pointer-events: none;"></div>
-
-      <div style="position: relative; z-index: 1;">
-        <div style="font-size: 0.68rem; font-family: var(--font-mono); letter-spacing: 4px; text-transform: uppercase; color: rgba(232,164,68,0.7); margin-bottom: 10px;">
-          {{ trans(key="contact_me", lang=lang) }}
-        </div>
-        <h2 style="font-size: clamp(1.35rem, 3.5vw, 2.2rem); font-weight: 800; color: #fff; margin: 0; font-family: 'Space Grotesk', sans-serif; line-height: 1.2;">
-          {{ trans(key="start_project", lang=lang) }}
-        </h2>
-      </div>
-
-      <div style="position: relative; z-index: 1;">
-        <a href="{{ get_url(path='contact', lang=lang) }}"
-          style="
-            display: inline-flex; align-items: center; gap: 9px;
-            padding: 13px 32px;
-            background: linear-gradient(135deg, #e8a444, #f5c266);
-            color: #1a1000;
-            text-decoration: none; border-radius: 10px;
-            font-weight: 700; font-size: 0.95rem;
-            box-shadow: 0 5px 24px rgba(232,164,68,0.35);
-            transition: all 0.35s cubic-bezier(0.23,1,0.32,1);
-          "
-          onmouseover="this.style.transform='translateY(-3px) scale(1.04)';this.style.boxShadow='0 10px 36px rgba(232,164,68,0.55)';"
-          onmouseout="this.style.transform='';this.style.boxShadow='0 5px 24px rgba(232,164,68,0.35)';"
-        >
-          {{ trans(key="get_in_touch", lang=lang) }}
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        <a class="btn btn--inspire btn--sm" style="margin-top:18px"
+           href="{{ config.extra.inspire_author_url }}">
+          {{ ic::social(name="inspire") }}
+          <span>{% if lang == 'or' %}INSPIRE-HEP ପ୍ରୋଫାଇଲ୍{% else %}INSPIRE-HEP profile{% endif %}</span>
         </a>
       </div>
-    </div>
-    {% endif %}
 
-    <!-- Main Footer Grid -->
-    <div class="row" style="padding-bottom: 48px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 40px; row-gap: 40px;">
-
-      <!-- Column 1: Identity -->
-      <div class="col-lg-4 col-md-6">
-        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 18px;">
-          <img decoding="async" loading="lazy" width="232" height="52" src="{{ get_url(path=extra.footer_logo) }}" alt="Satyajit Puhan"
-            style="height: 52px; filter: drop-shadow(0 0 8px rgba(232,164,68,0.4));">
-          <div>
-            <div style="font-weight: 700; font-size: 1rem; color: #fff; font-family: 'Space Grotesk', sans-serif;">Satyajit Puhan</div>
-            <div style="font-size: 0.72rem; color: rgba(232,164,68,0.65); font-family: var(--font-mono); margin-top: 2px;">Theoretical Particle Physics</div>
-          </div>
-        </div>
-        <p style="color: rgba(255,255,255,0.4); font-size: 0.88rem; line-height: 1.7; max-width: 260px; margin-bottom: 22px;">
-          Exploring the fundamental structure of matter through QCD, hadronic physics, and Dyson–Schwinger equations at Academia Sinica.
-        </p>
-        <!-- Social Icons -->
-        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-          {% for social in extra.socials %}
-          {# target="_blank" without rel="noopener" hands the opened tab a live
-             window.opener reference back to this page. #}
-          <a target="_blank" rel="noopener noreferrer" href="{{ social.url }}"
-            style="
-              width: 38px; height: 38px;
-              display: flex; align-items: center; justify-content: center;
-              border-radius: 8px;
-              border: 1px solid rgba(255,255,255,0.07);
-              color: rgba(255,255,255,0.45);
-              font-size: 1rem; text-decoration: none;
-              background: rgba(255,255,255,0.025);
-              transition: all 0.3s ease;
-            "
-            onmouseover="this.style.borderColor='rgba(232,164,68,0.35)';this.style.background='rgba(232,164,68,0.08)';this.style.color='#e8a444';this.style.transform='translateY(-2px)';"
-            onmouseout="this.style.borderColor='rgba(255,255,255,0.07)';this.style.background='rgba(255,255,255,0.025)';this.style.color='rgba(255,255,255,0.45)';this.style.transform='';"
-            aria-label="{{ social.name }}" title="{{ social.name }}"
-          >
-            {{ si::icon(id=social.icon) }}
-          </a>
-          {% endfor %}
-        </div>
-        <!-- Research profiles: explicit text links (icons alone are ambiguous) -->
-        <div style="margin-top:18px;">
-          <div style="font-size:.68rem; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.32); margin-bottom:10px; font-family:'Space Grotesk',sans-serif;">Research profiles</div>
-          <div style="display:flex; flex-wrap:wrap; gap:8px;">
-            {% for social in extra.socials %}{% if social.icon in ["inspire","scholar","orcid","researchgate"] %}
-            <a target="_blank" rel="noopener" href="{{ social.url }}"
-               style="display:inline-flex; align-items:center; gap:6px; padding:5px 11px; border-radius:7px;
-                      font-size:.76rem; font-weight:600; text-decoration:none; color:rgba(255,255,255,.55);
-                      background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.08); transition:all .25s ease;"
-               onmouseover="this.style.color='#e8a444';this.style.borderColor='rgba(232,164,68,.4)';"
-               onmouseout="this.style.color='rgba(255,255,255,.55)';this.style.borderColor='rgba(255,255,255,.08)';">{{ social.name }}</a>
-            {% endif %}{% endfor %}
-          </div>
-        </div>
-      </div>
-
-      <!-- Column 2: Sitemap -->
-      <div class="col-lg-3 col-md-6 offset-lg-1">
-        <h4 style="color: white; font-weight: 700; font-size: 0.78rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 22px; font-family: 'Space Grotesk', sans-serif; display: flex; align-items: center; gap: 10px;">
-          <span style="display: inline-block; width: 18px; height: 1.5px; background: linear-gradient(90deg, #e8a444, #2ec4b6);"></span>
-          {{ trans(key="sitemap", lang=lang) }}
-        </h4>
-        <ul style="margin: 0; padding: 0; list-style: none;">
-          {% for sitemap in extra.sitemaps %}
-          <li style="margin-bottom: 10px;">
-            <a href="{{ sitemap.url }}"
-              style="color: rgba(255,255,255,0.42); text-decoration: none; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s ease;"
-              onmouseover="this.style.color='#e8a444';this.style.paddingLeft='5px';"
-              onmouseout="this.style.color='rgba(255,255,255,0.42)';this.style.paddingLeft='0';"
-            >
-              <span style="width: 4px; height: 1px; background: rgba(232,164,68,0.5); display: inline-block; flex-shrink: 0;"></span>
-              {{ trans(key=sitemap.name, lang=lang) }}
-            </a>
-          </li>
+      <div>
+        <h4>{% if lang == 'or' %}ପୃଷ୍ଠା{% else %}Explore{% endif %}</h4>
+        <ul>
+          {% for item in config.extra.menus %}
+            {%- set url = item.url -%}
+            {%- if url is starting_with("#") -%}{%- set url = home_url ~ url -%}
+            {%- elif url is starting_with("/") -%}{%- set url = get_url(path=url, lang=lang) -%}{%- endif -%}
+            <li><a href="{{ url }}">{{ trans(key=item.name, lang=lang) }}</a></li>
           {% endfor %}
         </ul>
       </div>
 
-      <!-- Column 3: Contact Info -->
-      <div class="col-lg-4 col-md-12">
-        <h4 style="color: white; font-weight: 700; font-size: 0.78rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 22px; font-family: 'Space Grotesk', sans-serif; display: flex; align-items: center; gap: 10px;">
-          <span style="display: inline-block; width: 18px; height: 1.5px; background: linear-gradient(90deg, #e8a444, #2ec4b6);"></span>
-          {{ trans(key="address", lang=lang) }}
-        </h4>
-        <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 14px;">
-          {% if extra.address.phone %}
-          <li>
-            <a href="tel:{{ extra.address.phone }}"
-              style="color: rgba(255,255,255,0.45); text-decoration: none; display: flex; align-items: flex-start; gap: 12px; font-size: 0.88rem; transition: color 0.3s;"
-              onmouseover="this.style.color='#e8a444';"
-              onmouseout="this.style.color='rgba(255,255,255,0.45)';"
-            >
-              <span style="width: 32px; height: 32px; border-radius: 7px; background: rgba(232,164,68,0.08); border: 1px solid rgba(232,164,68,0.18); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                <i class="lni lni-phone" style="color: #e8a444; font-size: 0.85rem;"></i>
-              </span>
-              <span style="margin-top: 6px;">{{ extra.address.phone }}</span>
-            </a>
-          </li>
-          {% endif %}
-          {% if extra.address.email %}
-          <li>
-            <a href="mailto:{{ extra.address.email | split(pat=' | ') | first }}"
-              style="color: rgba(255,255,255,0.45); text-decoration: none; display: flex; align-items: flex-start; gap: 12px; font-size: 0.88rem; transition: color 0.3s;"
-              onmouseover="this.style.color='#e8a444';"
-              onmouseout="this.style.color='rgba(255,255,255,0.45)';"
-            >
-              <span style="width: 32px; height: 32px; border-radius: 7px; background: rgba(232,164,68,0.08); border: 1px solid rgba(232,164,68,0.18); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                <i class="lni lni-envelope" style="color: #e8a444; font-size: 0.85rem;"></i>
-              </span>
-              <span style="margin-top: 6px; word-break: break-all;">{{ extra.address.email | split(pat=" | ") | first }}</span>
-            </a>
-          </li>
-          {% endif %}
-          {% if extra.address.address %}
-          <li>
-            <div style="color: rgba(255,255,255,0.45); display: flex; align-items: flex-start; gap: 12px; font-size: 0.88rem;">
-              <span style="width: 32px; height: 32px; border-radius: 7px; background: rgba(232,164,68,0.08); border: 1px solid rgba(232,164,68,0.18); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;">
-                <i class="lni lni-map-marker" style="color: #e8a444; font-size: 0.85rem;"></i>
-              </span>
-              <span>{{ extra.address.address }}</span>
-            </div>
-          </li>
-          {% endif %}
+      <div>
+        <h4>{% if lang == 'or' %}ଗବେଷଣା ପ୍ରୋଫାଇଲ୍{% else %}Research profiles{% endif %}</h4>
+        <ul>
+          {% for s in config.extra.socials %}
+            {% if s.icon in ["inspire","scholar","orcid","researchgate","github"] %}
+              <li><a href="{{ s.url }}">{{ s.name }} ↗</a></li>
+            {% endif %}
+          {% endfor %}
         </ul>
       </div>
 
+      <div>
+        <h4>{{ trans(key='contact', lang=lang) }}</h4>
+        <ul>
+          <li><a href="mailto:puhansatyajit@gmail.com">puhansatyajit@gmail.com</a></li>
+          <li><span class="muted" style="font-size:.89rem">{{ config.extra.address.address }}</span></li>
+        </ul>
+        <div class="socials" style="margin-top:16px">
+          {% for s in config.extra.socials %}
+            <a class="social" href="{{ s.url }}" aria-label="{{ s.name }}" title="{{ s.name }}">{{ ic::social(name=s.icon) }}</a>
+          {% endfor %}
+        </div>
+      </div>
     </div>
 
-    <!-- Bottom Bar -->
-    <div style="padding: 20px 0; border-top: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
-      <p style="color: rgba(255,255,255,0.25); margin: 0; font-size: 0.82rem;">
-        {{ trans(key="copyright", lang=lang) }}
-      </p>
-      <p style="color: rgba(232,164,68,0.4); margin: 0; font-size: 0.75rem; font-family: var(--font-mono);">
-        Built with ⚛ QCD · <span style="color: rgba(46,196,182,0.45);">Academia Sinica</span>
-      </p>
+    <div class="footer__bottom">
+      <span>{{ trans(key='copyright', lang=lang) }}</span>
+      <span class="mono">
+        {% if lang == 'or' %}Zola ରେ ନିର୍ମିତ{% else %}Built with Zola · Auto-synced daily from INSPIRE-HEP{% endif %}
+      </span>
     </div>
-
   </div>
 </footer>
-<!-- ═══ End Footer ═══ -->

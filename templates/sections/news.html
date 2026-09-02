@@ -1,0 +1,49 @@
+{% import 'partials/icons.html' as ic %}
+{%- set d = load_data(path="static/sections/news/" ~ lang ~ ".toml", required=false) -%}
+{% if d and d.items %}
+<section class="section" id="news">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">{% if lang == 'or' %}ସଦ୍ୟତମ{% else %}Latest{% endif %}</p>
+      <h2 class="h-1">{{ d.title | default(value="Recent news &amp; activities") | safe }}</h2>
+      {% if d.subtitle %}<p>{{ d.subtitle }}</p>{% endif %}
+    </div>
+
+    <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(min(100%,430px),1fr))">
+      {% for item in d.items %}
+        {% if loop.index0 < 6 %}
+        <article class="news-item reveal">
+          {% if item.image %}
+            <div class="news-item__thumb">
+              <img src="{{ get_url(path=item.image) }}" alt="" loading="lazy" decoding="async" width="240" height="310">
+            </div>
+          {% else %}
+            <div class="news-item__thumb" aria-hidden="true"></div>
+          {% endif %}
+          <div style="min-width:0">
+            <p class="news-item__date">
+              {% if item.top_title %}<span class="chip chip--accent" style="margin-right:8px">{{ item.top_title }}</span>{% endif %}
+              {{ item.date }}
+            </p>
+            <h3 class="news-item__title">{{ item.title }}</h3>
+            <p class="news-item__text">{{ item.description | striptags | truncate(length=230) }}</p>
+            {% if item.details %}
+              <details class="disclosure">
+                <summary>{% if lang == 'or' %}ବିବରଣୀ{% else %}Details{% endif %}</summary>
+                <div class="disclosure__body">{{ item.details | markdown | safe }}</div>
+              </details>
+            {% endif %}
+          </div>
+        </article>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    {% if d.items | length > 6 %}
+      <p class="center" style="margin-top:30px">
+        <a class="btn btn--ghost" href="#blog">{% if lang == 'or' %}ସବୁ ଖବର ଓ ଆଲୋଚନା{% else %}All news &amp; talks{% endif %} {{ ic::ui(name="arrow") }}</a>
+      </p>
+    {% endif %}
+  </div>
+</section>
+{% endif %}

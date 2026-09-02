@@ -1,0 +1,32 @@
+{%- set d = load_data(path="static/sections/collaborators/" ~ lang ~ ".toml", required=false) -%}
+{%- set sec = get_section(path="collaborators/_index.md", lang=lang) -%}
+{% if d and d.collaborators %}
+<section class="section" id="collaborators">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">{% if lang == 'or' %}ସହଯୋଗୀ{% else %}People{% endif %}</p>
+      <h2 class="h-1">{{ d.title }}</h2>
+      {% if d.subtitle %}<p>{{ d.subtitle }}</p>{% endif %}
+    </div>
+
+    <div class="grid grid--3">
+      {% for c in d.collaborators %}
+        {%- set slug = c.name | slugify -%}
+        {%- set link = "" -%}
+        {% for p in sec.pages %}{% if p.slug == slug %}{% set_global link = p.permalink %}{% endif %}{% endfor %}
+        {% if link %}<a class="person reveal" href="{{ link }}">{% else %}<div class="person reveal">{% endif %}
+          {% if c.image %}
+            <img class="person__avatar" src="{{ get_url(path=c.image) }}" alt="" loading="lazy" width="48" height="48">
+          {% else %}
+            <span class="person__avatar" aria-hidden="true">{{ c.name | truncate(length=1, end="") }}</span>
+          {% endif %}
+          <span style="min-width:0">
+            <span class="person__name">{{ c.name }}</span>
+            <span class="person__role">{{ c.role }}{% if c.institution %} · {{ c.institution }}{% endif %}</span>
+          </span>
+        {% if link %}</a>{% else %}</div>{% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}

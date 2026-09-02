@@ -5,7 +5,7 @@ base_url = "https://satyajitpuhan.github.io/"
 minify_html = true
 
 # Whether to automatically compile all Sass files in the sass directory
-compile_sass = true
+compile_sass = false
 
 #
 default_language = "en"

@@ -1,0 +1,26 @@
+{% import 'partials/icons.html' as ic %}
+{%- set d = load_data(path="static/sections/reviewer/" ~ lang ~ ".toml", required=false) -%}
+{% if d and d.journals %}
+<section class="section section--tight" id="academic-service">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">{{ d.top_title | default(value="Academic service") }}</p>
+      <h2 class="h-2">{{ d.title }}</h2>
+      {% if d.subtitle %}<p>{{ d.subtitle }}</p>{% endif %}
+    </div>
+    <div class="grid grid--2">
+      {% for j in d.journals %}
+        <a class="card reveal" href="{{ j.url }}">
+          <div class="card__body">
+            <span class="chip chip--mint">{% if lang == 'or' %}ସମୀକ୍ଷକ{% else %}Peer reviewer{% endif %}</span>
+            <h3 class="card__title">{{ j.name }}</h3>
+            <p class="card__meta">{{ j.publisher }}</p>
+            <p class="card__text">{{ j.description }}</p>
+            <span class="card__foot link-pill">{% if lang == 'or' %}ଜର୍ନାଲ୍ ଦେଖନ୍ତୁ{% else %}Visit journal{% endif %} ↗</span>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}

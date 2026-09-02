@@ -1,0 +1,44 @@
+{% import 'partials/icons.html' as ic %}
+{%- set sec = get_section(path="blog/_index.md", lang=lang) -%}
+{% if sec.pages %}
+<section class="section" id="blog">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">{{ sec.extra.top_title | default(value="Talks") }}</p>
+      <h2 class="h-1">{{ sec.title }}</h2>
+      {% if sec.description %}<p>{{ sec.description }}</p>{% endif %}
+    </div>
+
+    <div class="grid grid--3">
+      {% for p in sec.pages %}
+        {% if loop.index0 < 9 %}
+        <article class="card reveal">
+          {% if p.extra.feature_image %}
+            <a class="card__media" href="{{ p.permalink }}" tabindex="-1" aria-hidden="true">
+              <img src="{{ get_url(path=p.extra.feature_image) }}" alt="" loading="lazy" decoding="async" width="420" height="262">
+            </a>
+          {% endif %}
+          <div class="card__body">
+            <p class="card__meta">{{ p.date | date(format=config.extra.date_format) }}</p>
+            <h3 class="card__title"><a href="{{ p.permalink }}">{{ p.title }}</a></h3>
+            {% if p.taxonomies.categories %}
+              <div class="chips">
+                {% for c in p.taxonomies.categories %}<span class="chip chip--cyan">{{ c }}</span>{% endfor %}
+              </div>
+            {% endif %}
+            <p class="card__text">{{ p.summary | default(value="") | striptags | truncate(length=140) }}</p>
+            <span class="card__foot link-pill">{{ trans(key='see_details', lang=lang) }} →</span>
+          </div>
+        </article>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    {% if sec.pages | length > 9 %}
+      <p class="center" style="margin-top:30px">
+        <a class="btn btn--ghost" href="{{ sec.permalink }}">{% if lang == 'or' %}ସବୁ ଦେଖନ୍ତୁ{% else %}View all talks{% endif %} {{ ic::ui(name="arrow") }}</a>
+      </p>
+    {% endif %}
+  </div>
+</section>
+{% endif %}

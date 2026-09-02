@@ -1,350 +1,134 @@
 {% import 'macros.html' as macros %}
-{% import 'partials/social-icons.html' as si %}
+{% import 'partials/icons.html' as ic %}
 
 {% set extra = config.extra %}
 
-{# Resolve the current page's own URL once, up front. Written as explicit
-   if-blocks rather than a default() chain because Tera evaluates default()'s
-   argument eagerly — `default(value=section.permalink)` throws on templates
-   where `section` is not in context at all. #}
 {%- set_global self_url = config.base_url -%}
 {%- if page -%}{%- set_global self_url = page.permalink -%}
 {%- elif section -%}{%- set_global self_url = section.permalink -%}
 {%- endif -%}
 
+{%- set_global meta_title = config.title -%}
+{%- if page and page.title -%}{%- set_global meta_title = page.title ~ " · " ~ config.title -%}
+{%- elif section and section.title and section.path != "/" -%}{%- set_global meta_title = section.title ~ " · " ~ config.title -%}
+{%- endif -%}
+
+{%- set_global meta_desc = config.description -%}
+{%- if page and page.description -%}{%- set_global meta_desc = page.description -%}
+{%- elif page and page.extra.short_description -%}{%- set_global meta_desc = page.extra.short_description -%}
+{%- elif section and section.description -%}{%- set_global meta_desc = section.description -%}
+{%- endif -%}
+
 <!DOCTYPE html>
-
 <html lang="{{ lang }}" data-site-base="{{ get_url(path='/') }}">
-
 <head>
-    <title>
-        {% block title %}
-        {{ page.title | default(value=config.title) }}
-        {% endblock %}
-    </title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}{{ meta_title }}{% endblock %}</title>
 
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="theme-color" content="#050911" media="(prefers-color-scheme: dark)">
-    <meta name="theme-color" content="#f4f7ff" media="(prefers-color-scheme: light)">
-    <meta name="color-scheme" content="dark light">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="Satyajit Puhan">
+<meta name="description" content="{{ meta_desc | striptags | trim | truncate(length=165) }}">
+<meta name="author" content="Satyajit Puhan">
+<meta name="theme-color" content="#070b14" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)">
+<meta name="color-scheme" content="dark light">
 
-    <!-- ── Theme bootstrap: runs before first paint so light mode never flashes dark ── -->
-    <script>
-    (function () {
-      try {
-        var saved = localStorage.getItem('ae-theme');
-        var theme = saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-        if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
-        window.__aeInitialTheme = theme;
-      } catch (e) { /* private mode / storage disabled — fall back to dark */ }
-      // Expose motion + pointer capabilities once, so scripts don't each re-query.
-      var mm = window.matchMedia;
-      window.__aeReducedMotion = !!(mm && mm('(prefers-reduced-motion: reduce)').matches);
-      window.__aeCoarsePointer = !!(mm && mm('(hover: none), (pointer: coarse)').matches);
-    })();
-    </script>
-    <meta name="description" content="{{ page.description | default(value=config.description) | default(value='') | striptags | truncate(length=160) }}">
-    <meta itemprop="name" content="{{ page.title | default(value=config.title) }}">
-    <meta itemprop="description" content="{{ page.description | default(value=config.description) | default(value='') }}">
+<link rel="canonical" href="{{ self_url }}">
 
-    <!-- Open Graph / Social Sharing -->
-    <meta property="og:title" content="{{ page.title | default(value=config.title) }}">
-    <meta property="og:description" content="{{ page.description | default(value=config.description) | default(value='') | striptags | truncate(length=160) }}">
-    <meta property="og:type" content="{% if page.title %}article{% else %}website{% endif %}">
-    <meta property="og:url" content="{{ self_url }}">
-    <meta property="og:image" content="{{ get_url(path='images/about/me.webp') }}">
-    <meta property="og:site_name" content="{{ config.title }}">
-    {# og:locale must be a real locale — "en_EN" (the old value) is not one. #}
-    <meta property="og:locale" content="{% if lang == 'or' %}or_IN{% else %}en_US{% endif %}">
-    <meta property="og:locale:alternate" content="{% if lang == 'or' %}en_US{% else %}or_IN{% endif %}">
+{# hreflang #}
+{% if page %}
+  <link rel="alternate" hreflang="{{ lang }}" href="{{ page.permalink }}">
+  {% for t in page.translations %}<link rel="alternate" hreflang="{{ t.lang }}" href="{{ t.permalink }}">{% endfor %}
+{% elif section %}
+  <link rel="alternate" hreflang="{{ lang }}" href="{{ section.permalink }}">
+  {% for t in section.translations %}<link rel="alternate" hreflang="{{ t.lang }}" href="{{ t.permalink }}">{% endfor %}
+{% endif %}
+<link rel="alternate" hreflang="x-default" href="{{ get_url(path='/', lang='en') }}">
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{ page.title | default(value=config.title) }}">
-    <meta name="twitter:description" content="{{ page.description | default(value=config.description) | default(value='') | striptags | truncate(length=160) }}">
-    <meta name="twitter:image" content="{{ get_url(path='images/about/me.webp') }}">
+{# Open Graph / Twitter #}
+<meta property="og:site_name" content="{{ config.title }}">
+<meta property="og:type" content="{% if page and page.title %}article{% else %}website{% endif %}">
+<meta property="og:title" content="{{ meta_title }}">
+<meta property="og:description" content="{{ meta_desc | striptags | trim | truncate(length=165) }}">
+<meta property="og:url" content="{{ self_url }}">
+<meta property="og:image" content="{% if page and page.extra.thumbnail %}{{ get_url(path=page.extra.thumbnail) }}{% else %}{{ get_url(path='images/hero/me1.webp') }}{% endif %}">
+<meta property="og:locale" content="{% if lang == 'or' %}or_IN{% else %}en_US{% endif %}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ meta_title }}">
+<meta name="twitter:description" content="{{ meta_desc | striptags | trim | truncate(length=165) }}">
+<meta name="twitter:image" content="{% if page and page.extra.thumbnail %}{{ get_url(path=page.extra.thumbnail) }}{% else %}{{ get_url(path='images/hero/me1.webp') }}{% endif %}">
 
-    <!-- Canonical URL -->
-    <link rel="canonical" href="{{ self_url }}">
+<link rel="icon" href="{{ get_url(path='images/favicon.ico') }}" sizes="any">
+<link rel="apple-touch-icon" href="{{ get_url(path='images/logo.png') }}">
 
-    <!-- ── hreflang alternates (were missing entirely) ── -->
-    {% if page %}
-      <link rel="alternate" hreflang="{{ lang }}" href="{{ page.permalink }}">
-      {% for t in page.translations %}<link rel="alternate" hreflang="{{ t.lang }}" href="{{ t.permalink }}">
-      {% endfor %}
-    {% elif section %}
-      <link rel="alternate" hreflang="{{ lang }}" href="{{ section.permalink }}">
-      {% for t in section.translations %}<link rel="alternate" hreflang="{{ t.lang }}" href="{{ t.permalink }}">
-      {% endfor %}
-    {% else %}
-      <link rel="alternate" hreflang="en" href="{{ get_url(path='/', lang='en') }}">
-      <link rel="alternate" hreflang="or" href="{{ get_url(path='/', lang='or') }}">
-    {% endif %}
-    <link rel="alternate" hreflang="x-default" href="{{ get_url(path='/', lang='en') }}">
+{% block rss %}{% if config.generate_feeds %}{{ macros::feeds() }}{% endif %}{% endblock %}
 
-    {% block rss %}
-    {% if config.generate_feeds %}
-    {{ macros::feeds() }}
-    {% endif %}
-    {% endblock %}
+{# Set the theme before first paint so light mode never flashes dark. #}
+<script>
+(function(){try{var t=localStorage.getItem('sp-theme');
+if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
 
-    {% block stylesheets %}
-    <!-- Fonts: Inter + Space Grotesk only, minimal weights -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-    <!-- Single bundled + purged stylesheet (see build_assets.sh) -->
-    <link rel="preload" as="style" href="{{ get_url(path='css/site.min.css', cachebust=true) }}">
-    <link rel="stylesheet" href="{{ get_url(path='css/site.min.css', cachebust=true) }}">
-    <link rel="preload" as="font" type="font/woff2" href="{{ get_url(path='fonts/LineIcons.woff2') }}" crossorigin>
-    {% endblock %}
+{% block stylesheets %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+Oriya:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ get_url(path='css/site.css', cachebust=true) }}">
+{% endblock %}
 
-    <link rel="shortcut icon" type="image/x-icon" href="{{ get_url(path='images/favicon.ico') }}">
-    <link rel="icon" type="image/x-icon" href="{{ get_url(path='images/favicon.ico') }}">
-
-    {% block seo %}
-    {{ macros::ms_application(path="static/images/logo.png") }}
-    {{ macros::icons(path="static/images/logo.png", apple=true, sizes=[57, 72, 76, 114, 120, 144, 152, 180]) }}
-    {{ macros::icons(path="static/images/logo.png", sizes=[16, 32, 36, 48, 72, 96, 144, 192]) }}
-    {{ macros::analytics() }}
-    {% endblock %}
-
-    <style>
-        .ae-wave-divider { overflow: hidden; line-height: 0; }
-    </style>
+{% block head_extra %}{% endblock %}
 </head>
 
 <body>
+<a class="skip-link" href="#content">Skip to content</a>
+<div id="progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
 
-    <!-- ── Skip to Content (Accessibility) ── -->
-    {# The show/hide used to live in inline onfocus/onblur handlers, so the link
-       was permanently off-screen whenever scripting was disabled. It is now
-       driven by :focus-visible in polish.css. #}
-    <a href="#content" class="ae-skip-link" style="position: absolute; top: -40px; left: 0; background: var(--gold, #e8a444); color: #000; padding: 8px 16px; font-weight: 700; font-size: 0.85rem; z-index: 100000; text-decoration: none; border-radius: 0 0 8px 0; transition: top 0.3s;">Skip to content</a>
+{% block navbar %}{% include "partials/nav.html" %}{% endblock %}
 
-    <!-- ── Film Grain Noise Overlay ── -->
-    <div class="ae-noise-overlay" aria-hidden="true"></div>
+<main id="content" tabindex="-1">
+{% block content %}{% endblock %}
+</main>
 
-    <!-- ── Reading Progress Bar ── -->
-    <div id="ae-scroll-progress" role="progressbar" aria-label="Reading progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+{% block footer %}{% include "partials/footer.html" %}{% endblock %}
 
-    <!-- ══════════════════════════════════════════════════════════════
-         SCROLL BUS — one passive listener + one rAF frame for the whole
-         page. Previously five separate scripts each bound their own
-         scroll handler and read layout inside it, which forced a reflow
-         several times per frame. Everything now subscribes here.
-         ══════════════════════════════════════════════════════════════ -->
-    <script>
-    (function () {
-      var subs = [];
-      var ticking = false;
-      function frame() {
-        ticking = false;
-        var y = window.scrollY || document.documentElement.scrollTop || 0;
-        for (var i = 0; i < subs.length; i++) {
-          try { subs[i](y); } catch (e) { /* one bad subscriber must not kill the rest */ }
-        }
-      }
-      function onScroll() {
-        if (!ticking) { ticking = true; requestAnimationFrame(frame); }
-      }
-      window.addEventListener('scroll', onScroll, { passive: true });
-      window.addEventListener('resize', onScroll, { passive: true });
-      window.aeOnScroll = function (fn) { subs.push(fn); onScroll(); };
+{% include "partials/palette.html" %}
+{% include "partials/assistant.html" %}
 
-      // Reading progress
-      var bar = document.getElementById('ae-scroll-progress');
-      if (bar) {
-        window.aeOnScroll(function (y) {
-          var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-          var pct = docHeight > 0 ? Math.min(100, Math.max(0, (y / docHeight) * 100)) : 0;
-          bar.style.width = pct + '%';
-          bar.setAttribute('aria-valuenow', Math.round(pct));
-        });
-      }
-    })();
-    </script>
-    {% block navbar %}
-    {% include "partials/navbar.html" %}
-    {% endblock %}
+<button class="to-top" aria-label="Back to top">{{ ic::arrow_up() }}</button>
 
-    {# tabindex="-1" so the skip link actually moves keyboard focus here rather
-       than just scrolling the viewport. #}
-    <main id="content" tabindex="-1">
-        {% block content %}{% endblock %}
-    </main>
+<noscript>
+  <p style="padding:12px 20px;text-align:center;background:var(--accent-soft);color:var(--accent);margin:0">
+    JavaScript is off — the whole page still reads fine; search, the assistant and live citation counts are disabled.
+  </p>
+</noscript>
 
-    {% block footer %}
-    {% include "partials/footer.html" %}
-    {% endblock %}
+{% block javascripts %}
+{% include "partials/search-index.html" ignore missing %}
+<script src="{{ get_url(path='js/site.js', cachebust=true) }}" defer></script>
+{% endblock %}
 
-    {% block javascripts %}
-    <script src="{{ get_url(path='js/bootstrap.bundle.min.js') }}" defer></script>
-    <!-- Single bundled + minified site script (see build_assets.sh) -->
-    <script src="{{ get_url(path='js/site.min.js', cachebust=true) }}" defer></script>
-
-    <!-- Sticky navbar scroll class (rides the shared scroll bus) -->
-    <script>
-    (function() {
-      var nav = document.getElementById('header-particles-wrap');
-      if (!nav || !window.aeOnScroll) return;
-      window.aeOnScroll(function (y) { nav.classList.toggle('scrolled', y > 60); });
-    })();
-    </script>
-
-    <!-- Search index for the command palette (⌘K / Ctrl-K).
-         The palette code itself ships inside site.min.js — see build_assets.sh. -->
-    {% include "partials/search-index.html" ignore missing %}
-    {% endblock %}
-
-    <!-- ════════════════════════════════════════════
-         COOKIE CONSENT BANNER
-         ════════════════════════════════════════════ -->
-    <div id="cookie-consent" style="
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 100000;
-      background: rgba(10, 10, 22, 0.95);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(139, 92, 246, 0.3);
-      border-radius: 14px;
-      padding: 16px 24px;
-      max-width: 90vw;
-      width: 480px;
-      box-shadow: 0 8px 40px rgba(0,0,0,0.6);
-      display: none;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.75);
-    ">
-      <span style="flex: 1; min-width: 200px;">
-        🍪 We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.
-      </span>
-      <button id="cookie-accept" style="
-        background: linear-gradient(135deg, #8b5cf6, #06b6d4);
-        color: white;
-        border: none;
-        padding: 8px 20px;
-        border-radius: 8px;
-        font-weight: 700;
-        cursor: pointer;
-        font-size: 0.8rem;
-        transition: all 0.3s ease;
-        white-space: nowrap;
-      ">Accept</button>
-    </div>
-    <script>
-    (function() {
-      var banner = document.getElementById('cookie-consent');
-      var acceptBtn = document.getElementById('cookie-accept');
-      if (!banner || !acceptBtn) return;
-      if (!localStorage.getItem('cookie-consent')) {
-        banner.style.display = 'flex';
-      }
-      acceptBtn.addEventListener('click', function() {
-        localStorage.setItem('cookie-consent', 'accepted');
-        banner.style.opacity = '0';
-        banner.style.transform = 'translateX(-50%) translateY(20px)';
-        setTimeout(function() { banner.style.display = 'none'; }, 300);
-      });
-    })();
-    </script>
-
-    <!-- ════════════════════════════════════════════
-         NOSCRIPT FALLBACK
-         ════════════════════════════════════════════ -->
-    {# The old <noscript> painted an opaque full-screen wall, which hid every word of
-       the site from non-JS readers, text browsers and any crawler that doesn't execute
-       scripts. All the content here is static HTML and reads perfectly fine without JS,
-       so this is now a non-blocking notice. #}
-    <noscript>
-      <div style="
-        position: relative; z-index: 99999;
-        background: rgba(232,164,68,0.12);
-        border-bottom: 1px solid rgba(232,164,68,0.35);
-        color: #f5c266; padding: 12px 20px; text-align: center;
-        font-size: 0.88rem; line-height: 1.5;
-      ">
-        JavaScript is disabled — the page is fully readable, but interactive extras
-        (search, 3D globe, live citation counts, theme toggle) are turned off.
-      </div>
-    </noscript>
-
-    <!-- ════════════════════════════════════════════
-         SCHEMA.ORG JSON-LD STRUCTURED DATA
-         ════════════════════════════════════════════ -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Satyajit Puhan",
-      "alternateName": "ସତ୍ୟଜିତ ପୁହାଣ",
-      "jobTitle": "Postdoctoral Researcher",
-      "description": "Theoretical Particle Physicist specializing in QCD, hadronic physics, and Dyson–Schwinger equations at Academia Sinica.",
-      "url": "{{ config.base_url }}",
-      "image": "{{ get_url(path='images/about/me.webp') }}",
-      "affiliation": {
-        "@type": "Organization",
-        "name": "Institute of Physics, Academia Sinica",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Taipei",
-          "addressCountry": "Taiwan"
-        }
-      },
-      "alumniOf": {
-        "@type": "Organization",
-        "name": "Dr. B R Ambedkar NIT Jalandhar"
-      },
-      "knowsAbout": [
-        "Quantum Chromodynamics",
-        "Hadronic Physics",
-        "Parton Distribution Functions",
-        "Transverse Momentum Dependent Distributions",
-        "Generalized Parton Distributions",
-        "Light-Front Quark Model",
-        "Dyson–Schwinger Equations"
-      ],
-      "sameAs": [
-        "https://github.com/satyajitpuhan",
-        "https://www.linkedin.com/in/satyajit-puhan-b9889a162/",
-        "https://scholar.google.com/citations?hl=en&user=pKbmhZQAAAAJ",
-        "https://www.researchgate.net/profile/Satyajit-Puhan",
-        "https://inspirehep.net/authors/2706496",
-        "https://www.facebook.com/satyajit.puhan",
-        "https://orcid.org/0009-0004-9766-5005",
-        "https://www.instagram.com/puhan_satyaji/"
-      ],
-      "identifier": [
-        { "@type": "PropertyValue", "propertyID": "ORCID", "value": "0009-0004-9766-5005" },
-        { "@type": "PropertyValue", "propertyID": "INSPIRE-HEP", "value": "{{ config.extra.inspire_author_id }}" }
-      ]
-    }
-    </script>
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": {{ config.title | json_encode | safe }},
-      "url": "{{ config.base_url }}",
-      "inLanguage": "{{ lang }}",
-      "author": { "@type": "Person", "name": "Satyajit Puhan" },
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": { "@type": "EntryPoint", "urlTemplate": "{{ config.base_url }}?q={search_term_string}" },
-        "query-input": "required name=search_term_string"
-      }
-    }
-    </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Satyajit Puhan",
+  "alternateName": "ସତ୍ୟଜିତ ପୁହାଣ",
+  "jobTitle": "Postdoctoral Researcher",
+  "description": "Theoretical particle physicist working on QCD, hadron structure and light-front dynamics at the Institute of Physics, Academia Sinica.",
+  "url": "{{ config.base_url }}",
+  "image": "{{ get_url(path='images/hero/me1.webp') }}",
+  "email": "mailto:puhansatyajit@gmail.com",
+  "affiliation": { "@type": "Organization", "name": "Institute of Physics, Academia Sinica",
+    "address": { "@type": "PostalAddress", "addressLocality": "Taipei", "addressCountry": "Taiwan" } },
+  "alumniOf": { "@type": "Organization", "name": "Dr. B R Ambedkar NIT Jalandhar" },
+  "knowsAbout": ["Quantum Chromodynamics","Hadron structure","Parton distribution functions",
+    "Transverse momentum dependent distributions","Generalized parton distributions",
+    "Light-front quark model","Nuclear medium modifications"],
+  "sameAs": [{% for s in config.extra.socials %}"{{ s.url }}"{% if not loop.last %},{% endif %}{% endfor %}],
+  "identifier": [
+    { "@type": "PropertyValue", "propertyID": "INSPIRE-HEP", "value": "{{ config.extra.inspire_author_id }}" },
+    { "@type": "PropertyValue", "propertyID": "ORCID", "value": "0009-0004-9766-5005" }
+  ]
+}
+</script>
 </body>
-
 </html>

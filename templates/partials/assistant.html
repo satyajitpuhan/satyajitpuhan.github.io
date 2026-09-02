@@ -1,0 +1,28 @@
+{% import 'partials/icons.html' as ic %}
+<button class="assistant-fab" id="assistant-fab" aria-label="Ask about Satyajit's research">{{ ic::ui(name="chat") }}</button>
+
+<aside class="assistant" id="assistant" aria-label="Research assistant">
+  <div class="assistant__head">
+    <span class="brand__mark" aria-hidden="true" style="width:30px;height:30px;font-size:.78rem">SP</span>
+    <div style="flex:1;min-width:0">
+      <strong style="font-size:.9rem;display:block">{% if lang == 'or' %}ଗବେଷଣା ସହାୟକ{% else %}Research assistant{% endif %}</strong>
+      <span class="dim" style="font-size:.72rem">{% if lang == 'or' %}ପ୍ରକାଶନ, ଗବେଷଣା, ଯୋଗାଯୋଗ{% else %}Publications · research · contact{% endif %}</span>
+    </div>
+    <button class="icon-btn" id="assistant-close" aria-label="Close" style="width:30px;height:30px">✕</button>
+  </div>
+
+  <div class="assistant__log" id="assistant-log"></div>
+
+  <div class="assistant__quick" id="assistant-quick">
+    <button data-q="research">🔬 Research</button>
+    <button data-q="publications">📄 Publications</button>
+    <button data-q="education">🎓 Education</button>
+    <button data-q="inspire">🔗 INSPIRE</button>
+    <button data-q="contact">📧 Contact</button>
+  </div>
+
+  <form class="assistant__form" id="assistant-form">
+    <input id="assistant-input" type="text" placeholder="{% if lang == 'or' %}ପ୍ରଶ୍ନ ଲେଖନ୍ତୁ…{% else %}Ask a question…{% endif %}" autocomplete="off" aria-label="Your question">
+    <button class="btn btn--primary btn--sm" type="submit">{{ ic::ui(name="arrow") }}<span class="sr-only">Send</span></button>
+  </form>
+</aside>
