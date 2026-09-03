@@ -1,4 +1,6 @@
+{% import 'partials/icons.html' as ic %}
 {%- set d = load_data(path="static/sections/conferences/" ~ lang ~ ".toml", required=false) -%}
+{%- set limit = conf_limit | default(value=0) -%}
 {% if d and d.events %}
 <section class="section" id="conferences">
   <div class="wrap">
@@ -10,6 +12,7 @@
 
     <div class="grid grid--3">
       {% for e in d.events %}
+        {% if limit == 0 or loop.index0 < limit %}
         <article class="card reveal">
           {% if e.image %}
             <div class="card__media"><img src="{{ get_url(path=e.image) }}" alt="" loading="lazy" decoding="async" width="420" height="262"></div>
@@ -22,11 +25,20 @@
             <h3 class="card__title">{{ e.title }}</h3>
             <p class="card__meta">{{ e.date }}</p>
             <p class="card__meta dim">{{ e.venue }}</p>
-            <p class="card__text">{{ e.description }}</p>
+            <p class="card__text">{{ e.description | truncate(length=140) }}</p>
           </div>
         </article>
+        {% endif %}
       {% endfor %}
     </div>
+
+    {% if limit > 0 and d.events | length > limit %}
+      <p class="center" style="margin-top:26px">
+        <a class="btn btn--ghost" href="{{ get_url(path='/resume/', lang=lang) }}#conferences">
+          {% if lang == 'or' %}ସମସ୍ତ {{ d.events | length }} ଟି{% else %}All {{ d.events | length }} conferences{% endif %} {{ ic::ui(name="arrow") }}
+        </a>
+      </p>
+    {% endif %}
   </div>
 </section>
 {% endif %}

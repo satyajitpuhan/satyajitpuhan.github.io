@@ -1,4 +1,6 @@
+{% import 'partials/icons.html' as ic %}
 {%- set d = load_data(path="static/sections/resume/" ~ lang ~ ".toml", required=false) -%}
+{%- set full = resume_full | default(value=false) -%}
 {% if d %}
 <section class="section" id="resume">
   <div class="wrap">
@@ -8,34 +10,63 @@
       {% if d.subtitle %}<p>{{ d.subtitle }}</p>{% endif %}
     </div>
 
-    <div class="tabs reveal" data-tabs role="tablist" aria-label="Resume">
-      <button class="tab" role="tab" aria-selected="true" aria-controls="tab-edu" id="tabbtn-edu">{{ d.educations_tab | default(value="Education") }}</button>
-      <button class="tab" role="tab" aria-selected="false" aria-controls="tab-exp" id="tabbtn-exp">{{ d.experiences_tab | default(value="Experience") }}</button>
-    </div>
+    {% if full %}
+      <div class="tabs reveal" data-tabs role="tablist" aria-label="Resume">
+        <button class="tab" role="tab" aria-selected="true" aria-controls="tab-edu" id="tabbtn-edu">{{ d.educations_tab | default(value="Education") }}</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="tab-exp" id="tabbtn-exp">{{ d.experiences_tab | default(value="Experience") }}</button>
+      </div>
 
-    <div id="tab-edu" role="tabpanel" aria-labelledby="tabbtn-edu">
-      <ol class="timeline">
-        {% for e in d.educations %}
-          <li class="tl-item reveal">
-            <p class="tl-item__time">{{ e.time }}</p>
-            <h3 class="tl-item__title">{{ e.title }}</h3>
-            <p class="tl-item__text">{{ e.content }}</p>
-          </li>
-        {% endfor %}
-      </ol>
-    </div>
+      <div id="tab-edu" role="tabpanel" aria-labelledby="tabbtn-edu">
+        <ol class="timeline">
+          {% for e in d.educations %}
+            <li class="tl-item reveal">
+              <p class="tl-item__time">{{ e.time }}</p>
+              <h3 class="tl-item__title">{{ e.title }}</h3>
+              <p class="tl-item__text">{{ e.content }}</p>
+            </li>
+          {% endfor %}
+        </ol>
+      </div>
 
-    <div id="tab-exp" role="tabpanel" aria-labelledby="tabbtn-exp" hidden>
-      <ol class="timeline">
+      <div id="tab-exp" role="tabpanel" aria-labelledby="tabbtn-exp" hidden>
+        <ol class="timeline">
+          {% for e in d.experiences %}
+            <li class="tl-item reveal">
+              <p class="tl-item__time">{{ e.time }}</p>
+              <h3 class="tl-item__title">{{ e.title }}</h3>
+              <p class="tl-item__text">{{ e.content }}</p>
+            </li>
+          {% endfor %}
+        </ol>
+      </div>
+    {% else %}
+      {# Homepage: the three headline positions only. #}
+      <div class="grid grid--3">
         {% for e in d.experiences %}
-          <li class="tl-item reveal">
-            <p class="tl-item__time">{{ e.time }}</p>
-            <h3 class="tl-item__title">{{ e.title }}</h3>
-            <p class="tl-item__text">{{ e.content }}</p>
-          </li>
+          {% if loop.index0 < 1 %}
+            <article class="card reveal"><div class="card__body">
+              <span class="chip chip--mint">{% if lang == 'or' %}ବର୍ତ୍ତମାନ{% else %}Now{% endif %} · {{ e.time }}</span>
+              <h3 class="card__title">{{ e.title }}</h3>
+              <p class="card__text">{{ e.content | truncate(length=150) }}</p>
+            </div></article>
+          {% endif %}
         {% endfor %}
-      </ol>
-    </div>
+        {% for e in d.educations %}
+          {% if loop.index0 < 2 %}
+            <article class="card reveal"><div class="card__body">
+              <span class="chip chip--accent">{{ e.time }}</span>
+              <h3 class="card__title">{{ e.title }}</h3>
+              <p class="card__text">{{ e.content | truncate(length=150) }}</p>
+            </div></article>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <p class="center" style="margin-top:28px">
+        <a class="btn btn--ghost" href="{{ get_url(path='/resume/', lang=lang) }}">
+          {% if lang == 'or' %}ପୂରା ବାୟୋଡାଟା{% else %}Full academic CV{% endif %} {{ ic::ui(name="arrow") }}
+        </a>
+      </p>
+    {% endif %}
   </div>
 </section>
 {% endif %}

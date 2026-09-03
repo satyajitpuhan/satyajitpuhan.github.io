@@ -31,10 +31,10 @@
           <span>{% if lang == 'or' %}INSPIRE-HEP ପ୍ରୋଫାଇଲ୍{% else %}INSPIRE-HEP profile{% endif %}</span>
           {{ ic::ui(name="external") }}
         </a>
-        <a class="btn btn--primary" href="#portfolio">
+        <a class="btn btn--primary" href="{{ get_url(path='/portfolio/', lang=lang) }}">
           {% if lang == 'or' %}ପ୍ରକାଶନ ଦେଖନ୍ତୁ{% else %}Browse publications{% endif %} {{ ic::ui(name="arrow") }}
         </a>
-        <a class="btn btn--ghost" href="#contact">{{ trans(key='contact_me', lang=lang) }}</a>
+        <a class="btn btn--ghost" href="{{ get_url(path='/contact/', lang=lang) }}">{{ trans(key='contact_me', lang=lang) }}</a>
       </div>
 
       <div class="chips" style="margin-bottom:26px">

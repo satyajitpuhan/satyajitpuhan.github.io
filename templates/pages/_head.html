@@ -1,0 +1,11 @@
+{# Shared page header for the standalone overview pages. #}
+<header class="page-head">
+  <div class="page-head__glow" aria-hidden="true"></div>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="{{ get_url(path='/', lang=lang) }}">{{ trans(key='home', lang=lang) }}</a> › <span>{{ section.title }}</span>
+    </nav>
+    <h1 class="h-1">{{ section.title }}</h1>
+    {% if section.description %}<p class="lede" style="margin-top:12px;max-width:62ch">{{ section.description }}</p>{% endif %}
+  </div>
+</header>

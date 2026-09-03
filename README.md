@@ -60,7 +60,8 @@ python3 tools/sync_inspire.py --dry-run
 | `content/collaborators/` | co-author profiles |
 | `static/sections/*/{en,or}.toml` | the editable text of each homepage section |
 | `static/data/inspire-stats.json` | live paper / citation / h-index figures |
-| `templates/sections/` | the homepage sections |
+| `templates/sections/` | the reusable sections (used by the homepage and the standalone pages) |
+| `templates/pages/` | the standalone About / Research / CV / News pages |
 | `templates/partials/` | nav, footer, icons, search index, assistant |
 | `static/css/site.css` | the entire design system — one hand-written file |
 | `static/js/site.js` | all behaviour — theme, search, filters, lightbox, stats |
@@ -69,6 +70,25 @@ python3 tools/sync_inspire.py --dry-run
 
 There is **no CSS/JS build step**. Edit `static/css/site.css` or
 `static/js/site.js` and the change is live on the next build.
+
+## Page structure
+
+The homepage is deliberately short — a hero, then a handful of items per
+section, each linking to the page that holds the rest:
+
+| Homepage section | shows | links to |
+|---|---|---|
+| News | 3 newest | `/news/` |
+| About | a short bio + 5 photos | `/about/` |
+| Research | 4 areas, trimmed | `/research/` |
+| Publications | 6 newest, as a list | `/portfolio/` |
+| Resume | current post + 2 degrees | `/resume/` |
+| Collaborators | 6 | `/collaborators/` |
+| Talks | 3 newest | `/blog/` |
+
+Every section partial takes a limit, so the same file renders the short version
+on the homepage and the full version on its own page — there is no duplicated
+markup to keep in sync.
 
 ## Editing content
 
