@@ -36,16 +36,17 @@ jobs:
           fetch-depth: 0
 
       # ── 1. Pull anything new from INSPIRE-HEP ────────────────────────────
+      # This runs on every trigger, including pushes: the bot's commit uses
+      # GITHUB_TOKEN, and GitHub does not re-trigger workflows from that, so
+      # there is no risk of a loop.
       - name: Install PDF and WebP tools
-        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         run: sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils webp
 
       - name: Sync publications from INSPIRE-HEP
-        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        continue-on-error: true          # a bad day at INSPIRE must not block a deploy
         run: python3 tools/sync_inspire.py
 
       - name: Commit anything the sync produced
-        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         run: |
           git config user.name  "inspire-sync[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -77,7 +78,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
           publish_branch: gh-pages
-          cname: ""
           user_name: "github-actions[bot]"
           user_email: "41898282+github-actions[bot]@users.noreply.github.com"
           commit_message: "deploy: ${{ github.event.head_commit.message || 'scheduled rebuild' }}"
