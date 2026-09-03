@@ -3,7 +3,7 @@ title = "Extraction of Pion Unpolarized Quark Generalized Parton Distribution fr
 date = 2026-04-13
 
 [extra]
-thumbnail = "images/portfolio/papers/extraction-of-pion-unpolarized-quark-generalized-parton-cover.svg"
+thumbnail = "images/portfolio/papers/extraction-of-pion-unpolarized-quark-generalized-parton-first-page.webp"
 service = "e-Print: 2604.11116 [hep-ph]"
 client = "S. Puhan, S. Sharma, N. Kumar, H. Dahiya"
 short_description = "Based on a global fit to experimental measurements of the pion electromagnetic form factor and parton distribution functions (PDFs), we report a data-driven determination of the unpolarized quark generalized…"

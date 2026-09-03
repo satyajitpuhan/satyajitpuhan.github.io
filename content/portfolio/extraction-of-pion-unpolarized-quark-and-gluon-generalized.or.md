@@ -3,7 +3,7 @@ title = "Extraction of Pion Unpolarized Quark and Gluon Generalized Parton Distr
 date = 2026-08-07
 
 [extra]
-thumbnail = "images/portfolio/papers/extraction-of-pion-unpolarized-quark-and-gluon-generalized-cover.svg"
+thumbnail = "images/portfolio/papers/extraction-of-pion-unpolarized-quark-and-gluon-generalized-first-page.webp"
 service = "e-Print: 2608.07085 [hep-ph]"
 client = "S. Puhan, S. Sharma, N. Kumar"
 short_description = "We present a deep neural-network (DNN) extraction of the pion unpolarized quark and gluon generalized parton distributions (GPDs) using the corresponding parton distribution functions (PDFs) from the JAM21 and…"
