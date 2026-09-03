@@ -1,5 +1,7 @@
+{% import 'partials/icons.html' as ic %}
 {%- set d = load_data(path="static/sections/collaborators/" ~ lang ~ ".toml", required=false) -%}
 {%- set sec = get_section(path="collaborators/_index.md", lang=lang) -%}
+{%- set limit = collab_limit | default(value=0) -%}
 {% if d and d.collaborators %}
 <section class="section" id="collaborators">
   <div class="wrap">
@@ -11,6 +13,7 @@
 
     <div class="grid grid--3">
       {% for c in d.collaborators %}
+        {% if limit == 0 or loop.index0 < limit %}
         {%- set slug = c.name | slugify -%}
         {%- set link = "" -%}
         {% for p in sec.pages %}{% if p.slug == slug %}{% set_global link = p.permalink %}{% endif %}{% endfor %}
@@ -25,8 +28,17 @@
             <span class="person__role">{{ c.role }}{% if c.institution %} · {{ c.institution }}{% endif %}</span>
           </span>
         {% if link %}</a>{% else %}</div>{% endif %}
+        {% endif %}
       {% endfor %}
     </div>
+
+    {% if limit > 0 and d.collaborators | length > limit %}
+      <p class="center" style="margin-top:26px">
+        <a class="btn btn--ghost" href="{{ get_url(path='/collaborators/', lang=lang) }}">
+          {% if lang == 'or' %}ସମସ୍ତ {{ d.collaborators | length }} ଜଣ ସହଯୋଗୀ{% else %}All {{ d.collaborators | length }} collaborators{% endif %} {{ ic::ui(name="arrow") }}
+        </a>
+      </p>
+    {% endif %}
   </div>
 </section>
 {% endif %}

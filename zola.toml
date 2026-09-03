@@ -120,23 +120,24 @@ footer_logo = "images/logo.png"
 formspree_url = "https://formsubmit.co/puhansatyajit@gmail.com"
 display_cta = true
 
+# Each menu entry is its own page, so the homepage can stay short.
 menus = [
-  { name = "home", url = "#home" },
-  { name = "about", url = "#about" },
-  { name = "service", url = "#service" },
-  { name = "work", url = "#portfolio" },
-  { name = "resume", url = "#resume" },
-  { name = "blog", url = "#blog" },
-  { name = "contact", url = "#contact" },
+  { name = "home", url = "/" },
+  { name = "about", url = "/about/" },
+  { name = "service", url = "/research/" },
+  { name = "work", url = "/portfolio/" },
+  { name = "resume", url = "/resume/" },
+  { name = "blog", url = "/blog/" },
   { name = "visualizations", url = "/visualizations/" },
-  { name = "social_service", url = "/social-service/" }
+  { name = "social_service", url = "/social-service/" },
+  { name = "contact", url = "/contact/" }
 ]
 
 sitemaps = [
-  { name = "about_me", url = "/#about" },
-  { name = "frequently_ask_question", url = "/#service" },
-  { name = "privacy_and_policy", url = "/#portfolio" },
-  { name = "latest_article", url = "/#blog" }
+  { name = "about_me", url = "/about/" },
+  { name = "frequently_ask_question", url = "/research/" },
+  { name = "privacy_and_policy", url = "/portfolio/" },
+  { name = "latest_article", url = "/blog/" }
 ]
 
 inspire_author_id = "2706496"

@@ -40,7 +40,7 @@
     {% endif %}
     {% if page.extra.about %}<p class="prose" style="margin-bottom:26px">{{ page.extra.about }}</p>{% endif %}
     <div class="prose">{{ page.content | safe }}</div>
-    <p style="margin-top:30px"><a class="btn btn--ghost" href="{{ get_url(path='/', lang=lang) }}#collaborators">← {% if lang == 'or' %}ସବୁ ସହଯୋଗୀ{% else %}All collaborators{% endif %}</a></p>
+    <p style="margin-top:30px"><a class="btn btn--ghost" href="{{ get_url(path='/collaborators/', lang=lang) }}">← {% if lang == 'or' %}ସବୁ ସହଯୋଗୀ{% else %}All collaborators{% endif %}</a></p>
   </div>
 </section>
 {% endblock %}

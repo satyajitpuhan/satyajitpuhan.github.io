@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+{% include "pages/_head.html" %}
+{% set about_full = true %}
+{% set about_gallery_limit = 0 %}
+{% include "sections/about.html" %}
+{% include "sections/reviewer.html" %}
+{% set collab_limit = 6 %}
+{% include "sections/collaborators.html" %}
+{% endblock %}

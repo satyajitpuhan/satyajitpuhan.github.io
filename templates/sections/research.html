@@ -1,4 +1,6 @@
+{% import 'partials/icons.html' as ic %}
 {%- set d = load_data(path="static/sections/service/" ~ lang ~ ".toml", required=false) -%}
+{%- set full = research_full | default(value=false) -%}
 {% if d %}
 <section class="section" id="service">
   <div class="wrap">
@@ -8,19 +10,27 @@
       {% if d.subtitle %}<p>{{ d.subtitle }}</p>{% endif %}
     </div>
 
-    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))">
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,{% if full %}420{% else %}250{% endif %}px),1fr))">
       {% for s in d.services %}
         <article class="card reveal">
           <div class="card__body">
             <span class="chip chip--{% if loop.index0 % 4 == 0 %}accent{% elif loop.index0 % 4 == 1 %}cyan{% elif loop.index0 % 4 == 2 %}violet{% else %}mint{% endif %}">
               {{ loop.index }} / {{ d.services | length }}
             </span>
-            <h3 class="card__title" style="font-size:1.12rem">{{ s.title }}</h3>
-            <p class="card__text">{{ s.content }}</p>
+            <h3 class="card__title" style="font-size:1.06rem">{{ s.title }}</h3>
+            <p class="card__text">{% if full %}{{ s.content }}{% else %}{{ s.content | truncate(length=160) }}{% endif %}</p>
           </div>
         </article>
       {% endfor %}
     </div>
+
+    {% if not full %}
+      <p class="center" style="margin-top:28px">
+        <a class="btn btn--ghost" href="{{ get_url(path='/research/', lang=lang) }}">
+          {% if lang == 'or' %}ଗବେଷଣା ବିଷୟରେ ଅଧିକ{% else %}More on the research{% endif %} {{ ic::ui(name="arrow") }}
+        </a>
+      </p>
+    {% endif %}
   </div>
 </section>
 {% endif %}

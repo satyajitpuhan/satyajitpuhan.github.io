@@ -2,18 +2,30 @@
 {% block title %}{{ config.title }} — {% if lang == 'or' %}ପଦାର୍ଥ ବିଜ୍ଞାନୀ{% else %}Theoretical Particle Physicist{% endif %}{% endblock %}
 
 {% block content %}
+{# The homepage is a short overview. Each section shows a handful of items and
+   links to the page that holds the rest. #}
 {% include "sections/hero.html" %}
+
+{% set news_limit = 3 %}
 {% include "sections/news.html" %}
+
+{% set about_gallery_limit = 5 %}
 {% include "sections/about.html" %}
+
 {% include "sections/research.html" %}
-{% set pub_limit = 9 %}
+
+{% set pub_limit = 6 %}
+{% set pub_compact = true %}
 {% include "sections/publications.html" %}
-{% set pub_limit = 0 %}
+{% set pub_compact = false %}
+
 {% include "sections/resume.html" %}
-{% include "sections/skills.html" %}
-{% include "sections/reviewer.html" %}
+
+{% set collab_limit = 6 %}
 {% include "sections/collaborators.html" %}
-{% include "sections/conferences.html" %}
+
+{% set talks_limit = 3 %}
 {% include "sections/talks.html" %}
+
 {% include "sections/contact.html" %}
 {% endblock %}

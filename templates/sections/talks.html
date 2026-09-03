@@ -1,5 +1,6 @@
 {% import 'partials/icons.html' as ic %}
 {%- set sec = get_section(path="blog/_index.md", lang=lang) -%}
+{%- set limit = talks_limit | default(value=0) -%}
 {% if sec.pages %}
 <section class="section" id="blog">
   <div class="wrap">
@@ -11,7 +12,7 @@
 
     <div class="grid grid--3">
       {% for p in sec.pages %}
-        {% if loop.index0 < 9 %}
+        {% if limit == 0 or loop.index0 < limit %}
         <article class="card reveal">
           {% if p.extra.feature_image %}
             <a class="card__media" href="{{ p.permalink }}" tabindex="-1" aria-hidden="true">
@@ -34,7 +35,7 @@
       {% endfor %}
     </div>
 
-    {% if sec.pages | length > 9 %}
+    {% if limit > 0 and sec.pages | length > limit %}
       <p class="center" style="margin-top:30px">
         <a class="btn btn--ghost" href="{{ sec.permalink }}">{% if lang == 'or' %}ସବୁ ଦେଖନ୍ତୁ{% else %}View all talks{% endif %} {{ ic::ui(name="arrow") }}</a>
       </p>

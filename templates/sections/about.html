@@ -1,9 +1,12 @@
+{% import 'partials/icons.html' as ic %}
 {%- set d = load_data(path="static/sections/about/" ~ lang ~ ".toml", required=false) -%}
 {%- set home = load_data(path="static/sections/home/" ~ lang ~ ".toml", required=false) -%}
+{%- set full = about_full | default(value=false) -%}
+{%- set gallery_limit = about_gallery_limit | default(value=0) -%}
 {% if d %}
 <section class="section" id="about">
   <div class="wrap">
-    <div class="grid" style="grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);align-items:start">
+    <div class="grid" style="grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);align-items:start">
       <div class="reveal">
         <img src="{{ get_url(path=d.image | default(value='images/about/me.webp')) }}"
              alt="Satyajit Puhan"
@@ -12,23 +15,48 @@
       </div>
       <div class="reveal">
         <p class="eyebrow">{% if lang == 'or' %}ମୋ ବିଷୟରେ{% else %}About me{% endif %}</p>
-        <div class="prose">{{ d.description | markdown | safe }}</div>
-        <div class="prose" style="margin-top:14px">{{ d.content | markdown | safe }}</div>
+        {% if full %}
+          <div class="prose">{{ d.description | markdown | safe }}</div>
+          <div class="prose" style="margin-top:14px">{{ d.content | markdown | safe }}</div>
+        {% else %}
+          <h2 class="h-1" style="margin-bottom:14px">{% if lang == 'or' %}ଏକ ଛୋଟ ଗାଁରୁ ଆକାଡେମିଆ ସିନିକା{% else %}From a village in Odisha to Academia Sinica{% endif %}</h2>
+          <p class="lede">
+            {% if lang == 'or' %}
+              ଓଡ଼ିଶାର ବାଲେଶ୍ୱର ଜିଲ୍ଲାର ଛତ୍ରା ଗାଁରେ ଜନ୍ମ। ପଦାର୍ଥ ବିଜ୍ଞାନରେ JAM-ରେ AIR-877 ଓ JEST-ରେ AIR-209। NIT ଜାଲନ୍ଧରରେ ପିଏଚ୍‌ଡି, ବର୍ତ୍ତମାନ ତାଇପେର ଆକାଡେମିଆ ସିନିକାରେ ପୋଷ୍ଟଡକ୍ଟୋରାଲ ଗବେଷକ।
+            {% else %}
+              Born in Chhatara, a small village in Balasore, Odisha, to a family of farmers. Ranked AIR-877 in JAM and AIR-209 in JEST, took an M.Sc. at NIT Jamshedpur and a PhD at NIT Jalandhar under Dr. Harleen Dahiya, with a visiting fellowship at JINR Dubna. Now a postdoctoral researcher at the Institute of Physics, Academia Sinica, Taipei.
+            {% endif %}
+          </p>
+          <p style="margin-top:20px">
+            <a class="btn btn--ghost" href="{{ get_url(path='/about/', lang=lang) }}">
+              {% if lang == 'or' %}ପୂରା କାହାଣୀ ପଢ଼ନ୍ତୁ{% else %}Read the full story{% endif %} {{ ic::ui(name="arrow") }}
+            </a>
+          </p>
+        {% endif %}
       </div>
     </div>
 
-    {% if home and home.gallery %}
+    {% if home and home.gallery and gallery_limit != -1 %}
       <h3 class="h-3" style="margin:44px 0 16px">{% if lang == 'or' %}ଯାତ୍ରାର କିଛି ମୁହୂର୍ତ୍ତ{% else %}Moments from the journey{% endif %}</h3>
       <div class="gallery reveal">
         {% for g in home.gallery %}
+          {% if gallery_limit == 0 or loop.index0 < gallery_limit %}
           <a class="gallery__item" href="{{ get_url(path=g.image) }}"
              data-lightbox="{{ get_url(path=g.image) }}" data-caption="{{ g.caption }}" tabindex="0"
              aria-label="{{ g.caption }}">
             <img src="{{ get_url(path=g.image) }}" alt="{{ g.caption }}" loading="lazy" decoding="async" width="420" height="315">
             <span class="gallery__cap">{{ g.caption }}</span>
           </a>
+          {% endif %}
         {% endfor %}
       </div>
+      {% if gallery_limit > 0 and home.gallery | length > gallery_limit %}
+        <p class="center" style="margin-top:22px">
+          <a class="btn btn--ghost btn--sm" href="{{ get_url(path='/about/', lang=lang) }}">
+            {% if lang == 'or' %}ସବୁ ଫଟୋ{% else %}All {{ home.gallery | length }} photos{% endif %} {{ ic::ui(name="arrow") }}
+          </a>
+        </p>
+      {% endif %}
     {% endif %}
   </div>
 </section>

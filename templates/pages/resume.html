@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+{% include "pages/_head.html" %}
+{% set resume_full = true %}
+{% include "sections/resume.html" %}
+{% include "sections/skills.html" %}
+{% include "sections/reviewer.html" %}
+{% set conf_limit = 0 %}
+{% include "sections/conferences.html" %}
+{% endblock %}
