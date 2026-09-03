@@ -5,8 +5,32 @@
     <link rel="self" type="application/atom+xml" href="https://satyajitpuhan.github.io/or/atom.xml"/>
     <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
-    <updated>2026-06-05T00:00:00+00:00</updated>
+    <updated>2026-08-07T00:00:00+00:00</updated>
     <id>https://satyajitpuhan.github.io/or/atom.xml</id>
+    <entry xml:lang="or">
+        <title>Extraction of Pion Unpolarized Quark and Gluon Generalized Parton Distributions using Deep Neural-Networks</title>
+        <published>2026-08-07T00:00:00+00:00</published>
+        <updated>2026-08-07T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/portfolio/extraction-of-pion-unpolarized-quark-and-gluon-generalized/"/>
+        <id>https://satyajitpuhan.github.io/or/portfolio/extraction-of-pion-unpolarized-quark-and-gluon-generalized/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/portfolio/extraction-of-pion-unpolarized-quark-and-gluon-generalized/">&lt;p&gt;&lt;strong&gt;ଲେଖକ:&lt;&#x2F;strong&gt; S. Puhan, S. Sharma, N. Kumar&lt;br &#x2F;&gt;
+&lt;strong&gt;ପ୍ରକାଶିତ:&lt;&#x2F;strong&gt; e-Print: 2608.07085 [hep-ph]&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2608.07085&quot;&gt;arXiv:2608.07085&lt;&#x2F;a&gt; · &lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;inspirehep.net&#x2F;literature&#x2F;3188657&quot;&gt;INSPIRE-HEP record&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;saaraansh&quot;&gt;ସାରାଂଶ&lt;&#x2F;h3&gt;
+&lt;p&gt;We present a deep neural-network (DNN) extraction of the pion unpolarized quark and gluon generalized parton distributions (GPDs) using the corresponding parton distribution functions (PDFs) from the JAM21 and xFitter analysis, together with experimental measurements of the pion electromagnetic form factor (EMFF) and lattice quantum chromodynamics (QCD) results. The GPDs are parameterized using a physics-informed neural-network (PINN) that incorporates the known PDF behavior, an exponential momentum-transfer dependence, and a trainable neural network (NN) component. The network parameters are determined by minimizing a χ^2-based loss function. For the valence-quark GPDs, the loss function includes contributions from the EMFF, squared EMFF, charge-normalization constraints, and regularization terms. For the gluon GPDs, it incorporates constraints from the gluon gravitational form factors together with regularization. This framework enables a flexible, nonparametric extraction while preserving the essential theoretical and phenomenological constraints. By employing the full ensemble of available PDF replicas, we quantify the uncertainties of the extracted GPDs over a broad kinematic range in the longitudinal momentum fraction and momentum transfer, with the uncertainty bands corresponding to the 1σ confidence interval. The extracted valence-quark GPDs are found to be in good agreement with available lattice-QCD calculations. Our study demonstrates that DNN-based methods provide a flexible and robust framework for extracting pion GPDs and probing the multidimensional internal structure of the pion, offering a promising avenue for future investigations of hadron tomography&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
     <entry xml:lang="or">
         <title>Mechanical distribution of the pseudoscalar charmonium and bottomonium on the light-front</title>
         <published>2026-06-05T00:00:00+00:00</published>
@@ -76,6 +100,30 @@
         
     </entry>
     <entry xml:lang="or">
+        <title>Analysis on the parton distribution functions of heavy mesons</title>
+        <published>2026-05-17T00:00:00+00:00</published>
+        <updated>2026-05-17T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/portfolio/analysis-on-the-parton-distribution-functions-of-heavy/"/>
+        <id>https://satyajitpuhan.github.io/or/portfolio/analysis-on-the-parton-distribution-functions-of-heavy/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/portfolio/analysis-on-the-parton-distribution-functions-of-heavy/">&lt;p&gt;&lt;strong&gt;ଲେଖକ:&lt;&#x2F;strong&gt; S. Puhan&lt;br &#x2F;&gt;
+&lt;strong&gt;ପ୍ରକାଶିତ:&lt;&#x2F;strong&gt; Phys. Rev. D 114 (2026)&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;doi.org&#x2F;10.1103&#x2F;6gjf-24ll&quot;&gt;DOI: 10.1103&#x2F;6gjf-24ll&lt;&#x2F;a&gt; · &lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2605.17389&quot;&gt;arXiv:2605.17389&lt;&#x2F;a&gt; · &lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;inspirehep.net&#x2F;literature&#x2F;3157139&quot;&gt;INSPIRE-HEP record&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;saaraansh&quot;&gt;ସାରାଂଶ&lt;&#x2F;h3&gt;
+&lt;p&gt;In this work, we investigate the constituent parton distribution functions (PDFs) of the kaon and heavy pseudoscalar mesons within the light-cone quark model. Starting from the initial-scale quark and antiquark PDFs, obtained by evaluating the quark-quark correlation functions for individual mesons, we perform QCD evolution to determine their partonic structure at higher energy scales. The QCD evolution is carried out using the next-to-leading-order (NLO) Dokshitzer-Gribov-Lipatov-Altarelli-Parisi equations. We further compute the average longitudinal momentum fractions carried by the individual constituents at both the model and evolved scales. In addition, we predict the NLO structure functions of the kaon at energy scales relevant to the upcoming Electron-Ion Collider (EIC). For the COMPASS++&#x2F;AMBER experiment, we also present detailed predictions for the NLO Drell-Yan cross sections induced by both K+ and K- beams, using carbon, tungsten, and aluminum as nuclear targets. Finally, we demonstrate the dominance of the heavier constituents over the lighter constituents in heavy mesons in terms of the momentum fractions they carry&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="or">
         <title>EIC-Asia Workshop on QCD and Hadron Structure 2026 — Academia Sinica, Taipei</title>
         <published>2026-05-01T00:00:00+00:00</published>
         <updated>2026-05-01T00:00:00+00:00</updated>
@@ -123,6 +171,30 @@
         
     </entry>
     <entry xml:lang="or">
+        <title>Extraction of Pion Unpolarized Quark Generalized Parton Distribution from Charge Form Factors</title>
+        <published>2026-04-13T00:00:00+00:00</published>
+        <updated>2026-04-13T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/portfolio/extraction-of-pion-unpolarized-quark-generalized-parton/"/>
+        <id>https://satyajitpuhan.github.io/or/portfolio/extraction-of-pion-unpolarized-quark-generalized-parton/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/portfolio/extraction-of-pion-unpolarized-quark-generalized-parton/">&lt;p&gt;&lt;strong&gt;ଲେଖକ:&lt;&#x2F;strong&gt; S. Puhan, S. Sharma, N. Kumar, H. Dahiya&lt;br &#x2F;&gt;
+&lt;strong&gt;ପ୍ରକାଶିତ:&lt;&#x2F;strong&gt; e-Print: 2604.11116 [hep-ph]&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2604.11116&quot;&gt;arXiv:2604.11116&lt;&#x2F;a&gt; · &lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;inspirehep.net&#x2F;literature&#x2F;3144150&quot;&gt;INSPIRE-HEP record&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;saaraansh&quot;&gt;ସାରାଂଶ&lt;&#x2F;h3&gt;
+&lt;p&gt;Based on a global fit to experimental measurements of the pion electromagnetic form factor and parton distribution functions (PDFs), we report a data-driven determination of the unpolarized quark generalized parton distributions (GPDs) for the case of pion in the zero-skewness limit (ξ= 0). The form factor is parameterized using a flexible functional form constrained by data and embedded into a GPD framework constructed from collinear PDFs and a profile function encoding transverse dynamics. This approach provides a unified description of the pion&#x27;s electromagnetic structure and its spatial parton distributions. We present the extracted pion GPDs and their impact-parameter-space interpretations, offering new insights into the internal structure of the lightest QCD bound state and providing essential input for future electron-ion collider studies via the Sullivan process, as well as for the exclusive π^+ electroproduction at the 12~GeV Jefferson Lab program, pion-induced exclusive measurements at COMPASS, proposed pion-beam experiments at AMBER, and phenomenological and lattice investigations of the structure of the meson&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="or">
         <title>🚀 Starting a New Research Chapter in Taiwan — Academia Sinica</title>
         <published>2026-04-07T00:00:00+00:00</published>
         <updated>2026-04-07T00:00:00+00:00</updated>
@@ -144,6 +216,30 @@
 &lt;li&gt;🔹 &lt;strong&gt;Detector development for the ePIC experiment&lt;&#x2F;strong&gt; (Zero-Degree Calorimeter)&lt;&#x2F;li&gt;
 &lt;li&gt;🔹 &lt;strong&gt;Global analysis of pion and kaon Parton Distribution Functions (PDFs)&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>Pion parton distribution functions in the light-cone quark model and experimental constraints</title>
+        <published>2026-04-07T00:00:00+00:00</published>
+        <updated>2026-04-07T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/portfolio/pion-parton-distribution-functions-in-the-light-cone-quark/"/>
+        <id>https://satyajitpuhan.github.io/or/portfolio/pion-parton-distribution-functions-in-the-light-cone-quark/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/portfolio/pion-parton-distribution-functions-in-the-light-cone-quark/">&lt;p&gt;&lt;strong&gt;ଲେଖକ:&lt;&#x2F;strong&gt; H. G. P, S. Puhan, A. K. P., R. Pandey, H. Dahiya, A. Kumar, S. Dutt&lt;br &#x2F;&gt;
+&lt;strong&gt;ପ୍ରକାଶିତ:&lt;&#x2F;strong&gt; Phys. Rev. D 114 (2026)&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;doi.org&#x2F;10.1103&#x2F;q5rc-999c&quot;&gt;DOI: 10.1103&#x2F;q5rc-999c&lt;&#x2F;a&gt; · &lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2604.05762&quot;&gt;arXiv:2604.05762&lt;&#x2F;a&gt; · &lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;inspirehep.net&#x2F;literature&#x2F;3140657&quot;&gt;INSPIRE-HEP record&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;saaraansh&quot;&gt;ସାରାଂଶ&lt;&#x2F;h3&gt;
+&lt;p&gt;In this work, we investigate the valence quark parton distribution functions (PDFs) of the pion within the light-cone quark model. The initial quark PDFs are calculated by solving the quark-quark correlation function for the pseudoscalar mesons. The initial quark PDFs have been evolved to higher energy scales through the Dokshitzer-Gribov-Lipatov-Altarelli-Parisi (DGLAP) evolution equations. We also find that our calculated evolved PDFs match experimental and available theoretical extraction data. For the first time, we have also predicted the F2 structure function at next-to-leading (NLO) order accuracy. The calculated F2 structure function has been compared with the available ZEUS and H1 experimental data at DESY-HERA over a wide range of energy scales. Additionally, we display the forward pion production cross-section for the Drell-Yan process caused by pions using the pion PDFs that were calculated and the target nucleon PDFs from the LHAPDF nucleus datasets. The evolved F2 structure function of the pion has been studied at the upcoming electron-ion collider energy kinematics. Overall, it was observed that the quark PDFs of pions computed using the light-cone quark model are consistent with the experimental results&lt;&#x2F;p&gt;
+</content>
         
     </entry>
     <entry xml:lang="or">
@@ -210,6 +306,78 @@
         
     </entry>
     <entry xml:lang="or">
+        <title>Extraction of f_1(x, fk^2_perp) quark TMDs of proton from E288 Drell-Yan data</title>
+        <published>2026-01-01T00:00:00+00:00</published>
+        <updated>2026-01-01T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/portfolio/extraction-of-f-1-x-fk-2-perp-quark-tmds-of-proton-from/"/>
+        <id>https://satyajitpuhan.github.io/or/portfolio/extraction-of-f-1-x-fk-2-perp-quark-tmds-of-proton-from/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/portfolio/extraction-of-f-1-x-fk-2-perp-quark-tmds-of-proton-from/">&lt;p&gt;&lt;strong&gt;ଲେଖକ:&lt;&#x2F;strong&gt; H. G. P, R. Pandey, S. Puhan, S. Dutt, H. Dahiya, A. Kumar&lt;br &#x2F;&gt;
+&lt;strong&gt;ପ୍ରକାଶିତ:&lt;&#x2F;strong&gt; DAE Symp. Nucl. Phys. 69 (2026)&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;inspirehep.net&#x2F;literature&#x2F;3114814&quot;&gt;INSPIRE-HEP record&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;saaraansh&quot;&gt;ସାରାଂଶ&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;em&gt;Abstract not yet available from INSPIRE-HEP.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>Extraction of Pion Parton Distribution Function using NN</title>
+        <published>2026-01-01T00:00:00+00:00</published>
+        <updated>2026-01-01T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/portfolio/extraction-of-pion-parton-distribution-function-using-nn/"/>
+        <id>https://satyajitpuhan.github.io/or/portfolio/extraction-of-pion-parton-distribution-function-using-nn/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/portfolio/extraction-of-pion-parton-distribution-function-using-nn/">&lt;p&gt;&lt;strong&gt;ଲେଖକ:&lt;&#x2F;strong&gt; S. Puhan, H. Dahiya&lt;br &#x2F;&gt;
+&lt;strong&gt;ପ୍ରକାଶିତ:&lt;&#x2F;strong&gt; DAE Symp. Nucl. Phys. 69 (2026)&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;inspirehep.net&#x2F;literature&#x2F;3114865&quot;&gt;INSPIRE-HEP record&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;saaraansh&quot;&gt;ସାରାଂଶ&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;em&gt;Abstract not yet available from INSPIRE-HEP.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>Extraction of unpolarized quark TMDs of proton from FNAL-E-0605 data using iminuit</title>
+        <published>2026-01-01T00:00:00+00:00</published>
+        <updated>2026-01-01T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/portfolio/extraction-of-unpolarized-quark-tmds-of-proton-from-fnal-e/"/>
+        <id>https://satyajitpuhan.github.io/or/portfolio/extraction-of-unpolarized-quark-tmds-of-proton-from-fnal-e/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/portfolio/extraction-of-unpolarized-quark-tmds-of-proton-from-fnal-e/">&lt;p&gt;&lt;strong&gt;ଲେଖକ:&lt;&#x2F;strong&gt; A. K. P, R. Pandey, S. Puhan, S. Dutt, H. Dahiya, A. Kumar&lt;br &#x2F;&gt;
+&lt;strong&gt;ପ୍ରକାଶିତ:&lt;&#x2F;strong&gt; DAE Symp. Nucl. Phys. 69 (2026)&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;inspirehep.net&#x2F;literature&#x2F;3114855&quot;&gt;INSPIRE-HEP record&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;saaraansh&quot;&gt;ସାରାଂଶ&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;em&gt;Abstract not yet available from INSPIRE-HEP.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="or">
         <title>Impact of isospin asymmetric nuclear medium on pseudoscalar and vector B-mesons</title>
         <published>2026-01-01T00:00:00+00:00</published>
         <updated>2026-01-01T00:00:00+00:00</updated>
@@ -228,6 +396,54 @@
         <content type="html" xml:base="https://satyajitpuhan.github.io/or/portfolio/isospin-asymm-b-mesons/">&lt;p&gt;&lt;strong&gt;Authors:&lt;&#x2F;strong&gt; Tanisha, S. Puhan, N. Kaur, A. Kumar and H. Dahiya&lt;br &#x2F;&gt;
 &lt;strong&gt;Published in:&lt;&#x2F;strong&gt; Nucl. Phys. A 1068 (2026)&lt;&#x2F;p&gt;
 &lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;inspirehep.net&#x2F;literature&#x2F;2916907&quot;&gt;Read on INSPIRE →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>Model-Based Constraints on Proton TMDs</title>
+        <published>2026-01-01T00:00:00+00:00</published>
+        <updated>2026-01-01T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/portfolio/model-based-constraints-on-proton-tmds/"/>
+        <id>https://satyajitpuhan.github.io/or/portfolio/model-based-constraints-on-proton-tmds/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/portfolio/model-based-constraints-on-proton-tmds/">&lt;p&gt;&lt;strong&gt;ଲେଖକ:&lt;&#x2F;strong&gt; S. Sharma, S. Puhan, N. Kumar, H. Dahiya&lt;br &#x2F;&gt;
+&lt;strong&gt;ପ୍ରକାଶିତ:&lt;&#x2F;strong&gt; DAE Symp. Nucl. Phys. 69 (2026)&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;inspirehep.net&#x2F;literature&#x2F;3114365&quot;&gt;INSPIRE-HEP record&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;saaraansh&quot;&gt;ସାରାଂଶ&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;em&gt;Abstract not yet available from INSPIRE-HEP.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="or">
+        <title>Pion sub-leading twist generalized transverse momentum dependent parton distributions E_2 in light-front quark model</title>
+        <published>2026-01-01T00:00:00+00:00</published>
+        <updated>2026-01-01T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/portfolio/pion-sub-leading-twist-generalized-transverse-momentum/"/>
+        <id>https://satyajitpuhan.github.io/or/portfolio/pion-sub-leading-twist-generalized-transverse-momentum/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/portfolio/pion-sub-leading-twist-generalized-transverse-momentum/">&lt;p&gt;&lt;strong&gt;ଲେଖକ:&lt;&#x2F;strong&gt; S. Puhan, S. Sharma, N. Kumar, H. Dahiya&lt;br &#x2F;&gt;
+&lt;strong&gt;ପ୍ରକାଶିତ:&lt;&#x2F;strong&gt; DAE Symp. Nucl. Phys. 69 (2026)&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;inspirehep.net&#x2F;literature&#x2F;3114915&quot;&gt;INSPIRE-HEP record&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;saaraansh&quot;&gt;ସାରାଂଶ&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;em&gt;Abstract not yet available from INSPIRE-HEP.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
 </content>
         
     </entry>
