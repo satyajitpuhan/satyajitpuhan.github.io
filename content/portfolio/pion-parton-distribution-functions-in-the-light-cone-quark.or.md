@@ -3,7 +3,7 @@ title = "Pion parton distribution functions in the light-cone quark model and ex
 date = 2026-04-07
 
 [extra]
-thumbnail = "images/portfolio/papers/pion-parton-distribution-functions-in-the-light-cone-quark-cover.svg"
+thumbnail = "images/portfolio/papers/pion-parton-distribution-functions-in-the-light-cone-quark-first-page.webp"
 service = "Phys. Rev. D 114 (2026)"
 client = "H. G. P, S. Puhan, A. K. P., R. Pandey, H. Dahiya, A. Kumar, S. Dutt"
 short_description = "In this work, we investigate the valence quark parton distribution functions (PDFs) of the pion within the light-cone quark model."

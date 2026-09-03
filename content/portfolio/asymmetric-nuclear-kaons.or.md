@@ -14,7 +14,7 @@ categories = ["Journal Article"]
 arxiv = "2410.20181"
 doi = "10.1103/PhysRevD.111.054001"
 inspire = "2843133"
-citations = 10
+citations = 11
 +++
 
 **Authors:** D. Singh, S. Puhan, N. Kaur, M. Kaur, S. Dutt, A. Kumar, and H. Dahiya  

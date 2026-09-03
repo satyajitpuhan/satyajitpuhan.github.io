@@ -3,7 +3,7 @@ title = "Analysis on the parton distribution functions of heavy mesons"
 date = 2026-05-17
 
 [extra]
-thumbnail = "images/portfolio/papers/analysis-on-the-parton-distribution-functions-of-heavy-cover.svg"
+thumbnail = "images/portfolio/papers/analysis-on-the-parton-distribution-functions-of-heavy-first-page.webp"
 service = "Phys. Rev. D 114 (2026)"
 client = "S. Puhan"
 short_description = "In this work, we investigate the constituent parton distribution functions (PDFs) of the kaon and heavy pseudoscalar mesons within the light-cone quark model."

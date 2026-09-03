@@ -14,7 +14,7 @@ categories = ["Journal Article"]
 arxiv = "2504.21392"
 doi = "10.1016/j.nuclphysa.2026.123330"
 inspire = "2916907"
-citations = 1
+citations = 2
 +++
 
 **Authors:** Tanisha, S. Puhan, N. Kaur, A. Kumar and H. Dahiya  
