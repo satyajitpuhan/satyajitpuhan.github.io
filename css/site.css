@@ -717,3 +717,23 @@ kbd { font-family: var(--font-mono); font-size: .68rem; padding: 2px 6px; border
 .social svg         { width: 18px; height: 18px; flex: 0 0 auto; }
 .to-top svg         { width: 17px; height: 17px; }
 .footer .btn--inspire svg { width: 17px; height: 17px; }
+
+/* ---------- 23. Compact publication list (homepage) ---------------------- */
+.pub-list { border-top: 1px solid var(--line); }
+.pub-row {
+  display: grid; align-items: baseline; gap: 6px 18px;
+  grid-template-columns: 56px minmax(0, 1fr) auto;
+  padding: 15px 4px; border-bottom: 1px solid var(--line);
+  transition: background .18s;
+}
+.pub-row:hover { background: var(--surface); }
+.pub-row__year { color: var(--accent); font-size: .78rem; }
+.pub-row__main { min-width: 0; }
+.pub-row__title { display: block; font-family: var(--font-display); font-weight: 700; font-size: 1rem; line-height: 1.35; }
+.pub-row__title:hover { color: var(--accent); }
+.pub-row__meta { display: block; margin-top: 4px; font-family: var(--font-mono); font-size: .72rem; color: var(--ink-3); }
+.pub-row__links { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+@media (max-width: 640px) {
+  .pub-row { grid-template-columns: 44px minmax(0, 1fr); }
+  .pub-row__links { grid-column: 2; justify-content: flex-start; margin-top: 4px; }
+}

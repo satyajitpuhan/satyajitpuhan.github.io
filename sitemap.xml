@@ -4,6 +4,9 @@
         <loc>https://satyajitpuhan.github.io/</loc>
     </url>
     <url>
+        <loc>https://satyajitpuhan.github.io/about/</loc>
+    </url>
+    <url>
         <loc>https://satyajitpuhan.github.io/blog/</loc>
     </url>
     <url>
@@ -149,7 +152,13 @@
         <loc>https://satyajitpuhan.github.io/contact/</loc>
     </url>
     <url>
+        <loc>https://satyajitpuhan.github.io/news/</loc>
+    </url>
+    <url>
         <loc>https://satyajitpuhan.github.io/or/</loc>
+    </url>
+    <url>
+        <loc>https://satyajitpuhan.github.io/or/about/</loc>
     </url>
     <url>
         <loc>https://satyajitpuhan.github.io/or/blog/</loc>
@@ -297,6 +306,9 @@
         <loc>https://satyajitpuhan.github.io/or/contact/</loc>
     </url>
     <url>
+        <loc>https://satyajitpuhan.github.io/or/news/</loc>
+    </url>
+    <url>
         <loc>https://satyajitpuhan.github.io/or/portfolio/</loc>
     </url>
     <url>
@@ -382,6 +394,10 @@
     <url>
         <loc>https://satyajitpuhan.github.io/or/portfolio/isospin-asymm-b-mesons/</loc>
         <lastmod>2026-01-01</lastmod>
+    </url>
+    <url>
+        <loc>https://satyajitpuhan.github.io/or/portfolio/leading-neutron-electroproduction-at-hera-and-the-eic/</loc>
+        <lastmod>2026-09-03</lastmod>
     </url>
     <url>
         <loc>https://satyajitpuhan.github.io/or/portfolio/model-based-constraints-on-proton-tmds/</loc>
@@ -470,6 +486,12 @@
     <url>
         <loc>https://satyajitpuhan.github.io/or/portfolio/valence-quark-rho-lfqm/</loc>
         <lastmod>2025-11-01</lastmod>
+    </url>
+    <url>
+        <loc>https://satyajitpuhan.github.io/or/research/</loc>
+    </url>
+    <url>
+        <loc>https://satyajitpuhan.github.io/or/resume/</loc>
     </url>
     <url>
         <loc>https://satyajitpuhan.github.io/or/social-service/</loc>
@@ -778,6 +800,10 @@
         <lastmod>2026-01-01</lastmod>
     </url>
     <url>
+        <loc>https://satyajitpuhan.github.io/portfolio/leading-neutron-electroproduction-at-hera-and-the-eic/</loc>
+        <lastmod>2026-09-03</lastmod>
+    </url>
+    <url>
         <loc>https://satyajitpuhan.github.io/portfolio/model-based-constraints-on-proton-tmds/</loc>
         <lastmod>2026-01-01</lastmod>
     </url>
@@ -864,6 +890,12 @@
     <url>
         <loc>https://satyajitpuhan.github.io/portfolio/valence-quark-rho-lfqm/</loc>
         <lastmod>2025-11-01</lastmod>
+    </url>
+    <url>
+        <loc>https://satyajitpuhan.github.io/research/</loc>
+    </url>
+    <url>
+        <loc>https://satyajitpuhan.github.io/resume/</loc>
     </url>
     <url>
         <loc>https://satyajitpuhan.github.io/social-service/</loc>

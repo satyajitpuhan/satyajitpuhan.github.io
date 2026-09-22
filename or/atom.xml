@@ -5,8 +5,32 @@
     <link rel="self" type="application/atom+xml" href="https://satyajitpuhan.github.io/or/atom.xml"/>
     <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
-    <updated>2026-08-07T00:00:00+00:00</updated>
+    <updated>2026-09-03T00:00:00+00:00</updated>
     <id>https://satyajitpuhan.github.io/or/atom.xml</id>
+    <entry xml:lang="or">
+        <title>Leading-Neutron Electroproduction at HERA and the EIC: Sullivan Process, Target Fragmentation, and Pion PDFs</title>
+        <published>2026-09-03T00:00:00+00:00</published>
+        <updated>2026-09-03T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/portfolio/leading-neutron-electroproduction-at-hera-and-the-eic/"/>
+        <id>https://satyajitpuhan.github.io/or/portfolio/leading-neutron-electroproduction-at-hera-and-the-eic/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/portfolio/leading-neutron-electroproduction-at-hera-and-the-eic/">&lt;p&gt;&lt;strong&gt;ଲେଖକ:&lt;&#x2F;strong&gt; W. Chang, C. Hsieh, S. Puhan&lt;br &#x2F;&gt;
+&lt;strong&gt;ପ୍ରକାଶିତ:&lt;&#x2F;strong&gt; e-Print: 2609.03368 [hep-ph]&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2609.03368&quot;&gt;arXiv:2609.03368&lt;&#x2F;a&gt; · &lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;inspirehep.net&#x2F;literature&#x2F;3199506&quot;&gt;INSPIRE-HEP record&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;saaraansh&quot;&gt;ସାରାଂଶ&lt;&#x2F;h3&gt;
+&lt;p&gt;Leading-neutron electroproduction measurements from the H1 and ZEUS experiments at HERA have been used to constrain pion parton distribution functions (PDFs) at small momentum fractions within the Sullivan one-pion-exchange (OPE) framework, complementing large-x_π constraints from pion-induced Drell--Yan measurements. Previous analyses have focused primarily on the region of large neutron longitudinal momentum fraction, x_L, where contributions from deep-inelastic scattering (DIS) target fragmentation are suppressed. In this work, we use the Pythia event generator to model the target-fragmentation contribution and show that its combination with the OPE contribution reproduces the main features of the HERA leading-neutron data over the full measured x_L range without introducing additional ad hoc normalization factors. This result demonstrates the potential of incorporating a broader range of leading-neutron data into future global analyses, thereby extending sensitivity to smaller pion momentum fractions x_π. We investigate the model dependence associated with the pion--nucleon vertex form factor and show that the HERA data are sensitive to different target-fragmentation treatments implemented in Pythia. Finally, we present projections for leading-neutron production at the future U.S. Electron-Ion Collider (EIC), identifying beam-energy configurations and kinematic regions that provide enhanced sensitivity to pion structure while suppressing DIS target-fragmentation contributions&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
     <entry xml:lang="or">
         <title>Extraction of Pion Unpolarized Quark and Gluon Generalized Parton Distributions using Deep Neural-Networks</title>
         <published>2026-08-07T00:00:00+00:00</published>
