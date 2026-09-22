@@ -14,7 +14,7 @@ categories = ["Journal Article"]
 arxiv = "2310.03464"
 doi = "10.1007/JHEP02(2024)075"
 inspire = "2706491"
-citations = 31
+citations = 32
 +++
 
 **Authors:** S. Puhan, S. Sharma, N. Kaur, N. Kumar and H. Dahiya  
