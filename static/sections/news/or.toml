@@ -3,6 +3,30 @@ subtitle = "ମୋ ଗବେଷଣା ଯାତ୍ରାର ମୁଖ୍ୟ ମ�
 
 [[items]]
 top_title = "📄 ନୂଆ ଗବେଷଣା ପତ୍ର!"
+image = "images/portfolio/papers/leading-neutron-electroproduction-at-hera-and-the-eic-first-page.webp"
+title = "Leading-Neutron Electroproduction at HERA and the EIC: Sullivan Process, Target Fragmentation, and Pion PDFs"
+date = "2026-09-03"
+description = "Leading-neutron electroproduction measurements from the H1 and ZEUS experiments at HERA have been used to constrain pion parton distribution functions (PDFs) at small momentum fractions within the Sullivan…"
+details = """
+**📄 ନୂଆ ଗବେଷଣା ପତ୍ର!**
+
+**Title:** Leading-Neutron Electroproduction at HERA and the EIC: Sullivan Process, Target Fragmentation, and Pion PDFs
+**Authors:** W. Chang, C. Hsieh, S. Puhan
+**Published in:** e-Print: 2609.03368 [hep-ph]
+**e-Print:** [2609.03368 [hep-ph]](https://arxiv.org/abs/2609.03368)
+**INSPIRE-HEP:** [record 3199506](https://inspirehep.net/literature/3199506)
+
+### ସାରାଂଶ
+
+Leading-neutron electroproduction measurements from the H1 and ZEUS experiments at HERA have been used to constrain pion parton distribution functions (PDFs) at small momentum fractions within the Sullivan one-pion-exchange (OPE) framework, complementing large-x_π constraints from pion-induced Drell--Yan measurements. Previous analyses have focused primarily on the region of large neutron longitudinal momentum fraction, x_L, where contributions from deep-inelastic scattering (DIS) target fragmentation are suppressed. In this work, we use the Pythia event generator to model the target-fragmentation contribution and show that its combination with the OPE contribution reproduces the main features of the HERA leading-neutron data over the full measured x_L range without introducing additional ad hoc normalization factors. This result demonstrates the potential of incorporating a broader range of leading-neutron data into future global analyses, thereby extending sensitivity to smaller pion momentum fractions x_π. We investigate the model dependence associated with the pion--nucleon vertex form factor and show that the HERA data are sensitive to different target-fragmentation treatments implemented in Pythia. Finally, we present projections for leading-neutron production at the future U.S. Electron-Ion Collider (EIC), identifying beam-energy configurations and kinematic regions that provide enhanced sensitivity to pion structure while suppressing DIS target-fragmentation contributions
+
+---
+
+*INSPIRE-HEP ରୁ ସ୍ୱୟଂଚାଳିତ ଭାବେ ଯୋଡ଼ାଯାଇଛି*
+"""
+
+[[items]]
+top_title = "📄 ନୂଆ ଗବେଷଣା ପତ୍ର!"
 image = "images/portfolio/papers/extraction-of-pion-unpolarized-quark-and-gluon-generalized-cover.svg"
 title = "Extraction of Pion Unpolarized Quark and Gluon Generalized Parton Distributions using Deep Neural-Networks"
 date = "2026-08-07"

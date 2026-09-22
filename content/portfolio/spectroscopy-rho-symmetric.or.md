@@ -14,7 +14,7 @@ categories = ["Preprint"]
 arxiv = "2601.11082"
 doi = "10.1103/mhyf-cqzx"
 inspire = "3108526"
-citations = 1
+citations = 2
 +++
 
 **Authors:** Anshu Gautam, Tanisha, S. Puhan, A. Kumar, and H. Dahiya  

@@ -1,11 +1,11 @@
 {
-  "papers": 42,
-  "citations": 209,
+  "papers": 43,
+  "citations": 211,
   "hindex": 10,
   "journal_articles": 22,
   "proceedings": 12,
-  "preprints": 8,
-  "updated": "2026-09-03",
+  "preprints": 9,
+  "updated": "2026-09-22",
   "exclude": [
     3168377
   ]
