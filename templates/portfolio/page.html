@@ -32,6 +32,9 @@
           {% if page.extra.doi %}
             <a class="link-pill link-pill--doi" href="https://doi.org/{{ page.extra.doi }}">DOI</a>
           {% endif %}
+          {% if page.extra.inspire %}
+            <a class="link-pill link-pill--cite" href="https://inspirehep.net/api/literature/{{ page.extra.inspire }}?format=bibtex" data-bibtex="{{ page.extra.inspire }}">{% if lang == 'or' %}BibTeX କପି{% else %}Copy BibTeX{% endif %}</a>
+          {% endif %}
         </div>
       </div>
 

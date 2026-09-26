@@ -83,3 +83,10 @@
     {% endif %}
 {% endmacro  %}
 
+
+{# Two-letter initials from a person's name, ignoring academic titles. #}
+{% macro initials(name) -%}
+{%- set n = name | replace(from="Prof. ", to="") | replace(from="Dr. ", to="") | replace(from="Mr. ", to="") | replace(from="Ms. ", to="") | trim -%}
+{%- set parts = n | split(pat=" ") -%}
+{{- parts | first | truncate(length=1, end="") -}}{%- if parts | length > 1 -%}{{- parts | last | truncate(length=1, end="") -}}{%- endif -%}
+{%- endmacro initials %}

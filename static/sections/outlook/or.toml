@@ -1,0 +1,51 @@
+# ଗବେଷଣା ଦୃଷ୍ଟିକୋଣ — ବୈଷୟିକ ବିବରଣୀ ଇଂରାଜୀରେ ରଖାଯାଇଛି।
+title = "ଭବିଷ୍ୟତ ଗବେଷଣା ଯୋଜନା"
+subtitle = "ଆଗାମୀ କାର୍ଯ୍ୟ — ଏବେ ଆରମ୍ଭ କରୁଥିବା ସମସ୍ୟାଠାରୁ କଠିନ, ଖୋଲା ପ୍ରଶ୍ନ ପର୍ଯ୍ୟନ୍ତ।"
+
+[[item]]
+horizon = "next"
+featured = true
+difficulty = 3
+title = "Energy-momentum tensor of spin-1 mesons"
+text = "The full set of gravitational form factors of the ρ meson and of heavy vector mesons (J/ψ, Υ) in the light-front quark model — including the D-term — and from them the pressure, shear-force and energy distributions, the mechanical radius and the quadrupole deformation of a spin-1 hadron."
+hard = "A spin-1 hadron has six gravitational form factors instead of two, some only reachable from 'bad' current components, and the mechanical picture of a tensor-polarized state is still being worked out."
+
+[[item]]
+horizon = "next"
+featured = false
+difficulty = 2
+title = "Pion and kaon imaging at the EIC and EicC"
+text = "Sullivan-process projections for pion and kaon PDFs, GPDs and TMDs with realistic kinematics and uncertainties, so that light-front predictions can be tested directly against the first electron-ion collider data."
+hard = "The meson target is virtual: separating the pion-pole contribution from background needs careful control of off-shell effects and the leading-neutron flux."
+
+[[item]]
+horizon = "mid"
+featured = true
+difficulty = 5
+title = "First-principles light-front quark model for the pion"
+text = "Replace the phenomenological Gaussian wave function with the solution of a light-front Hamiltonian eigenvalue problem — confinement, one-gluon exchange and a chiral-symmetry-breaking interaction — with parameters fixed by the meson spectrum, then predict the pion's PDFs, GPDs, TMDs and form factors with no fitting."
+hard = "The pion is the Goldstone boson of chiral symmetry: getting a nearly massless bound state from massive constituents on the light front, with zero modes and renormalisation under control, is one of the long-standing open problems of the formalism."
+
+[[item]]
+horizon = "mid"
+featured = false
+difficulty = 4
+title = "Gluons in mesons and the origin of mass"
+text = "Gluon GPDs and gluon gravitational form factors of the pion and kaon, and a decomposition of their mass into quark, gluon and trace-anomaly contributions — connected to J/ψ threshold photoproduction at JLab and the EIC."
+hard = "Gluons are invisible to the photon at leading order, and the trace-anomaly term is scheme dependent — the decomposition has to be defined carefully before it can be computed."
+
+[[item]]
+horizon = "hard"
+featured = true
+difficulty = 4
+title = "Data-driven 3D tomography with machine learning"
+text = "A global extraction of pion GPDs that combines lattice QCD, form-factor and Drell–Yan data with neural networks, with honest uncertainties — building on our deep-neural-network GPD extraction."
+hard = "GPDs are not measured directly: the inverse problem from observables to three-dimensional distributions is ill-posed, so the physics constraints (polynomiality, positivity) must be built into the network itself."
+
+[[item]]
+horizon = "hard"
+featured = false
+difficulty = 4
+title = "Hadrons under pressure in dense matter"
+text = "How the internal pressure and shear of mesons change inside nuclear matter and at neutron-star densities — the energy-momentum tensor of a hadron in a medium, extending our nuclear-medium TMD and GPD work."
+hard = "In a medium Lorentz symmetry is broken, so the vacuum decomposition of the energy-momentum tensor no longer holds and new form factors appear."

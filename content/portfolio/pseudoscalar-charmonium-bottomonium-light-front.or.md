@@ -3,7 +3,7 @@ title = "Mechanical distribution of the pseudoscalar charmonium and bottomonium 
 date = 2026-06-05
 
 [extra]
-thumbnail = "images/portfolio/papers/pseudoscalar-charmonium-bottomonium-title.webp"
+thumbnail = "images/portfolio/papers/pseudoscalar-charmonium-bottomonium-light-front-first-page.webp"
 service = "e-Print: 2606.07073 [hep-ph]"
 client = "A. Dwivedi, S. Puhan, and S. Ghosh"
 short_description = "Visualizing the energy-momentum tensor and mechanical distributions of η_c and η_b, where pressure flips from repulsive to attractive across a transverse node."

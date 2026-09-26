@@ -1,0 +1,80 @@
+# Places on the talks map. kind: talk | school | position | remote
+# lat/lon in degrees. Add a row when you give a new talk — the map updates itself.
+[[place]]
+name = "Academia Sinica, Taipei"
+lat = 25.04
+lon = 121.61
+kind = "position"
+what = "Postdoc (2026–) · EIC-Asia Workshop 2026"
+[[place]]
+name = "NIT Jalandhar"
+lat = 31.40
+lon = 75.53
+kind = "position"
+what = "PhD 2022–2026 · Hadron Physics Workshop 2023"
+[[place]]
+name = "NIT Jamshedpur"
+lat = 22.78
+lon = 86.14
+kind = "position"
+what = "M.Sc. 2019–2021"
+[[place]]
+name = "JINR, Dubna"
+lat = 56.74
+lon = 37.17
+kind = "talk"
+what = "Visiting fellow 2025 · BLTP talk on pion GFFs · seminar"
+[[place]]
+name = "Yukawa Institute, Kyoto"
+lat = 35.03
+lon = 135.78
+kind = "talk"
+what = "HHIQCD 2024 — pion & kaon structure"
+[[place]]
+name = "IIT Roorkee"
+lat = 29.86
+lon = 77.90
+kind = "talk"
+what = "DAE-SNP 2024 — spin-1 GPDs"
+[[place]]
+name = "TIFR, Mumbai"
+lat = 18.91
+lon = 72.81
+kind = "talk"
+what = "HQL 2023 poster — B and D mesons"
+[[place]]
+name = "IIT Bhilai"
+lat = 21.19
+lon = 81.28
+kind = "talk"
+what = "ICFHEP 2025 · visiting fellow 2025"
+[[place]]
+name = "ICTS-TIFR, Bengaluru"
+lat = 13.07
+lon = 77.48
+kind = "school"
+what = "ICTS 2024 — pion structure"
+[[place]]
+name = "IIT Bombay"
+lat = 19.13
+lon = 72.92
+kind = "school"
+what = "IITB-CFNS-CTEQ School 2026"
+[[place]]
+name = "Zuoz, Switzerland"
+lat = 46.60
+lon = 9.96
+kind = "school"
+what = "PSI Particle Physics Summer School 2024"
+[[place]]
+name = "IIT Mandi"
+lat = 31.78
+lon = 76.99
+kind = "school"
+what = "Shivalik HEPCATs meeting 2023"
+[[place]]
+name = "NC State University, USA"
+lat = 35.78
+lon = -78.67
+kind = "remote"
+what = "Seminars for Prof. C. R. Ji's group (online)"

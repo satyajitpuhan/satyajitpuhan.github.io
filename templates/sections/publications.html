@@ -60,6 +60,25 @@
           <button class="filter" data-filter="preprint" aria-pressed="false">{% if lang == 'or' %}ପ୍ରିପ୍ରିଣ୍ଟ{% else %}Preprints{% endif %}</button>
           <button class="filter" data-filter="proceeding" aria-pressed="false">{% if lang == 'or' %}ପ୍ରୋସିଡିଂ{% else %}Proceedings{% endif %}</button>
         </div>
+        <div class="pub-controls">
+          <label class="select">
+            <span class="sr-only">{% if lang == 'or' %}ବର୍ଷ{% else %}Year{% endif %}</span>
+            <select id="pub-year">
+              <option value="all">{% if lang == 'or' %}ସବୁ ବର୍ଷ{% else %}All years{% endif %}</option>
+              {%- set_global years = [] -%}
+              {%- for p in sec.pages %}{% set y = p.date | date(format="%Y") %}{% if y not in years %}{% set_global years = years | concat(with=y) %}{% endif %}{% endfor -%}
+              {% for y in years %}<option value="{{ y }}">{{ y }}</option>{% endfor %}
+            </select>
+          </label>
+          <label class="select">
+            <span class="sr-only">{% if lang == 'or' %}କ୍ରମ{% else %}Sort{% endif %}</span>
+            <select id="pub-sort">
+              <option value="new">{% if lang == 'or' %}ନୂଆ ପ୍ରଥମେ{% else %}Newest first{% endif %}</option>
+              <option value="cited">{% if lang == 'or' %}ଅଧିକ ସାଇଟେସନ୍{% else %}Most cited{% endif %}</option>
+              <option value="old">{% if lang == 'or' %}ପୁରୁଣା ପ୍ରଥମେ{% else %}Oldest first{% endif %}</option>
+            </select>
+          </label>
+        </div>
         <label class="pub-search">
           {{ ic::ui(name="search") }}
           <input id="pub-search-input" type="search" placeholder="{% if lang == 'or' %}ଶୀର୍ଷକ, ବିଷୟ, ଜର୍ନାଲ୍…{% else %}Filter by title, topic, journal, arXiv id…{% endif %}" aria-label="Filter publications">
@@ -81,7 +100,7 @@
           {%- set tg = p.extra.tags | default(value=[]) | join(sep=" ") -%}
           {%- set haystack = p.title ~ " " ~ svc ~ " " ~ who ~ " " ~ desc ~ " " ~ ax ~ " " ~ tg -%}
 
-          <article class="card reveal" data-pub="{{ haystack }}" data-kind="{{ kind }}">
+          <article class="card reveal" data-pub="{{ haystack }}" data-kind="{{ kind }}" data-year="{{ p.date | date(format='%Y') }}" data-date="{{ p.date }}" data-cites="{{ p.extra.citations | default(value=0) }}">
             <a class="card__media card__media--paper" href="{{ p.permalink }}" tabindex="-1" aria-hidden="true">
               {% if p.extra.thumbnail %}
                 <img src="{{ get_url(path=p.extra.thumbnail) }}" alt="" loading="lazy" decoding="async" width="360" height="466">
@@ -95,7 +114,7 @@
                 {% endif %}
               </div>
 
-              <h3 class="card__title"><a href="{{ p.permalink }}">{{ p.title }}</a></h3>
+              <h2 class="card__title"><a href="{{ p.permalink }}">{{ p.title }}</a></h2>
               {% if p.extra.service %}<p class="card__meta">{{ p.extra.service }}</p>{% endif %}
               {% if p.extra.client %}<p class="card__meta dim">{{ p.extra.client }}</p>{% endif %}
               {% if p.extra.short_description %}<p class="card__text">{{ p.extra.short_description | truncate(length=155) }}</p>{% endif %}
@@ -107,13 +126,17 @@
                 {% endif %}
                 {% if p.extra.arxiv %}
                   <a class="link-pill link-pill--arxiv" href="https://arxiv.org/abs/{{ p.extra.arxiv }}"
-                     aria-label="arXiv preprint {{ p.extra.arxiv }}">arXiv {{ p.extra.arxiv }}</a>
+                     aria-label="arXiv {{ p.extra.arxiv }} (preprint)">arXiv {{ p.extra.arxiv }}</a>
                 {% endif %}
                 {% if p.extra.doi %}
                   <a class="link-pill link-pill--doi" href="https://doi.org/{{ p.extra.doi }}"
                      aria-label="Journal version via DOI">DOI</a>
                 {% endif %}
-                <a class="link-pill" href="{{ p.permalink }}">{% if lang == 'or' %}ବିବରଣୀ{% else %}Details{% endif %} →</a>
+                {% if p.extra.inspire %}
+                  <a class="link-pill link-pill--cite" href="https://inspirehep.net/api/literature/{{ p.extra.inspire }}?format=bibtex" data-bibtex="{{ p.extra.inspire }}"
+                     aria-label="{% if lang == 'or' %}ଉଦ୍ଧୃତି: BibTeX କପି କରନ୍ତୁ{% else %}Cite: copy BibTeX for {{ p.title }}{% endif %}">{% if lang == 'or' %}ଉଦ୍ଧୃତି{% else %}Cite{% endif %}</a>
+                {% endif %}
+                <a class="link-pill" href="{{ p.permalink }}" aria-label="{% if lang == 'or' %}ବିବରଣୀ{% else %}Details{% endif %}: {{ p.title }}">{% if lang == 'or' %}ବିବରଣୀ{% else %}Details{% endif %} →</a>
               </div>
             </div>
           </article>

@@ -7,5 +7,15 @@
     </nav>
     <h1 class="h-1">{{ section.title }}</h1>
     {% if section.description %}<p class="lede" style="margin-top:12px;max-width:62ch">{{ section.description }}</p>{% endif %}
+    {% if cv_button | default(value=false) %}
+    <p class="page-head__actions no-print">
+      <button type="button" class="btn btn--primary" data-print>{% if lang == 'or' %}CV ଡାଉନଲୋଡ୍ (PDF){% else %}Download CV (PDF){% endif %}</button>
+      <span class="dim mono">{% if lang == 'or' %}ପ୍ରିଣ୍ଟ ଡାୟଲଗ୍‌ରେ “PDF ଭାବେ ସେଭ୍” ବାଛନ୍ତୁ{% else %}choose “Save as PDF” in the print dialog{% endif %}</span>
+    </p>
+    <div class="print-only print-card">
+      <strong>Satyajit Puhan</strong> — Postdoctoral Researcher, Institute of Physics, Academia Sinica, Taipei, Taiwan<br>
+      puhansatyajit@gmail.com · satyajitpuhan.github.io · ORCID 0009-0004-9766-5005 · INSPIRE-HEP: {{ config.extra.inspire_author_url }}
+    </div>
+    {% endif %}
   </div>
 </header>

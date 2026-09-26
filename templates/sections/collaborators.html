@@ -21,7 +21,7 @@
           {% if c.image %}
             <img class="person__avatar" src="{{ get_url(path=c.image) }}" alt="" loading="lazy" width="48" height="48">
           {% else %}
-            <span class="person__avatar" aria-hidden="true">{{ c.name | truncate(length=1, end="") }}</span>
+            <span class="person__avatar" aria-hidden="true">{{ macros::initials(name=c.name) }}</span>
           {% endif %}
           <span style="min-width:0">
             <span class="person__name">{{ c.name }}</span>

@@ -4,9 +4,6 @@
 
 {% block stylesheets %}
 {{ super() }}
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   /* ── Reset ── */
   .seva-page * { box-sizing: border-box; }
@@ -119,7 +116,7 @@
   }
 
   .seva-hero h1 {
-    font-family: 'Outfit', sans-serif;
+    font-family: var(--font-body);
     font-size: clamp(2.2rem, 5vw, 3.8rem);
     font-weight: 800;
     color: #ffffff;
@@ -136,7 +133,7 @@
   }
 
   .seva-hero-subtitle {
-    font-family: 'Outfit', sans-serif;
+    font-family: var(--font-body);
     font-size: 1.3rem;
     color: rgba(255,255,255,0.7);
     margin: 0 0 20px;
@@ -145,7 +142,7 @@
   }
 
   .seva-hero-desc {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: 1.05rem;
     color: rgba(255,255,255, 0.55);
     max-width: 640px;
@@ -190,7 +187,7 @@
   }
 
   .seva-mission-quote {
-    font-family: 'Outfit', sans-serif;
+    font-family: var(--font-body);
     font-size: 1.6rem;
     font-weight: 300;
     color: rgba(255,255,255,0.8);
@@ -213,7 +210,7 @@
   .seva-mission-quote::after { content: '"'; bottom: -30px; right: 0; }
 
   .seva-mission-author {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: 0.9rem;
     color: rgba(255,255,255,0.4);
     margin-top: 24px;
@@ -258,7 +255,7 @@
   }
 
   .seva-stat-num {
-    font-family: 'Outfit', sans-serif;
+    font-family: var(--font-body);
     font-size: 2.2rem;
     font-weight: 800;
     background: linear-gradient(135deg, #f59e0b, #22c55e);
@@ -268,7 +265,7 @@
   }
 
   .seva-stat-label {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: 0.8rem;
     color: rgba(255,255,255,0.45);
     text-transform: uppercase;
@@ -289,7 +286,7 @@
   }
 
   .seva-section-title {
-    font-family: 'Outfit', sans-serif;
+    font-family: var(--font-body);
     font-size: 2rem;
     font-weight: 700;
     color: #ffffff;
@@ -305,7 +302,7 @@
   }
 
   .seva-section-sub {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: 1rem;
     color: rgba(255,255,255,0.45);
     text-align: center;
@@ -317,7 +314,8 @@
 
   .seva-pillar-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 440px));
+    justify-content: center;
     gap: 28px;
   }
 
@@ -361,7 +359,7 @@
   }
 
   .seva-pillar-title {
-    font-family: 'Outfit', sans-serif;
+    font-family: var(--font-body);
     font-size: 1.3rem;
     font-weight: 700;
     color: #ffffff;
@@ -369,7 +367,7 @@
   }
 
   .seva-pillar-desc {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: 0.9rem;
     color: rgba(255,255,255,0.5);
     line-height: 1.7;
@@ -382,7 +380,7 @@
   }
 
   .seva-pillar-items li {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: 0.85rem;
     color: rgba(255,255,255,0.55);
     padding: 6px 0;
@@ -427,7 +425,7 @@
   }
 
   .seva-impact-text h3 {
-    font-family: 'Outfit', sans-serif;
+    font-family: var(--font-body);
     font-size: 1.5rem;
     font-weight: 700;
     color: #ffffff;
@@ -435,7 +433,7 @@
   }
 
   .seva-impact-text p {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: 0.95rem;
     color: rgba(255,255,255,0.5);
     line-height: 1.8;
@@ -481,7 +479,7 @@
   }
 
   .seva-cta h2 {
-    font-family: 'Outfit', sans-serif;
+    font-family: var(--font-body);
     font-size: 2rem;
     font-weight: 800;
     color: #ffffff;
@@ -498,7 +496,7 @@
   }
 
   .seva-cta p {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: 1rem;
     color: rgba(255,255,255,0.5);
     line-height: 1.7;
@@ -522,7 +520,7 @@
     gap: 8px;
     padding: 14px 32px;
     border-radius: 100px;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: 0.95rem;
     font-weight: 600;
     text-decoration: none;
@@ -596,7 +594,7 @@
   }
 
   .seva-founder-name {
-    font-family: 'Outfit', sans-serif;
+    font-family: var(--font-body);
     font-size: 1.4rem;
     font-weight: 700;
     color: #ffffff;
@@ -613,7 +611,7 @@
   }
 
   .seva-founder-bio {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: 0.9rem;
     color: rgba(255,255,255,0.5);
     line-height: 1.7;
@@ -633,7 +631,7 @@
     background: rgba(245, 158, 11, 0.9);
     color: #0a0a0a;
     text-decoration: none;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: 0.85rem;
     font-weight: 600;
     backdrop-filter: blur(12px);
@@ -706,7 +704,7 @@
   }
 
   .seva-form-card h2 {
-    font-family: 'Outfit', sans-serif;
+    font-family: var(--font-body);
     font-size: 1.8rem;
     font-weight: 700;
     color: #ffffff;
@@ -722,7 +720,7 @@
   }
 
   .seva-form-subtitle {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: 0.9rem;
     color: rgba(255,255,255,0.45);
     text-align: center;
@@ -743,7 +741,7 @@
   }
 
   .seva-form-group label {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: 0.8rem;
     font-weight: 600;
     color: rgba(255,255,255,0.6);
@@ -763,7 +761,7 @@
     border: 1px solid rgba(255,255,255,0.1);
     background: rgba(255,255,255,0.04);
     color: #ffffff;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: 0.95rem;
     transition: all 0.3s ease;
     outline: none;
@@ -796,7 +794,7 @@
     border: none;
     background: linear-gradient(135deg, #f59e0b, #22c55e);
     color: #0a0a0a;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: 1rem;
     font-weight: 700;
     cursor: pointer;
@@ -811,7 +809,7 @@
   }
 
   .seva-form-note {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: 0.75rem;
     color: rgba(255,255,255,0.3);
     text-align: center;
@@ -919,32 +917,37 @@
 </section>
 
 <!-- Impact Stats -->
+{#- Durga Seva numbers: update these as the initiative grows. The counter strip only
+    appears once at least one of them is above zero, so visitors never see "0+". -#}
+{%- set seva_books = 0 -%}{%- set seva_children = 0 -%}{%- set seva_kits = 0 -%}{%- set seva_villages = 0 -%}
+{% if seva_books + seva_children + seva_kits + seva_villages > 0 %}
 <section class="seva-stats">
   <div class="container">
     <div class="seva-stats-grid">
       <div class="seva-stat-card seva-fade-in">
         <div class="seva-stat-icon">📚</div>
-        <div class="seva-stat-num">0+</div>
+        <div class="seva-stat-num">{{ seva_books }}+</div>
         <div class="seva-stat-label">Books Donated</div>
       </div>
       <div class="seva-stat-card seva-fade-in">
         <div class="seva-stat-icon">👧</div>
-        <div class="seva-stat-num">0+</div>
+        <div class="seva-stat-num">{{ seva_children }}+</div>
         <div class="seva-stat-label">Children Helped</div>
       </div>
       <div class="seva-stat-card seva-fade-in">
         <div class="seva-stat-icon">🎒</div>
-        <div class="seva-stat-num">0+</div>
+        <div class="seva-stat-num">{{ seva_kits }}+</div>
         <div class="seva-stat-label">Supply Kits</div>
       </div>
       <div class="seva-stat-card seva-fade-in">
         <div class="seva-stat-icon">🏘️</div>
-        <div class="seva-stat-num">0+</div>
+        <div class="seva-stat-num">{{ seva_villages }}+</div>
         <div class="seva-stat-label">Villages Reached</div>
       </div>
     </div>
   </div>
 </section>
+{% endif %}
 
 <!-- Pillars -->
 <section class="seva-pillars">
@@ -991,7 +994,7 @@
 <section class="seva-founder">
   <div class="container">
     <div class="seva-founder-card">
-      <img decoding="async" loading="eager" fetchpriority="high" src="{{ get_url(path='images/hero/me1.webp') }}" alt="Satyajit Puhan" class="seva-founder-avatar">
+      <img decoding="async" loading="eager" fetchpriority="high" src="{{ get_url(path='images/hero/portrait.webp') }}" alt="Satyajit Puhan" class="seva-founder-avatar">
       <div>
         <div class="seva-founder-name">Satyajit Puhan</div>
         <div class="seva-founder-role">Founder · Durga Seva</div>
@@ -1025,13 +1028,6 @@
   </div>
 </section>
 
-<!-- Back to Home -->
-<a class="seva-back" href="{{ get_url(path='/', lang=lang) }}">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-    <polyline points="15 18 9 12 15 6"></polyline>
-  </svg>
-  Back to Home
-</a>
 
 <script>
   // Create floating particles (hearts, stars, books)

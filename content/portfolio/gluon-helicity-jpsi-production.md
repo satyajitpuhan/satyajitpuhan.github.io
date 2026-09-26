@@ -3,7 +3,7 @@ title = "Moderate-to-Large-x Gluon Helicity from J/psi Production at sqrt(s) = 2
 date = 2026-05-29
 
 [extra]
-thumbnail = "images/portfolio/papers/gluon-helicity-title.webp"
+thumbnail = "images/portfolio/papers/gluon-helicity-jpsi-production-first-page.webp"
 service = "e-Print: 2605.30945 [hep-ph]"
 client = "S. Sharma, A. Aparin, S. Puhan, N. Kumar, and H. Dahiya"
 short_description = "A feasibility study mapping the gluon helicity distribution at moderate-to-large x via J/ψ production at the NICA Spin Physics Detector, reaching |A_LL| ~ 0.09."

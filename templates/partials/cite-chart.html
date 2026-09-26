@@ -1,0 +1,17 @@
+{#- Citations-per-year bar chart; expects `stats` (inspire-stats.json) in scope. -#}
+{% if stats.citations_by_year %}
+{%- set_global cmax = 1 -%}
+{%- for y, n in stats.citations_by_year %}{% if n > cmax %}{% set_global cmax = n %}{% endif %}{% endfor -%}
+<figure class="cite-chart" aria-label="{% if lang == 'or' %}ବର୍ଷ ଅନୁସାରେ ସାଇଟେସନ୍{% else %}Citations per year{% endif %}">
+  <figcaption class="cite-chart__cap">{% if lang == 'or' %}ବର୍ଷ ଅନୁସାରେ ସାଇଟେସନ୍{% else %}Citations per year{% endif %}</figcaption>
+  <ol class="cite-chart__bars">
+    {% for y, n in stats.citations_by_year %}
+    <li class="cite-chart__bar" style="--h:{{ (n * 100 / cmax) | round }}%">
+      <span class="cite-chart__n">{{ n }}</span>
+      <span class="cite-chart__col" aria-hidden="true"></span>
+      <span class="cite-chart__y">{{ y }}</span>
+    </li>
+    {% endfor %}
+  </ol>
+</figure>
+{% endif %}

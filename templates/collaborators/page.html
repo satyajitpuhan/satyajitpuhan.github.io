@@ -12,7 +12,7 @@
         <img src="{{ get_url(path=page.extra.image) }}" alt="" width="84" height="84"
              style="width:84px;height:84px;border-radius:50%;object-fit:cover;border:1px solid var(--line-2)">
       {% else %}
-        <span class="person__avatar" style="width:84px;height:84px;font-size:1.7rem" aria-hidden="true">{{ page.title | truncate(length=1, end="") }}</span>
+        <span class="person__avatar" style="width:84px;height:84px;font-size:1.7rem" aria-hidden="true">{{ macros::initials(name=page.title) }}</span>
       {% endif %}
       <div>
         <h1 class="h-2">{{ page.title }}</h1>

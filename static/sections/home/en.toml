@@ -8,7 +8,7 @@ Currently a Postdoctoral Researcher at the **Institute of Physics, Academia Sini
 """
 button_name = "Contact Me"
 button_url  = "contact"
-image       = "images/hero/me1.webp"
+image       = "images/hero/portrait.webp"
 
 [[gallery]]
 image = "images/gallery/defense-presenting-qcd.webp"

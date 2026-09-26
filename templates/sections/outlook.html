@@ -1,0 +1,52 @@
+{#- Research outlook / future plans. Data: static/sections/outlook/{lang}.toml
+    `outlook_featured = true` shows only the featured items (homepage). -#}
+{%- set d = load_data(path="static/sections/outlook/" ~ lang ~ ".toml", required=false) -%}
+{%- set only_featured = outlook_featured | default(value=false) -%}
+{% if d and d.item %}
+<section class="section" id="outlook">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">{% if lang == 'or' %}ଆଗକୁ{% else %}What comes next{% endif %}</p>
+      <h2 class="h-1">{{ d.title }}</h2>
+      {% if d.subtitle %}<p>{{ d.subtitle }}</p>{% endif %}
+    </div>
+
+    <ol class="roadmap">
+      {% for h in ["next", "mid", "hard"] %}
+        {%- set_global hits = [] -%}
+        {%- for it in d.item %}{% if it.horizon == h and (not only_featured or it.featured) %}{% set_global hits = hits | concat(with=it) %}{% endif %}{% endfor -%}
+        {% if hits | length > 0 %}
+        <li class="roadmap__lane roadmap__lane--{{ h }} reveal">
+          <p class="roadmap__when mono">
+            {% if h == "next" %}{% if lang == 'or' %}ପରବର୍ତ୍ତୀ ପଦକ୍ଷେପ · ୨୦୨୬–୨୭{% else %}Next · 2026–27{% endif %}
+            {% elif h == "mid" %}{% if lang == 'or' %}ମଧ୍ୟମ ଅବଧି · ୨୦୨୭–୨୯{% else %}Mid-term · 2027–29{% endif %}
+            {% else %}{% if lang == 'or' %}କଠିନ ଖୋଲା ସମସ୍ୟା{% else %}Hard open problems{% endif %}{% endif %}
+          </p>
+          <div class="roadmap__items">
+            {% for it in hits %}
+            <article class="plan">
+              <div class="plan__top">
+                <h3 class="plan__title">{{ it.title }}</h3>
+                <span class="plan__diff" title="{% if lang == 'or' %}କଠିନତା{% else %}Difficulty{% endif %} {{ it.difficulty }}/5">
+                  <span class="sr-only">{% if lang == 'or' %}କଠିନତା{% else %}Difficulty{% endif %} {{ it.difficulty }} / 5</span>
+                  {% for i in range(end=5) %}<i class="{% if i < it.difficulty %}on{% endif %}" aria-hidden="true"></i>{% endfor %}
+                </span>
+              </div>
+              <p class="plan__text">{{ it.text }}</p>
+              {% if it.hard %}<p class="plan__hard"><b>{% if lang == 'or' %}କାହିଁକି କଠିନ:{% else %}Why it is hard:{% endif %}</b> {{ it.hard }}</p>{% endif %}
+            </article>
+            {% endfor %}
+          </div>
+        </li>
+        {% endif %}
+      {% endfor %}
+    </ol>
+
+    {% if only_featured %}
+    <p class="center" style="margin-top:28px">
+      <a class="btn btn--ghost" href="{{ get_url(path='/research/', lang=lang) }}#outlook">{% if lang == 'or' %}ସମ୍ପୂର୍ଣ୍ଣ ଯୋଜନା{% else %}The full research outlook{% endif %} {{ ic::ui(name="arrow") }}</a>
+    </p>
+    {% endif %}
+  </div>
+</section>
+{% endif %}

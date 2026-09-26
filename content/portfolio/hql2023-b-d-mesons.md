@@ -3,7 +3,7 @@ title = "Spatial and Transverse structure of Heavy B-and D-mesons"
 date = 2023-11-28
 
 [extra]
-thumbnail = "images/portfolio/portfolio-2.webp"
+thumbnail = "images/portfolio/papers/hql2023-b-d-mesons-first-page.webp"
 service = "PoS HQL2023"
 client = "S. Puhan and H. Dahiya"
 short_description = "Conference proceeding on the spatial and transverse structure of heavy B and D mesons, connecting GPDs and PDFs through TMDs in light-front dynamics."

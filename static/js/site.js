@@ -173,15 +173,26 @@
     var input = $('#pub-search-input');
     var empty = $('#pub-empty');
     var countEl = $('#pub-count');
-    var active = 'all';
+    var active = 'all', yearSel = $('#pub-year'), sortSel = $('#pub-sort');
 
+    function sort() {
+      var mode = sortSel ? sortSel.value : 'new';
+      var key = function (c) { return mode === 'cited' ? -(+c.getAttribute('data-cites') || 0) : c.getAttribute('data-date') || ''; };
+      var sorted = cards.slice().sort(function (a, b) {
+        var ka = key(a), kb = key(b);
+        if (mode === 'cited') return ka - kb || (b.getAttribute('data-date') > a.getAttribute('data-date') ? 1 : -1);
+        return mode === 'old' ? (ka > kb ? 1 : -1) : (ka < kb ? 1 : -1);
+      });
+      sorted.forEach(function (c) { list.appendChild(c); });
+    }
     function apply() {
       var q = (input && input.value || '').trim().toLowerCase();
+      var yr = yearSel ? yearSel.value : 'all';
       var shown = 0;
       cards.forEach(function (c) {
         var kind = c.getAttribute('data-kind') || '';
         var hay = (c.getAttribute('data-pub') || '').toLowerCase();
-        var ok = (active === 'all' || kind === active) && (!q || hay.indexOf(q) > -1);
+        var ok = (active === 'all' || kind === active) && (!q || hay.indexOf(q) > -1) && (yr === 'all' || c.getAttribute('data-year') === yr);
         c.hidden = !ok;
         if (ok) shown++;
       });
@@ -196,7 +207,33 @@
       });
     });
     on(input, 'input', apply);
+    on(yearSel, 'change', apply);
+    on(sortSel, 'change', function () { sort(); apply(); });
     apply();
+  })();
+
+  /* ---- 7b. one-click BibTeX from INSPIRE-HEP --------------------------- */
+  (function bibtex() {
+    var btns = $$('[data-bibtex]');
+    if (!btns.length) return;
+    var toast = document.createElement('div');
+    toast.className = 'toast'; toast.setAttribute('role', 'status'); toast.setAttribute('aria-live', 'polite');
+    document.body.appendChild(toast);
+    function say(msg) { toast.textContent = msg; toast.classList.add('is-on'); clearTimeout(toast._t); toast._t = setTimeout(function () { toast.classList.remove('is-on'); }, 2600); }
+    var or = document.documentElement.lang === 'or';
+    btns.forEach(function (b) {
+      on(b, 'click', function (e) {
+        if (!window.fetch || !navigator.clipboard) return;   // plain link fallback: opens the BibTeX
+        e.preventDefault();
+        b.classList.add('is-busy');
+        fetch('https://inspirehep.net/api/literature/' + b.getAttribute('data-bibtex') + '?format=bibtex')
+          .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+          .then(function (t) { return navigator.clipboard.writeText(t.trim()); })
+          .then(function () { say(or ? 'BibTeX କପି ହେଲା' : 'BibTeX copied to clipboard'); })
+          .catch(function () { window.open(b.href, '_blank', 'noopener'); })
+          .then(function () { b.classList.remove('is-busy'); });
+      });
+    });
   })();
 
   /* ---- 8. gallery lightbox --------------------------------------------- */
@@ -391,6 +428,91 @@
     });
     on(document, 'keydown', function (e) { if (e.key === 'Escape') panel.classList.remove('is-open'); });
   })();
+
+  /* ---- 13. hero: a hadron — three valence quarks bound by gluon flux tubes,
+         with short-lived quark–antiquark pairs popping out of the field ----- */
+  (function hadron() {
+    var cv = $('[data-hadron]');
+    if (!cv || !cv.getContext) return;
+    var ctx = cv.getContext('2d'), dpr = Math.min(2, window.devicePixelRatio || 1);
+    var W = 0, H = 0, running = false, visible = true, t0 = performance.now(), pairs = [], raf = 0, cols = [];
+    function css(n) { return getComputedStyle(document.documentElement).getPropertyValue(n).trim() || '#e8a444'; }
+    function colours() { cols = [css('--accent'), css('--cyan'), css('--violet')]; }
+    function size() {
+      var r = cv.getBoundingClientRect(); W = r.width; H = r.height;
+      cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    function quarks(t) {
+      var cx = W / 2, cy = H / 2, rx = W * 0.46, ry = H * 0.45, out = [];
+      for (var i = 0; i < 3; i++) {
+        var a = t * 0.00016 + i * 2.0944 + 0.35 * Math.sin(t * 0.0007 + i * 1.7);
+        var wob = 1 + 0.06 * Math.sin(t * 0.0011 + i * 2.3);
+        out.push({ x: cx + Math.cos(a) * rx * wob, y: cy + Math.sin(a) * ry * wob, c: cols[i] });
+      }
+      return out;
+    }
+    function tube(a, j, t, k) {
+      // a slightly wavy flux tube from the junction to the quark
+      var mx = (a.x + j.x) / 2, my = (a.y + j.y) / 2, dx = a.x - j.x, dy = a.y - j.y, L = Math.hypot(dx, dy) || 1;
+      var off = 14 * Math.sin(t * 0.0013 + k * 1.9);
+      var qx = mx - dy / L * off, qy = my + dx / L * off;
+      var g = ctx.createLinearGradient(j.x, j.y, a.x, a.y);
+      g.addColorStop(0, 'rgba(255,255,255,0)'); g.addColorStop(1, a.c);
+      for (var w = 0; w < 3; w++) {
+        ctx.beginPath(); ctx.moveTo(j.x, j.y); ctx.quadraticCurveTo(qx, qy, a.x, a.y);
+        ctx.strokeStyle = g; ctx.globalAlpha = [0.10, 0.22, 0.55][w]; ctx.lineWidth = [16, 7, 1.6][w]; ctx.stroke();
+      }
+      ctx.globalAlpha = 1;
+      return { qx: qx, qy: qy };
+    }
+    function draw(t) {
+      ctx.clearRect(0, 0, W, H);
+      var q = quarks(t), j = { x: (q[0].x + q[1].x + q[2].x) / 3, y: (q[0].y + q[1].y + q[2].y) / 3 };
+      var ctl = q.map(function (a, k) { return tube(a, j, t, k); });
+      // sea pairs: born on a tube, drift apart, fade
+      if (!reduced && Math.random() < 0.035 && pairs.length < 6) {
+        var k = (Math.random() * 3) | 0, s = 0.3 + Math.random() * 0.5, a = q[k], c = ctl[k];
+        var px = (1 - s) * (1 - s) * j.x + 2 * (1 - s) * s * c.qx + s * s * a.x;
+        var py = (1 - s) * (1 - s) * j.y + 2 * (1 - s) * s * c.qy + s * s * a.y;
+        var ang = Math.random() * 6.283;
+        pairs.push({ x: px, y: py, vx: Math.cos(ang) * 0.35, vy: Math.sin(ang) * 0.35, born: t, c: a.c });
+      }
+      pairs = pairs.filter(function (p) { return t - p.born < 1800 && t >= p.born; });
+      pairs.forEach(function (p) {
+        var age = (t - p.born) / 1800, d = age * 26;
+        ctx.globalAlpha = Math.sin(age * Math.PI) * 0.8; ctx.fillStyle = p.c; ctx.strokeStyle = p.c; ctx.lineWidth = 1.2;
+        ctx.beginPath(); ctx.arc(p.x + p.vx * d * 3, p.y + p.vy * d * 3, 2.4, 0, 6.283); ctx.fill();
+        ctx.beginPath(); ctx.arc(p.x - p.vx * d * 3, p.y - p.vy * d * 3, 2.4, 0, 6.283); ctx.stroke();
+      });
+      ctx.globalAlpha = 1;
+      q.forEach(function (a) {
+        var g = ctx.createRadialGradient(a.x, a.y, 0, a.x, a.y, 20);
+        g.addColorStop(0, a.c); g.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.fillStyle = g; ctx.beginPath(); ctx.arc(a.x, a.y, 20, 0, 6.283); ctx.fill();
+        ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(a.x, a.y, 3.2, 0, 6.283); ctx.fill();
+      });
+    }
+    function loop(now) { if (!running) return; draw(now - t0); raf = requestAnimationFrame(loop); }
+    function start() { if (running || reduced || !visible || document.hidden) return; running = true; raf = requestAnimationFrame(loop); }
+    function stop() { running = false; cancelAnimationFrame(raf); }
+    colours(); size(); draw(1200);
+    on(window, 'resize', function () { size(); draw(performance.now() - t0); });
+    new MutationObserver(function () { colours(); if (!running) draw(performance.now() - t0); })
+      .observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) { visible = es[0].isIntersecting; if (visible) start(); else stop(); }).observe(cv);
+    }
+    on(document, 'visibilitychange', function () { if (document.hidden) stop(); else start(); });
+    start();
+  })();
+
+  /* ---- 14. CV download: the resume page has a print stylesheet --------- */
+  $$('[data-print]').forEach(function (b) {
+    on(b, 'click', function () {
+      $$('.reveal').forEach(function (el) { el.classList.add('is-in'); });
+      window.print();
+    });
+  });
 
   /* ---- 12. external links get rel + target ----------------------------- */
   $$('a[href^="http"]').forEach(function (a) {

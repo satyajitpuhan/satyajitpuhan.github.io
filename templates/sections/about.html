@@ -44,7 +44,8 @@
           <a class="gallery__item" href="{{ get_url(path=g.image) }}"
              data-lightbox="{{ get_url(path=g.image) }}" data-caption="{{ g.caption }}" tabindex="0"
              aria-label="{{ g.caption }}">
-            <img src="{{ get_url(path=g.image) }}" alt="{{ g.caption }}" loading="lazy" decoding="async" width="420" height="315">
+            {%- set t = resize_image(path=g.image, width=640, height=480, op="fill", format="webp", quality=78) -%}
+            <img src="{{ t.url }}" alt="" loading="lazy" decoding="async" width="420" height="315">
             <span class="gallery__cap">{{ g.caption }}</span>
           </a>
           {% endif %}
