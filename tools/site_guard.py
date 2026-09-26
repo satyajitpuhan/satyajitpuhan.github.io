@@ -70,6 +70,15 @@ def check_push():
     ref = os.environ.get("GITHUB_REF", "")
     commits = ev.get("commits") or []
     files = sorted({f for c in commits for k in ("added", "modified", "removed") for f in c.get(k, [])})
+    before, after = ev.get("before", ""), ev.get("after", "")
+    if not files and after:
+        # the push payload often omits file lists: ask the API what changed
+        base = before if before and set(before) != {"0"} else (ev.get("repository", {}).get("default_branch") or "main")
+        try:
+            cmp = gh_api("GET", f"/compare/{base}...{after}")
+            files = sorted({f["filename"] for f in (cmp or {}).get("files", [])})
+        except Exception as e:                               # noqa: BLE001
+            print("could not list changed files:", e)
     lines = "\n".join(f"- `{c['id'][:7]}` {c['message'].splitlines()[0][:100]} — {c['author'].get('name')} <{c['author'].get('email')}>"
                       for c in commits[:20])
     if ref == "refs/heads/gh-pages":
