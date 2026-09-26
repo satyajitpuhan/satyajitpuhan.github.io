@@ -1,0 +1,71 @@
+# Cards on the Visualizations page. Add a [[viz]] block for a new visualization.
+
+[[viz]]
+url = "vd/live-wallpaper-alphas/index.html"
+symbol = "α<sub>s</sub>(Q²)"
+kind = "interactive"
+title = "α<sub>s</sub>(Q²) — Running coupling"
+text = "The running of the strong coupling: asymptotic freedom at high Q², confinement at low Q², with an adjustable energy scale."
+tag1 = "Canvas"
+tag2 = "pQCD"
+hue = "#ff5c8a"
+
+[[viz]]
+url = "vd/live-wallpaper-dglap/index.html"
+symbol = "DGLAP"
+kind = "interactive"
+title = "DGLAP parton evolution"
+text = "Gluon and sea-quark distributions grow and take over from the valence quarks as Q² increases through the splitting kernels."
+tag1 = "Canvas"
+tag2 = "PDFs"
+hue = "#3ddc97"
+
+[[viz]]
+url = "vd/live-wallpaper-mechanical/index.html"
+symbol = "p(b<sub>⊥</sub>)"
+kind = "interactive"
+title = "Pion mechanical distribution"
+text = "Pressure, shear and energy distributions inside the pion from the light-front quark model."
+tag1 = "Canvas"
+tag2 = "GFFs"
+hue = "#ff8a5c"
+
+[[viz]]
+url = "vd/live-wallpaper-qcdfield/index.html"
+symbol = "QCD"
+kind = "simulation"
+title = "QCD quantum field"
+text = "Lattice QCD, flux tubes, bubble-chamber tracks and Feynman diagrams — four modes to switch between."
+tag1 = "Canvas"
+tag2 = "Lattice"
+hue = "#5cf2c0"
+
+[[viz]]
+url = "vd/GDAs.html"
+symbol = "γγ* → π⁰π⁰"
+kind = "animation"
+title = "Generalized distribution amplitude"
+text = "The γγ* → π⁰π⁰ process animated: photon collisions and pion-pair production."
+tag1 = "Canvas"
+tag2 = "GDAs"
+hue = "#ffd23f"
+
+[[viz]]
+url = "vd/forms-comparison.html"
+symbol = "IF ⟷ FF"
+kind = "animation"
+title = "Instant form vs front form"
+text = "Equal-time (instant form) and light-front (front form) relativistic dynamics side by side."
+tag1 = "Canvas"
+tag2 = "KaTeX"
+hue = "#5cc8ff"
+
+[[viz]]
+url = "vd/proton2.html"
+symbol = "p⁺"
+kind = "simulation"
+title = "Proton live wallpaper"
+text = "A layered parallax proton with particle overlays and a slow Ken Burns zoom."
+tag1 = "Canvas"
+tag2 = "Parallax"
+hue = "#a0c4ff"
