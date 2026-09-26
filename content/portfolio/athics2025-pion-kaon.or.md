@@ -12,7 +12,7 @@ solution = "Comprehensive structural analysis of pion and kaon using light-front
 tags = ["Pion", "Kaon", "TMDs", "Power-Law Wave Functions", "Conference"]
 categories = ["Conference Proceeding"]
 arxiv = "2604.07049"
-doi = "10.1142/S0217732326420113"
+doi = "10.1142/s0217732326420113"
 inspire = "3141833"
 citations = 0
 +++
