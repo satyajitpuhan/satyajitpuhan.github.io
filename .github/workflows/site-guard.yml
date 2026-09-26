@@ -1,0 +1,26 @@
+name: Site guard
+
+# Emails the owner (via a GitHub issue) when the website may have been tampered with.
+# See tools/site_guard.py for what is checked. Reads only the public site and this repository.
+on:
+  push:
+    branches: ["**"]
+  schedule:
+    - cron: "41 */6 * * *"     # every 6 hours
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Check
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 tools/site_guard.py

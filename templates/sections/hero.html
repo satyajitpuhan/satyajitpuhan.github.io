@@ -8,13 +8,16 @@
   <div class="hero__grid-lines" aria-hidden="true"></div>
 
   <div class="wrap hero__inner">
-    <div class="reveal">
-      <p class="eyebrow">{% if lang == 'or' %}ଆକାଡେମିଆ ସିନିକା · ତାଇପେ{% else %}Institute of Physics · Academia Sinica · Taipei{% endif %}</p>
+    <div class="hero__text reveal">
+      <p class="eyebrow eyebrow--plain">{% if lang == 'or' %}ଆକାଡେମିଆ ସିନିକା · ତାଇପେ{% else %}Institute of Physics · Academia Sinica · Taipei{% endif %}</p>
 
-      <h1 class="h-hero">{% if lang == 'or' %}ନମସ୍କାର, ମୁଁ <span class="grad-text">ସତ୍ୟଜିତ ପୁହାଣ</span>{% else %}Hello, I am <span class="grad-text">Satyajit Puhan</span>{% endif %}</h1>
+      <h1 class="h-hero">
+        {% if lang == 'or' %}<span class="sr-only">ନମସ୍କାର, ମୁଁ </span>ସତ୍ୟଜିତ <em>ପୁହାଣ</em>
+        {% else %}<span class="sr-only">Hello, I am </span>Satyajit <em>Puhan</em>{% endif %}
+      </h1>
 
       <p class="hero__role">
-        {% if lang == 'or' %}<strong>ପୋଷ୍ଟଡକ୍ଟୋରାଲ୍ ଗବେଷକ</strong> — ଆକାଡେମିଆ ସିନିକା{% else %}<strong>Postdoctoral Researcher</strong> — hadron structure &amp; light-front QCD{% endif %}
+        {% if lang == 'or' %}<strong>ପୋଷ୍ଟଡକ୍ଟୋରାଲ୍ ଗବେଷକ</strong> — ହାଡ୍ରନ୍ ଗଠନ ଓ ଲାଇଟ୍-ଫ୍ରଣ୍ଟ QCD{% else %}<strong>Postdoctoral Researcher</strong> — hadron structure &amp; light-front QCD{% endif %}
       </p>
 
       <p class="hero__desc">
@@ -26,50 +29,47 @@
       </p>
 
       <div class="hero__actions">
-        <a class="btn btn--inspire" href="{{ config.extra.inspire_author_url }}">
-          {{ ic::social(name="inspire") }}
-          <span>{% if lang == 'or' %}INSPIRE-HEP ପ୍ରୋଫାଇଲ୍{% else %}INSPIRE-HEP profile{% endif %}</span>
-          {{ ic::ui(name="external") }}
-        </a>
         <a class="btn btn--primary" href="{{ get_url(path='/portfolio/', lang=lang) }}">
           {% if lang == 'or' %}ପ୍ରକାଶନ ଦେଖନ୍ତୁ{% else %}Browse publications{% endif %} {{ ic::ui(name="arrow") }}
+        </a>
+        <a class="btn btn--inspire" href="{{ config.extra.inspire_author_url }}" aria-label="{% if lang == 'or' %}INSPIRE-HEP ପ୍ରୋଫାଇଲ୍ (ନୂଆ ଟ୍ୟାବ୍){% else %}INSPIRE-HEP profile (opens INSPIRE-HEP){% endif %}">
+          {{ ic::social(name="inspire") }}
+          <span>INSPIRE-HEP</span>
+          {{ ic::ui(name="external") }}
         </a>
         <a class="btn btn--ghost" href="{{ get_url(path='/contact/', lang=lang) }}">{{ trans(key='contact_me', lang=lang) }}</a>
       </div>
 
-      <div class="chips" style="margin-bottom:26px">
-        <span class="chip chip--accent">QCD</span>
-        <span class="chip chip--cyan">TMDs &amp; GPDs</span>
-        <span class="chip chip--violet">Light-front dynamics</span>
-        <span class="chip chip--mint">Nuclear medium</span>
-      </div>
+      <div class="hero__metrics">
+        <div class="stats" id="stats">
+          <div class="stat">
+            <div class="stat__num" data-stat="papers" data-count="{{ stats.papers | default(value=pubs.pages | length) }}">{{ stats.papers | default(value=pubs.pages | length) }}</div>
+            <div class="stat__label">{% if lang == 'or' %}ପ୍ରକାଶନ{% else %}Publications{% endif %}</div>
+          </div>
+          <div class="stat">
+            <div class="stat__num" data-stat="citations" data-count="{{ stats.citations | default(value=0) }}">{{ stats.citations | default(value=0) }}</div>
+            <div class="stat__label">{% if lang == 'or' %}ସାଇଟେସନ୍{% else %}Citations{% endif %}</div>
+          </div>
+          <div class="stat">
+            <div class="stat__num" data-stat="hindex" data-count="{{ stats.hindex | default(value=0) }}">{{ stats.hindex | default(value=0) }}</div>
+            <div class="stat__label">h-index</div>
+          </div>
+        </div>
 
-      <div class="stats" id="stats">
-        <div class="stat">
-          <div class="stat__num" data-stat="papers" data-count="{{ stats.papers | default(value=pubs.pages | length) }}">0</div>
-          <div class="stat__label">{% if lang == 'or' %}ପ୍ରକାଶନ{% else %}Publications{% endif %}</div>
-        </div>
-        <div class="stat">
-          <div class="stat__num" data-stat="citations" data-count="{{ stats.citations | default(value=0) }}">0</div>
-          <div class="stat__label">{% if lang == 'or' %}ସାଇଟେସନ୍{% else %}Citations{% endif %}</div>
-        </div>
-        <div class="stat">
-          <div class="stat__num" data-stat="hindex" data-count="{{ stats.hindex | default(value=0) }}">0</div>
-          <div class="stat__label">h-index</div>
-        </div>
-        <div class="stat">
-          <div class="stat__num" data-count="10">0</div>
-          <div class="stat__label">{% if lang == 'or' %}ଆଲୋଚନା{% else %}Talks &amp; posters{% endif %}</div>
-        </div>
+        {% include "partials/cite-chart.html" %}
       </div>
       <p class="stats__note dim mono" id="stats-note">
-        {% if lang == 'or' %}INSPIRE-HEP ରୁ ଦୈନିକ ସିଙ୍କ୍{% else %}Synced from INSPIRE-HEP{% endif %}{% if stats.updated %} · {{ stats.updated }}{% endif %}
+        {% if lang == 'or' %}INSPIRE-HEP ରୁ ଦୈନିକ ସିଙ୍କ୍{% else %}Synced daily from INSPIRE-HEP{% endif %}{% if stats.updated %} · {{ stats.updated }}{% endif %}
       </p>
     </div>
 
-    <div class="hero__portrait reveal">
-      <img src="{{ get_url(path=d.image | default(value='images/hero/me1.webp')) }}"
-           alt="Satyajit Puhan" width="640" height="800" fetchpriority="high" decoding="async">
+    <div class="hero__visual reveal">
+      <canvas class="hero__hadron" data-hadron aria-hidden="true"></canvas>
+      <figure class="hero__portrait">
+        <img src="{{ get_url(path=d.image | default(value='images/hero/portrait.webp')) }}"
+             alt="{% if lang == 'or' %}ସତ୍ୟଜିତ ପୁହାଣ, ଅଫିସରେ ହ୍ୱାଇଟବୋର୍ଡ ସମ୍ମୁଖରେ{% else %}Satyajit Puhan at his desk, in front of a whiteboard of equations{% endif %}"
+             width="520" height="600" fetchpriority="high" decoding="async">
+      </figure>
       <div class="hero__badge"><span class="dot"></span>{% if lang == 'or' %}ସହଯୋଗ ପାଇଁ ଉପଲବ୍ଧ{% else %}Open to collaborations{% endif %}</div>
     </div>
   </div>

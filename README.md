@@ -112,3 +112,30 @@ markup to keep in sync.
 ## Licence
 
 Code: MIT (see `LICENSE`). Text, images and research content: © Satyajit Puhan.
+
+## Things you can edit without touching templates (added 2026-09)
+
+| File | What it controls |
+|------|------------------|
+| `static/sections/outlook/{en,or}.toml` | **Research outlook** roadmap (future plans). `featured = true` shows an item on the homepage; `difficulty` is 1–5. |
+| `static/data/places.toml` | Pins on the **talks world map** (Talks page). Add a `[[place]]` with lat/lon after each new talk. |
+| `static/data/visualizations.toml` | Cards on the **Visualizations** page. |
+| `templates/social-service/list.html` (top) | Durga Seva counters — the strip appears once any number is above zero. |
+| `static/images/hero/portrait.webp` | Homepage portrait. `static/images/og-card.jpg` is the preview shown when the site is shared. |
+
+The daily INSPIRE sync now also stores **citations per year** and **papers per year** in
+`static/data/inspire-stats.json`; the charts on the homepage and the Publications page read it.
+
+## Site guard (tamper alerts)
+
+`.github/workflows/site-guard.yml` runs `tools/site_guard.py` on every push and every 6 hours.
+It opens a GitHub issue labelled `site-guard` — GitHub emails you about it — when
+
+* someone changes the site's code (templates, JS, CSS, workflows, config),
+* anything is pushed straight to `gh-pages` instead of through the deploy workflow,
+* a live page loads scripts, frames or forms from an unexpected website, loses your name,
+  or no longer matches what was deployed.
+
+If an alert is you, just close the issue. If it is not: change your GitHub password, check
+Settings → Sessions / Security log, revoke unknown tokens and keys, and revert the commit.
+Make sure GitHub notifications for this repository reach your email (Settings → Notifications).

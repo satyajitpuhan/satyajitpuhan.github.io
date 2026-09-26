@@ -14,6 +14,10 @@
 
 {% include "sections/research.html" %}
 
+{% set outlook_featured = true %}
+{% include "sections/outlook.html" %}
+{% set outlook_featured = false %}
+
 {% set pub_limit = 6 %}
 {% set pub_compact = true %}
 {% include "sections/publications.html" %}

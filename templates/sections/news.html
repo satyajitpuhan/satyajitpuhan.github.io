@@ -15,7 +15,7 @@
         {% if limit == 0 or loop.index0 < limit %}
         <article class="news-item reveal">
           <div class="news-item__thumb">
-            {% if item.image %}<img src="{{ get_url(path=item.image) }}" alt="" loading="lazy" decoding="async" width="240" height="310">{% endif %}
+            {% if item.image %}{% if item.image is ending_with(".svg") %}<img src="{{ get_url(path=item.image) }}" alt="" loading="lazy" decoding="async" width="240" height="310">{% else %}{%- set t = resize_image(path=item.image, width=280, op="fit_width", format="webp", quality=80) -%}<img src="{{ t.url }}" alt="" loading="lazy" decoding="async" width="240" height="310">{% endif %}{% endif %}
           </div>
           <div style="min-width:0">
             <p class="news-item__date">

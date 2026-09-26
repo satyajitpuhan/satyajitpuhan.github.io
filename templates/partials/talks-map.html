@@ -1,0 +1,28 @@
+{#- World map of talks, schools and positions. Data: static/data/places.toml -#}
+{%- set places = load_data(path="static/data/places.toml", required=false) -%}
+{% if places and places.place %}
+<figure class="talk-map reveal">
+  <svg viewBox="0 20 1000 400" role="img" aria-labelledby="talk-map-title">
+    <title id="talk-map-title">{% if lang == 'or' %}ଆଲୋଚନା ଓ ଗବେଷଣା ସ୍ଥାନ{% else %}Map of talks, schools and research positions{% endif %}</title>
+    <path class="talk-map__land" d="{{ load_data(path='static/data/world-land.path', format='plain') }}"/>
+    {% for p in places.place %}
+      {%- set x = (p.lon + 180) / 360 * 1000 -%}
+      {%- set y = (78 - p.lat) / 136 * 460 -%}
+      <g class="talk-map__pin talk-map__pin--{{ p.kind }}" transform="translate({{ x | round(precision=1) }} {{ y | round(precision=1) }})" tabindex="0">
+        <title>{{ p.name }} — {{ p.what }}</title>
+        <circle class="talk-map__halo" r="9"/>
+        <circle class="talk-map__dot" r="4"/>
+      </g>
+    {% endfor %}
+  </svg>
+  <figcaption class="talk-map__legend">
+    <span><i class="k k--talk"></i>{% if lang == 'or' %}ଆଲୋଚନା / ପୋଷ୍ଟର{% else %}Talks &amp; posters{% endif %}</span>
+    <span><i class="k k--school"></i>{% if lang == 'or' %}ସ୍କୁଲ୍ / କର୍ମଶାଳା{% else %}Schools &amp; workshops{% endif %}</span>
+    <span><i class="k k--position"></i>{% if lang == 'or' %}ଶିକ୍ଷା / ପଦବୀ{% else %}Study &amp; positions{% endif %}</span>
+    <span><i class="k k--remote"></i>{% if lang == 'or' %}ଅନଲାଇନ୍{% else %}Online seminars{% endif %}</span>
+  </figcaption>
+  <ul class="talk-map__list">
+    {% for p in places.place %}<li><b>{{ p.name }}</b><span>{{ p.what }}</span></li>{% endfor %}
+  </ul>
+</figure>
+{% endif %}

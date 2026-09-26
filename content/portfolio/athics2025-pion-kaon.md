@@ -3,7 +3,7 @@ title = "Leading-twist TMDs for pion and kaon using power law wave functions"
 date = 2025-01-10
 
 [extra]
-thumbnail = "images/portfolio/portfolio-3.webp"
+thumbnail = "images/portfolio/papers/athics2025-pion-kaon-first-page.webp"
 service = "ATHICS 2025"
 client = "S. Puhan, and H. Dahiya"
 short_description = "ATHICS 2025 proceeding on leading-twist TMDs for pion and kaon with power-law wave functions, with predictions for AMBER, JLab, and EIC experiments."

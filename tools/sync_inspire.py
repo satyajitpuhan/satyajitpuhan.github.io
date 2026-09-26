@@ -217,6 +217,27 @@ def fetch_records(source: str | None = None):
     return out
 
 
+def papers_by_year(records):
+    out = {}
+    for r in records:
+        y = (r.get("date") or "")[:4]
+        if y.isdigit():
+            out[y] = out.get(y, 0) + 1
+    return dict(sorted(out.items()))
+
+
+def fetch_citations_by_year():
+    """Citations received per calendar year (INSPIRE's own author-profile histogram)."""
+    url = ("https://inspirehep.net/api/literature/facets?q=a%20" + urllib.parse.quote(AUTHOR_BAI)
+           + "&facet_name=citations-by-year")
+    try:
+        agg = fetch_json(url).get("aggregations", {}).get("citations_by_year", {}).get("value", {})
+        return {str(k): int(v) for k, v in sorted(agg.items())}
+    except Exception as e:                                   # noqa: BLE001
+        log("citations-by-year unavailable:", e)
+        return None
+
+
 def compute_stats(records):
     counts = sorted((r["citations"] for r in records), reverse=True)
     h = 0
@@ -232,6 +253,7 @@ def compute_stats(records):
         "journal_articles": sum(1 for r in records if r["category"] == "Journal Article"),
         "proceedings": sum(1 for r in records if r["category"] == "Conference Proceeding"),
         "preprints": sum(1 for r in records if r["category"] == "Preprint"),
+        "papers_by_year": papers_by_year(records),
         "updated": dt.date.today().isoformat(),
         "exclude": sorted(EXCLUDED_RECORDS),
     }
@@ -625,6 +647,11 @@ def main():
 
     # 1 ── stats -------------------------------------------------------------
     stats = compute_stats(records)
+    cby = None if args.from_file else fetch_citations_by_year()
+    if cby is None and os.path.exists(STATS_PATH):   # keep the last known histogram
+        cby = json.load(open(STATS_PATH, encoding="utf-8")).get("citations_by_year")
+    if cby:
+        stats["citations_by_year"] = cby
     if not dry and not args.no_stats:
         os.makedirs(os.path.dirname(STATS_PATH), exist_ok=True)
         with open(STATS_PATH, "w", encoding="utf-8", newline="\n") as f:

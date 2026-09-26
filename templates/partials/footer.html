@@ -24,7 +24,7 @@
       </div>
 
       <div>
-        <h4>{% if lang == 'or' %}ପୃଷ୍ଠା{% else %}Explore{% endif %}</h4>
+        <h2 class="footer__h">{% if lang == 'or' %}ପୃଷ୍ଠା{% else %}Explore{% endif %}</h2>
         <ul>
           {% for item in config.extra.menus %}
             {%- set url = item.url -%}
@@ -36,7 +36,7 @@
       </div>
 
       <div>
-        <h4>{% if lang == 'or' %}ଗବେଷଣା ପ୍ରୋଫାଇଲ୍{% else %}Research profiles{% endif %}</h4>
+        <h2 class="footer__h">{% if lang == 'or' %}ଗବେଷଣା ପ୍ରୋଫାଇଲ୍{% else %}Research profiles{% endif %}</h2>
         <ul>
           {% for s in config.extra.socials %}
             {% if s.icon in ["inspire","scholar","orcid","researchgate","github"] %}
@@ -47,7 +47,7 @@
       </div>
 
       <div>
-        <h4>{{ trans(key='contact', lang=lang) }}</h4>
+        <h2 class="footer__h">{{ trans(key='contact', lang=lang) }}</h2>
         <ul>
           <li><a href="mailto:puhansatyajit@gmail.com">puhansatyajit@gmail.com</a></li>
           <li><span class="muted" style="font-size:.89rem">{{ config.extra.address.address }}</span></li>

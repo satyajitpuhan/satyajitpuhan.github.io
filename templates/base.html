@@ -50,12 +50,14 @@
 <meta property="og:title" content="{{ meta_title }}">
 <meta property="og:description" content="{{ meta_desc | striptags | trim | truncate(length=165) }}">
 <meta property="og:url" content="{{ self_url }}">
-<meta property="og:image" content="{% if page and page.extra.thumbnail %}{{ get_url(path=page.extra.thumbnail) }}{% else %}{{ get_url(path='images/hero/me1.webp') }}{% endif %}">
+<meta property="og:image" content="{% if page and page.extra.thumbnail %}{{ get_url(path=page.extra.thumbnail) }}{% else %}{{ get_url(path='images/og-card.jpg') }}{% endif %}">
 <meta property="og:locale" content="{% if lang == 'or' %}or_IN{% else %}en_US{% endif %}">
 <meta name="twitter:card" content="summary_large_image">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:title" content="{{ meta_title }}">
 <meta name="twitter:description" content="{{ meta_desc | striptags | trim | truncate(length=165) }}">
-<meta name="twitter:image" content="{% if page and page.extra.thumbnail %}{{ get_url(path=page.extra.thumbnail) }}{% else %}{{ get_url(path='images/hero/me1.webp') }}{% endif %}">
+<meta name="twitter:image" content="{% if page and page.extra.thumbnail %}{{ get_url(path=page.extra.thumbnail) }}{% else %}{{ get_url(path='images/og-card.jpg') }}{% endif %}">
 
 <link rel="icon" href="{{ get_url(path='images/favicon.ico') }}" sizes="any">
 <link rel="apple-touch-icon" href="{{ get_url(path='images/logo.png') }}">
@@ -69,9 +71,11 @@ if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)
 </script>
 
 {% block stylesheets %}
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+Oriya:wght@400;600&display=swap" rel="stylesheet">
+{# Fonts are self-hosted: no third-party request, and the @font-face rules are inlined
+   so they never block rendering. The Odia face is only loaded on Odia pages. #}
+<link rel="preload" href="{{ get_url(path='fonts/web/Inter-normal-latin.woff2') }}" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ get_url(path='fonts/web/InstrumentSerif-normal-latin.woff2') }}" as="font" type="font/woff2" crossorigin>
+<style>{{ load_data(path="static/fonts/fonts.css", format="plain") | safe }}{% if lang == 'or' %}{{ load_data(path="static/fonts/fonts-or.css", format="plain") | safe }}{% endif %}</style>
 <link rel="stylesheet" href="{{ get_url(path='css/site.css', cachebust=true) }}">
 {% endblock %}
 
@@ -115,7 +119,7 @@ if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)
   "jobTitle": "Postdoctoral Researcher",
   "description": "Theoretical particle physicist working on QCD, hadron structure and light-front dynamics at the Institute of Physics, Academia Sinica.",
   "url": "{{ config.base_url }}",
-  "image": "{{ get_url(path='images/hero/me1.webp') }}",
+  "image": "{{ get_url(path='images/hero/portrait.webp') }}",
   "email": "mailto:puhansatyajit@gmail.com",
   "affiliation": { "@type": "Organization", "name": "Institute of Physics, Academia Sinica",
     "address": { "@type": "PostalAddress", "addressLocality": "Taipei", "addressCountry": "Taiwan" } },

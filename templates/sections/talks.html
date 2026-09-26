@@ -16,7 +16,8 @@
         <article class="card reveal">
           {% if p.extra.feature_image %}
             <a class="card__media" href="{{ p.permalink }}" tabindex="-1" aria-hidden="true">
-              <img src="{{ get_url(path=p.extra.feature_image) }}" alt="" loading="lazy" decoding="async" width="420" height="262">
+              {%- set t = resize_image(path=p.extra.feature_image, width=760, op="fit_width", format="webp", quality=78) -%}
+              <img src="{{ t.url }}" alt="" loading="lazy" decoding="async" width="420" height="262">
             </a>
           {% endif %}
           <div class="card__body">

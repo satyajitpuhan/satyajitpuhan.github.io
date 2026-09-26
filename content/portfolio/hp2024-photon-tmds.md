@@ -3,7 +3,7 @@ title = "Understanding photon TMDs with light-front wave function"
 date = 2024-11-20
 
 [extra]
-thumbnail = "images/portfolio/portfolio-2.webp"
+thumbnail = "images/portfolio/papers/hp2024-photon-tmds-first-page.webp"
 service = "HP 2024"
 client = "S. Puhan, N. Kaur, and H. Dahiya"
 short_description = "HP 2024 proceeding on photon TMDs using light-front wave functions, contrasting real vs. virtual photon transverse structure."

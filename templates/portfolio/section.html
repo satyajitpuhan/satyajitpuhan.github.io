@@ -8,6 +8,18 @@
     <p class="lede" style="margin-top:12px">
       {% if lang == 'or' %}ପ୍ରତ୍ୟେକ ପ୍ରକାଶନ ପାଇଁ INSPIRE-HEP, arXiv ଓ DOI ଲିଙ୍କ୍ ଦିଆଯାଇଛି।{% else %}Every entry links straight to its INSPIRE-HEP record, arXiv preprint and journal DOI. Updated automatically from INSPIRE-HEP each day.{% endif %}
     </p>
+    {%- set stats = load_data(path="static/data/inspire-stats.json", required=false) -%}
+    {% if stats %}
+    <div class="pub-summary">
+      <dl class="pub-summary__nums">
+        <div><dt>{% if lang == 'or' %}ପ୍ରକାଶନ{% else %}Papers{% endif %}</dt><dd>{{ stats.papers }}</dd></div>
+        <div><dt>{% if lang == 'or' %}ଜର୍ନାଲ୍{% else %}Journal articles{% endif %}</dt><dd>{{ stats.journal_articles }}</dd></div>
+        <div><dt>{% if lang == 'or' %}ସାଇଟେସନ୍{% else %}Citations{% endif %}</dt><dd>{{ stats.citations }}</dd></div>
+        <div><dt>h-index</dt><dd>{{ stats.hindex }}</dd></div>
+      </dl>
+      {% include "partials/cite-chart.html" %}
+    </div>
+    {% endif %}
   </div>
 </header>
 {% set pub_hide_head = true %}

@@ -10,6 +10,11 @@
   </div>
 </header>
 
+{% if not paginator or paginator.current_index == 1 %}
+<section class="section section--tight" aria-label="Map">
+  <div class="wrap">{% include "partials/talks-map.html" %}</div>
+</section>
+{% endif %}
 <section class="section">
   <div class="wrap">
     {%- set posts = paginator.pages | default(value=section.pages) -%}
@@ -18,7 +23,8 @@
         <article class="card reveal">
           {% if p.extra.feature_image %}
             <a class="card__media" href="{{ p.permalink }}" tabindex="-1" aria-hidden="true">
-              <img src="{{ get_url(path=p.extra.feature_image) }}" alt="" loading="lazy" width="420" height="262">
+              {%- set t = resize_image(path=p.extra.feature_image, width=760, op="fit_width", format="webp", quality=78) -%}
+              <img src="{{ t.url }}" alt="" loading="lazy" decoding="async" width="420" height="262">
             </a>
           {% endif %}
           <div class="card__body">
