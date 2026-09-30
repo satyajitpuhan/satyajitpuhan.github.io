@@ -35,9 +35,24 @@ title   = "Higher Secondary (12th) — Siddhivinayak +2 Science College"
 content = "2nd Topper in Physics in CHSE Final Examination, Odisha. Marks: 478/600 (78%). Balasore, Odisha."
 time    = "2015–2016"
 
+[[educations]]
+title   = "High School — Harekrushna High School, Balasore"
+content = "Marks: 87%. NTSE Scholar (2013)."
+time    = "2011–2014"
+
 [[experiences]]
 title   = "Postdoctoral Researcher — Institute of Physics, Academia Sinica"
-content = "Conducting research in theoretical high energy physics at the Institute of Physics, Academia Sinica, Taipei, Taiwan. Continuing work on hadron tomography, meson structure, and QCD phenomenology."
+content = "Supervisor: Prof. Wen-Chen Chang. (i) Meson structure via the Sullivan process — extraction of pion and kaon PDFs with phenomenological and neural-network methods, including leading-neutron electroproduction at HERA and the EIC; (ii) detector development for the Zero-Degree Calorimeter (ZDC) of the ePIC experiment at the Electron-Ion Collider; (iii) deep-learning extraction of pion quark and gluon GPDs."
+time    = "2026–Present"
+
+[[experiences]]
+title   = "Member — EIC Meson Structure Working Group"
+content = "Physics studies of pion and kaon structure functions via the Sullivan process (leading-neutron tagging) at the Electron-Ion Collider."
+time    = "2026–Present"
+
+[[experiences]]
+title   = "Member — ePIC Zero-Degree Calorimeter (ZDC) Working Group"
+content = "Detector development and simulation studies for the far-forward Zero-Degree Calorimeter of the ePIC experiment at the Electron-Ion Collider."
 time    = "2026–Present"
 
 [[experiences]]
@@ -51,14 +66,29 @@ content = "Attended the EIC-Asia Workshop on QCD and Hadron Structure at the Ins
 time    = "Apr–May 2026"
 
 [[experiences]]
+title   = "School — IITB-CFNS-CTEQ School on Perturbative QCD for EIC, IIT Bombay"
+content = "Perturbative QCD, recent experimental results and hands-on Monte Carlo tutorials for the Electron-Ion Collider."
+time    = "Feb 2026"
+
+[[experiences]]
+title   = "School — Advanced Topics in Particle Physics (SATPP), ICTS Bengaluru"
+content = "Selected topics in effective field theories: low-energy and high-energy EFTs."
+time    = "Jan 2026"
+
+[[experiences]]
 title   = "Senior Research Fellow — NIT Jalandhar"
-content = "Hadron tomography: TMDs, GPDs, GTMDs, GDAs, form factors, PDFs of mesons in light-front dynamics. Published 29 papers in top journals: PRD, JHEP, PLB, NPA, NPB, PTEP, EPJP, CPC, EPJA."
+content = "Hadron tomography: TMDs, GPDs, GTMDs, GDAs, form factors, PDFs of mesons in light-front dynamics. 23 peer-reviewed journal articles (one single-author) in PRD, JHEP, PLB, NPA, NPB, PTEP, EPJ Plus, Chin. Phys. C and EPJA."
 time    = "2022–2026"
 
 [[experiences]]
 title   = "Premier Research Award — NIT Jalandhar"
 content = "Received the Premier Research Award in the Department of Physics, NIT Jalandhar on 26th January 2025."
 time    = "Jan 2025"
+
+[[experiences]]
+title   = "Travel & Fellowship Support"
+content = "JINR, Dubna (visiting fellowship, Jun–Sep 2025); YITP, Kyoto University (HHIQCD 2024); Paul Scherrer Institute (PSI Summer School 2024); ICTS Bengaluru (EIC School and Workshop 2024, full support); TIFR Mumbai (HQL 2023, full support)."
+time    = "2023–2025"
 
 [[experiences]]
 title   = "Conference Talk — JINR-BLTP 2025, Dubna"
