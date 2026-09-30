@@ -5,38 +5,37 @@
    ========================================================================== */
 
 /* ---------- 1. Tokens ---------------------------------------------------- */
-/* Identity: "colour charge". Quarks carry red, green or blue colour and bind into
-   colourless hadrons; the three quark colours and the violet between them carry
-   the brand. Dark is the default; the light palette follows below. */
+/* Gold (dark) / bronze (light) brand with cyan and violet as the supporting accents.
+   Dark is the default; the light palette follows below. */
 :root {
   color-scheme: dark light;
 
-  --bg:          #05070e;
-  --bg-2:        #0b0f1c;
+  --bg:          #080b12;
+  --bg-2:        #0d111b;
   --surface:     rgba(255, 255, 255, 0.035);
-  --surface-2:   rgba(255, 255, 255, 0.062);
+  --surface-2:   rgba(255, 255, 255, 0.06);
   --surface-3:   rgba(255, 255, 255, 0.10);
   --line:        rgba(255, 255, 255, 0.10);
   --line-2:      rgba(255, 255, 255, 0.18);
 
-  --ink:         #f2f4fc;
-  --ink-2:       rgba(242, 244, 252, 0.74);
-  --ink-3:       rgba(242, 244, 252, 0.58);
+  --ink:         #eef2fb;
+  --ink-2:       rgba(238, 242, 251, 0.72);
+  --ink-3:       rgba(238, 242, 251, 0.58);
 
-  /* colour charge: the three quark colours, and the violet between them */
-  --q-red:       #ff4d6d;
-  --q-green:     #2ee6a6;
-  --q-blue:      #4c8dff;
-  --accent:      #a594ff;
-  --on-accent:   #0b0820;
-  --accent-soft: rgba(165, 148, 255, 0.14);
-  --glow:        rgba(165, 148, 255, 0.30);
-  --grad:        linear-gradient(115deg, #ff4d6d 0%, #a594ff 48%, #4c8dff 100%);
-  --grad-soft:   linear-gradient(115deg, rgba(255,77,109,.18), rgba(165,148,255,.14) 50%, rgba(76,141,255,.18));
-  --cyan:        #4c9dff;
-  --violet:      #c4a5ff;
-  --mint:        #2ee6a6;
-  --rose:        #ff5a7a;
+  --accent:      #e8a444;   /* gold — primary brand */
+  --on-accent:   #14100a;   /* readable text on an --accent fill */
+  --accent-soft: rgba(232, 164, 68, 0.14);
+  --glow:        rgba(232, 164, 68, 0.30);
+  --grad:        linear-gradient(120deg, #e8a444, #f6d08a);
+  --grad-soft:   linear-gradient(120deg, rgba(232,164,68,.18), rgba(246,208,138,.10));
+  --cyan:        #38bdf8;
+  --violet:      #a78bfa;
+  --mint:        #34d399;
+  --rose:        #fb7185;
+  /* the three accents used for stats, the hero hadron and the research areas */
+  --q-red:       var(--accent);
+  --q-green:     var(--cyan);
+  --q-blue:      var(--violet);
 
   --shadow-1: 0 1px 2px rgba(0, 0, 0, .3);
   --shadow-2: 0 10px 30px rgba(0, 0, 0, .38);
@@ -67,73 +66,73 @@
    still correct with JavaScript turned off. */
 @media (prefers-color-scheme: light) {
   :root:not([data-theme="dark"]) {
-  --bg:        #f4f5fa;
-  --bg-2:      #ffffff;
-  --surface:   rgba(20, 24, 60, 0.03);
-  --surface-2: rgba(20, 24, 60, 0.055);
-  --surface-3: rgba(20, 24, 60, 0.095);
-  --line:      rgba(20, 24, 60, 0.11);
-  --line-2:    rgba(20, 24, 60, 0.20);
+  --bg:        #f7f5f0;
+  --bg-2:      #fffdf8;
+  --surface:   rgba(40, 30, 10, 0.028);
+  --surface-2: rgba(40, 30, 10, 0.05);
+  --surface-3: rgba(40, 30, 10, 0.09);
+  --line:      rgba(40, 30, 10, 0.11);
+  --line-2:    rgba(40, 30, 10, 0.20);
 
-  --ink:       #0c1022;
-  --ink-2:     rgba(12, 16, 34, 0.76);
-  --ink-3:     rgba(12, 16, 34, 0.62);
+  --ink:       #15181f;
+  --ink-2:     rgba(21, 24, 31, 0.76);
+  --ink-3:     rgba(21, 24, 31, 0.62);
 
-  --q-red:       #d91f45;
-  --q-green:     #05885f;
-  --q-blue:      #1f5fe0;
-  --accent:      #5b3fe0;
+  --accent:      #9a5a10;
   --on-accent:   #ffffff;
-  --accent-soft: rgba(91, 63, 224, 0.10);
-  --glow:        rgba(91, 63, 224, 0.22);
-  --grad:        linear-gradient(115deg, #d91f45 0%, #6a3fe6 50%, #1f5fe0 100%);
-  --grad-soft:   linear-gradient(115deg, rgba(217,31,69,.10), rgba(91,63,224,.08) 50%, rgba(31,95,224,.10));
+  --accent-soft: rgba(154, 90, 16, 0.10);
+  --glow:        rgba(154, 90, 16, 0.22);
+  --grad:        linear-gradient(120deg, #9a5a10, #c98a2c);
+  --grad-soft:   linear-gradient(120deg, rgba(154,90,16,.10), rgba(201,138,44,.06));
   --pill-inspire: #14508f;
   --pill-arxiv:   #a52323;
   --pill-doi:     #056a4c;
-  --cyan:        #1d5fd6;
+  --cyan:        #0369a1;
   --violet:      #6d28d9;
-  --mint:        #04845c;
-  --rose:        #c81e4a;
+  --mint:        #03634a;
+  --rose:        #be123c;
+  --q-red:       var(--accent);
+  --q-green:     var(--cyan);
+  --q-blue:      var(--violet);
 
-  --shadow-1: 0 1px 2px rgba(16, 24, 60, .06);
-  --shadow-2: 0 10px 28px rgba(16, 24, 60, .10);
-  --shadow-3: 0 24px 60px rgba(16, 24, 60, .16);
+  --shadow-1: 0 1px 2px rgba(16, 24, 40, .06);
+  --shadow-2: 0 10px 28px rgba(16, 24, 40, .09);
+  --shadow-3: 0 24px 60px rgba(16, 24, 40, .14);
   }
 }
 :root[data-theme="light"] {
-  --bg:        #f4f5fa;
-  --bg-2:      #ffffff;
-  --surface:   rgba(20, 24, 60, 0.03);
-  --surface-2: rgba(20, 24, 60, 0.055);
-  --surface-3: rgba(20, 24, 60, 0.095);
-  --line:      rgba(20, 24, 60, 0.11);
-  --line-2:    rgba(20, 24, 60, 0.20);
+  --bg:        #f7f5f0;
+  --bg-2:      #fffdf8;
+  --surface:   rgba(40, 30, 10, 0.028);
+  --surface-2: rgba(40, 30, 10, 0.05);
+  --surface-3: rgba(40, 30, 10, 0.09);
+  --line:      rgba(40, 30, 10, 0.11);
+  --line-2:    rgba(40, 30, 10, 0.20);
 
-  --ink:       #0c1022;
-  --ink-2:     rgba(12, 16, 34, 0.76);
-  --ink-3:     rgba(12, 16, 34, 0.62);
+  --ink:       #15181f;
+  --ink-2:     rgba(21, 24, 31, 0.76);
+  --ink-3:     rgba(21, 24, 31, 0.62);
 
-  --q-red:       #d91f45;
-  --q-green:     #05885f;
-  --q-blue:      #1f5fe0;
-  --accent:      #5b3fe0;
+  --accent:      #9a5a10;
   --on-accent:   #ffffff;
-  --accent-soft: rgba(91, 63, 224, 0.10);
-  --glow:        rgba(91, 63, 224, 0.22);
-  --grad:        linear-gradient(115deg, #d91f45 0%, #6a3fe6 50%, #1f5fe0 100%);
-  --grad-soft:   linear-gradient(115deg, rgba(217,31,69,.10), rgba(91,63,224,.08) 50%, rgba(31,95,224,.10));
+  --accent-soft: rgba(154, 90, 16, 0.10);
+  --glow:        rgba(154, 90, 16, 0.22);
+  --grad:        linear-gradient(120deg, #9a5a10, #c98a2c);
+  --grad-soft:   linear-gradient(120deg, rgba(154,90,16,.10), rgba(201,138,44,.06));
   --pill-inspire: #14508f;
   --pill-arxiv:   #a52323;
   --pill-doi:     #056a4c;
-  --cyan:        #1d5fd6;
+  --cyan:        #0369a1;
   --violet:      #6d28d9;
-  --mint:        #04845c;
-  --rose:        #c81e4a;
+  --mint:        #03634a;
+  --rose:        #be123c;
+  --q-red:       var(--accent);
+  --q-green:     var(--cyan);
+  --q-blue:      var(--violet);
 
-  --shadow-1: 0 1px 2px rgba(16, 24, 60, .06);
-  --shadow-2: 0 10px 28px rgba(16, 24, 60, .10);
-  --shadow-3: 0 24px 60px rgba(16, 24, 60, .16);
+  --shadow-1: 0 1px 2px rgba(16, 24, 40, .06);
+  --shadow-2: 0 10px 28px rgba(16, 24, 40, .09);
+  --shadow-3: 0 24px 60px rgba(16, 24, 40, .14);
 }
 
 /* ---------- 2. Reset ----------------------------------------------------- */
@@ -237,7 +236,7 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 2rem 0; }
 .btn:hover { transform: translateY(-2px); }
 .btn:active { transform: translateY(0); }
 
-.btn--primary { background: var(--grad); color: #fff; box-shadow: 0 8px 24px var(--glow); }
+.btn--primary { background: var(--accent); color: var(--on-accent); box-shadow: 0 8px 24px var(--glow); }
 .btn--primary:hover { box-shadow: 0 14px 34px var(--glow); filter: saturate(1.15); }
 
 .btn--ghost { background: var(--surface-2); color: var(--ink); border-color: var(--line-2); }
@@ -313,8 +312,8 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 2rem 0; }
 .brand__mark {
   width: 36px; height: 36px; border-radius: 11px; flex-shrink: 0;
   display: grid; place-items: center;
-  background: var(--bg-2); border: 1px solid var(--line-2);
-  color: var(--ink); font-family: var(--font-display); font-weight: 700; font-size: 1rem;
+  background: linear-gradient(140deg, var(--accent), #f6d08a);
+  color: #14100a; font-family: var(--font-serif); font-weight: 400; font-size: 1.2rem;
 }
 .brand__name { display: block; font-family: var(--font-body); font-weight: 700; font-size: .95rem; letter-spacing: -.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .brand__role { display: block; font-family: var(--font-mono); font-size: .62rem; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-3); }
@@ -602,7 +601,7 @@ kbd { font-family: var(--font-mono); font-size: .68rem; padding: 2px 6px; border
 .assistant-fab {
   position: fixed; right: 20px; bottom: 20px; z-index: 950;
   width: 54px; height: 54px; border-radius: 50%;
-  background: var(--grad); color: #fff;
+  background: linear-gradient(140deg, var(--accent), #f6d08a); color: #14100a;
   display: grid; place-items: center; box-shadow: var(--shadow-2);
   transition: transform .2s var(--ease);
 }
@@ -947,17 +946,11 @@ html[lang="or"] h1, html[lang="or"] h2 { font-family: var(--font-or); letter-spa
 }
 .eyebrow { color: var(--accent); }
 
-/* brand mark: three colour charges overlapping into a colour-neutral centre */
-.brand__mark { padding: 5px; }
-.brand__mark svg { width: 100%; height: 100%; display: block; }
-.brand__mark circle { mix-blend-mode: screen; }
-:root[data-theme="light"] .brand__mark circle { mix-blend-mode: multiply; }
-@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) .brand__mark circle { mix-blend-mode: multiply; } }
 
 /* nav */
 .nav__link.is-active { color: var(--ink); background: var(--accent-soft); box-shadow: inset 0 -2px 0 var(--accent); }
-.lang-switch a.is-active { background: var(--grad); color: #fff; }
-.filter[aria-pressed="true"], .tab[aria-selected="true"] { background: var(--grad); border-color: transparent; color: #fff; }
+.lang-switch a.is-active { background: var(--accent); color: var(--on-accent); }
+.filter[aria-pressed="true"], .tab[aria-selected="true"] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
 
 /* gradient hairline under every section heading */
 .sec-head .h-1::after { content: ""; display: block; width: 72px; height: 3px; margin-top: 16px; border-radius: 3px; background: var(--grad); }
@@ -967,7 +960,7 @@ html[lang="or"] h1, html[lang="or"] h2 { font-family: var(--font-or); letter-spa
 .card, .news-item, .person, .plan { isolation: isolate; }
 .card::before, .news-item::before, .person::before {
   content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px; z-index: 2; pointer-events: none;
-  background: var(--grad); opacity: 0; transition: opacity .3s var(--ease);
+  background: var(--accent); opacity: 0; transition: opacity .3s var(--ease);
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor; mask-composite: exclude;
 }
@@ -990,9 +983,8 @@ html[lang="or"] h1, html[lang="or"] h2 { font-family: var(--font-or); letter-spa
 /* hero */
 .hero__glow {
   background:
-    radial-gradient(40% 55% at 16% 28%, color-mix(in srgb, var(--q-red) 15%, transparent), transparent 70%),
-    radial-gradient(38% 50% at 52% 8%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 70%),
-    radial-gradient(40% 55% at 84% 22%, color-mix(in srgb, var(--q-blue) 16%, transparent), transparent 70%);
+    radial-gradient(46% 60% at 18% 30%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 70%),
+    radial-gradient(42% 55% at 78% 12%, color-mix(in srgb, var(--cyan) 14%, transparent), transparent 70%);
 }
 .hero__portrait::before { border-color: transparent; background: var(--grad); opacity: .55; filter: blur(18px); inset: -6px; }
 .hero__portrait img { border-color: color-mix(in srgb, var(--ink) 18%, transparent); }
@@ -1018,7 +1010,7 @@ html[lang="or"] h1, html[lang="or"] h2 { font-family: var(--font-or); letter-spa
 .hero__visual .hero__hadron { top: 2%; }
 
 /* citations-per-year chart: gradient bars, live refresh, current year marked "so far" */
-.cite-chart__col { background: linear-gradient(180deg, var(--accent), color-mix(in srgb, var(--q-blue) 55%, transparent)); }
+.cite-chart__col { background: linear-gradient(180deg, var(--accent), color-mix(in srgb, var(--accent) 45%, transparent)); }
 .cite-chart__bar--partial .cite-chart__col {
   background: repeating-linear-gradient(135deg, color-mix(in srgb, var(--accent) 80%, transparent) 0 5px, color-mix(in srgb, var(--accent) 45%, transparent) 5px 10px);
   box-shadow: inset 0 0 0 1px var(--accent);
@@ -1088,7 +1080,6 @@ html[lang="or"] h1, html[lang="or"] h2 { font-family: var(--font-or); letter-spa
   font-family: var(--font-serif); font-style: italic; font-size: clamp(1.15rem, 2vw, 1.4rem); letter-spacing: .005em;
   background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; padding-right: .08em;
 }
-html[lang="or"] .signoff__text { font-family: var(--font-or); font-style: normal; font-size: 1.05rem; }
 .signoff__rule { flex: 0 1 90px; height: 1px; background: linear-gradient(90deg, transparent, var(--line-2)); }
 .signoff__rule:last-child { background: linear-gradient(90deg, var(--line-2), transparent); }
 
