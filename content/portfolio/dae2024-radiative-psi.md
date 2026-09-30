@@ -3,7 +3,7 @@ title = "Radiative transition of ψ(2S) → χc0(1P) + γ in LFQM"
 date = 2024-12-07
 
 [extra]
-thumbnail = "images/portfolio/portfolio-3.webp"
+thumbnail = "images/portfolio/papers/dae2024-radiative-psi-cover.svg"
 service = "DAE Nuclear 2024"
 client = "A. Yadav, S. Puhan, and H. Dahiya"
 short_description = "Symposium contribution on the radiative transition ψ(2S) → χ_c0(1P) + γ in LFQM, with transition form factors and decay width analysis."

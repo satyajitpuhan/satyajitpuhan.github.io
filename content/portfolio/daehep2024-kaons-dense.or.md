@@ -3,7 +3,7 @@ title = "Kaons structure in dense nuclear medium"
 date = 2024-12-17
 
 [extra]
-thumbnail = "images/portfolio/portfolio-1.webp"
+thumbnail = "images/portfolio/papers/daehep2024-kaons-dense-cover.svg"
 service = "DAE HEP 2024"
 client = "A. Kumar, D. Singh, S. Puhan, N. Kaur, M. Kaur, H. Dahiya, and S. Dutt"
 short_description = "DAE HEP 2024 contribution on kaon structure in dense nuclear matter, analyzing the impact of isospin asymmetry and temperature."

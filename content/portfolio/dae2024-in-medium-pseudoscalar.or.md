@@ -3,7 +3,7 @@ title = "In-medium properties of pseudoscalar mesons in symmetric nuclear matter
 date = 2024-12-10
 
 [extra]
-thumbnail = "images/portfolio/portfolio-2.webp"
+thumbnail = "images/portfolio/papers/dae2024-in-medium-pseudoscalar-cover.svg"
 service = "DAE Nuclear 2024"
 client = "A. Gautam, D. Singh, S. Puhan, N. Kaur, A. Kumar, H. Dahiya, and S. Dutt"
 short_description = "Conference proceeding on in-medium pseudoscalar meson properties in symmetric nuclear matter, using chiral SU(3) CQMF inputs to light-front quark model."
