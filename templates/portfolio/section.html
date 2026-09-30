@@ -17,8 +17,8 @@
         <div><dt>{% if lang == 'or' %}ସାଇଟେସନ୍{% else %}Citations{% endif %}</dt><dd>{{ stats.citations }}</dd></div>
         <div><dt>h-index</dt><dd>{{ stats.hindex }}</dd></div>
       </dl>
-      {% include "partials/cite-chart.html" %}
     </div>
+    {% include "partials/metrics.html" %}
     {% endif %}
   </div>
 </header>

@@ -1,6 +1,11 @@
 {% import 'partials/icons.html' as ic %}
+{#- Research areas, from static/sections/service/{lang}.toml.
+    Homepage: compact cards (figure, title, gist, chips).
+    /research/ (research_full = true): one feature row per area with the full text, concrete
+    highlights, keyword chips, a figure from one of the papers and links to the supporting papers. -#}
 {%- set d = load_data(path="static/sections/service/" ~ lang ~ ".toml", required=false) -%}
 {%- set full = research_full | default(value=false) -%}
+{%- set pubs = get_section(path="portfolio/_index.md", lang=lang) -%}
 {% if d %}
 <section class="section" id="service">
   <div class="wrap">
@@ -10,26 +15,59 @@
       {% if d.subtitle %}<p>{{ d.subtitle }}</p>{% endif %}
     </div>
 
-    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,{% if full %}420{% else %}250{% endif %}px),1fr))">
+    {% if not full %}
+    <div class="areas">
       {% for s in d.services %}
-        <article class="card reveal">
-          <div class="card__body">
-            <span class="chip chip--{% if loop.index0 % 4 == 0 %}accent{% elif loop.index0 % 4 == 1 %}cyan{% elif loop.index0 % 4 == 2 %}violet{% else %}mint{% endif %}">
-              {{ loop.index }} / {{ d.services | length }}
-            </span>
-            <h3 class="card__title" style="font-size:1.06rem">{{ s.title }}</h3>
-            <p class="card__text">{% if full %}{{ s.content }}{% else %}{{ s.content | truncate(length=160) }}{% endif %}</p>
-          </div>
-        </article>
+      <a class="card area reveal" href="{{ get_url(path='/research/', lang=lang) }}#area-{{ loop.index }}" style="--lane:var(--{% if loop.index0 % 3 == 0 %}q-red{% elif loop.index0 % 3 == 1 %}q-green{% else %}q-blue{% endif %})">
+        {% if s.figure %}<div class="area__fig"><img src="{{ get_url(path=s.figure) }}" alt="{{ s.caption | default(value='') | striptags }}" loading="lazy" decoding="async" width="1000" height="720"></div>{% endif %}
+        <div class="card__body">
+          <span class="area__num mono">{{ loop.index }} / {{ d.services | length }}</span>
+          <h3 class="card__title">{{ s.title }}</h3>
+          <p class="card__text">{{ s.gist | default(value=s.content | striptags | truncate(length=170)) | safe }}</p>
+          {% if s.chips %}<div class="area__chips">{% for c in s.chips | slice(end=3) %}<span class="link-pill">{{ c }}</span>{% endfor %}</div>{% endif %}
+        </div>
+      </a>
       {% endfor %}
     </div>
+    <p class="center" style="margin-top:28px">
+      <a class="btn btn--ghost" href="{{ get_url(path='/research/', lang=lang) }}">
+        {% if lang == 'or' %}ଗବେଷଣା ବିଷୟରେ ଅଧିକ{% else %}More on the research{% endif %} {{ ic::ui(name="arrow") }}
+      </a>
+    </p>
 
-    {% if not full %}
-      <p class="center" style="margin-top:28px">
-        <a class="btn btn--ghost" href="{{ get_url(path='/research/', lang=lang) }}">
-          {% if lang == 'or' %}ଗବେଷଣା ବିଷୟରେ ଅଧିକ{% else %}More on the research{% endif %} {{ ic::ui(name="arrow") }}
-        </a>
-      </p>
+    {% else %}
+    <div class="feature-list">
+      {% for s in d.services %}
+      <article class="feature reveal{% if loop.index0 % 2 == 1 %} feature--flip{% endif %}" id="area-{{ loop.index }}" style="--lane:var(--{% if loop.index0 % 3 == 0 %}q-red{% elif loop.index0 % 3 == 1 %}q-green{% else %}q-blue{% endif %})">
+        {% if s.figure %}
+        <figure class="feature__fig">
+          <img src="{{ get_url(path=s.figure) }}" alt="{{ s.caption | default(value='') | striptags }}" loading="lazy" decoding="async" width="1000" height="720">
+          <figcaption>{{ s.caption | safe }}{% if s.figure_arxiv %} · <a href="https://arxiv.org/abs/{{ s.figure_arxiv }}">arXiv:{{ s.figure_arxiv }}</a>{% endif %}</figcaption>
+        </figure>
+        {% endif %}
+        <div class="feature__body">
+          <span class="area__num mono">{{ loop.index }} / {{ d.services | length }}</span>
+          <h3 class="feature__title">{{ s.title }}</h3>
+          {% if s.gist and lang == 'or' %}<p class="feature__gist">{{ s.gist | safe }}</p>{% endif %}
+          <p class="feature__text">{{ s.content | safe }}</p>
+          {% if s.highlights %}
+          <ul class="feature__hl">{% for h in s.highlights %}<li>{{ h | safe }}</li>{% endfor %}</ul>
+          {% endif %}
+          {% if s.chips %}<div class="area__chips">{% for c in s.chips %}<span class="link-pill">{{ c }}</span>{% endfor %}</div>{% endif %}
+          {% if s.papers %}
+          <details class="feature__papers">
+            <summary>{% if lang == 'or' %}ସମ୍ପର୍କିତ ପ୍ରକାଶନ{% else %}Papers in this area{% endif %} ({{ s.papers | length }})</summary>
+            <ul>
+              {% for slug in s.papers %}{% for p in pubs.pages %}{% if p.slug == slug %}
+              <li><a href="{{ p.permalink }}">{{ p.title }}</a>{% if p.extra.service %} <span class="dim">· {{ p.extra.service }}</span>{% endif %}</li>
+              {% endif %}{% endfor %}{% endfor %}
+            </ul>
+          </details>
+          {% endif %}
+        </div>
+      </article>
+      {% endfor %}
+    </div>
     {% endif %}
   </div>
 </section>

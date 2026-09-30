@@ -1,0 +1,32 @@
+{#- Homepage teaser for the visualizations page: the first three entries of
+    static/data/visualizations.toml, with the same live preview and viewer. -#}
+{%- set data = load_data(path="static/data/visualizations.toml", required=false) -%}
+{% if data and data.viz %}
+<section class="section" id="lab">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">{% if lang == 'or' %}ପଦାର୍ଥ ବିଜ୍ଞାନ ଲ୍ୟାବ୍{% else %}Physics lab{% endif %}</p>
+      <h2 class="h-1">{% if lang == 'or' %}ହାଡ୍ରନ୍ ଭିତରକୁ <em>ଦେଖନ୍ତୁ</em>{% else %}See inside a <em>hadron</em>{% endif %}</h2>
+      <p>{% if lang == 'or' %}ବ୍ରାଉଜରରେ ଚାଲୁଥିବା ଇଣ୍ଟରାକ୍ଟିଭ୍ ସିମୁଲେସନ୍ — ପ୍ରିଭ୍ୟୁ ପାଇଁ ହୋଭର୍ କରନ୍ତୁ, ଖୋଲିବା ପାଇଁ କ୍ଲିକ୍ କରନ୍ତୁ।{% else %}Interactive simulations that run in your browser — hover to preview, click to open full-screen.{% endif %}</p>
+    </div>
+    <div class="lab-strip">
+      {% for it in data.viz | slice(end=3) %}
+      <a class="card viz-card reveal" href="{{ get_url(path=it.url) }}" style="--viz:{{ it.hue }}"
+         data-viz="{{ get_url(path=it.url) }}" data-viz-title="{{ it.title | striptags }}">
+        <div class="viz-card__screen" aria-hidden="true">
+          <span class="viz-card__sym">{{ it.symbol | safe }}</span>
+          <span class="viz-card__hint">{% if lang == 'or' %}ପ୍ରିଭ୍ୟୁ ପାଇଁ ହୋଭର୍{% else %}Hover to preview{% endif %}</span>
+          <span class="viz-card__play"><svg viewBox="0 0 24 24"><polygon points="7,4 20,12 7,20"/></svg></span>
+        </div>
+        <div class="card__body">
+          <h3 class="card__title">{{ it.title | safe }}</h3>
+          <p class="card__text">{{ it.text }}</p>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+    <p class="center" style="margin-top:28px"><a class="btn btn--ghost" href="{{ get_url(path='/visualizations/', lang=lang) }}">{% if lang == 'or' %}ସମସ୍ତ {{ data.viz | length }} ଭିଜୁଆଲାଇଜେସନ୍{% else %}All {{ data.viz | length }} visualizations{% endif %} →</a></p>
+  </div>
+  {% include "partials/viz-viewer.html" %}
+</section>
+{% endif %}

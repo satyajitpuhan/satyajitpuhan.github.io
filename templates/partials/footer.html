@@ -6,7 +6,7 @@
     <div class="footer__grid">
       <div>
         <a class="brand" href="{{ home_url }}" style="margin-bottom:16px">
-          <span class="brand__mark" aria-hidden="true">SP</span>
+          {% include "partials/brand-mark.html" %}
           <span class="brand__text">
             <span class="brand__name">{{ config.title }}</span>
             <span class="brand__role">{% if lang == 'or' %}ଆକାଡେମିଆ ସିନିକା{% else %}Academia Sinica, Taipei{% endif %}</span>
@@ -66,5 +66,10 @@
         {% if lang == 'or' %}Zola ରେ ନିର୍ମିତ{% else %}Built with Zola · Auto-synced daily from INSPIRE-HEP{% endif %}
       </span>
     </div>
+    <p class="signoff">
+      <span class="signoff__rule" aria-hidden="true"></span>
+      <span class="signoff__text">{% if lang == 'or' %}ମୁଁ ଆଶା କରେ, ଲୋକମାନେ ମୋ ସହ ଭଲ ବ୍ୟବହାର କରିବେ।{% else %}I hope people treat me well.{% endif %}</span>
+      <span class="signoff__rule" aria-hidden="true"></span>
+    </p>
   </div>
 </footer>

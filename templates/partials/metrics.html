@@ -1,0 +1,70 @@
+{#- Research-metrics dashboard for the Publications page.
+    Everything is computed at build time from inspire-stats.json and the publication
+    pages themselves (whose citation counts the daily sync keeps up to date). -#}
+{%- set stats = load_data(path="static/data/inspire-stats.json", required=false) -%}
+{%- set pubs = get_section(path="portfolio/_index.md", lang=lang) -%}
+{% if stats and stats.papers_by_year %}
+{%- set_global cited = [] -%}
+{%- set_global i10 = 0 -%}
+{%- for p in pubs.pages %}{% if p.extra.citations %}
+  {%- set_global cited = cited | concat(with=p) -%}
+  {%- if p.extra.citations >= 10 %}{% set_global i10 = i10 + 1 %}{% endif -%}
+{% endif %}{% endfor -%}
+{%- set top = cited | sort(attribute="extra.citations") | reverse | slice(end=5) -%}
+{%- set_global pmax = 1 -%}{%- set_global ny = 0 -%}
+{%- for y, n in stats.papers_by_year %}{% if n > pmax %}{% set_global pmax = n %}{% endif %}{% set_global ny = ny + 1 %}{% endfor -%}
+<div class="metrics reveal" aria-label="{% if lang == 'or' %}ଗବେଷଣା ମେଟ୍ରିକ୍ସ{% else %}Research metrics{% endif %}">
+
+  <section class="metric">
+    <p class="metric__cap">{% if lang == 'or' %}ବର୍ଷ ଅନୁସାରେ ପ୍ରକାଶନ{% else %}Papers per year{% endif %}</p>
+    {%- set_global pts = "" -%}{%- set_global i = 0 -%}
+    {%- for y, n in stats.papers_by_year -%}
+      {%- set x = 0 -%}{%- if ny > 1 %}{% set x = i * 100 / (ny - 1) %}{% endif -%}
+      {%- set xr = x | round(precision=2) -%}{%- set yv = 100 - n * 88 / pmax -%}{%- set yr = yv | round(precision=2) -%}
+      {%- set_global pts = pts ~ " " ~ xr ~ "," ~ yr -%}
+      {%- set_global i = i + 1 -%}
+    {%- endfor %}
+    <svg class="spark" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+      <polygon class="spark__area" points="0,100{{ pts }} 100,100"/>
+      <polyline class="spark__line" points="{{ pts | trim }}"/>
+    </svg>
+    <div class="spark__labels">{% for y, n in stats.papers_by_year %}<span>{{ y }} · <b>{{ n }}</b></span>{% endfor %}</div>
+  </section>
+
+  <section class="metric">
+    <p class="metric__cap">{% if lang == 'or' %}ପ୍ରକାଶନ ପ୍ରକାର{% else %}Output by type{% endif %}</p>
+    {%- set tot = stats.journal_articles + stats.proceedings + stats.preprints -%}
+    <div class="typebar" aria-hidden="true">
+      <span style="width:{{ stats.journal_articles * 100 / tot }}%;background:var(--q-blue)"></span>
+      <span style="width:{{ stats.preprints * 100 / tot }}%;background:var(--accent)"></span>
+      <span style="width:{{ stats.proceedings * 100 / tot }}%;background:var(--q-green)"></span>
+    </div>
+    <ul class="typebar__legend">
+      <li><i style="background:var(--q-blue)"></i>{% if lang == 'or' %}ଜର୍ନାଲ୍ ପ୍ରବନ୍ଧ{% else %}Journal articles{% endif %}<b>{{ stats.journal_articles }}</b></li>
+      <li><i style="background:var(--accent)"></i>{% if lang == 'or' %}ପ୍ରିପ୍ରିଣ୍ଟ{% else %}Preprints{% endif %}<b>{{ stats.preprints }}</b></li>
+      <li><i style="background:var(--q-green)"></i>{% if lang == 'or' %}ସମ୍ମିଳନୀ କାର୍ଯ୍ୟବିବରଣୀ{% else %}Conference proceedings{% endif %}<b>{{ stats.proceedings }}</b></li>
+    </ul>
+  </section>
+
+  <section class="metric">
+    <p class="metric__cap">{% if lang == 'or' %}ପ୍ରଭାବ{% else %}Impact{% endif %}</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+      <div><div class="metric__big" style="color:var(--q-red)">{{ (stats.citations / stats.papers) | round(precision=1) }}</div><p class="metric__sub">{% if lang == 'or' %}ପ୍ରତି ପେପର୍ ସାଇଟେସନ୍{% else %}citations per paper{% endif %}</p></div>
+      <div><div class="metric__big" style="color:var(--q-green)">{{ i10 }}</div><p class="metric__sub">i10-index</p></div>
+      <div><div class="metric__big" style="color:var(--q-blue)">{{ stats.hindex }}</div><p class="metric__sub">h-index</p></div>
+      <div><div class="metric__big" style="color:var(--accent)">{{ top | first | get(key="extra") | get(key="citations", default=0) }}</div><p class="metric__sub">{% if lang == 'or' %}ସର୍ବାଧିକ ସାଇଟେସନ୍{% else %}most-cited paper{% endif %}</p></div>
+    </div>
+  </section>
+
+  <section class="metric metric--wide">
+    <p class="metric__cap">{% if lang == 'or' %}ସର୍ବାଧିକ ସାଇଟେସନ୍ ପ୍ରାପ୍ତ{% else %}Most cited{% endif %}</p>
+    <ol class="topcited">
+      {% for p in top %}
+      <li><a href="{{ p.permalink }}">{{ p.title }}</a><b>{{ p.extra.citations }}&thinsp;{% if lang == 'or' %}ସାଇଟେସନ୍{% else %}cites{% endif %}</b></li>
+      {% endfor %}
+    </ol>
+  </section>
+
+  <div class="metric metric--chart">{% include "partials/cite-chart.html" %}</div>
+</div>
+{% endif %}

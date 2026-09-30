@@ -1,15 +1,24 @@
-{#- Citations-per-year bar chart; expects `stats` (inspire-stats.json) in scope. -#}
+{#- Citations-per-year bar chart; expects `stats` (inspire-stats.json) in scope.
+    The build draws the synced histogram; site.js then refreshes it live from INSPIRE-HEP's
+    own citations-by-year facet. The current calendar year is still running, so it is
+    drawn hatched and labelled "so far". -#}
 {% if stats.citations_by_year %}
+{%- set this_year = now() | date(format="%Y") -%}
 {%- set_global cmax = 1 -%}
 {%- for y, n in stats.citations_by_year %}{% if n > cmax %}{% set_global cmax = n %}{% endif %}{% endfor -%}
-<figure class="cite-chart" aria-label="{% if lang == 'or' %}ବର୍ଷ ଅନୁସାରେ ସାଇଟେସନ୍{% else %}Citations per year{% endif %}">
-  <figcaption class="cite-chart__cap">{% if lang == 'or' %}ବର୍ଷ ଅନୁସାରେ ସାଇଟେସନ୍{% else %}Citations per year{% endif %}</figcaption>
+<figure class="cite-chart" data-cite-chart data-this-year="{{ this_year }}"
+        data-so-far="{% if lang == 'or' %}ଏପର୍ଯ୍ୟନ୍ତ{% else %}so far{% endif %}"
+        aria-label="{% if lang == 'or' %}ବର୍ଷ ଅନୁସାରେ ସାଇଟେସନ୍{% else %}Citations per year{% endif %}">
+  <figcaption class="cite-chart__cap">
+    <span>{% if lang == 'or' %}ବର୍ଷ ଅନୁସାରେ ସାଇଟେସନ୍{% else %}Citations per year{% endif %}</span>
+    <span class="cite-chart__live" data-cite-live hidden>{% if lang == 'or' %}ଲାଇଭ୍{% else %}live{% endif %}</span>
+  </figcaption>
   <ol class="cite-chart__bars">
     {% for y, n in stats.citations_by_year %}
-    <li class="cite-chart__bar" style="--h:{{ (n * 100 / cmax) | round }}%">
+    <li class="cite-chart__bar{% if y == this_year %} cite-chart__bar--partial{% endif %}" style="--h:{{ (n * 100 / cmax) | round }}%" data-year="{{ y }}">
       <span class="cite-chart__n">{{ n }}</span>
       <span class="cite-chart__col" aria-hidden="true"></span>
-      <span class="cite-chart__y">{{ y }}</span>
+      <span class="cite-chart__y">{{ y }}{% if y == this_year %}<small>{% if lang == 'or' %}ଏପର୍ଯ୍ୟନ୍ତ{% else %}so far{% endif %}</small>{% endif %}</span>
     </li>
     {% endfor %}
   </ol>

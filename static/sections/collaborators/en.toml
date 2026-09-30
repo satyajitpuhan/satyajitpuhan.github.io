@@ -82,3 +82,39 @@ institution = "NIT Jalandhar"
 name = "Abhishek K P"
 role = "Collaborator"
 institution = "NIT Jalandhar"
+
+[[collaborators]]
+name = "Prof. Wen-Chen Chang"
+slug = "prof-wen-chen-chang"
+role = "Research Fellow"
+institution = "Institute of Physics, Academia Sinica"
+
+[[collaborators]]
+name = "Chia-Yu Hsieh"
+slug = "chia-yu-hsieh"
+role = "Collaborator"
+institution = "Institute of Physics, Academia Sinica"
+
+[[collaborators]]
+name = "Prof. Jen-Chieh Peng"
+slug = "prof-jen-chieh-peng"
+role = "Professor"
+institution = "University of Illinois Urbana-Champaign"
+
+[[collaborators]]
+name = "Stephane Platchkov"
+slug = "stephane-platchkov"
+role = "Collaborator"
+institution = "IRFU, CEA Paris-Saclay"
+
+[[collaborators]]
+name = "Marco Meyer-Conde"
+slug = "marco-meyer-conde"
+role = "Collaborator"
+institution = "Tokyo Institute of Technology"
+
+[[collaborators]]
+name = "Takahiro Sawada"
+slug = "takahiro-sawada"
+role = "Collaborator"
+institution = "Kamioka Observatory, University of Tokyo"

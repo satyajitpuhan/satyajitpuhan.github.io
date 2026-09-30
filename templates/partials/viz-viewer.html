@@ -1,0 +1,9 @@
+{#- Full-screen, in-page viewer for the visualizations; filled by site.js (section 15). -#}
+<div class="viewer" id="viz-viewer" role="dialog" aria-modal="true" aria-labelledby="viz-viewer-title" hidden>
+  <div class="viewer__bar">
+    <span class="viewer__title" id="viz-viewer-title"></span>
+    <a class="btn btn--ghost btn--sm" id="viz-viewer-open" href="#" target="_blank" rel="noopener">{% if lang == 'or' %}ନୂଆ ଟ୍ୟାବ୍‌ରେ ଖୋଲନ୍ତୁ{% else %}Open in new tab{% endif %} ↗</a>
+    <button class="viewer__close" id="viz-viewer-close" type="button" aria-label="{% if lang == 'or' %}ବନ୍ଦ କରନ୍ତୁ{% else %}Close{% endif %}">×</button>
+  </div>
+  <iframe title="" allow="fullscreen" loading="lazy"></iframe>
+</div>

@@ -5,7 +5,7 @@ weight = 2
 
 [extra]
 research_interests = "କ୍ୱାର୍କ ନ୍ୟୁକ୍ଲିୟର ଫିଜିକ୍ସ, ହାଡ୍ରନ ଫିଜିକ୍ସ, ରିଲେଟିଭିଷ୍ଟିକ ହେଭି-ଆୟନ ଧକ୍କା, ଡ୍ରେଲ-ୟାନ ପ୍ରକ୍ରିୟା, ପାର୍ଟନ ବଣ୍ଟନ ଫଙ୍କସନ, ePIC ପରୀକ୍ଷଣ, ଇଲେକ୍ଟ୍ରନ-ଆୟନ କୋଲାଇଡର"
-inspire = "https://inspirehep.net/authors/1063638"
+inspire = "https://inspirehep.net/authors/1058122"
 github = ""
 scholar = ""
 orcid = ""

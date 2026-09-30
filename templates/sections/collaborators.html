@@ -14,7 +14,7 @@
     <div class="grid grid--3">
       {% for c in d.collaborators %}
         {% if limit == 0 or loop.index0 < limit %}
-        {%- set slug = c.name | slugify -%}
+        {%- set slug = c.slug | default(value=c.name | slugify) -%}
         {%- set link = "" -%}
         {% for p in sec.pages %}{% if p.slug == slug %}{% set_global link = p.permalink %}{% endif %}{% endfor %}
         {% if link %}<a class="person reveal" href="{{ link }}">{% else %}<div class="person reveal">{% endif %}

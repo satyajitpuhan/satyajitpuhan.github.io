@@ -22,9 +22,11 @@
   <div class="wrap">
     <div class="grid grid--3">
       {% for it in data.viz %}
-      <a class="card viz-card reveal" href="{{ get_url(path=it.url) }}" style="--viz:{{ it.hue }}">
+      <a class="card viz-card reveal" href="{{ get_url(path=it.url) }}" style="--viz:{{ it.hue }}"
+         data-viz="{{ get_url(path=it.url) }}" data-viz-title="{{ it.title | striptags }}">
         <div class="viz-card__screen" aria-hidden="true">
           <span class="viz-card__sym">{{ it.symbol | safe }}</span>
+          <span class="viz-card__hint">{% if lang == 'or' %}ପ୍ରିଭ୍ୟୁ ପାଇଁ ହୋଭର୍{% else %}Hover to preview{% endif %}</span>
           <span class="viz-card__play"><svg viewBox="0 0 24 24"><polygon points="7,4 20,12 7,20"/></svg></span>
         </div>
         <div class="card__body">
@@ -41,4 +43,5 @@
     </div>
   </div>
 </section>
+{% include "partials/viz-viewer.html" %}
 {% endblock %}
