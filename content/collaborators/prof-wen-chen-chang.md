@@ -5,7 +5,7 @@ weight = 2
 
 [extra]
 research_interests = "Quark Nuclear Physics, Hadron Physics, Relativistic Heavy-Ion Collisions, Drell-Yan Process, Parton Distribution Functions, ePIC Experiment, Electron-Ion Collider"
-inspire = "https://inspirehep.net/authors/1063638"
+inspire = "https://inspirehep.net/authors/1058122"
 github = ""
 scholar = ""
 orcid = ""

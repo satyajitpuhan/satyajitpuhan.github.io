@@ -65,6 +65,16 @@
 
     <div class="hero__visual reveal">
       <canvas class="hero__hadron" data-hadron aria-hidden="true"></canvas>
+      {%- set laurel = '<svg class="motto__laurel" viewBox="0 0 40 40" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M31 36C19 33 11 24 10 8"/><path d="M11 13c-4-1-6-4-6-8 4 0 6 3 6 8zM12 19c-4 0-7-2-8-6 4-1 7 2 8 6zM15 25c-4 1-7-1-9-4 4-2 7 0 9 4zM19 30c-3 2-7 1-9-2 4-2 7-1 9 2z" fill="currentColor" fill-opacity=".22"/><path d="M13 11c3-2 4-6 3-9-3 2-4 5-3 9zM16 18c3-2 5-5 4-9-3 2-5 5-4 9zM20 24c4-1 6-4 6-8-4 1-6 4-6 8z" fill="currentColor" fill-opacity=".22"/></svg>' -%}
+      <div class="motto" lang="la">
+        <p class="motto__line">
+          {{ laurel | safe }}
+          <span class="motto__latin">Veni<i>,</i> vidi<i>,</i> vici</span>
+          {{ laurel | replace(from='class="motto__laurel"', to='class="motto__laurel motto__laurel--r"') | safe }}
+        </p>
+        <p class="motto__en" lang="{{ lang }}">{% if lang == 'or' %}ଆସିଲି · ଦେଖିଲି · ଜୟ କଲି{% else %}I came · I saw · I conquered{% endif %}</p>
+        <span class="motto__rule" aria-hidden="true"></span>
+      </div>
       <figure class="hero__portrait">
         <img src="{{ get_url(path=d.image | default(value='images/hero/portrait.webp')) }}"
              alt="{% if lang == 'or' %}ସତ୍ୟଜିତ ପୁହାଣ, ଅଫିସରେ ହ୍ୱାଇଟବୋର୍ଡ ସମ୍ମୁଖରେ{% else %}Satyajit Puhan at his desk, in front of a whiteboard of equations{% endif %}"

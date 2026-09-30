@@ -6,7 +6,7 @@
 <header class="nav" id="site-nav">
   <div class="nav__inner">
     <a class="brand" href="{{ home_url }}">
-      <span class="brand__mark" aria-hidden="true">SP</span>
+      {% include "partials/brand-mark.html" %}
       <span class="brand__text">
         <span class="brand__name">{{ config.title }}</span>
         <span class="brand__role">{% if lang == 'or' %}ପଦାର୍ଥ ବିଜ୍ଞାନୀ{% else %}Hadron Physics{% endif %}</span>

@@ -1,23 +1,79 @@
 title = "ଗବେଷଣା କ୍ଷେତ୍ର"
 top_title = "ମୁଁ କଣ କରେ"
-subtitle = "ମୋର ମୁଖ୍ୟ ଗବେଷଣା ଲାଇଟ୍-ଫ୍ରଣ୍ଟ ଡାଇନାମିକ୍ସର ଆଧୁନିକ ତତ୍ତ୍ୱଗତ କାଠାମୋ ମାଧ୍ୟମରେ ହାଡ୍ରୋନ୍‌ର ଅନ୍ତର୍ନିହିତ ଗଠନ ବୁଝିବା ଉପରେ କେନ୍ଦ୍ରିତ।"
+subtitle = "ମୁଁ ଲାଇଟ୍-ଫ୍ରଣ୍ଟ ୱେଭ୍ ଫଙ୍କସନ୍ ଦ୍ୱାରା ପାଇଅନ୍‌ଠାରୁ ବଟମୋନିୟମ୍ ପର୍ଯ୍ୟନ୍ତ ହାଡ୍ରନ୍‌ର ତ୍ରି-ମାତ୍ରିକ, ସ୍ପିନ୍ ଓ ଯାନ୍ତ୍ରିକ ଗଠନ ଅଧ୍ୟୟନ କରେ।"
+
+# Each area: a short gist for the homepage, the full text for /research/, concrete highlights,
+# keyword chips, a figure from one of the papers (static/images/research/), and the
+# publication pages (content/portfolio/<slug>.md) that support it.
 
 [[services]]
 icon = "lni-target"
-title = "Transverse Momentum Distributions (TMDs)"
-content = "Model-dependent leading-twist and subleading-twist TMDs for spin-0 (pion, kaon), spin-1/2 (proton), and spin-1 (ρ meson, heavy vector mesons, photon) hadrons within the light-front quark model. Includes extraction of T-even and T-odd TMDs, Boer–Mulders and Sivers functions, spin densities in transverse momentum space, Wigner distributions, and higher-twist PDFs. Positivity bounds and Lorentz-invariance relations are systematically examined."
-
-[[services]]
-icon = "lni-map"
-title = "Generalized Parton Distributions (GPDs)"
-content = "GPDs for spin-0 (pion, kaon) and spin-1 (ρ meson) hadrons encoding both spatial and momentum correlations. Extraction of electromagnetic (Dirac, Pauli) and gravitational (energy-momentum tensor) form factors via Ji's sum rule. Generalized distribution amplitudes (GDAs) for pion. Global extraction of pion GPDs from Jefferson Lab charge form factor data using neural networks. Directly relevant for upcoming Electron-Ion Collider (EIC) and JLab 12 GeV measurements."
-
-[[services]]
-icon = "lni-pulse"
-title = "Hadronic & Mechanical Properties"
-content = "Spin-orbit correlations, leading-twist and higher-twist distribution amplitudes (DAs) evolved via ERBL equations. Electromagnetic form factors, charge radii, magnetic moments, and quadrupole moments for vector mesons. Decay constants, mass spectra, and radially excited states of quarkonia (charmonium, bottomonium). Radiative transition form factors of charmonia (J/ψ → η_c γ). Gravitational form factors (D-term), pressure and shear force distributions inside the pion revealing mechanical stability."
+title = "ହାଲୁକା ମେସନ୍‌ର ତ୍ରି-ମାତ୍ରିକ ଚିତ୍ର"
+gist = "ପାଇଅନ୍ ଓ କାଅନ୍‌ର ମୋମେଣ୍ଟମ୍ ଓ ସ୍ଥାନିକ ଟୋମୋଗ୍ରାଫି — TMD, GTMD, GPD ଓ ସ୍ପିନ୍-ଅର୍ବିଟ୍ ସମ୍ପର୍କ।"
+content = "How quarks move and where they sit inside the pion and kaon, computed as overlaps of light-front wave functions in the light-front quark model and the holographic model. I derived all time-reversal-even TMDs of π⁺ and K⁺ up to twist-4, and — by solving the quark–quark correlator — the twist-2, 3 and 4 GTMDs of the pion, of which 12 of the 16 are non-zero; TMDs and GPDs then follow as limits of the same objects. The same wave functions give quark spin–orbit correlations for spin-0 and spin-1 mesons and the transverse and spatial structure of mesons from π⁺ to η<sub>b</sub>."
+highlights = ["All T-even TMDs of π⁺ and K⁺ up to twist-4 (JHEP 2024 — my most-cited paper)", "12 of 16 pion GTMDs non-zero at twists 2–4 (PTEP 2025)", "Spin–orbit correlations from GTMDs and GPDs, spin-0 and spin-1 (PRD 2024)", "Transverse and spatial structure from π⁺, K⁺ to η<sub>c</sub>, η<sub>b</sub> (PRD 2025)"]
+chips = ["TMDs to twist-4", "GTMDs", "GPDs", "Spin–orbit", "LFQM"]
+figure = "images/research/imaging-pion-tmd-3d.webp"
+caption = "Unpolarized pion TMD f₁(x, k⊥²) in the light-cone quark model"
+figure_arxiv = "2310.03464"
+papers = ["t-even-tmds-spin-0", "valence-quark-pion-gtmd", "spin-orbit-correlations", "transverse-spatial-light-heavy", "athics2025-pion-kaon"]
 
 [[services]]
 icon = "lni-layers"
-title = "Medium Modifications & Extraction"
-content = "In-medium modification of TMDs, PDFs, GPDs, and form factors in symmetric nuclear matter using LFQM combined with the chiral SU(3) coupled quark-meson-Friedberg–Lee (CQMF) model at finite baryon density. Data-driven extraction of pion TMDs and PDFs from E615 and NA10 Drell–Yan cross-section data via neural network parametrization with DGLAP-evolved distributions. Monte Carlo simulations of charmonia (J/ψ, ψ(2S)) production using Pythia 8312 with color-singlet and color-octet NRQCD mechanisms. Gluon helicity distribution Δg(x) constraints via J/ψ production double-spin asymmetry (A_LL) at NICA-SPD energy (√s = 27 GeV). Transport coefficients using the NJL–Polyakov loop model at finite temperature and chemical potential."
+title = "ସ୍ପିନ୍-୧ ହାଡ୍ରନ୍ ଓ ଫୋଟନ୍"
+gist = "ρ, J/ψ, Υ ଓ ଫୋଟନ୍‌ର ଗଠନ — TMD, GPD, ଫର୍ମ ଫ୍ୟାକ୍ଟର୍ ଓ PDF।"
+content = "A spin-1 hadron has more distributions than a pion because it can be tensor-polarized. I computed the leading-twist T-even TMDs of J/ψ and Υ in the light-front quark model and holographic model (compared with Bethe–Salpeter results), the chiral-even vector GPDs of ρ and J/ψ with their charge, magnetic and quadrupole form factors, and the leading and subleading-twist PDFs of the ρ with two different spin wave functions, evolved at NLO. Treating the photon as a quark–antiquark state, I gave all its leading-twist T-even TMDs for both real and virtual photons."
+highlights = ["Leading-twist TMDs of J/ψ and Υ (PRD 2024)", "Vector GPDs and G<sub>C</sub>, G<sub>M</sub>, G<sub>Q</sub> of ρ and J/ψ (PRD 2025)", "ρ-meson PDFs with two spin wave functions, NLO evolution", "Photon TMDs for real and virtual photons (EPJA 2025)"]
+chips = ["ρ, J/ψ, Υ", "Tensor polarization", "Vector GPDs", "Photon TMDs"]
+figure = "images/research/spin1-jpsi-impact-gpd.webp"
+caption = "Impact-parameter GPD H₁(x, 0, b⊥²) of the J/ψ"
+figure_arxiv = "2505.09213"
+papers = ["t-even-tmds-spin-1", "valence-quark-rho-jpsi", "valence-quark-rho-lfqm", "photon-leading-twist", "hp2024-photon-tmds"]
+
+[[services]]
+icon = "lni-pulse"
+title = "କ୍ୱାର୍କୋନିୟମ୍ ଓ ଭାରୀ ମେସନ୍"
+gist = "ଚାର୍ମୋନିୟମ୍ ଓ ବଟମୋନିୟମ୍ — ଉତ୍ତେଜିତ ଅବସ୍ଥା, ଡିକେ କନଷ୍ଟାଣ୍ଟ ଓ E1 ବିକିରଣ ପରିବର୍ତ୍ତନ।"
+content = "Heavy quarkonia are the cleanest place to test a relativistic bound-state model. I studied the 1S, 2S, 3S and 1P states of charmonium and bottomonium in the light-front quark model — the 3S and 1P states had rarely been treated this way — including their wave-function nodes, decay constants, distribution amplitudes, PDFs and form factors, compared with BLFQ. With the same wave functions I computed the radiative transitions χ<sub>c0</sub> → J/ψ γ, ψ(2S) → χ<sub>c0</sub> γ, h<sub>c</sub>(1P) → η<sub>c</sub>(1S) γ and η<sub>c</sub>(2S) → h<sub>c</sub>(1P) γ: transition form factors, decay widths and branching ratios. The same framework extends to the parton distributions of D<sub>s</sub>, B and η<sub>c</sub>, η<sub>b</sub>."
+highlights = ["1S, 2S, 3S and 1P charmonia and bottomonia (Chin. Phys. C 2025)", "Four E1 transitions: χ<sub>c0</sub>→J/ψγ, ψ(2S)→χ<sub>c0</sub>γ, h<sub>c</sub>→η<sub>c</sub>γ, η<sub>c</sub>(2S)→h<sub>c</sub>γ", "PDFs of K, D<sub>s</sub>, B and η<sub>c</sub>, η<sub>b</sub> at NLO", "Heavy B and D mesons in 3D (PoS HQL 2023)"]
+chips = ["Charmonium", "Bottomonium", "Radial excitations", "E1 transitions"]
+figure = "images/research/quarkonium-etac2s-node.webp"
+caption = "η<sub>c</sub>(2S) light-front wave function, showing its radial node"
+figure_arxiv = "2408.07715"
+papers = ["spectroscopy-radially-excited", "radiative-transitions-charmonia", "analysis-on-the-parton-distribution-functions-of-heavy", "hql2023-b-d-mesons"]
+
+[[services]]
+icon = "lni-bolt"
+title = "ଫର୍ମ ଫ୍ୟାକ୍ଟର୍ ଓ ଯାନ୍ତ୍ରିକ ଗଠନ"
+gist = "ହାଡ୍ରନ୍ ଭିତରେ ଚାପ ଓ ଶିଅର୍ — ଗ୍ରାଭିଟେସନାଲ୍ ଓ ଇଲେକ୍ଟ୍ରୋମ୍ୟାଗ୍ନେଟିକ୍ ଫର୍ମ ଫ୍ୟାକ୍ଟର୍।"
+content = "Form factors are the moments of GPDs that experiments can reach. I calculated the scalar (twist-3), vector and tensor (twist-2) form factors of the pion and kaon from their GPDs in the light-cone quark model and compared them with lattice QCD and data. For the pseudoscalar charmonium and bottomonium states η<sub>c</sub> and η<sub>b</sub> I evaluated the gravitational form factors A(t) and the D-term, and from them the transverse distributions of energy, pressure and shear force, testing their sensitivity to two different Gaussian wave functions."
+highlights = ["Scalar, vector and tensor form factors of π and K (PRD 2025)", "Gravitational form factors A(t), D(t) of η<sub>c</sub> and η<sub>b</sub>", "Pressure, shear-force and energy densities in the transverse plane", "Comparison with lattice QCD"]
+chips = ["Gravitational FFs", "D-term", "Pressure & shear", "Tensor FFs"]
+figure = "images/research/mechanical-pressure-etac-etab.webp"
+caption = "Pressure distribution inside η<sub>c</sub> (left) and η<sub>b</sub> (right)"
+figure_arxiv = "2606.07073"
+papers = ["emffs-pion-kaon", "pseudoscalar-charmonium-bottomonium-light-front"]
+
+[[services]]
+icon = "lni-grid-alt"
+title = "ନ୍ୟୁକ୍ଲିୟର୍ ପଦାର୍ଥରେ ହାଡ୍ରନ୍"
+gist = "ଘନ ଓ ଉଷ୍ମ ନ୍ୟୁକ୍ଲିୟର୍ ପଦାର୍ଥରେ π, K, ρ, D ଓ B ମେସନ୍‌ର ପରିବର୍ତ୍ତନ।"
+content = "A meson inside a nucleus is not the meson in vacuum. I combine the chiral SU(3) quark mean-field model — which gives the effective quark masses at finite baryon density, isospin asymmetry and temperature — with the light-front and light-cone quark models, and follow the change in decay constants, distribution amplitudes, PDFs, TMDs, spatial distributions and spectra. The series covers the pion (at zero and finite temperature), the charged kaon, the ρ, and the D, D*, B and B* mesons; a parallel study uses the two-flavour NJL model for the pion at finite baryon density."
+highlights = ["Pion DAs and PDFs in asymmetric matter at finite T (PRD 2024)", "Pion TMDs in medium (PLB 2024)", "Kaon, D/D*, B/B* and ρ in asymmetric or symmetric matter", "NJL pion at finite baryon density"]
+chips = ["Chiral SU(3) quark mean field", "Isospin asymmetry", "Finite temperature", "In-medium PDFs & TMDs"]
+figure = "images/research/medium-pion-wavefunction-3d.webp"
+caption = "Pion light-cone wave function φ(x, k⊥) used as input for the medium study"
+figure_arxiv = "2408.07334"
+papers = ["pion-valence-asymm", "pion-nuclear-medium", "asymmetric-nuclear-kaons", "nuclear-medium-spatial", "isospin-asymm-b-mesons", "d-mesons-isospin-asymm", "spectroscopy-rho-symmetric", "njl-model-baryon-density"]
+
+[[services]]
+icon = "lni-network"
+title = "ତଥ୍ୟ-ଭିତ୍ତିକ ନିଷ୍କାସନ ଓ କୋଲାଇଡର୍ ଫେନୋମେନୋଲୋଜି"
+gist = "ନ୍ୟୁରାଲ୍ ନେଟୱାର୍କ ଦ୍ୱାରା ପାଇଅନ୍ GPD ନିଷ୍କାସନ ଓ NICA-SPD, HERA, EIC ପାଇଁ ପୂର୍ବାନୁମାନ।"
+content = "Models have to meet data. I extracted the pion's unpolarized quark GPDs at zero skewness from a global fit to the pion electromagnetic form factor and PDFs, and then the quark and gluon GPDs with a physics-informed deep neural network trained on JAM21 and xFitter PDFs, form-factor data and lattice QCD, giving the pion's quark and gluon densities in the transverse plane. I also tested light-cone-quark-model pion PDFs against experimental extractions after DGLAP evolution, studied the gluon helicity Δg at x ≈ 0.1–0.2 through the J/ψ double-spin asymmetry A<sub>LL</sub> at NICA-SPD (√s ≈ 27 GeV), and used HERA leading-neutron data in the Sullivan process to constrain pion PDFs at small x, with projections for the EIC."
+highlights = ["Pion quark GPDs from a global form-factor + PDF fit", "Quark and gluon GPDs with a physics-informed neural network", "Gluon helicity from J/ψ A<sub>LL</sub> at NICA-SPD, √s ≈ 27 GeV", "Leading-neutron electroproduction at HERA and the EIC"]
+chips = ["Neural-network GPDs", "Pion PDFs", "NICA-SPD", "HERA & EIC"]
+figure = "images/research/extraction-pion-gpd-density.webp"
+caption = "Pion quark density 2πb H^q(x, b) from the neural-network fit, with uncertainty bands"
+figure_arxiv = "2608.07085"
+papers = ["extraction-of-pion-unpolarized-quark-generalized-parton", "extraction-of-pion-unpolarized-quark-and-gluon-generalized", "pion-parton-distribution-functions-in-the-light-cone-quark", "gluon-helicity-jpsi-production", "leading-neutron-electroproduction-at-hera-and-the-eic"]

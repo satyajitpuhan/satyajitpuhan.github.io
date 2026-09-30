@@ -3,82 +3,134 @@ title = "ସହକର୍ମୀଗଣ |"
 subtitle = "ଅନୁସନ୍ଧାନକାରୀ ଏବଂ ପରାମର୍ଶଦାତା ମୋର କାମ କରିବାର ସ privilege ଭାଗ୍ୟ ଅଛି |"
 [[collaborators]]
 name = "ହର୍ଲିନ୍ ଡାହିଆ ଡ"
+slug = "dr-harleen-dahiya"
 role = "Associate Professor"
 institution = "Dr. B R Ambedkar NIT, Jalandhar"
 
 [[collaborators]]
 name = "ପ୍ରଫେସର ଓଲେଗ ଭି ଟେରିଆଭ୍ |"
+slug = "prof-oleg-v-teryaev"
 role = "Researcher, Joint Institute for Nuclear Research (JINR)"
 institution = "JINR, Dubna"
 
 [[collaborators]]
 name = "ପ୍ରଫେସର ସାବୟାସୀ ଘୋଷ"
+slug = "prof-sabyasachi-ghosh"
 role = "Collaborator"
 institution = "IIT Bhilai, Chhattisgarh"
 
 [[collaborators]]
 name = "ପ୍ରଫେସର ଉଜୱାଲ ଲାହା"
+slug = "prof-ujjwal-laha"
 role = "MSc Supervisor"
 institution = "NIT Jamshedpur"
 
 [[collaborators]]
 name = "ପ୍ରଫେସର ଅରବିନ୍ଦ କୁମାର"
+slug = "prof-arvind-kumar"
 role = "Collaborator"
 institution = "NIT Jalandhar"
 
 [[collaborators]]
 name = "ପ୍ରଫେସର ସୁନେଲ ଦତ୍ତ"
+slug = "prof-suneel-dutt"
 role = "Collaborator"
 institution = "NIT Jalandhar"
 
 [[collaborators]]
 name = "ନରିନ୍ଦର କୁମାର"
+slug = "narinder-kumar"
 role = "Collaborator"
 institution = "NIT Jalandhar"
 
 [[collaborators]]
 name = "ଶୁଭମ୍ ଶର୍ମା |"
+slug = "shubham-sharma"
 role = "Collaborator"
 institution = "NIT Jalandhar"
 
 [[collaborators]]
 name = "ରିତାନସୁ ପାଣ୍ଡେ |"
+slug = "reetanshu-pandey"
 role = "Collaborator"
 institution = "NIT Jalandhar"
 
 [[collaborators]]
 name = "ଅନସୁ ଗ aut ତମ |"
+slug = "anshu-gautam"
 role = "Collaborator"
 institution = "NIT Jalandhar"
 
 [[collaborators]]
 name = "ତନିଷା |"
+slug = "tanisha"
 role = "Collaborator"
 institution = "NIT Jalandhar"
 
 [[collaborators]]
 name = "ଆଶୁତୋଷ ଦ୍ୱିବେଦୀ |"
+slug = "ashutosh-dwibedi"
 role = "Collaborator"
 institution = "IIT Bhilai, Chhattisgarh"
 image = "images/collaborators/ashutosh.webp"
 
 [[collaborators]]
 name = "ଅନୁରାଗ ଯାଦବ |"
+slug = "anurag-yadav"
 role = "Collaborator"
 institution = "NIT Jalandhar"
 
 [[collaborators]]
 name = "ରିତୱିକ୍ ଆଚାର୍ଯ୍ୟ |"
+slug = "ritwik-acharyya"
 role = "Collaborator"
 institution = "NIT Jalandhar"
 
 [[collaborators]]
 name = "ହରି ଗୋବିନ୍ଦ ପି"
+slug = "hari-govind-p"
 role = "Collaborator"
 institution = "NIT Jalandhar"
 
 [[collaborators]]
 name = "ଅଭିଷେକ କେ ପି"
+slug = "abhishek-k-p"
 role = "Collaborator"
 institution = "NIT Jalandhar"
 
+
+[[collaborators]]
+name = "ପ୍ରଫେସର ୱେନ-ଚେନ ଚାଙ୍ଗ"
+slug = "prof-wen-chen-chang"
+role = "ଅନୁସନ୍ଧାନ ଫେଲୋ"
+institution = "ଇନଷ୍ଟିଚ୍ୟୁଟ ଅଫ ଫିଜିକ୍ସ, ଆକାଡେମିଆ ସିନିକା"
+
+[[collaborators]]
+name = "ଚିଆ-ୟୁ ସିଏ"
+slug = "chia-yu-hsieh"
+role = "ସହଯୋଗୀ"
+institution = "ଇନଷ୍ଟିଚ୍ୟୁଟ ଅଫ ଫିଜିକ୍ସ, ଆକାଡେମିଆ ସିନିକା"
+
+[[collaborators]]
+name = "ପ୍ରଫେସର ଜେନ-ଚିଏ ପେଙ୍ଗ"
+slug = "prof-jen-chieh-peng"
+role = "ପ୍ରଫେସର"
+institution = "ୟୁନିଭର୍ସିଟି ଅଫ ଇଲିନୟ, ଅର୍ବାନା-ଶାମ୍ପେନ"
+
+[[collaborators]]
+name = "ଷ୍ଟେଫାନ ପ୍ଲାଚକୋଭ"
+slug = "stephane-platchkov"
+role = "ସହଯୋଗୀ"
+institution = "IRFU, CEA ପ୍ୟାରିସ-ସାକ୍ଲେ"
+
+[[collaborators]]
+name = "ମାର୍କୋ ମେୟର-କଣ୍ଡେ"
+slug = "marco-meyer-conde"
+role = "ସହଯୋଗୀ"
+institution = "ଟୋକିଓ ଇନଷ୍ଟିଚ୍ୟୁଟ ଅଫ ଟେକ୍ନୋଲୋଜି"
+
+[[collaborators]]
+name = "ତାକାହିରୋ ସାୱାଦା"
+slug = "takahiro-sawada"
+role = "ସହଯୋଗୀ"
+institution = "କାମିଓକା ଅବଜରଭେଟୋରୀ, ଟୋକିଓ ବିଶ୍ୱବିଦ୍ୟାଳୟ"
