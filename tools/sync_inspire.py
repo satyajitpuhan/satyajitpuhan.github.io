@@ -48,6 +48,8 @@ AUTHOR_BAI = "Satyajit.Puhan.1"
 AUTHOR_URL = "https://inspirehep.net/authors/2706496"
 # Records under this BAI that belong to a different "Puhan" (NOvA collaboration).
 EXCLUDED_RECORDS = {3168377}
+# Stock images left over from the original site theme; a page still pointing at one gets a real cover.
+THEME_PLACEHOLDER = re.compile(r"images/portfolio/portfolio-\d+\.\w+$")
 
 PORTFOLIO_DIR = os.path.join(ROOT, "content", "portfolio")
 PAPER_IMG_DIR = os.path.join(ROOT, "static", "images", "portfolio", "papers")
@@ -696,12 +698,16 @@ def main():
                 if rec["journal"] and "e-Print" in (fm_get(front, "service") or ""):
                     front = fm_set(front, "service", rec["reference"])
                 thumb_rel = fm_get(front, "thumbnail")
-                thumb_missing = (not thumb_rel) or thumb_rel.endswith("-cover.svg") or (
+                placeholder = (not thumb_rel) or bool(THEME_PLACEHOLDER.search(thumb_rel)) or (
                     not os.path.exists(os.path.join(ROOT, "static", thumb_rel)))
+                thumb_missing = placeholder or thumb_rel.endswith("-cover.svg")
+                new_thumb = None
                 if thumb_missing and rec["arxiv"]:
                     new_thumb = render_first_page(rec["arxiv"], page["slug"], dry)
-                    if new_thumb:
-                        front = fm_set(front, "thumbnail", new_thumb)
+                if not new_thumb and placeholder:
+                    new_thumb = make_cover(rec, page["slug"], dry)
+                if new_thumb:
+                    front = fm_set(front, "thumbnail", new_thumb)
                 if front != before:
                     updated += 1
                     if not dry:

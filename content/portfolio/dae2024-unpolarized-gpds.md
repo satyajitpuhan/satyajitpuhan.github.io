@@ -3,7 +3,7 @@ title = "Spin-1 unpolarized GPDs in light front dynamics"
 date = 2024-12-08
 
 [extra]
-thumbnail = "images/portfolio/portfolio-4.webp"
+thumbnail = "images/portfolio/papers/dae2024-unpolarized-gpds-cover.svg"
 service = "DAE Nuclear 2024"
 client = "S. Puhan, Narinder Kumar, and H. Dahiya"
 short_description = "Conference presentation on spin-1 unpolarized GPDs in light-front formalism, deriving electromagnetic form factors for vector mesons."

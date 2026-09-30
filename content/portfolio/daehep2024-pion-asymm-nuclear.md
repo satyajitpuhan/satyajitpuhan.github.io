@@ -3,7 +3,7 @@ title = "Behavior of pion in asymmetric nuclear medium"
 date = 2024-12-16
 
 [extra]
-thumbnail = "images/portfolio/portfolio-4.webp"
+thumbnail = "images/portfolio/papers/daehep2024-pion-asymm-nuclear-cover.svg"
 service = "DAE HEP 2024"
 client = "A. Gautam, D. Singh, S. Puhan, N. Kaur, A. Kumar, H. Dahiya, and S. Dutt"
 short_description = "DAE HEP 2024 contribution on pion behavior in asymmetric nuclear medium, exploring decay constants and transition form factors in-medium."

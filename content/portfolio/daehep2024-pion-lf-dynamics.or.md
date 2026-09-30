@@ -3,7 +3,7 @@ title = "Valence quark structure of pion using light front dynamics"
 date = 2024-12-15
 
 [extra]
-thumbnail = "images/portfolio/portfolio-3.webp"
+thumbnail = "images/portfolio/papers/daehep2024-pion-lf-dynamics-cover.svg"
 service = "DAE HEP 2024"
 client = "S. Puhan and H. Dahiya"
 short_description = "DAE HEP 2024 contribution on pion valence quark structure using light-front dynamics, highlighting S-wave dominance and Mellin moment predictions."

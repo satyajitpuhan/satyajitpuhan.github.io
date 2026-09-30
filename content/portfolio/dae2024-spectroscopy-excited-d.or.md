@@ -3,7 +3,7 @@ title = "Spectroscopy of excited states of D+ and D+S meson in the light-front q
 date = 2024-12-09
 
 [extra]
-thumbnail = "images/portfolio/portfolio-1.webp"
+thumbnail = "images/portfolio/papers/dae2024-spectroscopy-excited-d-cover.svg"
 service = "DAE Nuclear 2024"
 client = "R. Acharyya, S. Puhan, Narinder Kumar, and H. Dahiya"
 short_description = "Symposium contribution on the spectroscopy of excited D⁺ and D⁺_s meson states, including 3D wave function visualizations and decay properties."
