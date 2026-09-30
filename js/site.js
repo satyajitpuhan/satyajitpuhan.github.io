@@ -429,6 +429,35 @@
     on(document, 'keydown', function (e) { if (e.key === 'Escape') panel.classList.remove('is-open'); });
   })();
 
+  /* ---- 11b. citations-per-year chart: refresh live from INSPIRE-HEP's own
+         citations-by-year facet (the same numbers as the author profile), so the
+         bars agree with the live total above them between daily syncs ---------- */
+  (function citeChart() {
+    var charts = $$('[data-cite-chart]');
+    if (!charts.length || !window.fetch) return;
+    var url = 'https://inspirehep.net/api/literature/facets?q=a%20Satyajit.Puhan.1&facet_name=citations-by-year';
+    fetch(url)
+      .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+      .then(function (d) {
+        var v = d && d.aggregations && d.aggregations.citations_by_year && d.aggregations.citations_by_year.value;
+        if (!v) throw new Error('no facet');
+        var years = Object.keys(v).sort();
+        if (!years.length) throw new Error('empty');
+        var max = Math.max.apply(null, years.map(function (y) { return v[y]; })) || 1;
+        charts.forEach(function (ch) {
+          var ol = $('.cite-chart__bars', ch), now = ch.getAttribute('data-this-year'), soFar = ch.getAttribute('data-so-far') || 'so far';
+          ol.innerHTML = years.map(function (y) {
+            var n = v[y], part = y === now;
+            return '<li class="cite-chart__bar' + (part ? ' cite-chart__bar--partial' : '') + '" style="--h:' + Math.round(n * 100 / max) + '%" data-year="' + y + '">' +
+              '<span class="cite-chart__n">' + n + '</span><span class="cite-chart__col" aria-hidden="true"></span>' +
+              '<span class="cite-chart__y">' + y + (part ? '<small>' + soFar + '</small>' : '') + '</span></li>';
+          }).join('');
+          var live = $('[data-cite-live]', ch); if (live) live.hidden = false;
+        });
+      })
+      .catch(function () { /* keep the synced histogram */ });
+  })();
+
   /* ---- 13. hero: a hadron — three valence quarks bound by gluon flux tubes,
          with short-lived quark–antiquark pairs popping out of the field ----- */
   (function hadron() {
@@ -437,7 +466,7 @@
     var ctx = cv.getContext('2d'), dpr = Math.min(2, window.devicePixelRatio || 1);
     var W = 0, H = 0, running = false, visible = true, t0 = performance.now(), pairs = [], raf = 0, cols = [];
     function css(n) { return getComputedStyle(document.documentElement).getPropertyValue(n).trim() || '#e8a444'; }
-    function colours() { cols = [css('--accent'), css('--cyan'), css('--violet')]; }
+    function colours() { cols = [css('--q-red'), css('--q-green'), css('--q-blue')]; }  // the three colour charges
     function size() {
       var r = cv.getBoundingClientRect(); W = r.width; H = r.height;
       cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -513,6 +542,54 @@
       window.print();
     });
   });
+
+  /* ---- 15. visualizations: live preview on hover, in-page full-screen viewer.
+         A preview iframe exists only while its card is hovered or focused, so at
+         most one simulation runs in the background at a time. ------------------ */
+  (function vizLab() {
+    var cards = $$('[data-viz]');
+    if (!cards.length) return;
+    var canHover = window.matchMedia && window.matchMedia('(hover: hover)').matches;
+    cards.forEach(function (card) {
+      var screen = $('.viz-card__screen', card), timer = 0;
+      function show() {
+        if (!canHover || reduced || $('iframe', screen)) return;
+        timer = setTimeout(function () {
+          var f = document.createElement('iframe');
+          f.src = card.getAttribute('data-viz'); f.tabIndex = -1; f.setAttribute('aria-hidden', 'true'); f.title = '';
+          f.onload = function () { screen.classList.add('is-live'); };
+          screen.appendChild(f);
+        }, 180);
+      }
+      function hide() {
+        clearTimeout(timer); screen.classList.remove('is-live');
+        var f = $('iframe', screen); if (f) setTimeout(function () { if (!screen.classList.contains('is-live')) f.remove(); }, 450);
+      }
+      on(card, 'mouseenter', show); on(card, 'focus', show);
+      on(card, 'mouseleave', hide); on(card, 'blur', hide);
+    });
+
+    var box = $('#viz-viewer');
+    if (!box) return;
+    var frame = $('iframe', box), title = $('#viz-viewer-title', box), ext = $('#viz-viewer-open', box), opener = null;
+    function close() {
+      box.classList.remove('is-open'); box.hidden = true; frame.src = 'about:blank';
+      document.body.style.overflow = ''; if (opener) opener.focus();
+    }
+    cards.forEach(function (card) {
+      on(card, 'click', function (e) {
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) return;   // let new-tab gestures through
+        e.preventDefault(); opener = card;
+        var src = card.getAttribute('data-viz');
+        title.textContent = card.getAttribute('data-viz-title') || ''; frame.title = title.textContent;
+        ext.href = src; frame.src = src;
+        box.hidden = false; box.classList.add('is-open'); document.body.style.overflow = 'hidden';
+        $('#viz-viewer-close', box).focus();
+      });
+    });
+    on($('#viz-viewer-close', box), 'click', close);
+    on(document, 'keydown', function (e) { if (e.key === 'Escape' && box.classList.contains('is-open')) close(); });
+  })();
 
   /* ---- 12. external links get rel + target ----------------------------- */
   $$('a[href^="http"]').forEach(function (a) {
