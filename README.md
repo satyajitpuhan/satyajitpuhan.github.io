@@ -24,6 +24,8 @@ and, for anything new:
   already there,
 * rewrites `static/data/inspire-stats.json`, which drives the paper /
   citation / h-index counters,
+* rewrites `static/data/cited-by.json`, the **Recently cited by** list at the
+  bottom of the Publications page (self-citations left out),
 
 then commits, rebuilds and redeploys the site.
 
@@ -60,6 +62,7 @@ python3 tools/sync_inspire.py --dry-run
 | `content/collaborators/` | co-author profiles |
 | `static/sections/*/{en,or}.toml` | the editable text of each homepage section |
 | `static/data/inspire-stats.json` | live paper / citation / h-index figures |
+| `static/data/cited-by.json` | the newest papers by others citing your work ("Recently cited by" on the Publications page) |
 | `templates/sections/` | the reusable sections (used by the homepage and the standalone pages) |
 | `templates/pages/` | the standalone About / Research / CV / News pages |
 | `templates/partials/` | nav, footer, icons, search index, assistant |

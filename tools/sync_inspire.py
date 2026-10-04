@@ -8,7 +8,8 @@ What it does, in order:
 
   1. Pulls every literature record attached to the author profile.
   2. Refreshes `static/data/inspire-stats.json` (papers / citations / h-index),
-     which the hero stat strip and the assistant both read.
+     which the hero stat strip and the assistant both read, and
+     `static/data/cited-by.json` (the newest papers by others that cite this work).
   3. For papers the site ALREADY has: updates only the metadata that changes
      over time — citation count, DOI, INSPIRE id, journal reference.
      The hand-written body of a page is never touched.
@@ -54,6 +55,7 @@ THEME_PLACEHOLDER = re.compile(r"images/portfolio/portfolio-\d+\.\w+$")
 PORTFOLIO_DIR = os.path.join(ROOT, "content", "portfolio")
 PAPER_IMG_DIR = os.path.join(ROOT, "static", "images", "portfolio", "papers")
 STATS_PATH = os.path.join(ROOT, "static", "data", "inspire-stats.json")
+CITED_BY_PATH = os.path.join(ROOT, "static", "data", "cited-by.json")
 NEWS_EN = os.path.join(ROOT, "static", "sections", "news", "en.toml")
 NEWS_OR = os.path.join(ROOT, "static", "sections", "news", "or.toml")
 
@@ -238,6 +240,69 @@ def fetch_citations_by_year():
     except Exception as e:                                   # noqa: BLE001
         log("citations-by-year unavailable:", e)
         return None
+
+
+CITED_BY_LIMIT = 12   # how many citing papers the Publications page lists
+
+
+def fetch_cited_by(my_ids):
+    """The newest papers by OTHER people that cite this author (self-citations left out).
+
+    Each entry records which of the author's papers it cites, as INSPIRE ids, so the
+    template can link straight to the matching publication page.
+    """
+    q = f"refersto:a {AUTHOR_BAI} and not a {AUTHOR_BAI}"
+    url = ("https://inspirehep.net/api/literature?" + urllib.parse.urlencode({
+        "q": q, "size": CITED_BY_LIMIT * 2, "sort": "mostrecent",
+        "fields": "titles,authors.full_name,collaborations,earliest_date,arxiv_eprints,"
+                  "publication_info,dois,control_number,references.record"}))
+    data = fetch_json(url)
+    out = []
+    for hit in data.get("hits", {}).get("hits", []):
+        m = hit.get("metadata", {})
+        cites = []
+        for ref in m.get("references") or []:
+            rid = (ref.get("record") or {}).get("$ref", "").rsplit("/", 1)[-1]
+            if rid.isdigit() and int(rid) in my_ids and rid not in cites:
+                cites.append(rid)
+        if not cites:      # only cites the excluded namesake's record
+            continue
+
+        names = [tidy_author(a.get("full_name", "")) for a in (m.get("authors") or [])]
+        names = [n for n in names if n]
+        collab = ((m.get("collaborations") or [{}])[0] or {}).get("value", "")
+        if collab and len(names) > 5:
+            authors = f"{collab} Collaboration"
+        elif len(names) > 3:
+            authors = f"{names[0]} et al."
+        else:
+            authors = ", ".join(names)
+
+        pub = (m.get("publication_info") or [{}])[0]
+        raw_journal = pub.get("journal_title") or ""
+        journal = JOURNAL_NAMES.get(raw_journal, raw_journal.replace(".", ". ").strip())
+        arxiv = ((m.get("arxiv_eprints") or [{}])[0] or {}).get("value", "")
+        if journal:
+            volume = str(pub.get("journal_volume") or "")
+            ref = journal + (" " + volume if volume else "")
+        else:
+            ref = f"arXiv:{arxiv}" if arxiv else "Preprint"
+
+        out.append({
+            "inspire": str(m.get("control_number")),
+            "title": strip_math((m.get("titles") or [{}])[0].get("title", "")),
+            "authors": authors,
+            "date": m.get("earliest_date", ""),
+            "reference": ref,
+            "arxiv": arxiv,
+            "doi": ((m.get("dois") or [{}])[0] or {}).get("value", ""),
+            "cites": cites,
+        })
+        if len(out) >= CITED_BY_LIMIT:
+            break
+    return {"total": data.get("hits", {}).get("total", 0),
+            "updated": dt.date.today().isoformat(),
+            "papers": out}
 
 
 def compute_stats(records):
@@ -660,6 +725,18 @@ def main():
             json.dump(stats, f, indent=2)
             f.write("\n")
     log("stats:", stats["papers"], "papers,", stats["citations"], "citations, h =", stats["hindex"])
+
+    # 1b ── who has cited this work recently ---------------------------------
+    if not args.from_file:
+        try:
+            cited = fetch_cited_by({r["control_number"] for r in records})
+            if not dry:
+                with open(CITED_BY_PATH, "w", encoding="utf-8", newline="\n") as f:
+                    json.dump(cited, f, indent=2, ensure_ascii=False)
+                    f.write("\n")
+            log("cited by:", cited["total"], "papers by others; listing", len(cited["papers"]))
+        except Exception as e:                                # noqa: BLE001
+            log("cited-by list unavailable, keeping the last one:", e)
 
     # 2 ── index existing pages ---------------------------------------------
     pages = load_existing()

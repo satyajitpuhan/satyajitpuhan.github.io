@@ -1,0 +1,55 @@
+{#- "Recently cited by": the newest papers by other people that cite this work.
+    Data comes from static/data/cited-by.json, rewritten daily by tools/sync_inspire.py.
+    Each paper lists which of our publications it cites, linked to their pages. -#}
+{%- set cited = load_data(path="static/data/cited-by.json", required=false) -%}
+{% if cited and cited.papers %}
+{%- set sec = get_section(path="portfolio/_index.md", lang=lang) -%}
+<section class="section" id="cited-by">
+  <div class="wrap">
+    <div class="sec-head reveal" style="max-width:820px">
+      <p class="eyebrow">{% if lang == 'or' %}ଅନ୍ୟମାନଙ୍କ ଗବେଷଣାରେ{% else %}In other people's work{% endif %}</p>
+      <h2 class="h-1">{% if lang == 'or' %}ନିକଟରେ ଉଲ୍ଲେଖ କରିଥିବା ଗବେଷଣା{% else %}Recently cited by{% endif %}</h2>
+      <p>
+        {% if lang == 'or' %}
+          ଅନ୍ୟ ଗବେଷକଙ୍କ {{ cited.total }}ଟି ଗବେଷଣା ପତ୍ର ମୋ କାମକୁ ଉଲ୍ଲେଖ କରିଛନ୍ତି। ନୂଆଗୁଡ଼ିକ ନିମ୍ନରେ — INSPIRE-HEP ରୁ ପ୍ରତିଦିନ ଅଦ୍ୟତନ।
+        {% else %}
+          {{ cited.total }} papers by other researchers cite this work (self-citations excluded). The newest are below, updated daily from INSPIRE-HEP.
+        {% endif %}
+      </p>
+    </div>
+
+    <ol class="pub-list cited-list reveal">
+      {% for c in cited.papers %}
+      <li class="pub-row">
+        <span class="pub-row__year mono">{{ c.date | truncate(length=7, end="") }}</span>
+        <span class="pub-row__main">
+          <a class="pub-row__title" href="https://inspirehep.net/literature/{{ c.inspire }}">{{ c.title }}</a>
+          <span class="pub-row__meta">{{ c.authors }} · {{ c.reference }}</span>
+          <span class="cited-list__cites">
+            {% if lang == 'or' %}ଉଲ୍ଲେଖ:{% else %}Cites:{% endif %}
+            {% for rid in c.cites %}{% if loop.index <= 2 %}
+              {%- set_global hit = "" -%}
+              {%- for p in sec.pages %}{% if p.extra.inspire and p.extra.inspire | as_str == rid %}{% set_global hit = p %}{% endif %}{% endfor -%}
+              {% if loop.index == 2 %}; {% endif %}
+              {%- if hit %}<a href="{{ hit.permalink }}">{{ hit.title }}</a>{% else %}<a href="https://inspirehep.net/literature/{{ rid }}">INSPIRE {{ rid }}</a>{% endif %}
+            {%- endif %}{% endfor %}
+            {% if c.cites | length > 2 %}{% if lang == 'or' %}ଓ ଆଉ {{ c.cites | length - 2 }}ଟି{% else %}and {{ c.cites | length - 2 }} more{% endif %}{% endif %}
+          </span>
+        </span>
+        <span class="pub-row__links">
+          <a class="link-pill link-pill--inspire" href="https://inspirehep.net/literature/{{ c.inspire }}">INSPIRE</a>
+          {% if c.arxiv %}<a class="link-pill link-pill--arxiv" href="https://arxiv.org/abs/{{ c.arxiv }}">arXiv</a>{% endif %}
+          {% if c.doi %}<a class="link-pill link-pill--doi" href="https://doi.org/{{ c.doi }}">DOI</a>{% endif %}
+        </span>
+      </li>
+      {% endfor %}
+    </ol>
+
+    <p class="center" style="margin-top:24px">
+      <a class="btn btn--inspire btn--sm" href="https://inspirehep.net/literature?q=refersto%3Aa%20Satyajit.Puhan.1%20and%20not%20a%20Satyajit.Puhan.1&sort=mostrecent">
+        <span>{% if lang == 'or' %}ସମସ୍ତ {{ cited.total }}ଟି INSPIRE-HEP ରେ ଦେଖନ୍ତୁ{% else %}See all {{ cited.total }} on INSPIRE-HEP{% endif %}</span>
+      </a>
+    </p>
+  </div>
+</section>
+{% endif %}
