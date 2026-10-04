@@ -14,7 +14,7 @@ categories = ["Journal Article"]
 arxiv = "2405.00446"
 doi = "10.1103/PhysRevD.110.034020"
 inspire = "2782544"
-citations = 15
+citations = 16
 +++
 
 **Authors:** R. Acharyya, S. Puhan and H. Dahiya  
