@@ -3,6 +3,7 @@ title = "Mechanical distribution of the pseudoscalar charmonium and bottomonium 
 date = 2026-06-05
 
 [extra]
+doi = "10.1103/bbm8-c5yj"
 thumbnail = "images/portfolio/papers/pseudoscalar-charmonium-bottomonium-light-front-first-page.webp"
 service = "e-Print: 2606.07073 [hep-ph]"
 client = "A. Dwivedi, S. Puhan, and S. Ghosh"

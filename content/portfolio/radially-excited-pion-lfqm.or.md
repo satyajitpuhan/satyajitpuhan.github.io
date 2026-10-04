@@ -13,7 +13,7 @@ tags = ["PDFs", "DAs", "EMFFs", "Pion", "Radial Excitations", "Light-Front Dynam
 categories = ["Preprint"]
 arxiv = "2601.06628"
 inspire = "3103134"
-citations = 1
+citations = 2
 +++
 
 **Authors:** A. Dwivedi, S. Puhan, and S. Ghosh  
