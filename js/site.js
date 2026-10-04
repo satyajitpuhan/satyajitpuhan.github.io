@@ -591,6 +591,69 @@
     on(document, 'keydown', function (e) { if (e.key === 'Escape' && box.classList.contains('is-open')) close(); });
   })();
 
+  /* ---- 16. dragon: a 3D Eastern dragon swimming behind the content (dragon.js).
+         Fetched only once the page has loaded and gone idle. Off by default for
+         reduced motion and Save-Data; the nav button switches it and is remembered. */
+  (function dragon() {
+    var btn = $('[data-dragon-toggle]');
+    if (!btn || !window.Promise) return;
+    var gl = null, soft = false;
+    try { var c = document.createElement('canvas'); gl = c.getContext('webgl2') || c.getContext('webgl'); } catch (e) {}
+    if (!gl) return;                                       // button stays hidden
+    try {                                                  // software rendering (no GPU): don't start it uninvited
+      var dbg = gl.getExtension('WEBGL_debug_renderer_info');
+      soft = /swiftshader|llvmpipe|software|basic render/i.test(gl.getParameter(dbg ? dbg.UNMASKED_RENDERER_WEBGL : gl.RENDERER));
+      var lose = gl.getExtension('WEBGL_lose_context'); if (lose) lose.loseContext();
+    } catch (e) {}
+    var load;                                              // import() is a syntax error on very old browsers,
+    try { load = new Function('u', 'return import(u)'); } catch (e) { return; }   // so keep it out of this file's parse
+    var saved = null;
+    try { saved = localStorage.getItem('sp-dragon'); } catch (e) {}
+    var saveData = navigator.connection && navigator.connection.saveData;
+    var want = saved ? saved === 'on' : !(reduced || saveData || soft);
+    var inst = null, canvas = null, loading = false, root = document.documentElement;
+    function theme() { return root.getAttribute('data-theme') === 'light' ? 'light' : 'dark'; }
+    function label() {
+      var l = btn.getAttribute(want ? 'data-label-off' : 'data-label-on');
+      btn.setAttribute('aria-pressed', want ? 'true' : 'false');
+      btn.setAttribute('aria-label', l); btn.title = l;
+    }
+    function run() {
+      if (inst) { canvas.classList.add('is-on'); return; }
+      if (loading) return;
+      loading = true;
+      canvas = document.createElement('canvas');
+      canvas.className = 'dragon-canvas'; canvas.setAttribute('aria-hidden', 'true');
+      document.body.insertBefore(canvas, document.body.firstChild);
+      load(btn.getAttribute('data-dragon-src')).then(function (m) {
+        loading = false;
+        if (!want) { canvas.remove(); canvas = null; return; }
+        var cv = canvas;
+        inst = m.start(cv, { theme: theme(), onReady: function () { cv.classList.add('is-on'); }, onSlow: halt });
+      }).catch(function () {
+        loading = false; btn.hidden = true;
+        if (canvas) { canvas.remove(); canvas = null; }
+      });
+    }
+    function halt() {
+      if (!inst) return;
+      var i = inst, cv = canvas; inst = null; canvas = null;
+      cv.classList.remove('is-on');
+      setTimeout(function () { i.stop(); cv.remove(); }, 1300);   // let it fade out first
+    }
+    btn.hidden = false; label();
+    on(btn, 'click', function () {
+      want = !want; label();
+      try { localStorage.setItem('sp-dragon', want ? 'on' : 'off'); } catch (e) {}
+      if (want) run(); else halt();
+    });
+    new MutationObserver(function () { if (inst) inst.setTheme(theme()); })
+      .observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+    if (!want) return;
+    function idle() { (window.requestIdleCallback || function (f) { setTimeout(f, 600); })(run, { timeout: 2500 }); }
+    if (document.readyState === 'complete') idle(); else on(window, 'load', idle);
+  })();
+
   /* ---- 12. external links get rel + target ----------------------------- */
   $$('a[href^="http"]').forEach(function (a) {
     if (a.hostname && a.hostname !== window.location.hostname) {
