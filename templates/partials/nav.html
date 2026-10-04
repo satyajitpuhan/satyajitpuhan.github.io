@@ -34,6 +34,13 @@
         <span data-theme-icon aria-hidden="true" style="font-size:14px;line-height:1">☀️</span>
       </button>
 
+      <button class="icon-btn" data-dragon-toggle hidden aria-pressed="false"
+              data-dragon-src="{{ get_url(path='js/dragon.js', cachebust=true) }}"
+              data-label-on="{% if lang == 'or' %}ଡ୍ରାଗନ୍ ଦେଖାନ୍ତୁ{% else %}Show the dragon{% endif %}"
+              data-label-off="{% if lang == 'or' %}ଡ୍ରାଗନ୍ ଲୁଚାନ୍ତୁ{% else %}Hide the dragon{% endif %}">
+        <span aria-hidden="true" style="font-size:15px;line-height:1">🐉</span>
+      </button>
+
       <div class="lang-switch" role="group" aria-label="Language">
         <a href="{{ get_url(path='/', lang='en') }}" class="{% if lang == 'en' %}is-active{% endif %}" hreflang="en">EN</a>
         <a href="{{ get_url(path='/', lang='or') }}" class="{% if lang == 'or' %}is-active{% endif %}" hreflang="or">ଓଡ଼ି</a>

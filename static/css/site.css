@@ -1127,3 +1127,11 @@ html[lang="or"] h1, html[lang="or"] h2 { font-family: var(--font-or); letter-spa
 .person__role { margin-top: 2px; line-height: 1.4; }
 a[href^="mailto:"] { overflow-wrap: anywhere; word-break: break-word; }
 html[lang="or"] .h-hero em, html[lang="or"] .h-1 em, html[lang="or"] h1 em, html[lang="or"] h2 em { font-family: var(--font-or); font-style: normal; font-weight: 700; letter-spacing: -.01em; }
+
+/* 3D dragon (static/js/dragon.js). Fixed one layer below the page: the body's background is
+   painted on the viewport, so z-index -1 sits above it and under every bit of content. */
+.dragon-canvas { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; opacity: 0; transition: opacity 1.2s ease; }
+.dragon-canvas.is-on { opacity: .96; }
+:root[data-theme="dark"] .dragon-canvas.is-on { opacity: .82; }
+[data-dragon-toggle][aria-pressed="false"] span { filter: grayscale(1); opacity: .5; }
+@media print { .dragon-canvas { display: none !important; } }
