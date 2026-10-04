@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="or">
     <title>ସତ୍ୟଜିତ ପୁହାଣ - Conference</title>
-    <subtitle>ଅକ୍ଟୋବର ସିଣା, ତାଇଭାନର ଉଚ୍ଚଭୁମି ଭୂତବିଦ୍ଜ୍ଞାନ, QCD ଓ ହାଡ୍ରୋନିକ୍ ଫିଜିକ୍ସର ବିଶେଷଜ୍ଞାସତ୍ଯଜିତ ପୁହାଣର ବ୍ଯକ୍ତିଗତ ଓଡ଼ିଆ ବେସଭୂମିହି (&#x2F;Satyajit Puhan).</subtitle>
+    <subtitle>ତାଇୱାନର ଆକାଡେମିଆ ସିନିକାରେ QCD, ହାଡ୍ରୋନିକ୍ ଫିଜିକ୍ସ ଓ ଡାଇସନ୍–ସ୍ୱିଙ୍ଗର୍ ସମୀକରଣର ତାତ୍ତ୍ୱିକ କଣିକା ପଦାର୍ଥବିଜ୍ଞାନୀ ସତ୍ୟଜିତ ପୁହାଣଙ୍କ ୱେବସାଇଟ୍।</subtitle>
     <link rel="self" type="application/atom+xml" href="https://satyajitpuhan.github.io/or/tags/conference/atom.xml"/>
     <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/"/>
     <generator uri="https://www.getzola.org/">Zola</generator>

@@ -153,7 +153,11 @@ body {
   overflow-x: hidden;
 }
 html[lang="or"] body { font-family: var(--font-or); }
+/* Tracked-out labels pull Odia conjuncts apart into separate letters */
+html[lang="or"] body *:not(h1):not(h2) { letter-spacing: normal !important; }
 
+/* `hidden` must win over component display rules (.card is flex), or the publication filters can't hide anything */
+[hidden] { display: none !important; }
 img, svg, video, canvas { max-width: 100%; height: auto; display: block; }
 a { color: inherit; text-decoration: none; }
 button, input, select, textarea { font: inherit; color: inherit; }
