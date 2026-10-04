@@ -20,4 +20,4 @@ citations = 10
 **Authors:** Tanisha, S. Puhan, A. Yadav, and H. Dahiya  
 **Published in:** Phys. Rev. D 112 (2025)
 
-[Read on PRD →](https://doi.org/10.1103/PhysRevD.112.054035)
+[Read on PRD →](https://doi.org/10.1103/cmbw-vcds)
