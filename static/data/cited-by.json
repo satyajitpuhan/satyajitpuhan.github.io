@@ -1,0 +1,169 @@
+{
+  "total": 54,
+  "updated": "2026-10-04",
+  "papers": [
+    {
+      "inspire": "3209097",
+      "title": "Twist-4 GTMDs of sea quarks at zero skewness in the light-cone quark model",
+      "authors": "X. Luan, Z. Lu",
+      "date": "2026-09-29",
+      "reference": "arXiv:2609.34937",
+      "arxiv": "2609.34937",
+      "doi": "",
+      "cites": [
+        "2706491"
+      ]
+    },
+    {
+      "inspire": "3209214",
+      "title": "Pion structure in magnetized nuclear medium at finite temperature",
+      "authors": "F. S. N. K et al.",
+      "date": "2026-09-29",
+      "reference": "arXiv:2609.37186",
+      "arxiv": "2609.37186",
+      "doi": "",
+      "cites": [
+        "2818000",
+        "2826279",
+        "2843133",
+        "2873357",
+        "3140657"
+      ]
+    },
+    {
+      "inspire": "3200937",
+      "title": "Electromagnetic structure of strange vector mesons in nuclear medium",
+      "authors": "P. T. P. Hutauruk, T. Mart, K. Tsushima",
+      "date": "2026-09-07",
+      "reference": "arXiv:2609.06938",
+      "arxiv": "2609.06938",
+      "doi": "",
+      "cites": [
+        "3108526"
+      ]
+    },
+    {
+      "inspire": "3191604",
+      "title": "Sensitivity to single vectorlike bottom quark production at 3 TeV CLIC",
+      "authors": "R. Benbrik et al.",
+      "date": "2026-08-15",
+      "reference": "Phys. Rev. D 114",
+      "arxiv": "2608.15134",
+      "doi": "10.1103/hq19-dn7s",
+      "cites": [
+        "2706491"
+      ]
+    },
+    {
+      "inspire": "3190873",
+      "title": "In-medium properties of D and D^* mesons in magnetized isospin asymmetric nuclear matter",
+      "authors": "S. Sharma et al.",
+      "date": "2026-08-13",
+      "reference": "arXiv:2608.12834",
+      "arxiv": "2608.12834",
+      "doi": "",
+      "cites": [
+        "2916907"
+      ]
+    },
+    {
+      "inspire": "3189023",
+      "title": "Quest for an Understanding of Pion and Kaon Structure",
+      "authors": "Z. Xu et al.",
+      "date": "2026-08-07",
+      "reference": "arXiv:2608.07670",
+      "arxiv": "2608.07670",
+      "doi": "",
+      "cites": [
+        "3157139"
+      ]
+    },
+    {
+      "inspire": "3183612",
+      "title": "Quantum entanglement within quarkonium",
+      "authors": "W. Zhang et al.",
+      "date": "2026-07-27",
+      "reference": "arXiv:2607.24068",
+      "arxiv": "2607.24068",
+      "doi": "",
+      "cites": [
+        "2706491"
+      ]
+    },
+    {
+      "inspire": "3183723",
+      "title": "Electromagnetic structure of charged and neutral strange vector mesons",
+      "authors": "P. T. P. Hutauruk",
+      "date": "2026-07-27",
+      "reference": "Phys. Rev. D 114",
+      "arxiv": "2607.24661",
+      "doi": "10.1103/t2g6-thzh",
+      "cites": [
+        "2921222"
+      ]
+    },
+    {
+      "inspire": "3181818",
+      "title": "Vector mesons leading-twist longitudinal distribution amplitudes and related semi-leptonic decays within QCD sum rules",
+      "authors": "W. Luo et al.",
+      "date": "2026-07-20",
+      "reference": "arXiv:2607.17496",
+      "arxiv": "2607.17496",
+      "doi": "",
+      "cites": [
+        "3083453"
+      ]
+    },
+    {
+      "inspire": "3178743",
+      "title": "Electron-Ion Collision Environment: Distribution of Quark Spin and Orbital Angular Momentum",
+      "authors": "S. Jana et al.",
+      "date": "2026-07-09",
+      "reference": "arXiv:2607.08457",
+      "arxiv": "2607.08457",
+      "doi": "",
+      "cites": [
+        "3096412",
+        "3165827",
+        "3103134",
+        "3157139",
+        "3140657",
+        "3108526",
+        "3083453",
+        "2921222",
+        "2917873",
+        "2916907",
+        "2914109",
+        "2914151",
+        "2873357",
+        "2843133",
+        "2826279",
+        "2818257"
+      ]
+    },
+    {
+      "inspire": "3176226",
+      "title": "Leading-twist to higher-twist generalized parton distributions of the pseudoscalar mesons at non-zero skewness",
+      "authors": "A. J. A, N. Kaur, H. Dahiya",
+      "date": "2026-07-01",
+      "reference": "arXiv:2607.00503",
+      "arxiv": "2607.00503",
+      "doi": "",
+      "cites": [
+        "2918260"
+      ]
+    },
+    {
+      "inspire": "3166385",
+      "title": "Role of higher twist distributions in the tomography of the proton",
+      "authors": "N. Kaur et al.",
+      "date": "2026-06-08",
+      "reference": "Phys. Rev. D 114",
+      "arxiv": "2606.09036",
+      "doi": "10.1103/s71d-g3fc",
+      "cites": [
+        "2789229"
+      ]
+    }
+  ]
+}
