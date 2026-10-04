@@ -5,8 +5,32 @@
     <link rel="self" type="application/atom+xml" href="https://satyajitpuhan.github.io/or/atom.xml"/>
     <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
-    <updated>2026-09-03T00:00:00+00:00</updated>
+    <updated>2026-09-30T00:00:00+00:00</updated>
     <id>https://satyajitpuhan.github.io/or/atom.xml</id>
+    <entry xml:lang="or">
+        <title>Diffractive Vector-Meson Production from the Light-Front Quark Model</title>
+        <published>2026-09-30T00:00:00+00:00</published>
+        <updated>2026-09-30T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/or/portfolio/diffractive-vector-meson-production-from-the-light-front/"/>
+        <id>https://satyajitpuhan.github.io/or/portfolio/diffractive-vector-meson-production-from-the-light-front/</id>
+        
+        <content type="html" xml:base="https://satyajitpuhan.github.io/or/portfolio/diffractive-vector-meson-production-from-the-light-front/">&lt;p&gt;&lt;strong&gt;ଲେଖକ:&lt;&#x2F;strong&gt; S. Puhan&lt;br &#x2F;&gt;
+&lt;strong&gt;ପ୍ରକାଶିତ:&lt;&#x2F;strong&gt; e-Print: 2609.39647 [hep-ph]&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2609.39647&quot;&gt;arXiv:2609.39647&lt;&#x2F;a&gt; · &lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;inspirehep.net&#x2F;literature&#x2F;3209881&quot;&gt;INSPIRE-HEP record&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;saaraansh&quot;&gt;ସାରାଂଶ&lt;&#x2F;h3&gt;
+&lt;p&gt;We study exclusive diffractive electroproduction of the ρ^0, ϕ, J&#x2F;ψ, and ψ(2S) mesons in the color-dipole picture using two spin-orbit light-front wave functions, S-1 and S-2. S-1 follows from the Melosh--Wigner rotation in the light-front quark model (LFQM), while S-2 is the spin-improved form commonly used in holographic and boosted-Gaussian approaches. Both share the same radial wave function, with their parameters determined from the LFQM Hamiltonian. The color-glass-condensate dipole parameters are fixed from inclusive structure-function data, with no fit to diffractive data. We compare the predictions with measurements of cross sections, R=σ_L&#x2F;σ_T, t and W dependences, and σ_ϕ&#x2F;σ_ρ. S-1 gives a better description of the light-meson observables, while S-2 provides a better description of the charmonium ratio σ_ψ(2S)&#x2F;σ_J&#x2F;ψ and the J&#x2F;ψ decay constant. We also present the charge, magnetic, and quadrupole form factors of the four mesons and compare them with available lattice-QCD results&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
     <entry xml:lang="or">
         <title>Leading-Neutron Electroproduction at HERA and the EIC: Sullivan Process, Target Fragmentation, and Pion PDFs</title>
         <published>2026-09-03T00:00:00+00:00</published>
