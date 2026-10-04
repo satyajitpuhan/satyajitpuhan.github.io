@@ -142,3 +142,20 @@ It opens a GitHub issue labelled `site-guard` — GitHub emails you about it —
 If an alert is you, just close the issue. If it is not: change your GitHub password, check
 Settings → Sessions / Security log, revoke unknown tokens and keys, and revert the commit.
 Make sure GitHub notifications for this repository reach your email (Settings → Notifications).
+
+## The dragon
+
+A 3D Eastern dragon swims across every page, behind the content (`static/js/dragon.js`).
+It is built entirely in code (body, scales, mane, horns, whiskers, legs); the only library
+is three.js, self-hosted in `static/js/vendor/` (MIT licence alongside it), so the Site guard
+sees no outside scripts.
+
+* The 🐉 button in the top bar turns it on or off; each visitor's choice is remembered.
+* It never loads before the page has finished loading, and it stays off by default for
+  visitors who ask for reduced motion or data saving, or whose computer has no graphics chip.
+  If a device can't keep it smooth, it switches itself off.
+* It carries on from where it was when you move to another page, sometimes circles the
+  mouse, and now and then opens its jaws.
+* To tune it — size, speed, colours — the constants are at the top of `start()` in
+  `dragon.js` (`LEN` is its length, `speed` in `step()` how fast it swims).
+
