@@ -1,17 +1,20 @@
 /* =============================================================================
-   garden.js — a morning walk: a cartoon girl in a flower garden on the rim of a
-   great red-rock canyon that opens out to the sea, with the sun coming up.
+   garden.js — "Wishes": a morning on the rim of a great red-rock canyon that opens out to
+   the sea, with a flower garden and a little café called Wishes.
 
    Loaded on demand by site.js (section 16) when the visitor picks it. Everything is
    built in code (no model or image files), on three.js and the shared kit.js.
 
-   The scenery is drawn "real": layered canyon walls, buttes and mesas from a
-   terraced height field, a river running down to the sea, waves that catch the
-   low sun, flower beds, trees, a rose arch and a bench. The girl is drawn as a
-   cartoon: flat toon shading, ink outlines, big eyes, a swinging braid and a
-   dress that sways. She strolls along the path, smells the flowers and tucks one in
-   her hair, gazes out over the canyon, twirls, sits on the bench, and lets a
-   butterfly land on her finger. Little hearts float up when she is happy.
+   The world is drawn "real": layered canyon walls and buttes from a terraced height
+   field, a river running down to the sea, waves that catch the low sun, flower beds
+   with real petals, grass, trees and a rose arch made of painted leaf and blossom
+   sprays, a stone wall, rabbits with fur, and the café with its awning, sign, warm
+   windows and tables outside. She is drawn as a cartoon princess: toon shading, ink
+   outlines, big eyes, a tiara, a yellow rose by her ear, long hair that sways and a
+   gown that flows. Her story: she picks a rose and smells it, a butterfly lands on her
+   face, and she takes the rose to the bench and sits looking out over the canyon. She
+   also has coffee at the café, twirls, and gazes at the view. Hearts float up when she
+   is happy.
 
    export start(canvas, { theme, onReady, onSlow }) → { stop(), setTheme(theme) }
    ========================================================================== */
@@ -19,7 +22,7 @@ import * as THREE from './vendor/three.module.min.js';
 import {
   TAU, sm, clamp, lerp, angDiff, rand, rnd, nz, V, C, mix, canvasTex, radial, mistTex,
   sculpt, taperedTube, SPH, mesh, capsule, makeRig, ell, smin, onFront, surfaceNet, taperCapsule,
-  eyeTexture, addEye, KEYS, blank, mirror,
+  eyeTexture, addEye, furry, KEYS, blank, mirror,
 } from './kit.js';
 
 /* ---------------------------------------------------------------- noise */
@@ -31,6 +34,75 @@ function vnoise(x, y) {
   return lerp(lerp(h(xi, yi), h(xi + 1, yi), u), lerp(h(xi, yi + 1), h(xi + 1, yi + 1), u), v) * 2 - 1;
 }
 function fbm(x, y, oct = 5) { let s = 0, a = 0.5, f = 1; for (let i = 0; i < oct; i++) { s += a * vnoise(x * f, y * f); f *= 2.03; a *= 0.5; } return s; }
+
+/* ---------------------------------------------------------------- painted textures (the garden is drawn "real") */
+
+const css = (hex, k = 1) => { const c = C(hex).multiplyScalar(k); return `rgb(${Math.min(255, c.r * 255) | 0},${Math.min(255, c.g * 255) | 0},${Math.min(255, c.b * 255) | 0})`; };
+function drawLeaf(c, x, y, a, L, W, col) {
+  c.save(); c.translate(x, y); c.rotate(a);
+  const g = c.createLinearGradient(0, -W, 0, W);
+  g.addColorStop(0, css(col, 0.95)); g.addColorStop(0.45, css(col, 1.35)); g.addColorStop(1, css(col, 0.85));
+  c.fillStyle = g; c.beginPath(); c.moveTo(-L, 0); c.quadraticCurveTo(-L * 0.1, -W * 1.7, L, 0); c.quadraticCurveTo(-L * 0.1, W * 1.7, -L, 0); c.fill();
+  c.strokeStyle = 'rgba(200,230,150,.35)'; c.lineWidth = 1; c.beginPath(); c.moveTo(-L * 0.9, 0); c.lineTo(L * 0.9, 0); c.stroke();
+  c.restore();
+}
+function drawBlossom(c, x, y, r, col, n = 5) {
+  for (let k = 0; k < n; k++) {
+    const a = k / n * TAU + rand() * 0.3;
+    c.save(); c.translate(x + Math.cos(a) * r * 0.5, y + Math.sin(a) * r * 0.5); c.rotate(a);
+    const g = c.createRadialGradient(-r * 0.3, 0, 0, 0, 0, r * 0.7);
+    g.addColorStop(0, '#ffffff'); g.addColorStop(0.35, css(col, 1.1)); g.addColorStop(1, css(col, 0.7));
+    c.fillStyle = g; c.beginPath(); c.ellipse(0, 0, r * 0.6, r * 0.42, 0, 0, TAU); c.fill(); c.restore();
+  }
+  c.fillStyle = '#f2c94c'; c.beginPath(); c.arc(x, y, r * 0.16, 0, TAU); c.fill();
+}
+function drawRose(c, x, y, r, col) {
+  const g = c.createRadialGradient(x - r * 0.3, y - r * 0.3, 0, x, y, r);
+  g.addColorStop(0, css(col, 1.25)); g.addColorStop(0.7, css(col, 1)); g.addColorStop(1, css(col, 0.6));
+  c.fillStyle = g; c.beginPath(); c.arc(x, y, r, 0, TAU); c.fill();
+  c.strokeStyle = css(col, 0.55); c.lineWidth = Math.max(1, r * 0.09);
+  for (let k = 0; k < 4; k++) { c.beginPath(); c.arc(x + k * r * 0.04, y, r * (0.85 - k * 0.2), k * 1.7, k * 1.7 + 3.6); c.stroke(); }
+}
+// Transparent cards: sprays of leaves, clusters of blossom, roses among leaves.
+const foliageCard = (greens, n = 48) => canvasTex(256, 256, (c, S) => { for (let i = 0; i < n; i++) drawLeaf(c, S * (0.14 + 0.72 * rand()), S * (0.14 + 0.72 * rand()), rand() * TAU, S * (0.06 + 0.05 * rand()), S * (0.025 + 0.012 * rand()), greens[(rand() * greens.length) | 0]); });
+const blossomCard = (cols, greens) => canvasTex(256, 256, (c, S) => {
+  for (let i = 0; i < 12; i++) drawLeaf(c, S * (0.15 + 0.7 * rand()), S * (0.15 + 0.7 * rand()), rand() * TAU, S * 0.06, S * 0.025, greens[(rand() * greens.length) | 0]);
+  for (let i = 0; i < 36; i++) drawBlossom(c, S * (0.14 + 0.72 * rand()), S * (0.14 + 0.72 * rand()), S * (0.035 + 0.025 * rand()), cols[(rand() * cols.length) | 0]);
+});
+const roseCard = (cols, greens) => canvasTex(256, 256, (c, S) => {
+  for (let i = 0; i < 30; i++) drawLeaf(c, S * (0.12 + 0.76 * rand()), S * (0.12 + 0.76 * rand()), rand() * TAU, S * 0.06, S * 0.03, greens[(rand() * greens.length) | 0]);
+  for (let i = 0; i < 9; i++) drawRose(c, S * (0.18 + 0.64 * rand()), S * (0.18 + 0.64 * rand()), S * (0.045 + 0.03 * rand()), cols[(rand() * cols.length) | 0]);
+});
+// Many cards scattered about: foliage that reads as real at a distance.
+function cardCloud(tex, n, place) {
+  const m = new THREE.InstancedMesh(new THREE.PlaneGeometry(1, 1), new THREE.MeshStandardMaterial({ map: tex, alphaTest: 0.5, side: THREE.DoubleSide, roughness: 0.85 }), n);
+  const m4 = new THREE.Matrix4(), q = new THREE.Quaternion(), p = V(), s = V();
+  for (let i = 0; i < n; i++) { const r = place(i, p); m4.compose(p, q.random(), s.setScalar(r)); m.setMatrixAt(i, m4); m.setColorAt(i, C(0xffffff).multiplyScalar(0.92 + 0.15 * rand())); }
+  return m;
+}
+const GREENS = [0x4f7f32, 0x649a42, 0x7cb050, 0x3f6a2c, 0x8ab85a];
+const tiled = (t, rx, ry) => { t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(rx, ry); return t; };
+const grassTex = () => tiled(canvasTex(256, 256, (c, S) => {
+  c.fillStyle = '#7aa24c'; c.fillRect(0, 0, S, S);
+  for (let i = 0; i < 6000; i++) {
+    const x = rand() * S, y = rand() * S, l = 3 + rand() * 7, v = rand();
+    c.strokeStyle = v < 0.45 ? 'rgba(52,92,30,.55)' : v < 0.85 ? 'rgba(140,186,84,.5)' : 'rgba(190,200,110,.45)';
+    c.lineWidth = 1; c.beginPath(); c.moveTo(x, y); c.lineTo(x + (rand() - 0.5) * 3, y - l); c.stroke();
+  }
+}), 46, 9);
+const stoneTex = (base = '#c9a27c') => canvasTex(256, 256, (c, S) => {
+  c.fillStyle = '#8a7158'; c.fillRect(0, 0, S, S);
+  let y = 0;
+  while (y < S) {
+    const h = 26 + rand() * 18; let x = -rand() * 40;
+    while (x < S) { const w = 40 + rand() * 50, k = 0.82 + rand() * 0.3; c.fillStyle = css(parseInt(base.slice(1), 16), k); c.beginPath(); c.roundRect(x + 2, y + 2, w - 4, h - 4, 6); c.fill(); x += w; }
+    y += h;
+  }
+});
+const woodTex = (base = 0x8a5a36) => canvasTex(256, 64, (c, W, H) => {
+  c.fillStyle = css(base); c.fillRect(0, 0, W, H);
+  for (let i = 0; i < 40; i++) { c.strokeStyle = `rgba(40,20,8,${0.08 + rand() * 0.15})`; c.lineWidth = 1 + rand(); const y = rand() * H; c.beginPath(); c.moveTo(0, y); c.bezierCurveTo(W * 0.3, y + rand() * 6 - 3, W * 0.6, y + rand() * 6 - 3, W, y); c.stroke(); }
+});
 
 /* ---------------------------------------------------------------- cartoon materials */
 
@@ -62,127 +134,131 @@ function inked(geo, mat, parent, pos, scale, w = 0.026) {
 /* ---------------------------------------------------------------- the girl */
 
 function buildGirl(small) {
-  const R = makeRig({ hipH: 2.55, hipW: 0.24, neckY: 1.58, neckZ: 0.02, shY: 1.42, shW: 0.54, upper: 0.92, fore: 0.82, thigh: 1.2, shin: 1.18, ankleH: 0.17 });
-  const skinC = 0xe0a47c, hairC = 0x2a1a15, dressC = C(0xb9a3e3), dressD = C(0x6b52aa), cream = C(0xfbf6ee);
-  const skin = toon(skinC), hair = toon(0xffffff, { vertexColors: true }), dressMat = toon(0xffffff, { vertexColors: true });
-  // lavender with little white flowers
-  const print = (x, y, z) => {
-    const k = Math.sin(x * 34 + 1.3) * Math.sin(y * 31 + 0.4) * Math.sin(z * 37 + 2.1);
-    return k > 0.8 ? cream : dressC;
-  };
-  // bodice: chest and waist, a scoop neck, a violet ribbon at the waist
+  const R = makeRig({ hipH: 2.55, hipW: 0.22, neckY: 1.58, neckZ: 0.02, shY: 1.42, shW: 0.52, upper: 0.9, fore: 0.8, thigh: 1.2, shin: 1.18, ankleH: 0.17 });
+  const skinC = 0xe2a982, skinCol = C(skinC), skin = toon(skinC), hairC = 0x2a1a15;
+  const gownTop = C(0xc9b2f2), gownHem = C(0xf6b8d4), sashC = C(0x8f6fd6), spark = C(0xfffaf0);
+  const sparkle = (x, y, z, c) => (Math.sin(x * 41 + 1.3) * Math.sin(y * 37 + 0.4) * Math.sin(z * 43 + 2.1) > 0.86 ? spark : c);
+  // bodice with a sweetheart neckline and a sash
   R.belly = new THREE.Group(); R.torso.add(R.belly);
-  const bod = (x, y, z) => smin(smin(ell(x, y, z, 0, 1.08, 0.02, 0.44, 0.48, 0.28), ell(x, y, z, 0, 0.55, 0, 0.34, 0.42, 0.24), 0.25), ell(x, y, z, 0, 1.3, 0.02, 0.42, 0.22, 0.24), 0.2);
+  const bod = (x, y, z) => smin(smin(ell(x, y, z, 0, 1.08, 0.02, 0.43, 0.47, 0.27), ell(x, y, z, 0, 0.55, 0, 0.32, 0.42, 0.23), 0.25), ell(x, y, z, 0, 1.3, 0.02, 0.41, 0.2, 0.23), 0.2);
   inked(surfaceNet(bod, (x, y, z) => {
-    if (y > 1.42 - 0.35 * x * x || (z > 0.05 && y > 1.28 - 0.5 * x * x)) return C(skinC);
-    if (y > 0.5 && y < 0.66) return dressD;
-    return print(x, y, z);
-  }, [-0.7, 0.05, -0.5], [0.7, 1.7, 0.5], 0.03), dressMat, R.belly);
-  // a bow at the back of the ribbon
-  for (const s of [1, -1]) inked(SPH, toon(dressD), R.belly, [s * 0.12, 0.6, -0.27], [0.12, 0.07, 0.04], 0.012);
-  // skirt: an A-line with a wavy hem, hung from the pelvis so it can sway and flare
-  R.skirt = new THREE.Group(); R.skirt.position.y = 0.55; R.pelvis.add(R.skirt);
+    if (y > 1.4 - 0.3 * x * x || (z > 0.05 && y > 1.2 - 0.45 * x * x + 0.05 * Math.cos(x * 9))) return skinCol;
+    if (y > 0.5 && y < 0.66) return sashC;
+    return sparkle(x, y, z, gownTop);
+  }, [-0.7, 0.05, -0.5], [0.7, 1.7, 0.5], 0.028), toon(0xffffff, { vertexColors: true }), R.belly);
+  const bowM = toon(sashC);
+  for (const s of [1, -1]) {
+    inked(SPH, bowM, R.belly, [s * 0.17, 0.62, -0.27], [0.17, 0.09, 0.05], 0.012);
+    inked(capsule(0.035, 0.5), bowM, R.belly, [s * 0.08, 0.28, -0.27], undefined, 0.01).rotation.z = s * 0.25;
+  }
+  inked(SPH, bowM, R.belly, [0, 0.6, -0.29], 0.065, 0.01);
+  // a floor-length gown, lavender fading to rose, with a sheer overskirt
+  R.skirt = new THREE.Group(); R.skirt.position.y = 0.58; R.pelvis.add(R.skirt);
   {
-    const prof = []; for (let i = 0; i <= 12; i++) { const t = i / 12; prof.push(new THREE.Vector2(0.36 + 0.68 * Math.pow(t, 0.9), -t * 1.75)); }
-    const geo = new THREE.LatheGeometry(prof, 48), p = geo.attributes.position, cols = [];
+    const L = 2.8, prof = []; for (let i = 0; i <= 20; i++) { const t = i / 20; prof.push(new THREE.Vector2(0.34 + 1.02 * Math.pow(t, 1.25), -t * L)); }
+    const geo = new THREE.LatheGeometry(prof, 72), p = geo.attributes.position, cols = [];
     for (let i = 0; i < p.count; i++) {
-      const x = p.getX(i), y = p.getY(i), z = p.getZ(i), a = Math.atan2(z, x), t = -y / 1.75;
-      const f = 1 + 0.06 * Math.sin(a * 9) * t;                       // soft folds
-      p.setXYZ(i, x * f, y + 0.05 * Math.sin(a * 9) * sm(0.85, 1, t), z * f);
-      const c = t > 0.94 ? dressD : print(x, y, z); cols.push(c.r, c.g, c.b);
+      const x = p.getX(i), y = p.getY(i), z = p.getZ(i), a = Math.atan2(z, x), t = -y / L, f = 1 + 0.055 * Math.sin(a * 12) * t;
+      p.setXYZ(i, x * f, y + 0.05 * Math.sin(a * 12) * sm(0.85, 1, t), z * f);
+      let c = mix(gownTop, gownHem, Math.pow(t, 1.3)); if (t > 0.95) c = mix(c, sashC, 0.55);
+      c = sparkle(x, y, z, c); cols.push(c.r, c.g, c.b);
     }
     geo.setAttribute('color', new THREE.Float32BufferAttribute(cols, 3)); geo.computeVertexNormals();
     const sk = mesh(geo, toon(0xffffff, { vertexColors: true, side: THREE.DoubleSide }), R.skirt);
     sk.add(new THREE.Mesh(geo, inkMat(0.022)));
+    const over = mesh(geo, toon(0xffffff, { transparent: true, opacity: 0.28, depthWrite: false, side: THREE.DoubleSide }), R.skirt);
+    over.scale.set(1.05, 0.82, 1.05);
   }
-  // neck
-  inked(capsule(0.13, 0.2), skin, R.torso, [0, 1.56, 0.0], undefined, 0.02);
-  // head: soft cartoon face, rosy cheeks
+  inked(capsule(0.12, 0.2), skin, R.torso, [0, 1.56, 0.0], undefined, 0.02);
+  // head: a soft cartoon face with rosy cheeks
   const head = (x, y, z) => {
     let d = ell(x, y, z, 0, 0.66, -0.04, 0.6, 0.62, 0.6);
     d = smin(d, ell(x, y, z, 0, 0.42, 0.1, 0.5, 0.42, 0.48), 0.25);
-    d = smin(d, ell(x, y, z, 0, 0.2, 0.26, 0.22, 0.16, 0.2), 0.16);
-    d = smin(d, ell(x, y, z, 0, 0.47, 0.56, 0.06, 0.08, 0.07), 0.06);
+    d = smin(d, ell(x, y, z, 0, 0.2, 0.26, 0.21, 0.15, 0.2), 0.16);
+    d = smin(d, ell(x, y, z, 0, 0.47, 0.56, 0.055, 0.075, 0.065), 0.06);
     return smin(d, Math.min(ell(x, y, z, 0.58, 0.5, -0.02, 0.07, 0.12, 0.08), ell(x, y, z, -0.58, 0.5, -0.02, 0.07, 0.12, 0.08)), 0.04);
   };
   const H = R.headMesh = new THREE.Group(); H.position.set(0, 0.02, 0.03); R.head.add(H);
-  const skinCol = C(skinC), blush = C(0xf09080);
-  inked(surfaceNet(head, (x, y, z) => mix(skinCol, blush, 0.55 * Math.exp(-(((Math.abs(x) - 0.3) / 0.12) ** 2 + ((y - 0.36) / 0.08) ** 2)) * sm(0.2, 0.45, z)),
+  const blush = C(0xf28a86);
+  inked(surfaceNet(head, (x, y, z) => mix(skinCol, blush, 0.6 * Math.exp(-(((Math.abs(x) - 0.3) / 0.12) ** 2 + ((y - 0.36) / 0.08) ** 2)) * sm(0.2, 0.45, z)),
     [-0.75, -0.1, -0.75], [0.75, 1.4, 0.8], small ? 0.03 : 0.022), toon(0xffffff, { vertexColors: true }), H, undefined, undefined, 0.022);
-  // hair: a cap with a side-swept fringe, the face cut out
-  const hairSdf = (x, y, z) => {
-    let d = smin(ell(x, y, z, 0, 0.74, -0.07, 0.65, 0.68, 0.65), ell(x, y, z, 0, 0.1, -0.32, 0.58, 0.95, 0.34), 0.3);   // crown, and long hair down her back
-    d = smin(d, Math.min(ell(x, y, z, 0.52, 0.3, -0.1, 0.17, 0.55, 0.3), ell(x, y, z, -0.52, 0.3, -0.1, 0.17, 0.55, 0.3)), 0.14);
-    d = Math.max(d, -ell(x, y, z, 0, 0.48, 0.42, 0.5, 0.56, 0.42));                   // the face
-    d = Math.max(d, -ell(x, y, z, 0.05, -0.55, 0.3, 0.9, 0.5, 0.5));                   // clear of the shoulders in front
-    return smin(d, smin(ell(x, y, z, 0.18, 1.0, 0.36, 0.42, 0.13, 0.2), ell(x, y, z, 0.44, 0.78, 0.4, 0.14, 0.24, 0.12), 0.1), 0.1);   // fringe swept to her left
+  // hair: crown and a side-swept fringe; the long hair down her back sways on its own
+  const hairD = C(hairC), hairL = C(0x6a4434);
+  const hairCap = (x, y, z) => {
+    let d = smin(ell(x, y, z, 0, 0.74, -0.07, 0.65, 0.68, 0.65), ell(x, y, z, 0, 0.35, -0.3, 0.6, 0.5, 0.36), 0.25);
+    d = smin(d, Math.min(ell(x, y, z, 0.52, 0.3, -0.1, 0.17, 0.5, 0.3), ell(x, y, z, -0.52, 0.3, -0.1, 0.17, 0.5, 0.3)), 0.14);
+    d = Math.max(d, -ell(x, y, z, 0, 0.48, 0.42, 0.5, 0.56, 0.42));
+    return smin(d, smin(ell(x, y, z, 0.18, 1.0, 0.36, 0.42, 0.13, 0.2), ell(x, y, z, 0.44, 0.78, 0.4, 0.14, 0.24, 0.12), 0.1), 0.1);
   };
-  const hairD = C(hairC), hairL = C(0x5a3b2e);
-  inked(surfaceNet(hairSdf, (x, y, z) => mix(hairD, hairL, 0.65 * Math.exp(-(((y - 1.05) / 0.09) ** 2)) * sm(-0.2, 0.3, z)),
-    [-0.85, -1.0, -0.9], [0.85, 1.55, 0.8], small ? 0.032 : 0.024), hair, H, undefined, undefined, 0.022);
-  // a side braid over her shoulder, a ribbon and a flower
-  R.braid = new THREE.Group(); R.braid.position.set(0.42, 0.4, -0.18); H.add(R.braid);
+  const hairCol = (x, y, z) => mix(hairD, hairL, 0.6 * Math.exp(-(((y - 1.05) / 0.09) ** 2)) * sm(-0.2, 0.3, z) + 0.25 * sm(0.75, 1, Math.sin(x * 24 + y * 2)));
+  inked(surfaceNet(hairCap, hairCol, [-0.85, -0.25, -0.9], [0.85, 1.55, 0.8], small ? 0.032 : 0.024), toon(0xffffff, { vertexColors: true }), H, undefined, undefined, 0.022);
+  R.hairBack = new THREE.Group(); R.hairBack.position.set(0, 0.62, -0.32); H.add(R.hairBack);
+  inked(surfaceNet((x, y, z) => {
+    const w = 0.45 + 0.1 * sm(0.3, -1.2, y);
+    return ell(x + 0.05 * Math.sin(y * 6.5), y, z + 0.03 * Math.sin(y * 5 + x * 4), 0, -0.68, -0.14, w, 1.12, 0.22);
+  }, (x, y, z) => hairCol(x, y + 1.0, z), [-0.75, -2.0, -0.5], [0.75, 0.5, 0.3], small ? 0.035 : 0.026), toon(0xffffff, { vertexColors: true }), R.hairBack, undefined, undefined, 0.022);
+  // a little golden tiara with a pink jewel
   {
-    const bead = sculpt((x, y, z) => [x * 0.12, y * 0.16, z * 0.11], null, 16, 12);
-    for (let i = 0; i < 9; i++) {
-      const t = i / 8;
-      inked(bead, toon(hairC), R.braid, [0.06 * Math.sin(t * 3), -0.08 - t * 1.05, 0.14 + 0.3 * t], 1 - 0.35 * t, 0.018).rotation.z = (i % 2 ? 0.45 : -0.45);
+    const gold = toon(0xe9c46a, { emissive: 0x3a2a00 }), t = new THREE.Group(); t.position.set(0, 1.24, 0.06); t.rotation.x = -0.38; H.add(t);
+    mesh(new THREE.TorusGeometry(0.4, 0.024, 6, 36).rotateX(Math.PI / 2), gold, t);
+    for (let k = -2; k <= 2; k++) {
+      const a = Math.PI / 2 + k * 0.32, h = k === 0 ? 0.24 : 0.14 - Math.abs(k) * 0.02;
+      const pt = mesh(new THREE.ConeGeometry(0.035, h, 6), gold, t, [Math.cos(a) * 0.4, h / 2, Math.sin(a) * 0.4]);
+      mesh(SPH, toon(0xfff6e0), t, [Math.cos(a) * 0.4, h + 0.01, Math.sin(a) * 0.4], 0.022);
+      void pt;
     }
-    inked(SPH, toon(0xff8fae), R.braid, [0.07, -1.22, 0.46], [0.07, 0.06, 0.07], 0.01);
-    inked(new THREE.ConeGeometry(0.1, 0.22, 10).rotateX(Math.PI), toon(hairC), R.braid, [0.07, -1.35, 0.48], undefined, 0.016);
+    mesh(SPH, toon(0xff5f9e, { emissive: 0x401020 }), t, [0, 0.1, 0.42], [0.05, 0.065, 0.03]);
   }
-  R.hairFlower = new THREE.Group(); R.hairFlower.position.set(0.48, 0.92, 0.16); R.hairFlower.rotation.set(0.2, 0.6, -0.3); H.add(R.hairFlower);
-  for (let k = 0; k < 5; k++) { const a = k / 5 * TAU; inked(SPH, toon(0xffffff), R.hairFlower, [Math.cos(a) * 0.08, Math.sin(a) * 0.08, 0], [0.07, 0.07, 0.025], 0.008); }
-  mesh(SPH, toon(0xffc93d), R.hairFlower, [0, 0, 0.02], 0.045);
+  R.hairFlower = toonRose(0xffd23a, 1.6); R.hairFlower.position.set(0.64, 0.84, 0.08); R.hairFlower.rotation.set(1.1, 0.5, -0.7); H.add(R.hairFlower);   // a yellow rose by her ear
   R.hairFlower.visible = false;
-  // face: big eyes with lashes, brows, round glasses, a small smile
-  const eyeTex = eyeTexture(0x9a6a40, 0x4a2a16, 0x1a0e08);
-  const lashMat = toon(0x24140f), frame = toon(0xc99a72);
+  // face: big eyes with lashes, brows, round glasses, pink lips
+  const eyeTex = eyeTexture(0xa8763f, 0x4a2a16, 0x1a0e08);
+  const lashMat = toon(0x24140f), frame = toon(0xc99a72), lips = toon(0xe0707e);
   for (const s of [1, -1]) {
     const { p, n } = onFront(head, s * 0.22, 0.6);
-    const e = addEye(H, p.clone().addScaledVector(n, -0.065), 0.145, eyeTex, skin);
-    e.base.scale.set(0.92, 1.12, 1);
+    const e = addEye(H, p.clone().addScaledVector(n, -0.07), 0.158, eyeTex, skin);
+    e.base.scale.set(0.92, 1.12, 1); e.side = s;
+    mesh(SPH, new THREE.MeshBasicMaterial({ color: 0xffffff }), e.base, [-0.04, -0.05, 0.155], 0.014);
     R.eyes.push(e);
-    const lash = mesh(new THREE.TorusGeometry(0.135, 0.017, 6, 16, Math.PI * 0.95), lashMat, H);
-    lash.position.copy(p).add(V(0, 0.015, 0.03)); lash.rotation.set(-0.2, s * 0.25, 0.08);
-    const flick = mesh(new THREE.ConeGeometry(0.02, 0.09, 5), lashMat, H);
-    flick.position.copy(p).add(V(s * 0.15, 0.09, 0.0)); flick.rotation.z = -s * 1.0;
-    const b = onFront(head, s * 0.23, 0.82).p;
-    mesh(taperedTube([b.clone().add(V(-s * 0.12, -0.03, 0.02)), b.clone().add(V(0, 0.02, 0.03)), b.clone().add(V(s * 0.13, -0.02, 0.0))], 10, u => 0.024 * (1 - 0.5 * Math.abs(u - 0.3)), null, 5), lashMat, H);
-    // glasses: thin round rims
-    const rim = mesh(new THREE.TorusGeometry(0.17, 0.014, 6, 28), frame, H);
+    const lash = mesh(new THREE.TorusGeometry(0.15, 0.021, 6, 18, Math.PI * 0.95), lashMat, H);
+    lash.position.copy(p).add(V(0, 0.018, 0.03)); lash.rotation.set(-0.2, s * 0.25, 0.08);
+    for (const k of [0, 1]) { const f = mesh(new THREE.ConeGeometry(0.022, 0.11 - k * 0.03, 5), lashMat, H); f.position.copy(p).add(V(s * (0.16 - k * 0.05), 0.1 + k * 0.035, -0.01)); f.rotation.z = -s * (1.0 - k * 0.35); }
+    const low = mesh(new THREE.TorusGeometry(0.14, 0.008, 4, 14, Math.PI * 0.7), lashMat, H);
+    low.position.copy(p).add(V(0, -0.02, 0.02)); low.rotation.set(0.2, s * 0.25, Math.PI + 0.48);
+    const b = onFront(head, s * 0.23, 0.84).p;
+    mesh(taperedTube([b.clone().add(V(-s * 0.12, -0.03, 0.02)), b.clone().add(V(0, 0.025, 0.03)), b.clone().add(V(s * 0.13, -0.015, 0.0))], 10, u => 0.022 * (1 - 0.5 * Math.abs(u - 0.3)), null, 5), lashMat, H);
+    const rim = mesh(new THREE.TorusGeometry(0.175, 0.012, 6, 28), frame, H);
     rim.position.copy(p).add(V(0, 0.0, 0.1)); rim.rotation.y = s * 0.15;
-    const arm = mesh(new THREE.CylinderGeometry(0.01, 0.01, 0.62, 5), frame, H);
-    arm.rotation.x = Math.PI / 2; arm.position.set(s * 0.55, p.y + 0.02, p.z - 0.24); arm.rotation.z = s * 0.12;
+    const arm = mesh(new THREE.CylinderGeometry(0.009, 0.009, 0.62, 5), frame, H);
+    arm.rotation.x = Math.PI / 2; arm.position.set(s * 0.56, p.y + 0.02, p.z - 0.24); arm.rotation.z = s * 0.12;
   }
-  const bridge = mesh(new THREE.TorusGeometry(0.06, 0.012, 5, 10, Math.PI), frame, H);
-  bridge.position.copy(onFront(head, 0, 0.62).p).add(V(0, 0.0, 0.08));
+  mesh(new THREE.TorusGeometry(0.06, 0.011, 5, 10, Math.PI), frame, H).position.copy(onFront(head, 0, 0.62).p).add(V(0, 0.0, 0.08));
   const m = onFront(head, 0, 0.29);
   R.mouth = mesh(SPH, toon(0x7a2a2e), H, null, [0.08, 0.012, 0.04]); R.mouth.position.copy(m.p).addScaledVector(m.n, -0.01);
-  const smile = mesh(new THREE.TorusGeometry(0.085, 0.014, 6, 14, Math.PI * 0.75), toon(0x9a3c3c), H);
-  smile.position.copy(m.p).add(V(0, 0.07, 0.0)); smile.rotation.set(-0.25, 0, Math.PI + Math.PI * 0.125);
+  const up = mesh(new THREE.TorusGeometry(0.08, 0.017, 6, 14, Math.PI * 0.8), lips, H);
+  up.position.copy(m.p).add(V(0, 0.065, 0.0)); up.rotation.set(-0.25, 0, Math.PI + Math.PI * 0.1);
+  mesh(SPH, lips, H, null, [0.05, 0.022, 0.03]).position.copy(m.p).add(V(0, -0.025, 0.0));
   R.mouthPt = new THREE.Object3D(); R.mouthPt.position.copy(m.p).add(V(0, 0, 0.06)); H.add(R.mouthPt);
-  R.crown = new THREE.Object3D(); R.crown.position.set(0, 1.4, 0); H.add(R.crown);
-  // arms with puff sleeves; cartoon hands
-  const puff = sculpt((x, y, z) => [x * 0.21, y * 0.18 - 0.08, z * 0.21], null, 20, 14);
-  const upper = taperCapsule(0.13, 0.105, 0.82), fore = taperCapsule(0.105, 0.08, 0.74);
-  const hand = surfaceNet((x, y, z) => smin(ell(x, y, z, 0, -0.1, 0.0, 0.1, 0.13, 0.06), ell(x, y, z, 0, -0.04, 0.09, 0.04, 0.07, 0.04), 0.04), () => skinCol, [-0.2, -0.3, -0.15], [0.2, 0.1, 0.2], 0.018);
+  R.nosePt = new THREE.Object3D(); R.nosePt.position.copy(onFront(head, 0, 0.48).p).add(V(0, 0.02, 0.08)); H.add(R.nosePt);
+  R.crown = new THREE.Object3D(); R.crown.position.set(0, 1.45, 0); H.add(R.crown);
+  // arms with sheer puff sleeves; slender cartoon hands
+  const puff = sculpt((x, y, z) => [x * 0.22, y * 0.19 - 0.08, z * 0.22], null, 20, 14);
+  const upper = taperCapsule(0.12, 0.1, 0.82), fore = taperCapsule(0.1, 0.075, 0.74);
+  const hand = surfaceNet((x, y, z) => smin(ell(x, y, z, 0, -0.1, 0.0, 0.09, 0.13, 0.055), ell(x, y, z, 0, -0.04, 0.085, 0.035, 0.07, 0.035), 0.04), () => skinCol, [-0.2, -0.3, -0.15], [0.2, 0.1, 0.2], 0.018);
   for (const a of R.arm) {
-    inked(puff, toon(dressC), a.sh, undefined, undefined, 0.02);
+    inked(puff, toon(0xd9c8f8, { transparent: true, opacity: 0.85 }), a.sh, undefined, undefined, 0.018);
     inked(upper, skin, a.sh, undefined, undefined, 0.016);
+    mesh(SPH, skin, a.el, undefined, 0.1);
     inked(fore, skin, a.el, undefined, undefined, 0.016);
     inked(hand, toon(0xffffff, { vertexColors: true }), a.hand, undefined, undefined, 0.012);
     a.hand.userData.holdPt = new THREE.Object3D(); a.hand.userData.holdPt.position.set(0, -0.2, 0.08); a.hand.add(a.hand.userData.holdPt);
   }
-  // legs and sandals
-  const thigh = taperCapsule(0.18, 0.13, 1.15), shin = taperCapsule(0.13, 0.085, 1.12);
-  const sandal = toon(0xf4efe6);
+  // legs (mostly under the gown) and pink slippers with little bows
+  const thigh = taperCapsule(0.17, 0.12, 1.15), shin = taperCapsule(0.12, 0.08, 1.12), slip = toon(0xf6a5c8);
   for (const l of R.leg) {
-    inked(thigh, skin, l.hip, undefined, undefined, 0.016);
-    inked(shin, skin, l.knee, undefined, undefined, 0.016);
-    inked(sculpt((x, y, z) => [x * 0.1, y * 0.08, z * 0.22], null, 16, 10), skin, l.ankle, [0, -0.06, 0.1], undefined, 0.014);
-    inked(new THREE.BoxGeometry(0.22, 0.05, 0.5), sandal, l.ankle, [0, -0.15, 0.1], undefined, 0.012);
-    mesh(new THREE.TorusGeometry(0.1, 0.018, 5, 12, Math.PI), sandal, l.ankle, [0, -0.08, 0.16]).rotation.y = Math.PI / 2;
+    mesh(thigh, skin, l.hip); inked(shin, skin, l.knee, undefined, undefined, 0.014);
+    inked(sculpt((x, y, z) => [x * 0.12, y * 0.09, z * 0.25], null, 16, 10), slip, l.ankle, [0, -0.08, 0.1], undefined, 0.014);
+    mesh(SPH, toon(0xffffff), l.ankle, [0, -0.02, 0.28], [0.06, 0.035, 0.03]);
   }
   return R;
 }
@@ -267,10 +343,10 @@ function waterMaterial(colour) {
   return m;
 }
 
-function buildTree(foliage, blossom, small, size = 1) {
+function buildTree(greens, blossoms, small, size = 1) {
   const tree = new THREE.Group(), canopy = new THREE.Group(); tree.add(canopy);
   const barkMat = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.95 });
-  const bark = u => mix(C(0x4a3424), C(0x77573c), 0.5 + 0.5 * Math.sin(u * 23));
+  const bark = (u, j) => mix(C(0x3e2c1f), C(0x7a5a3e), 0.5 + 0.35 * Math.sin(u * 23 + j * 2.1) + 0.15 * Math.sin(j * 5.3));
   const spots = [];
   const trunk = [V(0, -0.5, 0), V(0.3, 2.5, 0.1), V(-0.3, 5, 0), V(0.2, 7, -0.1)];
   mesh(taperedTube(trunk, 30, u => 0.8 * (1 + 0.6 * Math.exp(-u * 10)) * (1 - 0.45 * u), bark, 10), barkMat, tree);
@@ -278,7 +354,7 @@ function buildTree(foliage, blossom, small, size = 1) {
     const pts = [p0.clone()]; let p = p0.clone(); const d = dir.clone();
     for (let k = 1; k <= 3; k++) { d.add(V((rand() - 0.5) * 0.5, (rand() - 0.4) * 0.3, (rand() - 0.5) * 0.5)).normalize(); p = p.clone().addScaledVector(d, len / 3); pts.push(p); }
     mesh(taperedTube(pts, 8, u => r0 * (1 - 0.45 * u), bark, 6), barkMat, canopy);
-    if (depth <= 1) spots.push(p);
+    if (depth <= 1) spots.push(p, pts[2]);
     if (!depth) return;
     for (let k = 0; k < 3; k++) {
       const a = k / 3 * TAU + rand();
@@ -286,18 +362,185 @@ function buildTree(foliage, blossom, small, size = 1) {
     }
   }
   branch(trunk[3], V(0, 1, 0), 3.8, 0.5, 3);
-  const per = small ? 30 : 48, n = spots.length * per;
-  const blob = new THREE.InstancedMesh(new THREE.IcosahedronGeometry(1, 0), new THREE.MeshStandardMaterial({ roughness: 0.8 }), n);
-  const m4 = new THREE.Matrix4(), q = new THREE.Quaternion();
-  let k = 0;
-  for (const s of spots) for (let i = 0; i < per; i++) {
-    const o = V(rand() - 0.5, rand() * 0.8 - 0.3, rand() - 0.5).multiplyScalar(2.8);
-    m4.compose(s.clone().add(o), q.random(), V(1, 0.75, 1).multiplyScalar(0.14 + rand() * 0.24)); blob.setMatrixAt(k, m4);
-    const pal = rand() < 0.62 ? blossom : foliage; blob.setColorAt(k++, C(pal[(rand() * pal.length) | 0]));
-  }
-  canopy.add(blob);
+  // the crown: painted sprays of leaves and blossom
+  const n = spots.length * (small ? 10 : 16);
+  const around = (r, s0, s1) => (i, p) => { p.copy(spots[i % spots.length]).add(V(rand() - 0.5, rand() * 0.8 - 0.3, rand() - 0.5).multiplyScalar(r)); return s0 + rand() * (s1 - s0); };
+  canopy.add(cardCloud(foliageCard(greens), Math.round(n * 0.5), around(3.0, 2.0, 3.0)));
+  if (blossoms) canopy.add(cardCloud(blossomCard(blossoms, greens), Math.round(n * 0.75), around(2.6, 1.8, 2.8)));
   tree.scale.setScalar(size);
   return { tree, canopy, spots };
+}
+
+/* ---------------------------------------------------------------- props: a rose, rabbits, the café */
+
+// A cartoon rose (it belongs to her): petals wound in a spiral round a bud.
+function toonRose(col, size = 1) {
+  const g = new THREE.Group(), mat = toon(col), dark = toon(C(col).multiplyScalar(0.75));
+  mesh(SPH, dark, g, [0, 0.02, 0], [0.05, 0.06, 0.05]);
+  for (let k = 0; k < 11; k++) {
+    const a = k * 2.4, r = 0.03 + k * 0.009, h = 0.07 - k * 0.003;
+    const p = mesh(SPH, k < 4 ? dark : mat, g, [Math.cos(a) * r, 0.02, Math.sin(a) * r], [0.045 + k * 0.004, h, 0.018]);
+    p.rotation.set(0, -a + Math.PI / 2, 0); p.rotateX(-0.25 - k * 0.07);
+  }
+  for (const s of [1, -1]) { const l = mesh(SPH, toon(0x4f8a2e), g, [s * 0.11, -0.05, 0], [0.08, 0.02, 0.04]); l.rotation.z = s * 0.4; }
+  g.scale.setScalar(size);
+  return g;
+}
+
+// A real-looking rabbit with fur, long ears that twitch, and a cotton tail.
+function buildRabbit(coat, belly) {
+  const rb = new THREE.Group(), body = new THREE.Group(); rb.add(body);
+  const sdf = (x, y, z) => {
+    let d = smin(ell(x, y, z, 0, 0.42, -0.08, 0.34, 0.36, 0.52), Math.min(ell(x, y, z, 0.17, 0.36, -0.28, 0.19, 0.27, 0.3), ell(x, y, z, -0.17, 0.36, -0.28, 0.19, 0.27, 0.3)), 0.12);
+    d = smin(d, ell(x, y, z, 0, 0.74, 0.36, 0.22, 0.22, 0.27), 0.14);
+    d = smin(d, Math.min(ell(x, y, z, 0.11, 0.66, 0.5, 0.11, 0.1, 0.12), ell(x, y, z, -0.11, 0.66, 0.5, 0.11, 0.1, 0.12)), 0.06);
+    d = smin(d, Math.min(ell(x, y, z, 0.09, 0.1, 0.3, 0.06, 0.12, 0.07), ell(x, y, z, -0.09, 0.1, 0.3, 0.06, 0.12, 0.07)), 0.06);
+    return smin(d, Math.min(ell(x, y, z, 0.17, 0.06, -0.14, 0.09, 0.06, 0.27), ell(x, y, z, -0.17, 0.06, -0.14, 0.09, 0.06, 0.27)), 0.05);
+  };
+  const cC = C(coat), bC = C(belly);
+  furry(surfaceNet(sdf, (x, y, z) => mix(cC, bC, sm(0.32, 0.1, y) * sm(-0.2, 0.2, z) + sm(0.6, 0.5, y) * sm(0.5, 0.62, z) * 0.7), [-0.5, -0.05, -0.75], [0.5, 1.05, 0.75], 0.03), body, { len: 0.035, layers: 6, freq: 30 });
+  furry(sculpt((x, y, z) => [x * 0.11, y * 0.11, z * 0.1], () => C(0xfaf8f4), 14, 10), body, { len: 0.04, layers: 6, freq: 30, pos: [0, 0.48, -0.6] });
+  const eyeM = new THREE.MeshStandardMaterial({ color: 0x120a08, roughness: 0.1 });
+  for (const s of [1, -1]) {
+    mesh(SPH, eyeM, body, [s * 0.16, 0.8, 0.46], [0.045, 0.05, 0.04]);
+    mesh(SPH, new THREE.MeshBasicMaterial({ color: 0xffffff }), body, [s * 0.18, 0.82, 0.48], 0.01);
+  }
+  mesh(SPH, new THREE.MeshStandardMaterial({ color: 0xd98a96, roughness: 0.5 }), body, [0, 0.72, 0.62], [0.035, 0.025, 0.02]);
+  const ears = [];
+  for (const s of [1, -1]) {
+    const e = new THREE.Group(); e.position.set(s * 0.08, 0.92, 0.28); e.rotation.set(-0.35, 0, -s * 0.18); body.add(e);
+    furry(sculpt((x, y, z) => [x * 0.075 * (1 - 0.3 * Math.abs(y)), y * 0.3 + 0.28, z * 0.03 - 0.025 * Math.max(0, z) * (1 - x * x)], (x, y, z) => (z > 0.2 ? mix(C(0xe8a0a8), cC, sm(0.5, 0.9, Math.abs(x))) : cC), 14, 14), e, { len: 0.02, layers: 4, freq: 34 });
+    ears.push(e);
+  }
+  rb.scale.setScalar(1.25);
+  return { rb, body, ears, pos: V(), yaw: rand() * TAU, from: V(), to: V(), t: 0, hop: 0, hops: 0, rest: 1 + rand() * 3, twitch: 0, nibble: 0 };
+}
+
+// The café: a cream cottage with timber framing, a tiled roof, a striped awning, warm windows,
+// a sign, flower boxes, a chalkboard, string lights and bistro tables outside.
+function buildCafe() {
+  const cafe = new THREE.Group();
+  const W = 9, D = 6, Hh = 4.4, B = 0.7;
+  const plaster = tiled(canvasTex(256, 256, (c, S) => { c.fillStyle = '#f1e4cc'; c.fillRect(0, 0, S, S); for (let i = 0; i < 1400; i++) { c.fillStyle = `rgba(${150 + rand() * 60 | 0},${120 + rand() * 50 | 0},90,${rand() * 0.08})`; c.fillRect(rand() * S, rand() * S, 2 + rand() * 6, 2 + rand() * 6); } }), 2, 1);
+  const tiles = tiled(canvasTex(256, 256, (c, S) => {
+    c.fillStyle = '#7a3a22'; c.fillRect(0, 0, S, S);
+    for (let r = 0; r < 10; r++) for (let k = -1; k < 9; k++) {
+      const x = k * 32 + (r % 2) * 16, y = r * 26, g = c.createLinearGradient(0, y, 0, y + 26);
+      const base = 0xb5532e + ((rand() * 3 | 0) << 4); g.addColorStop(0, css(base, 1.05)); g.addColorStop(1, css(base, 0.62));
+      c.fillStyle = g; c.beginPath(); c.moveTo(x, y); c.lineTo(x + 30, y); c.lineTo(x + 30, y + 18); c.quadraticCurveTo(x + 15, y + 30, x, y + 18); c.fill();
+    }
+  }), 4, 2);
+  const wood = new THREE.MeshStandardMaterial({ map: woodTex(0x5a3a24), roughness: 0.8 });
+  const stoneM = new THREE.MeshStandardMaterial({ map: tiled(stoneTex('#b7a089'), 3, 1), roughness: 0.95 });
+  const wallM = new THREE.MeshStandardMaterial({ map: plaster, roughness: 0.95 });
+  mesh(new THREE.BoxGeometry(W + 0.3, B, D + 0.3), stoneM, cafe, [0, B / 2, 0]);
+  mesh(new THREE.BoxGeometry(W, Hh, D), wallM, cafe, [0, B + Hh / 2, 0]);
+  // timber frame on the front
+  const fz = D / 2 + 0.04, beam = (w, h, x, y) => mesh(new THREE.BoxGeometry(w, h, 0.12), wood, cafe, [x, y, fz]);
+  for (const x of [-W / 2 + 0.12, -1.25, 1.25, W / 2 - 0.12]) beam(0.24, Hh, x, B + Hh / 2);
+  beam(W, 0.24, 0, B + Hh - 0.12); beam(W, 0.2, 0, B + 0.1);
+  // the roof: two tiled slopes and plaster gables
+  const ridge = 2.8, over = 0.6, half = D / 2 + over, slope = Math.hypot(half, ridge), ang = Math.atan2(ridge, half);
+  const roofM = new THREE.MeshStandardMaterial({ map: tiles, roughness: 0.8, side: THREE.DoubleSide });
+  for (const s of [1, -1]) {
+    const r = mesh(new THREE.PlaneGeometry(W + 1.2, slope), roofM, cafe, [0, B + Hh + ridge / 2, s * half / 2]);
+    r.rotation.x = -s * (Math.PI / 2 - ang);                                          // sloping down from the ridge to the eave
+  }
+  const eave = ridge * over / half, gable = new THREE.Shape();
+  gable.moveTo(-D / 2, 0); gable.lineTo(D / 2, 0); gable.lineTo(D / 2, eave); gable.lineTo(0, ridge); gable.lineTo(-D / 2, eave); gable.closePath();
+  for (const s of [1, -1]) { const g = mesh(new THREE.ShapeGeometry(gable), wallM, cafe, [s * W / 2, B + Hh, 0]); g.rotation.y = s * Math.PI / 2; }
+  mesh(new THREE.BoxGeometry(0.8, 2.4, 0.8), stoneM, cafe, [W / 2 - 1.6, B + Hh + 1.9, -1.2]);
+  // windows glowing warm from inside, a door that opens
+  const glowTex = canvasTex(128, 128, (c, S) => {
+    const g = c.createLinearGradient(0, 0, 0, S); g.addColorStop(0, '#ffd99a'); g.addColorStop(1, '#e8963e'); c.fillStyle = g; c.fillRect(0, 0, S, S);
+    c.fillStyle = 'rgba(90,50,20,.55)'; for (const y of [0.32, 0.62]) c.fillRect(0, S * y, S, 4);
+    for (let i = 0; i < 14; i++) { c.fillStyle = `rgba(${120 + rand() * 80 | 0},${60 + rand() * 40 | 0},30,.7)`; c.fillRect(rand() * S, S * (rand() < 0.5 ? 0.22 : 0.52), 6 + rand() * 8, 10 + rand() * 6); }
+  });
+  const glass = new THREE.MeshStandardMaterial({ map: glowTex, emissive: 0xffb060, emissiveMap: glowTex, emissiveIntensity: 0.5, roughness: 0.2 });
+  for (const x of [-2.95, 2.95]) {
+    mesh(new THREE.PlaneGeometry(2.6, 2.2), glass, cafe, [x, B + 2.3, fz + 0.02]);
+    for (const dx of [-1.35, 0, 1.35]) mesh(new THREE.BoxGeometry(0.1, 2.4, 0.1), wood, cafe, [x + dx, B + 2.3, fz + 0.06]);
+    for (const dy of [-1.15, 0, 1.15]) mesh(new THREE.BoxGeometry(2.8, 0.1, 0.1), wood, cafe, [x, B + 2.3 + dy, fz + 0.06]);
+    const box = mesh(new THREE.BoxGeometry(2.8, 0.45, 0.55), wood, cafe, [x, B + 1.05, fz + 0.3]);
+    box.add(cardCloud(roseCard([0xd23a4e, 0xffd23a, 0xff8fb1, 0xffffff], GREENS), 14, (i, p) => { p.set((rand() - 0.5) * 2.4, 0.35 + rand() * 0.3, (rand() - 0.5) * 0.4); return 0.55 + rand() * 0.3; }));
+  }
+  const door = new THREE.Group(); door.position.set(-0.85, B, fz + 0.03); cafe.add(door);
+  mesh(new THREE.BoxGeometry(1.7, 3.2, 0.1), wood, door, [0.85, 1.6, 0]);
+  mesh(new THREE.PlaneGeometry(1.0, 1.0), glass, door, [0.85, 2.3, 0.06]);
+  mesh(SPH, new THREE.MeshStandardMaterial({ color: 0xd8b25a, metalness: 0.8, roughness: 0.3 }), door, [1.5, 1.6, 0.1], 0.07);
+  // striped awning with a scalloped edge
+  const stripes = canvasTex(256, 128, (c, w, h) => {
+    for (let i = 0; i < 8; i++) { c.fillStyle = i % 2 ? '#f6efe2' : '#6f9a72'; c.fillRect(i * w / 8, 0, w / 8, h * 0.82); }
+    for (let i = 0; i < 16; i++) { c.fillStyle = (i >> 1) % 2 ? '#f6efe2' : '#6f9a72'; c.beginPath(); c.arc((i + 0.5) * w / 16, h * 0.82, w / 32, 0, Math.PI); c.fill(); }
+  });
+  const aw = mesh(new THREE.PlaneGeometry(W - 0.4, 1.8), new THREE.MeshStandardMaterial({ map: stripes, alphaTest: 0.5, side: THREE.DoubleSide, roughness: 0.9 }), cafe, [0, B + Hh - 0.45, fz + 0.75]);
+  aw.rotation.x = 0.85;
+  // the sign
+  const signTex = canvasTex(512, 160, (c, w, h) => {
+    c.fillStyle = '#2f4a3a'; c.fillRect(0, 0, w, h); c.strokeStyle = '#d9b45a'; c.lineWidth = 8; c.strokeRect(10, 10, w - 20, h - 20);
+    c.fillStyle = '#f2d58a'; c.textAlign = 'center'; c.textBaseline = 'middle';
+    c.font = 'italic bold 84px Georgia, "Times New Roman", serif'; c.fillText('Wishes', w / 2 + 44, h / 2 - 8);
+    c.font = '28px Georgia, "Times New Roman", serif'; c.fillText('c a f é', w / 2 + 44, h - 30);
+    c.strokeStyle = '#f2d58a'; c.lineWidth = 7; c.beginPath(); c.moveTo(80, 60); c.lineTo(88, 115); c.lineTo(132, 115); c.lineTo(140, 60); c.closePath(); c.stroke();
+    c.beginPath(); c.arc(146, 82, 12, -Math.PI / 2, Math.PI / 2); c.stroke();
+    for (const x of [96, 112, 126]) { c.beginPath(); c.moveTo(x, 50); c.bezierCurveTo(x - 8, 38, x + 8, 30, x, 18); c.stroke(); }
+  });
+  mesh(new THREE.PlaneGeometry(3.4, 1.06), new THREE.MeshStandardMaterial({ map: signTex, roughness: 0.6, emissive: 0x222222, emissiveMap: signTex, emissiveIntensity: 0.2 }), cafe, [0, B + Hh + 0.75, fz + 0.65]).rotation.x = -0.1;
+  // chalkboard
+  const chalk = canvasTex(160, 220, (c, w, h) => {
+    c.fillStyle = '#5a3a24'; c.fillRect(0, 0, w, h); c.fillStyle = '#26302a'; c.fillRect(10, 10, w - 20, h - 20);
+    c.fillStyle = '#f4efe4'; c.font = 'bold 24px Georgia, serif'; c.textAlign = 'center';
+    c.fillText('Coffee', w / 2, 60); c.fillText('Tea', w / 2, 100); c.fillText('Cake', w / 2, 140);
+    c.fillStyle = '#ff9ec4'; c.beginPath(); c.arc(w / 2 - 8, 178, 9, 0, TAU); c.arc(w / 2 + 8, 178, 9, 0, TAU); c.fill(); c.beginPath(); c.moveTo(w / 2 - 17, 181); c.lineTo(w / 2, 200); c.lineTo(w / 2 + 17, 181); c.fill();
+  });
+  const ab = new THREE.Group(); ab.position.set(2.6, 0, fz + 1.5); ab.rotation.y = -0.3; cafe.add(ab);
+  for (const s of [1, -1]) { const b = mesh(new THREE.PlaneGeometry(1.0, 1.4), new THREE.MeshStandardMaterial({ map: chalk, side: THREE.DoubleSide, roughness: 0.9 }), ab, [0, 0.7, s * 0.18]); b.rotation.x = s * 0.25; }
+  // pots by the door
+  for (const x of [-2.2, 1.6]) {
+    const pot = mesh(new THREE.LatheGeometry([[0.001, 0], [0.32, 0], [0.42, 0.65], [0.46, 0.7]].map(([a, b]) => new THREE.Vector2(a, b)), 16), new THREE.MeshStandardMaterial({ color: 0xb8653a, roughness: 0.85 }), cafe, [x, 0, fz + 0.6]);
+    pot.add(cardCloud(foliageCard(GREENS), 16, (i, p) => { p.set((rand() - 0.5) * 0.7, 0.9 + rand() * 0.9, (rand() - 0.5) * 0.7); return 0.6 + rand() * 0.4; }));
+  }
+  // bistro tables, chairs and an umbrella
+  const iron = new THREE.MeshStandardMaterial({ color: 0x2c2c2c, roughness: 0.45, metalness: 0.6 }), marble = new THREE.MeshStandardMaterial({ color: 0xf2efe8, roughness: 0.3 });
+  const tables = [];
+  for (const [tx, tz] of [[5.6, 5.4], [8.4, 3.2]]) {
+    const t = new THREE.Group(); t.position.set(tx, 0, tz); cafe.add(t);
+    mesh(new THREE.CylinderGeometry(0.75, 0.75, 0.08, 28), marble, t, [0, 1.95, 0]);
+    mesh(new THREE.CylinderGeometry(0.06, 0.08, 1.9, 8), iron, t, [0, 0.95, 0]);
+    mesh(new THREE.CylinderGeometry(0.45, 0.5, 0.06, 16), iron, t, [0, 0.03, 0]);
+    const seats = [];
+    for (const a of [0.9, -2.2]) {
+      const ch = new THREE.Group(); ch.position.set(Math.sin(a) * 1.35, 0, Math.cos(a) * 1.35); ch.rotation.y = a + Math.PI; t.add(ch);
+      mesh(new THREE.CylinderGeometry(0.42, 0.42, 0.07, 20), iron, ch, [0, 1.32, 0]);
+      for (const [lx, lz] of [[0.28, 0.28], [-0.28, 0.28], [0.28, -0.28], [-0.28, -0.28]]) mesh(new THREE.CylinderGeometry(0.03, 0.03, 1.32, 5), iron, ch, [lx, 0.66, lz]);
+      mesh(new THREE.TorusGeometry(0.36, 0.035, 6, 20, Math.PI), iron, ch, [0, 1.75, -0.38]);
+      seats.push({ chair: ch });
+    }
+    tables.push({ t, seats });
+  }
+  const umb = new THREE.Group(); umb.position.set(5.6, 0, 5.4); cafe.add(umb);
+  mesh(new THREE.CylinderGeometry(0.04, 0.04, 4.6, 6), wood, umb, [0, 2.3, 0]);
+  const canopyTex = canvasTex(256, 64, (c, w, h) => { for (let i = 0; i < 8; i++) { c.fillStyle = i % 2 ? '#f6efe2' : '#6f9a72'; c.fillRect(i * w / 8, 0, w / 8, h); } });
+  mesh(new THREE.ConeGeometry(2.3, 0.9, 16, 1, true), new THREE.MeshStandardMaterial({ map: canopyTex, side: THREE.DoubleSide, roughness: 0.9 }), umb, [0, 4.55, 0]);
+  // string lights from the roof to the umbrella pole
+  const bulbM = new THREE.MeshStandardMaterial({ color: 0xffe2a8, emissive: 0xffb54a, emissiveIntensity: 0.25 });
+  const bulbs = new THREE.InstancedMesh(new THREE.SphereGeometry(0.08, 8, 6), bulbM, 24), m4 = new THREE.Matrix4(), a0 = V(W / 2, B + Hh, fz), a1 = V(5.6, 4.0, 5.4);
+  for (let i = 0; i < 24; i++) { const u = (i + 0.5) / 24, p = a0.clone().lerp(a1, u); p.y -= Math.sin(Math.PI * u) * 0.7; m4.makeTranslation(p.x, p.y, p.z); bulbs.setMatrixAt(i, m4); }
+  cafe.add(bulbs);
+  const light = new THREE.PointLight(0xffb45a, 0, 16, 1.6); light.position.set(0, 2.6, fz + 1.5); cafe.add(light);
+  // chimney smoke
+  const smoke = [];
+  for (let i = 0; i < 6; i++) { const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: radial([[0, 'rgba(255,255,255,.5)'], [1, 'rgba(255,255,255,0)']]), transparent: true, depthWrite: false })); cafe.add(s); smoke.push({ s, t: i / 6 }); }
+  return { cafe, door, doorPt: V(0, 0, fz + 1.4), tables, glass, bulbM, light, smoke, chimney: V(W / 2 - 1.6, B + Hh + 3.2, -1.2) };
+}
+
+// A white mug of coffee.
+function buildMug() {
+  const g = new THREE.Group();
+  mesh(new THREE.LatheGeometry([[0.001, 0], [0.13, 0], [0.14, 0.02], [0.15, 0.26], [0.135, 0.26], [0.125, 0.04], [0.001, 0.04]].map(([a, b]) => new THREE.Vector2(a, b)), 20), new THREE.MeshStandardMaterial({ color: 0xfbfaf6, roughness: 0.25, side: THREE.DoubleSide }), g);
+  mesh(new THREE.CircleGeometry(0.128, 20).rotateX(-Math.PI / 2), new THREE.MeshStandardMaterial({ color: 0x5a3420, roughness: 0.2 }), g, [0, 0.21, 0]);
+  mesh(new THREE.TorusGeometry(0.07, 0.02, 6, 12), new THREE.MeshStandardMaterial({ color: 0xfbfaf6, roughness: 0.25 }), g, [0.16, 0.14, 0]);
+  return g;
 }
 
 /* ---------------------------------------------------------------- poses */
@@ -306,6 +549,12 @@ const G = {
   stand: {},
   sniff: { lean: 0.55, hp: 0.4, hr: 0.15, lfL: 0.3, lkL: 0.55, lfR: 0.3, lkR: 0.55, afR: 0.95, aeR: 0.9, aoR: -0.1, afL: 0.15, aeL: 0.25 },
   pick: { lean: 0.6, hp: 0.5, lfL: 0.35, lkL: 0.65, lfR: 0.35, lkR: 0.65, afR: 0.85, aeR: 0.3, aoR: 0.05 },
+  shy: { hr: 0.24, hp: 0.08, afL: 1.0, aeL: 2.25, aoL: -0.45, afR: 0.3, aeR: 0.5, aoR: -0.2, jaw: 0.15 },
+  carry: { afR: 0.65, aeR: 1.55, aoR: -0.3 },
+  lap: { afR: 0.6, aeR: 1.05, aoR: -0.4, afL: 0.55, aeL: 0.95, aoL: -0.35 },
+  sip: { afR: 1.15, aeR: 2.1, aoR: -0.28, hp: 0.06 },
+  cup: { afR: 0.75, aeR: 1.65, aoR: -0.25, afL: 0.7, aeL: 1.6, aoL: -0.4 },
+  giggle: { hr: 0.18, afL: 0.9, aeL: 2.1, aoL: -0.5, afR: 0.65, aeR: 1.55, aoR: -0.3, jaw: 0.35 },
   holdFlower: { afR: 1.0, aeR: 2.0, aoR: -0.3, hp: 0.15, hr: 0.2 },
   tuck: { afL: 2.3, aoL: 0.65, aeL: 2.35, hr: -0.22, hy: -0.15 },
   gaze: { afL: 0.08, aeL: 0.3, afR: 0.08, aeR: 0.3, aoL: -0.12, aoR: -0.12, hp: -0.15 },
@@ -394,7 +643,7 @@ export function start(canvas, opts = {}) {
   {
     const lawn = new THREE.PlaneGeometry(220, 44, 110, 26); lawn.rotateX(-Math.PI / 2); lawn.translate(0, 0, 2);
     const p = lawn.attributes.position, cols = [];
-    const g1 = C(0x6f9a45), g2 = C(0x93b85a), g3 = C(0x5a8238), rock = C(0xb0704a);
+    const g1 = C(0xd8e6c8), g2 = C(0xffffff), g3 = C(0xb8cca8), rock = C(0xb0704a);
     for (let i = 0; i < p.count; i++) {
       const x = p.getX(i), z = p.getZ(i), edge = rimZ(x), drop = sm(edge, edge - 4, z);
       p.setY(i, -drop * 14 + (1 - drop) * 0.15 * nz(x * 0.3, 0, z * 0.3));
@@ -402,7 +651,23 @@ export function start(canvas, opts = {}) {
       cols.push(k.r, k.g, k.b, 1 - sm(6, 17, z));
     }
     lawn.setAttribute('color', new THREE.Float32BufferAttribute(cols, 4)); lawn.computeVertexNormals();
-    const ground = mesh(lawn, new THREE.MeshStandardMaterial({ vertexColors: true, transparent: true, roughness: 1 }), world); ground.renderOrder = -2;
+    const ground = mesh(lawn, new THREE.MeshStandardMaterial({ map: grassTex(), vertexColors: true, transparent: true, roughness: 1 }), world); ground.renderOrder = -2;
+  }
+  // blades of grass
+  {
+    const blade = new THREE.BufferGeometry();
+    blade.setAttribute('position', new THREE.Float32BufferAttribute([-0.04, 0, 0, 0.04, 0, 0, -0.025, 0.3, 0.02, 0.025, 0.3, 0.02, 0, 0.6, 0.07], 3));
+    blade.setIndex([0, 1, 2, 2, 1, 3, 2, 3, 4]); blade.computeVertexNormals();
+    const n = small ? 3000 : 8000, g = new THREE.InstancedMesh(blade, new THREE.MeshStandardMaterial({ side: THREE.DoubleSide, roughness: 0.9 }), n);
+    const m4 = new THREE.Matrix4(), q = new THREE.Quaternion(), e = new THREE.Euler();
+    let k = 0;
+    for (let i = 0; i < n * 2 && k < n; i++) {
+      const x = (rand() * 2 - 1) * 75, z = -15 + rand() * 25;
+      if (z < rimZ(x) + 1.8 || Math.abs(z - pathZ(x)) < 1.9) continue;
+      m4.compose(V(x, 0, z), q.setFromEuler(e.set((rand() - 0.5) * 0.5, rand() * TAU, (rand() - 0.5) * 0.5)), V(1, 0.5 + rand() * 0.9, 1)); g.setMatrixAt(k, m4);
+      g.setColorAt(k++, C(GREENS[(rand() * GREENS.length) | 0]).multiplyScalar(0.9 + rand() * 0.35));
+    }
+    g.count = k; world.add(g);
   }
   // flagstone path
   {
@@ -428,7 +693,7 @@ export function start(canvas, opts = {}) {
   // low stone wall along the rim, with a string of little lights
   const lightsMat = new THREE.MeshStandardMaterial({ color: 0xffe0a0, emissive: 0xffb84a, emissiveIntensity: 0.2 });
   {
-    const stone = new THREE.MeshStandardMaterial({ color: 0xc9a07a, roughness: 0.9 });
+    const stone = new THREE.MeshStandardMaterial({ map: stoneTex(), roughness: 0.95 });
     const n = 60, wall = new THREE.InstancedMesh(new THREE.BoxGeometry(3.7, 0.9, 0.7), stone, n), posts = new THREE.InstancedMesh(new THREE.BoxGeometry(0.5, 1.6, 0.5), stone, n + 1);
     const bulbs = new THREE.InstancedMesh(new THREE.SphereGeometry(0.09, 8, 6), lightsMat, n * 8);
     const m4 = new THREE.Matrix4(), q = new THREE.Quaternion();
@@ -442,36 +707,61 @@ export function start(canvas, opts = {}) {
     }
     world.add(wall, posts, bulbs);
   }
-  // flower beds along both sides of the path
+  // flower beds along both sides of the path: real petals, stems and leaves
   const flowerSpots = [];
   {
+    // a flat flower of n petals, cupped, pale at the heart
+    const petals = (n, R, cup, inner = 0.3) => {
+      const pos = [0, 0, 0], col = [1, 1, 1], idx = [], N = 72;
+      for (const [ring, k] of [[0.45, 0.95], [1, 0.72]]) for (let i = 0; i < N; i++) {
+        const a = i / N * TAU, r = R * ring * (inner + (1 - inner) * Math.pow(Math.abs(Math.cos(a * n / 2)), 0.6));
+        pos.push(Math.cos(a) * r, cup * (r / R) ** 2 * R, Math.sin(a) * r); col.push(k, k, k);
+      }
+      for (let i = 0; i < N; i++) { const a = 1 + i, b = 1 + (i + 1) % N, c = 1 + N + i, d = 1 + N + (i + 1) % N; idx.push(0, b, a, a, b, d, a, d, c); }
+      const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3)); g.setAttribute('color', new THREE.Float32BufferAttribute(col, 3)); g.setIndex(idx); g.computeVertexNormals();
+      return g;
+    };
+    const rose = sculpt((x, y, z) => { const a = Math.atan2(z, x), r = Math.hypot(x, z), w = 1 + 0.08 * Math.sin(a * 3 + r * 12 + y * 5); return [x * 0.17 * w, y < 0 ? y * 0.11 : y * 0.15, z * 0.17 * w]; }, (x, y, z) => C(0xffffff).multiplyScalar(0.7 + 0.3 * (0.5 + 0.5 * Math.sin(Math.atan2(z, x) * 3 + Math.hypot(x, z) * 12 + y * 5))), 24, 16);
+    const tulip = (() => { const g = new THREE.LatheGeometry([[0.01, -0.1], [0.1, -0.08], [0.13, 0.05], [0.11, 0.17]].map(([a, b]) => new THREE.Vector2(a, b)), 18), p = g.attributes.position; for (let i = 0; i < p.count; i++) { const y = p.getY(i); if (y > 0.1) p.setY(i, y + 0.04 * Math.cos(Math.atan2(p.getZ(i), p.getX(i)) * 3)); } g.computeVertexNormals(); return g; })();
+    const spike = sculpt((x, y, z) => { const b = 1 + 0.25 * Math.max(0, Math.sin(y * 18)); return [x * 0.05 * b, y * 0.26 + 0.14, z * 0.05 * b]; }, null, 8, 16);
     const types = [
-      { geo: sculpt((x, y, z) => [x * 0.26, y * 0.18 + 0.03 * Math.sin(Math.atan2(z, x) * 5 + y * 6), z * 0.26], null, 10, 8), cols: [0xe23a4e, 0xf06a8a, 0xffffff, 0xff9eb5, 0xc81e3a] },   // roses
-      { geo: new THREE.LatheGeometry([[0.001, -0.12], [0.12, -0.08], [0.15, 0.08], [0.11, 0.16]].map(([a, b]) => new THREE.Vector2(a, b)), 7), cols: [0xffd23a, 0xff8a3a, 0xff6aa0, 0xffffff] },   // tulips
-      { geo: sculpt((x, y, z) => [x * 0.06, y * 0.28 + 0.15, z * 0.06], null, 6, 8), cols: [0x8a6ad0, 0x9a7ae0, 0x7a5ac0] },                                                                      // lavender
-      { geo: new THREE.CylinderGeometry(0.2, 0.2, 0.03, 10), cols: [0xffffff, 0xfff5d6] },                                                                                                       // daisies
-      { geo: new THREE.IcosahedronGeometry(0.16, 0), cols: [0xff9a1a, 0xffc21a, 0xf26a1a] },                                                                                                     // marigolds
+      { geo: petals(5, 0.22, 0.45), cols: [0xf48fb1, 0xffffff, 0xce93d8, 0xff80ab, 0xffcc80], ctr: 0xf2c94c },   // cosmos
+      { geo: petals(14, 0.17, 0.12, 0.55), cols: [0xffffff, 0xfffde7], ctr: 0xf5b800 },                          // daisies
+      { geo: rose, cols: [0xc62828, 0xe53950, 0xf48fb1, 0xfff3e0, 0xffd54f] },                                   // roses
+      { geo: tulip, cols: [0xffd54f, 0xff7043, 0xf06292, 0xfafafa, 0xba68c8] },                                  // tulips
+      { geo: spike, cols: [0x8e7cc3, 0x9c89d6, 0x7e6bb8] },                                                      // lavender
+      { geo: petals(10, 0.15, 0.9, 0.5), cols: [0xffa726, 0xffca28, 0xff7043], ctr: 0x8d5a2b },                  // marigolds
     ];
-    const N = small ? 1200 : 2600, stems = new THREE.InstancedMesh(new THREE.CylinderGeometry(0.02, 0.025, 1, 4).translate(0, 0.5, 0), new THREE.MeshStandardMaterial({ color: 0x4f7a2e }), N);
-    const heads = types.map(t => new THREE.InstancedMesh(t.geo, new THREE.MeshStandardMaterial({ roughness: 0.7, side: THREE.DoubleSide }), N));
+    const N = small ? 1000 : 2400;
+    const stems = new THREE.InstancedMesh(new THREE.CylinderGeometry(0.018, 0.024, 1, 5).translate(0, 0.5, 0), new THREE.MeshStandardMaterial({ color: 0x4a7a2c, roughness: 0.8 }), N);
+    const leafShape = new THREE.Shape(); leafShape.moveTo(0, 0); leafShape.quadraticCurveTo(0.09, 0.14, 0, 0.36); leafShape.quadraticCurveTo(-0.09, 0.14, 0, 0);
+    const leafGeo = new THREE.ShapeGeometry(leafShape, 4); leafGeo.rotateX(-0.9);
+    const leaves = new THREE.InstancedMesh(leafGeo, new THREE.MeshStandardMaterial({ side: THREE.DoubleSide, roughness: 0.75 }), N * 2);
+    const heads = types.map(t => new THREE.InstancedMesh(t.geo, new THREE.MeshStandardMaterial({ vertexColors: !!t.geo.attributes.color, roughness: 0.6, side: THREE.DoubleSide }), N));
+    const centres = new THREE.InstancedMesh(new THREE.SphereGeometry(0.05, 8, 6), new THREE.MeshStandardMaterial({ roughness: 0.6 }), N);
     const counts = types.map(() => 0);
-    const bush = new THREE.InstancedMesh(new THREE.IcosahedronGeometry(1, 1), new THREE.MeshStandardMaterial({ roughness: 0.9 }), small ? 300 : 600);
     const m4 = new THREE.Matrix4(), q = new THREE.Quaternion(), e = new THREE.Euler();
-    let b = 0;
-    for (let i = 0; i < N; i++) {
-      const x = (rand() * 2 - 1) * 100, side = rand() < 0.5 ? 1 : -1, off = 2.1 + rand() * 4.2, z = pathZ(x) + side * off;
+    let s = 0, lf = 0, ce = 0;
+    for (let i = 0; i < N * 1.5 && s < N; i++) {
+      const x = (rand() * 2 - 1) * 100, side = rand() < 0.5 ? 1 : -1, z = pathZ(x) + side * (2.1 + rand() * 4.2);
       if (z < rimZ(x) + 2.2 || z > 9) continue;
-      const cluster = fbm(x * 0.12, side * 3, 2), t = (Math.floor((cluster * 0.5 + 0.5) * 7 + rand() * 1.5)) % types.length;
-      const h = 0.25 + rand() * 0.4 + (t === 2 ? 0.15 : 0);
-      m4.compose(V(x, 0, z), q.setFromEuler(e.set((rand() - 0.5) * 0.25, 0, (rand() - 0.5) * 0.25)), V(1, h, 1)); stems.setMatrixAt(i, m4);
-      const ty = types[t], k = counts[t]++;
-      m4.compose(V(x, h, z), q.setFromEuler(e.set((rand() - 0.5) * 0.4, rand() * 3, (rand() - 0.5) * 0.4)), V(1, 1, 1)); heads[t].setMatrixAt(k, m4);
+      const t = (Math.floor((fbm(x * 0.12, side * 3, 2) * 0.5 + 0.5) * 8 + rand() * 1.5)) % types.length, ty = types[t];
+      const h = 0.3 + rand() * 0.45 + (t === 4 ? 0.2 : 0), tilt = q.setFromEuler(e.set((rand() - 0.5) * 0.25, 0, (rand() - 0.5) * 0.25)).clone();
+      m4.compose(V(x, 0, z), tilt, V(1, h, 1)); stems.setMatrixAt(s++, m4);
+      const top = V(0, h, 0).applyQuaternion(tilt).add(V(x, 0, z)), k = counts[t]++;
+      m4.compose(top, q.setFromEuler(e.set((rand() - 0.5) * 0.5, rand() * TAU, (rand() - 0.5) * 0.5)), V(1, 1, 1)); heads[t].setMatrixAt(k, m4);
       heads[t].setColorAt(k, C(ty.cols[(rand() * ty.cols.length) | 0]));
-      if (b < bush.count && rand() < 0.22) { m4.compose(V(x + rand() - 0.5, 0.05, z + rand() - 0.5), q.random(), V(0.55 + rand() * 0.4, 0.2 + rand() * 0.12, 0.55 + rand() * 0.4)); bush.setMatrixAt(b, m4); bush.setColorAt(b++, mix(C(0x3f6a2a), C(0x6a9a3a), rand())); }
-      if (rand() < 0.08) flowerSpots.push(V(x, h, z));
+      if (ty.ctr) { m4.compose(top.clone().add(V(0, 0.03, 0)), q, V(1, 0.6, 1)); centres.setMatrixAt(ce, m4); centres.setColorAt(ce++, C(ty.ctr)); }
+      for (let j = 0; j < 2; j++) { m4.compose(V(x, 0.04, z), q.setFromEuler(e.set(0, rand() * TAU, 0)), V(1, 1, 1).multiplyScalar(0.8 + rand() * 0.6)); leaves.setMatrixAt(lf, m4); leaves.setColorAt(lf++, C(GREENS[(rand() * GREENS.length) | 0])); }
+      if (rand() < 0.08) flowerSpots.push(top.clone());
     }
+    stems.count = s; leaves.count = lf; centres.count = ce;
     heads.forEach((h, t) => { h.count = counts[t]; world.add(h); });
-    bush.count = b; world.add(stems, bush);
+    world.add(stems, leaves, centres);
+    // low shrubs along the beds
+    world.add(cardCloud(foliageCard(GREENS), small ? 160 : 380, (i, p) => {
+      for (;;) { const x = (rand() * 2 - 1) * 90, z = pathZ(x) + (rand() < 0.5 ? 1 : -1) * (3 + rand() * 4); if (z > rimZ(x) + 2.4 && z < 9) { p.set(x, 0.25 + rand() * 0.25, z); return 0.8 + rand() * 0.6; } }
+    }));
   }
   // a rose arch over the path, and a bench looking out over the canyon
   const arch = new THREE.Group(); world.add(arch);
@@ -479,33 +769,34 @@ export function start(canvas, opts = {}) {
     const iron = new THREE.MeshStandardMaterial({ color: 0x3a3a3a, roughness: 0.5, metalness: 0.6 });
     for (const s of [-1, 1]) mesh(new THREE.CylinderGeometry(0.08, 0.08, 4.6, 8), iron, arch, [0, 2.3, s * 2.1]);
     mesh(new THREE.TorusGeometry(2.1, 0.08, 8, 30, Math.PI).rotateY(Math.PI / 2), iron, arch, [0, 4.6, 0]);
-    const leaf = new THREE.InstancedMesh(new THREE.IcosahedronGeometry(0.32, 0), new THREE.MeshStandardMaterial({ roughness: 0.85 }), 260);
-    const m4 = new THREE.Matrix4(), q = new THREE.Quaternion();
-    for (let i = 0; i < 260; i++) {
-      const u = rand(); let p;
-      if (u < 0.55) { const a = rand() * Math.PI; p = V(0, 4.6 + Math.sin(a) * 2.1, Math.cos(a) * 2.1); }
-      else { const s = rand() < 0.5 ? -1 : 1; p = V(0, rand() * 4.6, s * 2.1); }
-      p.add(V(rand() - 0.5, rand() - 0.5, rand() - 0.5).multiplyScalar(0.6));
-      m4.compose(p, q.random(), V(1, 1, 1).multiplyScalar(0.6 + rand() * 0.7)); leaf.setMatrixAt(i, m4);
-      leaf.setColorAt(i, rand() < 0.35 ? C([0xe23a5e, 0xff7a9a, 0xfff0f2][(rand() * 3) | 0]) : mix(C(0x3a6a2a), C(0x5f8f3a), rand()));
-    }
+    const onArch = (i, p) => {
+      if (rand() < 0.55) { const a = rand() * Math.PI; p.set(0, 4.6 + Math.sin(a) * 2.1, Math.cos(a) * 2.1); }
+      else p.set(0, rand() * 4.6, (rand() < 0.5 ? -1 : 1) * 2.1);
+      p.add(V(rand() - 0.5, rand() - 0.5, rand() - 0.5).multiplyScalar(0.7)); return 0.8 + rand() * 0.6;
+    };
+    const leaf = new THREE.Group();
+    leaf.add(cardCloud(foliageCard(GREENS), 90, onArch), cardCloud(roseCard([0xd32f4f, 0xf06292, 0xfff0f2, 0xffd54f], GREENS), 80, onArch));
     arch.add(leaf);
   }
   const bench = new THREE.Group(); world.add(bench);
   {
-    const wood = new THREE.MeshStandardMaterial({ color: 0x8a5a36, roughness: 0.8 }), iron = new THREE.MeshStandardMaterial({ color: 0x2e2e2e, roughness: 0.5, metalness: 0.6 });
+    const wood = new THREE.MeshStandardMaterial({ map: woodTex(), roughness: 0.8 }), iron = new THREE.MeshStandardMaterial({ color: 0x2e2e2e, roughness: 0.5, metalness: 0.6 });
     for (let i = 0; i < 4; i++) mesh(new THREE.BoxGeometry(3.6, 0.1, 0.22), wood, bench, [0, 1.3, -0.35 + i * 0.25]);
     for (let i = 0; i < 3; i++) mesh(new THREE.BoxGeometry(3.6, 0.22, 0.08), wood, bench, [0, 1.75 + i * 0.32, -0.55]).rotation.x = -0.15;
     for (const s of [-1, 1]) { mesh(new THREE.BoxGeometry(0.12, 1.3, 0.9), iron, bench, [s * 1.6, 0.65, -0.1]); mesh(new THREE.BoxGeometry(0.12, 1.1, 0.12), iron, bench, [s * 1.6, 2.0, -0.6]); }
   }
   // trees: a jacaranda and a pink-blossom tree framing the garden, slim cypresses on the rim
-  const treeL = buildTree([0x4f7a3a, 0x6a9a48], [0x8f6ad8, 0xa98ae8, 0x7a58c8], small, 1.05), treeR = buildTree([0x4f7a3a, 0x6a9a48], [0xf6a6c6, 0xffc4d8, 0xf088b0, 0xffffff], small, 0.95);
+  const treeL = buildTree(GREENS, [0x8f6ad8, 0xa98ae8, 0x7a58c8, 0xb9a2f0], small, 1.05), treeR = buildTree(GREENS, [0xf6a6c6, 0xffc4d8, 0xf088b0, 0xffffff], small, 0.95);
   world.add(treeL.tree, treeR.tree);
   const cypress = [];
   {
-    const g = sculpt((x, y, z) => [x * 0.9 * (1 - 0.8 * sm(-1, 1, y)) * (1 + 0.08 * Math.sin(y * 9 + x * 3)), y * 5 + 5, z * 0.9 * (1 - 0.8 * sm(-1, 1, y))], null, 12, 16);
-    const mat = new THREE.MeshStandardMaterial({ color: 0x2f4f2a, roughness: 0.95, flatShading: true });
-    for (let i = 0; i < 6; i++) { const c = mesh(g, mat, world); c.scale.setScalar(0.8 + rand() * 0.5); cypress.push(c); }
+    const tex = foliageCard([0x2f4f2a, 0x3a5f30, 0x27452a, 0x46703a], 60);
+    for (let i = 0; i < 6; i++) {
+      const c = new THREE.Group(), h = 8 + rand() * 4;
+      mesh(new THREE.CylinderGeometry(0.12, 0.2, h * 0.6, 6), new THREE.MeshStandardMaterial({ color: 0x4a3424 }), c, [0, h * 0.3, 0]);
+      c.add(cardCloud(tex, 70, (k, p) => { const y = rand() * h, r = 1.1 * Math.pow(1 - y / h, 0.8) + 0.15; const a = rand() * TAU; p.set(Math.cos(a) * r * rand(), y + 0.6, Math.sin(a) * r * rand()); return 0.9 + rand() * 0.6; }));
+      world.add(c); cypress.push(c);
+    }
   }
   // butterflies
   const flies = [];
@@ -520,6 +811,10 @@ export function start(canvas, opts = {}) {
       flies.push({ b, l, r, p: V((rnd() * 2 - 1) * 20, 1 + rnd() * 2, rnd() * 6 - 4), t: V(), ph: rnd() * 9, follow: null, land: 0 });
     }
   }
+  // the café, Wishes
+  const C0 = buildCafe(); world.add(C0.cafe);
+  // rabbits
+  const rabbits = [[0xf4f1ea, 0xffffff], [0x9a7552, 0xe6d6c0], [0x8e8a86, 0xd8d4cc]].map(([a, b]) => { const r = buildRabbit(a, b); world.add(r.rb); return r; });
   // little hearts that float up when she is happy
   const heartTex = canvasTex(64, 64, (c) => {
     c.fillStyle = '#ff6f9a'; c.beginPath(); c.moveTo(32, 56);
@@ -530,11 +825,14 @@ export function start(canvas, opts = {}) {
   function puffHearts(at, n = 5) {
     for (const h of hearts) { if (n <= 0) break; if (h.t < 1.6) continue; h.t = 0; h.s.position.copy(at).add(V((rnd() - 0.5) * 0.8, rnd() * 0.4, (rnd() - 0.5) * 0.4)); h.v.set((rnd() - 0.5) * 0.4, 0.8 + rnd() * 0.5, 0); h.s.scale.setScalar(0.25 + rnd() * 0.25); n--; }
   }
-  // a flower she can hold
+  // the rose she picks and carries, a mug of coffee, and the rose she leaves on the bench
   const heldFlower = new THREE.Group(); world.add(heldFlower); heldFlower.visible = false;
-  for (let k = 0; k < 5; k++) { const a = k / 5 * TAU; inked(SPH, toon(0xffffff), heldFlower, [Math.cos(a) * 0.09, Math.sin(a) * 0.09, 0], [0.08, 0.08, 0.03], 0.008); }
-  mesh(SPH, toon(0xffc93d), heldFlower, [0, 0, 0.02], 0.05);
-  mesh(new THREE.CylinderGeometry(0.012, 0.012, 0.5, 4), toon(0x4f8a2e), heldFlower, [0, -0.27, 0]);
+  heldFlower.add(toonRose(0xff6f91, 1.3)); mesh(new THREE.CylinderGeometry(0.012, 0.012, 0.6, 4), toon(0x4f8a2e), heldFlower, [0, -0.32, 0]);
+  const benchRose = heldFlower.clone(); benchRose.visible = false; world.add(benchRose);
+  const mug = buildMug(); mug.visible = false; world.add(mug);
+  const steam = [];
+  for (let i = 0; i < 4; i++) { const st = new THREE.Sprite(new THREE.SpriteMaterial({ map: radial([[0, 'rgba(255,255,255,.55)'], [1, 'rgba(255,255,255,0)']]), transparent: true, depthWrite: false })); world.add(st); steam.push({ s: st, t: i / 4 }); }
+  let mugHot = 0, mugAt = null, doorOpen = 0;
 
   /* ---------------------------------------------------------------- layout */
   let aspect = 1, camK = 1;
@@ -553,12 +851,15 @@ export function start(canvas, opts = {}) {
     treeL.tree.position.set(-hw * 0.97, 0, -10.5);                                   // at the edges, framing the view and clear of the text
     treeR.tree.position.set(hw * 0.97, 0, -11);
     for (const t of [treeL, treeR]) t.tree.scale.setScalar(narrow ? 0.8 : 1);
-    const ax = -hw * 0.22; arch.position.set(ax, 0, pathZ(ax)); arch.rotation.y = -Math.atan((pathZ(ax + 0.1) - pathZ(ax)) / 0.1);
-    const bx = clamp(hw * 0.35, 4, hw - 5); bench.position.set(bx, 0, rimZ(bx) + 3.6); bench.rotation.y = Math.PI + 0.55;
+    const ax = -hw * 0.05; arch.position.set(ax, 0, pathZ(ax)); arch.rotation.y = -Math.atan((pathZ(ax + 0.1) - pathZ(ax)) / 0.1) + 0.75;   // turned so its curve shows
+    const bx = clamp(hw * 0.42, 5, hw - 5); bench.position.set(bx, 0, pathZ(bx) - 3.4); bench.rotation.y = -0.2;            // facing you, the canyon behind her
+    const cz = -3, chw = halfWAt(cz);                                              // at the left edge, low on the screen, clear of the text
+    C0.cafe.position.set(-chw + (narrow ? 2.4 : 3.0), 0, cz); C0.cafe.rotation.y = 0.55; C0.cafe.scale.setScalar(narrow ? 0.62 : 0.85);
     cypress.forEach((c, i) => { const s = i < 3 ? -1 : 1, k = i % 3; c.position.set(s * (hw * (0.98 + k * 0.22) + k * 3), 0, rimZ(s * hw) + 2.4 - k * 0.6); });
     obstacles.length = 0;
-    obstacles.push({ x: treeL.tree.position.x, z: -10.5, r: 2.4 }, { x: treeR.tree.position.x, z: -11, r: 2.4 }, { x: bx, z: bench.position.z, r: 2.4 });
     scene.updateMatrixWorld(true);
+    obstacles.push({ x: treeL.tree.position.x, z: -10.5, r: 2.4 }, { x: C0.cafe.position.x, z: cz - 1, r: 4.2 }, { x: treeR.tree.position.x, z: -11, r: 2.4 }, { x: bx, z: bench.position.z, r: 2.4 });
+    for (const t of C0.tables) { const w = t.t.getWorldPosition(V()); obstacles.push({ x: w.x, z: w.z, r: 1.3 }); }
   }
   resize();
 
@@ -582,10 +883,10 @@ export function start(canvas, opts = {}) {
     pos: V(), yaw: 0, cur: blank(), target: blank(), out: blank(), rate: 6, rest: { ao: 0.1, lo: 0.02 },
     walkAmt: 0, phase: 0, moving: 0, stepping: 0, solveY: R.d.hipH, seat: null, seatW: 0, osc: [], force: {},
     look: null, lookW: 0, eyeX: 0, eyeTX: 0, lid: 0, lidT: 0, blinkAt: 2, blinkT: 0, wide: 0, autoLook: true,
-    flare: 0, flareT: 0, spin: 0, braidV: V(), braid: V(), lastYaw: 0, hold: null,
+    flare: 0, flareT: 0, spin: 0, braidV: V(), braid: V(), lastYaw: 0, hold: null, cross: 0, crossT: 0,
   };
   A.set = (p, rate = 6) => { A.target = Object.assign(blank(), p); A.rate = rate; };
-  for (const e of R.eyes) e.lid.rotation.x = -0.5;
+  for (const e of R.eyes) e.lid.rotation.x = -0.95;
   R.mouth.userData.y0 = R.mouth.scale.y;
   const q = new THREE.Quaternion(), q2 = new THREE.Quaternion(), tv = V(), tv2 = V(), xAxis = V(1, 0, 0);
   let wind = 0, gust = 0;
@@ -595,13 +896,14 @@ export function start(canvas, opts = {}) {
     Object.assign(o, A.cur);
     // a light, swinging stroll
     A.walkAmt += ((A.moving > 0.05 || A.stepping ? 1 : 0) - A.walkAmt) * (1 - Math.exp(-dt * 8));
-    A.phase += dt * (A.moving * 2.4 + A.stepping * 6);
+    A.phase += dt * (A.moving * 3.0 + A.stepping * 6);
     if (A.walkAmt > 0.01) {
       const w = A.walkAmt, s = Math.sin(A.phase), c = Math.cos(A.phase);
-      o.lfL += w * (0.42 * s + 0.22 * Math.max(0, c)); o.lfR += w * (-0.42 * s + 0.22 * Math.max(0, -c));
-      o.lkL += w * 0.75 * Math.max(0, c); o.lkR += w * 0.75 * Math.max(0, -c);
-      o.pr += w * 0.06 * s; o.twist += w * 0.1 * s; o.hr -= w * 0.03 * s;
-      if (!A.hold) { o.afL -= w * 0.32 * s; o.afR += w * 0.32 * s; o.aeL += w * 0.15; o.aeR += w * 0.15; }
+      o.lfL += w * (0.3 * s + 0.16 * Math.max(0, c)); o.lfR += w * (-0.3 * s + 0.16 * Math.max(0, -c));
+      o.lkL += w * 0.55 * Math.max(0, c); o.lkR += w * 0.55 * Math.max(0, -c);
+      o.pr += w * 0.07 * s; o.twist += w * 0.08 * s; o.hr -= w * 0.03 * s;
+      o.afL -= w * 0.22 * s; o.aeL += w * 0.2;
+      if (!A.hold) { o.afR += w * 0.22 * s; o.aeR += w * 0.2; }
     }
     for (const [key, amp, f, ph] of A.osc) o[key] += amp * Math.sin(clock * f + (ph || 0));
     for (const key in A.force) o[key] = A.force[key];
@@ -624,7 +926,8 @@ export function start(canvas, opts = {}) {
     A.blinkT -= dt;
     A.lid += (Math.max(A.lidT, A.blinkT > 0 ? 1 : 0) - A.lid) * (1 - Math.exp(-dt * 22));
     A.wide *= Math.exp(-dt * 2);
-    for (const e of R.eyes) { e.ball.rotation.set(0, A.eyeX, 0); e.lid.rotation.x = lerp(-0.55 - A.wide * 0.3, 1.45, A.lid); }
+    A.cross += (A.crossT - A.cross) * (1 - Math.exp(-dt * 6));
+    for (const e of R.eyes) { e.ball.rotation.set(-A.cross * 0.4, A.eyeX - e.side * A.cross, 0); e.lid.rotation.x = lerp(-0.95 - A.wide * 0.3, 1.45, A.lid); }
     R.mouth.scale.y = R.mouth.userData.y0 * (1 + clamp(o.jaw, 0, 1.2) * 6);
     // pose → joints
     R.root.position.copy(A.pos); R.root.rotation.y = A.yaw + A.spin;
@@ -650,14 +953,14 @@ export function start(canvas, opts = {}) {
     // the skirt sways with her steps and the breeze, flares when she twirls, and folds over her lap when she sits
     A.flare += (A.flareT - A.flare) * (1 - Math.exp(-dt * 5));
     const sw = A.walkAmt * Math.sin(A.phase);
-    R.skirt.rotation.set(-0.09 * A.walkAmt * Math.cos(A.phase) - 0.04 * wind - 1.2 * A.seatW, 0, 0.05 * sw);
-    R.skirt.scale.set(1 + A.flare * 0.45, 1 - A.flare * 0.12 - A.seatW * 0.25, 1 + A.flare * 0.45);
+    R.skirt.rotation.set(-0.06 * A.walkAmt * Math.cos(A.phase) - 0.03 * wind - 0.95 * A.seatW, 0, 0.04 * sw);
+    R.skirt.scale.set(1 + A.flare * 0.4 + 0.12 * A.seatW, 1 - A.flare * 0.1 - A.seatW * 0.3, 1 + A.flare * 0.4 + 0.12 * A.seatW);
     // the braid lags behind her turns and swings as she walks
     const dyaw = angDiff(A.lastYaw, A.yaw + A.spin) / Math.max(dt, 1e-3); A.lastYaw = A.yaw + A.spin;
     A.braidV.x += (-A.braid.x * 40 - A.braidV.x * 5 + dyaw * 2.2 + sw * 3) * dt; A.braid.x += A.braidV.x * dt;
     A.braidV.z += (-A.braid.z * 40 - A.braidV.z * 5 - A.walkAmt * Math.abs(Math.cos(A.phase)) * 4 + wind * 0.6) * dt; A.braid.z += A.braidV.z * dt;
-    R.braid.rotation.set(clamp(A.braid.z, -0.5, 0.5), 0, clamp(A.braid.x, -0.5, 0.5) - 0.12);
-    shadow.position.set(A.pos.x, 0.05, A.pos.z + 0.2); shadow.scale.setScalar(2.4 + A.flare * 1.4);
+    R.hairBack.rotation.set(clamp(-A.braid.z * 0.5 + 0.08 * A.walkAmt + 0.03 * wind, -0.35, 0.4), 0, clamp(A.braid.x * 0.6, -0.35, 0.35));
+    shadow.position.set(A.pos.x, 0.05, A.pos.z + 0.2); shadow.scale.setScalar(3 + A.flare * 1.4);
   }
 
   /* ---------------------------------------------------------------- behaviour */
@@ -693,35 +996,84 @@ export function start(canvas, opts = {}) {
   const ATCAM = () => camera.position;
   const handPt = (i, out = V()) => R.arm[i].hand.userData.holdPt.getWorldPosition(out);
 
+  function* shySmile() {
+    A.look = ATCAM;
+    yield* pose(S(G.shy, A.hold ? { afR: 0.65, aeR: 1.55, aoR: -0.3 } : {}), 1.8, 4);
+    puffHearts(R.crown.getWorldPosition(V()), 2);
+    A.look = null; yield* pose(A.hold ? G.carry : G.stand, 0.5);
+  }
   function* stroll() {
     const z0 = 0, x = clamp(A.pos.x + (rnd() < 0.5 ? -1 : 1) * (6 + rnd() * 10), -xLim(z0), xLim(z0));
     yield* goTo(x, pathZ(x));
     yield* turnTo(faceCam() + (rnd() - 0.5) * 0.5);
-    if (watching() && rnd() < 0.4) {
-      A.look = ATCAM; A.osc = [['aoR', 0.28, 9]];
-      yield* pose(G.wave, 1.6, 6);
-      A.osc = []; A.look = null; puffHearts(R.crown.getWorldPosition(V()), 2); yield* pose(G.stand, 0.4);
-    } else yield* wait(0.5 + rnd());
+    if (watching() && rnd() < 0.45) yield* shySmile(); else yield* wait(0.5 + rnd());
   }
-  function* smellFlower() {
-    const f = flowerSpots.filter(p => Math.abs(p.x) < xLim(p.z) && Math.abs(p.x - A.pos.x) < 25).sort(() => rnd() - 0.5)[0];
-    if (!f) return;
-    const side = f.z > pathZ(f.x) ? 1 : -1;
-    yield* goTo(f.x, f.z - side * 1.5, { face: side > 0 ? 0 : Math.PI });
-    yield* pose(G.sniff, 0.9, 4);
-    A.lidT = 1; yield* wait(1.4);
-    puffHearts(R.crown.getWorldPosition(V()).add(V(0, -0.3, 0.4)), 4);
-    A.lidT = 0.35; A.target.jaw = 0.25; yield* wait(0.8);
-    A.lidT = 0;
-    // pick one and tuck it behind her ear
-    yield* pose(G.pick, 0.6, 6);
+  // her little story: she picks a rose and smells it, a butterfly lands on her face,
+  // and she takes the rose to the bench and sits looking out over the canyon
+  function* pickRose() {
+    const f = flowerSpots.filter(p => p.z > pathZ(p.x) && Math.abs(p.x) < xLim(p.z) - 2 && Math.abs(p.x - arch.position.x) > 4.5 && Math.abs(p.x - bench.position.x) > 3).sort((a, b) => Math.abs(a.x - A.pos.x) - Math.abs(b.x - A.pos.x))[0];
+    if (f) yield* goTo(f.x, pathZ(f.x) + 0.6, { face: 0.15 });
+    yield* pose(G.pick, 1.0, 4);
     heldFlower.visible = true; A.hold = 1;
-    yield* pose(G.holdFlower, 0.8, 5);
+    yield* pose(G.holdFlower, 0.9, 4);
+    A.lidT = 1; yield* wait(1.6);
+    puffHearts(R.crown.getWorldPosition(V()).add(V(0, -0.3, 0.4)), 4);
+    A.lidT = 0.4; A.target.jaw = 0.2; yield* wait(0.9); A.lidT = 0;
+    yield* pose(G.carry, 0.5);
+  }
+  function* butterflyKiss() {
+    const fl = flies.reduce((a, b) => (a.p.distanceTo(A.pos) < b.p.distanceTo(A.pos) ? a : b));
     yield* turnTo(faceCam());
-    yield* pose(G.tuck, 0.9, 5);
-    heldFlower.visible = false; R.hairFlower.visible = true; A.hold = null;
-    yield* pose(S(G.stand, { hr: 0.15 }), 0.8, 4);
+    A.look = () => fl.p;
+    const nose = () => R.nosePt.getWorldPosition(V()).add(V(Math.sin(A.yaw) * 0.06, -0.04, Math.cos(A.yaw) * 0.06));
+    fl.follow = nose;
+    let t = 0; while (t < 7 && fl.p.distanceTo(nose()) > 0.22) t += yield;
+    fl.land = 1; A.look = null; A.crossT = 0.32; A.wide = 1;
+    yield* wait(0.8);
+    A.osc = [['hr', 0.07, 7], ['side', 0.03, 7]];
+    yield* pose(G.giggle, 1.6, 6);
+    puffHearts(R.crown.getWorldPosition(V()), 5);
+    fl.follow = null; fl.land = 0; fl.t.copy(fl.p).add(V(2, 2.5, 1)); fl.ph = clock + 3;
+    A.osc = []; A.crossT = 0; A.look = () => fl.p;
+    yield* pose(G.carry, 1.4, 4);
+    A.look = null;
+  }
+  function* sitBench() {
+    const fwd = V(Math.sin(bench.rotation.y), 0, Math.cos(bench.rotation.y)), seat = bench.position.clone().addScaledVector(fwd, 0.15);
+    yield* goTo(seat.x + fwd.x * 1.8, seat.z + fwd.z * 1.8);
+    yield* goTo(seat.x, seat.z, { face: bench.rotation.y, direct: true });
+    A.seat = 1.42; yield* pose(S(G.sit, A.hold ? G.lap : {}), 1.0, 3);
+    A.osc = [['lkL', 0.12, 2.4], ['lkR', 0.12, 2.4, 1.9]];
+    A.autoLook = false; A.look = () => V(0, -10, -250);                    // out over the canyon
+    yield* wait(3.2);
     puffHearts(R.crown.getWorldPosition(V()), 3);
+    A.look = ATCAM; yield* pose(S(G.sit, G.lap, { hr: 0.2, jaw: 0.2 }), 2.2, 3);
+    A.look = null; A.autoLook = true; A.osc = [];
+    if (A.hold) { heldFlower.visible = false; A.hold = null; benchRose.visible = true; benchRose.position.copy(seat).add(V(0.9, 1.4, 0)); benchRose.rotation.set(0, 0, Math.PI / 2); }   // leaves the rose on the bench
+    A.seat = null; yield* pose(G.stand, 1.0, 3);
+  }
+  function* story() { yield* pickRose(); yield* butterflyKiss(); yield* sitBench(); }
+  // a coffee at Wishes
+  function* cafeVisit() {
+    const door = C0.cafe.localToWorld(C0.doorPt.clone()), into = C0.cafe.rotation.y + Math.PI;
+    yield* goTo(door.x, door.z, { face: into });
+    doorOpen = 1; yield* wait(2.2);
+    mug.visible = true; mugAt = 'hand'; mugHot = 1; A.hold = 1;
+    doorOpen = 0;
+    yield* turnTo(into + Math.PI);
+    yield* pose(G.cup, 0.4);
+    const ch = C0.tables[0].seats[0].chair, cw = ch.getWorldPosition(V()), cy = ch.getWorldQuaternion(new THREE.Quaternion()), f = V(0, 0, 1).applyQuaternion(cy);
+    yield* goTo(cw.x + f.x * 1.6, cw.z + f.z * 1.6);
+    yield* goTo(cw.x, cw.z, { face: Math.atan2(f.x, f.z), direct: true });
+    A.seat = 1.42; yield* pose(S(G.sit, G.cup), 1.0, 3);
+    for (let i = 0; i < 2; i++) {
+      yield* pose(S(G.sit, G.sip), 0.7, 4); A.lidT = 1; yield* wait(1.0); A.lidT = 0;
+      puffHearts(R.crown.getWorldPosition(V()), 2);
+      yield* pose(S(G.sit, G.cup), 1.0, 4);
+      A.look = () => V(0, -10, -250); yield* wait(2.2); A.look = null;
+    }
+    mugAt = C0.tables[0].t.localToWorld(V(0.3, 2.0, 0.2)); A.hold = null;   // leaves the cup on the table
+    A.seat = null; yield* pose(G.stand, 1.0, 3);
   }
   function* gaze() {
     const x = clamp(A.pos.x, -xLim(-12) + 2, xLim(-12) - 2), z = rimZ(x) + 3;
@@ -730,8 +1082,7 @@ export function start(canvas, opts = {}) {
     yield* pose(S(G.gaze, G.stand), 0.6, 4);
     gust = 1.5; A.osc = [['hr', 0.06, 1.2]];
     yield* wait(3.2);
-    yield* pose(S(G.gaze, { afL: -0.4, aoL: -0.25, aeL: 0.9, afR: -0.4, aoR: -0.25, aeR: 0.9 }), 2.5, 3);   // hands behind her back
-    // a glance back over her shoulder at you, and a smile
+    yield* pose(S(G.gaze, { afL: -0.4, aoL: -0.25, aeL: 0.9, afR: -0.4, aoR: -0.25, aeR: 0.9 }), 2.5, 3);
     A.osc = []; A.look = ATCAM;
     yield* pose(S(G.lookBack, { afL: -0.4, aoL: -0.25, aeL: 0.9, afR: -0.4, aoR: -0.25, aeR: 0.9, jaw: 0.2 }), 1.8, 4);
     A.look = null; A.autoLook = true;
@@ -741,51 +1092,27 @@ export function start(canvas, opts = {}) {
     yield* turnTo(faceCam());
     yield* pose(G.twirl, 0.4, 6);
     A.flareT = 1; gust = 1;
-    let t = 0; const T = 1.6;
+    let t = 0; const T = 1.8;
     while (t < T) { t += yield; A.spin = TAU * sm(0, 1, t / T); A.stepping = 0.8; }
     A.spin = 0; A.yaw = A.yaw % TAU; A.stepping = 0; A.flareT = 0;
     puffHearts(R.crown.getWorldPosition(V()), 5);
     yield* pose(S(G.hug, { jaw: 0.3 }), 1.2, 5);
     yield* pose(G.stand, 0.5);
   }
-  function* sitBench() {
-    const fwd = V(Math.sin(bench.rotation.y), 0, Math.cos(bench.rotation.y)), seat = bench.position.clone().addScaledVector(fwd, 0.2);
-    yield* goTo(seat.x + fwd.x * 1.8, seat.z + fwd.z * 1.8);
-    yield* goTo(seat.x, seat.z, { face: bench.rotation.y, direct: true });
-    A.seat = 1.42; yield* pose(G.sit, 1.0, 3);
-    A.osc = [['lkL', 0.18, 2.6], ['lkR', 0.18, 2.6, 1.9]];
-    A.autoLook = false; yield* wait(2.5);
-    yield* pose(S(G.sit, G.stretch, { lfL: 1.5, lfR: 1.5, lkL: 1.45, lkR: 1.55 }), 1.6, 3);
-    yield* pose(G.sit, 1.0, 3);
-    A.look = ATCAM; yield* pose(S(G.sit, { twist: 0.4, jaw: 0.2 }), 1.6, 4); A.look = null; A.autoLook = true;
-    A.osc = [];
-    A.seat = null; yield* pose(G.stand, 1.0, 3);
-  }
-  function* butterfly() {
-    const f = flies.reduce((a, b) => (a.p.distanceTo(A.pos) < b.p.distanceTo(A.pos) ? a : b));
-    yield* turnTo(faceCam());
-    yield* pose(G.finger, 0.8, 5);
-    f.follow = () => handPt(1);
-    A.look = () => f.p;
-    let t = 0; while (t < 6 && f.p.distanceTo(handPt(1, tv2)) > 0.25) t += yield;
-    f.land = 1; A.wide = 1; A.target.jaw = 0.35;
-    puffHearts(f.p.clone().add(V(0, 0.3, 0)), 4);
-    yield* wait(2.2);
-    f.follow = null; f.land = 0; A.look = null; A.target.jaw = 0;
-    yield* pose(G.stand, 0.5);
-  }
-  const ACTS = { smell: [smellFlower, 2], gaze: [gaze, 1.5], twirl: [twirl, 1.1], bench: [sitBench, 1.2], butterfly: [butterfly, 1.2] };
+  const ACTS = { story: [story, 3], cafe: [cafeVisit, 2], twirl: [twirl, 1], gaze: [gaze, 1] };
   function* enter() {
     const e = rnd() < 0.5 ? -1 : 1, x0 = e * (halfWAt(0) + 3);
     A.pos.set(x0, 0, pathZ(x0)); A.yaw = -e * Math.PI / 2;
     yield* goTo(e * halfWAt(0) * 0.4, pathZ(e * halfWAt(0) * 0.4));
+    yield* turnTo(Math.PI * 0.85 * e);                                      // the view
+    A.autoLook = false; yield* pose(G.hug, 2.0, 3); A.autoLook = true;
     yield* turnTo(faceCam());
-    A.look = ATCAM; yield* pose(S(G.wave, {}), 0.2, 6); A.osc = [['aoR', 0.28, 9]]; yield* wait(1.4); A.osc = []; A.look = null;
-    yield* pose(G.stretch, 1.4, 3); yield* pose(G.stand, 0.5);
+    yield* shySmile();
   }
   function* life(first) {
     if (first) yield* first();
-    let last = '';
+    yield* story();                                                           // her story first
+    let last = 'story';
     for (;;) {
       for (let i = 0, n = 1 + (rnd() * 2 | 0); i < n; i++) yield* stroll();
       const names = Object.keys(ACTS).filter(k => k !== last);
@@ -801,20 +1128,58 @@ export function start(canvas, opts = {}) {
   let restored = false;
   try {
     const st = JSON.parse(sessionStorage.getItem(KEY) || 'null');
-    if (st && Date.now() - st.t < 30 * 60 * 1000 && Math.abs(st.x) < xLim(st.z)) { A.pos.set(st.x, 0, st.z); A.yaw = st.yaw || 0; R.hairFlower.visible = !!st.flower; restored = true; }
+    if (st && Date.now() - st.t < 30 * 60 * 1000 && Math.abs(st.x) < xLim(st.z)) { A.pos.set(st.x, 0, st.z); A.yaw = st.yaw || 0; restored = true; }
   } catch (e) { /* fine */ }
   window.addEventListener('pagehide', save);
+  for (const r of rabbits) { r.pos.set((rnd() * 2 - 1) * xLim(0), 0, -6 + rnd() * 10); r.from.copy(r.pos); }
   let director = life(restored ? null : enter);
+  R.hairFlower.visible = true;
 
   /* ---------------------------------------------------------------- per frame */
   const m4 = new THREE.Matrix4();
   function step(dt) {
     clock += dt;
-    try { director.next(dt); } catch (err) { console.error(err); A.seat = null; A.spin = 0; A.flareT = 0; A.hold = null; director = life(); }
+    try { director.next(dt); } catch (err) { console.error(err); A.seat = null; A.spin = 0; A.flareT = 0; A.hold = null; A.crossT = 0; heldFlower.visible = false; director = life(); }
     gust *= Math.exp(-dt * 0.8);
     wind = 0.5 + 0.3 * Math.sin(clock * 0.31) + 0.2 * Math.sin(clock * 0.87) + gust;
     update(dt);
     if (heldFlower.visible) { handPt(1, heldFlower.position); heldFlower.rotation.y = A.yaw; }
+    if (mug.visible) {
+      if (mugAt === 'hand') { handPt(1, mug.position); mug.position.y -= 0.12; mug.rotation.y = A.yaw - Math.PI / 2; } else mug.position.copy(mugAt);
+      mugHot = Math.max(0, mugHot - dt / 90); if (mugAt !== 'hand' && mugHot <= 0.5) { mug.visible = false; }
+    }
+    for (const st of steam) {
+      st.t = (st.t + dt * 0.5) % 1; st.s.visible = mug.visible && mugHot > 0;
+      st.s.position.copy(mug.position).add(V(Math.sin(clock * 2 + st.t * 9) * 0.05, 0.3 + st.t * 0.6, 0)); st.s.scale.setScalar(0.15 + st.t * 0.3); st.s.material.opacity = 0.5 * Math.sin(Math.PI * st.t) * mugHot;
+    }
+    for (const sm2 of C0.smoke) {
+      sm2.t = (sm2.t + dt * 0.08) % 1;
+      sm2.s.position.copy(C0.chimney).add(V(sm2.t * 2.5 + Math.sin(clock * 0.7 + sm2.t * 6) * 0.3, sm2.t * 5, 0)); sm2.s.scale.setScalar(0.8 + sm2.t * 2.4); sm2.s.material.opacity = 0.35 * Math.sin(Math.PI * sm2.t);
+    }
+    C0.door.rotation.y += (-1.4 * doorOpen - C0.door.rotation.y) * (1 - Math.exp(-dt * 4));
+    for (const r of rabbits) {
+      if (r.hops > 0) {
+        r.t += dt / 0.42; const u = Math.min(1, r.t);
+        r.pos.lerpVectors(r.from, r.to, u); r.pos.y = Math.sin(Math.PI * u) * 0.45;
+        r.body.rotation.x = -0.35 * Math.cos(Math.PI * u);
+        if (u >= 1) { r.hops--; r.t = 0; r.from.copy(r.pos); r.from.y = 0; if (r.hops > 0) r.to.copy(r.from).add(V(Math.sin(r.yaw), 0, Math.cos(r.yaw)).multiplyScalar(0.9)); else { r.rest = 1.5 + rnd() * 4; r.body.rotation.x = 0; } }
+      } else {
+        r.rest -= dt; r.nibble = Math.max(0, Math.sin(clock * 9 + r.yaw * 5)) * 0.12;
+        r.body.rotation.x = r.nibble;
+        if (r.rest < 0) {
+          let tx, tz;
+          if (rnd() < 0.25) { tx = A.pos.x + (rnd() - 0.5) * 6; tz = A.pos.z + 2 + rnd() * 2; }
+          else { tx = (rnd() * 2 - 1) * xLim(0); tz = -12 + rnd() * 16; }
+          tz = Math.max(tz, rimZ(tx) + 3);
+          r.yaw = Math.atan2(tx - r.pos.x, tz - r.pos.z); r.from.copy(r.pos); r.from.y = 0;
+          r.hops = Math.max(1, Math.min(8, Math.round(Math.hypot(tx - r.pos.x, tz - r.pos.z) / 0.9)));
+          r.to.copy(r.from).add(V(Math.sin(r.yaw), 0, Math.cos(r.yaw)).multiplyScalar(0.9)); r.t = 0;
+        }
+      }
+      r.twitch -= dt; if (r.twitch < 0) { r.twitch = 1 + rnd() * 3; r.ears[(rnd() * 2) | 0].userData.k = 1; }
+      for (const e of r.ears) { e.userData.k = (e.userData.k || 0) * Math.exp(-dt * 6); e.rotation.x = -0.35 + 0.3 * Math.sin(clock * 30) * e.userData.k; }
+      r.rb.position.copy(r.pos); r.rb.rotation.y = r.yaw;
+    }
     water.userData.time.value = clock;
     for (const c of clouds) { c.c.position.x += c.v * dt; if (c.c.position.x > 1600) c.c.position.x = -1600; }
     for (const b of birds) {
@@ -869,13 +1234,14 @@ export function start(canvas, opts = {}) {
     sun.material.opacity = night ? 0.75 : 1;
     for (const c of clouds) c.c.material.color.set(night ? 0x8a5a7a : 0xffd6c0);
     lightsMat.emissiveIntensity = night ? 2.4 : 0.2;
+    C0.bulbM.emissiveIntensity = night ? 2.6 : 0.25; C0.glass.emissiveIntensity = night ? 1.6 : 0.5; C0.light.intensity = night ? 18 : 0;
   }
   setTheme(opts.theme);
   play();
 
   return {
     setTheme,
-    debug: { camera, scene, renderer, step, A, R, run: name => { director = life(name === 'enter' ? enter : name === 'idle' ? function* () { for (;;) yield; } : ACTS[name][0]); } },
+    debug: { camera, scene, renderer, step, A, R, run: name => { director = life(name === 'enter' ? enter : name === 'idle' ? function* () { for (;;) yield; } : name === 'pick' ? pickRose : name === 'kiss' ? butterflyKiss : name === 'bench' ? sitBench : ACTS[name][0]); } },
     stop() {
       pause(); save();
       window.removeEventListener('pagehide', save);
