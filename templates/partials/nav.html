@@ -49,6 +49,10 @@
                   data-src="{{ get_url(path='js/panda.js', cachebust=true) }}">
             <span aria-hidden="true">🐼</span>{% if lang == 'or' %}କୁଙ୍ଗ୍ ଫୁ ପାଣ୍ଡା{% else %}Kung fu panda{% endif %}
           </button>
+          <button role="menuitemradio" aria-checked="false" data-companion-pick="garden" data-icon="🌸"
+                  data-src="{{ get_url(path='js/garden.js', cachebust=true) }}">
+            <span aria-hidden="true">🌸</span>{% if lang == 'or' %}ସକାଳର ବଗିଚା{% else %}Morning garden{% endif %}
+          </button>
           <button role="menuitemradio" aria-checked="false" data-companion-pick="off">
             <span aria-hidden="true">✕</span>{% if lang == 'or' %}ବନ୍ଦ{% else %}Off{% endif %}
           </button>

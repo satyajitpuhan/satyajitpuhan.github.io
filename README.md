@@ -143,10 +143,10 @@ If an alert is you, just close the issue. If it is not: change your GitHub passw
 Settings → Sessions / Security log, revoke unknown tokens and keys, and revert the commit.
 Make sure GitHub notifications for this repository reach your email (Settings → Notifications).
 
-## The dragon and the panda
+## The companions
 
-A 3D companion lives behind the content on every page. Visitors choose one from the 🐉/🐼
-button in the top bar (Dragon, Kung fu panda, or Off); the choice is remembered.
+A 3D companion lives behind the content on every page. Visitors choose one from the 🐉/🐼/🌸
+button in the top bar (Dragon, Kung fu panda, Morning garden, or Off); the choice is remembered.
 
 * **Dragon** (`static/js/dragon.js`): an Eastern dragon that swims across the page, sometimes
   circles the mouse, and now and then opens its jaws.
@@ -159,7 +159,14 @@ button in the top bar (Dragon, Kung fu panda, or Off); the choice is remembered.
   a peach out of the tree (it lands on his head) and eats it, trains with his master, duels him
   with chopsticks for a dumpling, and naps under the tree.
 
-Both are built entirely in code (no model or image files). The only library is three.js,
+* **Morning garden** (`static/js/garden.js`): a cartoon girl on a morning walk in a flower garden
+  on the rim of a red-rock canyon that opens out to the sea, with the sun coming up (a dawn sky
+  and lit fairy lights in the dark theme). She strolls along the path, smells the flowers and
+  tucks one in her hair, gazes out over the canyon, twirls, sits on the bench, and lets a
+  butterfly land on her finger.
+
+All three are built entirely in code (no model or image files); shared building blocks live in
+`static/js/kit.js`. The only library is three.js,
 self-hosted in `static/js/vendor/` (MIT licence alongside it), so the Site guard sees no outside
 scripts.
 
