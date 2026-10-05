@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 984" role="img" aria-label="Pion parton distribution functions in the light-cone quark model and experimental constraints">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#101a2e"/><stop offset="1" stop-color="#070b14"/>
+    </linearGradient>
+  </defs>
+  <rect width="760" height="984" fill="url(#g)"/>
+  <rect x="1" y="1" width="758" height="982" fill="none" stroke="#1e2a44"/>
+  <text x="56" y="120" fill="#e8a444" font-family="monospace" font-size="21" letter-spacing="4">arXiv:2604.05762</text>
+  <line x1="56" y1="150" x2="704" y2="150" stroke="#1e2a44" stroke-width="2"/>
+  <text x="56" y="230" fill="#eef2fb" font-family="Georgia, serif" font-size="42">Pion parton distribution</text>
+  <text x="56" y="284" fill="#eef2fb" font-family="Georgia, serif" font-size="42">functions in the</text>
+  <text x="56" y="338" fill="#eef2fb" font-family="Georgia, serif" font-size="42">light-cone quark model and</text>
+  <text x="56" y="392" fill="#eef2fb" font-family="Georgia, serif" font-size="42">experimental constraints</text>
+  <text x="56" y="880" fill="#8ea0c0" font-family="monospace" font-size="20">H. G. P, S. Puhan, A. K. P., R. Pandey et al.</text>
+  <text x="56" y="920" fill="#5d6f90" font-family="monospace" font-size="18">Phys. Rev. D 114 (2026)</text>
+</svg>

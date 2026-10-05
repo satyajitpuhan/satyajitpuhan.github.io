@@ -1,0 +1,17 @@
+﻿top_title = "ଶୈକ୍ଷଣିକ ସେବା"
+title     = "ଜର୍ନାଲ ପିଅର ସମୀକ୍ଷକ"
+subtitle  = "ଆନ୍ତର୍ଜାତୀୟ ପଦାର୍ଥ ବିଜ୍ଞାନ ଜର୍ନାଲ ପାଇଁ ପିଅର ସମୀକ୍ଷା ମାଧ୍ୟମରେ ବୈଜ୍ଞାନିକ ସମ୍ପ୍ରଦାୟରେ ସକ୍ରିୟ ଭୂମିକା।"
+
+[[journals]]
+name        = "Journal of Modern Physics (JMP)"
+publisher   = "Scientific Research Publishing (SCIRP)"
+url         = "https://www.scirp.org/journal/home?journalid=172"
+icon        = "lni-book"
+description = "ଜର୍ନାଲ ଅଫ ମଡ଼ର୍ନ ଫିଜ଼ିକ୍ସ ପାଇଁ ପିଅର ସମୀକ୍ଷକ।"
+
+[[journals]]
+name        = "Frontiers in Physics"
+publisher   = "Frontiers Media S.A."
+url         = "https://www.frontiersin.org/journals/physics"
+icon        = "lni-star"
+description = "ଫ୍ରଣ୍ଟିଅର୍ସ ଇନ ଫିଜ଼ିକ୍ସ ପାଇଁ ପିଅର ସମୀକ୍ଷକ।"

@@ -1,0 +1,24 @@
+{
+  "papers": 44,
+  "citations": 222,
+  "hindex": 10,
+  "journal_articles": 23,
+  "proceedings": 12,
+  "preprints": 9,
+  "papers_by_year": {
+    "2023": 2,
+    "2024": 9,
+    "2025": 14,
+    "2026": 19
+  },
+  "updated": "2026-10-05",
+  "exclude": [
+    3168377
+  ],
+  "citations_by_year": {
+    "2023": 2,
+    "2024": 44,
+    "2025": 83,
+    "2026": 93
+  }
+}

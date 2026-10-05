@@ -1,0 +1,36 @@
+top_title = "ଦକ୍ଷତା"
+title = "ବୈଷୟିକ ଦକ୍ଷତା ଓ ଉପକରଣ"
+subtitle = "ମୋ ଗବେଷଣାରେ ବ୍ୟବହୃତ ତତ୍ତ୍ୱଗତ କାଠାମୋ, ଗଣନାତ୍ମକ ଉପକରଣ ଓ ପ୍ରୋଗ୍ରାମିଂ ଭାଷା।"
+image = "images/about/me.webp"
+
+[[skills]]
+title = "Mathematica (Expert)"
+percent = "95"
+
+[[skills]]
+title = "Python / NumPy / SciPy (Expert)"
+percent = "92"
+
+[[skills]]
+title = "Light-Front Quark Model (LFQM)"
+percent = "95"
+
+[[skills]]
+title = "NJL / DS-BSE / Spectator Models"
+percent = "85"
+
+[[skills]]
+title = "LHAPDF / xFitter / DGLAP / CSS / iminuit"
+percent = "90"
+
+[[skills]]
+title = "LaTeX / Overleaf / Scientific Writing"
+percent = "95"
+
+[[skills]]
+title = "Neural Networks / ML / Monte Carlo (Pythia)"
+percent = "75"
+
+[[skills]]
+title = "C++ / Linux / Git"
+percent = "60"

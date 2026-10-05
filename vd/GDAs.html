@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Generalized Distribution Amplitude</title>
+  <style>
+    html, body { margin:0; padding:0; overflow:hidden; background: #14182f; }
+    canvas { display: block; width: 100vw; height: 100vh; }
+    #walltitle {
+      position: fixed;
+      top: 26px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2.3vw;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-weight: bold;
+      color: #a5daff;
+      text-shadow: 0 2px 18px #255ac47c, 0 0 0 #fff;
+      letter-spacing: 2px;
+      opacity: 0.97;
+      pointer-events: none;
+      z-index: 99;
+      user-select: none;
+      text-align: center;
+    }
+    #wallschema {
+      position: fixed;
+      top: 62px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.16vw;
+      font-family: 'Segoe UI', 'Consolas', Arial, sans-serif;
+      color: #f6db90;
+      text-shadow: 0 1px 7px #7f67803c;
+      letter-spacing: 1.6px;
+      opacity: 0.93;
+      pointer-events: none;
+      z-index: 99;
+      user-select: none;
+      text-align: center;
+    }
+    @media (max-width: 800px) {
+      #walltitle { font-size: 4vw; }
+      #wallschema { font-size: 2.45vw; }
+    }
+  </style>
+</head>
+<body>
+<div id="walltitle">Generalized Distribution Amplitude</div>
+<div id="wallschema">Decay: γγ<sup>*</sup> → π<sup>0</sup> π<sup>0</sup></div>
+<canvas id="wallpaper"></canvas>
+<script>
+const PHOTON_COLOR = "#ffe216";
+const FLASH_COLOR = "#fffac3";
+const BG_GRAD = {
+    color1: "#14182f",
+    color2: "#50209533"
+};
+const PION_COLOR="#fcaacc";
+const PION_GLOW="#fff2";
+
+// Add gamma* (starred photon) effect:
+const GAMMASTAR_OUTLINE="#55f1fe";
+
+// For QFT-style, we can add momentum arrows or wiggly paths if needed.
+
+const canvas = document.getElementById("wallpaper");
+const ctx = canvas.getContext("2d");
+
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+window.addEventListener("resize", resize);
+resize();
+
+let t = 0;
+let leftPhoton, rightPhoton;
+let collisionFrame = null;
+let pions = [];
+let animPhase = 0;
+let restartTimeout = null;
+
+// γ left, γ* right (starred)
+function resetScene() {
+    let cy = canvas.height/2;
+    let pr = Math.max(30, Math.min(canvas.width, canvas.height)/16);
+    leftPhoton = {
+        x: -60, y: cy, r: 19, speed: (canvas.width/2 + 60) / 50, label: "γ", dir: 1, tailPhase: Math.random()*Math.PI*2, isStar: false
+    };
+    rightPhoton = {
+        x: canvas.width + 60, y: cy, r: 19, speed: (canvas.width/2 + 60) / 50, label: "γ*", dir: -1, tailPhase: Math.random()*Math.PI*2+1, isStar: true
+    };
+    collisionFrame = null;
+    pions = [];
+    animPhase = 0;
+    if (restartTimeout) clearTimeout(restartTimeout);
+}
+resetScene();
+
+function drawBackground(){
+    let grad = ctx.createLinearGradient(0,0,canvas.width,canvas.height);
+    grad.addColorStop(0, BG_GRAD.color1);
+    grad.addColorStop(1, BG_GRAD.color2);
+    ctx.fillStyle = grad;
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+
+    for(let i=0;i<19;++i){
+        let a = Math.random()*2*Math.PI, r = Math.random()*canvas.width/2.2;
+        let sx = canvas.width/2 + Math.cos(a) * r;
+        let sy = canvas.height/2 + Math.sin(a) * r - canvas.height/7;
+        ctx.globalAlpha = Math.random()*0.31+0.08;
+        ctx.beginPath();
+        ctx.arc(sx, sy, Math.random()*2+0.8, 0, 2*Math.PI);
+        ctx.fillStyle = "#fff";
+        ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+}
+
+function drawPhoton(ph, t, showLabel=true) {
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(ph.x, ph.y, ph.r, 0,2*Math.PI);
+    // If is gamma*, draw blue outline for virtual photon
+    if (ph.isStar) {
+        ctx.save();
+        ctx.shadowColor = GAMMASTAR_OUTLINE;
+        ctx.shadowBlur = 30;
+        ctx.globalAlpha = 0.51;
+        ctx.lineWidth = 7.8;
+        ctx.strokeStyle = GAMMASTAR_OUTLINE;
+        ctx.stroke();
+        ctx.restore();
+    }
+    ctx.shadowColor = PHOTON_COLOR;
+    ctx.shadowBlur = 30;
+    ctx.globalAlpha = 0.92 + 0.09*Math.sin(t/10+ph.tailPhase);
+    ctx.fillStyle = PHOTON_COLOR;
+    ctx.fill();
+
+    // Core
+    ctx.beginPath();
+    ctx.arc(ph.x, ph.y, ph.r*0.43, 0, 2*Math.PI);
+    ctx.globalAlpha = 0.98;
+    ctx.fillStyle = "#fff781";
+    ctx.fill();
+
+    // Trailing sine tail (wave nature)
+    ctx.beginPath();
+    let sign = (ph.dir > 0)?-1:1;
+    let points = [];
+    for(let i=0; i<=22;++i){
+        let dx = i*14*sign, dy = Math.sin((t/9+ph.tailPhase) + sign*i*0.48)*13;
+        points.push([ph.x+dx, ph.y+dy]);
+    }
+    ctx.moveTo(points[0][0], points[0][1]);
+    for(let pt of points) ctx.lineTo(pt[0], pt[1]);
+    ctx.strokeStyle = ph.isStar ? GAMMASTAR_OUTLINE : "#fff9";
+    ctx.lineWidth = 4.6 + Math.sin(t/7+ph.tailPhase)*2.1;
+    ctx.shadowColor = ph.isStar ? GAMMASTAR_OUTLINE : "#ffd42e";
+    ctx.shadowBlur = 13;
+    ctx.globalAlpha = 0.67 + 0.20*Math.sin(t/6+ph.tailPhase);
+    ctx.stroke();
+    ctx.restore();
+
+    // Label: "γ" or "γ*"
+    if(showLabel) drawLabel(ph.label, ph.x, ph.y + ph.r + 5, "#fffbb7", ph.isStar ? GAMMASTAR_OUTLINE : "#eed822a0", ph.r*1.27, ph.isStar);
+}
+
+function drawPion(p, t, showLabel=true, idx=1) {
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0,2*Math.PI);
+    ctx.shadowColor = PION_GLOW;
+    ctx.shadowBlur = 16+7*Math.sin(t/7+p.angle);
+    ctx.globalAlpha = 0.94;
+    ctx.fillStyle = PION_COLOR;
+    ctx.fill();
+    // Core highlight
+    ctx.globalAlpha = 0.77;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r*0.43, 0, 2*Math.PI);
+    ctx.fillStyle = "#fff9";
+    ctx.fill();
+
+    ctx.restore();
+
+    // Pion symbol: π⁰
+    ctx.save();
+    ctx.font = `bold ${Math.round(p.r*1.23)}px Arial,sans-serif`;
+    ctx.fillStyle = "#fff4cc";
+    ctx.globalAlpha = 0.75;
+    ctx.textAlign = "center";
+    ctx.textBaseline = "top";
+    ctx.shadowColor = "#eed822a0";
+    ctx.shadowBlur = 4;
+    ctx.fillText("π⁰", p.x, p.y + p.r + 4);
+    ctx.restore();
+}
+
+function drawLabel(text, x, y, color, shadow, sz, highlightStar=false) {
+    ctx.save();
+    ctx.font = (highlightStar ? "italic " : "") + `bold ${Math.round(sz)}px Arial,sans-serif`;
+    ctx.fillStyle = color;
+    ctx.globalAlpha = 0.82;
+    ctx.textAlign = "center";
+    ctx.textBaseline = "top";
+    ctx.shadowColor = shadow;
+    ctx.shadowBlur = highlightStar ? 10 : 5;
+    ctx.fillText(text, x, y);
+    ctx.restore();
+}
+
+function drawArrow(x1, y1, x2, y2, opts={}) {
+    // Draws a QFT-style process arrow (momentum)
+    ctx.save();
+    ctx.strokeStyle = opts.color||"#f3ba7a";
+    ctx.lineWidth = opts.width||2.6;
+    ctx.globalAlpha = opts.alpha || 0.34;
+    ctx.beginPath();
+    ctx.moveTo(x1, y1);
+    ctx.lineTo(x2, y2);
+    ctx.stroke();
+    // Arrowhead
+    let a = Math.atan2(y2-y1, x2-x1);
+    let len = opts.headLength || 17;
+    ctx.beginPath();
+    ctx.moveTo(x2, y2);
+    ctx.lineTo(x2-Math.cos(a-Math.PI/7)*len, y2-Math.sin(a-Math.PI/7)*len);
+    ctx.moveTo(x2, y2);
+    ctx.lineTo(x2-Math.cos(a+Math.PI/7)*len, y2-Math.sin(a+Math.PI/7)*len);
+    ctx.strokeStyle = opts.color||"#f3ba7a";
+    ctx.globalAlpha = opts.alpha || 0.34;
+    ctx.lineWidth = (opts.width||2.6);
+    ctx.stroke();
+    ctx.restore();
+}
+
+function draw() {
+    drawBackground();
+
+    // Optional: process arrows for QFT look (in/out arrows faint)
+    let cy = canvas.height/2;
+    if(animPhase === 0) {
+        let lpx = leftPhoton.x+leftPhoton.r*1.05, rpx = rightPhoton.x-rightPhoton.r*1.05;
+        let centerX = (canvas.width)/2, pionY = cy;
+        drawArrow(lpx, cy, centerX-6, cy, {color:PHOTON_COLOR, alpha:0.19, width:2.9});
+        drawArrow(rpx, cy, centerX+6, cy, {color:GAMMASTAR_OUTLINE, alpha:0.17, width:2.9});
+    } else if(animPhase === 1) {
+        let centerX = (canvas.width)/2, centerY = cy;
+        if(pions.length===2) {
+            let p0 = pions[0], p1 = pions[1];
+            drawArrow(centerX+2, centerY+2, p0.x, p0.y, {color:PION_COLOR, alpha:0.22, width:3.2});
+            drawArrow(centerX-2, centerY+2, p1.x, p1.y, {color:PION_COLOR, alpha:0.22, width:3.2});
+        }
+    }
+
+    // Animation phases
+    if (animPhase === 0) {
+        // Move photons inward
+        leftPhoton.x += leftPhoton.speed;
+        rightPhoton.x -= rightPhoton.speed;
+        drawPhoton(leftPhoton, t, true);
+        drawPhoton(rightPhoton, t, true);
+
+        // Trigger collision
+        if (rightPhoton.x - leftPhoton.x < leftPhoton.r*2.25) {
+            collisionFrame = t;
+            animPhase = 1;
+            // Two neutral pions, shoot out diagonally
+            let centerX = (leftPhoton.x + rightPhoton.x) / 2;
+            let centerY = leftPhoton.y;
+            let speed = Math.max(canvas.width,canvas.height)/92;
+            let pionAngle = Math.PI/4; // 45°; -45°
+            pions = [
+                {x:centerX, y:centerY, vx: speed*Math.cos(pionAngle), vy:-speed*Math.sin(pionAngle), r:22, angle: pionAngle},
+                {x:centerX, y:centerY, vx: speed*Math.cos(-pionAngle), vy:-speed*Math.sin(-pionAngle), r:22, angle: -pionAngle}
+            ];
+        }
+    }
+    else if (animPhase === 1) {
+        // Flash at collision
+        let dt = t - collisionFrame;
+        let centerX = (canvas.width)/2, centerY = canvas.height/2;
+        if (dt < 13) {
+            ctx.save();
+            let grad = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, 110+dt*15);
+            grad.addColorStop(0, FLASH_COLOR);
+            grad.addColorStop(0.17, "#fff8");
+            grad.addColorStop(1, "rgba(255,252,166,0)");
+            ctx.globalAlpha = (0.55 + 0.41*Math.exp(-dt/1.5));
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, 110+dt*13, 0, 2*Math.PI);
+            ctx.fillStyle = grad;
+            ctx.fill();
+            ctx.restore();
+        }
+        // Move and draw pions
+        for (let i=0;i<pions.length;i++){
+            let p = pions[i];
+            p.x += p.vx;
+            p.y += p.vy;
+            drawPion(p, t, true, i+1);
+        }
+        // Fade out after pions left
+        if (
+            pions.every(p =>
+                p.x < -50 || p.x > canvas.width+50 || p.y < -50 || p.y > canvas.height+50
+            )
+        ) {
+            animPhase = 2;
+            restartTimeout = setTimeout(resetScene, 1100);
+        }
+    }
+
+    t++; requestAnimationFrame(draw);
+}
+draw();
+</script>
+</body>
+</html>

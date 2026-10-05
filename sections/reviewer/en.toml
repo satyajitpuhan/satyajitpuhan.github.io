@@ -1,0 +1,17 @@
+﻿top_title = "Academic Service"
+title     = "Journal Peer Reviewer"
+subtitle  = "Actively contributing to the scientific community through peer review for international physics journals."
+
+[[journals]]
+name        = "Journal of Modern Physics (JMP)"
+publisher   = "Scientific Research Publishing (SCIRP)"
+url         = "https://www.scirp.org/journal/home?journalid=172"
+icon        = "lni-book"
+description = "Peer reviewer for the Journal of Modern Physics, covering topics in theoretical and experimental physics."
+
+[[journals]]
+name        = "Frontiers in Physics"
+publisher   = "Frontiers Media S.A."
+url         = "https://www.frontiersin.org/journals/physics"
+icon        = "lni-star"
+description = "Peer reviewer for Frontiers in Physics, an open-access journal covering all areas of physics research."
