@@ -10,7 +10,7 @@
    with real petals, grass, trees and a rose arch made of painted leaf and blossom
    sprays, a stone wall, rabbits with fur, and the café with its awning, sign, warm
    windows and tables outside. She is drawn as a cartoon princess: toon shading, ink
-   outlines, big eyes, a tiara, a yellow rose by her ear, long hair that sways and a
+   outlines, big eyes, a yellow rose by her ear, long hair that sways and a
    gown that flows. Her story: she picks a rose and smells it, a butterfly lands on her
    face, and she takes the rose to the bench and sits looking out over the canyon. She
    also has coffee at the café, twirls, and gazes at the view. Hearts float up when she
@@ -164,6 +164,17 @@ function buildGirl(small) {
       c = sparkle(x, y, z, c); cols.push(c.r, c.g, c.b);
     }
     geo.setAttribute('color', new THREE.Float32BufferAttribute(cols, 3)); geo.computeVertexNormals();
+    // when she sits the gown drapes: down to her lap, along her thighs, over her knees towards the floor
+    const n = p.count, rest = Float32Array.from(p.array), seated = new Float32Array(n * 3), lap = 1.25, drop = 1.62;
+    for (let i = 0; i < n; i++) {
+      const t = (i % (prof.length)) / (prof.length - 1), x = rest[i * 3], z = rest[i * 3 + 2], a = Math.atan2(x, z), f = (Math.cos(a) + 1) / 2, sd = t * L;
+      const s1 = Math.min(sd, 0.45), s2 = clamp(sd - 0.45, 0, lap), s3 = Math.max(0, sd - 0.45 - lap);
+      const fy = -s1 * 0.8 - s3, fz = 0.25 + s1 * 0.5 + s2 + s3 * 0.12;                         // front: waist → lap → knees → down
+      const by = -Math.min(sd, 0.58), bz = -0.25 - Math.max(0, sd - 0.58) * 0.25;               // back: lies on the seat
+      const w = 0.36 + 0.62 * sm(0, 1.6, sd) + 0.15 * sm(1.6, 2.8, sd) * f;
+      seated[i * 3] = Math.sin(a) * w; seated[i * 3 + 1] = Math.max(lerp(by, fy, sm(0.15, 0.85, f)), -drop - 0.3); seated[i * 3 + 2] = lerp(bz, fz, Math.pow(f, 0.8)) * (0.55 + 0.45 * Math.abs(Math.cos(a)));
+    }
+    R.drape = { geo, rest, seated, w: 0 };
     const sk = mesh(geo, toon(0xffffff, { vertexColors: true, side: THREE.DoubleSide }), R.skirt);
     sk.add(new THREE.Mesh(geo, inkMat(0.022)));
     const over = mesh(geo, toon(0xffffff, { transparent: true, opacity: 0.28, depthWrite: false, side: THREE.DoubleSide }), R.skirt);
@@ -197,18 +208,6 @@ function buildGirl(small) {
     const w = 0.45 + 0.1 * sm(0.3, -1.2, y);
     return ell(x + 0.05 * Math.sin(y * 6.5), y, z + 0.03 * Math.sin(y * 5 + x * 4), 0, -0.68, -0.14, w, 1.12, 0.22);
   }, (x, y, z) => hairCol(x, y + 1.0, z), [-0.75, -2.0, -0.5], [0.75, 0.5, 0.3], small ? 0.035 : 0.026), toon(0xffffff, { vertexColors: true }), R.hairBack, undefined, undefined, 0.022);
-  // a little golden tiara with a pink jewel
-  {
-    const gold = toon(0xe9c46a, { emissive: 0x3a2a00 }), t = new THREE.Group(); t.position.set(0, 1.24, 0.06); t.rotation.x = -0.38; H.add(t);
-    mesh(new THREE.TorusGeometry(0.4, 0.024, 6, 36).rotateX(Math.PI / 2), gold, t);
-    for (let k = -2; k <= 2; k++) {
-      const a = Math.PI / 2 + k * 0.32, h = k === 0 ? 0.24 : 0.14 - Math.abs(k) * 0.02;
-      const pt = mesh(new THREE.ConeGeometry(0.035, h, 6), gold, t, [Math.cos(a) * 0.4, h / 2, Math.sin(a) * 0.4]);
-      mesh(SPH, toon(0xfff6e0), t, [Math.cos(a) * 0.4, h + 0.01, Math.sin(a) * 0.4], 0.022);
-      void pt;
-    }
-    mesh(SPH, toon(0xff5f9e, { emissive: 0x401020 }), t, [0, 0.1, 0.42], [0.05, 0.065, 0.03]);
-  }
   R.hairFlower = toonRose(0xffd23a, 1.6); R.hairFlower.position.set(0.64, 0.84, 0.08); R.hairFlower.rotation.set(1.1, 0.5, -0.7); H.add(R.hairFlower);   // a yellow rose by her ear
   R.hairFlower.visible = false;
   // face: big eyes with lashes, brows, round glasses, pink lips
@@ -877,6 +876,7 @@ export function start(canvas, opts = {}) {
 
   /* ---------------------------------------------------------------- her */
   const R = buildGirl(small); world.add(R.root);
+  R.drape.geo.computeBoundingSphere(); R.skirt.traverse(o => { o.frustumCulled = false; });
   const shadow = mesh(new THREE.PlaneGeometry(1, 1).rotateX(-Math.PI / 2), new THREE.MeshBasicMaterial({ map: radial([[0, 'rgba(60,30,20,.4)'], [0.6, 'rgba(60,30,20,.15)'], [1, 'rgba(60,30,20,0)']]), transparent: true, depthWrite: false }), world);
   shadow.renderOrder = -1;
   const A = {
@@ -953,8 +953,15 @@ export function start(canvas, opts = {}) {
     // the skirt sways with her steps and the breeze, flares when she twirls, and folds over her lap when she sits
     A.flare += (A.flareT - A.flare) * (1 - Math.exp(-dt * 5));
     const sw = A.walkAmt * Math.sin(A.phase);
-    R.skirt.rotation.set(-0.06 * A.walkAmt * Math.cos(A.phase) - 0.03 * wind - 0.95 * A.seatW, 0, 0.04 * sw);
-    R.skirt.scale.set(1 + A.flare * 0.4 + 0.12 * A.seatW, 1 - A.flare * 0.1 - A.seatW * 0.3, 1 + A.flare * 0.4 + 0.12 * A.seatW);
+    const st = 1 - A.seatW;
+    R.skirt.rotation.set((-0.06 * A.walkAmt * Math.cos(A.phase) - 0.03 * wind) * st, 0, 0.04 * sw * st);
+    R.skirt.scale.set(1 + A.flare * 0.4, 1 - A.flare * 0.1, 1 + A.flare * 0.4);
+    const Dr = R.drape, dw = sm(0.05, 0.95, A.seatW);
+    if (Math.abs(dw - Dr.w) > 1e-3) {                                      // reshape only while she sits down or stands up
+      Dr.w = dw; const P = Dr.geo.attributes.position.array;
+      for (let i = 0; i < P.length; i++) P[i] = Dr.rest[i] + (Dr.seated[i] - Dr.rest[i]) * dw;
+      Dr.geo.attributes.position.needsUpdate = true; Dr.geo.computeVertexNormals();
+    }
     // the braid lags behind her turns and swings as she walks
     const dyaw = angDiff(A.lastYaw, A.yaw + A.spin) / Math.max(dt, 1e-3); A.lastYaw = A.yaw + A.spin;
     A.braidV.x += (-A.braid.x * 40 - A.braidV.x * 5 + dyaw * 2.2 + sw * 3) * dt; A.braid.x += A.braidV.x * dt;
