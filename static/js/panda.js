@@ -243,9 +243,9 @@ function furMaterial(layer, len, freq) {
         vec3 c = floor(vFur), o = vec3(furHash(c), furHash(c + 17.3), furHash(c + 41.9)) * 0.6 + 0.2;
         float h = 0.5 + 0.5 * furHash(c + 7.1);
         float d = length(cross(fract(vFur) - o, normalize(vFurN)));
-        if (uLayer > h || d > 0.72 * (1.0 - 0.8 * uLayer / h)) discard;
+        if (uLayer > h || d > 0.85 * (1.0 - 0.75 * uLayer / h)) discard;
       }
-      diffuseColor.rgb *= mix(0.8 + 0.24 * uLayer, 1.0, vBare);`);
+      diffuseColor.rgb *= mix(0.9 + 0.12 * uLayer, 1.0, vBare);`);
   };
   m.customProgramCacheKey = () => 'fur-shell';
   furMats.set(key, m);
@@ -294,7 +294,7 @@ function addEye(parent, at, r, tex, lidMat) {
 
 function buildPo(M, small) {
   const R = makeRig({ hipH: 1.26, hipW: 0.66, neckY: 2.62, neckZ: 0.05, shY: 2.3, shW: 1.34, upper: 0.82, fore: 0.7, thigh: 0.5, shin: 0.5, ankleH: 0.26 });
-  const FUR = { len: 0.042, layers: small ? 5 : 8, freq: 24 };
+  const FUR = { len: 0.04, layers: small ? 4 : 6, freq: 22 };
   const white = C(0xf2eee6), black = C(0x1d1a1d), brown = C(0x4a3122);
   const ochre = C(0xb79245), ochreD = C(0x8f6c2c), patchC = C(0x9c7a3a), green = C(0x6f7f3a);
   const cloth = (x, y, z) => {                      // woven ochre trousers with a few darker patches
@@ -310,15 +310,16 @@ function buildPo(M, small) {
   const body = (x, y, z) => {
     y += Y0;
     let d = smin(ell(x, y, z, 0, 2.38, 0.18, 1.62, 1.36, 1.46), ell(x, y, z, 0, 3.15, -0.05, 1.45, 0.95, 1.15), 0.6);
-    d = smin(d, Math.min(ell(x, y, z, 1.15, 3.32, -0.08, 0.82, 0.7, 0.8), ell(x, y, z, -1.15, 3.32, -0.08, 0.82, 0.7, 0.8)), 0.45);
+    d = smin(d, Math.min(ell(x, y, z, 1.08, 3.42, -0.08, 0.95, 0.78, 0.86), ell(x, y, z, -1.08, 3.42, -0.08, 0.95, 0.78, 0.86)), 0.5);
     d = smin(d, ell(x, y, z, 0, 3.74, 0, 1.05, 0.52, 0.94), 0.4);
     return smin(d, ell(x, y, z, 0, 1.55, -0.2, 1.56, 0.74, 1.25), 0.5);
   };
   const bodyGeo = surfaceNet(body, (x, y, z) => {
     y += Y0;
     if (y < 1.7) return cloth(x, y, z);
-    const edge = 0.62 + 0.62 * sm(3.7, 2.3, y);                  // the black runs from the armpits up to the sides of the jaw
-    const b = Math.max(sm(edge - 0.1, edge + 0.1, Math.abs(x)) * sm(2.0, 2.4, y), sm(2.55, 2.85, y) * sm(0.0, -0.35, z));
+    // black from shoulder to shoulder across the upper chest; the white belly is an oval below it
+    const top = lerp(2.75 - 0.35 * x * x, 3.12 - 0.62 * x * x, sm(-0.4, 0.4, z));
+    const b = Math.max(sm(top - 0.07, top + 0.07, y), sm(1.08, 1.28, Math.abs(x)) * sm(2.0, 2.4, y));
     return mix(white, black, b);
   }, [-2.5, -0.8, -1.8], [2.5, 2.9, 2.0], small ? 0.09 : 0.07);
   R.belly = new THREE.Group(); R.belly.position.y = 1.2; R.torso.add(R.belly);
@@ -359,13 +360,13 @@ function buildPo(M, small) {
     const rim = sm(0.55, 0.95, e) * sm(0.0, -0.12, y - 0.98 + 0.3 * Math.abs(x - Math.sign(x) * 0.52));   // brown along the lower edge
     return mix(mix(black, brown, rim), white, sm(0.94, 1.06, e));
   }, [-1.6, -0.4, -1.3], [1.6, 2.15, 1.55], small ? 0.06 : 0.045);
-  const H = R.headMesh = new THREE.Group(); H.position.y = -0.18; R.head.add(H);   // sits down into the shoulders
+  const H = R.headMesh = new THREE.Group(); H.position.y = -0.4; H.scale.setScalar(1.15); R.head.add(H);   // sits down between the shoulders
   furry(headGeo, H, { ...FUR, len: 0.036 });
   H.updateWorldMatrix(true, false);
   const lidMat = new THREE.MeshStandardMaterial({ color: 0x1d1a1d, roughness: 0.9 });
   const eyeTex = eyeTexture(0xa9cf6a, 0x5f9a3c, 0x2b4a1e);
   for (const s of [1, -1]) {
-    const ear = furry(sculpt((x, y, z) => [x * 0.3, y * 0.28, z * 0.18 - 0.05 * (1 - y * y) * Math.max(0, z)], (x, y, z) => black), H, { ...FUR, pos: [s * 0.74, 1.84, -0.2] });
+    const ear = furry(sculpt((x, y, z) => [x * 0.26, y * 0.24, z * 0.16 - 0.04 * (1 - y * y) * Math.max(0, z)], (x, y, z) => black), H, { ...FUR, pos: [s * 0.84, 1.8, -0.18] });
     ear.rotation.z = -s * 0.4;
     const { p, n } = onFront(head, s * 0.47, 1.0);
     R.eyes.push(addEye(H, p.clone().addScaledVector(n, -0.07), 0.18, eyeTex, lidMat));
@@ -373,7 +374,7 @@ function buildPo(M, small) {
   // brown nose on the front of the muzzle, a smirk under it
   {
     const { p, n } = onFront(head, 0, 0.5);
-    const nose = mesh(sculpt((x, y, z) => [x * 0.3 * (1 - 0.45 * sm(0.3, -1, y)), y * 0.16, z * 0.17], (x, y, z) => mix(C(0x4a2e20), C(0xa47a58), sm(0.55, 0.95, z) * sm(-0.6, 0.6, y))), new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.32 }), H);
+    const nose = mesh(sculpt((x, y, z) => [x * 0.3 * (1 - 0.45 * sm(0.3, -1, y)), y * 0.16, z * 0.17], (x, y, z) => mix(C(0x2e211b), C(0x6e4d3a), sm(0.55, 0.95, z) * sm(-0.6, 0.6, y))), new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.32 }), H);
     nose.position.copy(p).addScaledVector(n, 0.08); nose.rotation.x = -0.25;
     // a thin smirk, a little higher on one side; the dark mouth only shows when the jaw opens
     const m = onFront(head, 0, 0.22);
@@ -397,11 +398,11 @@ function buildPo(M, small) {
   }
   // legs: trouser legs to the knee, black shins, cloth wraps round the ankles, black feet
   const trouser = (() => {
-    const prof = [[0.6, 0.3], [0.66, 0.05], [0.68, -0.18], [0.64, -0.36], [0.6, -0.42]].map(([r, y]) => new THREE.Vector2(r, y));
+    const prof = [[0.62, 0.3], [0.7, 0.05], [0.72, -0.25], [0.66, -0.5], [0.6, -0.62]].map(([r, y]) => new THREE.Vector2(r, y));
     const geo = new THREE.LatheGeometry(prof, 28), p = geo.attributes.position, cols = [];
     for (let i = 0; i < p.count; i++) {
       const x = p.getX(i), y = p.getY(i), z = p.getZ(i);
-      if (y < -0.4) p.setY(i, y + 0.05 * Math.sin(Math.atan2(z, x) * 7));          // a ragged hem
+      if (y < -0.58) p.setY(i, y + 0.05 * Math.sin(Math.atan2(z, x) * 7));          // a ragged hem
       const c = cloth(x, y + 1.2, z); cols.push(c.r, c.g, c.b);
     }
     geo.setAttribute('color', new THREE.Float32BufferAttribute(cols, 3)); geo.computeVertexNormals();
@@ -409,7 +410,7 @@ function buildPo(M, small) {
   })();
   const clothMat = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.95, side: THREE.DoubleSide, bumpMap: furBump, bumpScale: 0.8 });
   const wrap = (() => {
-    const geo = new THREE.CylinderGeometry(0.5, 0.49, 0.3, 22, 6, true), p = geo.attributes.position, cols = [];
+    const geo = new THREE.CylinderGeometry(0.52, 0.5, 0.5, 22, 8, true), p = geo.attributes.position, cols = [];
     for (let i = 0; i < p.count; i++) { const y = p.getY(i), a = Math.atan2(p.getZ(i), p.getX(i)); const c = mix(C(0xe4dfd2), C(0xb8b1a2), sm(0.7, 1, Math.abs(Math.sin((y * 16 + a * 0.5))))); cols.push(c.r, c.g, c.b); }
     geo.setAttribute('color', new THREE.Float32BufferAttribute(cols, 3));
     return geo;
@@ -423,93 +424,128 @@ function buildPo(M, small) {
   for (const l of R.leg) {
     mesh(trouser, clothMat, l.hip, [0, -0.02, 0]);
     furry(shin, l.knee, FUR);
-    mesh(wrap, new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.95 }), l.ankle, [0, 0.16, 0]);
+    mesh(wrap, new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.95 }), l.ankle, [0, 0.26, 0]);
     furry(foot, l.ankle, FUR);
   }
   return R;
 }
 
-function buildShifu(M) {
-  const R = makeRig({ hipH: 0.82, hipW: 0.2, neckY: 1.12, neckZ: 0.02, shY: 0.95, shW: 0.47, upper: 0.4, fore: 0.36, thigh: 0.36, shin: 0.34, ankleH: 0.12 });
-  const robe = C(0xb2804f), dark = C(0x3a2016), trim = C(0x6a4428), belt = C(0x3b2a1d);
-  R.belly = new THREE.Group(); R.belly.position.y = 0.55; R.torso.add(R.belly);
-  mesh(sculpt((x, y, z) => [x * 0.5 * (1 + 0.1 * -y), y * 0.64, z * 0.42 * (1 + 0.1 * -y)], (x, y, z) => {
-    if (y < -0.45 && y > -0.68) return belt;
-    const v = Math.abs(x) - (y - 0.05) * 0.6;
-    if (z > 0.2 && y > 0.05) { if (v < 0) return dark; if (v < 0.09) return trim; }
-    return robe;
-  }, 36, 24), M.cloth, R.belly);
-  // head: orange-red with white muzzle, cheeks and brows, dark tear marks
-  const orange = C(0xc45a2a), cream = C(0xf2e6cf), tear = C(0x5a2414);
-  const fHead = (x, y, z) => {
-    const muz = Math.exp(-((x / 0.3) ** 2 + ((y + 0.26) / 0.22) ** 2)) * Math.max(0, z);
-    return [x * 0.5, y * 0.46 - 0.03 * muz, z * 0.46 + 0.24 * muz];
+function buildShifu(M, small) {
+  const R = makeRig({ hipH: 0.82, hipW: 0.2, neckY: 1.08, neckZ: 0.02, shY: 0.92, shW: 0.47, upper: 0.4, fore: 0.36, thigh: 0.36, shin: 0.34, ankleH: 0.12 });
+  const FUR = { len: 0.026, layers: small ? 4 : 6, freq: 40 };
+  const cream = C(0xf2ecdf), tan = C(0xc39260), ring = C(0x9a6a3c), ringD = C(0x5e3b22);
+  const rust = C(0x9b5a32), rustD = C(0x6e3d22), sash = C(0x4e2f1f), cuff = C(0xd2b384);
+  const weave = (x, y, z, c) => { const k = mix(c, rustD, 0.25 * (0.5 + 0.5 * nz(x * 14, y * 14, z * 14))); k.bare = 1; return k; };
+  // robe: a round body and a skirt to the knees, tied with a wide dark sash; a V of cream fur at the neck
+  R.belly = new THREE.Group(); R.belly.position.y = 0.5; R.torso.add(R.belly);
+  const robe = (x, y, z) => {
+    let d = ell(x, y, z, 0, 0.02, 0, 0.5, 0.6, 0.42);
+    const r = 0.47 + 0.07 * sm(-0.2, -0.9, y);                                         // a straight wrap robe to below the knee
+    const skirt = Math.max(Math.hypot(x, z * 1.1) - r, y - -0.1, -0.92 - y);
+    return smin(d, skirt, 0.12);
   };
-  const H = R.headMesh = furry(sculpt(fHead, (x, y, z) => {
-    const ax = Math.abs(x);
-    let w = Math.max(
-      sm(0.45, 0.65, z) * sm(0.02, -0.12, y) * sm(0.5, 0.35, ax),                         // muzzle
-      sm(0.62, 0.78, ax) * sm(0.02, -0.12, y) * sm(0.05, 0.35, z),                         // cheeks
-      sm(0.55, 0.7, z) * sm(0.28, 0.36, y) * sm(0.58, 0.5, y) * sm(0.12, 0.2, ax) * sm(0.5, 0.42, ax)); // brows
-    const t = sm(0.55, 0.7, z) * sm(0.1, 0.0, y) * sm(-0.42, -0.3, y) * Math.exp(-(((ax - 0.36) / 0.07) ** 2));
-    return mix(mix(orange, cream, w), tear, t * 0.9);
-  }, 40, 28), R.head, { len: 0.03, layers: 8, freq: 26, pos: [0, 0.46, 0.05] });
-  H.scale.setScalar(1.18);
-  const on = (x, y, z) => { const d = V(x, y, z).normalize(); const [X, Y, Z] = fHead(d.x, d.y, d.z); return V(X, Y, Z); };
-  const earGeo = new THREE.ConeGeometry(0.3, 0.58, 14);
+  mesh(surfaceNet(robe, (x, y, z) => {
+    if (y > -0.28 && y < -0.05) return weave(x, y, z, sash);
+    const v = Math.abs(x) - (y - 0.12) * 0.55;
+    if (z > 0.15 && y > 0.12 && v < 0) { const c = cream.clone(); c.bare = 1; return c; }
+    if (z > 0.15 && y > 0.05 && v < 0.06) return weave(x, y, z, rustD);
+    if (y < -0.85) return weave(x, y, z, rustD);
+    return weave(x, y, z, rust);
+  }, [-0.8, -1.2, -0.7], [0.8, 0.75, 0.7], 0.035), M.cloth, R.belly);
+  // head: wide and fluffy, mostly cream, a tan crown and tan rings round the eyes
+  const head = (x, y, z) => {
+    let d = ell(x, y, z, 0, 0.46, -0.02, 0.5, 0.44, 0.46);
+    d = smin(d, Math.min(ell(x, y, z, 0.27, 0.3, 0.12, 0.3, 0.26, 0.3), ell(x, y, z, -0.27, 0.3, 0.12, 0.3, 0.26, 0.3)), 0.12);
+    return smin(d, ell(x, y, z, 0, 0.27, 0.4, 0.17, 0.13, 0.17), 0.1);
+  };
+  const eyeRing = (x, y, z) => {
+    if (z < 0.1) return 9;
+    const s = Math.sign(x) || 1, dx = (x - s * 0.2) / 0.18, dy = (y - 0.44) / 0.14;
+    return Math.hypot(dx, dy);
+  };
+  const H = R.headMesh = new THREE.Group(); H.position.set(0, -0.02, 0.04); H.scale.setScalar(1.3); R.head.add(H);
+  furry(surfaceNet(head, (x, y, z) => {
+    const e = eyeRing(x, y, z);
+    let c = cream.clone();
+    c = mix(c, tan, sm(0.62, 0.78, y) * sm(0.3, 0.1, Math.abs(x)) * sm(-0.3, 0.2, z));     // tan crown
+    if (e < 1.08) c = mix(mix(ringD, ring, sm(0.45, 0.8, e)), c, sm(0.95, 1.08, e));
+    return c;
+  }, [-0.7, -0.05, -0.6], [0.7, 0.95, 0.65], 0.02), H, FUR);
+  const lid = new THREE.MeshStandardMaterial({ color: 0x8a5c34, roughness: 0.9 }), eyeTex = eyeTexture(0xa9d4f6, 0x3f86d0, 0x1d3550);
   for (const s of [1, -1]) {
-    const ear = mesh(earGeo, M.cream, H, null, [1, 1, 0.38]);
-    ear.position.copy(on(s * 0.55, 0.78, -0.1)).add(V(0, 0.12, 0)); ear.rotation.z = -s * 0.6;
-    mesh(earGeo, M.earIn, ear, [0, -0.04, 0.12], [0.66, 0.74, 0.6]);
-    const p = on(s * 0.3, 0.14, 0.92), n = p.clone().normalize();
-    R.eyes.push(addEye(H, p.clone().addScaledVector(n, 0.02), 0.075, eyeTexture(0x9cc8f0, 0x3f7fc8, 0x1d3550), null));
-    const b = on(s * 0.24, 0.34, 0.9);
-    mesh(taperedTube([b, b.clone().add(V(s * 0.22, 0.07, -0.02)), b.clone().add(V(s * 0.5, 0.06, -0.22)), b.clone().add(V(s * 0.68, -0.06, -0.46))], 16, u => 0.035 * (1 - 0.7 * u), null, 5), M.cream, H);
+    const { p, n } = onFront(head, s * 0.2, 0.45);
+    R.eyes.push(addEye(H, p.clone().addScaledVector(n, -0.03), 0.075, eyeTex, lid));
+    // big round ears: tan on the back, brown inside with a fluffy cream rim
+    const ear = furry(sculpt((x, y, z) => {
+      const w = 1 - 0.3 * sm(0, 1, y);                                               // broad and rounded
+      return [x * 0.36 * w, y * 0.4 + 0.12, z * 0.08 - 0.06 * Math.max(0, z) * (1 - x * x)];
+    }, (x, y, z) => (z > 0 ? mix(C(0x7a4a2a), cream, sm(0.5, 0.82, Math.hypot(x, y * 0.85))) : tan), 24, 18), H, { ...FUR, pos: [s * 0.44, 0.76, -0.08] });
+    ear.rotation.set(-0.12, s * 0.3, -s * 0.62);
+    // bushy white brows sweeping outwards
+    const b = onFront(head, s * 0.2, 0.6).p;
+    mesh(taperedTube([b, b.clone().add(V(s * 0.12, 0.04, 0.02)), b.clone().add(V(s * 0.26, 0.02, -0.06)), b.clone().add(V(s * 0.36, -0.04, -0.16))], 12, u => 0.035 * (1 - 0.7 * u), null, 5), M.cream, H);
+    // long thin whiskers drooping from the muzzle
     for (const k of [0, 1]) {
-      const w = on(s * 0.13, -0.3 - k * 0.06, 0.95);
-      mesh(taperedTube([w, w.clone().add(V(s * 0.22, -0.06 - k * 0.04, 0.05)), w.clone().add(V(s * 0.4, -0.36, 0.02)), w.clone().add(V(s * (0.44 - k * 0.1), -0.8 + k * 0.2, -0.06)), w.clone().add(V(s * (0.38 - k * 0.08), -1.12 + k * 0.3, -0.12))], 24, u => 0.022 * (1 - 0.7 * u), null, 5), M.cream, H);
+      const w = onFront(head, s * 0.07, 0.24 - k * 0.03).p;
+      mesh(taperedTube([w, w.clone().add(V(s * 0.12, -0.04, 0.04)), w.clone().add(V(s * (0.2 + k * 0.04), -0.3, 0.06)), w.clone().add(V(s * (0.2 + k * 0.08), -0.7 + k * 0.15, 0.02)), w.clone().add(V(s * (0.16 + k * 0.1), -1.0 + k * 0.25, -0.04))], 24, u => 0.012 * (1 - 0.6 * u), null, 4), M.cream, H);
     }
   }
-  mesh(SPH, M.nose, H, null, [0.085, 0.06, 0.06]).position.copy(on(0, -0.2, 1)).add(V(0, 0, 0.01));
-  R.mouth = mesh(SPH, M.mouth, H, null, [0.08, 0.012, 0.04]); R.mouth.position.copy(on(0, -0.42, 0.9));
-  R.mouthPt = new THREE.Object3D(); R.mouthPt.position.copy(R.mouth.position).add(V(0, 0, 0.06)); H.add(R.mouthPt);
-  R.crown = new THREE.Object3D(); R.crown.position.set(0, 0.5, 0); H.add(R.crown);
+  const tip = onFront(head, 0, 0.28);
+  mesh(SPH, new THREE.MeshStandardMaterial({ color: 0x4a2c26, roughness: 0.35 }), H, null, [0.06, 0.045, 0.045]).position.copy(tip.p).addScaledVector(tip.n, 0.02);
+  const m = onFront(head, 0, 0.17);
+  R.mouth = mesh(SPH, M.mouth, H, null, [0.07, 0.01, 0.03]); R.mouth.position.copy(m.p).addScaledVector(m.n, -0.01);
+  // a little white goatee
+  mesh(new THREE.ConeGeometry(0.06, 0.22, 10).rotateX(Math.PI), M.cream, H, [0, m.p.y - 0.13, m.p.z - 0.04]);
+  R.mouthPt = new THREE.Object3D(); R.mouthPt.position.copy(m.p).add(V(0, 0, 0.05)); H.add(R.mouthPt);
+  R.crown = new THREE.Object3D(); R.crown.position.set(0, 0.95, 0); H.add(R.crown);
+  // wide rust sleeves with tan cuffs; dark brown paws
+  const sleeve = new THREE.LatheGeometry([[0.13, 0.05], [0.15, -0.2], [0.17, -0.42]].map(([r, y]) => new THREE.Vector2(r, y)), 16);
+  const fore = new THREE.LatheGeometry([[0.15, 0.04], [0.2, -0.18], [0.24, -0.32]].map(([r, y]) => new THREE.Vector2(r, y)), 16);
+  const robeMat = new THREE.MeshStandardMaterial({ color: rust, roughness: 0.92, side: THREE.DoubleSide, bumpMap: furBump, bumpScale: 0.6 });
+  const cuffMat = new THREE.MeshStandardMaterial({ color: cuff, roughness: 0.8 });
+  const brown = new THREE.MeshStandardMaterial({ color: 0x3e2618, roughness: 0.9 });
   for (const a of R.arm) {
-    mesh(capsule(0.15, 0.24), M.robe, a.sh, [0, -0.2, 0]);
-    mesh(new THREE.CylinderGeometry(0.17, 0.2, 0.16, 12), M.robe, a.el, [0, -0.04, 0]);
-    mesh(capsule(0.095, 0.24), M.darkFur, a.el, [0, -0.18, 0]);
-    mesh(SPH, M.darkFur, a.hand, [0, -0.03, 0], [0.1, 0.09, 0.11]);
+    mesh(capsule(0.13, 0.24), robeMat, a.sh, [0, -0.2, 0]); mesh(sleeve, robeMat, a.sh);
+    mesh(fore, robeMat, a.el);
+    mesh(new THREE.CylinderGeometry(0.245, 0.245, 0.07, 16, 1, true), cuffMat, a.el, [0, -0.33, 0]);
+    mesh(capsule(0.08, 0.2), brown, a.el, [0, -0.2, 0]);
+    mesh(SPH, brown, a.hand, [0, -0.03, 0], [0.095, 0.085, 0.1]);
   }
+  // tan leg wraps and dark feet under the robe
+  const wrapMat = new THREE.MeshStandardMaterial({ color: 0xc9a77a, roughness: 0.95 });
   for (const l of R.leg) {
-    mesh(capsule(0.17, 0.22), M.pants, l.hip, [0, -0.18, 0]);
-    mesh(capsule(0.14, 0.2), M.pants, l.knee, [0, -0.17, 0]);
-    mesh(SPH, M.darkFur, l.ankle, [0, -0.04, 0.07], [0.13, 0.08, 0.2]);
+    mesh(capsule(0.15, 0.2), wrapMat, l.hip, [0, -0.18, 0]);
+    mesh(capsule(0.12, 0.2), wrapMat, l.knee, [0, -0.17, 0]);
+    mesh(SPH, brown, l.ankle, [0, -0.04, 0.07], [0.12, 0.08, 0.19]);
   }
-  // ringed tail
-  const ring = C(0xc8582a), ringD = C(0x4a2412);
-  R.tail = new THREE.Group(); R.tail.position.set(0, 0.05, -0.32); R.pelvis.add(R.tail);
-  furry(taperedTube([V(0, 0, 0), V(0, -0.3, -0.35), V(0, -0.5, -0.85), V(0, -0.38, -1.35), V(0, 0.02, -1.62), V(0, 0.4, -1.55)], 40,
-    u => 0.12 + 0.07 * Math.sin(Math.PI * Math.min(1, u * 1.4)) - 0.08 * sm(0.75, 1, u),
-    u => (Math.floor(u * 9) % 2 ? ringD : ring), 10), R.tail, { len: 0.05, layers: 8, freq: 18 });
+  // big bushy tail, ringed cream and tan
+  R.tail = new THREE.Group(); R.tail.position.set(0, 0.0, -0.36); R.pelvis.add(R.tail);
+  furry(taperedTube([V(0, 0, 0), V(0, -0.3, -0.35), V(0, -0.52, -0.85), V(0, -0.4, -1.35), V(0, 0.0, -1.6), V(0, 0.4, -1.5)], 48,
+    u => 0.16 + 0.12 * Math.sin(Math.PI * Math.min(1, u * 1.3)) - 0.1 * sm(0.8, 1, u),
+    u => (Math.floor(u * 8) % 2 ? tan : cream), 12), R.tail, { len: 0.06, layers: FUR.layers, freq: 18 });
   return R;
 }
 
 /* ---------------------------------------------------------------- props */
 
 function buildStaff(M) {
-  const wood = u => mix(C(0x5a3b22), C(0x8b6640), 0.5 + 0.5 * Math.sin(u * 47));
+  const jade = u => mix(C(0x3f8a2c), C(0x9ccc4e), sm(0.6, 1, u)).multiplyScalar(0.9 + 0.1 * Math.sin(u * 60));
   const holder = new THREE.Group(), spinner = new THREE.Group(), off = new THREE.Group();
   holder.add(spinner); spinner.add(off);
+  const mat = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.35, metalness: 0.05, emissive: 0x9cff5a, emissiveIntensity: 0 });
   const pts = [];
-  for (let i = 0; i <= 12; i++) { const t = i / 12; pts.push(V(0.06 * Math.sin(t * 9), -1.9 + t * 5.55, 0.05 * Math.cos(t * 7.3))); }
-  mesh(taperedTube(pts, 48, u => 0.075 + 0.03 * Math.sin(u * 31) ** 2 + 0.03 * sm(0.85, 1, u), wood), M.wood, off);
-  const top = pts[12];
-  mesh(taperedTube([top, top.clone().add(V(-0.25, 0.38, 0)), top.clone().add(V(-0.42, 0.78, 0.02)), top.clone().add(V(-0.3, 1.08, 0)), top.clone().add(V(-0.06, 1.02, 0))], 24, u => 0.085 * (1 - 0.7 * u), wood), M.wood, off);
-  mesh(taperedTube([top, top.clone().add(V(0.22, 0.35, 0)), top.clone().add(V(0.38, 0.7, 0.01)), top.clone().add(V(0.43, 0.95, 0))], 18, u => 0.075 * (1 - 0.65 * u), wood), M.wood, off);
-  for (const y of [-0.8, 0.9, 2.4]) mesh(SPH, M.knot, off, [0.06, y, 0.04], [0.11, 0.07, 0.11]);
-  const glow = new THREE.Sprite(new THREE.SpriteMaterial({ map: radial([[0, 'rgba(255,236,160,1)'], [0.25, 'rgba(255,190,70,.75)'], [1, 'rgba(255,160,40,0)']]), transparent: true, depthWrite: false, opacity: 0 }));
-  glow.position.set(0, 4.25, 0); glow.scale.setScalar(3.2); off.add(glow);
-  return { holder, spinner, off, glow, mode: null, angle: 0, spinV: 0, spinT: 0 };
+  for (let i = 0; i <= 10; i++) { const t = i / 10; pts.push(V(0.04 * Math.sin(t * 5), -1.9 + t * 5.6, 0)); }
+  mesh(taperedTube(pts, 40, u => 0.07 - 0.015 * u, jade), mat, off);
+  // the curl: a spiral winding inwards from the top of the shaft
+  const top = pts[10], R0 = 0.42, c = top.clone().add(V(0, R0, 0)), sp = [];
+  for (let i = 0; i <= 40; i++) {
+    const t = i / 40, a = -Math.PI / 2 + t * Math.PI * 2.4, r = R0 * (1 - 0.72 * t);
+    sp.push(c.clone().add(V(Math.cos(a) * r, Math.sin(a) * r + (1 - t) * 0.0, 0)));
+  }
+  mesh(taperedTube(sp, 60, u => 0.055 * (1 - 0.6 * u), u => jade(0.7 + 0.3 * u)), mat, off);
+  const glow = new THREE.Sprite(new THREE.SpriteMaterial({ map: radial([[0, 'rgba(230,255,170,1)'], [0.25, 'rgba(160,240,90,.7)'], [1, 'rgba(120,220,60,0)']]), transparent: true, depthWrite: false, opacity: 0 }));
+  glow.position.copy(c); glow.scale.setScalar(3.2); off.add(glow);
+  return { holder, spinner, off, glow, mat, mode: null, angle: 0, spinV: 0, spinT: 0 };
 }
 
 function buildChopsticks(len, mat) {
@@ -573,7 +609,7 @@ const P = {
   spin: { afR: 1.15, aeR: 0.55, aoR: -0.05, afL: 0.9, aeL: 1.8, lfL: 0.3, lkL: 0.45, lfR: -0.2, lkR: 0.2, lean: 0.1 },
   overhead: { afR: 2.95, aeR: 0.2, aoR: 0.1, afL: 0.8, aeL: 1.9, hp: -0.25, lfL: 0.3, lkL: 0.5, lfR: -0.25 },
   strike: { lfL: 0.75, lkL: 0.95, lfR: -0.55, lkR: 0.15, afR: 1.45, aeR: 0.05, afL: 1.25, aeL: 0.9, aoL: -0.5, lean: 0.3, twist: -0.2 },
-  plant: { afL: 1.05, aoL: -0.55, aeL: 0.55, afR: 1.0, aoR: -0.5, aeR: 0.6, lean: 0.1, lfL: 0.3, loL: 0.45, lkL: 0.65, lfR: 0.3, loR: 0.45, lkR: 0.65, hp: -0.15 },
+  plant: { afL: 0.85, aoL: -0.5, aeL: 0.2, afR: 0.8, aoR: -0.45, aeR: 0.25, lean: 0.1, lfL: 0.3, loL: 0.45, lkL: 0.65, lfR: 0.3, loR: 0.45, lkR: 0.65, hp: -0.15 },
   reach: { afR: 1.0, aeR: 0.55, aoR: -0.2, lean: 0.25, hp: 0.35 },
   chopUp: { afR: 2.3, aeR: 0.5, aoR: -0.1, hp: -0.55, lean: -0.05 },
   eatChop: { afR: 1.05, aeR: 2.0, aoR: -0.3, hp: 0.05 },
@@ -801,8 +837,8 @@ export function start(canvas, opts = {}) {
     A.kick = v => { A.bellyV += v; };
     return A;
   }
-  const po = actor(buildPo(M, small), { ao: 0.4, af: 0.22, ae: 0.5, lo: 0.1 }, 3.6);
-  const sf = actor(buildShifu(M), { ao: 0.16, lo: 0.06 }, 1.6);
+  const po = actor(buildPo(M, small), { ao: 0.4, af: 0.1, ae: 0.25, lo: 0.1 }, 3.6);
+  const sf = actor(buildShifu(M, small), { ao: 0.16, lo: 0.06 }, 1.6);
   sf.rig.root.visible = false; sf.shadow.visible = false; sf.stride = 4;
   sf.rig.root.scale.setScalar(1.22);
   for (const [A, len] of [[po, 1.15], [sf, 0.6]]) { A.chop = buildChopsticks(len, M.chop); A.rig.arm[1].hand.add(A.chop); A.chop.position.set(0, -0.05, 0.08); }
@@ -1023,7 +1059,7 @@ export function start(canvas, opts = {}) {
       const goal = Math.round(staff.angle / TAU) * TAU; staff.angle += (goal - staff.angle) * (1 - Math.exp(-dt * 6)); staff.spinV = 0;
     } else staff.angle += staff.spinV * dt;
     staff.spinner.rotation.z = staff.angle;
-    staff.glow.material.opacity = chi * 0.95;
+    staff.glow.material.opacity = chi * 0.95; staff.mat.emissiveIntensity = chi * 0.8;
     // chopsticks grow in and out of the paws, and point at what they are after
     for (const A of [po, sf]) {
       const c = A.chop, want = A.chopOn ? 1 : 0.001, s = c.scale.x + (want - c.scale.x) * (1 - Math.exp(-dt * 8));
