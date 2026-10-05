@@ -1128,10 +1128,26 @@ html[lang="or"] h1, html[lang="or"] h2 { font-family: var(--font-or); letter-spa
 a[href^="mailto:"] { overflow-wrap: anywhere; word-break: break-word; }
 html[lang="or"] .h-hero em, html[lang="or"] .h-1 em, html[lang="or"] h1 em, html[lang="or"] h2 em { font-family: var(--font-or); font-style: normal; font-weight: 700; letter-spacing: -.01em; }
 
-/* 3D dragon (static/js/dragon.js). Fixed one layer below the page: the body's background is
-   painted on the viewport, so z-index -1 sits above it and under every bit of content. */
-.dragon-canvas { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; opacity: 0; transition: opacity 1.2s ease; }
-.dragon-canvas.is-on { opacity: .96; }
-:root[data-theme="dark"] .dragon-canvas.is-on { opacity: .82; }
-[data-dragon-toggle][aria-pressed="false"] span { filter: grayscale(1); opacity: .5; }
-@media print { .dragon-canvas { display: none !important; } }
+/* 3D companions (static/js/dragon.js, static/js/panda.js). Fixed one layer below the page: the
+   body's background is painted on the viewport, so z-index -1 sits above it and under every bit
+   of content. */
+.companion-canvas { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; opacity: 0; transition: opacity 1.2s ease; }
+.companion-canvas.is-on { opacity: .96; }
+:root[data-theme="dark"] .companion-canvas.is-on { opacity: .82; }
+.companion { position: relative; }
+.companion.is-off [data-companion-icon] { filter: grayscale(1); opacity: .5; }
+.companion__menu {
+  position: absolute; top: calc(100% + 8px); right: 0; z-index: 950; min-width: 184px; padding: 6px;
+  display: grid; gap: 2px; border-radius: 14px; border: 1px solid var(--line-2);
+  background: var(--bg-2); box-shadow: var(--shadow-2);
+}
+.companion__menu[hidden] { display: none; }
+.companion__menu button {
+  display: flex; align-items: center; gap: 10px; width: 100%; padding: 9px 12px; border-radius: 9px;
+  font: inherit; font-size: .88rem; color: var(--ink-2); text-align: left; background: none; border: 0; cursor: pointer;
+}
+.companion__menu button[hidden] { display: none; }
+.companion__menu button span { width: 18px; text-align: center; font-size: 15px; line-height: 1; }
+.companion__menu button:hover, .companion__menu button:focus-visible { background: var(--surface-3); color: var(--ink); outline: none; }
+.companion__menu button[aria-checked="true"] { color: var(--accent); font-weight: 600; background: var(--accent-soft); }
+@media print { .companion-canvas { display: none !important; } }
