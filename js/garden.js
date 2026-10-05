@@ -20,116 +20,12 @@
    ========================================================================== */
 import * as THREE from './vendor/three.module.min.js';
 import {
-  TAU, sm, clamp, lerp, angDiff, rand, rnd, nz, V, C, mix, canvasTex, radial, mistTex,
-  sculpt, taperedTube, SPH, mesh, capsule, makeRig, ell, smin, onFront, surfaceNet, taperCapsule,
-  eyeTexture, addEye, furry, KEYS, blank, mirror,
+  TAU, sm, clamp, lerp, angDiff, rand, rnd, nz, V, C, mix, canvasTex, radial, mistTex, sculpt,
+  taperedTube, SPH, mesh, capsule, makeRig, ell, smin, onFront, surfaceNet, taperCapsule, eyeTexture,
+  addEye, furry, KEYS, blank, mirror, vnoise, fbm, css, drawLeaf, drawBlossom, drawRose, foliageCard,
+  blossomCard, roseCard, cardCloud, GREENS, tiled, grassTex, stoneTex, woodTex, toonGrad, toon,
+  inks, inkMat, inked,
 } from './kit.js';
-
-/* ---------------------------------------------------------------- noise */
-
-function vnoise(x, y) {
-  const xi = Math.floor(x), yi = Math.floor(y), xf = x - xi, yf = y - yi;
-  const h = (i, j) => { const n = Math.sin(i * 127.1 + j * 311.7) * 43758.5453; return n - Math.floor(n); };
-  const u = xf * xf * (3 - 2 * xf), v = yf * yf * (3 - 2 * yf);
-  return lerp(lerp(h(xi, yi), h(xi + 1, yi), u), lerp(h(xi, yi + 1), h(xi + 1, yi + 1), u), v) * 2 - 1;
-}
-function fbm(x, y, oct = 5) { let s = 0, a = 0.5, f = 1; for (let i = 0; i < oct; i++) { s += a * vnoise(x * f, y * f); f *= 2.03; a *= 0.5; } return s; }
-
-/* ---------------------------------------------------------------- painted textures (the garden is drawn "real") */
-
-const css = (hex, k = 1) => { const c = C(hex).multiplyScalar(k); return `rgb(${Math.min(255, c.r * 255) | 0},${Math.min(255, c.g * 255) | 0},${Math.min(255, c.b * 255) | 0})`; };
-function drawLeaf(c, x, y, a, L, W, col) {
-  c.save(); c.translate(x, y); c.rotate(a);
-  const g = c.createLinearGradient(0, -W, 0, W);
-  g.addColorStop(0, css(col, 0.95)); g.addColorStop(0.45, css(col, 1.35)); g.addColorStop(1, css(col, 0.85));
-  c.fillStyle = g; c.beginPath(); c.moveTo(-L, 0); c.quadraticCurveTo(-L * 0.1, -W * 1.7, L, 0); c.quadraticCurveTo(-L * 0.1, W * 1.7, -L, 0); c.fill();
-  c.strokeStyle = 'rgba(200,230,150,.35)'; c.lineWidth = 1; c.beginPath(); c.moveTo(-L * 0.9, 0); c.lineTo(L * 0.9, 0); c.stroke();
-  c.restore();
-}
-function drawBlossom(c, x, y, r, col, n = 5) {
-  for (let k = 0; k < n; k++) {
-    const a = k / n * TAU + rand() * 0.3;
-    c.save(); c.translate(x + Math.cos(a) * r * 0.5, y + Math.sin(a) * r * 0.5); c.rotate(a);
-    const g = c.createRadialGradient(-r * 0.3, 0, 0, 0, 0, r * 0.7);
-    g.addColorStop(0, '#ffffff'); g.addColorStop(0.35, css(col, 1.1)); g.addColorStop(1, css(col, 0.7));
-    c.fillStyle = g; c.beginPath(); c.ellipse(0, 0, r * 0.6, r * 0.42, 0, 0, TAU); c.fill(); c.restore();
-  }
-  c.fillStyle = '#f2c94c'; c.beginPath(); c.arc(x, y, r * 0.16, 0, TAU); c.fill();
-}
-function drawRose(c, x, y, r, col) {
-  const g = c.createRadialGradient(x - r * 0.3, y - r * 0.3, 0, x, y, r);
-  g.addColorStop(0, css(col, 1.25)); g.addColorStop(0.7, css(col, 1)); g.addColorStop(1, css(col, 0.6));
-  c.fillStyle = g; c.beginPath(); c.arc(x, y, r, 0, TAU); c.fill();
-  c.strokeStyle = css(col, 0.55); c.lineWidth = Math.max(1, r * 0.09);
-  for (let k = 0; k < 4; k++) { c.beginPath(); c.arc(x + k * r * 0.04, y, r * (0.85 - k * 0.2), k * 1.7, k * 1.7 + 3.6); c.stroke(); }
-}
-// Transparent cards: sprays of leaves, clusters of blossom, roses among leaves.
-const foliageCard = (greens, n = 48) => canvasTex(256, 256, (c, S) => { for (let i = 0; i < n; i++) drawLeaf(c, S * (0.14 + 0.72 * rand()), S * (0.14 + 0.72 * rand()), rand() * TAU, S * (0.06 + 0.05 * rand()), S * (0.025 + 0.012 * rand()), greens[(rand() * greens.length) | 0]); });
-const blossomCard = (cols, greens) => canvasTex(256, 256, (c, S) => {
-  for (let i = 0; i < 12; i++) drawLeaf(c, S * (0.15 + 0.7 * rand()), S * (0.15 + 0.7 * rand()), rand() * TAU, S * 0.06, S * 0.025, greens[(rand() * greens.length) | 0]);
-  for (let i = 0; i < 36; i++) drawBlossom(c, S * (0.14 + 0.72 * rand()), S * (0.14 + 0.72 * rand()), S * (0.035 + 0.025 * rand()), cols[(rand() * cols.length) | 0]);
-});
-const roseCard = (cols, greens) => canvasTex(256, 256, (c, S) => {
-  for (let i = 0; i < 30; i++) drawLeaf(c, S * (0.12 + 0.76 * rand()), S * (0.12 + 0.76 * rand()), rand() * TAU, S * 0.06, S * 0.03, greens[(rand() * greens.length) | 0]);
-  for (let i = 0; i < 9; i++) drawRose(c, S * (0.18 + 0.64 * rand()), S * (0.18 + 0.64 * rand()), S * (0.045 + 0.03 * rand()), cols[(rand() * cols.length) | 0]);
-});
-// Many cards scattered about: foliage that reads as real at a distance.
-function cardCloud(tex, n, place) {
-  const m = new THREE.InstancedMesh(new THREE.PlaneGeometry(1, 1), new THREE.MeshStandardMaterial({ map: tex, alphaTest: 0.5, side: THREE.DoubleSide, roughness: 0.85 }), n);
-  const m4 = new THREE.Matrix4(), q = new THREE.Quaternion(), p = V(), s = V();
-  for (let i = 0; i < n; i++) { const r = place(i, p); m4.compose(p, q.random(), s.setScalar(r)); m.setMatrixAt(i, m4); m.setColorAt(i, C(0xffffff).multiplyScalar(0.92 + 0.15 * rand())); }
-  return m;
-}
-const GREENS = [0x4f7f32, 0x649a42, 0x7cb050, 0x3f6a2c, 0x8ab85a];
-const tiled = (t, rx, ry) => { t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(rx, ry); return t; };
-const grassTex = () => tiled(canvasTex(256, 256, (c, S) => {
-  c.fillStyle = '#7aa24c'; c.fillRect(0, 0, S, S);
-  for (let i = 0; i < 6000; i++) {
-    const x = rand() * S, y = rand() * S, l = 3 + rand() * 7, v = rand();
-    c.strokeStyle = v < 0.45 ? 'rgba(52,92,30,.55)' : v < 0.85 ? 'rgba(140,186,84,.5)' : 'rgba(190,200,110,.45)';
-    c.lineWidth = 1; c.beginPath(); c.moveTo(x, y); c.lineTo(x + (rand() - 0.5) * 3, y - l); c.stroke();
-  }
-}), 46, 9);
-const stoneTex = (base = '#c9a27c') => canvasTex(256, 256, (c, S) => {
-  c.fillStyle = '#8a7158'; c.fillRect(0, 0, S, S);
-  let y = 0;
-  while (y < S) {
-    const h = 26 + rand() * 18; let x = -rand() * 40;
-    while (x < S) { const w = 40 + rand() * 50, k = 0.82 + rand() * 0.3; c.fillStyle = css(parseInt(base.slice(1), 16), k); c.beginPath(); c.roundRect(x + 2, y + 2, w - 4, h - 4, 6); c.fill(); x += w; }
-    y += h;
-  }
-});
-const woodTex = (base = 0x8a5a36) => canvasTex(256, 64, (c, W, H) => {
-  c.fillStyle = css(base); c.fillRect(0, 0, W, H);
-  for (let i = 0; i < 40; i++) { c.strokeStyle = `rgba(40,20,8,${0.08 + rand() * 0.15})`; c.lineWidth = 1 + rand(); const y = rand() * H; c.beginPath(); c.moveTo(0, y); c.bezierCurveTo(W * 0.3, y + rand() * 6 - 3, W * 0.6, y + rand() * 6 - 3, W, y); c.stroke(); }
-});
-
-/* ---------------------------------------------------------------- cartoon materials */
-
-const toonGrad = (() => {
-  const t = new THREE.DataTexture(new Uint8Array([95, 165, 220, 255]), 4, 1, THREE.RedFormat);
-  t.minFilter = t.magFilter = THREE.NearestFilter; t.needsUpdate = true;
-  return t;
-})();
-const toon = (color, extra = {}) => new THREE.MeshToonMaterial({ color, gradientMap: toonGrad, ...extra });
-// Ink outline: the mesh drawn again, inside out, pushed out along its normals.
-const inks = new Map();
-function inkMat(w) {
-  const k = w.toFixed(4);
-  if (!inks.has(k)) {
-    const m = new THREE.MeshBasicMaterial({ color: 0x3b2622, side: THREE.BackSide });
-    m.onBeforeCompile = sh => { sh.vertexShader = sh.vertexShader.replace('#include <begin_vertex>', `#include <begin_vertex>\ntransformed += normal * ${k};`); };
-    m.customProgramCacheKey = () => 'ink' + k;
-    inks.set(k, m);
-  }
-  return inks.get(k);
-}
-function inked(geo, mat, parent, pos, scale, w = 0.026) {
-  const m = mesh(geo, mat, parent, pos, scale);
-  const s = scale === undefined ? 1 : typeof scale === 'number' ? scale : Math.max(...scale);
-  m.add(new THREE.Mesh(geo, inkMat(w / s)));
-  return m;
-}
 
 /* ---------------------------------------------------------------- the girl */
 
