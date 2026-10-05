@@ -309,8 +309,8 @@ function buildPo(M, small) {
   const Y0 = 1.26;
   const body = (x, y, z) => {
     y += Y0;
-    let d = smin(ell(x, y, z, 0, 2.38, 0.18, 1.62, 1.36, 1.46), ell(x, y, z, 0, 3.15, -0.05, 1.45, 0.95, 1.15), 0.6);
-    d = smin(d, Math.min(ell(x, y, z, 1.08, 3.42, -0.08, 0.95, 0.78, 0.86), ell(x, y, z, -1.08, 3.42, -0.08, 0.95, 0.78, 0.86)), 0.5);
+    let d = smin(ell(x, y, z, 0, 2.38, 0.18, 1.62, 1.36, 1.46), ell(x, y, z, 0, 3.1, 0.0, 1.42, 0.92, 1.08), 0.6);
+    d = smin(d, Math.min(ell(x, y, z, 1.12, 3.2, 0.05, 0.85, 0.66, 0.8), ell(x, y, z, -1.12, 3.2, 0.05, 0.85, 0.66, 0.8)), 0.45);   // shoulders, low and forward: no hump
     d = smin(d, ell(x, y, z, 0, 3.74, 0, 1.05, 0.52, 0.94), 0.4);
     return smin(d, ell(x, y, z, 0, 1.55, -0.2, 1.56, 0.74, 1.25), 0.5);
   };
@@ -360,7 +360,7 @@ function buildPo(M, small) {
     const rim = sm(0.55, 0.95, e) * sm(0.0, -0.12, y - 0.98 + 0.3 * Math.abs(x - Math.sign(x) * 0.52));   // brown along the lower edge
     return mix(mix(black, brown, rim), white, sm(0.94, 1.06, e));
   }, [-1.6, -0.4, -1.3], [1.6, 2.15, 1.55], small ? 0.06 : 0.045);
-  const H = R.headMesh = new THREE.Group(); H.position.y = -0.4; H.scale.setScalar(1.15); R.head.add(H);   // sits down between the shoulders
+  const H = R.headMesh = new THREE.Group(); H.position.set(0, -0.26, 0.12); H.scale.setScalar(1.15); R.head.add(H);   // sits down between the shoulders
   furry(headGeo, H, { ...FUR, len: 0.036 });
   H.updateWorldMatrix(true, false);
   const lidMat = new THREE.MeshStandardMaterial({ color: 0x1d1a1d, roughness: 0.9 });
@@ -837,7 +837,7 @@ export function start(canvas, opts = {}) {
     A.kick = v => { A.bellyV += v; };
     return A;
   }
-  const po = actor(buildPo(M, small), { ao: 0.4, af: 0.1, ae: 0.25, lo: 0.1 }, 3.6);
+  const po = actor(buildPo(M, small), { ao: 0.36, af: 0.28, ae: 0.4, lo: 0.1 }, 3.6);
   const sf = actor(buildShifu(M, small), { ao: 0.16, lo: 0.06 }, 1.6);
   sf.rig.root.visible = false; sf.shadow.visible = false; sf.stride = 4;
   sf.rig.root.scale.setScalar(1.22);
@@ -1229,6 +1229,7 @@ export function start(canvas, opts = {}) {
     yield* holdStaff();
     const [x, z] = pickSpot();
     yield* goTo(po, x, z);
+    yield* turnTo(po, faceCam(po) + (rnd() - 0.5) * 0.6);      // turn three-quarters to the viewer, so his face shows
     const r = rnd();
     if (watching() && r < 0.45) yield* waveHello();
     else if (r < 0.35) yield* lookAround(po);
