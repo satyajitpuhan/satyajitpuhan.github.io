@@ -145,8 +145,8 @@ Make sure GitHub notifications for this repository reach your email (Settings �
 
 ## The companions
 
-A 3D companion lives behind the content on every page. Visitors choose one from the 🐉/🐼/🌸
-button in the top bar (Dragon, Kung fu panda, Wishes, or Off); the choice is remembered.
+A 3D companion lives behind the content on every page. Visitors choose one from the 🐉/🐼/🌸/🍌
+button in the top bar (Dragon, Kung fu panda, Wishes, Minion mayhem, or Off); the choice is remembered.
 
 * **Dragon** (`static/js/dragon.js`): an Eastern dragon that swims across the page, sometimes
   circles the mouse, and now and then opens its jaws.
@@ -167,7 +167,14 @@ button in the top bar (Dragon, Kung fu panda, Wishes, or Off); the choice is rem
   takes the rose to the bench and sits looking out over the canyon. She also has coffee at the
   café, twirls, and gazes at the view. In the dark theme it is dawn and the café is lit.
 
-All three are built entirely in code (no model or image files); shared building blocks live in
+* **Minion mayhem** (`static/js/field.js`): a gang of minions picks a fight with me in a field
+  (a cartoon me: curly hair, beard, grey T-shirt, jeans). They burst out of the haystack, chase
+  me round the field, clamp onto my leg and my arm (I hop about and fling them off), pile on
+  and knock me flat (I burst out and they go flying), and dive on a banana in a dust-cloud brawl.
+  Stunned minions see stars. The field is drawn real: grass, wildflowers, an oak, haystacks, a
+  fence and rolling hills; in the dark theme it is evening, with fireflies.
+
+All four are built entirely in code (no model or image files); shared building blocks live in
 `static/js/kit.js`. The only library is three.js,
 self-hosted in `static/js/vendor/` (MIT licence alongside it), so the Site guard sees no outside
 scripts.
