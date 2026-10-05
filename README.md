@@ -162,7 +162,7 @@ button in the top bar (Dragon, Kung fu panda, Wishes, or Off); the choice is rem
 * **Wishes** (`static/js/garden.js`): a cartoon princess in a flower garden on the rim of a
   red-rock canyon that opens out to the sea, next to a little café called Wishes. The world is
   drawn to look real (grass, flowers with real petals, trees, a rose arch, furry rabbits, the
-  café with its awning and tables); she is drawn as a cartoon, with a tiara and a yellow rose
+  café with its awning and tables); she is drawn as a cartoon, with a yellow rose
   by her ear. Her story: she picks a rose and smells it, a butterfly lands on her face, and she
   takes the rose to the bench and sits looking out over the canyon. She also has coffee at the
   café, twirls, and gazes at the view. In the dark theme it is dawn and the café is lit.
