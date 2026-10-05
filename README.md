@@ -143,19 +143,32 @@ If an alert is you, just close the issue. If it is not: change your GitHub passw
 Settings → Sessions / Security log, revoke unknown tokens and keys, and revert the commit.
 Make sure GitHub notifications for this repository reach your email (Settings → Notifications).
 
-## The dragon
+## The dragon and the panda
 
-A 3D Eastern dragon swims across every page, behind the content (`static/js/dragon.js`).
-It is built entirely in code (body, scales, mane, horns, whiskers, legs); the only library
-is three.js, self-hosted in `static/js/vendor/` (MIT licence alongside it), so the Site guard
-sees no outside scripts.
+A 3D companion lives behind the content on every page. Visitors choose one from the 🐉/🐼
+button in the top bar (Dragon, Kung fu panda, or Off); the choice is remembered.
 
-* The 🐉 button in the top bar turns it on or off; each visitor's choice is remembered.
-* It never loads before the page has finished loading, and it stays off by default for
-  visitors who ask for reduced motion or data saving, or whose computer has no graphics chip.
-  If a device can't keep it smooth, it switches itself off.
-* It carries on from where it was when you move to another page, sometimes circles the
-  mouse, and now and then opens its jaws.
-* To tune it — size, speed, colours — the constants are at the top of `start()` in
-  `dragon.js` (`LEN` is its length, `speed` in `step()` how fast it swims).
+* **Dragon** (`static/js/dragon.js`): an Eastern dragon that swims across the page, sometimes
+  circles the mouse, and now and then opens its jaws.
+* **Kung fu panda** (`static/js/panda.js`): a panda with a wooden staff, his master (a red panda),
+  a hill with a blossoming peach tree, and a valley of misty mountains with a palace on one peak
+  (moonlit, with lit lanterns, in the dark theme). The panda first peeks in from the side of the
+  screen to check that nobody is watching. If the mouse moves or the page scrolls while he is
+  looking, he ducks back out and tries again. Then he tiptoes in and goes about his day:
+  he wanders with his staff, practises a staff form that ends in a burst of golden chi, knocks
+  a peach out of the tree (it lands on his head) and eats it, trains with his master, duels him
+  with chopsticks for a dumpling, and naps under the tree.
+
+Both are built entirely in code (no model or image files). The only library is three.js,
+self-hosted in `static/js/vendor/` (MIT licence alongside it), so the Site guard sees no outside
+scripts.
+
+* They never load before the page has finished loading. They stay off by default for visitors
+  who ask for reduced motion or data saving, or whose computer has no graphics chip. If a device
+  can't keep one smooth, it switches itself off.
+* Each one carries on from where it was when you move to another page.
+* To tune the dragon (size, speed, colours), the constants are at the top of `start()` in
+  `dragon.js` (`LEN` is its length, `speed` in `step()` how fast it swims). For the panda,
+  the poses are the table `P` in `panda.js`, and each behaviour is a short script further down
+  (`kata`, `peachSnack`, `train`, `dumplingDuel`, `nap`). `ACTS` sets how often each one happens.
 

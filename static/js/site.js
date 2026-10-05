@@ -591,65 +591,86 @@
     on(document, 'keydown', function (e) { if (e.key === 'Escape' && box.classList.contains('is-open')) close(); });
   })();
 
-  /* ---- 16. dragon: a 3D Eastern dragon swimming behind the content (dragon.js).
-         Fetched only once the page has loaded and gone idle. Off by default for
-         reduced motion and Save-Data; the nav button switches it and is remembered. */
-  (function dragon() {
-    var btn = $('[data-dragon-toggle]');
-    if (!btn || !window.Promise) return;
+  /* ---- 16. companions: a 3D dragon (dragon.js) or a kung fu panda (panda.js) living
+         behind the content. Fetched only once the page has loaded and gone idle. Off by
+         default for reduced motion, Save-Data and software-only WebGL; the visitor picks
+         one from the nav menu and the choice is remembered. */
+  (function companion() {
+    var box = $('[data-companion]');
+    if (!box || !window.Promise) return;
+    var btn = $('[data-companion-toggle]', box), menu = $('.companion__menu', box), picks = $$('[data-companion-pick]', box);
     var gl = null, soft = false;
     try { var c = document.createElement('canvas'); gl = c.getContext('webgl2') || c.getContext('webgl'); } catch (e) {}
-    if (!gl) return;                                       // button stays hidden
-    try {                                                  // software rendering (no GPU): don't start it uninvited
+    if (!gl) return;                                       // menu stays hidden
+    try {                                                  // software rendering (no GPU): don't start one uninvited
       var dbg = gl.getExtension('WEBGL_debug_renderer_info');
       soft = /swiftshader|llvmpipe|software|basic render/i.test(gl.getParameter(dbg ? dbg.UNMASKED_RENDERER_WEBGL : gl.RENDERER));
       var lose = gl.getExtension('WEBGL_lose_context'); if (lose) lose.loseContext();
     } catch (e) {}
     var load;                                              // import() is a syntax error on very old browsers,
     try { load = new Function('u', 'return import(u)'); } catch (e) { return; }   // so keep it out of this file's parse
+    function pick(name) { return $('[data-companion-pick="' + name + '"]', box); }
     var saved = null;
-    try { saved = localStorage.getItem('sp-dragon'); } catch (e) {}
+    try {
+      saved = localStorage.getItem('sp-companion');
+      if (!saved && localStorage.getItem('sp-dragon')) saved = localStorage.getItem('sp-dragon') === 'on' ? 'dragon' : 'off';   // older setting
+    } catch (e) {}
     var saveData = navigator.connection && navigator.connection.saveData;
-    var want = saved ? saved === 'on' : !(reduced || saveData || soft);
-    var inst = null, canvas = null, loading = false, root = document.documentElement;
+    var want = saved && pick(saved) ? saved : (reduced || saveData || soft ? 'off' : 'dragon');
+    var inst = null, canvas = null, current = null, token = 0, root = document.documentElement;
     function theme() { return root.getAttribute('data-theme') === 'light' ? 'light' : 'dark'; }
-    function label() {
-      var l = btn.getAttribute(want ? 'data-label-off' : 'data-label-on');
-      btn.setAttribute('aria-pressed', want ? 'true' : 'false');
-      btn.setAttribute('aria-label', l); btn.title = l;
+    function show() {
+      picks.forEach(function (b) { b.setAttribute('aria-checked', b.getAttribute('data-companion-pick') === want ? 'true' : 'false'); });
+      var b = pick(want), icon = $('[data-companion-icon]', box);
+      if (b && b.getAttribute('data-icon')) icon.textContent = b.getAttribute('data-icon');
+      box.classList.toggle('is-off', want === 'off');
     }
     function run() {
-      if (inst) { canvas.classList.add('is-on'); return; }
-      if (loading) return;
-      loading = true;
-      canvas = document.createElement('canvas');
-      canvas.className = 'dragon-canvas'; canvas.setAttribute('aria-hidden', 'true');
-      document.body.insertBefore(canvas, document.body.firstChild);
-      load(btn.getAttribute('data-dragon-src')).then(function (m) {
-        loading = false;
-        if (!want) { canvas.remove(); canvas = null; return; }
-        var cv = canvas;
-        inst = m.start(cv, { theme: theme(), onReady: function () { cv.classList.add('is-on'); }, onSlow: halt });
+      if (want === 'off' || current === want) return;
+      halt();
+      var name = want, mine = ++token, cv = document.createElement('canvas');
+      current = name; canvas = cv;
+      cv.className = 'companion-canvas'; cv.setAttribute('aria-hidden', 'true');
+      document.body.insertBefore(cv, document.body.firstChild);
+      load(pick(name).getAttribute('data-src')).then(function (m) {
+        if (mine !== token) { cv.remove(); return; }       // switched again while it was loading
+        inst = m.start(cv, { theme: theme(), onReady: function () { cv.classList.add('is-on'); }, onSlow: function () { if (mine === token) halt(); } });
       }).catch(function () {
-        loading = false; btn.hidden = true;
-        if (canvas) { canvas.remove(); canvas = null; }
+        if (mine !== token) return;
+        cv.remove(); canvas = null; current = null;
+        pick(name).hidden = true; want = 'off'; show();
       });
     }
     function halt() {
-      if (!inst) return;
-      var i = inst, cv = canvas; inst = null; canvas = null;
+      token++;
+      var i = inst, cv = canvas; inst = null; canvas = null; current = null;
+      if (!cv) return;
       cv.classList.remove('is-on');
-      setTimeout(function () { i.stop(); cv.remove(); }, 1300);   // let it fade out first
+      setTimeout(function () { if (i) i.stop(); cv.remove(); }, 1300);   // let it fade out first
     }
-    btn.hidden = false; label();
-    on(btn, 'click', function () {
-      want = !want; label();
-      try { localStorage.setItem('sp-dragon', want ? 'on' : 'off'); } catch (e) {}
-      if (want) run(); else halt();
+    function openMenu(open) {
+      menu.hidden = !open; btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (open) ($('[aria-checked="true"]', menu) || picks[0]).focus();
+    }
+    on(btn, 'click', function () { openMenu(menu.hidden); });
+    picks.forEach(function (b) {
+      on(b, 'click', function () {
+        want = b.getAttribute('data-companion-pick'); show(); openMenu(false); btn.focus();
+        try { localStorage.setItem('sp-companion', want); } catch (e) {}
+        if (want === 'off') halt(); else run();
+      });
     });
+    on(document, 'click', function (e) { if (!menu.hidden && !box.contains(e.target)) openMenu(false); });
+    on(menu, 'keydown', function (e) {
+      var vis = picks.filter(function (b) { return !b.hidden; }), i = vis.indexOf(document.activeElement);
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); vis[(i + (e.key === 'ArrowDown' ? 1 : vis.length - 1)) % vis.length].focus(); }
+      else if (e.key === 'Escape') { openMenu(false); btn.focus(); }
+      else if (e.key === 'Tab') openMenu(false);
+    });
+    box.hidden = false; show();
     new MutationObserver(function () { if (inst) inst.setTheme(theme()); })
       .observe(root, { attributes: true, attributeFilter: ['data-theme'] });
-    if (!want) return;
+    if (want === 'off') return;
     function idle() { (window.requestIdleCallback || function (f) { setTimeout(f, 600); })(run, { timeout: 2500 }); }
     if (document.readyState === 'complete') idle(); else on(window, 'load', idle);
   })();
