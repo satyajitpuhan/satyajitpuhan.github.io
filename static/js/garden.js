@@ -443,7 +443,7 @@ function buildCafe() {
   // chimney smoke
   const smoke = [];
   for (let i = 0; i < 6; i++) { const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: radial([[0, 'rgba(255,255,255,.5)'], [1, 'rgba(255,255,255,0)']]), transparent: true, depthWrite: false })); cafe.add(s); smoke.push({ s, t: i / 6 }); }
-  return { cafe, door, doorPt: V(0, 0, fz + 1.4), insidePt: V(0, 0, fz - 0.35), tables, glass, bulbM, light, smoke, chimney: V(W / 2 - 1.6, B + Hh + 3.2, -1.2) };
+  return { cafe, door, doorPt: V(0, 0, fz + 1.4), insidePt: V(0, 0, fz - 1.6), tables, glass, bulbM, light, smoke, chimney: V(W / 2 - 1.6, B + Hh + 3.2, -1.2) };
 }
 
 // A white mug of coffee.
@@ -789,6 +789,30 @@ export function start(canvas, opts = {}) {
 
   /* ---------------------------------------------------------------- her */
   const R = buildGirl(small); world.add(R.root);
+  // A clipping plane at the café's front wall: while she walks in or out, the part of her
+  // that is already inside the house is not drawn, so she passes through the doorway
+  // instead of overlapping the walls. Parked far away the rest of the time.
+  renderer.localClippingEnabled = true;
+  const wallClip = new THREE.Plane(V(0, 0, 1), 1e6);
+  const own = new Map();
+  for (const root of [R.root, mug]) root.traverse(o => {
+    if (!o.material) return;
+    o.material = [].concat(o.material).map(m => {
+      if ([...inks.values()].includes(m)) {                     // outline materials are shared with the scenery: use her own copies
+        if (!own.has(m)) { const c = m.clone(); c.onBeforeCompile = m.onBeforeCompile; c.customProgramCacheKey = m.customProgramCacheKey; own.set(m, c); }
+        m = own.get(m);
+      }
+      m.clippingPlanes = [wallClip];
+      return m;
+    });
+    if (o.material.length === 1) o.material = o.material[0];
+  });
+  function clipAtCafeWall(on) {
+    if (!on) { wallClip.constant = 1e6; return; }
+    const n = V(0, 0, 1).applyQuaternion(C0.cafe.getWorldQuaternion(new THREE.Quaternion())).normalize();
+    const p = C0.cafe.localToWorld(C0.doorPt.clone().setZ(C0.doorPt.z - 1.4 + 0.02));        // the outer face of the front wall
+    wallClip.setFromNormalAndCoplanarPoint(n, p);
+  }
   R.drape.geo.computeBoundingSphere(); R.skirt.traverse(o => { o.frustumCulled = false; });
   const shadow = mesh(new THREE.PlaneGeometry(1, 1).rotateX(-Math.PI / 2), new THREE.MeshBasicMaterial({ map: radial([[0, 'rgba(60,30,20,.4)'], [0.6, 'rgba(60,30,20,.15)'], [1, 'rgba(60,30,20,0)']]), transparent: true, depthWrite: false }), world);
   shadow.renderOrder = -1;
@@ -979,13 +1003,15 @@ export function start(canvas, opts = {}) {
     yield* goTo(door.x, door.z, { face: into });
     // she opens the door, steps in, and comes back out a little later with her coffee
     doorOpen = 1; yield* wait(0.8);
+    clipAtCafeWall(true);
     yield* goTo(inside.x, inside.z, { speed: 1.2, direct: true });
     R.root.visible = false; shadow.visible = false; yield* wait(0.6);
     doorOpen = 0; yield* wait(2.6);
     doorOpen = 1; yield* wait(0.6);
     mug.visible = true; mugAt = 'hand'; mugHot = 1; A.hold = 1;
-    A.yaw = into + Math.PI; R.root.visible = true; shadow.visible = true;
+    A.yaw = into + Math.PI; R.root.visible = true;
     yield* goTo(door.x, door.z, { speed: 1.2, direct: true });
+    shadow.visible = true; clipAtCafeWall(false);
     yield* wait(0.4); doorOpen = 0;
     yield* pose(G.cup, 0.4);
     const ch = C0.tables[0].seats[0].chair, cw = ch.getWorldPosition(V()), cy = ch.getWorldQuaternion(new THREE.Quaternion()), f = V(0, 0, 1).applyQuaternion(cy);
