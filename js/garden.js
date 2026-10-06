@@ -31,7 +31,7 @@ import {
 
 function buildGirl(small) {
   const R = makeRig({ hipH: 2.55, hipW: 0.22, neckY: 1.58, neckZ: 0.02, shY: 1.42, shW: 0.52, upper: 0.9, fore: 0.8, thigh: 1.2, shin: 1.18, ankleH: 0.17 });
-  const skinC = 0xe2a982, skinCol = C(skinC), skin = toon(skinC), hairC = 0x2a1a15;
+  const skinC = 0xe9bc99, skinCol = C(skinC), skin = toon(skinC), hairC = 0x2a1a15;
   const gownTop = C(0xc9b2f2), gownHem = C(0xf6b8d4), sashC = C(0x8f6fd6), spark = C(0xfffaf0);
   const sparkle = (x, y, z, c) => (Math.sin(x * 41 + 1.3) * Math.sin(y * 37 + 0.4) * Math.sin(z * 43 + 2.1) > 0.86 ? spark : c);
   // bodice with a sweetheart neckline and a sash
@@ -77,64 +77,81 @@ function buildGirl(small) {
     over.scale.set(1.05, 0.82, 1.05);
   }
   inked(capsule(0.12, 0.2), skin, R.torso, [0, 1.56, 0.0], undefined, 0.02);
-  // head: a soft cartoon face with rosy cheeks
+  // head: her slim oval face with a soft chin
   const head = (x, y, z) => {
-    let d = ell(x, y, z, 0, 0.66, -0.04, 0.6, 0.62, 0.6);
-    d = smin(d, ell(x, y, z, 0, 0.42, 0.1, 0.5, 0.42, 0.48), 0.25);
-    d = smin(d, ell(x, y, z, 0, 0.2, 0.26, 0.21, 0.15, 0.2), 0.16);
-    d = smin(d, ell(x, y, z, 0, 0.47, 0.56, 0.055, 0.075, 0.065), 0.06);
-    return smin(d, Math.min(ell(x, y, z, 0.58, 0.5, -0.02, 0.07, 0.12, 0.08), ell(x, y, z, -0.58, 0.5, -0.02, 0.07, 0.12, 0.08)), 0.04);
+    let d = ell(x, y, z, 0, 0.7, -0.05, 0.5, 0.64, 0.57);
+    d = smin(d, ell(x, y, z, 0, 0.4, 0.08, 0.39, 0.44, 0.45), 0.22);
+    d = smin(d, ell(x, y, z, 0, 0.16, 0.22, 0.17, 0.15, 0.19), 0.15);                          // chin
+    d = smin(d, ell(x, y, z, 0, 0.45, 0.54, 0.045, 0.1, 0.062), 0.05);                         // a slim nose
+    return smin(d, Math.min(ell(x, y, z, 0.5, 0.5, -0.03, 0.065, 0.12, 0.08), ell(x, y, z, -0.5, 0.5, -0.03, 0.065, 0.12, 0.08)), 0.04);
   };
   const H = R.headMesh = new THREE.Group(); H.position.set(0, 0.02, 0.03); R.head.add(H);
-  const blush = C(0xf28a86);
-  inked(surfaceNet(head, (x, y, z) => mix(skinCol, blush, 0.6 * Math.exp(-(((Math.abs(x) - 0.3) / 0.12) ** 2 + ((y - 0.36) / 0.08) ** 2)) * sm(0.2, 0.45, z)),
+  const blush = C(0xe9928a);
+  inked(surfaceNet(head, (x, y, z) => mix(skinCol, blush, 0.22 * Math.exp(-(((Math.abs(x) - 0.28) / 0.12) ** 2 + ((y - 0.36) / 0.08) ** 2)) * sm(0.2, 0.45, z)),
     [-0.75, -0.1, -0.75], [0.75, 1.4, 0.8], small ? 0.03 : 0.022), toon(0xffffff, { vertexColors: true }), H, undefined, undefined, 0.022);
-  // hair: crown and a side-swept fringe; the long hair down her back sways on its own
-  const hairD = C(hairC), hairL = C(0x6a4434);
+  // hair: pulled back sleek from a centre parting, ears showing, into a low ponytail
+  const hairD = C(hairC), hairL = C(0x4a2c20);
+  const hairline = x => 1.08 - 0.45 * (x / 0.5) ** 2;
   const hairCap = (x, y, z) => {
-    let d = smin(ell(x, y, z, 0, 0.74, -0.07, 0.65, 0.68, 0.65), ell(x, y, z, 0, 0.35, -0.3, 0.6, 0.5, 0.36), 0.25);
-    d = smin(d, Math.min(ell(x, y, z, 0.52, 0.3, -0.1, 0.17, 0.5, 0.3), ell(x, y, z, -0.52, 0.3, -0.1, 0.17, 0.5, 0.3)), 0.14);
-    d = Math.max(d, -ell(x, y, z, 0, 0.48, 0.42, 0.5, 0.56, 0.42));
-    return smin(d, smin(ell(x, y, z, 0.18, 1.0, 0.36, 0.42, 0.13, 0.2), ell(x, y, z, 0.44, 0.78, 0.4, 0.14, 0.24, 0.12), 0.1), 0.1);
+    let d = ell(x, y, z, 0, 0.73, -0.08, 0.545, 0.67, 0.6);
+    d = smin(d, ell(x, y, z, 0, 0.42, -0.36, 0.45, 0.36, 0.3), 0.18);                          // the back of the head, down to the nape
+    d = Math.max(d, -Math.max(y - hairline(x), -0.06 - z));                                         // forehead and face clear
+    d = Math.max(d, -Math.min(ell(x, y, z, 0.53, 0.44, 0.02, 0.17, 0.24, 0.2), ell(x, y, z, -0.53, 0.44, 0.02, 0.17, 0.24, 0.2)));   // ears clear
+    return d;
   };
-  const hairCol = (x, y, z) => mix(hairD, hairL, 0.6 * Math.exp(-(((y - 1.05) / 0.09) ** 2)) * sm(-0.2, 0.3, z) + 0.25 * sm(0.75, 1, Math.sin(x * 24 + y * 2)));
-  inked(surfaceNet(hairCap, hairCol, [-0.85, -0.25, -0.9], [0.85, 1.55, 0.8], small ? 0.032 : 0.024), toon(0xffffff, { vertexColors: true }), H, undefined, undefined, 0.022);
-  R.hairBack = new THREE.Group(); R.hairBack.position.set(0, 0.62, -0.32); H.add(R.hairBack);
-  inked(surfaceNet((x, y, z) => {
-    const w = 0.45 + 0.1 * sm(0.3, -1.2, y);
-    return ell(x + 0.05 * Math.sin(y * 6.5), y, z + 0.03 * Math.sin(y * 5 + x * 4), 0, -0.68, -0.14, w, 1.12, 0.22);
-  }, (x, y, z) => hairCol(x, y + 1.0, z), [-0.75, -2.0, -0.5], [0.75, 0.5, 0.3], small ? 0.035 : 0.026), toon(0xffffff, { vertexColors: true }), R.hairBack, undefined, undefined, 0.022);
-  R.hairFlower = toonRose(0xffd23a, 1.6); R.hairFlower.position.set(0.64, 0.84, 0.08); R.hairFlower.rotation.set(1.1, 0.5, -0.7); H.add(R.hairFlower);   // a yellow rose by her ear
-  R.hairFlower.visible = false;
-  // face: big eyes with lashes, brows, round glasses, pink lips
-  const eyeTex = eyeTexture(0xa8763f, 0x4a2a16, 0x1a0e08);
-  const lashMat = toon(0x24140f), frame = toon(0xc99a72), lips = toon(0xe0707e);
+  const hairCol = (x, y, z) => mix(hairD, hairL, 0.45 * Math.exp(-(((y - 1.12) / 0.1) ** 2)) * sm(-0.3, 0.2, z)
+    + 0.22 * sm(0.7, 1, Math.sin(x * 30 + z * 3)) * sm(0.6, 1.0, y)) .lerp(hairD.clone().multiplyScalar(0.55), Math.exp(-((x / 0.018) ** 2)) * sm(0.95, 1.2, y) * sm(-0.1, 0.3, z));   // fine strands and the parting
+  inked(surfaceNet(hairCap, hairCol, [-0.85, -0.2, -0.95], [0.85, 1.55, 0.8], small ? 0.03 : 0.022), toon(0xffffff, { vertexColors: true }), H, undefined, undefined, 0.022);
+  // loose wisps at her temples
+  const wispM = toon(hairC);
   for (const s of [1, -1]) {
-    const { p, n } = onFront(head, s * 0.22, 0.6);
-    const e = addEye(H, p.clone().addScaledVector(n, -0.07), 0.158, eyeTex, skin);
-    e.base.scale.set(0.92, 1.12, 1); e.side = s;
-    mesh(SPH, new THREE.MeshBasicMaterial({ color: 0xffffff }), e.base, [-0.04, -0.05, 0.155], 0.014);
-    R.eyes.push(e);
-    const lash = mesh(new THREE.TorusGeometry(0.15, 0.021, 6, 18, Math.PI * 0.95), lashMat, H);
-    lash.position.copy(p).add(V(0, 0.018, 0.03)); lash.rotation.set(-0.2, s * 0.25, 0.08);
-    for (const k of [0, 1]) { const f = mesh(new THREE.ConeGeometry(0.022, 0.11 - k * 0.03, 5), lashMat, H); f.position.copy(p).add(V(s * (0.16 - k * 0.05), 0.1 + k * 0.035, -0.01)); f.rotation.z = -s * (1.0 - k * 0.35); }
-    const low = mesh(new THREE.TorusGeometry(0.14, 0.008, 4, 14, Math.PI * 0.7), lashMat, H);
-    low.position.copy(p).add(V(0, -0.02, 0.02)); low.rotation.set(0.2, s * 0.25, Math.PI + 0.48);
-    const b = onFront(head, s * 0.23, 0.84).p;
-    mesh(taperedTube([b.clone().add(V(-s * 0.12, -0.03, 0.02)), b.clone().add(V(0, 0.025, 0.03)), b.clone().add(V(s * 0.13, -0.015, 0.0))], 10, u => 0.022 * (1 - 0.5 * Math.abs(u - 0.3)), null, 5), lashMat, H);
-    const rim = mesh(new THREE.TorusGeometry(0.175, 0.012, 6, 28), frame, H);
-    rim.position.copy(p).add(V(0, 0.0, 0.1)); rim.rotation.y = s * 0.15;
-    const arm = mesh(new THREE.CylinderGeometry(0.009, 0.009, 0.62, 5), frame, H);
-    arm.rotation.x = Math.PI / 2; arm.position.set(s * 0.56, p.y + 0.02, p.z - 0.24); arm.rotation.z = s * 0.12;
+    const w = mesh(taperedTube([V(s * 0.4, 0.98, 0.22), V(s * 0.47, 0.78, 0.2), V(s * 0.47, 0.56, 0.2), V(s * 0.44, 0.36, 0.17)], 14, u => 0.03 * (1 - 0.75 * u), null, 6), wispM, H);
+    w.rotation.z = s * 0.03;
   }
-  mesh(new THREE.TorusGeometry(0.06, 0.011, 5, 10, Math.PI), frame, H).position.copy(onFront(head, 0, 0.62).p).add(V(0, 0.0, 0.08));
-  const m = onFront(head, 0, 0.29);
-  R.mouth = mesh(SPH, toon(0x7a2a2e), H, null, [0.08, 0.012, 0.04]); R.mouth.position.copy(m.p).addScaledVector(m.n, -0.01);
-  const up = mesh(new THREE.TorusGeometry(0.08, 0.017, 6, 14, Math.PI * 0.8), lips, H);
-  up.position.copy(m.p).add(V(0, 0.065, 0.0)); up.rotation.set(-0.25, 0, Math.PI + Math.PI * 0.1);
-  mesh(SPH, lips, H, null, [0.05, 0.022, 0.03]).position.copy(m.p).add(V(0, -0.025, 0.0));
+  // the ponytail, tied at the nape; it sways on its own
+  R.hairBack = new THREE.Group(); R.hairBack.position.set(0, 0.5, -0.6); H.add(R.hairBack);
+  mesh(new THREE.TorusGeometry(0.1, 0.035, 6, 16), toon(0x1a100c), R.hairBack, [0, 0, -0.02]).rotation.x = 0.4;
+  inked(surfaceNet((x, y, z) => {
+    const t = clamp(-y / 1.25, 0, 1), w = 0.15 * (1 - 0.65 * t) + 0.03;
+    return ell(x + 0.04 * Math.sin(y * 5), y, z + 0.12 * t * t + 0.02 * Math.sin(y * 7 + x * 4), 0, -0.6, -0.08, w, 0.68, w * 0.85);
+  }, (x, y, z) => hairCol(x * 0.6, 1.0 + y * 0.1, z), [-0.5, -1.4, -0.6], [0.5, 0.1, 0.4], small ? 0.032 : 0.024), toon(0xffffff, { vertexColors: true }), R.hairBack, undefined, undefined, 0.02);
+  R.hairFlower = toonRose(0xffd23a, 1.6); R.hairFlower.position.set(0.6, 0.86, 0.02); R.hairFlower.rotation.set(1.1, 0.5, -0.7); H.add(R.hairFlower);   // a yellow rose by her ear
+  R.hairFlower.visible = false;
+  // small stud earrings
+  const stud = toon(0xf3e2b8);
+  for (const s of [1, -1]) mesh(SPH, stud, H, [s * 0.555, 0.4, 0.0], 0.03);
+  // face: dark brown eyes, slim brows, round tortoiseshell glasses, a gentle closed-lip smile
+  const eyeTex = eyeTexture(0x5a3420, 0x2e1a10, 0x120a06);
+  const lashMat = toon(0x22140f), frame = toon(0x9c6650), frameL = toon(0x83503c), lips = toon(0xc96f6f);
+  for (const s of [1, -1]) {
+    const { p, n } = onFront(head, s * 0.2, 0.62);
+    const e = addEye(H, p.clone().addScaledVector(n, -0.045), 0.118, eyeTex, skin);
+    e.base.scale.set(1.12, 0.9, 1); e.side = s;
+    R.eyes.push(e);
+    const lash = mesh(new THREE.TorusGeometry(0.118, 0.015, 6, 18, Math.PI * 0.9), lashMat, H);
+    lash.position.copy(p).add(V(0, -0.005, 0.03)); lash.rotation.set(-0.2, s * 0.25, 0.15);
+    const f = mesh(new THREE.ConeGeometry(0.014, 0.06, 5), lashMat, H); f.position.copy(p).add(V(s * 0.13, 0.07, -0.01)); f.rotation.z = -s * 1.1;
+    const b = onFront(head, s * 0.21, 0.82).p;
+    mesh(taperedTube([b.clone().add(V(-s * 0.11, -0.02, 0.02)), b.clone().add(V(s * 0.01, 0.03, 0.03)), b.clone().add(V(s * 0.13, -0.01, 0.0))], 10, u => 0.015 * (1 - 0.55 * Math.abs(u - 0.3)), null, 5), lashMat, H);
+    // round frames, a little mottled like tortoiseshell
+    const rim = new THREE.Group(); rim.position.copy(p).add(V(0, 0.0, 0.11)); rim.rotation.y = s * 0.12; H.add(rim);
+    mesh(new THREE.TorusGeometry(0.175, 0.015, 8, 32), frame, rim);
+    for (let k = 0; k < 5; k++) mesh(new THREE.TorusGeometry(0.175, 0.0158, 6, 4, 0.14 + 0.08 * (k % 2)), frameL, rim).rotation.z = k * 1.31 + 0.5;
+    mesh(new THREE.CircleGeometry(0.17, 28), new THREE.MeshBasicMaterial({ color: 0xffeef0, transparent: true, opacity: 0.1, depthWrite: false }), rim, [0, 0, -0.005]);
+    const arm = mesh(new THREE.CylinderGeometry(0.011, 0.011, 0.6, 5), frame, H);
+    arm.rotation.x = Math.PI / 2; arm.position.set(s * 0.47, p.y + 0.03, p.z - 0.22); arm.rotation.z = s * 0.1;
+  }
+  mesh(new THREE.TorusGeometry(0.05, 0.013, 5, 10, Math.PI), frame, H).position.copy(onFront(head, 0, 0.62).p).add(V(0, 0.01, 0.1));
+  const m = onFront(head, 0, 0.27);
+  R.mouth = mesh(SPH, toon(0x8a3b3b), H, null, [0.055, 0.004, 0.025]); R.mouth.position.copy(m.p).addScaledVector(m.n, -0.008);
+  const up = mesh(new THREE.TorusGeometry(0.09, 0.012, 6, 16, Math.PI * 0.5), lips, H);             // a soft closed smile
+  up.position.copy(m.p).add(V(0, 0.075, 0.005)); up.rotation.set(-0.2, 0, Math.PI + Math.PI * 0.25);
+  mesh(SPH, lips, H, null, [0.042, 0.014, 0.022]).position.copy(m.p).add(V(0, -0.018, 0.0));
+  // the nose: a soft shadow under the tip and the nostrils
+  const noseSh = toon(0xcf9a7c), nb = onFront(head, 0, 0.4);
+  mesh(new THREE.TorusGeometry(0.035, 0.009, 5, 10, Math.PI * 0.8), noseSh, H, [nb.p.x, nb.p.y + 0.01, nb.p.z + 0.02]).rotation.set(-0.3, 0, Math.PI + Math.PI * 0.1);
   R.mouthPt = new THREE.Object3D(); R.mouthPt.position.copy(m.p).add(V(0, 0, 0.06)); H.add(R.mouthPt);
-  R.nosePt = new THREE.Object3D(); R.nosePt.position.copy(onFront(head, 0, 0.48).p).add(V(0, 0.02, 0.08)); H.add(R.nosePt);
+  R.nosePt = new THREE.Object3D(); R.nosePt.position.copy(onFront(head, 0, 0.47).p).add(V(0, 0.02, 0.08)); H.add(R.nosePt);
   R.crown = new THREE.Object3D(); R.crown.position.set(0, 1.45, 0); H.add(R.crown);
   // arms with sheer puff sleeves; slender cartoon hands
   const puff = sculpt((x, y, z) => [x * 0.22, y * 0.19 - 0.08, z * 0.22], null, 20, 14);
@@ -426,7 +443,7 @@ function buildCafe() {
   // chimney smoke
   const smoke = [];
   for (let i = 0; i < 6; i++) { const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: radial([[0, 'rgba(255,255,255,.5)'], [1, 'rgba(255,255,255,0)']]), transparent: true, depthWrite: false })); cafe.add(s); smoke.push({ s, t: i / 6 }); }
-  return { cafe, door, doorPt: V(0, 0, fz + 1.4), tables, glass, bulbM, light, smoke, chimney: V(W / 2 - 1.6, B + Hh + 3.2, -1.2) };
+  return { cafe, door, doorPt: V(0, 0, fz + 1.4), insidePt: V(0, 0, fz - 0.35), tables, glass, bulbM, light, smoke, chimney: V(W / 2 - 1.6, B + Hh + 3.2, -1.2) };
 }
 
 // A white mug of coffee.
@@ -782,7 +799,7 @@ export function start(canvas, opts = {}) {
     flare: 0, flareT: 0, spin: 0, braidV: V(), braid: V(), lastYaw: 0, hold: null, cross: 0, crossT: 0,
   };
   A.set = (p, rate = 6) => { A.target = Object.assign(blank(), p); A.rate = rate; };
-  for (const e of R.eyes) e.lid.rotation.x = -0.95;
+  for (const e of R.eyes) e.lid.rotation.x = -1.15;
   R.mouth.userData.y0 = R.mouth.scale.y;
   const q = new THREE.Quaternion(), q2 = new THREE.Quaternion(), tv = V(), tv2 = V(), xAxis = V(1, 0, 0);
   let wind = 0, gust = 0;
@@ -823,7 +840,7 @@ export function start(canvas, opts = {}) {
     A.lid += (Math.max(A.lidT, A.blinkT > 0 ? 1 : 0) - A.lid) * (1 - Math.exp(-dt * 22));
     A.wide *= Math.exp(-dt * 2);
     A.cross += (A.crossT - A.cross) * (1 - Math.exp(-dt * 6));
-    for (const e of R.eyes) { e.ball.rotation.set(-A.cross * 0.4, A.eyeX - e.side * A.cross, 0); e.lid.rotation.x = lerp(-0.95 - A.wide * 0.3, 1.45, A.lid); }
+    for (const e of R.eyes) { e.ball.rotation.set(-A.cross * 0.4, A.eyeX - e.side * A.cross, 0); e.lid.rotation.x = lerp(-1.15 - A.wide * 0.3, 1.45, A.lid); }
     R.mouth.scale.y = R.mouth.userData.y0 * (1 + clamp(o.jaw, 0, 1.2) * 6);
     // pose → joints
     R.root.position.copy(A.pos); R.root.rotation.y = A.yaw + A.spin;
@@ -958,12 +975,18 @@ export function start(canvas, opts = {}) {
   function* story() { yield* pickRose(); yield* butterflyKiss(); yield* sitBench(); }
   // a coffee at Wishes
   function* cafeVisit() {
-    const door = C0.cafe.localToWorld(C0.doorPt.clone()), into = C0.cafe.rotation.y + Math.PI;
+    const door = C0.cafe.localToWorld(C0.doorPt.clone()), inside = C0.cafe.localToWorld(C0.insidePt.clone()), into = C0.cafe.rotation.y + Math.PI;
     yield* goTo(door.x, door.z, { face: into });
-    doorOpen = 1; yield* wait(2.2);
+    // she opens the door, steps in, and comes back out a little later with her coffee
+    doorOpen = 1; yield* wait(0.8);
+    yield* goTo(inside.x, inside.z, { speed: 1.2, direct: true });
+    R.root.visible = false; shadow.visible = false; yield* wait(0.6);
+    doorOpen = 0; yield* wait(2.6);
+    doorOpen = 1; yield* wait(0.6);
     mug.visible = true; mugAt = 'hand'; mugHot = 1; A.hold = 1;
-    doorOpen = 0;
-    yield* turnTo(into + Math.PI);
+    A.yaw = into + Math.PI; R.root.visible = true; shadow.visible = true;
+    yield* goTo(door.x, door.z, { speed: 1.2, direct: true });
+    yield* wait(0.4); doorOpen = 0;
     yield* pose(G.cup, 0.4);
     const ch = C0.tables[0].seats[0].chair, cw = ch.getWorldPosition(V()), cy = ch.getWorldQuaternion(new THREE.Quaternion()), f = V(0, 0, 1).applyQuaternion(cy);
     yield* goTo(cw.x + f.x * 1.6, cw.z + f.z * 1.6);
