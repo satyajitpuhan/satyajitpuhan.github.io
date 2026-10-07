@@ -199,7 +199,7 @@ function canyonH(x, z) {
 }
 
 function buildCanyon(small) {
-  const nx = small ? 220 : 380, nzr = small ? 110 : 170, X = 560;
+  const nx = small ? 260 : 480, nzr = small ? 130 : 210, X = 560;
   const pos = [], col = [], idx = [];
   const zAt = t => -18 - 470 * Math.pow(t, 1.55);
   const H = [];
@@ -227,31 +227,95 @@ function buildCanyon(small) {
   g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
   g.setAttribute('color', new THREE.Float32BufferAttribute(col, 3));
   g.setIndex(idx); g.computeVertexNormals();
-  return new THREE.Mesh(g, new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.95, transparent: true }));   // drawn after the lawn, so its faded edge hides it
+  return new THREE.Mesh(g, rockMaterial());   // drawn after the lawn, so its faded edge hides it
 }
 
-// Water: flat geometry, waves in the shading, so the low sun leaves a glittering path.
-function waterMaterial(colour) {
+// Sandstone: the vertex colours give the big layers; the shader adds what makes it read as rock
+// up close: thin bedding lines that wander, weathered patches, dark desert-varnish streaks down
+// the cliff faces, and a bumpy surface (bump-mapped from the same noise) so the light catches
+// ridges and pockets instead of sliding over smooth clay. The detail fades out with distance.
+function rockMaterial() {
+  const m = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.97, transparent: true });
+  m.onBeforeCompile = sh => {
+    sh.vertexShader = 'varying vec3 vWPos;\nvarying vec3 vWNorm;\n' + sh.vertexShader.replace('#include <worldpos_vertex>', `#include <worldpos_vertex>
+      vWPos = (modelMatrix * vec4(transformed, 1.0)).xyz;
+      vWNorm = normalize(mat3(modelMatrix) * objectNormal);`);
+    sh.fragmentShader = `varying vec3 vWPos;
+      varying vec3 vWNorm;
+      float rh(vec3 p) { return fract(sin(dot(p, vec3(127.1, 311.7, 74.7))) * 43758.5453); }
+      float rn(vec3 p) {
+        vec3 i = floor(p), f = fract(p); f = f * f * (3.0 - 2.0 * f);
+        return mix(mix(mix(rh(i), rh(i + vec3(1, 0, 0)), f.x), mix(rh(i + vec3(0, 1, 0)), rh(i + vec3(1, 1, 0)), f.x), f.y),
+                   mix(mix(rh(i + vec3(0, 0, 1)), rh(i + vec3(1, 0, 1)), f.x), mix(rh(i + vec3(0, 1, 1)), rh(i + vec3(1, 1, 1)), f.x), f.y), f.z);
+      }
+      float rf(vec3 p) { return 0.5 * rn(p) + 0.25 * rn(p * 2.03 + 7.1) + 0.125 * rn(p * 4.1 + 3.3) + 0.0625 * rn(p * 8.3 + 1.7); }
+      ` + sh.fragmentShader
+      .replace('#include <color_fragment>', `#include <color_fragment>
+        float rDist = length(vWPos - cameraPosition);
+        float rNear = 1.0 - smoothstep(120.0, 520.0, rDist);
+        float steepW = 1.0 - smoothstep(0.35, 0.8, vWNorm.y);
+        float wob = rf(vec3(vWPos.xz * 0.04, 0.0)) * 3.0;
+        float bed = sin((vWPos.y + wob) * 5.5) * 0.5 + 0.5;                                   // thin bedding lines
+        float bed2 = smoothstep(0.55, 0.95, sin((vWPos.y + wob * 1.7) * 1.3 + 1.0));
+        float patchN = rf(vWPos * vec3(0.12, 0.3, 0.12));                                     // weathered patches
+        float streak = rf(vec3(vWPos.x * 0.55, vWPos.y * 0.035, vWPos.z * 0.55));            // varnish running down the faces
+        vec3 c = diffuseColor.rgb;
+        c *= mix(1.0, 0.86 + 0.2 * bed, steepW * rNear);
+        c *= 1.0 - 0.1 * bed2 * steepW;
+        c *= 0.82 + 0.36 * patchN;
+        c = mix(c, c * vec3(0.48, 0.38, 0.34), smoothstep(0.52, 0.78, streak) * steepW * 0.75);
+        float lum = dot(c, vec3(0.299, 0.587, 0.114));
+        diffuseColor.rgb = mix(vec3(lum), c, 0.82);                                           // real sandstone is less saturated than paint
+      `)
+      .replace('#include <normal_fragment_maps>', `#include <normal_fragment_maps>
+        {
+          float hb = rf(vWPos * 0.9) * 0.5 + rf(vWPos * vec3(0.25, 2.2, 0.25)) * 0.35 + rn(vWPos * 3.1) * 0.15;
+          hb *= 0.9 * rNear;
+          vec3 dpx = dFdx(-vViewPosition), dpy = dFdy(-vViewPosition);
+          float dhx = dFdx(hb), dhy = dFdy(hb);
+          vec3 r1 = cross(dpy, normal), r2 = cross(normal, dpx);
+          float det = dot(dpx, r1);
+          vec3 grad = sign(det) * (dhx * r1 + dhy * r2);
+          normal = normalize(abs(det) * normal - grad);
+        }`);
+  };
+  return m;
+}
+
+// Water: flat geometry, waves in the shading, so the low sun leaves a glittering path. Each wave
+// fades out once it is finer than a pixel (no shimmering stripes far away), the sky is reflected
+// more strongly at a glance (Fresnel), and `haze` thins the fog so the far sea still reads blue.
+// `u` shares the time and sky uniforms between the river and the sea.
+function waterMaterial(colour, haze = 1, u = { time: { value: 0 }, sky: { value: C(0x8fb0cf) } }) {
   const m = new THREE.MeshStandardMaterial({ color: colour, roughness: 0.16, metalness: 0.05, transparent: true });
   m.onBeforeCompile = sh => {
-    sh.uniforms.uTime = m.userData.time;
+    sh.uniforms.uTime = u.time; sh.uniforms.uSky = u.sky;
     sh.vertexShader = 'varying vec3 vWPos;\n' + sh.vertexShader.replace('#include <worldpos_vertex>', '#include <worldpos_vertex>\nvWPos = (modelMatrix * vec4(transformed, 1.0)).xyz;');
-    sh.fragmentShader = 'uniform float uTime;\nvarying vec3 vWPos;\n' + sh.fragmentShader.replace('#include <normal_fragment_maps>', `#include <normal_fragment_maps>
+    sh.fragmentShader = 'uniform float uTime;\nuniform vec3 uSky;\nvarying vec3 vWPos;\n' + sh.fragmentShader.replace('#include <opaque_fragment>', `
+      {
+        float fr = 0.02 + 0.98 * pow(1.0 - clamp(dot(normal, normalize(vViewPosition)), 0.0, 1.0), 5.0);   // the sky in the water, stronger at a glance
+        outgoingLight = mix(outgoingLight, uSky, clamp(fr, 0.0, 0.55));
+      }
+      #include <opaque_fragment>`).replace('#include <fog_fragment>', `
+      #ifdef USE_FOG
+        gl_FragColor.rgb = mix(gl_FragColor.rgb, fogColor, smoothstep(fogNear, fogFar, vFogDepth) * ${haze.toFixed(2)});
+      #endif`).replace('#include <normal_fragment_maps>', `#include <normal_fragment_maps>
       {
         vec2 p = vWPos.xz;
-        float t = uTime;
+        float t = uTime, px = length(fwidth(p));
         vec2 g = vec2(0.0);
-        g += 0.30 * vec2(0.08, 0.05) * cos(dot(p, vec2(0.08, 0.05)) + t * 0.9);
-        g += 0.22 * vec2(-0.05, 0.11) * cos(dot(p, vec2(-0.05, 0.11)) + t * 1.3);
-        g += 0.16 * vec2(0.21, -0.13) * cos(dot(p, vec2(0.21, -0.13)) + t * 1.9);
-        g += 0.10 * vec2(-0.37, -0.29) * cos(dot(p, vec2(-0.37, -0.29)) + t * 2.6);
-        g += 0.06 * vec2(0.71, 0.53) * cos(dot(p, vec2(0.71, 0.53)) + t * 3.4);
-        float fade = 1.0 / (1.0 + length(vWPos - cameraPosition) * 0.004);
-        vec3 wn = normalize(vec3(-g.x * 6.0 * fade, 1.0, -g.y * 6.0 * fade));
+        #define WAVE(a, k, s) g += a * k * cos(dot(p, k) + t * s) * clamp(1.0 - px * length(k) * 1.5, 0.0, 1.0);
+        WAVE(0.30, vec2(0.08, 0.05), 0.9)
+        WAVE(0.22, vec2(-0.05, 0.11), 1.3)
+        WAVE(0.16, vec2(0.21, -0.13), 1.9)
+        WAVE(0.10, vec2(-0.37, -0.29), 2.6)
+        WAVE(0.06, vec2(0.71, 0.53), 3.4)
+        vec3 wn = normalize(vec3(-g.x * 6.0, 1.0, -g.y * 6.0));
         normal = normalize((viewMatrix * vec4(wn, 0.0)).xyz);
       }`);
   };
-  m.userData.time = { value: 0 };
+  m.customProgramCacheKey = () => 'water' + haze;
+  m.userData = u;
   return m;
 }
 
@@ -489,15 +553,20 @@ export function start(canvas, opts = {}) {
   renderer.setPixelRatio(dpr);
   renderer.setClearColor(0x000000, 0);
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
   const scene = new THREE.Scene();
-  scene.fog = new THREE.Fog(0xf3dcc6, 160, 1700);
+  scene.fog = new THREE.Fog(0xdcd6d2, 45, 1250);                                 // aerial haze: the far rim fades and cools
   const camera = new THREE.PerspectiveCamera(35, 1, 0.5, 2600);
   const tanH = Math.tan(THREE.MathUtils.degToRad(17.5));
 
   // morning light: a soft key from the viewer's left, the low sun ahead over the sea
-  const hemi = new THREE.HemisphereLight(0xfff1e0, 0x7a5a40, 1.15); scene.add(hemi);
-  const key = new THREE.DirectionalLight(0xffe6c8, 2.2); key.position.set(-30, 40, 40); scene.add(key);
+  const hemi = new THREE.HemisphereLight(0xdfe8f4, 0x7a5a40, 1.05); scene.add(hemi);   // blue skylight fills the shade
+  const key = new THREE.DirectionalLight(0xffe6c8, 2.3); key.position.set(-30, 40, 40); scene.add(key);
+  // the key light casts soft shadows over the garden (trees, café, arch, bench, wall)
+  key.castShadow = true; key.shadow.mapSize.setScalar(small ? 1024 : 2048);
+  Object.assign(key.shadow.camera, { left: -75, right: 75, top: 45, bottom: -45, near: 1, far: 160 });
+  key.shadow.bias = -0.0006; key.shadow.normalBias = 0.04; key.shadow.radius = 3;
   const sunL = new THREE.DirectionalLight(0xffb878, 1.6); sunL.position.set(300, 60, -900); scene.add(sunL);
 
   /* sky band, sun, clouds */
@@ -505,7 +574,7 @@ export function start(canvas, opts = {}) {
   const skyTex = night => canvasTex(4, 256, (c, w, h) => {
     const g = c.createLinearGradient(0, 0, 0, h);
     if (night) { g.addColorStop(0, 'rgba(30,24,60,0)'); g.addColorStop(0.55, 'rgba(70,46,96,.55)'); g.addColorStop(0.85, 'rgba(196,108,110,.85)'); g.addColorStop(1, 'rgba(240,160,110,1)'); }
-    else { g.addColorStop(0, 'rgba(255,236,214,0)'); g.addColorStop(0.5, 'rgba(255,214,180,.45)'); g.addColorStop(0.85, 'rgba(255,200,150,.85)'); g.addColorStop(1, 'rgba(255,214,170,1)'); }
+    else { g.addColorStop(0, 'rgba(120,166,222,0)'); g.addColorStop(0.3, 'rgba(126,172,224,.6)'); g.addColorStop(0.58, 'rgba(176,204,232,.95)'); g.addColorStop(0.8, 'rgba(226,224,222,1)'); g.addColorStop(1, 'rgba(250,228,200,1)'); }
     c.fillStyle = g; c.fillRect(0, 0, w, h);
   });
   const skyTexes = [skyTex(false), skyTex(true)];
@@ -514,15 +583,15 @@ export function start(canvas, opts = {}) {
   sun.position.set(560, 12, -2200); sun.scale.setScalar(520); sun.renderOrder = -9; scene.add(sun);
   const clouds = [];
   for (let i = 0; i < 9; i++) {
-    const c = new THREE.Sprite(new THREE.SpriteMaterial({ map: mistTex, fog: false, transparent: true, depthWrite: false, color: 0xffd6c0, opacity: 0.7 }));
+    const c = new THREE.Sprite(new THREE.SpriteMaterial({ map: mistTex, fog: false, transparent: true, depthWrite: false, color: 0xffffff, opacity: 0.85 }));
     c.position.set((rand() * 2 - 1) * 1400, 110 + rand() * 260, -1900 - rand() * 200); c.scale.set(700 + rand() * 600, 180 + rand() * 120, 1);
     c.renderOrder = -8; scene.add(c); clouds.push({ c, v: 3 + rand() * 5 });
   }
 
   /* the canyon, the river and the sea */
   const canyon = buildCanyon(small); canyon.renderOrder = 1; scene.add(canyon);
-  const water = waterMaterial(0x2f6f8f);
-  const sea = mesh(new THREE.PlaneGeometry(6000, 2600).rotateX(-Math.PI / 2), water, scene, [0, -41, -1500]); sea.renderOrder = 0;
+  const water = waterMaterial(0x2c6a72), seaWater = waterMaterial(0x1d5878, 0.4, water.userData);   // a greener river, a deep blue sea
+  const sea = mesh(new THREE.PlaneGeometry(6000, 2600).rotateX(-Math.PI / 2), seaWater, scene, [0, -41, -1500]); sea.renderOrder = 0;
   {
     const pts = []; for (let z = -20; z > -460; z -= 10) pts.push(V(riverX(z), lerp(-24.4, -40.6, sm(-280, -400, z)), z));
     const curve = new THREE.CatmullRomCurve3(pts), segs = 120, g = new THREE.BufferGeometry(), p = [], ix = [];
@@ -555,15 +624,15 @@ export function start(canvas, opts = {}) {
   {
     const lawn = new THREE.PlaneGeometry(220, 44, 110, 26); lawn.rotateX(-Math.PI / 2); lawn.translate(0, 0, 2);
     const p = lawn.attributes.position, cols = [];
-    const g1 = C(0xd8e6c8), g2 = C(0xffffff), g3 = C(0xb8cca8), rock = C(0xb0704a);
+    const g1 = C(0xc9d6b6), g2 = C(0xeef0e2), g3 = C(0xa6b48e), dry = C(0xe2d6a8), rock = C(0xb0704a);   // natural, uneven lawn with sun-dried patches
     for (let i = 0; i < p.count; i++) {
       const x = p.getX(i), z = p.getZ(i), edge = rimZ(x), drop = sm(edge, edge - 4, z);
       p.setY(i, -drop * 14 + (1 - drop) * 0.15 * nz(x * 0.3, 0, z * 0.3));
-      const k = mix(mix(mix(g1, g2, nz(x * 0.15, 1, z * 0.15) * 0.5 + 0.5), g3, sm(0.3, 0.9, nz(x * 0.4, 2, z * 0.4)) * 0.5), rock, sm(0.02, 0.3, drop));
+      const k = mix(mix(mix(mix(g1, g2, nz(x * 0.15, 1, z * 0.15) * 0.5 + 0.5), g3, sm(0.3, 0.9, nz(x * 0.4, 2, z * 0.4)) * 0.5), dry, sm(0.25, 0.7, fbm(x * 0.06 + 9, z * 0.09, 3)) * 0.45), rock, sm(0.02, 0.3, drop));
       cols.push(k.r, k.g, k.b, 1 - sm(6, 17, z));
     }
     lawn.setAttribute('color', new THREE.Float32BufferAttribute(cols, 4)); lawn.computeVertexNormals();
-    const ground = mesh(lawn, new THREE.MeshStandardMaterial({ map: grassTex(), vertexColors: true, transparent: true, roughness: 1 }), world); ground.renderOrder = -2;
+    const ground = mesh(lawn, new THREE.MeshStandardMaterial({ map: grassTex(), vertexColors: true, transparent: true, roughness: 1 }), world); ground.renderOrder = -2; ground.receiveShadow = true;
   }
   // blades of grass
   {
@@ -577,7 +646,7 @@ export function start(canvas, opts = {}) {
       const x = (rand() * 2 - 1) * 75, z = -15 + rand() * 25;
       if (z < rimZ(x) + 1.8 || Math.abs(z - pathZ(x)) < 1.9) continue;
       m4.compose(V(x, 0, z), q.setFromEuler(e.set((rand() - 0.5) * 0.5, rand() * TAU, (rand() - 0.5) * 0.5)), V(1, 0.5 + rand() * 0.9, 1)); g.setMatrixAt(k, m4);
-      g.setColorAt(k++, C(GREENS[(rand() * GREENS.length) | 0]).multiplyScalar(0.9 + rand() * 0.35));
+      g.setColorAt(k++, mix(C(GREENS[(rand() * GREENS.length) | 0]), C(rand() < 0.15 ? 0xb8ad78 : 0x7d8a52), 0.3).multiplyScalar(0.9 + rand() * 0.35));   // olive and straw, not paint green
     }
     g.count = k; world.add(g);
   }
@@ -600,7 +669,7 @@ export function start(canvas, opts = {}) {
       if (i < N) ix.push(i * 2, i * 2 + 1, i * 2 + 2, i * 2 + 2, i * 2 + 1, i * 2 + 3);
     }
     g.setAttribute('position', new THREE.Float32BufferAttribute(p, 3)); g.setAttribute('uv', new THREE.Float32BufferAttribute(uv, 2)); g.setIndex(ix); g.computeVertexNormals();
-    mesh(g, new THREE.MeshStandardMaterial({ map: tex, roughness: 0.9 }), world).renderOrder = -1;
+    const path = mesh(g, new THREE.MeshStandardMaterial({ map: tex, roughness: 0.9 }), world); path.renderOrder = -1; path.receiveShadow = true;
   }
   // low stone wall along the rim, with a string of little lights
   const lightsMat = new THREE.MeshStandardMaterial({ color: 0xffe0a0, emissive: 0xffb84a, emissiveIntensity: 0.2 });
@@ -745,6 +814,10 @@ export function start(canvas, opts = {}) {
   const steam = [];
   for (let i = 0; i < 4; i++) { const st = new THREE.Sprite(new THREE.SpriteMaterial({ map: radial([[0, 'rgba(255,255,255,.55)'], [1, 'rgba(255,255,255,0)']]), transparent: true, depthWrite: false })); world.add(st); steam.push({ s: st, t: i / 4 }); }
   let mugHot = 0, mugAt = null, doorOpen = 0;
+  // real shadows from the solid things in the garden; the lawn, path, wall and café take them
+  for (const o of [treeL.tree, treeR.tree, arch, bench, C0.cafe, ...cypress]) o.traverse(m => { if (m.isMesh) m.castShadow = true; });
+  for (const o of [C0.cafe, bench]) o.traverse(m => { if (m.isMesh) m.receiveShadow = true; });
+  world.traverse(m => { if (m.isInstancedMesh && m.geometry.type === 'BoxGeometry') m.castShadow = m.receiveShadow = true; });   // the stone wall and its posts
 
   /* ---------------------------------------------------------------- layout */
   let aspect = 1, camK = 1;
@@ -1177,14 +1250,15 @@ export function start(canvas, opts = {}) {
 
   function setTheme(t) {
     const night = t !== 'light';
-    scene.fog.color.set(night ? 0x2a2038 : 0xf3dcc6);
+    scene.fog.color.set(night ? 0x3a2f4a : 0xdcd6d2);
+    water.userData.sky.value.set(night ? 0x6a4a6e : 0x8fb0cf);
     renderer.toneMappingExposure = night ? 0.9 : 1.0;
     skyMat.map = skyTexes[night ? 1 : 0]; skyMat.needsUpdate = true;
-    hemi.color.set(night ? 0x9a8ac8 : 0xfff1e0); hemi.groundColor.set(night ? 0x2a1c22 : 0x7a5a40); hemi.intensity = night ? 0.8 : 1.15;
-    key.color.set(night ? 0xd0c0ff : 0xffe6c8); key.intensity = night ? 1.2 : 2.2;
+    hemi.color.set(night ? 0x9a8ac8 : 0xdfe8f4); hemi.groundColor.set(night ? 0x2a1c22 : 0x7a5a40); hemi.intensity = night ? 0.8 : 1.05;
+    key.color.set(night ? 0xd0c0ff : 0xffe6c8); key.intensity = night ? 1.2 : 2.3;
     sunL.color.set(night ? 0xff8a6a : 0xffb878); sunL.intensity = night ? 1.2 : 1.6;
     sun.material.opacity = night ? 0.75 : 1;
-    for (const c of clouds) c.c.material.color.set(night ? 0x8a5a7a : 0xffd6c0);
+    for (const c of clouds) c.c.material.color.set(night ? 0x8a5a7a : 0xffffff);
     lightsMat.emissiveIntensity = night ? 2.4 : 0.2;
     C0.bulbM.emissiveIntensity = night ? 2.6 : 0.25; C0.glass.emissiveIntensity = night ? 1.6 : 0.5; C0.light.intensity = night ? 18 : 0;
   }
