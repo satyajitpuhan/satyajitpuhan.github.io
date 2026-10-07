@@ -48,8 +48,8 @@ jobs:
 
       - name: Commit anything the sync produced
         run: |
-          git config user.name  "inspire-sync[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name  "Satyajit Puhan"
+          git config user.email "puhansatyajit@gmail.com"
           git add -A content/portfolio static/sections/news static/data static/images/portfolio/papers
           if git diff --cached --quiet; then
             echo "Nothing new on INSPIRE-HEP today."
@@ -78,6 +78,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
           publish_branch: gh-pages
-          user_name: "github-actions[bot]"
-          user_email: "41898282+github-actions[bot]@users.noreply.github.com"
+          user_name: "Satyajit Puhan"
+          user_email: "puhansatyajit@gmail.com"
           commit_message: "deploy: ${{ github.event.head_commit.message || 'scheduled rebuild' }}"
