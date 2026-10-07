@@ -160,7 +160,7 @@ button in the top bar (Dragon, Kung fu panda, Wishes, Minion mayhem, or Off); th
   with chopsticks for a dumpling, and naps under the tree.
 
 * **Wishes** (`static/js/garden.js`): a cartoon princess in a flower garden on the rim of a
-  red-rock canyon that opens out to the sea, next to a little café called Wishes. The world is
+  red-rock canyon that opens out to the sea (with a waterfall and a rainbow in its spray), next to a little café called Wishes. The world is
   drawn to look real (grass, flowers with real petals, trees, a rose arch, furry rabbits, the
   café with its awning and tables); she is drawn as a cartoon, with a yellow rose
   by her ear. Her story: she picks a rose and smells it, a butterfly lands on her face, and she
