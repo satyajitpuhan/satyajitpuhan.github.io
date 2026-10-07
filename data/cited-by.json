@@ -1,7 +1,19 @@
 {
-  "total": 54,
-  "updated": "2026-10-06",
+  "total": 55,
+  "updated": "2026-10-07",
   "papers": [
+    {
+      "inspire": "3212293",
+      "title": "Medium modification of pseudoscalar meson structure: Distribution amplitudes and parton distribution functions",
+      "authors": "M. Ridwan et al.",
+      "date": "2026-10-06",
+      "reference": "arXiv:2610.08360",
+      "arxiv": "2610.08360",
+      "doi": "",
+      "cites": [
+        "2818000"
+      ]
+    },
     {
       "inspire": "3209097",
       "title": "Twist-4 GTMDs of sea quarks at zero skewness in the light-cone quark model",
@@ -151,18 +163,6 @@
       "doi": "",
       "cites": [
         "2918260"
-      ]
-    },
-    {
-      "inspire": "3166385",
-      "title": "Role of higher twist distributions in the tomography of the proton",
-      "authors": "N. Kaur et al.",
-      "date": "2026-06-08",
-      "reference": "Phys. Rev. D 114",
-      "arxiv": "2606.09036",
-      "doi": "10.1103/s71d-g3fc",
-      "cites": [
-        "2789229"
       ]
     }
   ]
