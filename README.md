@@ -178,7 +178,9 @@ button in the top bar (Dragon, Kung fu panda, Wishes, Minion mayhem, Journey, or
   four of my own videos (`static/media/journey/`: a dusk sky with street lights, the full moon,
   a foggy bridge in the rain, and a sunrise over a field). Four chapters of 16 s each:
   a crowd of shadows points and laughs at him and a rain cloud gathers over his head; he brings
-  a rose to the girl he loves and she walks away without looking back, and his heart cracks in two;
+  a rose to the girl he loves; she tells him "Who told you to help me?", "Be professional with me,
+  not personal." and "You don't follow any ethics." (`HER_WORDS`) and walks away without looking
+  back, and his heart cracks in two;
   he sits alone in the rain on the bridge until a stray puppy comes and sits with him; at sunrise
   his heart is stitched back together, the cloud breaks up into birds, and he walks on with the
   puppy. A one-line caption (English or Odia) tells each chapter. The clips are cropped to 16:9 and
