@@ -1,19 +1,22 @@
 /* =============================================================================
-   journey.js — "Journey": a cartoon of a broken man, drawn over four of my own videos.
+   journey.js — "Journey": a cartoon of a broken man, in a stormy night and then at sunrise.
 
    Loaded on demand by site.js (section 16) when the visitor picks it. Like Sunrise it is a
-   2D canvas. The backdrops are clips I filmed (static/media/journey: cropped to 16:9,
-   20 frames a second, played forwards then backwards so the loop never jumps); the story
-   is drawn live on top, in four chapters of 16 s each:
+   2D canvas. The first three chapters happen on a dark night drawn in code (storm clouds
+   drifting over a city skyline, street lamps, heavy rain, lightning); the last one is a
+   clip I filmed of the sun rising over a field (static/media/journey/dawn.webm: cropped
+   to 16:9, 20 frames a second, played forwards then backwards so the loop never jumps).
+   The story is drawn live on top, in four chapters of 16 s each:
 
-     1. dusk  — he walks through a crowd that points and laughs at him; one of them
-                shoulders him aside, and a rain cloud gathers over his head;
-     2. moon  — he brings a rose to the girl he loves; she turns and walks away without
-                looking back, and his heart cracks in two;
-     3. fog   — alone on a bridge in the rain he sits hugging his knees, until a stray
-                puppy comes and sits beside him;
-     4. dawn  — he gets up, his heart stitched back together; the cloud breaks up into
-                birds, and he walks on into the sunrise with the puppy.
+     1. street — in the rain he walks through a crowd that points and laughs at him; one
+                 of them shoulders him aside (lightning), and a rain cloud gathers over
+                 his head;
+     2. hill   — he brings a rose to the girl he loves; she tells him off and walks away
+                 without looking back, and lightning strikes as his heart cracks in two;
+     3. lamp   — alone under a street lamp in the storm he sits hugging his knees, until
+                 a stray puppy comes and sits beside him and the rain eases;
+     4. dawn   — he gets up, his heart stitched back together; the cloud breaks up into
+                 birds, and he walks on into the sunrise with the puppy.
 
    Then it begins again. The story carries on from where it was when you change page.
    The cast is drawn in code: me (curly hair, beard, grey T-shirt, jeans), the girl,
@@ -23,9 +26,12 @@
    ========================================================================== */
 
 const MEDIA = name => new URL(`../media/journey/${name}`, import.meta.url).href;
-const SCENES = ['dusk', 'moon', 'fog', 'dawn'];
+const SCENES = ['night', 'night', 'night', 'dawn'];          // what is behind each chapter
+const GROUND = ['street', 'hill', 'lamp', null];             // and what he stands on
 const CH = 16, CYCLE = CH * SCENES.length, FADE = 1.4;      // chapter length, whole story, backdrop cross-fade
 const KEY = 'sp-journey';
+// lightning: [chapter, when, strength]
+const STRIKES = [[0, 9.25, 1], [0, 13.6, 0.6], [1, 3.2, 0.5], [1, 12.2, 1], [2, 1.2, 0.8], [2, 5.6, 1], [2, 9.4, 0.55]];
 const TAU = Math.PI * 2;
 const clamp = (x, a, b) => Math.min(b, Math.max(a, x));
 const lerp = (a, b, u) => a + (b - a) * u;
@@ -36,12 +42,13 @@ const rand = (seed => () => { seed = (seed * 1664525 + 1013904223) >>> 0; return
 
 const LINES = {
   en: ['The whole world turned its back on him.', 'He loved her. She never looked back.',
-       'Alone, with a broken heart.', 'Only a stray stayed.', 'Still, he walks on.'],
+       'Alone, with a broken heart.', 'Only a stray stayed.', 'Still, he walks on.', 'Rise…', 'Rise…', 'RISE!'],
   or: ['ସାରା ଦୁନିଆ ତାଠାରୁ ମୁହଁ ଫେରାଇଲା।', 'ସେ ତାକୁ ଭଲ ପାଉଥିଲା। ସେ ଥରେ ବି ଫେରି ଚାହିଁଲା ନାହିଁ।',
-       'ଏକା, ଭଙ୍ଗା ହୃଦୟ ନେଇ।', 'କେବଳ ଏକ ବୁଲା କୁକୁର ପାଖରେ ରହିଲା।', 'ତଥାପି, ସେ ଆଗକୁ ଚାଲିଲା।'],
+       'ଏକା, ଭଙ୍ଗା ହୃଦୟ ନେଇ।', 'କେବଳ ଏକ ବୁଲା କୁକୁର ପାଖରେ ରହିଲା।', 'ତଥାପି, ସେ ଆଗକୁ ଚାଲିଲା।', 'ଉଠ…', 'ଉଠ…', 'ଉଠ!'],
 };
 // [chapter, from, to, line]
-const CAPTIONS = [[0, 1.2, 8, 0], [1, 1.2, 5.2, 1], [1, 12.4, 15.8, 1], [2, 2, 8.5, 2], [2, 9.5, 15, 3], [3, 4.8, 12, 4]];
+const CAPTIONS = [[0, 1.2, 8, 0], [1, 1.2, 5.2, 1], [1, 12.4, 15.8, 1], [2, 2, 8.5, 2], [2, 9.5, 15, 3],
+                  [3, 0.6, 1.9, 5], [3, 1.8, 3.1, 6], [3, 3, 4.9, 7], [3, 7, 13.5, 4]];   // the chant, then the last line
 
 /* ---------------------------------------------------------------- poses
    Angles in radians from straight down, positive = forwards. L is the far side, R the near
@@ -52,6 +59,9 @@ const POSE = {
   slump: { lean: 0.17, tL: 0.05, kL: 0.1, tR: -0.03, kR: 0.08, aL: 0.12, eL: 0.08, aR: 0.08, eR: 0.06, head: 0.62 },
   offer: { lean: 0.1, tL: -0.14, kL: 0.08, tR: 0.24, kR: 0.14, aL: 0.02, eL: 0.22, aR: 1.25, eR: 0.12, head: -0.08 },
   sit:   { lean: 0.32, tL: 2.6, kL: 2.8, tR: 2.7, kR: 2.85, aL: 1.45, eL: 1.0, aR: 1.55, eR: 0.95, head: 1.05 },   // head on his arms, on his knees
+  crouch: { lean: 0.38, tL: 1.0, kL: 1.75, tR: 0.85, kR: 1.6, aL: -0.45, eL: 0.35, aR: -0.5, eR: 0.3, head: -0.25 },
+  reach: { lean: -0.06, tL: 0.15, kL: 0.6, tR: 0.35, kR: 1.0, aL: 2.55, eL: 0.1, aR: 3.0, eR: 0, head: -0.5 },
+  proud: { lean: -0.05, tL: 0.1, kL: 0.04, tR: -0.1, kR: 0.03, aL: 0.28, eL: 0.6, aR: 0.25, eR: 0.65, head: -0.18 },
   pet:   { lean: 0.3, tL: 2.6, kL: 2.8, tR: 2.7, kR: 2.85, aL: 1.45, eL: 1.0, aR: 1.45, eR: 0.15, head: 0.35 },
 };
 const STRIDE = 2 * 45 * Math.sin(0.42);         // ground covered by one step, so the feet don't slide
@@ -413,7 +423,8 @@ export function start(canvas, opts = {}) {
   const lang = document.documentElement.lang === 'or' ? 'or' : 'en';
   const FONT = '"Inter", -apple-system, "Segoe UI", Roboto, sans-serif';
   const SERIF = lang === 'or' ? '"Noto Serif Oriya", "Noto Sans Oriya", serif' : '"Instrument Serif", Georgia, serif';
-  const vids = [], posters = [], drops = [], blades = [];
+  const vids = [], posters = [], drops = [], blades = [], bolts = [];
+  let sky = null, clouds = null;
 
   try {
     const st = JSON.parse(sessionStorage.getItem(KEY) || 'null');
@@ -424,6 +435,7 @@ export function start(canvas, opts = {}) {
   /* ------------------------------------------------------------ media */
 
   SCENES.forEach((name, i) => {
+    if (name === 'night') return;
     const im = new Image(); im.decoding = 'async'; im.src = MEDIA(`${name}.webp`); posters[i] = im;
     const v = document.createElement('video');
     v.muted = true; v.defaultMuted = true; v.loop = true; v.playsInline = true; v.preload = i === chapterOf(T) ? 'auto' : 'metadata';
@@ -436,6 +448,7 @@ export function start(canvas, opts = {}) {
   function syncVideos() {
     const c = chapterOf(T), lt = T - c * CH, n = (c + 1) % SCENES.length;
     vids.forEach((v, i) => {
+      if (!v) return;
       const want = running && (i === c || (i === n && lt > CH - 3));
       if (want && v.paused) { v.preload = 'auto'; const p = v.play(); if (p && p.catch) p.catch(() => {}); }
       else if (!want && !v.paused) v.pause();
@@ -460,43 +473,145 @@ export function start(canvas, opts = {}) {
       blades.push({ x: rand() * W, y: gy + (H - gy) * (rand() * 1.1 - 0.05), len: H * (0.018 + rand() * 0.035), ph: rand() * TAU,
         lean: (rand() - 0.5) * 0.6, col: tone < 0.4 ? '#4c7a34' : tone < 0.8 ? '#5f8f3c' : '#7aa64a' });
     }
+    night();
+  }
+
+  // the night, drawn once per resize: sky and skyline, and a strip of storm clouds twice as wide
+  // as the screen (it repeats, so it can drift forever)
+  function night() {
+    const hz = H * 0.68, r = (seed => () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; })(77);
+    sky = document.createElement('canvas'); sky.width = W; sky.height = H;
+    const c = sky.getContext('2d'), g = c.createLinearGradient(0, 0, 0, H);
+    g.addColorStop(0, '#04060c'); g.addColorStop(0.45, '#0e1424'); g.addColorStop(0.68, '#27304a'); g.addColorStop(0.7, '#141a27'); g.addColorStop(1, '#0b0e16');
+    c.fillStyle = g; c.fillRect(0, 0, W, H);
+    for (let x = -10; x < W + 10;) {                 // the city on the horizon, a few windows still lit
+      const bw = H * (0.03 + r() * 0.06), bh = H * (0.03 + r() * r() * 0.16);
+      c.fillStyle = r() < 0.5 ? '#0a0e18' : '#0d1220'; c.fillRect(x, hz - bh, bw + 1, bh + H * 0.03);
+      for (let wy = hz - bh + H * 0.012; wy < hz - H * 0.01; wy += H * 0.016)
+        for (let wx = x + bw * 0.15; wx < x + bw * 0.85; wx += bw * 0.22)
+          if (r() < 0.12) { c.fillStyle = r() < 0.7 ? 'rgba(255,206,120,.55)' : 'rgba(170,200,255,.45)'; c.fillRect(wx, wy, H * 0.005, H * 0.007); }
+      x += bw + H * 0.004 * r();
+    }
+    clouds = document.createElement('canvas'); clouds.width = W * 2; clouds.height = Math.round(H * 0.6);
+    const d = clouds.getContext('2d');
+    for (let i = 0; i < 46; i++) {
+      const x = r() * W, y = H * (0.02 + r() * r() * 0.42), rr = H * (0.08 + r() * 0.14), sh = r();
+      for (const ox of [x, x + W, x - W]) {
+        const cg = d.createRadialGradient(ox, y, 0, ox, y, rr);
+        cg.addColorStop(0, `rgba(${38 + sh * 22 | 0},${44 + sh * 24 | 0},${62 + sh * 26 | 0},.75)`); cg.addColorStop(1, 'rgba(30,36,52,0)');
+        d.fillStyle = cg; d.fillRect(ox - rr, y - rr, rr * 2, rr * 2);
+      }
+    }
+    bolts.length = 0;
+    STRIKES.forEach(() => {                          // a jagged bolt with a branch or two
+      const pts = [], x0 = W * (0.1 + r() * 0.8), n = 12; let x = x0;
+      for (let i = 0; i <= n; i++) { pts.push([x, -H * 0.02 + i / n * hz * 0.98]); x += (r() - 0.5) * W * 0.05; }
+      const branches = [];
+      for (let b = 0; b < 2; b++) {
+        const at = 3 + (r() * 6 | 0), bp = [pts[at].slice()]; let [bx, by] = pts[at]; const dir = r() < 0.5 ? -1 : 1;
+        for (let i = 0; i < 4; i++) { bx += dir * W * (0.01 + r() * 0.025); by += hz * 0.06; bp.push([bx, by]); }
+        branches.push(bp);
+      }
+      bolts.push({ pts, branches });
+    });
   }
   const X = f => f * W;
 
   /* ------------------------------------------------------------ drawing */
 
-  function backdrop(i, a) {
-    if (a <= 0.001) return;
-    const v = vids[i], useV = v && v.readyState >= 2 && !v.error && v.videoWidth;
-    const src = useV ? v : posters[i];
-    const sw = useV ? v.videoWidth : src.naturalWidth, sh = useV ? v.videoHeight : src.naturalHeight;
-    if (!sw) { if (a >= 1) { ctx.fillStyle = theme === 'dark' ? '#14161d' : '#ece6dc'; ctx.fillRect(0, 0, W, H); } return; }
-    const s = Math.max(W / sw, H / sh), w = sw * s, h = sh * s;
-    ctx.globalAlpha = a; ctx.drawImage(src, (W - w) / 2, (H - h) * 0.6, w, h); ctx.globalAlpha = 1;
+  // how bright the lightning is right now (0..1) and which bolt
+  function flash() {
+    const c = chapterOf(T), lt = T - c * CH;
+    let best = { f: 0, i: -1, dt: 9 };
+    STRIKES.forEach(([ch, at, str], i) => {
+      const dt = lt - at; if (ch !== c || dt < 0 || dt > 1.4) return;
+      const f = str * Math.exp(-dt * 5) * (dt < 0.07 ? 1 : dt < 0.13 ? 0.2 : dt < 0.24 ? 0.9 : 0.55);
+      if (f > best.f) best = { f, i, dt };
+    });
+    return best;
   }
 
-  function ground(i, a) {
-    if (a <= 0.001) return;
-    const dark = theme === 'dark';
+  function drawNight(a, t) {
+    if (a <= 0.001 || !sky) return;
     ctx.save(); ctx.globalAlpha = a;
-    if (SCENES[i] === 'dusk') {                    // a pavement
-      const g = ctx.createLinearGradient(0, gy - 6 * k, 0, H);
-      g.addColorStop(0, dark ? '#2b2e36' : '#4a4d55'); g.addColorStop(1, dark ? '#17181d' : '#2c2e34');
-      ctx.fillStyle = g; ctx.fillRect(0, gy - 4 * k, W, H);
-      ctx.fillStyle = dark ? 'rgba(150,150,160,.35)' : 'rgba(190,190,198,.6)'; ctx.fillRect(0, gy - 4 * k, W, Math.max(2, 1.2 * k));
-      ctx.strokeStyle = 'rgba(0,0,0,.18)'; ctx.lineWidth = 1;
-      for (let x = 0; x < W + 8 * k; x += 22 * k) { ctx.beginPath(); ctx.moveTo(x, gy - 3 * k); ctx.lineTo(x - 8 * k, H); ctx.stroke(); }
-    } else if (SCENES[i] === 'moon') {             // a dark hill under the moon
-      ctx.beginPath(); ctx.moveTo(0, gy + 2 * k);
-      ctx.bezierCurveTo(W * 0.3, gy - 9 * k, W * 0.65, gy - 7 * k, W, gy + 4 * k); ctx.lineTo(W, H); ctx.lineTo(0, H); ctx.closePath();
-      ctx.fillStyle = dark ? '#151629' : '#2a2b48'; ctx.fill();
-      ctx.strokeStyle = 'rgba(170,170,230,.25)'; ctx.lineWidth = Math.max(1.5, 0.6 * k); ctx.stroke();
+    ctx.drawImage(sky, 0, 0);
+    const off = -((t * W * 0.012) % W);
+    ctx.drawImage(clouds, off, 0);
+    const L = flash();
+    if (L.f > 0.01) {                                // the clouds light up from inside, the sky goes pale
+      ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = a * L.f * 0.9;
+      ctx.drawImage(clouds, off, 0); ctx.drawImage(clouds, off, 0);
+      ctx.globalCompositeOperation = 'screen';
+      ctx.fillStyle = 'rgb(175,188,235)'; ctx.globalAlpha = a * L.f * 0.6; ctx.fillRect(0, 0, W, H);
+      ctx.globalCompositeOperation = 'source-over';
+      const b = bolts[L.i];
+      if (b && L.dt < 0.32) {
+        ctx.globalAlpha = a * Math.min(1, L.f * 1.4); ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+        for (const [w, col] of [[16 * dpr, 'rgba(150,175,255,.25)'], [6 * dpr, 'rgba(200,215,255,.6)'], [2.6 * dpr, '#ffffff']]) {
+          ctx.strokeStyle = col; ctx.lineWidth = w; ctx.beginPath();
+          for (const line of [b.pts, ...b.branches]) { ctx.moveTo(line[0][0], line[0][1]); for (const q of line) ctx.lineTo(q[0], q[1]); }
+          ctx.stroke();
+        }
+      }
     }
     ctx.restore();
   }
 
-  function veil() {
-    ctx.fillStyle = theme === 'dark' ? 'rgba(8,10,16,.36)' : 'rgba(247,243,236,.34)';
+  function backdrop(i, a) {
+    if (a <= 0.001) return;
+    if (SCENES[i] === 'night') { drawNight(a, T); return; }
+    const v = vids[i], useV = v && v.readyState >= 2 && !v.error && v.videoWidth;
+    const src = useV ? v : posters[i];
+    const sw = useV ? v.videoWidth : src.naturalWidth, sh = useV ? v.videoHeight : src.naturalHeight;
+    if (!sw) { ctx.globalAlpha = a; ctx.fillStyle = '#d9b48f'; ctx.fillRect(0, 0, W, H); ctx.globalAlpha = 1; return; }
+    const s = Math.max(W / sw, H / sh), w = sw * s, h = sh * s;
+    ctx.globalAlpha = a; ctx.drawImage(src, (W - w) / 2, (H - h) * 0.6, w, h); ctx.globalAlpha = 1;
+  }
+
+  function lamp(x, a) {                            // a street lamp, its light falling through the rain
+    const top = gy - 205 * k, hx = x + 14 * k, L = flash().f;
+    ctx.save(); ctx.globalAlpha = a;
+    const cone = ctx.createLinearGradient(0, top, 0, gy);
+    cone.addColorStop(0, 'rgba(255,214,140,.32)'); cone.addColorStop(1, 'rgba(255,214,140,.06)');
+    ctx.fillStyle = cone; ctx.beginPath(); ctx.moveTo(hx - 4 * k, top + 3 * k); ctx.lineTo(hx + 4 * k, top + 3 * k);
+    ctx.lineTo(hx + 48 * k, gy); ctx.lineTo(hx - 48 * k, gy); ctx.closePath(); ctx.fill();
+    const pool = ctx.createRadialGradient(hx, gy + 4 * k, 0, hx, gy + 4 * k, 60 * k);
+    pool.addColorStop(0, 'rgba(255,210,140,.3)'); pool.addColorStop(1, 'rgba(255,210,140,0)');
+    ctx.fillStyle = pool; ctx.beginPath(); ctx.ellipse(hx, gy + 4 * k, 60 * k, 10 * k, 0, 0, TAU); ctx.fill();
+    ctx.strokeStyle = L > 0.2 ? '#3a4152' : '#161a22'; ctx.lineCap = 'round';
+    ctx.lineWidth = 3.2 * k; ctx.beginPath(); ctx.moveTo(x, gy); ctx.lineTo(x, top - 6 * k); ctx.quadraticCurveTo(x, top - 10 * k, hx, top - 6 * k); ctx.stroke();
+    ctx.fillStyle = '#161a22'; ctx.beginPath(); ctx.moveTo(hx - 6 * k, top - 3 * k); ctx.lineTo(hx + 6 * k, top - 3 * k); ctx.lineTo(hx + 3.5 * k, top - 8 * k); ctx.lineTo(hx - 3.5 * k, top - 8 * k); ctx.fill();
+    const glow = ctx.createRadialGradient(hx, top - 2 * k, 0, hx, top - 2 * k, 26 * k);
+    glow.addColorStop(0, 'rgba(255,236,190,.95)'); glow.addColorStop(0.15, 'rgba(255,214,140,.5)'); glow.addColorStop(1, 'rgba(255,200,120,0)');
+    ctx.fillStyle = glow; ctx.fillRect(hx - 26 * k, top - 28 * k, 52 * k, 52 * k);
+    ctx.restore();
+  }
+
+  function ground(i, a) {
+    if (a <= 0.001 || !GROUND[i]) return;
+    const kind = GROUND[i], L = flash().f;
+    ctx.save(); ctx.globalAlpha = a;
+    if (kind === 'hill') {                           // a dark hill
+      ctx.beginPath(); ctx.moveTo(0, gy + 2 * k);
+      ctx.bezierCurveTo(W * 0.3, gy - 9 * k, W * 0.65, gy - 7 * k, W, gy + 4 * k); ctx.lineTo(W, H); ctx.lineTo(0, H); ctx.closePath();
+      ctx.fillStyle = '#10121e'; ctx.fill();
+      ctx.strokeStyle = `rgba(150,160,220,${0.18 + L * 0.5})`; ctx.lineWidth = Math.max(1.5, 0.6 * k); ctx.stroke();
+    } else {                                         // a wet pavement, shining
+      const g = ctx.createLinearGradient(0, gy - 6 * k, 0, H);
+      g.addColorStop(0, '#22252e'); g.addColorStop(1, '#101217');
+      ctx.fillStyle = g; ctx.fillRect(0, gy - 4 * k, W, H);
+      ctx.fillStyle = `rgba(170,175,190,${0.3 + L * 0.5})`; ctx.fillRect(0, gy - 4 * k, W, Math.max(2, 1.2 * k));
+      ctx.strokeStyle = 'rgba(0,0,0,.25)'; ctx.lineWidth = 1;
+      for (let x = 0; x < W + 8 * k; x += 22 * k) { ctx.beginPath(); ctx.moveTo(x, gy - 3 * k); ctx.lineTo(x - 8 * k, H); ctx.stroke(); }
+      if (L > 0.01) { ctx.fillStyle = `rgba(190,200,240,${L * 0.18})`; ctx.fillRect(0, gy - 4 * k, W, H); }
+      if (kind === 'street') for (const f of [0.12, 0.62, 1.04]) lamp(X(f), 1);
+      else lamp(X(SPOT) - 30 * k, 1);
+    }
+    ctx.restore();
+  }
+
+  function veil(nightness) {                       // keeps the page's text readable: in the light theme the night is a paler storm
+    ctx.fillStyle = theme === 'dark' ? `rgba(8,10,16,${lerp(0.36, 0.12, nightness)})` : `rgba(247,243,236,${lerp(0.34, 0.36, nightness)})`;
     ctx.fillRect(0, 0, W, H);
   }
 
@@ -508,13 +623,19 @@ export function start(canvas, opts = {}) {
 
   function rain(a, t) {
     if (a <= 0.01) return;
-    ctx.save(); ctx.strokeStyle = theme === 'dark' ? 'rgba(190,205,230,.45)' : 'rgba(70,86,116,.5)';
+    ctx.save(); ctx.strokeStyle = 'rgba(185,200,230,.5)';
     ctx.lineWidth = Math.max(1.2, 0.4 * k); ctx.globalAlpha = a; ctx.beginPath();
     for (const d of drops) {
-      const y = ((d.y + t * d.v * 0.9) % 1) * H * 1.1 - H * 0.05, x = d.x * W - y * 0.12;
+      const y = ((d.y + t * d.v * 1.3) % 1) * H * 1.1 - H * 0.05, x = d.x * W - y * 0.12;
       ctx.moveTo(x, y); ctx.lineTo(x - d.l * H * 0.12, y + d.l * H);
     }
-    ctx.stroke(); ctx.restore();
+    ctx.stroke();
+    ctx.strokeStyle = 'rgba(190,205,235,.45)'; ctx.lineWidth = Math.max(1, 0.3 * k); ctx.beginPath();
+    for (let i = 0; i < drops.length; i += 3) {     // splashes on the ground
+      const d = drops[i], u = (t * 1.7 + d.y * 7) % 1, x = (d.x * 1.37 % 1) * W, y = gy + (H - gy) * ((d.y * 3.1) % 1) * 0.9;
+      ctx.moveTo(x + 4 * k * u, y); ctx.ellipse(x, y, 4 * k * u, 1.1 * k * u, 0, 0, TAU);
+    }
+    ctx.globalAlpha = a * 0.8; ctx.stroke(); ctx.restore();
   }
 
   // a little rain cloud over his head, raining on him
@@ -543,13 +664,37 @@ export function start(canvas, opts = {}) {
     }
   }
 
-  function birds(x0, y0, u) {
+  // a swarm of bats bursting up out of the dark, from the ground behind him and from his cloud
+  function bats(x0, y0, u, from) {
     if (u <= 0 || u >= 1) return;
-    ctx.save(); ctx.strokeStyle = theme === 'dark' ? 'rgba(235,230,220,.85)' : 'rgba(40,40,52,.8)';
-    ctx.lineWidth = Math.max(1.4, 0.55 * k); ctx.lineCap = 'round'; ctx.globalAlpha = 1 - seg(u, 0.7, 1);
-    for (let i = 0; i < 3; i++) {
-      const x = x0 + (i - 1) * 6 * k + u * (W * 0.3 + i * 30 * k), y = y0 - u * H * (0.35 + i * 0.06), f = Math.sin(u * 40 + i * 2) * 1.6 * k, s = 3.2 * k;
-      ctx.beginPath(); ctx.moveTo(x - s, y - f); ctx.quadraticCurveTo(x - s * 0.4, y - s * 0.3, x, y); ctx.quadraticCurveTo(x + s * 0.4, y - s * 0.3, x + s, y - f); ctx.stroke();
+    const r = (seed => () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; })(9);
+    ctx.save(); ctx.fillStyle = '#0d0d12'; ctx.globalAlpha = 1 - seg(u, 0.65, 1);
+    for (let i = 0; i < 46; i++) {
+      const fromCloud = i % 3 === 0, ox = fromCloud ? from[0] : x0 + (r() < 0.5 ? -1 : 1) * (30 + r() * 140) * k, oy = fromCloud ? from[1] - 10 * k : y0 + r() * 20 * k;
+      const ang = -Math.PI / 2 + (r() - 0.5) * 2.2, sp = H * (0.6 + r() * 0.9), late = r() * 0.25, uu = clamp((u - late) / (1 - late), 0, 1);
+      if (uu <= 0) continue;
+      const d = sp * (1 - Math.pow(1 - uu, 2)), wob = Math.sin(uu * 9 + i) * 14 * k * uu;
+      const bx = ox + Math.cos(ang) * d + wob, by = oy + Math.sin(ang) * d, s = k * (2.2 + r() * 2.6) * (1 + uu * 0.6), f = Math.sin(u * 60 + i * 1.7);
+      ctx.save(); ctx.translate(bx, by); ctx.scale(s, s);
+      ctx.beginPath(); ctx.ellipse(0, 0, 0.9, 1.5, 0, 0, TAU); ctx.fill();
+      for (const side of [-1, 1]) {
+        ctx.beginPath(); ctx.moveTo(0, -0.4); ctx.lineTo(side * 2.2, -1.6 * f - 0.6); ctx.lineTo(side * 4.2, -0.6 * f - 0.4);
+        ctx.quadraticCurveTo(side * 3.4, 0.3, side * 2.9, 0.9); ctx.quadraticCurveTo(side * 2.2, 0.2, side * 1.5, 1);
+        ctx.quadraticCurveTo(side * 0.9, 0.3, 0, 0.6); ctx.closePath(); ctx.fill();
+      }
+      ctx.restore();
+    }
+    ctx.restore();
+  }
+
+  function sunburst(a) {                           // the sunlight blazing as he leaps
+    if (a <= 0.01) return;
+    const sx = W * 0.5, sy = H * 0.1, g = ctx.createRadialGradient(sx, sy, 0, sx, sy, Math.max(W, H) * 0.9);
+    g.addColorStop(0, `rgba(255,236,190,${0.85 * a})`); g.addColorStop(0.3, `rgba(255,200,130,${0.4 * a})`); g.addColorStop(1, 'rgba(255,190,120,0)');
+    ctx.save(); ctx.globalCompositeOperation = 'screen'; ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+    ctx.globalAlpha = a * 0.5; ctx.strokeStyle = 'rgba(255,226,170,.5)'; ctx.lineWidth = H * 0.02;
+    for (let i = 0; i < 9; i++) {
+      const an = Math.PI * (0.15 + i * 0.0875); ctx.beginPath(); ctx.moveTo(sx, sy); ctx.lineTo(sx + Math.cos(an) * H * 1.5, sy + Math.sin(an) * H * 1.5); ctx.stroke();
     }
     ctx.restore();
   }
@@ -565,24 +710,14 @@ export function start(canvas, opts = {}) {
     ctx.restore();
   }
 
-  function fogDrift(t) {
-    ctx.save();
-    for (let i = 0; i < 3; i++) {
-      const x = ((t * 0.012 * (i + 1) + i * 0.37) % 1.4 - 0.2) * W, y = gy - H * (0.05 + i * 0.06), r = H * 0.35;
-      const g = ctx.createRadialGradient(x, y, 0, x, y, r);
-      g.addColorStop(0, theme === 'dark' ? 'rgba(170,175,185,.14)' : 'rgba(240,240,244,.28)'); g.addColorStop(1, 'rgba(240,240,244,0)');
-      ctx.fillStyle = g; ctx.fillRect(x - r, y - r, r * 2, r * 2);
-    }
-    ctx.restore();
-  }
-
   function captions(c, lt) {
     for (const [ch, a, b, line] of CAPTIONS) {
       if (ch !== c) continue;
       const al = win(lt, a, b, 0.9);
       if (al <= 0.01) continue;
       ctx.save(); ctx.globalAlpha = al * 0.92;
-      ctx.font = `${lang === 'or' ? '' : 'italic '}${caption}px ${SERIF}`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      const size = caption * (line >= 5 ? 1.7 : 1);       // the chant is louder
+      ctx.font = `${lang === 'or' ? '' : 'italic '}${size}px ${SERIF}`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
       const text = LINES[lang][line], x = W / 2;
       // on a narrow screen, break the line in two near the middle
       let rows = [text];
@@ -590,7 +725,7 @@ export function start(canvas, opts = {}) {
         const sp = [...text.matchAll(/ /g)].map(m => m.index), cut = sp.reduce((b, i) => Math.abs(i - text.length / 2) < Math.abs(b - text.length / 2) ? i : b, sp[0] ?? -1);
         if (cut > 0) rows = [text.slice(0, cut), text.slice(cut + 1)];
       }
-      const lh = caption * 1.15, y0 = Math.min(H - caption * 0.9 - lh * (rows.length - 1), gy + (H - gy) * 0.55 - lh * (rows.length - 1) / 2);
+      const lh = size * 1.15, y0 = Math.min(H - size * 0.7 - lh * (rows.length - 1), gy + (H - gy) * 0.55 - lh * (rows.length - 1) / 2);
       ctx.shadowColor = 'rgba(0,0,0,.75)'; ctx.shadowBlur = caption * 0.35; ctx.fillStyle = 'rgba(248,242,232,.96)';
       rows.forEach((r, i) => ctx.fillText(r, x, y0 + i * lh));
       ctx.restore();
@@ -603,7 +738,7 @@ export function start(canvas, opts = {}) {
 
   function chapter1(lt, t) {
     const dark = theme === 'dark';
-    const fill = dark ? 'rgba(16,17,24,.95)' : 'rgba(44,47,58,.93)', fillFar = dark ? 'rgba(30,32,42,.78)' : 'rgba(78,82,96,.72)';
+    const fill = 'rgba(12,13,19,.96)', fillFar = 'rgba(34,38,52,.82)';
     const walkU = clamp(lt / BUMP, 0, 1), x = lerp(ENTER, STOPX, walkU);
     const amt = lt < BUMP ? 1 : 1 - seg(lt, BUMP, BUMP + 0.35);
     const knock = lt > BUMP ? Math.exp(-(lt - BUMP) * 3.2) * Math.sin((lt - BUMP) * 9) : 0;
@@ -683,7 +818,6 @@ export function start(canvas, opts = {}) {
     const dogStop = x + 50 * k / W, dx = lt < 7.4 ? 1.12 : lerp(1.12, dogStop, clamp((lt - 7.4) / 3.6, 0, 1));
     const pet = seg(lt, 12.6, 13.8);
     p = mix(p, { ...POSE.pet, aR: POSE.pet.aR + Math.sin(t * 4.5) * 0.12 * seg(lt, 13.8, 14.4) }, pet);
-    rain(1 - seg(lt, 11.5, 15.5), t);
     // the rose falls from his hand and loses its petals
     const fall = seg(lt, 0.7, 1.5), rx = X(x) + 16 * k, petals = 1 - seg(lt, 3, 15);
     shadow(X(x) + 4 * k, 12);
@@ -704,37 +838,49 @@ export function start(canvas, opts = {}) {
         look: lerp(0, 0.6, win(lt, 11.8, 13, 0.3)) - pet * 0.2, happy: seg(lt, 13.8, 14.4) }, t);
     }
     headCloud(me.top, seg(lt, 0, 1.5) * (1 - pet * 0.35), 1 - seg(lt, 11.5, 13.5), t);
-    fogDrift(t);
   }
 
+  // the rise: he gets up, the chant builds, he crouches and leaps for the light, bats burst up out of
+  // the dark, and he lands standing tall; then he walks on with the puppy
   function chapter4(lt, t) {
-    const up = seg(lt, 0.2, 2.6), go = 4.4, x = lt < go ? SPOT : SPOT + (lt - go) * 0.058;
-    let p = mix(POSE.pet, mix(POSE.stand, { ...POSE.stand, head: -0.12 }, seg(lt, 2.6, 4)), up);
+    const J0 = 4, J1 = 4.9, go = 6.6, x = lt < go ? SPOT : SPOT + (lt - go) * 0.06;
+    const ju = clamp((lt - J0) / (J1 - J0), 0, 1), air = lt > J0 && lt < J1 ? Math.sin(ju * Math.PI) * 40 * k : 0;
+    let p = mix(POSE.pet, { ...POSE.stand, head: -0.35 }, seg(lt, 0.2, 2.4));
+    p = mix(p, POSE.crouch, seg(lt, 3.3, 3.95));
+    p = mix(p, POSE.reach, seg(lt, J0, J0 + 0.25));
+    p = mix(p, POSE.crouch, seg(lt, J1 - 0.15, J1 + 0.1));
+    p = mix(p, POSE.proud, seg(lt, J1 + 0.15, J1 + 0.7));
+    p = mix(p, { ...POSE.stand, head: -0.1 }, seg(lt, go - 0.5, go));
     p = walking(p, walkPh(SPOT, x), seg(lt, go - 0.2, go + 0.3));
-    shadow(X(x), 10);
-    const me = person(ctx, { x: X(x), gy, k, face: 1, pose: p, st: HIM, mood: { sad: 0.5 - 0.5 * seg(lt, 2, 4), smile: lerp(0.3, 0.8, seg(lt, 3, 5)), lid: 0.2 }, t });
-    const st = seg(lt, 2.2, 3.4);
-    heart(ctx, me.chest[0], me.chest[1], 3.4 * k, { beat: 0.06 * Math.max(0, Math.sin(t * 5)) * st, crack: 1, split: 1 - st, stitch: seg(lt, 2.8, 4), dim: 0.5 * (1 - st) });
-    // the cloud breaks up into birds
-    const top = me.top;
-    headCloud(top, 1 - seg(lt, 3.2, 3.9), 0, t);
-    birds(top[0], top[1] - 10 * k, (lt - 3.4) / 6);
-    // the puppy trots along just ahead of him
+    sunburst(seg(lt, J0, J0 + 0.4) * (1 - seg(lt, J1 + 0.4, J1 + 2.4)));
+    bats(X(x), gy - 10 * k, (lt - J0) / 3.2, [X(x), gy - 125 * k]);
+    shadow(X(x), 10 * (1 - air / (60 * k)));
+    const me = person(ctx, { x: X(x), gy: gy - air, k, face: 1, pose: p, st: HIM,
+      mood: { sad: 0.5 - 0.5 * seg(lt, 1, 2.6), smile: lerp(0.2, 0.8, seg(lt, J1, J1 + 1)), lid: 0.15, gy: -0.6 * seg(lt, 1, 2) * (1 - seg(lt, go - 1, go)) }, t });
+    const st = seg(lt, 1.2, 2.4);
+    heart(ctx, me.chest[0], me.chest[1], 3.4 * k, { beat: 0.07 * Math.max(0, Math.sin(t * 5)) * st, crack: 1, split: 1 - st, stitch: seg(lt, 1.8, 3), dim: 0.5 * (1 - st) });
+    headCloud(me.top, 1 - seg(lt, J0, J0 + 0.3), 0, t);
+    // the puppy: up on its feet, a hop when he jumps, then trotting along just ahead of him
     const dStand = seg(lt, 0.6, 1.4), dx = x + lerp(50, 36, seg(lt, go - 0.6, go + 0.8)) * k / W + (lt > go ? Math.sin(t * 1.3) * 4 * k / W : 0);
+    const hop = lt > J0 + 0.1 && lt < J0 + 0.6 ? Math.sin((lt - J0 - 0.1) / 0.5 * Math.PI) * 9 * k : 0;
     shadow(X(dx), 9, 0.22);
-    puppy(ctx, X(dx), gy, k * 1.15, lt > go - 0.6 ? 1 : -1, { ph: walkPh(SPOT, x) * 1.6, trot: seg(lt, go - 0.2, go + 0.3), sit: 1 - dStand, wag: 9, look: lt < go ? 0.2 : -0.1, happy: 1 }, t);
+    puppy(ctx, X(dx), gy - hop, k * 1.15, lt > go - 0.6 ? 1 : -1, { ph: walkPh(SPOT, x) * 1.6, trot: seg(lt, go - 0.2, go + 0.3), sit: 1 - dStand, wag: 9, look: lt < go ? -0.3 : -0.1, happy: 1 }, t);
   }
 
   const CHAPTERS = [chapter1, chapter2, chapter3, chapter4];
+  // how hard it rains in each chapter
+  const RAIN = [lt => 0.55 + 0.35 * seg(lt, 8, 10), () => 0.8, lt => 1 - 0.75 * seg(lt, 11.5, 15.5), () => 0];
 
   function draw() {
     const c = chapterOf(T), lt = T - c * CH, n = (c + 1) % SCENES.length, fa = seg(lt, CH - FADE, CH), t = T;
     ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over';
-    backdrop(c, 1); backdrop(n, fa);
-    veil();
-    ground(c, 1 - fa * (SCENES[n] === SCENES[c] ? 0 : 1)); ground(n, fa);
+    const same = SCENES[n] === SCENES[c], nightness = (SCENES[c] === 'night' ? 1 - (same ? 0 : fa) : 0) + (SCENES[n] === 'night' && !same ? fa : 0);
+    backdrop(c, 1); if (!same) backdrop(n, fa);
+    ground(c, 1 - fa); ground(n, fa);
+    veil(nightness);
     if (SCENES[c] === 'dawn' || SCENES[n] === 'dawn') grass(c === 3 ? 1 - fa : fa, t);
     CHAPTERS[c](lt, t);
+    rain(nightness * RAIN[c](lt), t);
     captions(c, lt);
   }
 
@@ -757,8 +903,8 @@ export function start(canvas, opts = {}) {
   const onResize = () => { fit(); if (ready && !running) draw(); };
 
   fit();
-  const first = posters[chapterOf(T)];
-  new Promise((ok, no) => { if (first.complete && first.naturalWidth) ok(); else { first.onload = ok; first.onerror = no; } }).then(() => {
+  const first = posters[chapterOf(T)];             // the night needs nothing loaded; the sunrise needs its still
+  new Promise((ok, no) => { if (!first || (first.complete && first.naturalWidth)) ok(); else { first.onload = ok; first.onerror = no; } }).then(() => {
     ready = true; draw();
     if (opts.onReady) opts.onReady();
     play();
@@ -773,7 +919,7 @@ export function start(canvas, opts = {}) {
       save(); pause(); ready = false;
       removeEventListener('resize', onResize); removeEventListener('pagehide', save);
       document.removeEventListener('visibilitychange', onVis);
-      vids.forEach(v => { v.pause(); v.removeAttribute('src'); v.load(); v.remove(); });
+      vids.forEach(v => { if (!v) return; v.pause(); v.removeAttribute('src'); v.load(); v.remove(); });
     },
     setTheme(th) { theme = th; if (ready && !running) draw(); },
     debug: { draw, seek: s => { T = ((s % CYCLE) + CYCLE) % CYCLE; syncVideos(); }, get T() { return T; } },
