@@ -41,7 +41,7 @@ const LINES = {
        'ଏକା, ଭଙ୍ଗା ହୃଦୟ ନେଇ।', 'କେବଳ ଏକ ବୁଲା କୁକୁର ପାଖରେ ରହିଲା।', 'ତଥାପି, ସେ ଆଗକୁ ଚାଲିଲା।'],
 };
 // [chapter, from, to, line]
-const CAPTIONS = [[0, 1.2, 8, 0], [1, 1.5, 9, 1], [2, 2, 8.5, 2], [2, 9.5, 15, 3], [3, 4.8, 12, 4]];
+const CAPTIONS = [[0, 1.2, 8, 0], [1, 1.2, 5.2, 1], [1, 12.4, 15.8, 1], [2, 2, 8.5, 2], [2, 9.5, 15, 3], [3, 4.8, 12, 4]];
 
 /* ---------------------------------------------------------------- poses
    Angles in radians from straight down, positive = forwards. L is the far side, R the near
@@ -365,13 +365,22 @@ function cloud(c, x, y, k, a, col) {
 function bubble(c, x, y, text, a, k, font, dark) {
   if (a <= 0.01) return;
   c.save(); c.globalAlpha *= a;
-  const fs = Math.max(12, 6.4 * k); c.font = `600 ${fs}px ${font}`;
-  const w = c.measureText(text).width + fs * 1.2, h = fs * 1.75, bx = x - w / 2, by = y - h - fs * 0.5;
-  c.beginPath(); c.roundRect(bx, by, w, h, h / 2);
-  c.moveTo(x - fs * 0.35, by + h - 1); c.lineTo(x + fs * 0.1, by + h + fs * 0.6); c.lineTo(x + fs * 0.45, by + h - 1);
+  const fs = Math.max(12, 6.4 * k), cw = c.canvas.width; c.font = `600 ${fs}px ${font}`;
+  // too wide for the screen: break it in two near the middle
+  let rows = [text];
+  if (c.measureText(text).width + fs * 1.2 > cw - 16) {
+    const sp = [...text.matchAll(/ /g)].map(m => m.index);
+    const cut = sp.reduce((best, i) => Math.abs(i - text.length / 2) < Math.abs(best - text.length / 2) ? i : best, sp[0] ?? -1);
+    if (cut > 0) rows = [text.slice(0, cut), text.slice(cut + 1)];
+  }
+  const lh = fs * 1.2, w = Math.max(...rows.map(r => c.measureText(r).width)) + fs * 1.2, h = fs * 0.55 + lh * rows.length;
+  const bx = clamp(x - w / 2, 8, cw - w - 8), by = y - h - fs * 0.5, tx = clamp(x, bx + h / 2, bx + w - h / 2);
+  c.beginPath(); c.roundRect(bx, by, w, h, Math.min(h / 2, fs));
+  c.moveTo(tx - fs * 0.35, by + h - 1); c.lineTo(tx + fs * 0.1, by + h + fs * 0.6); c.lineTo(tx + fs * 0.45, by + h - 1);
   c.fillStyle = dark ? 'rgba(236,232,224,.94)' : 'rgba(255,255,255,.95)'; c.fill();
   c.strokeStyle = 'rgba(30,28,36,.55)'; c.lineWidth = 1.2; c.stroke();
-  c.fillStyle = '#24212b'; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillText(text, x, by + h / 2 + 1);
+  c.fillStyle = '#24212b'; c.textAlign = 'center'; c.textBaseline = 'middle';
+  rows.forEach((r, i) => c.fillText(r, bx + w / 2, by + fs * 0.275 + lh * (i + 0.5) + 1));
   c.restore();
 }
 
@@ -390,6 +399,10 @@ const CROWD = [
   { at: 8.6, v: 0.085, z: 1.0, h: 0.99, say: 'Weirdo', when: 13.2 },
 ];
 const BUMP = 9.2, ENTER = -0.08, STOPX = 0.4, SPOT = 0.52;
+
+// what she says to him in chapter 2: [from, to, words]
+const HER_WORDS = [[5.2, 7.4, 'Who told you to help me?'], [7.6, 9.8, 'Be professional with me, not personal.'],
+                   [10, 12.2, "You don't follow any ethics."]];
 
 /* ---------------------------------------------------------------- main */
 
@@ -631,29 +644,31 @@ export function start(canvas, opts = {}) {
     const amt = win(lt, 1.4, 4.6, 0.4);
     let p = mix(POSE.slump, POSE.stand, seg(lt, 0.2, 2.2));
     p = mix(p, POSE.offer, seg(lt, 4.6, 5.4));
-    p = mix(p, POSE.slump, seg(lt, 8, 11.5));
+    p = mix(p, POSE.slump, seg(lt, 12.4, 15));
     p = walking(p, walkPh(STOPX, x), amt);
     // her: looking up at the moon, then turning and walking away
-    const turn = seg(lt, 5.6, 6.0), hx = lerp(0.72, 1.22, clamp((lt - 6.1) / 7, 0, 1));
-    const hp = walking(mix({ ...POSE.stand, head: -0.25, aR: 0.1, eR: 0.5 }, POSE.stand, turn), walkPh(0.72, hx), win(lt, 6.1, 13.1, 0.3));
+    const turn = seg(lt, 7.4, 7.8), hx = lerp(0.72, 1.22, clamp((lt - 7.9) / 6.6, 0, 1));
+    const hp = walking(mix({ ...POSE.stand, head: -0.25, aR: 0.1, eR: 0.5 }, POSE.stand, seg(lt, 4.8, 5.4)), walkPh(0.72, hx), win(lt, 7.9, 14.5, 0.3));
     const herA = seg(lt, 0, 1.2);
     if (hx < 1.2) {
       ctx.save(); ctx.globalAlpha = herA;
       shadow(X(hx), 8);
-      person(ctx, { x: X(hx), gy, k: k * 0.94, face: lerp(-1, 1, turn) || 0.05, pose: hp, st: HER, mood: { smile: 0.3, gy: turn > 0.5 ? 0 : -0.35, lid: 0.22 }, t });
+      const her = person(ctx, { x: X(hx), gy, k: k * 0.94, face: lerp(-1, 1, turn) || 0.05, pose: hp, st: HER,
+        mood: { smile: lerp(0.3, -0.4, seg(lt, 4.8, 5.4)), gy: lt < 4.8 ? -0.35 : 0, lid: 0.22 }, t });
       ctx.restore();
+      for (const [a, b, words] of HER_WORDS) bubble(ctx, her.top[0], her.top[1] - 3 * k, words, win(lt, a, b, 0.25), k, FONT, theme === 'dark');
     }
     shadow(X(x), 10);
-    const sad = seg(lt, 7.6, 9);
+    const sad = seg(lt, 12.2, 13.4);
     const me = person(ctx, { x: X(x), gy, k, face: 1, pose: p, st: HIM,
-      mood: { sad: lerp(0.6, 0, seg(lt, 0.5, 2)) + sad, lid: 0.15 + sad * 0.3, smile: 0.6 * seg(lt, 1.5, 3) * (1 - sad) - sad * 0.8, gy: sad * 0.7, tear: seg(lt, 10.4, 11) }, t });
+      mood: { sad: lerp(0.6, 0, seg(lt, 0.5, 2)) + sad, lid: 0.15 + sad * 0.3, smile: 0.6 * seg(lt, 1.5, 3) * (1 - sad) - sad * 0.8, gy: sad * 0.7, tear: seg(lt, 14.2, 14.8) }, t });
     // the rose
-    const ra = lerp(-0.25, 0.25, seg(lt, 4.6, 5.4)) + lerp(0, 2.1, seg(lt, 8.6, 11.5));
+    const ra = lerp(-0.25, 0.25, seg(lt, 4.6, 5.4)) + lerp(0, 2.1, seg(lt, 12.8, 15));
     rose(ctx, me.hand[0], me.hand[1], ra, k * 0.95, 1);
     const beat = 0.05 + 0.1 * seg(lt, 2.5, 4) * (1 - sad);
-    const shake = lt > 7.6 && lt < 8.6 ? Math.sin(lt * 70) * 0.8 * k : 0;
+    const shake = lt > 12.2 && lt < 13.2 ? Math.sin(lt * 70) * 0.8 * k : 0;
     heart(ctx, me.chest[0] + shake, me.chest[1], 3.4 * k, { beat: beat * Math.max(0, Math.sin(t * (6 + 4 * seg(lt, 2, 4)))) * (1 - sad),
-      crack: seg(lt, 7.6, 8.4), split: seg(lt, 9.4, 11), stitch: 0, dim: lerp(0.35, 0, seg(lt, 0.4, 2)) + sad * 0.6 });
+      crack: seg(lt, 12.2, 12.9), split: seg(lt, 13.3, 14.6), stitch: 0, dim: lerp(0.35, 0, seg(lt, 0.4, 2)) + sad * 0.6 });
     loveHearts(me.top, 1.6, lt);
     headCloud(me.top, 1 - seg(lt, 0, 1.6), 1 - seg(lt, 0, 0.8), t);
   }
