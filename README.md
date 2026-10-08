@@ -174,19 +174,21 @@ button in the top bar (Dragon, Kung fu panda, Wishes, Minion mayhem, Journey, or
   Stunned minions see stars. The field is drawn real: grass, wildflowers, an oak, haystacks, a
   fence and rolling hills; in the dark theme it is evening, with fireflies.
 
-* **Journey** (`static/js/journey.js`): a 2D cartoon of a broken man (a cartoon me), drawn over
-  four of my own videos (`static/media/journey/`: a dusk sky with street lights, the full moon,
-  a foggy bridge in the rain, and a sunrise over a field). Four chapters of 16 s each:
-  a crowd of shadows points and laughs at him and a rain cloud gathers over his head; he brings
-  a rose to the girl he loves; she tells him "Who told you to help me?", "Be professional with me,
-  not personal." and "You don't follow any ethics." (`HER_WORDS`) and walks away without looking
-  back, and his heart cracks in two;
-  he sits alone in the rain on the bridge until a stray puppy comes and sits with him; at sunrise
-  his heart is stitched back together, the cloud breaks up into birds, and he walks on with the
-  puppy. A one-line caption (English or Odia) tells each chapter. The clips are cropped to 16:9 and
-  played forwards then backwards so they loop smoothly; each has a still (`.webp`) shown until it loads.
-  The chapter timings and the crowd are at the top of the file (`CH`, `CAPTIONS`, `CROWD`),
+* **Journey** (`static/js/journey.js`): a 2D cartoon of a broken man (a cartoon me). Four chapters
+  of 16 s each. The first three happen on a stormy night drawn in code (storm clouds over a city
+  skyline, street lamps, heavy rain with splashes, lightning): a crowd of shadows points and laughs
+  at him and a rain cloud gathers over his head; he brings a rose to the girl he loves; she tells
+  him "Who told you to help me?", "Be professional with me, not personal." and "You don't follow
+  any ethics." (`HER_WORDS`) and walks away without looking back, and lightning strikes as his heart
+  cracks in two; he sits alone under a street lamp in the storm until a stray puppy comes and sits
+  with him. The last chapter is my own video of the sun rising over a field
+  (`static/media/journey/dawn.webm`, with a `.webp` still shown until it loads): to the chant
+  "Rise… rise… RISE!" he crouches and leaps for the light, the sun blazes, a swarm of bats bursts
+  up out of the dark (a nod to *The Dark Knight Rises*), and he lands standing tall, his heart
+  stitched back together, and walks on with the puppy. Captions are in English or Odia.
+  The timings are at the top of the file (`CH`, `STRIKES`, `CAPTIONS`, `CROWD`, `HER_WORDS`),
   and each chapter is a function (`chapter1` … `chapter4`).
+  In the light theme the night is drawn paler, so the page text stays readable.
 
 The four 3D ones are built entirely in code (no model or image files); shared building blocks live in
 `static/js/kit.js`. The only library is three.js,
