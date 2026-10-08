@@ -57,6 +57,10 @@
                   data-src="{{ get_url(path='js/field.js', cachebust=true) }}">
             <span aria-hidden="true">🍌</span>{% if lang == 'or' %}ମିନିଅନ୍ ଲଢ଼େଇ{% else %}Minion mayhem{% endif %}
           </button>
+          <button role="menuitemradio" aria-checked="false" data-companion-pick="journey" data-icon="💔"
+                  data-src="{{ get_url(path='js/journey.js', cachebust=true) }}">
+            <span aria-hidden="true">💔</span>{% if lang == 'or' %}ଯାତ୍ରା{% else %}Journey{% endif %}
+          </button>
           {#- Sunrise (js/sunrise.js) is kept but hidden from the menu for now -#}
           <button role="menuitemradio" aria-checked="false" data-companion-pick="off">
             <span aria-hidden="true">✕</span>{% if lang == 'or' %}ବନ୍ଦ{% else %}Off{% endif %}

@@ -145,8 +145,8 @@ Make sure GitHub notifications for this repository reach your email (Settings �
 
 ## The companions
 
-A 3D companion lives behind the content on every page. Visitors choose one from the 🐉/🐼/🌸/🍌
-button in the top bar (Dragon, Kung fu panda, Wishes, Minion mayhem, or Off); the choice is remembered.
+A companion lives behind the content on every page. Visitors choose one from the 🐉/🐼/🌸/🍌/💔
+button in the top bar (Dragon, Kung fu panda, Wishes, Minion mayhem, Journey, or Off); the choice is remembered.
 
 * **Dragon** (`static/js/dragon.js`): an Eastern dragon that swims across the page, sometimes
   circles the mouse, and now and then opens its jaws.
@@ -174,7 +174,19 @@ button in the top bar (Dragon, Kung fu panda, Wishes, Minion mayhem, or Off); th
   Stunned minions see stars. The field is drawn real: grass, wildflowers, an oak, haystacks, a
   fence and rolling hills; in the dark theme it is evening, with fireflies.
 
-All four are built entirely in code (no model or image files); shared building blocks live in
+* **Journey** (`static/js/journey.js`): a 2D cartoon of a broken man (a cartoon me), drawn over
+  four of my own videos (`static/media/journey/`: a dusk sky with street lights, the full moon,
+  a foggy bridge in the rain, and a sunrise over a field). Four chapters of 16 s each:
+  a crowd of shadows points and laughs at him and a rain cloud gathers over his head; he brings
+  a rose to the girl he loves and she walks away without looking back, and his heart cracks in two;
+  he sits alone in the rain on the bridge until a stray puppy comes and sits with him; at sunrise
+  his heart is stitched back together, the cloud breaks up into birds, and he walks on with the
+  puppy. A one-line caption (English or Odia) tells each chapter. The clips are cropped to 16:9 and
+  played forwards then backwards so they loop smoothly; each has a still (`.webp`) shown until it loads.
+  The chapter timings and the crowd are at the top of the file (`CH`, `CAPTIONS`, `CROWD`),
+  and each chapter is a function (`chapter1` … `chapter4`).
+
+The four 3D ones are built entirely in code (no model or image files); shared building blocks live in
 `static/js/kit.js`. The only library is three.js,
 self-hosted in `static/js/vendor/` (MIT licence alongside it), so the Site guard sees no outside
 scripts.
