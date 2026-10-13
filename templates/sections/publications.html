@@ -46,6 +46,7 @@
                 {% if p.extra.inspire %}<a class="link-pill link-pill--inspire" href="https://inspirehep.net/literature/{{ p.extra.inspire }}">INSPIRE</a>{% endif %}
                 {% if p.extra.arxiv %}<a class="link-pill link-pill--arxiv" href="https://arxiv.org/abs/{{ p.extra.arxiv }}">arXiv</a>{% endif %}
                 {% if p.extra.doi %}<a class="link-pill link-pill--doi" href="https://doi.org/{{ p.extra.doi }}">DOI</a>{% endif %}
+                {% if p.extra.code %}<a class="link-pill link-pill--code" href="{{ p.extra.code }}">{% if lang == 'or' %}କୋଡ୍{% else %}Code{% endif %}</a>{% endif %}
               </span>
             </li>
           {% endif %}
@@ -131,6 +132,10 @@
                 {% if p.extra.doi %}
                   <a class="link-pill link-pill--doi" href="https://doi.org/{{ p.extra.doi }}"
                      aria-label="Journal version via DOI">DOI</a>
+                {% endif %}
+                {% if p.extra.code %}
+                  <a class="link-pill link-pill--code" href="{{ p.extra.code }}"
+                     aria-label="Code and data on GitHub">{{ ic::social(name="github") }}{% if lang == 'or' %}କୋଡ୍{% else %}Code{% endif %}</a>
                 {% endif %}
                 {% if p.extra.inspire %}
                   <a class="link-pill link-pill--cite" href="https://inspirehep.net/api/literature/{{ p.extra.inspire }}?format=bibtex" data-bibtex="{{ p.extra.inspire }}"

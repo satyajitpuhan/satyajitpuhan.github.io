@@ -1,0 +1,28 @@
+{#- My research code on GitHub. Data: static/data/code.toml -#}
+{% import 'partials/icons.html' as ic %}
+{%- set d = load_data(path="static/data/code.toml", required=false) -%}
+{% if d and d.repo %}
+<section class="section" id="code">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">{% if lang == 'or' %}ଖୋଲା ବିଜ୍ଞାନ{% else %}Open science{% endif %}</p>
+      <h2 class="h-1">{% if lang == 'or' %}GitHub ରେ <em>କୋଡ୍</em>{% else %}Code on <em>GitHub</em>{% endif %}</h2>
+      <p>{% if lang == 'or' %}ମୋ ଗବେଷଣା ପଛର କୋଡ୍, ଡାଟା ଓ ଚିତ୍ର। ବ୍ୟବହାର କଲେ ଦୟାକରି ରିପୋଜିଟୋରୀକୁ ସାଇଟ୍ କରନ୍ତୁ।{% else %}The code, data and figures behind my work. If you use them, please cite the repository.{% endif %}</p>
+    </div>
+    <div class="grid grid--3">
+      {% for r in d.repo %}
+      <a class="card reveal" href="https://github.com/satyajitpuhan/{{ r.name }}">
+        <div class="card__body">
+          <h3 class="card__title">{% if lang == 'or' %}{{ r.title_or }}{% else %}{{ r.title }}{% endif %}</h3>
+          <p class="card__text">{% if lang == 'or' %}{{ r.text_or }}{% else %}{{ r.text }}{% endif %}</p>
+          <p style="margin-top:14px;display:flex;flex-wrap:wrap;gap:6px">
+            <span class="link-pill link-pill--code">{{ ic::social(name="github") }}{{ r.name }}</span>
+            <span class="link-pill">{% if r.status == "paper" %}{% if lang == 'or' %}କୋଡ୍ · ଡାଟା · ଚିତ୍ର{% else %}Code · data · figures{% endif %}{% else %}{% if lang == 'or' %}ଚିତ୍ର{% else %}Figures{% endif %}{% endif %}</span>
+          </p>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}

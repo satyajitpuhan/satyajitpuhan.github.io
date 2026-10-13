@@ -3,6 +3,7 @@ title = "Diffractive Vector-Meson Production from the Light-Front Quark Model"
 date = 2026-09-30
 
 [extra]
+code = "https://github.com/satyajitpuhan/Vector-Meson-Production-LFQM"
 thumbnail = "images/portfolio/papers/diffractive-vector-meson-production-from-the-light-front-first-page.webp"
 service = "e-Print: 2609.39647 [hep-ph]"
 client = "S. Puhan"
