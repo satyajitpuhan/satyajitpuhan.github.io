@@ -420,40 +420,6 @@ export const BUMP_GLSL = h => `
     normal = normalize(abs(det) * normal - sign(det) * (dhx * r1 + dhy * r2));
   }`;
 
-// Weathered limestone: rain streaks running down the steep faces, ledges, lichen patches and a
-// bumpy surface. `scale` is how big the rock is (1 for a boulder, ~0.08 for a mountain);
-// the fine detail fades out with distance so far faces don't shimmer.
-export function limestoneMaterial({ scale = 1, near = 60, far = 260, ...o } = {}) {
-  const m = new THREE.MeshStandardMaterial({ roughness: 0.96, ...o });
-  const k = scale.toFixed(4);
-  m.onBeforeCompile = sh => {
-    sh.vertexShader = 'varying vec3 vWPos;\nvarying vec3 vWNorm;\n' + sh.vertexShader.replace('#include <worldpos_vertex>', `#include <worldpos_vertex>
-      vWPos = (modelMatrix * vec4(transformed, 1.0)).xyz;
-      vWNorm = normalize(mat3(modelMatrix) * objectNormal);`);
-    sh.fragmentShader = 'varying vec3 vWPos;\nvarying vec3 vWNorm;\n' + NOISE_GLSL + sh.fragmentShader
-      .replace('#include <color_fragment>', `#include <color_fragment>
-        vec3 lp = vWPos * ${k};
-        float lNear = 1.0 - smoothstep(${near.toFixed(1)}, ${far.toFixed(1)}, length(vWPos - cameraPosition));
-        float steep = 1.0 - smoothstep(0.3, 0.85, vWNorm.y);
-        float streak = rf(vec3(lp.x * 3.0, lp.y * 0.25, lp.z * 3.0));
-        float ledge = smoothstep(0.6, 0.95, sin(lp.y * 2.2 + rf(lp * 0.7) * 4.0));
-        float lich = smoothstep(0.55, 0.8, rf(lp * 1.7 + 4.0));
-        vec3 c = diffuseColor.rgb * (0.8 + 0.4 * rf(lp * 2.5));
-        c = mix(c, c * vec3(0.55, 0.56, 0.58), smoothstep(0.45, 0.75, streak) * steep * 0.8);
-        c *= 1.0 - 0.18 * ledge * steep;
-        c = mix(c, c * vec3(1.08, 1.06, 0.86), lich * 0.35 * lNear);
-        diffuseColor.rgb = c;
-      `)
-      .replace('#include <normal_fragment_maps>', `#include <normal_fragment_maps>
-        {
-          float lh = (rf(lp * 4.0) * 0.55 + rf(vec3(lp.x * 6.0, lp.y * 0.8, lp.z * 6.0)) * 0.45) * lNear;
-          ` + BUMP_GLSL('lh') + `
-        }`);
-  };
-  m.customProgramCacheKey = () => 'limestone' + k + near + far;
-  return m;
-}
-
 // Bark in plates with furrows between them, and moss near the ground.
 export function barkMaterial() {
   const m = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 1 });
