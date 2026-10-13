@@ -397,3 +397,173 @@ export function inked(geo, mat, parent, pos, scale, w = 0.026) {
   m.add(new THREE.Mesh(geo, inkMat(w / s)));
   return m;
 }
+
+/* ---------------------------------------------------------------- real-looking surfaces */
+
+// GLSL: 3D value noise (rn), a few octaves of it (rf), and bump mapping from any height
+// expression via screen-space derivatives (no texture needed).
+export const NOISE_GLSL = `
+  float rh(vec3 p) { return fract(sin(dot(p, vec3(127.1, 311.7, 74.7))) * 43758.5453); }
+  float rn(vec3 p) {
+    vec3 i = floor(p), f = fract(p); f = f * f * (3.0 - 2.0 * f);
+    return mix(mix(mix(rh(i), rh(i + vec3(1, 0, 0)), f.x), mix(rh(i + vec3(0, 1, 0)), rh(i + vec3(1, 1, 0)), f.x), f.y),
+               mix(mix(rh(i + vec3(0, 0, 1)), rh(i + vec3(1, 0, 1)), f.x), mix(rh(i + vec3(0, 1, 1)), rh(i + vec3(1, 1, 1)), f.x), f.y), f.z);
+  }
+  float rf(vec3 p) { return 0.5 * rn(p) + 0.25 * rn(p * 2.03 + 7.1) + 0.125 * rn(p * 4.1 + 3.3) + 0.0625 * rn(p * 8.3 + 1.7); }
+`;
+export const BUMP_GLSL = h => `
+  {
+    vec3 dpx = dFdx(-vViewPosition), dpy = dFdy(-vViewPosition);
+    float dhx = dFdx(${h}), dhy = dFdy(${h});
+    vec3 r1 = cross(dpy, normal), r2 = cross(normal, dpx);
+    float det = dot(dpx, r1);
+    normal = normalize(abs(det) * normal - sign(det) * (dhx * r1 + dhy * r2));
+  }`;
+
+// Weathered limestone: rain streaks running down the steep faces, ledges, lichen patches and a
+// bumpy surface. `scale` is how big the rock is (1 for a boulder, ~0.08 for a mountain);
+// the fine detail fades out with distance so far faces don't shimmer.
+export function limestoneMaterial({ scale = 1, near = 60, far = 260, ...o } = {}) {
+  const m = new THREE.MeshStandardMaterial({ roughness: 0.96, ...o });
+  const k = scale.toFixed(4);
+  m.onBeforeCompile = sh => {
+    sh.vertexShader = 'varying vec3 vWPos;\nvarying vec3 vWNorm;\n' + sh.vertexShader.replace('#include <worldpos_vertex>', `#include <worldpos_vertex>
+      vWPos = (modelMatrix * vec4(transformed, 1.0)).xyz;
+      vWNorm = normalize(mat3(modelMatrix) * objectNormal);`);
+    sh.fragmentShader = 'varying vec3 vWPos;\nvarying vec3 vWNorm;\n' + NOISE_GLSL + sh.fragmentShader
+      .replace('#include <color_fragment>', `#include <color_fragment>
+        vec3 lp = vWPos * ${k};
+        float lNear = 1.0 - smoothstep(${near.toFixed(1)}, ${far.toFixed(1)}, length(vWPos - cameraPosition));
+        float steep = 1.0 - smoothstep(0.3, 0.85, vWNorm.y);
+        float streak = rf(vec3(lp.x * 3.0, lp.y * 0.25, lp.z * 3.0));
+        float ledge = smoothstep(0.6, 0.95, sin(lp.y * 2.2 + rf(lp * 0.7) * 4.0));
+        float lich = smoothstep(0.55, 0.8, rf(lp * 1.7 + 4.0));
+        vec3 c = diffuseColor.rgb * (0.8 + 0.4 * rf(lp * 2.5));
+        c = mix(c, c * vec3(0.55, 0.56, 0.58), smoothstep(0.45, 0.75, streak) * steep * 0.8);
+        c *= 1.0 - 0.18 * ledge * steep;
+        c = mix(c, c * vec3(1.08, 1.06, 0.86), lich * 0.35 * lNear);
+        diffuseColor.rgb = c;
+      `)
+      .replace('#include <normal_fragment_maps>', `#include <normal_fragment_maps>
+        {
+          float lh = (rf(lp * 4.0) * 0.55 + rf(vec3(lp.x * 6.0, lp.y * 0.8, lp.z * 6.0)) * 0.45) * lNear;
+          ` + BUMP_GLSL('lh') + `
+        }`);
+  };
+  m.customProgramCacheKey = () => 'limestone' + k + near + far;
+  return m;
+}
+
+// Bark in plates with furrows between them, and moss near the ground.
+export function barkMaterial() {
+  const m = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 1 });
+  m.onBeforeCompile = sh => {
+    sh.vertexShader = 'varying vec3 vOPos;\n' + sh.vertexShader.replace('#include <begin_vertex>', '#include <begin_vertex>\nvOPos = position;');
+    sh.fragmentShader = 'varying vec3 vOPos;\n' + NOISE_GLSL + `
+      float barkH(vec3 p) {
+        float a = atan(p.z, p.x);
+        float f = rf(vec3(a * 1.6, p.y * 0.35, 0.0));
+        float plates = abs(sin(a * 6.0 + f * 6.0 + p.y * 0.12));
+        return smoothstep(0.08, 0.7, plates) * 0.8 + rf(vec3(a * 3.0, p.y * 1.2, 1.0)) * 0.2;
+      }
+    ` + sh.fragmentShader
+      .replace('#include <color_fragment>', `#include <color_fragment>
+        float bk = barkH(vOPos);
+        diffuseColor.rgb *= mix(0.38, 1.08, bk);
+        diffuseColor.rgb = mix(diffuseColor.rgb, vec3(0.32, 0.38, 0.2), smoothstep(0.55, 0.85, rf(vOPos * 1.4)) * smoothstep(3.0, 0.0, vOPos.y) * 0.5);
+      `)
+      .replace('#include <normal_fragment_maps>', `#include <normal_fragment_maps>
+        float bkh = bk * 0.18;
+        ` + BUMP_GLSL('bkh'));
+  };
+  m.customProgramCacheKey = () => 'bark';
+  return m;
+}
+
+// Shade each card of a crown by how deep it sits: dark inside and underneath, bright outside.
+export function shadeCloud(cloud, centre, radius, lo = 0.42, ky = 0.8) {
+  const m4 = new THREE.Matrix4(), p = V(), c = new THREE.Color();
+  for (let i = 0; i < cloud.count; i++) {
+    cloud.getMatrixAt(i, m4); p.setFromMatrixPosition(m4).sub(centre);
+    const out = clamp(Math.hypot(p.x, p.z * 0.9, p.y * ky) / radius, 0, 1), up = ky ? clamp(p.y / radius, -1, 1) : 0;
+    cloud.getColorAt(i, c); cloud.setColorAt(i, c.multiplyScalar(clamp(lo + (1.05 - lo) * Math.pow(out, 1.3) + 0.18 * up, lo * 0.8, 1.2)));
+  }
+  cloud.instanceColor.needsUpdate = true;
+  return cloud;
+}
+// Leaves let light through: light every card as if it faced mostly upwards.
+export function foliageLit(cloud) {
+  cloud.material.onBeforeCompile = sh => {
+    sh.fragmentShader = sh.fragmentShader.replace('#include <normal_fragment_maps>', `#include <normal_fragment_maps>
+      normal = normalize(mix(normal, (viewMatrix * vec4(0.0, 1.0, 0.0, 0.0)).xyz, 0.65));`);
+  };
+  cloud.material.customProgramCacheKey = () => 'foliageLit';
+  return cloud;
+}
+
+// A lumpy boulder: an icosphere pushed about by noise, flattened at the base.
+export function boulderGeo(seed = 0, detail = 3) {
+  const g = new THREE.IcosahedronGeometry(1, detail), p = g.attributes.position;
+  for (let i = 0; i < p.count; i++) {
+    const x = p.getX(i), y = p.getY(i), z = p.getZ(i);
+    const f = 1 + 0.22 * nz(x * 1.3 + seed, y * 1.3, z * 1.3) + 0.08 * nz(x * 4.1, y * 4.1 + seed, z * 4.1);
+    p.setXYZ(i, x * f, Math.max(-0.25, y * f), z * f);
+  }
+  g.computeVertexNormals();
+  return g;
+}
+
+// A thin, bent blade of grass (5 vertices), for instancing by the thousand.
+export function bladeGeo(w = 0.04, h = 0.6) {
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.Float32BufferAttribute([-w, 0, 0, w, 0, 0, -w * 0.6, h / 2, h * 0.03, w * 0.6, h / 2, h * 0.03, 0, h, h * 0.12], 3));
+  g.setIndex([0, 1, 2, 2, 1, 3, 2, 3, 4]); g.computeVertexNormals();
+  return g;
+}
+
+// A sky that fades into the page at the top: stops are [offset, 'rgba(...)'] from top to horizon.
+export const skyTex = stops => canvasTex(4, 256, (c, w, h) => {
+  const g = c.createLinearGradient(0, 0, 0, h);
+  for (const [o, col] of stops) g.addColorStop(o, col);
+  c.fillStyle = g; c.fillRect(0, 0, w, h);
+});
+
+// A cumulus cloud: many soft puffs, lit from above and greyer underneath, with a flat base.
+export const cumulusTex = (seed = 0) => canvasTex(512, 256, (c, W, H) => {
+  const puffs = [];
+  for (let i = 0; i < 70; i++) {
+    const u = rand(), x = W * (0.12 + 0.76 * u), top = H * (0.62 - 0.4 * Math.sin(Math.PI * u) * (0.6 + 0.4 * rand()));
+    const r = H * (0.07 + 0.11 * rand() * Math.sin(Math.PI * u) + 0.03);
+    puffs.push([x, top + rand() * (H * 0.66 - top), r]);
+  }
+  puffs.sort((a, b) => b[1] - a[1]);
+  for (const [x, y, r] of puffs) {                                     // shadowed body first
+    const g = c.createRadialGradient(x, y, 0, x, y, r);
+    g.addColorStop(0, 'rgba(176,184,198,.5)'); g.addColorStop(1, 'rgba(176,184,198,0)');
+    c.fillStyle = g; c.fillRect(x - r, y - r, r * 2, r * 2);
+  }
+  for (const [x, y, r] of puffs) {                                     // sunlit tops, offset up
+    const yy = y - r * 0.35, g = c.createRadialGradient(x - r * 0.2, yy - r * 0.2, 0, x, yy, r * 0.85);
+    g.addColorStop(0, 'rgba(255,255,255,.75)'); g.addColorStop(0.6, 'rgba(250,250,252,.3)'); g.addColorStop(1, 'rgba(250,250,252,0)');
+    c.fillStyle = g; c.fillRect(x - r, yy - r, r * 2, r * 2);
+  }
+  c.globalCompositeOperation = 'destination-out';                       // a flat, soft base
+  const b = c.createLinearGradient(0, H * 0.66, 0, H * 0.8);
+  b.addColorStop(0, 'rgba(0,0,0,0)'); b.addColorStop(1, 'rgba(0,0,0,1)');
+  c.fillStyle = b; c.fillRect(0, H * 0.66, W, H * 0.34);
+  c.globalCompositeOperation = 'destination-out';                       // and soft sides
+  for (const x0 of [0, W]) {
+    const s = c.createLinearGradient(x0, 0, x0 === 0 ? W * 0.12 : W * 0.88, 0);
+    s.addColorStop(0, 'rgba(0,0,0,1)'); s.addColorStop(1, 'rgba(0,0,0,0)');
+    c.fillStyle = s; c.fillRect(x0 === 0 ? 0 : W * 0.88, 0, W * 0.12, H);
+  }
+});
+
+// Stars for a night sky (a sprite sheet tiled over a big plane).
+export const starTex = () => canvasTex(512, 256, (c, W, H) => {
+  for (let i = 0; i < 420; i++) {
+    const x = rand() * W, y = Math.pow(rand(), 1.4) * H, r = rand() < 0.06 ? 1.4 : 0.4 + rand() * 0.7, a = 0.35 + rand() * 0.65;
+    c.fillStyle = `rgba(${230 + rand() * 25 | 0},${230 + rand() * 25 | 0},255,${a * (1 - y / H)})`;
+    c.beginPath(); c.arc(x, y, r, 0, TAU); c.fill();
+  }
+});

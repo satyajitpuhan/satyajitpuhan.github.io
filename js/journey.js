@@ -423,7 +423,7 @@ export function start(canvas, opts = {}) {
   const lang = document.documentElement.lang === 'or' ? 'or' : 'en';
   const FONT = '"Inter", -apple-system, "Segoe UI", Roboto, sans-serif';
   const SERIF = lang === 'or' ? '"Noto Serif Oriya", "Noto Sans Oriya", serif' : '"Instrument Serif", Georgia, serif';
-  const vids = [], posters = [], drops = [], blades = [], bolts = [];
+  const vids = [], posters = [], drops = [], blades = [], bolts = [], beacons = [];
   let sky = null, clouds = null;
 
   try {
@@ -476,32 +476,92 @@ export function start(canvas, opts = {}) {
     night();
   }
 
-  // the night, drawn once per resize: sky and skyline, and a strip of storm clouds twice as wide
-  // as the screen (it repeats, so it can drift forever)
+  // the night, drawn once per resize: sky, two layers of city in the rain haze, the wet road
+  // mirroring it, and a strip of storm clouds twice as wide as the screen (it repeats, so it
+  // can drift forever), lit orange from below by the city
   function night() {
     const hz = H * 0.68, r = (seed => () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; })(77);
     sky = document.createElement('canvas'); sky.width = W; sky.height = H;
-    const c = sky.getContext('2d'), g = c.createLinearGradient(0, 0, 0, H);
-    g.addColorStop(0, '#04060c'); g.addColorStop(0.45, '#0e1424'); g.addColorStop(0.68, '#27304a'); g.addColorStop(0.7, '#141a27'); g.addColorStop(1, '#0b0e16');
-    c.fillStyle = g; c.fillRect(0, 0, W, H);
-    for (let x = -10; x < W + 10;) {                 // the city on the horizon, a few windows still lit
-      const bw = H * (0.03 + r() * 0.06), bh = H * (0.03 + r() * r() * 0.16);
-      c.fillStyle = r() < 0.5 ? '#0a0e18' : '#0d1220'; c.fillRect(x, hz - bh, bw + 1, bh + H * 0.03);
-      for (let wy = hz - bh + H * 0.012; wy < hz - H * 0.01; wy += H * 0.016)
-        for (let wx = x + bw * 0.15; wx < x + bw * 0.85; wx += bw * 0.22)
-          if (r() < 0.12) { c.fillStyle = r() < 0.7 ? 'rgba(255,206,120,.55)' : 'rgba(170,200,255,.45)'; c.fillRect(wx, wy, H * 0.005, H * 0.007); }
-      x += bw + H * 0.004 * r();
+    const c = sky.getContext('2d'), g = c.createLinearGradient(0, 0, 0, hz);
+    g.addColorStop(0, '#04060c'); g.addColorStop(0.55, '#0e1424'); g.addColorStop(0.88, '#262c42'); g.addColorStop(1, '#3d3a48');
+    c.fillStyle = g; c.fillRect(0, 0, W, hz);
+    const glow = c.createLinearGradient(0, hz - H * 0.22, 0, hz);  // sodium light from the streets, caught in the rain
+    glow.addColorStop(0, 'rgba(255,150,80,0)'); glow.addColorStop(1, 'rgba(255,150,80,.14)');
+    c.fillStyle = glow; c.fillRect(0, hz - H * 0.22, W, H * 0.22);
+    beacons.length = 0;
+    const win = (x, y, w, h, lit) => {
+      const t = r();
+      c.fillStyle = !lit ? 'rgba(120,140,170,.07)' : t < 0.62 ? `rgba(255,${190 + r() * 30 | 0},${100 + r() * 40 | 0},${0.45 + r() * 0.35})` : t < 0.85 ? 'rgba(175,205,255,.5)' : 'rgba(120,170,255,.65)';
+      c.fillRect(x, y, w, h);
+    };
+    const building = (x, bw, bh, body, far) => {
+      const top = hz - bh, U = H * (far ? 0.009 : 0.013);
+      c.fillStyle = body; c.fillRect(x, top, bw + 1, bh + 2);
+      const roof = r();
+      if (roof < 0.22 && bh > H * 0.07) {                         // a setback tower on top
+        const sw = bw * (0.45 + r() * 0.25), sh = bh * (0.15 + r() * 0.25), sx = x + (bw - sw) * r();
+        c.fillRect(sx, top - sh, sw, sh + 1);
+        if (r() < 0.6) { c.fillRect(sx + sw / 2 - 1, top - sh - H * 0.04, 2, H * 0.04); beacons.push([sx + sw / 2, top - sh - H * 0.04, r() * TAU]); }
+      } else if (roof < 0.34) {                                   // a spire
+        c.beginPath(); c.moveTo(x + bw * 0.3, top); c.lineTo(x + bw / 2, top - bh * 0.25); c.lineTo(x + bw * 0.7, top); c.fill();
+        beacons.push([x + bw / 2, top - bh * 0.25, r() * TAU]);
+      } else if (roof < 0.5 && !far) {                            // a water tank on legs
+        const tw = Math.max(6, bw * 0.18), tx = x + bw * (0.2 + r() * 0.5);
+        c.fillRect(tx, top - U * 2.6, tw, U * 1.8); c.fillRect(tx + 1, top - U * 0.8, 1.5, U * 0.8); c.fillRect(tx + tw - 2.5, top - U * 0.8, 1.5, U * 0.8);
+        c.beginPath(); c.moveTo(tx - 1, top - U * 2.6); c.lineTo(tx + tw / 2, top - U * 3.4); c.lineTo(tx + tw + 1, top - U * 2.6); c.fill();
+      } else if (roof < 0.62) {                                   // aerials
+        for (let i = 0; i < 1 + (r() * 3 | 0); i++) c.fillRect(x + bw * r(), top - H * 0.02 * (0.5 + r()), 1.2, H * 0.02 * (0.5 + r()));
+      } else c.fillRect(x - 1, top - 2, bw + 3, 3);               // a parapet
+      if (!far) { c.fillStyle = 'rgba(255,170,110,.06)'; c.fillRect(x + bw - 2, top, 2, bh); }   // the street glow along one edge
+      const busy = r(), cols = Math.max(2, Math.round(bw / (U * 1.6))), ww = bw / cols;
+      for (let wy = top + U * 1.2, f = 0; wy < hz - U; wy += U * 1.25, f++) {
+        const floorLit = r() < 0.08;                              // now and then a whole floor still at work
+        for (let i = 0; i < cols; i++) win(x + i * ww + ww * 0.22, wy, ww * 0.56, U * 0.62, floorLit ? r() < 0.85 : r() < 0.06 + 0.16 * busy);
+      }
+    };
+    for (let x = -10; x < W + 10;) {                              // the far city, pale in the rain
+      const bw = H * (0.025 + r() * 0.05), bh = H * (0.05 + r() * r() * 0.2);
+      building(x, bw, bh, r() < 0.5 ? '#1a2034' : '#1d2338', true); x += bw + H * 0.002 * r();
     }
+    const haze = c.createLinearGradient(0, hz - H * 0.12, 0, hz);
+    haze.addColorStop(0, 'rgba(48,54,76,0)'); haze.addColorStop(1, 'rgba(48,54,76,.55)');
+    c.fillStyle = haze; c.fillRect(0, hz - H * 0.12, W, H * 0.12);
+    for (let x = -10; x < W + 10;) {                              // the near city, a few windows still lit
+      const bw = H * (0.035 + r() * 0.07), bh = H * (0.03 + r() * r() * 0.17);
+      building(x, bw, bh, r() < 0.5 ? '#0a0e18' : '#0d1220', false); x += bw + H * (0.002 + 0.01 * r());
+    }
+    const mist = c.createLinearGradient(0, hz - H * 0.05, 0, hz);
+    mist.addColorStop(0, 'rgba(40,46,66,0)'); mist.addColorStop(1, 'rgba(40,46,66,.45)');
+    c.fillStyle = mist; c.fillRect(0, hz - H * 0.05, W, H * 0.05);
+    const road = c.createLinearGradient(0, hz, 0, H);               // the wet road below the skyline
+    road.addColorStop(0, '#171b28'); road.addColorStop(1, '#090b11');
+    c.fillStyle = road; c.fillRect(0, hz, W, H - hz);
+    c.save();                                                     // the city mirrored in it, stretched and blurred by the rain
+    c.globalAlpha = 0.32; c.filter = `blur(${Math.max(1, H * 0.003)}px)`;
+    c.translate(0, hz); c.scale(1, -1.5);
+    c.drawImage(sky, 0, hz - H * 0.2, W, H * 0.2, 0, 0, W, H * 0.2);
+    c.restore();
+    c.fillStyle = 'rgba(9,11,17,.35)';
+    for (let y = hz; y < H; y += Math.max(2, H * 0.004)) c.fillRect(0, y, W, 1);   // ripples break the reflection up
     clouds = document.createElement('canvas'); clouds.width = W * 2; clouds.height = Math.round(H * 0.6);
     const d = clouds.getContext('2d');
-    for (let i = 0; i < 46; i++) {
-      const x = r() * W, y = H * (0.02 + r() * r() * 0.42), rr = H * (0.08 + r() * 0.14), sh = r();
-      for (const ox of [x, x + W, x - W]) {
-        const cg = d.createRadialGradient(ox, y, 0, ox, y, rr);
-        cg.addColorStop(0, `rgba(${38 + sh * 22 | 0},${44 + sh * 24 | 0},${62 + sh * 26 | 0},.75)`); cg.addColorStop(1, 'rgba(30,36,52,0)');
-        d.fillStyle = cg; d.fillRect(ox - rr, y - rr, rr * 2, rr * 2);
+    for (let i = 0; i < 26; i++) {                                // banks of cloud built from many puffs: darker cores, paler rims
+      const x = r() * W, y = H * (0.04 + r() * r() * 0.4), span = H * (0.2 + r() * 0.35), puffs = 14 + (r() * 10 | 0), sh = r();
+      for (let p = 0; p < puffs; p++) {
+        const u = r() - 0.5, px = x + u * span, py = y + (r() - 0.5) * span * 0.18 + Math.abs(u) * span * 0.12, rr = H * (0.04 + r() * 0.08) * (1 - Math.abs(u));
+        for (const ox of [px, px + W, px - W]) {
+          const cg = d.createRadialGradient(ox, py, 0, ox, py, rr);
+          cg.addColorStop(0, `rgba(${24 + sh * 16 | 0},${28 + sh * 18 | 0},${42 + sh * 20 | 0},.8)`);
+          cg.addColorStop(0.7, `rgba(${40 + sh * 20 | 0},${46 + sh * 22 | 0},${64 + sh * 24 | 0},.45)`); cg.addColorStop(1, 'rgba(40,46,64,0)');
+          d.fillStyle = cg; d.fillRect(ox - rr, py - rr, rr * 2, rr * 2);
+        }
       }
     }
+    d.globalCompositeOperation = 'source-atop';                   // the undersides lit by the city
+    const under = d.createLinearGradient(0, H * 0.25, 0, H * 0.6);
+    under.addColorStop(0, 'rgba(150,110,90,0)'); under.addColorStop(1, 'rgba(170,120,90,.35)');
+    d.fillStyle = under; d.fillRect(0, 0, W * 2, H * 0.6);
+    d.globalCompositeOperation = 'source-over';
     bolts.length = 0;
     STRIKES.forEach(() => {                          // a jagged bolt with a branch or two
       const pts = [], x0 = W * (0.1 + r() * 0.8), n = 12; let x = x0;
@@ -535,6 +595,12 @@ export function start(canvas, opts = {}) {
     if (a <= 0.001 || !sky) return;
     ctx.save(); ctx.globalAlpha = a;
     ctx.drawImage(sky, 0, 0);
+    for (const [bx, by, ph] of beacons) {               // red lights on the towers, blinking
+      const on = Math.max(0, Math.sin(t * 2.2 + ph)); if (on < 0.3) continue;
+      const bg = ctx.createRadialGradient(bx, by, 0, bx, by, H * 0.008);
+      bg.addColorStop(0, `rgba(255,60,50,${on})`); bg.addColorStop(1, 'rgba(255,60,50,0)');
+      ctx.fillStyle = bg; ctx.fillRect(bx - H * 0.008, by - H * 0.008, H * 0.016, H * 0.016);
+    }
     const off = -((t * W * 0.012) % W);
     ctx.drawImage(clouds, off, 0);
     const L = flash();
@@ -578,6 +644,13 @@ export function start(canvas, opts = {}) {
     const pool = ctx.createRadialGradient(hx, gy + 4 * k, 0, hx, gy + 4 * k, 60 * k);
     pool.addColorStop(0, 'rgba(255,210,140,.3)'); pool.addColorStop(1, 'rgba(255,210,140,0)');
     ctx.fillStyle = pool; ctx.beginPath(); ctx.ellipse(hx, gy + 4 * k, 60 * k, 10 * k, 0, 0, TAU); ctx.fill();
+    const refl = ctx.createLinearGradient(0, gy - 3 * k, 0, H);       // the lamp mirrored in the wet pavement, broken by the rain
+    refl.addColorStop(0, 'rgba(255,214,150,.4)'); refl.addColorStop(1, 'rgba(255,214,150,0)');
+    ctx.fillStyle = refl;
+    for (let y = gy - 3 * k, i = 0; y < H; y += 2.2 * k, i++) {
+      const w = (3 + 2.5 * Math.sin(T * 6 + i * 1.7 + x)) * k;
+      ctx.fillRect(hx - w / 2 + Math.sin(T * 3 + i) * 1.5 * k, y, w, 1.4 * k);
+    }
     ctx.strokeStyle = L > 0.2 ? '#3a4152' : '#161a22'; ctx.lineCap = 'round';
     ctx.lineWidth = 3.2 * k; ctx.beginPath(); ctx.moveTo(x, gy); ctx.lineTo(x, top - 6 * k); ctx.quadraticCurveTo(x, top - 10 * k, hx, top - 6 * k); ctx.stroke();
     ctx.fillStyle = '#161a22'; ctx.beginPath(); ctx.moveTo(hx - 6 * k, top - 3 * k); ctx.lineTo(hx + 6 * k, top - 3 * k); ctx.lineTo(hx + 3.5 * k, top - 8 * k); ctx.lineTo(hx - 3.5 * k, top - 8 * k); ctx.fill();
@@ -603,6 +676,12 @@ export function start(canvas, opts = {}) {
       ctx.fillStyle = `rgba(170,175,190,${0.3 + L * 0.5})`; ctx.fillRect(0, gy - 4 * k, W, Math.max(2, 1.2 * k));
       ctx.strokeStyle = 'rgba(0,0,0,.25)'; ctx.lineWidth = 1;
       for (let x = 0; x < W + 8 * k; x += 22 * k) { ctx.beginPath(); ctx.moveTo(x, gy - 3 * k); ctx.lineTo(x - 8 * k, H); ctx.stroke(); }
+      for (let y = gy + 4 * k, s = 4 * k; y < H; s *= 1.5, y += s) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
+      for (const [px, pw] of [[0.08, 0.09], [0.33, 0.05], [0.56, 0.12], [0.86, 0.07]]) {   // puddles holding the sky
+        const py = gy + (H - gy) * (0.35 + 0.3 * Math.sin(px * 9)), pg = ctx.createLinearGradient(0, py - 3 * k, 0, py + 3 * k);
+        pg.addColorStop(0, `rgba(80,92,124,${0.35 + L * 0.5})`); pg.addColorStop(1, `rgba(30,36,52,${0.3 + L * 0.3})`);
+        ctx.fillStyle = pg; ctx.beginPath(); ctx.ellipse(X(px), py, X(pw), 2.6 * k, 0, 0, TAU); ctx.fill();
+      }
       if (L > 0.01) { ctx.fillStyle = `rgba(190,200,240,${L * 0.18})`; ctx.fillRect(0, gy - 4 * k, W, H); }
       if (kind === 'street') for (const f of [0.12, 0.62, 1.04]) lamp(X(f), 1);
       else lamp(X(SPOT) - 30 * k, 1);
