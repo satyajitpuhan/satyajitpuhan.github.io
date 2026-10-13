@@ -501,14 +501,22 @@ export function foliageLit(cloud) {
   return cloud;
 }
 
-// A lumpy boulder: an icosphere pushed about by noise, flattened at the base.
-export function boulderGeo(seed = 0, detail = 3) {
-  const g = new THREE.IcosahedronGeometry(1, detail), p = g.attributes.position;
+// A lumpy boulder: an icosphere pushed about by noise, flattened at the base; with colours
+// [rock, crevice, lichen] it is painted too (darker in the hollows, lichen on top).
+export function boulderGeo(seed = 0, detail = 3, colours = null) {
+  const g = new THREE.IcosahedronGeometry(1, detail).toNonIndexed(), p = g.attributes.position, cols = [];
+  const [rock, dark, lichen] = (colours || [0, 0, 0]).map(C);
   for (let i = 0; i < p.count; i++) {
     const x = p.getX(i), y = p.getY(i), z = p.getZ(i);
-    const f = 1 + 0.22 * nz(x * 1.3 + seed, y * 1.3, z * 1.3) + 0.08 * nz(x * 4.1, y * 4.1 + seed, z * 4.1);
+    const bump = 0.22 * nz(x * 1.3 + seed, y * 1.3, z * 1.3) + 0.08 * nz(x * 4.1, y * 4.1 + seed, z * 4.1), f = 1 + bump;
     p.setXYZ(i, x * f, Math.max(-0.25, y * f), z * f);
+    if (colours) {
+      let c = mix(dark, rock, sm(-0.15, 0.15, bump)).multiplyScalar(0.9 + 0.2 * nz(x * 7, y * 7 + seed, z * 7));
+      c = mix(c, lichen, sm(0.3, 0.8, y) * sm(0.2, 0.6, nz(x * 3 + seed, y * 3, z * 3)) * 0.6);
+      cols.push(c.r, c.g, c.b);
+    }
   }
+  if (colours) g.setAttribute('color', new THREE.Float32BufferAttribute(cols, 3));
   g.computeVertexNormals();
   return g;
 }
