@@ -1,0 +1,26 @@
+# Public code and figures on GitHub, shown on /research/ (templates/sections/code.html).
+# `status`: "paper" (code, data and figures of a paper) or "figures" (figures; code on request).
+
+[[repo]]
+name = "Vector-Meson-Production-LFQM"
+status = "paper"
+title = "Diffractive vector-meson production"
+title_or = "ଡିଫ୍ରାକ୍ଟିଭ୍ ଭେକ୍ଟର-ମେସନ୍ ଉତ୍ପାଦନ"
+text = "Code, data and figures for ρ, φ, J/ψ and ψ(2S) production in the colour-dipole picture (arXiv:2609.39647)."
+text_or = "କଲର-ଡାଇପୋଲ୍ ଚିତ୍ରରେ ρ, φ, J/ψ ଓ ψ(2S) ଉତ୍ପାଦନର କୋଡ୍, ଡାଟା ଓ ଚିତ୍ର (arXiv:2609.39647)।"
+
+[[repo]]
+name = "Pion-Kaon-Photon-TDAs-LFQM"
+status = "figures"
+title = "Pion- and kaon-to-photon TDAs"
+title_or = "ପାଇଅନ୍ ଓ କାଅନ୍ ରୁ ଫୋଟନ୍ TDA"
+text = "Leading-twist vector and axial π⁺ → γ and K⁺ → γ transition distribution amplitudes. Paper in preparation."
+text_or = "ଲିଡିଂ-ଟ୍ୱିଷ୍ଟ ଭେକ୍ଟର ଓ ଆକ୍ସିଆଲ୍ π⁺ → γ ଓ K⁺ → γ ଟ୍ରାଞ୍ଜିସନ୍ ଡିଷ୍ଟ୍ରିବ୍ୟୁସନ୍ ଆମ୍ପ୍ଲିଚ୍ୟୁଡ୍। ପେପର୍ ପ୍ରସ୍ତୁତି ଚାଲିଛି।"
+
+[[repo]]
+name = "Deuteron-Light-Front"
+status = "figures"
+title = "The deuteron on the light front"
+title_or = "ଲାଇଟ୍-ଫ୍ରଣ୍ଟରେ ଡ୍ୟୁଟେରନ୍"
+text = "Twenty deuteron models as light-front wave functions: form factors, structure functions, GPDs and TMDs, compared with data."
+text_or = "କୋଡ଼ିଏଟି ଡ୍ୟୁଟେରନ୍ ମଡେଲ୍ ଲାଇଟ୍-ଫ୍ରଣ୍ଟ ତରଙ୍ଗ ଫଙ୍କସନ୍ ଭାବରେ: ଫର୍ମ ଫ୍ୟାକ୍ଟର୍, ଷ୍ଟ୍ରକ୍ଚର୍ ଫଙ୍କସନ୍, GPD ଓ TMD, ଡାଟା ସହ ତୁଳନା।"
