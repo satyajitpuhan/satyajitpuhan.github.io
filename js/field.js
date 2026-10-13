@@ -18,6 +18,7 @@ import {
   TAU, sm, clamp, lerp, angDiff, rand, rnd, nz, V, C, mix, canvasTex, radial, mistTex, sculpt, taperedTube,
   SPH, mesh, capsule, makeRig, ell, smin, onFront, surfaceNet, taperCapsule, eyeTexture, addEye, KEYS, blank,
   fbm, foliageCard, blossomCard, cardCloud, GREENS, tiled, grassTex, woodTex, toon, inkMat, inked,
+  cumulusTex, bladeGeo, barkMaterial, shadeCloud, foliageLit, NOISE_GLSL, BUMP_GLSL,
 } from './kit.js';
 
 /* ---------------------------------------------------------------- me */
@@ -239,8 +240,9 @@ export function start(canvas, opts = {}) {
   mesh(new THREE.PlaneGeometry(5000, 700), skyMat, scene, [0, 170, -1500]).renderOrder = -10;
   const clouds = [];
   for (let i = 0; i < 10; i++) {
-    const c = new THREE.Sprite(new THREE.SpriteMaterial({ map: mistTex, fog: false, transparent: true, depthWrite: false, opacity: 0.9 }));
-    c.position.set((rand() * 2 - 1) * 900, 120 + rand() * 200, -1300 - rand() * 100); c.scale.set(420 + rand() * 300, 140 + rand() * 80, 1); c.renderOrder = -9; scene.add(c); clouds.push({ c, v: 4 + rand() * 4 });
+    const c = new THREE.Sprite(new THREE.SpriteMaterial({ map: cumulusTex(), fog: false, transparent: true, depthWrite: false, opacity: 0.95 }));
+    const w = 360 + rand() * 340;
+    c.position.set((rand() * 2 - 1) * 900, 130 + rand() * 210, -1300 - rand() * 100); c.scale.set(w, w * (0.38 + rand() * 0.12), 1); c.renderOrder = -9; scene.add(c); clouds.push({ c, v: 4 + rand() * 4 });
   }
   {
     // rolling hills, a patchwork of fields and hedges
@@ -249,9 +251,14 @@ export function start(canvas, opts = {}) {
       const x = (i / (nx - 1) * 2 - 1) * X, z = -40 - 900 * Math.pow(j / (nzr - 1), 1.4);
       const h = 18 * fbm(x * 0.004, z * 0.004, 4) + 28 * sm(-100, -700, z) * (0.6 + 0.4 * fbm(x * 0.002 + 5, z * 0.003, 3)) - 6 * sm(-80, -40, z);
       pos.push(x, h, z);
-      const patch = Math.floor(x / 60 + fbm(x * 0.01, z * 0.01, 2)) + Math.floor(z / 50);
-      let c = C([0x6f9a3e, 0x86ac4a, 0x9cb85a, 0x5f8a36, 0xb7b85e][((patch % 5) + 5) % 5]);
-      c = mix(c, C(0x3f6a2c), sm(0.42, 0.5, Math.abs(fbm(x * 0.03, z * 0.03, 2))) * 0.8);
+      const u = x / 60 + 0.8 * fbm(x * 0.01, z * 0.01, 2), v = z / 50 + 0.5 * fbm(x * 0.008 + 3, z * 0.01, 2);
+      const patch = Math.floor(u) * 7 + Math.floor(v) * 3, kind = ((patch % 6) + 6) % 6;
+      let c = C([0x6f8f44, 0x8aa252, 0xa3ad62, 0x5f7f3c, 0xc2b46e, 0x9a8a5a][kind]);           // pasture, crops, hay, stubble, ploughed earth
+      if (kind >= 4) c.multiplyScalar(0.92 + 0.12 * Math.sin((kind === 4 ? u : v) * 70));          // rows in the crop and the plough
+      c.multiplyScalar(0.9 + 0.18 * fbm(x * 0.05, z * 0.05, 3));
+      const edge = Math.min(Math.abs(u - Math.round(u)), Math.abs(v - Math.round(v)));
+      c = mix(c, C(0x2f4a26), sm(0.06, 0.02, edge) * 0.9);                                          // hedgerows
+      c.multiplyScalar(1 - 0.3 * sm(0.05, 0.3, fbm(x * 0.003 + 9, z * 0.004 + 1, 3)));                 // shadows of the clouds
       col.push(c.r, c.g, c.b);
       if (i < nx - 1 && j < nzr - 1) { const k = j * nx + i; idx.push(k, k + 1, k + nx, k + 1, k + nx + 1, k + nx); }
     }
@@ -275,19 +282,19 @@ export function start(canvas, opts = {}) {
     for (let i = 0; i < p.count; i++) {
       const x = p.getX(i), z = p.getZ(i);
       p.setY(i, 0.2 * nz(x * 0.2, 0, z * 0.2) - 6 * sm(-30, -60, z));
-      const k = 0.85 + 0.25 * fbm(x * 0.05, z * 0.05, 3); cols.push(k, k, k, 1 - sm(8, 22, z));
+      const k = 0.85 + 0.25 * fbm(x * 0.05, z * 0.05, 3);
+      const c = mix(C(0xffffff).multiplyScalar(k), C(0xe8d9a0), sm(0.15, 0.55, fbm(x * 0.06 + 4, z * 0.09, 3)) * 0.5);
+      cols.push(c.r, c.g, c.b, 1 - sm(8, 22, z));
     }
     lawn.setAttribute('color', new THREE.Float32BufferAttribute(cols, 4)); lawn.computeVertexNormals();
     const ground = mesh(lawn, new THREE.MeshStandardMaterial({ map: grassTex(), vertexColors: true, transparent: true, roughness: 1 }), world); ground.renderOrder = -2;
     // grass blades and wildflowers
-    const blade = new THREE.BufferGeometry();
-    blade.setAttribute('position', new THREE.Float32BufferAttribute([-0.05, 0, 0, 0.05, 0, 0, -0.03, 0.35, 0.02, 0.03, 0.35, 0.02, 0, 0.7, 0.08], 3));
-    blade.setIndex([0, 1, 2, 2, 1, 3, 2, 3, 4]); blade.computeVertexNormals();
+    const blade = bladeGeo(0.05, 0.7);
     const n = small ? 3500 : 9000, gr = new THREE.InstancedMesh(blade, new THREE.MeshStandardMaterial({ side: THREE.DoubleSide, roughness: 0.9 }), n);
     const m4 = new THREE.Matrix4(), q = new THREE.Quaternion(), e = new THREE.Euler();
     for (let i = 0; i < n; i++) {
       m4.compose(V((rand() * 2 - 1) * 80, 0, -25 + rand() * 32), q.setFromEuler(e.set((rand() - 0.5) * 0.5, rand() * TAU, (rand() - 0.5) * 0.5)), V(1, 0.5 + rand(), 1)); gr.setMatrixAt(i, m4);
-      gr.setColorAt(i, C(GREENS[(rand() * GREENS.length) | 0]).multiplyScalar(0.9 + rand() * 0.35));
+      gr.setColorAt(i, mix(C(GREENS[(rand() * GREENS.length) | 0]), C(rand() < 0.18 ? 0xc2b27a : 0x7d8a52), 0.35).multiplyScalar(0.85 + rand() * 0.4));
     }
     world.add(gr);
     const fl = new THREE.InstancedMesh(new THREE.CircleGeometry(0.13, 7).rotateX(-Math.PI / 2), new THREE.MeshStandardMaterial({ roughness: 0.7, side: THREE.DoubleSide }), small ? 500 : 1200);
@@ -301,8 +308,8 @@ export function start(canvas, opts = {}) {
   // an oak, haystacks and a fence
   const oak = new THREE.Group(); world.add(oak);
   {
-    const barkMat = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.95 });
-    const bark = (u, j) => mix(C(0x3e2c1f), C(0x6a4e36), 0.5 + 0.35 * Math.sin(u * 23 + j * 2.1));
+    const barkMat = barkMaterial();
+    const bark = (u, j) => mix(C(0x463a2e), C(0x74624e), 0.5 + 0.3 * Math.sin(u * 23 + j * 2.1) + 0.15 * Math.sin(j * 5.3));
     const spots = [];
     mesh(taperedTube([V(0, -0.5, 0), V(0.4, 3, 0.1), V(-0.2, 6, 0)], 24, u => 1.3 * (1 + 0.5 * Math.exp(-u * 8)) * (1 - 0.45 * u), bark, 10), barkMat, oak);
     const branch = (p0, d, len, r0, depth) => {
@@ -312,12 +319,29 @@ export function start(canvas, opts = {}) {
       if (depth) for (let k = 0; k < 3; k++) { const a = rand() * TAU; branch(p2, V(Math.cos(a), 0.4 + rand() * 0.4, Math.sin(a) * 0.6).addScaledVector(d, 0.6).normalize(), len * 0.65, r0 * 0.55, depth - 1); }
     };
     for (let k = 0; k < 4; k++) { const a = k / 4 * TAU + 0.4; branch(V(0, 5.5, 0), V(Math.cos(a), 0.5, Math.sin(a) * 0.7).normalize(), 5, 0.6, 1); }
-    oak.add(cardCloud(foliageCard(GREENS, 60), small ? 220 : 380, (i, p) => { p.copy(spots[i % spots.length]).add(V(rand() - 0.5, rand() - 0.3, rand() - 0.5).multiplyScalar(4.2)); return 2 + rand() * 1.4; }));
+    const centre = spots.reduce((a, p) => a.add(p), V()).multiplyScalar(1 / spots.length);
+    const radius = Math.max(...spots.map(p => p.distanceTo(centre))) + 3;
+    const oakGreens = [0x3f6a2c, 0x4f7a34, 0x5f8a3e, 0x6e9446, 0x355a26];
+    const shade = c => foliageLit(shadeCloud(c, centre, radius, 0.38));
+    oak.add(shade(cardCloud(foliageCard(oakGreens, 70), small ? 90 : 150, (i, p) => { p.lerpVectors(centre, spots[i % spots.length], 0.3 + rand() * 0.4); return 3.2 + rand() * 1.4; })));
+    oak.add(shade(cardCloud(foliageCard(oakGreens, 60), small ? 240 : 420, (i, p) => { p.copy(spots[i % spots.length]).add(V(rand() - 0.5, rand() - 0.3, rand() - 0.5).multiplyScalar(4.2)); return 2 + rand() * 1.4; })));
   }
   const strawTex = tiled(canvasTex(128, 128, (c, S) => { c.fillStyle = '#d9b45a'; c.fillRect(0, 0, S, S); for (let i = 0; i < 900; i++) { c.strokeStyle = `rgba(${150 + rand() * 90 | 0},${110 + rand() * 70 | 0},40,.6)`; c.beginPath(); const x = rand() * S, y = rand() * S, a = rand() * 0.6 - 0.3; c.moveTo(x, y); c.lineTo(x + Math.cos(a) * 12, y + Math.sin(a) * 12); c.stroke(); } }), 3, 2);
-  const hay = [];
+  const hay = [], hayMat = new THREE.MeshStandardMaterial({ map: strawTex, roughness: 1 });
+  hayMat.onBeforeCompile = sh => {
+    sh.vertexShader = 'varying vec3 vOPos;\n' + sh.vertexShader.replace('#include <begin_vertex>', '#include <begin_vertex>\nvOPos = position;');
+    sh.fragmentShader = 'varying vec3 vOPos;\n' + NOISE_GLSL + sh.fragmentShader
+      .replace('#include <color_fragment>', `#include <color_fragment>
+        float st = rf(vec3(vOPos.x * 5.0, vOPos.y * 1.4, vOPos.z * 5.0));
+        diffuseColor.rgb *= 0.72 + 0.5 * st;
+        diffuseColor.rgb = mix(diffuseColor.rgb, diffuseColor.rgb * vec3(0.7, 0.66, 0.55), smoothstep(1.2, 0.3, vOPos.y) * 0.5);`)
+      .replace('#include <normal_fragment_maps>', `#include <normal_fragment_maps>
+        float sth = st * 0.12;
+        ` + BUMP_GLSL('sth'));
+  };
   for (let i = 0; i < 2; i++) {
-    const h = mesh(sculpt((x, y, z) => [x * 2.2 * (1 + 0.05 * Math.sin(y * 9 + x * 4)), Math.max(y, -0.2) * 2.6 + 0.5, z * 2.2 * (1 + 0.05 * Math.sin(y * 7 + z * 5))], null, 28, 16), new THREE.MeshStandardMaterial({ map: strawTex, roughness: 1 }), world);
+    const lump = (x, y, z) => 1 + 0.06 * Math.sin(y * 9 + x * 4) + 0.07 * nz(x * 3 + i * 5, y * 3, z * 3) + 0.03 * nz(x * 9, y * 9 + i, z * 9);
+    const h = mesh(sculpt((x, y, z) => { const f = lump(x, y, z); return [x * 2.2 * f, Math.max(y, -0.2) * 2.6 * (1 + 0.04 * nz(x * 4, i, z * 4)) + 0.5, z * 2.2 * f]; }, null, 56, 32), hayMat, world);
     hay.push(h);
   }
   const fence = new THREE.Group(); world.add(fence);
@@ -757,7 +781,7 @@ export function start(canvas, opts = {}) {
     skyMat.map = skyTexes[night ? 1 : 0]; skyMat.needsUpdate = true;
     hemi.color.set(night ? 0x9a8ad0 : 0xeaf4ff); hemi.groundColor.set(night ? 0x2a2420 : 0x6a7a40); hemi.intensity = night ? 0.8 : 1.2;
     sunL.color.set(night ? 0xffb07a : 0xfff2dc); sunL.intensity = night ? 1.3 : 2.3;
-    for (const c of clouds) c.c.material.color.set(night ? 0xc08a9a : 0xffffff);
+    for (const c of clouds) { c.c.material.color.set(night ? 0x6e5a74 : 0xffffff); c.c.material.opacity = night ? 0.75 : 0.95; }
   }
   setTheme(opts.theme);
   play();
