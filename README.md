@@ -152,7 +152,10 @@ button in the top bar (Dragon, Kung fu panda, Wishes, Minion mayhem, Journey, or
   circles the mouse, and now and then opens its jaws.
 * **Kung fu panda** (`static/js/panda.js`): a panda with a wooden staff, his master (a red panda),
   a hill with a blossoming peach tree, and a valley of misty mountains with a palace on one peak
-  (moonlit, with lit lanterns, in the dark theme). The panda first peeks in from the side of the
+  (moonlit, with lit lanterns, in the dark theme). The valley is drawn to look real: fluted
+  limestone peaks covered in forest that fade into the blue haze, cumulus clouds, blades of grass
+  and boulders on the hill, real bark and a crown of peach blossom; at night, stars and a moon with
+  its seas and craters. The panda first peeks in from the side of the
   screen to check that nobody is watching. If the mouse moves or the page scrolls while he is
   looking, he ducks back out and tries again. Then he tiptoes in and goes about his day:
   he wanders with his staff, practises a staff form that ends in a burst of golden chi, knocks
@@ -172,11 +175,14 @@ button in the top bar (Dragon, Kung fu panda, Wishes, Minion mayhem, Journey, or
   me round the field, clamp onto my leg and my arm (I hop about and fling them off), pile on
   and knock me flat (I burst out and they go flying), and dive on a banana in a dust-cloud brawl.
   Stunned minions see stars. The field is drawn real: grass, wildflowers, an oak, haystacks, a
-  fence and rolling hills; in the dark theme it is evening, with fireflies.
+  fence and rolling hills of farmland (pasture, crops, hay and ploughed earth, with hedgerows and
+  the shadows of the cumulus clouds on them); in the dark theme it is evening, with fireflies.
 
 * **Journey** (`static/js/journey.js`): a 2D cartoon of a broken man (a cartoon me). Four chapters
-  of 16 s each. The first three happen on a stormy night drawn in code (storm clouds over a city
-  skyline, street lamps, heavy rain with splashes, lightning): a crowd of shadows points and laughs
+  of 16 s each. The first three happen on a stormy night drawn in code (storm clouds lit orange
+  from below by the city, two layers of skyline in the rain haze with blinking red lights on the
+  towers, a wet road and pavement that mirror the lights, street lamps, heavy rain with splashes,
+  lightning): a crowd of shadows points and laughs
   at him and a rain cloud gathers over his head; he brings a rose to the girl he loves; she tells
   him "Who told you to help me?", "Be professional with me, not personal." and "You don't follow
   any ethics." (`HER_WORDS`) and walks away without looking back, and lightning strikes as his heart
