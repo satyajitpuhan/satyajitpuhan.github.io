@@ -766,7 +766,7 @@ export function start(canvas, opts = {}) {
     renderer.render(scene, camera);
     if (!ready) { ready = true; opts.onReady && opts.onReady(); }
     slow = slow * 0.97 + (dt > 0.034 ? 1 : 0) * 0.03;
-    if (slow > 0.6 && dpr > 1) { dpr = 1; renderer.setPixelRatio(1); resize(); slow = 0; }
+    if (slow > 0.6 && dpr > 0.75) { dpr = dpr > 1 ? 1 : 0.75; renderer.setPixelRatio(dpr); resize(); slow = 0; }   // render fewer pixels before giving up
     else if (slow > 0.8) { pause(); opts.onSlow && opts.onSlow(); }
   }
   function play() { if (running || document.hidden) return; running = true; last = 0; raf = requestAnimationFrame(frame); }

@@ -28,7 +28,7 @@ import {
   taperedTube, merge, SPH, mesh, capsule, makeRig, ell, smin,
   sdfNormal, onFront, surfaceNet, taperCapsule, furMats, furMaterial, furry, eyeTexture,
   addEye, KEYS, blank, mirror, fbm, GREENS, tiled, grassTex, cardCloud, blossomCard, skyTex, cumulusTex,
-  starTex, bladeGeo, boulderGeo, limestoneMaterial, barkMaterial, shadeCloud, foliageLit,
+  starTex, bladeGeo, boulderGeo, barkMaterial, shadeCloud, foliageLit,
 } from './kit.js';
 
 function buildPo(M, small) {
@@ -376,7 +376,7 @@ function buildScenery(scene, M, small) {
   ground.renderOrder = -2;
   // blades of grass, denser and taller towards the cliff edge, and boulders half sunk in the turf
   {
-    const n = small ? 3500 : 9000, blades = new THREE.InstancedMesh(bladeGeo(0.045, 0.62), new THREE.MeshStandardMaterial({ side: THREE.DoubleSide, roughness: 0.9 }), n);
+    const n = small ? 1500 : 3200, blades = new THREE.InstancedMesh(bladeGeo(0.06, 0.62), new THREE.MeshLambertMaterial({ side: THREE.DoubleSide }), n);
     const m4 = new THREE.Matrix4(), q = new THREE.Quaternion(), e = new THREE.Euler();
     let k = 0;
     for (let i = 0; i < n * 2 && k < n; i++) {
@@ -387,9 +387,10 @@ function buildScenery(scene, M, small) {
       blades.setColorAt(k++, mix(C(GREENS[(rand() * GREENS.length) | 0]), C(rand() < 0.2 ? 0xbcae74 : 0x7d8a52), 0.35).multiplyScalar(0.8 + rand() * 0.4));
     }
     blades.count = k; g.add(blades);
+    const boulderMat = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.95 });
     for (let i = 0; i < 9; i++) {
       const x = (rand() * 2 - 1) * 40, z = -19 + rand() * 14;
-      const s = mesh(boulderGeo(rand() * 20), M.stone, g, [x, hillY(x, z)[0] - 0.1, z], [0.6 + rand() * 1.2, 0.35 + rand() * 0.4, 0.6 + rand()]);
+      const s = mesh(boulderGeo(rand() * 20, 3, [0xa8a294, 0x6f6a60, 0x9a9c6a]), boulderMat, g, [x, hillY(x, z)[0] - 0.1, z], [0.6 + rand() * 1.2, 0.35 + rand() * 0.4, 0.6 + rand()]);
       s.rotation.y = rand() * 3;
     }
   }
@@ -403,7 +404,7 @@ function buildScenery(scene, M, small) {
   const stars = mesh(new THREE.PlaneGeometry(2400, 300), new THREE.MeshBasicMaterial({ map: tiled(starTex(), 4, 1), transparent: true, depthWrite: false, fog: false }), g, [0, 110, -555]);
   stars.renderOrder = -5;
   const clouds = [], cloudMat = [];
-  for (let i = 0; i < 7; i++) {
+  for (let i = 0; i < 5; i++) {
     const mat = new THREE.SpriteMaterial({ map: cumulusTex(), fog: false, transparent: true, depthWrite: false, opacity: 0.9 });
     const c = new THREE.Sprite(mat); cloudMat.push(mat);
     const w = 160 + rand() * 160;
@@ -430,7 +431,7 @@ function buildScenery(scene, M, small) {
   const geos = [], peaks = [];
   const layers = [[-78, -100, 9, 34, 54], [-120, -160, 12, 44, 70], [-185, -235, 14, 52, 82], [-260, -320, 16, 60, 92]];
   const rockA = C(0x7c7a70), rockB = C(0xa09c8e), green = C(0x2f4a2a), green2 = C(0x56743e), haze = C(0x9fb0c0);
-  const segV = small ? 30 : 44, segR = small ? 30 : 48;
+  const segV = small ? 26 : 36, segR = small ? 28 : 40;
   layers.forEach(([z0, z1, n, h0, h1], L) => {
     const spread = -z1 * 0.95;
     for (let i = 0; i < n; i++) {
@@ -449,6 +450,7 @@ function buildScenery(scene, M, small) {
         const cliff = sm(0.05, 0.1, flute) * sm(0.2, 0.7, nz(X * 0.07, Y * 0.05 + seed, Z * 0.07) + 0.3);   // bare rock where the faces are sheer
         const veg = clamp(0.8 + 0.5 * nz(X * 0.2, Y * 0.15 + seed, Z * 0.2) + 0.25 * t + ledge * 4 - cliff, 0, 1) * sm(0.02, 0.15, t);
         let c = mix(mix(rockA, rockB, n1 * 0.5 + 0.5), mix(green, green2, nz(X * 0.5, Y * 0.5, Z * 0.5) * 0.5 + 0.5), sm(0.3, 0.55, veg) * (0.95 - L * 0.08));
+        c.multiplyScalar(1 - 0.3 * sm(0.2, 0.7, nz(X * 0.4 + seed, Y * 0.03, Z * 0.4)) * (1 - veg));   // dark rain streaks down the bare rock
         c = mix(c, haze, L * 0.16);
         cols.push(c.r, c.g, c.b);
       }
@@ -457,7 +459,7 @@ function buildScenery(scene, M, small) {
       geos.push(geo); peaks.push({ x, z, h, L });
     }
   });
-  mesh(merge(geos), limestoneMaterial({ scale: 0.12, near: 90, far: 260, vertexColors: true, transparent: true }), g);
+  mesh(merge(geos), far({ vertexColors: true }), g);
   // the palace on the tallest peak of the second layer, near the middle
   {
     const host = peaks.filter(p => p.L === 1 && Math.abs(p.x) < 70).sort((a, b) => b.h - a.h)[0];
@@ -531,7 +533,7 @@ function buildTree(M, small) {
   const leafy = [0x5f8a3a, 0x7aa04a, 0x4d7432];
   const centre = spots.reduce((a, p) => a.add(p), V()).multiplyScalar(1 / spots.length);
   const radius = Math.max(...spots.map(p => p.distanceTo(centre))) + 2.4;
-  const n = spots.length * (small ? 12 : 20);
+  const n = spots.length * (small ? 7 : 11);
   const shade = c => foliageLit(shadeCloud(c, centre, radius, 0.5));
   canopy.add(shade(cardCloud(blossomCard(pinks, leafy), Math.round(n * 0.3), (i, p) => { p.lerpVectors(centre, spots[i % spots.length], 0.35 + rand() * 0.4); return 2.4 + rand() * 1.0; })));
   canopy.add(shade(cardCloud(blossomCard(pinks, leafy), Math.round(n * 0.8), (i, p) => { p.copy(spots[i % spots.length]).add(V(rand() - 0.5, rand() * 0.7 - 0.25, rand() - 0.5).multiplyScalar(2.6)); return 1.5 + rand() * 1.1; })));
@@ -579,7 +581,7 @@ export function start(canvas, opts = {}) {
     glint: new THREE.MeshBasicMaterial({ color: 0xffffff }), nose: new THREE.MeshStandardMaterial({ color: 0x141214, roughness: 0.3 }),
     mouth: new THREE.MeshStandardMaterial({ color: 0x4a1418, roughness: 0.7 }),
     wood: new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.75, bumpMap: furBump, bumpScale: 1.5 }),
-    stone: limestoneMaterial({ color: 0xa8a294, scale: 0.7, near: 40, far: 120 }),
+    stone: new THREE.MeshStandardMaterial({ color: 0xa8a294, roughness: 0.95 }),
     peach: new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.6 }),
     lantern: new THREE.MeshStandardMaterial({ color: 0xc8352a, emissive: 0xff4a10, emissiveIntensity: 0.15, roughness: 0.6 }),
     gold: new THREE.MeshStandardMaterial({ color: 0xd2a447, roughness: 0.4, metalness: 0.5 }),
@@ -1295,7 +1297,7 @@ export function start(canvas, opts = {}) {
     renderer.render(scene, camera);
     if (!ready) { ready = true; opts.onReady && opts.onReady(); }
     slow = slow * 0.97 + (dt > 0.034 ? 1 : 0) * 0.03;
-    if (slow > 0.6 && dpr > 1) { dpr = 1; renderer.setPixelRatio(1); resize(); slow = 0; }
+    if (slow > 0.6 && dpr > 0.75) { dpr = dpr > 1 ? 1 : 0.75; renderer.setPixelRatio(dpr); resize(); slow = 0; }   // render fewer pixels before giving up
     else if (slow > 0.8) { pause(); opts.onSlow && opts.onSlow(); }
   }
   function play() { if (running || document.hidden) return; running = true; last = 0; raf = requestAnimationFrame(frame); }
