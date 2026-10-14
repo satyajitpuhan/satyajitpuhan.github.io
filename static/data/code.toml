@@ -3,6 +3,7 @@
 # `status`: "paper"   - public: code, data and figures of a paper
 #           "figures" - public figures; the code is shared on request
 #           "private" - a private repository; the code is shared on request (no link is shown)
+#           "app"     - a free web app; `url` is its address (the card links there instead of GitHub)
 
 [[repo]]
 name = "Vector-Meson-Production-LFQM"
@@ -27,6 +28,15 @@ title = "The deuteron on the light front"
 title_or = "ଲାଇଟ୍-ଫ୍ରଣ୍ଟରେ ଡ୍ୟୁଟେରନ୍"
 text = "Twenty deuteron models as light-front wave functions: form factors, structure functions, GPDs and TMDs, compared with data."
 text_or = "କୋଡ଼ିଏଟି ଡ୍ୟୁଟେରନ୍ ମଡେଲ୍ ଲାଇଟ୍-ଫ୍ରଣ୍ଟ ତରଙ୍ଗ ଫଙ୍କସନ୍ ଭାବରେ: ଫର୍ମ ଫ୍ୟାକ୍ଟର୍, ଷ୍ଟ୍ରକ୍ଚର୍ ଫଙ୍କସନ୍, GPD ଓ TMD, ଡାଟା ସହ ତୁଳନା।"
+
+[[repo]]
+name = "Curve Fit Bench"
+url = "https://curvefitbench.github.io/app/"
+status = "app"
+title = "Curve Fit Bench"
+title_or = "Curve Fit Bench"
+text = "A free online curve fitter and data fitter for physicists: 440+ physical models, automatic model selection and uncertainties, all in the browser. With Shivani Malvi."
+text_or = "ପଦାର୍ଥବିଜ୍ଞାନୀଙ୍କ ପାଇଁ ମାଗଣା ଅନଲାଇନ୍ କର୍ଭ ଫିଟର୍ ଓ ଡାଟା ଫିଟର୍: 440+ ଭୌତିକ ମଡେଲ୍, ସ୍ୱୟଂଚାଳିତ ମଡେଲ୍ ଚୟନ ଓ ଅନିଶ୍ଚିତତା, ସବୁ ବ୍ରାଉଜର୍‌ରେ। ଶିବାନୀ ମାଲଭୀଙ୍କ ସହ।"
 
 [[repo]]
 name = "Spin-1-TMDs-and-PDFs"
