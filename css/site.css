@@ -88,6 +88,7 @@
   --pill-arxiv:   #a52323;
   --pill-doi:     #056a4c;
   --pill-code:    #5a3d99;
+  --pill-private: #8a5a10;
   --cyan:        #0369a1;
   --violet:      #6d28d9;
   --mint:        #03634a;
@@ -124,6 +125,7 @@
   --pill-arxiv:   #a52323;
   --pill-doi:     #056a4c;
   --pill-code:    #5a3d99;
+  --pill-private: #8a5a10;
   --cyan:        #0369a1;
   --violet:      #6d28d9;
   --mint:        #03634a;
@@ -476,7 +478,9 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 2rem 0; }
 .link-pill--doi { color: #86e0c4; border-color: rgba(52,211,153,.3); background: rgba(16,140,100,.14); }
 .link-pill--doi { color: var(--pill-doi, #86e0c4); }
 .link-pill--code { color: #c9b6ff; border-color: rgba(160,130,240,.34); background: rgba(110,80,200,.15); }
+.link-pill--private { color: #f3c77a; border-color: rgba(230,180,90,.34); background: rgba(190,140,50,.14); }
 .link-pill--code { color: var(--pill-code, #c9b6ff); }
+.link-pill--private { color: var(--pill-private, #f3c77a); }
 
 .cite-badge {
   display: inline-flex; align-items: center; gap: 5px;
