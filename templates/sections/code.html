@@ -1,6 +1,10 @@
-{#- My research code on GitHub. Data: static/data/code.toml -#}
+{#- My research code. Data: static/data/code.toml.
+    On /research/ only the public repositories are shown, with a link to /code/; on /code/
+    (code_full = true) the private projects follow, whose code is shared on request. -#}
 {% import 'partials/icons.html' as ic %}
 {%- set d = load_data(path="static/data/code.toml", required=false) -%}
+{%- set full = code_full | default(value=false) -%}
+{%- set mail = "puhansatyajit@gmail.com" -%}
 {% if d and d.repo %}
 <section class="section" id="code">
   <div class="wrap">
@@ -10,19 +14,52 @@
       <p>{% if lang == 'or' %}ମୋ ଗବେଷଣା ପଛର କୋଡ୍, ଡାଟା ଓ ଚିତ୍ର। ବ୍ୟବହାର କଲେ ଦୟାକରି ରିପୋଜିଟୋରୀକୁ ସାଇଟ୍ କରନ୍ତୁ।{% else %}The code, data and figures behind my work. If you use them, please cite the repository.{% endif %}</p>
     </div>
     <div class="grid grid--3">
-      {% for r in d.repo %}
+      {% for r in d.repo %}{% if r.status != "private" %}
       <a class="card reveal" href="https://github.com/satyajitpuhan/{{ r.name }}">
         <div class="card__body">
           <h3 class="card__title">{% if lang == 'or' %}{{ r.title_or }}{% else %}{{ r.title }}{% endif %}</h3>
           <p class="card__text">{% if lang == 'or' %}{{ r.text_or }}{% else %}{{ r.text }}{% endif %}</p>
           <p style="margin-top:14px;display:flex;flex-wrap:wrap;gap:6px">
             <span class="link-pill link-pill--code">{{ ic::social(name="github") }}{{ r.name }}</span>
-            <span class="link-pill">{% if r.status == "paper" %}{% if lang == 'or' %}କୋଡ୍ · ଡାଟା · ଚିତ୍ର{% else %}Code · data · figures{% endif %}{% else %}{% if lang == 'or' %}ଚିତ୍ର{% else %}Figures{% endif %}{% endif %}</span>
+            <span class="link-pill">{% if r.status == "paper" %}{% if lang == 'or' %}କୋଡ୍ · ଡାଟା · ଚିତ୍ର{% else %}Code · data · figures{% endif %}{% else %}{% if lang == 'or' %}ଚିତ୍ର · କୋଡ୍ ଅନୁରୋଧରେ{% else %}Figures · code on request{% endif %}{% endif %}</span>
           </p>
         </div>
       </a>
-      {% endfor %}
+      {% endif %}{% endfor %}
+    </div>
+    {% if not full %}
+    <p class="center" style="margin-top:28px"><a class="btn btn--ghost" href="{{ get_url(path='/code/', lang=lang) }}">{% if lang == 'or' %}ମୋର ସବୁ କୋଡ୍, ଓ ଅନୁରୋଧରେ ମିଳୁଥିବା କୋଡ୍{% else %}All my code, and what is available on request{% endif %} →</a></p>
+    {% endif %}
+  </div>
+</section>
+{% if full %}
+<section class="section" id="on-request">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">{% if lang == 'or' %}ବ୍ୟକ୍ତିଗତ ରିପୋଜିଟୋରୀ{% else %}Private repositories{% endif %}</p>
+      <h2 class="h-1">{% if lang == 'or' %}<em>ଅନୁରୋଧରେ</em> ମିଳିବ{% else %}Available <em>on request</em>{% endif %}</h2>
+      <p>{% if lang == 'or' %}ଏହି ପ୍ରୋଜେକ୍ଟଗୁଡ଼ିକର କୋଡ୍ ଏବେ ପାଇଁ ବ୍ୟକ୍ତିଗତ ରଖାଯାଇଛି। ଅନୁରୋଧ କଲେ ମୁଁ ନୋଟ୍ ସହିତ କୋଡ୍ ଖୁସିରେ ଦେବି।{% else %}The code for these projects is kept private for now. It can be provided only on request, and I am happy to share it along with the notes.{% endif %}</p>
+    </div>
+    <div class="grid grid--3">
+      {% for r in d.repo %}{% if r.status == "private" %}
+      {%- set subj = "Code request: " ~ r.title -%}
+      <div class="card reveal">
+        <div class="card__body">
+          <h3 class="card__title">{% if lang == 'or' %}{{ r.title_or }}{% else %}{{ r.title }}{% endif %}</h3>
+          <p class="card__text">{% if lang == 'or' %}{{ r.text_or }}{% else %}{{ r.text }}{% endif %}</p>
+          <p style="margin-top:14px;display:flex;flex-wrap:wrap;gap:6px">
+            <span class="link-pill link-pill--private">{% if lang == 'or' %}🔒 ବ୍ୟକ୍ତିଗତ{% else %}🔒 Private{% endif %}</span>
+            <a class="link-pill link-pill--code" href="mailto:{{ mail }}?subject={{ subj | urlencode }}">{% if lang == 'or' %}କୋଡ୍ ପାଇଁ ଅନୁରୋଧ{% else %}Request the code{% endif %}</a>
+          </p>
+        </div>
+      </div>
+      {% endif %}{% endfor %}
+    </div>
+    <div class="callout reveal" style="margin-top:28px;max-width:72ch">
+      <h4>{% if lang == 'or' %}କିପରି ଅନୁରୋଧ କରିବେ{% else %}How to ask{% endif %}</h4>
+      <p>{% if lang == 'or' %}ଆପଣ କିଏ ଓ କୋଡ୍ କାହିଁକି ଦରକାର, ଲେଖି <a href="mailto:{{ mail }}">{{ mail }}</a> କୁ ଇମେଲ୍ କରନ୍ତୁ, କିମ୍ବା <a href="{{ get_url(path='/contact/', lang=lang) }}">ଯୋଗାଯୋଗ ପୃଷ୍ଠା</a> ବ୍ୟବହାର କରନ୍ତୁ। ଯଦି ଆପଣ ଗବେଷଣା ନୈତିକତା ମାନନ୍ତି, ମୁଁ ଆପଣଙ୍କ ସହ କାମ କରିବାକୁ ଓ ନୋଟ୍ ସହିତ କୋଡ୍ ଦେବାକୁ ଖୁସି ହେବି।{% else %}Write to <a href="mailto:{{ mail }}">{{ mail }}</a>, or use the <a href="{{ get_url(path='/contact/', lang=lang) }}">contact page</a>, saying who you are and what you would like to use the code for. If you follow research ethics, I will be happy to work with you and to share the code along with the notes.{% endif %}</p>
     </div>
   </div>
 </section>
+{% endif %}
 {% endif %}
