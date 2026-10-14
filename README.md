@@ -145,11 +145,20 @@ Make sure GitHub notifications for this repository reach your email (Settings �
 
 ## The companions
 
-A companion lives behind the content on every page. Visitors choose one from the 🐉/🐼/🌸/🍌/💔
-button in the top bar (Dragon, Kung fu panda, Wishes, Minion mayhem, Journey, or Off); the choice is remembered.
+A companion lives behind the content on every page. Visitors choose one from the 🐉/🐺/🐼/🌸/🍌/💔
+button in the top bar (Dragon, Lone wolf, Kung fu panda, Wishes, Minion mayhem, Journey, or Off); the choice is remembered.
 
 * **Dragon** (`static/js/dragon.js`): an Eastern dragon that swims across the page, sometimes
   circles the mouse, and now and then opens its jaws.
+* **Lone wolf** (`static/js/wolf.js`): a big black wolf with glowing amber eyes, an old scar
+  across one eye and a torn ear, lit by a cold moon so its outline shows on the dark page. It
+  prowls with its head low, stops to sniff the ground or stare out at you, and now and then sits
+  and howls while a full moon rises behind it. Move the mouse about and it notices: it drops
+  into a crouch, pins its ears back, raises its hackles and stalks your cursor with its fangs
+  bared, and if you keep moving it lunges at it, jaws open. Scroll hard and it whips round to
+  snarl at you. Sometimes it gallops off the screen and comes back later from the other side.
+  The wolf is one furred mesh sculpted in code and skinned to a skeleton; its paws are placed by
+  inverse kinematics, so they stay planted on the ground in the walk, the trot and the gallop.
 * **Kung fu panda** (`static/js/panda.js`): a panda with a wooden staff, his master (a red panda),
   a hill with a blossoming peach tree, and a valley of misty mountains with a palace on one peak
   (moonlit, with lit lanterns, in the dark theme). The valley is drawn to look real: fluted
@@ -196,7 +205,7 @@ button in the top bar (Dragon, Kung fu panda, Wishes, Minion mayhem, Journey, or
   and each chapter is a function (`chapter1` … `chapter4`).
   In the light theme the night is drawn paler, so the page text stays readable.
 
-The four 3D ones are built entirely in code (no model or image files); shared building blocks live in
+The five 3D ones are built entirely in code (no model or image files); shared building blocks live in
 `static/js/kit.js`. The only library is three.js,
 self-hosted in `static/js/vendor/` (MIT licence alongside it), so the Site guard sees no outside
 scripts.
@@ -209,4 +218,6 @@ scripts.
   `dragon.js` (`LEN` is its length, `speed` in `step()` how fast it swims). For the panda,
   the poses are the table `P` in `panda.js`, and each behaviour is a short script further down
   (`kata`, `peachSnack`, `train`, `dumplingDuel`, `nap`). `ACTS` sets how often each one happens.
+  For the wolf, its size is `S` at the top of `wolf.js`, the gaits are `GAITS`, and what it does
+  is `behave()` (one branch per mode: `roam`, `pause`, `howl`, `run`, `stalk`, `lunge`, `standoff`).
 
