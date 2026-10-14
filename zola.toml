@@ -52,6 +52,7 @@ service = "Research"
 work = "Publications"
 resume = "Resume"
 blog = "Talks"
+code = "Code"
 visualizations = "Visualizations"
 social_service = "Durga Seva"
 contact = "Contact"
@@ -103,6 +104,7 @@ service = "ଗବେଷଣା"
 work = "ପ୍ରକାଶନ"
 resume = "ବାୟୋଡାଟା"
 blog = "ଆଲୋଚନା"
+code = "କୋଡ୍"
 visualizations = "ଭିଜୁଆଲାଇଜେସନ୍"
 social_service = "ଦୁର୍ଗା ସେବା"
 contact = "ଯୋଗାଯୋଗ"
@@ -130,6 +132,7 @@ menus = [
   { name = "work", url = "/portfolio/" },
   { name = "resume", url = "/resume/" },
   { name = "blog", url = "/blog/" },
+  { name = "code", url = "/code/" },
   { name = "visualizations", url = "/visualizations/" },
   { name = "social_service", url = "/social-service/" },
   { name = "contact", url = "/contact/" }

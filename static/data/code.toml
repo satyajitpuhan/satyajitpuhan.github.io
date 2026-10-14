@@ -1,5 +1,8 @@
-# Public code and figures on GitHub, shown on /research/ (templates/sections/code.html).
-# `status`: "paper" (code, data and figures of a paper) or "figures" (figures; code on request).
+# My research code, shown on /code/ (all of it) and on /research/ (the public repositories),
+# both through templates/sections/code.html.
+# `status`: "paper"   - public: code, data and figures of a paper
+#           "figures" - public figures; the code is shared on request
+#           "private" - a private repository; the code is shared on request (no link is shown)
 
 [[repo]]
 name = "Vector-Meson-Production-LFQM"
@@ -24,3 +27,59 @@ title = "The deuteron on the light front"
 title_or = "ଲାଇଟ୍-ଫ୍ରଣ୍ଟରେ ଡ୍ୟୁଟେରନ୍"
 text = "Twenty deuteron models as light-front wave functions: form factors, structure functions, GPDs and TMDs, compared with data."
 text_or = "କୋଡ଼ିଏଟି ଡ୍ୟୁଟେରନ୍ ମଡେଲ୍ ଲାଇଟ୍-ଫ୍ରଣ୍ଟ ତରଙ୍ଗ ଫଙ୍କସନ୍ ଭାବରେ: ଫର୍ମ ଫ୍ୟାକ୍ଟର୍, ଷ୍ଟ୍ରକ୍ଚର୍ ଫଙ୍କସନ୍, GPD ଓ TMD, ଡାଟା ସହ ତୁଳନା।"
+
+[[repo]]
+name = "Spin-1-TMDs-and-PDFs"
+status = "private"
+title = "TMDs and PDFs of the ρ meson"
+title_or = "ρ ମେସନ୍‌ର TMD ଓ PDF"
+text = "Mathematica notebooks for the transverse-momentum-dependent and collinear distributions of the spin-1 ρ meson (Phys. Rev. D 113, 036030 (2026); arXiv:2511.10981)."
+text_or = "ସ୍ପିନ୍-1 ρ ମେସନ୍‌ର TMD ଓ PDF ଗଣନାର Mathematica ନୋଟବୁକ୍ (Phys. Rev. D 113, 036030 (2026); arXiv:2511.10981)।"
+
+[[repo]]
+name = "EMT-of-Spin-1-Mesons"
+status = "private"
+title = "Gravitational form factors of the ρ meson"
+title_or = "ρ ମେସନ୍‌ର ଗ୍ରାଭିଟେସନାଲ୍ ଫର୍ମ ଫ୍ୟାକ୍ଟର୍"
+text = "The energy-momentum tensor of the ρ meson on the light front: its gravitational form factors and mechanical distributions."
+text_or = "ଲାଇଟ୍-ଫ୍ରଣ୍ଟରେ ρ ମେସନ୍‌ର ଶକ୍ତି-ସଂବେଗ ଟେନ୍ସର୍: ଗ୍ରାଭିଟେସନାଲ୍ ଫର୍ମ ଫ୍ୟାକ୍ଟର୍ ଓ ଯାନ୍ତ୍ରିକ ବଣ୍ଟନ।"
+
+[[repo]]
+name = "Kaon-Mechanical-Distributions-LFQM"
+status = "private"
+title = "Mechanical structure of the kaon"
+title_or = "କାଅନ୍‌ର ଯାନ୍ତ୍ରିକ ଗଠନ"
+text = "Gravitational form factors and the pressure and shear-force distributions inside the charged kaon in the light-front quark model."
+text_or = "ଲାଇଟ୍-ଫ୍ରଣ୍ଟ କ୍ୱାର୍କ ମଡେଲରେ ଚାର୍ଜିତ କାଅନ୍ ଭିତରର ଗ୍ରାଭିଟେସନାଲ୍ ଫର୍ମ ଫ୍ୟାକ୍ଟର୍, ଚାପ ଓ ଶିଅର୍-ବଳ ବଣ୍ଟନ।"
+
+[[repo]]
+name = "Generalized-Distribution-Amplitude-of-Pion-from-Light-Front-Quark-Model"
+status = "private"
+title = "Generalized distribution amplitude of the pion"
+title_or = "ପାଇଅନ୍‌ର ଜେନେରାଲାଇଜ୍‌ଡ୍ ଡିଷ୍ଟ୍ରିବ୍ୟୁସନ୍ ଆମ୍ପ୍ଲିଚ୍ୟୁଡ୍"
+text = "The pion's generalized distribution amplitude from the light-front quark model."
+text_or = "ଲାଇଟ୍-ଫ୍ରଣ୍ଟ କ୍ୱାର୍କ ମଡେଲରୁ ପାଇଅନ୍‌ର ଜେନେରାଲାଇଜ୍‌ଡ୍ ଡିଷ୍ଟ୍ରିବ୍ୟୁସନ୍ ଆମ୍ପ୍ଲିଚ୍ୟୁଡ୍।"
+
+[[repo]]
+name = "E1-in-LFQM-for-Mesons"
+status = "private"
+title = "E1 radiative transitions of mesons"
+title_or = "ମେସନ୍‌ର E1 ବିକିରଣ ସଂକ୍ରମଣ"
+text = "Electric-dipole radiative transitions of charmonium, bottomonium, D and B mesons in the light-front quark model."
+text_or = "ଲାଇଟ୍-ଫ୍ରଣ୍ଟ କ୍ୱାର୍କ ମଡେଲରେ ଚାର୍ମୋନିୟମ୍, ବଟମୋନିୟମ୍, D ଓ B ମେସନ୍‌ର ଇଲେକ୍ଟ୍ରିକ୍-ଡାଇପୋଲ୍ ବିକିରଣ ସଂକ୍ରମଣ।"
+
+[[repo]]
+name = "M2-Multipoles-LFQM"
+status = "private"
+title = "M2 and E3 multipoles in quarkonium"
+title_or = "କ୍ୱାର୍କୋନିୟମ୍‌ରେ M2 ଓ E3 ମଲ୍ଟିପୋଲ୍"
+text = "Magnetic-quadrupole and electric-octupole amplitudes in charmonium and bottomonium radiative transitions in the light-front quark model."
+text_or = "ଲାଇଟ୍-ଫ୍ରଣ୍ଟ କ୍ୱାର୍କ ମଡେଲରେ ଚାର୍ମୋନିୟମ୍ ଓ ବଟମୋନିୟମ୍ ବିକିରଣ ସଂକ୍ରମଣର ମ୍ୟାଗ୍ନେଟିକ୍-କ୍ୱାଡ୍ରୁପୋଲ୍ ଓ ଇଲେକ୍ଟ୍ରିକ୍-ଅକ୍ଟୁପୋଲ୍ ଆମ୍ପ୍ଲିଚ୍ୟୁଡ୍।"
+
+[[repo]]
+name = "Meson-Decays-LFQM"
+status = "private"
+title = "Meson decays, from the pion to bottomonium"
+title_or = "ପାଇଅନ୍‌ରୁ ବଟମୋନିୟମ୍ ପର୍ଯ୍ୟନ୍ତ ମେସନ୍ କ୍ଷୟ"
+text = "Decays of mesons from the pion to bottomonium in the light-front quark model, compared with the PDG."
+text_or = "ଲାଇଟ୍-ଫ୍ରଣ୍ଟ କ୍ୱାର୍କ ମଡେଲରେ ପାଇଅନ୍‌ରୁ ବଟମୋନିୟମ୍ ପର୍ଯ୍ୟନ୍ତ ମେସନ୍‌ର କ୍ଷୟ, PDG ସହ ତୁଳନା।"
