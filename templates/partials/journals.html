@@ -1,0 +1,28 @@
+{#- "Published in": the journals of my journal articles, most papers first, from the
+    publication pages (their `service`, e.g. "Phys. Rev. D 114 (2026)"). Needs `pubs`. -#}
+{%- set_global journals = [] -%}
+{%- for p in pubs.pages -%}
+  {%- if p.extra.service and p.extra.categories and "Journal Article" in p.extra.categories -%}
+    {%- set_global name = "" -%}{%- set_global stop = false -%}
+    {%- for tok in p.extra.service | split(pat=" ") -%}
+      {%- if not stop -%}
+        {%- set c = tok | truncate(length=1, end="") -%}
+        {%- if c in "0123456789(" or tok is starting_with("pta") -%}{%- set_global stop = true -%}{%- else -%}{%- set_global name = name ~ " " ~ tok -%}{%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}
+    {%- set nm = name | trim -%}{%- set_global journals = journals | concat(with=nm) -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- set_global ranked = [] -%}
+{%- for j in journals | unique -%}
+  {%- set_global n = 0 -%}{%- for x in journals -%}{%- if x == j -%}{%- set_global n = n + 1 -%}{%- endif -%}{%- endfor -%}
+  {%- set key = 100 - n -%}{%- set row = key ~ "|" ~ n ~ "|" ~ j -%}{%- set_global ranked = ranked | concat(with=row) -%}
+{%- endfor -%}
+{% if ranked | length > 0 %}
+<div class="journals" aria-label="{% if lang == 'or' %}ପ୍ରକାଶିତ ପତ୍ରିକା{% else %}Published in{% endif %}">
+  <span class="journals__label">{% if lang == 'or' %}ପ୍ରକାଶିତ{% else %}Published in{% endif %}</span>
+  {% for r in ranked | sort %}{%- set f = r | split(pat="|") -%}
+  <span class="journals__item">{{ f[2] }}{% if f[1] != "1" %}<sup>×{{ f[1] }}</sup>{% endif %}</span>
+  {% endfor %}
+</div>
+{% endif %}
