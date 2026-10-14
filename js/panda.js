@@ -35,12 +35,15 @@ function buildPo(M, small) {
   const R = makeRig({ hipH: 1.26, hipW: 0.66, neckY: 2.62, neckZ: 0.05, shY: 2.3, shW: 1.34, upper: 0.82, fore: 0.7, thigh: 0.5, shin: 0.5, ankleH: 0.26 });
   const FUR = { len: 0.04, layers: small ? 5 : 8, freq: 34 };
   const white = C(0xf2eee6), black = C(0x1d1a1d), brown = C(0x4a3122);
-  const ochre = C(0xb79245), ochreD = C(0x8f6c2c), patchC = C(0x9c7a3a), green = C(0x6f7f3a);
-  const cloth = (x, y, z) => {                      // woven ochre trousers with a few darker patches
+  const ochre = C(0xc49c58), ochreD = C(0x8e6a34), patchC = C(0x9c7a3a), green = C(0x6f7f3a);
+  // soft folds in the cloth, hanging down from the sash (y in torso space, waist at 1.74)
+  const fold = (x, y, z) => { const a = Math.atan2(x, z); return Math.sin(a * 11 + 1.4 * Math.sin(a * 3) + 2.2 * nz(x * 1.3, y * 1.6, z * 1.3)); };
+  const cloth = (x, y, z, f = 0) => {               // woven khaki trousers with a few darker patches, shaded in the folds
     const n = nz(x * 9, y * 9, z * 9) * 0.5 + 0.5;
-    let c = mix(ochreD, ochre, 0.55 + 0.45 * n); c.bare = 1;
+    let c = mix(ochreD, ochre, 0.5 + 0.4 * n).multiplyScalar(0.8 + 0.2 * (0.5 + 0.5 * f)); c.bare = 1;
     if (Math.abs(x - 0.7) < 0.32 && Math.abs(y - 1.2) < 0.25 && z > 0) c = mix(patchC, ochreD, n * 0.5);
     if (Math.abs(x + 0.9) < 0.22 && Math.abs(y - 1.35) < 0.2 && z > 0) c = mix(green, ochreD, n * 0.4);
+    if (f) c.multiplyScalar(0.88 + 0.12 * (0.5 + 0.5 * f));
     c.bare = 1;
     return c;
   };
@@ -51,11 +54,15 @@ function buildPo(M, small) {
     let d = smin(ell(x, y, z, 0, 2.38, 0.18, 1.62, 1.36, 1.46), ell(x, y, z, 0, 3.1, 0.0, 1.42, 0.92, 1.08), 0.6);
     d = smin(d, Math.min(ell(x, y, z, 1.12, 3.2, 0.05, 0.85, 0.66, 0.8), ell(x, y, z, -1.12, 3.2, 0.05, 0.85, 0.66, 0.8)), 0.45);   // shoulders, low and forward: no hump
     d = smin(d, ell(x, y, z, 0, 3.74, 0, 1.05, 0.52, 0.94), 0.4);
-    return smin(d, ell(x, y, z, 0, 1.55, -0.2, 1.56, 0.74, 1.25), 0.5);
+    d = smin(d, ell(x, y, z, 0, 1.55, -0.2, 1.56, 0.74, 1.25), 0.5);
+    if (y < 1.74) {                                  // the cloth: bloused out under the sash, falling in soft folds
+      d -= 0.06 * Math.exp(-(((y - 1.6) / 0.09) ** 2)) + 0.034 * fold(x, y, z) * sm(1.74, 1.48, y);
+    }
+    return d;
   };
   const bodyGeo = surfaceNet(body, (x, y, z) => {
     y += Y0;
-    if (y < 1.7) return cloth(x, y, z);
+    if (y < 1.7) return cloth(x, y, z, fold(x, y, z) * sm(1.74, 1.5, y));
     // black from shoulder to shoulder across the upper chest; the white belly is an oval below it
     const top = lerp(2.75 - 0.35 * x * x, 3.12 - 0.62 * x * x, sm(-0.4, 0.4, z));
     const b = Math.max(sm(top - 0.07, top + 0.07, y), sm(1.08, 1.28, Math.abs(x)) * sm(2.0, 2.4, y));
@@ -137,12 +144,17 @@ function buildPo(M, small) {
   }
   // legs: trouser legs to the knee, black shins, cloth wraps round the ankles, black feet
   const trouser = (() => {
-    const prof = [[0.62, 0.3], [0.7, 0.05], [0.72, -0.25], [0.66, -0.5], [0.6, -0.62]].map(([r, y]) => new THREE.Vector2(r, y));
-    const geo = new THREE.LatheGeometry(prof, 28), p = geo.attributes.position, cols = [];
+    // baggy legs, gathered at the top, bunching in rumples towards the ragged hem
+    const prof = [[0.6, 0.32], [0.72, 0.16], [0.79, -0.06], [0.81, -0.26], [0.78, -0.44], [0.72, -0.56], [0.66, -0.64]].map(([r, y]) => new THREE.Vector2(r, y));
+    const geo = new THREE.LatheGeometry(new THREE.SplineCurve(prof).getPoints(24), 56), p = geo.attributes.position, cols = [];
     for (let i = 0; i < p.count; i++) {
-      const x = p.getX(i), y = p.getY(i), z = p.getZ(i);
-      if (y < -0.58) p.setY(i, y + 0.05 * Math.sin(Math.atan2(z, x) * 7));          // a ragged hem
-      const c = cloth(x, y + 1.2, z); cols.push(c.r, c.g, c.b);
+      let x = p.getX(i), y = p.getY(i), z = p.getZ(i);
+      const a = Math.atan2(z, x);
+      const f = Math.sin(a * 7 + y * 3.5 + 1.5 * Math.sin(a * 2)), bunch = Math.sin(y * 26 + a * 1.5) * sm(-0.3, -0.58, y);
+      const k = 1 + 0.045 * f * sm(0.3, 0.0, y) + 0.03 * bunch;
+      x *= k; z *= k; p.setX(i, x); p.setZ(i, z);
+      if (y < -0.58) p.setY(i, y + 0.05 * Math.sin(a * 7) + 0.025 * Math.sin(a * 17));   // a ragged hem
+      const c = cloth(x, y + 1.2, z, 0.6 * f * sm(0.3, 0.0, y) + 0.6 * bunch); cols.push(c.r, c.g, c.b);
     }
     geo.setAttribute('color', new THREE.Float32BufferAttribute(cols, 3)); geo.computeVertexNormals();
     return geo;
