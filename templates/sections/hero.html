@@ -61,6 +61,7 @@
       <p class="stats__note dim mono" id="stats-note">
         {% if lang == 'or' %}INSPIRE-HEP ରୁ ଦୈନିକ ସିଙ୍କ୍{% else %}Synced daily from INSPIRE-HEP{% endif %}{% if stats.updated %} · {{ stats.updated }}{% endif %}
       </p>
+      {% include "partials/journals.html" %}
     </div>
 
     <div class="hero__visual reveal">
