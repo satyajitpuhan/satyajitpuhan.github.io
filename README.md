@@ -157,6 +157,7 @@ button in the top bar (Dragon, Lone wolf, Kung fu panda, Wishes, Minion mayhem, 
   into a crouch, pins its ears back, raises its hackles and stalks your cursor with its fangs
   bared, and if you keep moving it lunges at it, jaws open. Scroll hard and it whips round to
   snarl at you. Sometimes it gallops off the screen and comes back later from the other side.
+  In the dark theme snow drifts down through the moonlight and its breath smokes in the cold.
   The wolf is one furred mesh sculpted in code and skinned to a skeleton; its paws are placed by
   inverse kinematics, so they stay planted on the ground in the walk, the trot and the gallop.
 * **Kung fu panda** (`static/js/panda.js`): a panda with a wooden staff, his master (a red panda),

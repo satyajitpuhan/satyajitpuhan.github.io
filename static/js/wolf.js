@@ -131,10 +131,10 @@ function wolfSdf(x, y, z) {
     d = smin(d, L.f, 0.07); d = smin(d, L.h, 0.07);
   }
   if (x < -0.42) {
-    let t = seg(x, y, z, TAIL[0], TAIL[1], 0, 0.055, 0.075);
-    t = smin(t, seg(x, y, z, TAIL[1], TAIL[2], 0, 0.075, 0.085), 0.04);
-    t = smin(t, seg(x, y, z, TAIL[2], TAIL[3], 0, 0.085, 0.07), 0.04);
-    t = smin(t, seg(x, y, z, TAIL[3], TAIL[4], 0, 0.07, 0.02), 0.04);
+    let t = seg(x, y, z, TAIL[0], TAIL[1], 0, 0.058, 0.085);                    // a full brush
+    t = smin(t, seg(x, y, z, TAIL[1], TAIL[2], 0, 0.085, 0.1), 0.04);
+    t = smin(t, seg(x, y, z, TAIL[2], TAIL[3], 0, 0.1, 0.078), 0.04);
+    t = smin(t, seg(x, y, z, TAIL[3], TAIL[4], 0, 0.078, 0.022), 0.04);
     d = smin(d, t, 0.05);
   }
   return d;
@@ -225,6 +225,10 @@ function buildWolf(small) {
     const legIn = y < 0.45 ? sm(0.2, 0.75, -Math.sign(z) * n.z) * 0.5 : 0;
     c = mix(c, GREY, 0.42 * under + 0.32 * flank * g + 0.5 * ruff * g + legIn * g);
     if (x > 0.62) c = mix(c, SILVER, 0.35 * sm(0.93, 0.9, y) * sm(0.86, 0.95, x) * g);   // grizzled muzzle
+    const blaze = sm(0.36, 0.48, x) * sm(0.82, 0.66, x) * sm(0.1, -0.55, n.y) * sm(0.08, 0.0, Math.abs(z) - 0.06 * (1 - n.y));
+    c = mix(c, SILVER, 0.75 * blaze * (0.6 + 0.4 * g));                                   // a silver blaze down the throat
+    c = mix(c, GREY, 0.22 * sm(0.5, 0.9, n.y) * sm(0.62, 0.9, g));                        // silver-tipped guard hairs on the back
+    if (x < -0.6) c = mix(c, BLACK, 0.5 * sm(-0.75, -0.9, x));                            // the tail darkens to a black tip
     if (x > 0.82 && y < 0.913) { c = LIP.clone(); c.bare = 1; }                         // black lips
     for (const e of eyes) if (Math.hypot(x - e.p.x, y - e.p.y, z - e.p.z) < 0.028) { c = LID.clone(); c.bare = 1; }
     if (z > 0.02) {                                                                       // an old scar down across the left eye
@@ -274,7 +278,7 @@ function buildWolf(small) {
     gum: new THREE.MeshStandardMaterial({ color: 0x581218, roughness: 0.5 }),
     tooth: new THREE.MeshStandardMaterial({ color: 0xe9dfc6, roughness: 0.3 }),
     nose: new THREE.MeshPhysicalMaterial({ color: 0x0b0a0c, roughness: 0.28, clearcoat: 0.8, clearcoatRoughness: 0.3 }),
-    eye: new THREE.MeshStandardMaterial({ color: 0xffb32a, emissive: 0xff7a0a, emissiveIntensity: 2.2, roughness: 0.15 }),
+    eye: new THREE.MeshStandardMaterial({ color: 0xffb32a, emissive: 0xff7a0a, emissiveIntensity: 2.2, roughness: 0.12 }),
     pupil: new THREE.MeshBasicMaterial({ color: 0x050303 }),
     lid: new THREE.MeshStandardMaterial({ color: 0x0b0a0d, roughness: 0.8 }),
     wrinkle: new THREE.MeshStandardMaterial({ color: 0x0d0c0f, roughness: 0.9 }),
@@ -293,11 +297,13 @@ function buildWolf(small) {
     for (let k = 0; k < 5; k++) fang(jaw, 0.205 - k * 0.032, -0.004, s * (0.028 + k * 0.002), 0.0045, 0.012, true);
   }
   // nose, with nostrils
+  const noseTip = new THREE.Object3D();
   {
     const { p: np, n: nn } = toSurface(headSdf, V(1.02, 0.955, 0), V(1, 0.25, 0).normalize());
     const nose = mesh(SPH, mat.nose, H, local(np.x - 0.012, np.y - 0.003).toArray(), [0.024, 0.019, 0.026]);
     for (const s of [1, -1]) mesh(SPH, mat.pupil, H, local(np.x + 0.009, np.y - 0.006, s * 0.009).toArray(), [0.006, 0.005, 0.007]);
     nose.userData.n = nn;
+    noseTip.position.copy(local(np.x + 0.02, np.y - 0.012)); H.add(noseTip);
   }
   // wrinkles across the top of the muzzle, that show when it snarls
   const wrinkles = [];
@@ -307,18 +313,30 @@ function buildWolf(small) {
     w.rotation.set(0, Math.PI / 2, Math.PI * 0.05); w.scale.setScalar(0.001);
     wrinkles.push(w);
   }
-  // eyes: glowing amber, round black pupils, and a heavy lid slanting down to the nose
+  // eyes: glowing amber irises, small round pupils, and a hooded lid slanting down to the nose
   const glowTex = radial([[0, 'rgba(255,214,120,1)'], [0.18, 'rgba(255,150,30,.75)'], [0.5, 'rgba(255,90,0,.18)'], [1, 'rgba(255,60,0,0)']]);
   const glows = [], eyeBalls = [], lids = [];
+  const iris = canvasTex(256, 128, (cx, w, h) => {                      // painted round +z, the way three wraps a sphere
+    const img = cx.createImageData(w, h), col = C(0);
+    for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
+      const phi = (x + 0.5) / w * TAU, th = (y + 0.5) / h * Math.PI;
+      const a = Math.acos(clamp(Math.sin(phi) * Math.sin(th), -1, 1)), ang = Math.atan2(Math.cos(th), -Math.cos(phi) * Math.sin(th));
+      if (a < 0.2) col.setRGB(0.01, 0.005, 0);
+      else if (a < 0.95) { const t = (a - 0.2) / 0.75; col.copy(C(0xffe07a)).lerp(C(0xf08a10), sm(0, 0.7, t)).lerp(C(0x5a1a00), sm(0.82, 1, t)).multiplyScalar(0.8 + 0.3 * Math.sin(ang * 29) * Math.sin(ang * 11 + 2)); }
+      else col.setRGB(0.25, 0.08, 0.0);
+      const k = (y * w + x) * 4; img.data[k] = Math.min(255, col.r * 255); img.data[k + 1] = Math.min(255, col.g * 255); img.data[k + 2] = Math.min(255, col.b * 255); img.data[k + 3] = 255;
+    }
+    cx.putImageData(img, 0, 0);
+  });
+  mat.eye.map = iris; mat.eye.emissiveMap = iris; mat.eye.color.set(0xffffff); mat.eye.emissive.set(0xffffff);
   for (const e of eyes) {
     const c = e.p.clone().addScaledVector(e.n, -0.008), out = e.n;
     const ball = mesh(SPH, mat.eye, H, local(c.x, c.y, c.z).toArray(), 0.0165); eyeBalls.push(ball);
-    const pp = c.clone().addScaledVector(out, 0.0145);
-    const pupil = mesh(SPH, mat.pupil, H, local(pp.x, pp.y, pp.z).toArray(), [0.006, 0.006, 0.006]);
-    pupil.scale.setScalar(0.0048);
+    ball.quaternion.setFromUnitVectors(V(0, 0, 1), V(0.6, -0.05, 0).add(out).normalize());   // looking ahead
+    mesh(SPH, new THREE.MeshBasicMaterial({ color: 0xffffff }), H, local(c.x, c.y, c.z).addScaledVector(out, 0.0152).add(V(0.003, 0.005, 0)).toArray(), 0.0024);   // a glint
     const lid = new THREE.Group(); lid.position.copy(local(c.x, c.y, c.z)); H.add(lid);
-    const lm = mesh(new THREE.SphereGeometry(0.0185, 20, 10, 0, TAU, 0, Math.PI * 0.5), mat.lid, lid);
-    lid.quaternion.setFromUnitVectors(UP, V(0.25, 1, 0).normalize());
+    const lm = mesh(new THREE.SphereGeometry(0.0182, 20, 8, 0, TAU, 0, Math.PI * 0.3), mat.lid, lid);
+    lid.quaternion.setFromUnitVectors(UP, V(0.25, 1, 0).addScaledVector(out, -0.2).normalize());   // a thin hood over the top
     lid.rotateOnWorldAxis(out.clone(), -e.s * 0.5);
     lid.userData.base = lid.quaternion.clone(); lid.userData.out = out.clone(); lids.push(lid);
     const glow = new THREE.Sprite(new THREE.SpriteMaterial({ map: glowTex, color: 0xffffff, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, opacity: 0.8 }));
@@ -373,7 +391,7 @@ function buildWolf(small) {
   const lockMesh = new THREE.InstancedMesh(lockGeo, new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.85, side: THREE.DoubleSide }), locks.length);
   lockMesh.frustumCulled = false;
 
-  return { root, body, skeleton, bones, B, legs, tail, jaw, ears, glows, eyeBalls, lids, wrinkles, gums, upperTeeth, locks, lockMesh, mat };
+  return { root, body, skeleton, bones, B, legs, tail, jaw, ears, glows, eyeBalls, lids, wrinkles, gums, upperTeeth, locks, lockMesh, mat, noseTip };
 }
 
 /* ---------------------------------------------------------------- the moon it howls at */
@@ -433,6 +451,19 @@ export function start(canvas, opts = {}) {
     m.userData = { x: (rand() * 2 - 1) * 30, z: -24 + rand() * 32, v: 0.3 + rand() * 0.5, o: 0.5 + rand() * 0.5 };
     m.scale.set(16 + rand() * 14, 3 + rand() * 2.5, 1); scene.add(m); mists.push(m);
   }
+  // on a dark night, snow drifting down through the moonlight, and the wolf's breath smoking in the cold
+  const flake = radial([[0, 'rgba(255,255,255,1)'], [0.35, 'rgba(235,242,255,.6)'], [1, 'rgba(220,230,255,0)']]);
+  const NS = small ? 260 : 520, snowPos = new Float32Array(NS * 3), snowV = [];
+  for (let i = 0; i < NS; i++) { snowPos.set([(rand() * 2 - 1) * 38, rand() * 28, -30 + rand() * 46], i * 3); snowV.push(0.6 + rand() * 0.9, rand() * TAU); }
+  const snowGeo = new THREE.BufferGeometry(); snowGeo.setAttribute('position', new THREE.BufferAttribute(snowPos, 3).setUsage(THREE.DynamicDrawUsage));
+  const snow = new THREE.Points(snowGeo, new THREE.PointsMaterial({ map: flake, size: 0.32, transparent: true, depthWrite: false, opacity: 0.75, color: 0xdfe7ff }));
+  snow.frustumCulled = false; scene.add(snow);
+  const breathTex = radial([[0, 'rgba(255,255,255,.5)'], [0.5, 'rgba(255,255,255,.18)'], [1, 'rgba(255,255,255,0)']]);
+  const puffs = Array.from({ length: 6 }, () => {
+    const m = new THREE.Sprite(new THREE.SpriteMaterial({ map: breathTex, transparent: true, depthWrite: false, opacity: 0, color: 0xc8d4ee }));
+    m.userData = { age: 9, v: V() }; scene.add(m); return m;
+  });
+  let nextPuff = 1, night = true;
   const moon = new THREE.Sprite(new THREE.SpriteMaterial({ map: moonTex(), transparent: true, depthWrite: false, opacity: 0, fog: false }));
   moon.scale.setScalar(30); scene.add(moon);
 
@@ -739,7 +770,7 @@ export function start(canvas, opts = {}) {
     W.upperTeeth.position.y = -0.003 * pose.snarl;
     const flick = 0.92 + 0.08 * Math.sin(clock * 9.1) * Math.sin(clock * 3.7);
     glows.forEach(g => { g.material.opacity = clamp(pose.glow * 0.7 * glowK * flick, 0, 1); g.scale.setScalar(0.05 + 0.035 * pose.glow); });
-    W.mat.eye.emissiveIntensity = (1.4 + 1.4 * pose.glow) * eyeK;
+    W.mat.eye.emissiveIntensity = (0.55 + 0.6 * pose.glow) * eyeK;
 
     // tail: low and straight when it means business, swaying as it walks
     const sway = Math.sin(ph) * 0.12 * sm(0.05, 0.5, v) + Math.sin(clock * 0.9) * 0.04;
@@ -783,6 +814,36 @@ export function start(canvas, opts = {}) {
     const howl = mode === 'howl' ? sm(0.5, 2.5, t) * (1 - sm(6.2, 7.4, t)) : 0;
     moon.material.opacity += (howl * 0.95 - moon.material.opacity) * (1 - Math.exp(-dt * 1.5));
     moon.visible = moon.material.opacity > 0.01;
+    snow.visible = night;
+    if (night) {
+      for (let i = 0; i < NS; i++) {
+        const k = i * 3, v = snowV[i * 2], ph = snowV[i * 2 + 1];
+        snowPos[k + 1] -= v * dt; snowPos[k] += (Math.sin(clock * 0.7 + ph) * 0.35 + 0.25) * dt;
+        if (snowPos[k + 1] < 0) { snowPos[k + 1] += 28; snowPos[k] = (rand() * 2 - 1) * 38; }
+        if (snowPos[k] > 38) snowPos[k] -= 76;
+      }
+      snowGeo.attributes.position.needsUpdate = true;
+    }
+    // a puff of breath now and then, quicker while it growls
+    nextPuff -= dt;
+    if (night && nextPuff < 0 && mode !== 'away') {
+      nextPuff = (pose.snarl > 0.5 ? 1.1 : 2.4) + rnd() * 0.8;
+      const pf = puffs.find(p => p.userData.age > 1.8);
+      if (pf) {
+        W.noseTip.getWorldPosition(pf.position);
+        pf.userData.v.setFromMatrixColumn(B.head.matrixWorld, 0).normalize().multiplyScalar(0.7).add(vel.clone().multiplyScalar(0.6)).setY(0.12);
+        pf.userData.age = 0;
+      }
+    }
+    for (const pf of puffs) {
+      const u = pf.userData; u.age += dt;
+      const k = u.age / 1.8;
+      pf.visible = k < 1;
+      if (k >= 1) continue;
+      pf.position.addScaledVector(u.v, dt); u.v.multiplyScalar(Math.exp(-dt * 1.5));
+      pf.scale.setScalar(0.3 + 1.4 * Math.sqrt(k));
+      pf.material.opacity = 0.32 * sm(0, 0.12, k) * (1 - sm(0.3, 1, k));
+    }
     for (const m of mists) {
       const u = m.userData; u.x += u.v * dt;
       const lim = xLim(u.z) + 18; if (u.x > lim) u.x = -lim;
@@ -821,7 +882,7 @@ export function start(canvas, opts = {}) {
   document.addEventListener('visibilitychange', onVis);
 
   function setTheme(th) {
-    const night = th !== 'light';
+    night = th !== 'light';
     renderer.toneMappingExposure = night ? 1.0 : 1.05;
     hemi.intensity = night ? 1.35 : 1.3;
     moonL.intensity = night ? 3.2 : 2.8;

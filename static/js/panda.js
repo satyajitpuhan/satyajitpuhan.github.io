@@ -33,7 +33,7 @@ import {
 
 function buildPo(M, small) {
   const R = makeRig({ hipH: 1.26, hipW: 0.66, neckY: 2.62, neckZ: 0.05, shY: 2.3, shW: 1.34, upper: 0.82, fore: 0.7, thigh: 0.5, shin: 0.5, ankleH: 0.26 });
-  const FUR = { len: 0.04, layers: small ? 4 : 6, freq: 22 };
+  const FUR = { len: 0.04, layers: small ? 5 : 8, freq: 34 };
   const white = C(0xf2eee6), black = C(0x1d1a1d), brown = C(0x4a3122);
   const ochre = C(0xb79245), ochreD = C(0x8f6c2c), patchC = C(0x9c7a3a), green = C(0x6f7f3a);
   const cloth = (x, y, z) => {                      // woven ochre trousers with a few darker patches
@@ -82,15 +82,15 @@ function buildPo(M, small) {
   const head = (x, y, z) => {
     let d = ell(x, y, z, 0, 1.06, -0.05, 1.12, 1.04, 1.04);
     d = smin(d, Math.min(ell(x, y, z, 0.68, 0.45, 0.22, 0.76, 0.6, 0.66), ell(x, y, z, -0.68, 0.45, 0.22, 0.76, 0.6, 0.66)), 0.4);
-    d = smin(d, ell(x, y, z, 0, 0.38, 0.86, 0.6, 0.44, 0.56), 0.26);
+    d = smin(d, ell(x, y, z, 0, 0.4, 0.9, 0.62, 0.46, 0.6), 0.28);                 // a big round snout, like his
     d = smin(d, ell(x, y, z, 0, 0.22, 0.45, 0.7, 0.34, 0.6), 0.3);
     return smin(d, ell(x, y, z, 0, 1.08, 0.5, 0.9, 0.34, 0.45), 0.3);
   };
-  // almond eye patches, lower at the nose end, brown round the eye
+  // big teardrop eye patches that droop down and outwards, brown round the eye
   const patch = (x, y, z) => {
     if (z < 0.2) return 0;
-    const s = Math.sign(x) || 1, a = s * 0.42, dx = x - s * 0.52, dy = y - 0.98;
-    const u = (dx * Math.cos(a) + dy * Math.sin(a)) / 0.4, v = (-dx * Math.sin(a) + dy * Math.cos(a)) / 0.28;
+    const s = Math.sign(x) || 1, a = -s * 0.5, dx = x - s * 0.55, dy = y - 0.94;
+    const u = (dx * Math.cos(a) + dy * Math.sin(a)) / 0.42, v = (-dx * Math.sin(a) + dy * Math.cos(a)) / (0.3 + 0.06 * sm(0, 0.4, s * dx));
     return Math.sqrt(u * u + v * v);
   };
   const headGeo = surfaceNet(head, (x, y, z) => {
@@ -108,19 +108,19 @@ function buildPo(M, small) {
     const ear = furry(sculpt((x, y, z) => [x * 0.26, y * 0.24, z * 0.16 - 0.04 * (1 - y * y) * Math.max(0, z)], (x, y, z) => black), H, { ...FUR, pos: [s * 0.84, 1.8, -0.18] });
     ear.rotation.z = -s * 0.4;
     const { p, n } = onFront(head, s * 0.47, 1.0);
-    R.eyes.push(addEye(H, p.clone().addScaledVector(n, -0.07), 0.18, eyeTex, lidMat));
+    R.eyes.push(addEye(H, p.clone().addScaledVector(n, -0.08), 0.2, eyeTex, lidMat));
   }
   // brown nose on the front of the muzzle, a smirk under it
   {
     const { p, n } = onFront(head, 0, 0.5);
-    const nose = mesh(sculpt((x, y, z) => [x * 0.3 * (1 - 0.45 * sm(0.3, -1, y)), y * 0.16, z * 0.17], (x, y, z) => mix(C(0x2e211b), C(0x6e4d3a), sm(0.55, 0.95, z) * sm(-0.6, 0.6, y))), new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.32 }), H);
+    const nose = mesh(sculpt((x, y, z) => [x * 0.3 * (1 - 0.45 * sm(0.3, -1, y)), y * 0.16, z * 0.17], (x, y, z) => mix(C(0x0d0b0c), C(0x2c2628), sm(0.55, 0.95, z) * sm(-0.6, 0.6, y))), new THREE.MeshPhysicalMaterial({ vertexColors: true, roughness: 0.3, clearcoat: 0.9, clearcoatRoughness: 0.25 }), H);
     nose.position.copy(p).addScaledVector(n, 0.08); nose.rotation.x = -0.25;
-    // a thin smirk, a little higher on one side; the dark mouth only shows when the jaw opens
+    // a wide, happy smile turned up at the corners; the dark mouth only shows when the jaw opens
     const m = onFront(head, 0, 0.22);
     R.mouth = mesh(SPH, M.mouth, H, null, [0.24, 0.02, 0.1]); R.mouth.position.copy(m.p).addScaledVector(m.n, -0.05);
     const lipMat = new THREE.MeshStandardMaterial({ color: 0x2a1c18, roughness: 0.6 });
-    const lip = mesh(new THREE.TorusGeometry(0.34, 0.016, 6, 24, Math.PI * 0.5), lipMat, H);
-    lip.position.copy(m.p).add(V(0.02, 0.3, -0.08)); lip.rotation.set(-0.3, 0, Math.PI * 1.25 + 0.12);
+    const lip = mesh(new THREE.TorusGeometry(0.38, 0.024, 8, 32, Math.PI * 0.58), lipMat, H);
+    lip.position.copy(m.p).add(V(0, 0.34, -0.1)); lip.rotation.set(-0.32, 0, Math.PI * 1.5 - Math.PI * 0.29);
     const ph = mesh(new THREE.CylinderGeometry(0.014, 0.014, 0.16, 6), lipMat, H);
     ph.position.copy(onFront(head, 0, 0.33).p).add(V(0, 0, 0.02)); ph.rotation.x = -0.5;
     R.mouthPt = new THREE.Object3D(); R.mouthPt.position.copy(m.p).add(V(0, 0, 0.12)); H.add(R.mouthPt);
@@ -159,7 +159,7 @@ function buildPo(M, small) {
     let d = ell(x, y, z, 0, -0.03, 0.18, 0.45, 0.25, 0.6);
     for (const t of [-0.27, -0.09, 0.09, 0.27]) d = smin(d, ell(x, y, z, t, -0.1, 0.72, 0.12, 0.12, 0.13), 0.08);
     return d;
-  }, (x, y, z) => (y < -0.13 || (z > 0.62 && y < 0) ? C(0x9a7b55) : black), [-0.6, -0.4, -0.55], [0.6, 0.3, 0.95], 0.055);
+  }, (x, y, z) => (y < -0.13 || (z > 0.62 && y < 0) ? C(0x34302e) : black), [-0.6, -0.4, -0.55], [0.6, 0.3, 0.95], 0.055);
   for (const l of R.leg) {
     mesh(trouser, clothMat, l.hip, [0, -0.02, 0]);
     furry(shin, l.knee, FUR);
@@ -615,6 +615,7 @@ export function start(canvas, opts = {}) {
     return A;
   }
   const po = actor(buildPo(M, small), { ao: 0.36, af: 0.28, ae: 0.4, lo: 0.1 }, 3.6);
+  po.lidRest = -0.42;                                    // his eyes wide open and bright
   const sf = actor(buildShifu(M, small), { ao: 0.16, lo: 0.06 }, 1.6);
   sf.rig.root.visible = false; sf.shadow.visible = false; sf.stride = 4;
   sf.rig.root.scale.setScalar(1.22);
@@ -751,7 +752,7 @@ export function start(canvas, opts = {}) {
     A.wide += -A.wide * (1 - Math.exp(-dt * 2));
     for (const e of R.eyes) {
       e.ball.rotation.set(-A.eyeY, A.eyeX, 0);
-      if (e.lid) e.lid.rotation.x = lerp(-0.12 - A.wide * 0.6, 1.5, A.lid);                // heavy upper lids, like his
+      if (e.lid) e.lid.rotation.x = lerp((A.lidRest ?? -0.12) - A.wide * 0.6, 1.5, A.lid);
       else e.base.scale.set(1 + A.wide * 0.18, Math.max(0.08, 1 - A.lid) * (1 + A.wide * 0.25), 1);
     }
     // mouth, chewing, belly
