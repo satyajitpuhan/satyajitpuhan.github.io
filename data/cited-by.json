@@ -1,7 +1,19 @@
 {
-  "total": 55,
+  "total": 56,
   "updated": "2026-10-15",
   "papers": [
+    {
+      "inspire": "3215074",
+      "title": "Constraints on pion parton distributions at small x from leading-neutron electroproduction data",
+      "authors": "C. Yang et al.",
+      "date": "2026-10-14",
+      "reference": "arXiv:2610.19415",
+      "arxiv": "2610.19415",
+      "doi": "",
+      "cites": [
+        "3199506"
+      ]
+    },
     {
       "inspire": "3212293",
       "title": "Medium modification of pseudoscalar meson structure: Distribution amplitudes and parton distribution functions",
@@ -151,18 +163,6 @@
         "2843133",
         "2826279",
         "2818257"
-      ]
-    },
-    {
-      "inspire": "3176226",
-      "title": "Leading-twist to higher-twist generalized parton distributions of the pseudoscalar mesons at non-zero skewness",
-      "authors": "A. J. A, N. Kaur, H. Dahiya",
-      "date": "2026-07-01",
-      "reference": "arXiv:2607.00503",
-      "arxiv": "2607.00503",
-      "doi": "",
-      "cites": [
-        "2918260"
       ]
     }
   ]
