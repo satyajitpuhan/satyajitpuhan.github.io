@@ -145,8 +145,8 @@ Make sure GitHub notifications for this repository reach your email (Settings �
 
 ## The companions
 
-A companion lives behind the content on every page. Visitors choose one from the 🐉/🐺/🐼/🌸/🍌/💔
-button in the top bar (Dragon, Lone wolf, Kung fu panda, Wishes, Minion mayhem, Journey, or Off); the choice is remembered.
+A companion lives behind the content on every page. Visitors choose one from the 🐉/🐺/🌸/🦚/🐼/🍌/💔
+button in the top bar (Dragon, Lone wolf, Wishes, Peacock, Kung fu panda, Minion mayhem, Journey, or Off); the choice is remembered.
 
 * **Dragon** (`static/js/dragon.js`): an Eastern dragon that swims across the page, sometimes
   circles the mouse, and now and then opens its jaws.
@@ -160,6 +160,18 @@ button in the top bar (Dragon, Lone wolf, Kung fu panda, Wishes, Minion mayhem, 
   In the dark theme snow drifts down through the moonlight and its breath smokes in the cold.
   The wolf is one furred mesh sculpted in code and skinned to a skeleton; its paws are placed by
   inverse kinematics, so they stay planted on the ground in the walk, the trot and the gallop.
+* **Peacock** (`static/js/peacock.js`): an Indian peacock that keeps its train up the whole time:
+  about 150 feathers in staggered rows, each with its eyespot (navy heart, royal blue, turquoise,
+  bronze and a green-gold ring in loose golden barbs), whose colours shift with the angle you see
+  them from. It has an iridescent royal-blue neck, the crest of blue-tipped wires, the white face
+  stripes, a bronze-green scaled back and buff wings barred with black over chestnut primaries. It
+  struts about, turns from side to side to show off its fan, rattles it so the eyes shimmer, turns
+  round to show its back and shake its wings, and calls. Move the mouse and it watches your cursor;
+  keep moving and it turns to face you and puts on a show. Scroll hard and it rattles. By day
+  marigold and rose petals drift down; in the dark theme there are fireflies and the eyes glow.
+  Its size is `S` at the top of `peacock.js`, the train is laid out by `ROWS`, `L_MIN`, `L_MAX`
+  and `TH_MAX`, and what it does is `behave()` (`pose`, `strut`, `shiver`, `show`, `turnback`, `call`).
+
 * **Kung fu panda** (`static/js/panda.js`): a panda with a wooden staff, his master (a red panda),
   a hill with a blossoming peach tree, and a valley of misty mountains with a palace on one peak
   (moonlit, with lit lanterns, in the dark theme). The valley is drawn to look real: fluted
@@ -206,7 +218,7 @@ button in the top bar (Dragon, Lone wolf, Kung fu panda, Wishes, Minion mayhem, 
   and each chapter is a function (`chapter1` … `chapter4`).
   In the light theme the night is drawn paler, so the page text stays readable.
 
-The five 3D ones are built entirely in code (no model or image files); shared building blocks live in
+The six 3D ones are built entirely in code (no model or image files); shared building blocks live in
 `static/js/kit.js`. The only library is three.js,
 self-hosted in `static/js/vendor/` (MIT licence alongside it), so the Site guard sees no outside
 scripts.
