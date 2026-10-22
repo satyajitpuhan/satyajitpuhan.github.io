@@ -3,6 +3,7 @@ title = "Radiative Transitions for the Ground and Excited Charmonia States"
 date = 2025-04-10
 
 [extra]
+doi = "10.1103/jsm8-d14d"
 thumbnail = "images/portfolio/papers/charmonia-radiative-transitions.webp"
 service = "Submitted to PRD"
 client = "A. Yadav, S. Puhan, and H. Dahiya"
