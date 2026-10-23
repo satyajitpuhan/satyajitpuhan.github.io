@@ -14,7 +14,7 @@ categories = ["Preprint"]
 arxiv = "2512.24921"
 doi = "10.1093/ptep/ptag089"
 inspire = "3096412"
-citations = 3
+citations = 4
 +++
 
 **Authors:** A. Dwivedi, S. Puhan, S. Ghosh, and H. Dahiya  

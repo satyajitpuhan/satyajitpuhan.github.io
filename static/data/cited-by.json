@@ -1,7 +1,21 @@
 {
-  "total": 56,
-  "updated": "2026-10-22",
+  "total": 57,
+  "updated": "2026-10-23",
   "papers": [
+    {
+      "inspire": "3218123",
+      "title": "Parton distribution functions of the proton in a hot isospin-asymmetric nuclear medium and finite nuclei",
+      "authors": "N. Kaur et al.",
+      "date": "2026-10-22",
+      "reference": "arXiv:2610.31122",
+      "arxiv": "2610.31122",
+      "doi": "",
+      "cites": [
+        "3096412",
+        "2818000",
+        "2843133"
+      ]
+    },
     {
       "inspire": "3215074",
       "title": "Constraints on pion parton distributions at small x from leading-neutron electroproduction data",
@@ -136,33 +150,6 @@
       "doi": "",
       "cites": [
         "3083453"
-      ]
-    },
-    {
-      "inspire": "3178743",
-      "title": "Electron-Ion Collision Environment: Distribution of Quark Spin and Orbital Angular Momentum",
-      "authors": "S. Jana et al.",
-      "date": "2026-07-09",
-      "reference": "arXiv:2607.08457",
-      "arxiv": "2607.08457",
-      "doi": "",
-      "cites": [
-        "3096412",
-        "3165827",
-        "3103134",
-        "3157139",
-        "3140657",
-        "3108526",
-        "3083453",
-        "2921222",
-        "2917873",
-        "2916907",
-        "2914109",
-        "2914151",
-        "2873357",
-        "2843133",
-        "2826279",
-        "2818257"
       ]
     }
   ]
