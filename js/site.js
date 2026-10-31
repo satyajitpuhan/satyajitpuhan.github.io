@@ -97,7 +97,9 @@
     bus(function (y) {
       if (bar) {
         var h = document.documentElement.scrollHeight - window.innerHeight;
-        bar.style.width = (h > 0 ? Math.min(100, Math.max(0, y / h * 100)) : 0) + '%';
+        var pct = h > 0 ? Math.min(100, Math.max(0, y / h * 100)) : 0;
+        bar.style.width = pct + '%';
+        bar.setAttribute('aria-valuenow', Math.round(pct));
       }
       if (top) top.classList.toggle('is-on', y > 600);
     });
@@ -349,7 +351,9 @@
           if (el.textContent.trim() !== '0' && el.textContent.trim() !== '') countUp(el, s[k]);
         });
       });
-      if (note && live) note.textContent = 'Live from INSPIRE-HEP · updated just now';
+      if (note && live) note.textContent = document.documentElement.lang === 'or'
+        ? 'INSPIRE-HEP ରୁ ସିଧାସଳଖ · ଏବେ ଅପଡେଟ୍ ହେଲା'
+        : 'Live from INSPIRE-HEP · updated just now';
     }
     paint(seed, false);
 
@@ -634,7 +638,8 @@
       document.body.insertBefore(cv, document.body.firstChild);
       load(pick(name).getAttribute('data-src')).then(function (m) {
         if (mine !== token) { cv.remove(); return; }       // switched again while it was loading
-        inst = m.start(cv, { theme: theme(), onReady: function () { cv.classList.add('is-on'); }, onSlow: function () { if (mine === token) halt(); } });
+        inst = m.start(cv, { theme: theme(), onReady: function () { cv.classList.add('is-on'); },
+          onSlow: function () { if (mine === token) { halt(); want = 'off'; show(); } } });   // not saved: a faster moment may cope
       }).catch(function () {
         if (mine !== token) return;
         cv.remove(); canvas = null; current = null;
