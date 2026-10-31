@@ -2,13 +2,16 @@ name: Build, sync and deploy
 
 # Three ways this runs:
 #   • every push to main            → rebuild and deploy
-#   • every day at 03:15 UTC        → pull new papers from INSPIRE-HEP first
-#   • manually (Actions → Run)      → same as the daily run
+#   • twice a day, 03:15 and 15:15 UTC → pull new papers from INSPIRE-HEP first
+#     (GitHub starts scheduled runs hours late, and sometimes skips one, so a
+#      second run keeps the site from falling a day behind)
+#   • manually (Actions → Run)      → same as the scheduled runs
 on:
   push:
     branches: [main]
   schedule:
     - cron: "15 3 * * *"
+    - cron: "15 15 * * *"
   workflow_dispatch:
     inputs:
       force_sync:

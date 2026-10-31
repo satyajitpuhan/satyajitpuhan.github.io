@@ -2,7 +2,7 @@
 """
 sync_inspire.py — keep the website in step with INSPIRE-HEP, automatically.
 
-Run daily from GitHub Actions (.github/workflows/sync-inspire.yml).
+Run twice a day from GitHub Actions (.github/workflows/site.yml).
 
 What it does, in order:
 

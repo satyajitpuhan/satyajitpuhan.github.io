@@ -11,8 +11,9 @@ to GitHub Pages, and kept up to date automatically from INSPIRE-HEP.
 
 ## Everyday use
 
-**You normally do not have to do anything.** Every day at 03:15 UTC — and on
-every deploy — a GitHub Action asks INSPIRE-HEP what is on your author record
+**You normally do not have to do anything.** Twice a day (scheduled for 03:15
+and 15:15 UTC; GitHub often starts them a few hours late) — and on every
+deploy — a GitHub Action asks INSPIRE-HEP what is on your author record
 and, for anything new:
 
 * creates the publication page (English + Odia) under `content/portfolio/`,
