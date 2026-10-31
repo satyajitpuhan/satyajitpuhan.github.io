@@ -35,11 +35,10 @@
 <link rel="canonical" href="{{ self_url }}">
 
 {# hreflang #}
+{#- `translations` already includes the current page, so it is not listed twice. -#}
 {% if page %}
-  <link rel="alternate" hreflang="{{ lang }}" href="{{ page.permalink }}">
   {% for t in page.translations %}<link rel="alternate" hreflang="{{ t.lang }}" href="{{ t.permalink }}">{% endfor %}
 {% elif section %}
-  <link rel="alternate" hreflang="{{ lang }}" href="{{ section.permalink }}">
   {% for t in section.translations %}<link rel="alternate" hreflang="{{ t.lang }}" href="{{ t.permalink }}">{% endfor %}
 {% endif %}
 <link rel="alternate" hreflang="x-default" href="{{ get_url(path='/', lang='en') }}">

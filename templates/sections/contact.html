@@ -63,7 +63,7 @@
         </label>
         <label class="field">
           <span>{{ trans(key='form_input_email', lang=lang) }}</span>
-          <input type="email" name="Email" required autocomplete="email">
+          <input type="email" name="email" required autocomplete="email">{# lowercase: FormSubmit uses a field named "email" as the Reply-To #}
         </label>
         <label class="field">
           <span>{{ trans(key='form_input_message', lang=lang) }}</span>

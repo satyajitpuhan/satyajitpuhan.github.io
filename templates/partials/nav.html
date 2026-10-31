@@ -76,9 +76,18 @@
         </div>
       </div>
 
+      {#- The language switch goes to this same page in the other language when it has
+          a translation, and to that language's homepage otherwise. -#}
+      {%- set_global en_url = get_url(path='/', lang='en') -%}
+      {%- set_global or_url = get_url(path='/', lang='or') -%}
+      {%- set_global tr = [] -%}
+      {%- if page -%}{%- set_global tr = page.translations -%}{%- elif section -%}{%- set_global tr = section.translations -%}{%- endif -%}
+      {%- for t in tr -%}
+        {%- if t.lang == 'en' -%}{%- set_global en_url = t.permalink -%}{%- elif t.lang == 'or' -%}{%- set_global or_url = t.permalink -%}{%- endif -%}
+      {%- endfor %}
       <div class="lang-switch" role="group" aria-label="Language">
-        <a href="{{ get_url(path='/', lang='en') }}" class="{% if lang == 'en' %}is-active{% endif %}" hreflang="en">EN</a>
-        <a href="{{ get_url(path='/', lang='or') }}" class="{% if lang == 'or' %}is-active{% endif %}" hreflang="or">ଓଡ଼ି</a>
+        <a href="{{ en_url }}" class="{% if lang == 'en' %}is-active{% endif %}" hreflang="en" lang="en"{% if lang == 'en' %} aria-current="true"{% endif %}>EN</a>
+        <a href="{{ or_url }}" class="{% if lang == 'or' %}is-active{% endif %}" hreflang="or" lang="or"{% if lang == 'or' %} aria-current="true"{% endif %}>ଓଡ଼ି</a>
       </div>
 
       <button class="icon-btn nav__burger" data-nav-toggle aria-label="Menu" aria-expanded="false" aria-controls="nav-links">

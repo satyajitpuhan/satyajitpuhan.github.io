@@ -27,7 +27,8 @@
             {% if item.details %}
               <details class="disclosure">
                 <summary>{% if lang == 'or' %}ବିବରଣୀ{% else %}Details{% endif %}</summary>
-                <div class="disclosure__body">{{ item.details | markdown | safe }}</div>
+                {#- Every item has its own "Abstract" heading, so the heading ids markdown adds would clash: drop them. -#}
+                <div class="disclosure__body">{{ item.details | markdown | replace(from=' id="', to=' data-anchor="') | safe }}</div>
               </details>
             {% endif %}
           </div>
