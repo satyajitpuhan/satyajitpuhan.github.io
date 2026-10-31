@@ -49,7 +49,14 @@
         </div>
       </div>
 
-      <form class="card reveal" style="padding:24px" action="{{ config.extra.formspree_url }}" method="POST">
+      {#- With JavaScript, site.js sends this form in the background through FormSubmit's
+          AJAX endpoint (no reCAPTCHA page, the visitor stays here and sees the result);
+          without it, the form posts to FormSubmit as a normal page. -#}
+      <form class="card reveal" style="padding:24px" action="{{ config.extra.formspree_url }}" method="POST" data-contact-form
+            data-sending="{% if lang == 'or' %}ପଠାଯାଉଛି…{% else %}Sending…{% endif %}"
+            data-sent="{% if lang == 'or' %}ଧନ୍ୟବାଦ! ଆପଣଙ୍କ ବାର୍ତ୍ତା ପଠାଗଲା। ମୁଁ ଇମେଲରେ ଉତ୍ତର ଦେବି।{% else %}Thank you! Your message has been sent. I will reply by email.{% endif %}"
+            data-failed="{% if lang == 'or' %}ବାର୍ତ୍ତାଟି ପଠାଯାଇପାରିଲା ନାହିଁ।{% else %}Sorry, the message could not be sent.{% endif %}"
+            data-mail-link="{% if lang == 'or' %}ଏହାକୁ ଇମେଲରେ ପଠାନ୍ତୁ{% else %}Send it by email instead{% endif %}">
         <input type="hidden" name="_subject" value="Website contact — new message">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_captcha" value="true">
@@ -73,6 +80,7 @@
         <button class="btn btn--primary" type="submit" style="width:100%">
           {{ trans(key='form_button', lang=lang) }} {{ ic::ui(name="arrow") }}
         </button>
+        <p class="form-status" role="status" aria-live="polite" hidden></p>
         <p class="dim" style="font-size:.78rem;margin-top:12px">{{ trans(key='form_input_agreement', lang=lang) }}</p>
       </form>
     </div>
