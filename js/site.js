@@ -680,6 +680,48 @@
     if (document.readyState === 'complete') idle(); else on(window, 'load', idle);
   })();
 
+  /* ---- 17. contact form: send through FormSubmit's AJAX endpoint, so the visitor
+         stays on the page (no reCAPTCHA hop that many give up on) and sees whether
+         it worked. If it fails, offer the same message as a ready-made email. ---- */
+  $$('form[data-contact-form]').forEach(function (form) {
+    if (!window.fetch || !window.FormData) return;           // plain form post still works
+    var status = $('.form-status', form), btn = $('button[type="submit"], button:not([type])', form);
+    var to = (form.getAttribute('action').match(/[^\/]+@[^\/?#]+$/) || [''])[0];
+    function say(msg, kind, mailto) {
+      status.hidden = false;
+      status.className = 'form-status' + (kind ? ' form-status--' + kind : '');
+      status.textContent = msg;
+      if (mailto) {
+        var a = document.createElement('a');
+        a.href = mailto; a.textContent = form.getAttribute('data-mail-link') || 'Send it by email instead';
+        status.appendChild(document.createTextNode(' ')); status.appendChild(a);
+      }
+    }
+    on(form, 'submit', function (e) {
+      e.preventDefault();
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+      var data = new FormData(form);
+      var honey = data.get('_honey');
+      if (honey) { form.reset(); say(form.getAttribute('data-sent'), 'ok'); return; }   // a bot filled the trap
+      data.delete('_honey'); data.delete('_captcha');
+      data.append('_url', location.href);
+      var name = String(data.get('Name') || ''), mail = String(data.get('email') || ''), text = String(data.get('Message') || '');
+      var mailto = 'mailto:' + to + '?subject=' + encodeURIComponent('Website contact from ' + name) +
+                   '&body=' + encodeURIComponent(text + '\n\n— ' + name + ' <' + mail + '>');
+      btn.disabled = true; say(form.getAttribute('data-sending'));
+      fetch(form.getAttribute('action').replace('formsubmit.co/', 'formsubmit.co/ajax/'), {
+        method: 'POST', body: data, headers: { Accept: 'application/json' }
+      })
+        .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j }; }); })
+        .then(function (res) {
+          if (!res.ok || String(res.j.success) !== 'true') throw new Error(res.j.message || 'failed');
+          form.reset(); say(form.getAttribute('data-sent'), 'ok');
+        })
+        .catch(function () { say(form.getAttribute('data-failed'), 'err', mailto); })
+        .then(function () { btn.disabled = false; });
+    });
+  });
+
   /* ---- 12. external links get rel + target ----------------------------- */
   $$('a[href^="http"]').forEach(function (a) {
     if (a.hostname && a.hostname !== window.location.hostname) {
