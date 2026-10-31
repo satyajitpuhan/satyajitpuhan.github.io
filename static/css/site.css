@@ -332,8 +332,14 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 2rem 0; }
 .nav__links { display: flex; align-items: center; gap: 2px; margin-left: auto; min-width: 0; }
 .nav__link {
   padding: 8px 12px; border-radius: var(--r-sm);
-  font-size: .87rem; font-weight: 500; color: var(--ink-2);
+  font-size: .87rem; font-weight: 500; color: var(--ink-2); white-space: nowrap;
   transition: color .18s, background .18s;
+}
+/* Ten menu items only just fit a laptop screen: tighten them a little there.
+   Below 1220px they move into the menu button (see below). */
+@media (min-width: 1220px) and (max-width: 1339px) {
+  .nav__inner { gap: 12px; }
+  .nav__link { padding: 8px 7px; font-size: .82rem; }
 }
 .nav__link:hover { color: var(--ink); background: var(--surface-2); }
 .nav__link.is-active { color: var(--accent); background: var(--accent-soft); }
@@ -357,7 +363,7 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 2rem 0; }
 
 .nav__burger { display: none; }
 
-@media (max-width: 1024px) {
+@media (max-width: 1219px) {
   .nav__burger { display: grid; }
   .nav__links {
     position: fixed; inset: var(--nav-h) 0 auto 0;
@@ -568,6 +574,11 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 2rem 0; }
 }
 .field input:focus, .field textarea:focus { border-color: var(--accent); background: var(--surface-2); }
 .field textarea { min-height: 130px; resize: vertical; }
+.form-status { margin-top: 14px; padding: 11px 14px; border-radius: var(--r-sm); font-size: .88rem;
+  background: var(--surface-2); border: 1px solid var(--line); color: var(--ink-2); }
+.form-status--ok  { border-color: var(--mint); color: var(--ink); }
+.form-status--err { border-color: var(--rose); color: var(--ink); }
+.form-status a { color: var(--accent); font-weight: 600; text-decoration: underline; }
 
 .contact-line { display: flex; align-items: flex-start; gap: 13px; padding: 15px 0; border-bottom: 1px solid var(--line); }
 .contact-line:last-child { border-bottom: 0; }
