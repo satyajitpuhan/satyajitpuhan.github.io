@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
@@ -58,7 +58,16 @@ jobs:
             echo "Nothing new on INSPIRE-HEP today."
           else
             git commit -m "chore(sync): pull new papers and citation counts from INSPIRE-HEP"
-            git push
+            # GitHub occasionally answers a push with "Internal Server Error".
+            # Retry a few times (rebasing in case main moved meanwhile); if it
+            # still fails, deploy anyway - the next run syncs and pushes again.
+            for attempt in 1 2 3; do
+              git push origin HEAD:main && exit 0
+              echo "Push failed (attempt $attempt), retrying..."
+              sleep $((attempt * 20))
+              git pull --rebase origin main || { git rebase --abort || true; }
+            done
+            echo "::warning::Could not push the INSPIRE-HEP sync commit; deploying anyway."
           fi
 
       # ── 2. Build ─────────────────────────────────────────────────────────
