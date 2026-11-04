@@ -1,7 +1,31 @@
 {
-  "total": 58,
-  "updated": "2026-11-03",
+  "total": 60,
+  "updated": "2026-11-04",
   "papers": [
+    {
+      "inspire": "3222313",
+      "title": "On-shell constituent approach to the light-front partonic energy-momentum tensor",
+      "authors": "A. J. A, H. Dahiya",
+      "date": "2026-11-02",
+      "reference": "arXiv:2611.02607",
+      "arxiv": "2611.02607",
+      "doi": "",
+      "cites": [
+        "2789229"
+      ]
+    },
+    {
+      "inspire": "3222321",
+      "title": "Strong vertex N N ρ in dense medium",
+      "authors": "M. Shekari Tousi, K. Azizi",
+      "date": "2026-11-02",
+      "reference": "arXiv:2611.02770",
+      "arxiv": "2611.02770",
+      "doi": "",
+      "cites": [
+        "3108526"
+      ]
+    },
     {
       "inspire": "3218123",
       "title": "Parton distribution functions of the proton in a hot isospin-asymmetric nuclear medium and finite nuclei",
@@ -126,30 +150,6 @@
       "doi": "",
       "cites": [
         "2706491"
-      ]
-    },
-    {
-      "inspire": "3183723",
-      "title": "Electromagnetic structure of charged and neutral strange vector mesons",
-      "authors": "P. T. P. Hutauruk",
-      "date": "2026-07-27",
-      "reference": "Phys. Rev. D 114",
-      "arxiv": "2607.24661",
-      "doi": "10.1103/t2g6-thzh",
-      "cites": [
-        "2921222"
-      ]
-    },
-    {
-      "inspire": "3181818",
-      "title": "Vector mesons leading-twist longitudinal distribution amplitudes and related semi-leptonic decays within QCD sum rules",
-      "authors": "W. Luo et al.",
-      "date": "2026-07-20",
-      "reference": "arXiv:2607.17496",
-      "arxiv": "2607.17496",
-      "doi": "",
-      "cites": [
-        "3083453"
       ]
     }
   ]
