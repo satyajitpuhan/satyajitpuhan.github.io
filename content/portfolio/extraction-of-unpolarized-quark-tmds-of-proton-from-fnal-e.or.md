@@ -4,7 +4,7 @@ date = 2026-01-01
 
 [extra]
 thumbnail = "images/portfolio/papers/extraction-of-unpolarized-quark-tmds-of-proton-from-fnal-e-cover.svg"
-service = "DAE Symp. Nucl. Phys. 69 (2026)"
+service = "DAE Symp. Nucl. Phys. 69, 877 (2026)"
 client = "A. K. P, R. Pandey, S. Puhan, S. Dutt, H. Dahiya, A. Kumar"
 short_description = "Extraction of unpolarized quark TMDs of proton from FNAL-E-0605 data using iminuit"
 solution = "Extraction of unpolarized quark TMDs of proton from FNAL-E-0605 data using iminuit"

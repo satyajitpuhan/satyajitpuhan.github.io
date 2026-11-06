@@ -2,6 +2,56 @@ title = "Recent News & Activities"
 subtitle = "Highlights from my research journey."
 
 [[items]]
+top_title = "🎉 New publication!"
+image = "images/portfolio/papers/pseudoscalar-charmonium-bottomonium-light-front-first-page.webp"
+title = "Mechanical distribution of the pseudoscalar charmonium and bottomonium on the light-front"
+date = "2026-10-26"
+description = "We investigate the energy-momentum tensor of pseudoscalar charmonium and bottomonium within the framework of the self-consistent light-front quark model."
+details = """
+**🎉 New publication!**
+
+- **Title:** Mechanical distribution of the pseudoscalar charmonium and bottomonium on the light-front
+- **Authors:** A. Dwibedi, S. Puhan, S. Ghosh
+- **Published in:** Phys. Rev. D 114, 074052 (2026)
+- **e-Print:** [2606.07073 [hep-ph]](https://arxiv.org/abs/2606.07073)
+- **INSPIRE-HEP:** [record 3165827](https://inspirehep.net/literature/3165827)
+- **DOI:** [10.1103/bbm8-c5yj](https://doi.org/10.1103/bbm8-c5yj)
+
+### Abstract
+
+We investigate the energy-momentum tensor of pseudoscalar charmonium and bottomonium within the framework of the self-consistent light-front quark model. The gravitational form factors (GFFs), namely the A and D-terms, are evaluated in terms of the light-front wave functions. The corresponding spatial mechanical distributions in the transverse plane are obtained through the Fourier transform of these GFFs. To examine the sensitivity of the results to the internal quark-antiquark distribution inside the meson, two distinct Gaussian forms are employed for the spatial part of the wave function. We analyze several mechanical properties in the transverse plane, including the momentum density, pressure distribution, shear stress, force density, and internal energy density. The pressure distribution exhibits a node where it changes sign from positive (repulsive) to negative (attractive) with increasing transverse distance. The force distribution remains positive throughout the transverse plane, supporting the stability condition proposed in earlier studies. Most of the spatial distributions, except for the shear stress, are found to be sensitive to the choice of the spatial wave function near the center of the meson, while they become nearly insensitive toward the periphery. In contrast, the shear stress distribution exhibits noticeable sensitivity to the choice of wave function in the intermediate transverse region
+
+---
+
+*Added automatically from INSPIRE-HEP*
+"""
+
+[[items]]
+top_title = "🎉 New publication!"
+image = "images/portfolio/papers/charmonia-radiative-transitions.webp"
+title = "Radiative transitions for the ground and excited charmonia states"
+date = "2026-10-21"
+description = "In this work, we have investigated the physical properties like decay constants, radiative transitions, decay widths, and branching ratios for the ground and radially excited charmonia states."
+details = """
+**🎉 New publication!**
+
+- **Title:** Radiative transitions for the ground and excited charmonia states
+- **Authors:** A. Yadav, S. Puhan, H. Dahiya
+- **Published in:** Phys. Rev. D 114, 074047 (2026)
+- **e-Print:** [2504.14864 [hep-ph]](https://arxiv.org/abs/2504.14864)
+- **INSPIRE-HEP:** [record 2914109](https://inspirehep.net/literature/2914109)
+- **DOI:** [10.1103/jsm8-d14d](https://doi.org/10.1103/jsm8-d14d)
+
+### Abstract
+
+In this work, we have investigated the physical properties like decay constants, radiative transitions, decay widths, and branching ratios for the ground and radially excited charmonia states. For the numerical calculations, we have adopted the light-front quark model. We have studied χc0→J/ψ+γ and ψ(2S)→χc0+γ, hc(1P)→ηc(1S)+γ, and ηc(2S)→hc(1P)+γ transitions in this work. We have also studied the Q2 dependence of the electric dipole transition form factors (TFFs) for all four transitions and compared them with the available lattice QCD and basis light-front quantization results. Using the TFF results, we have calculated the decay widths and branching ratios for these transitions. The electric dipole matrix element is decomposed into its Lorentz structures and E1(Q2) is extracted from a combination of the longitudinal and transverse plus-current amplitudes canceling the accompanying Coulomb form factor identically. The light-front spin-orbit wave functions of the P-wave states χc0 (P03) and hc (P11) are constructed from the Melosh transformation of the corresponding |(LS)JJz⟩ states, rather than from the S-wave pseudoscalar and vector ones. The charm quark mass and the harmonic scale are fixed by a variational fit to the two 1S masses alone. Our numerical results of decay constants, decay widths, and branching ratios are overall in good agreement with available experimental, theoretical, and lattice simulation data
+
+---
+
+*Added automatically from INSPIRE-HEP*
+"""
+
+[[items]]
 top_title = "📄 New preprint!"
 image = "images/portfolio/papers/diffractive-vector-meson-production-from-the-light-front-first-page.webp"
 title = "Diffractive Vector-Meson Production from the Light-Front Quark Model"
@@ -67,6 +117,31 @@ details = """
 ### Abstract
 
 We present a deep neural-network (DNN) extraction of the pion unpolarized quark and gluon generalized parton distributions (GPDs) using the corresponding parton distribution functions (PDFs) from the JAM21 and xFitter analysis, together with experimental measurements of the pion electromagnetic form factor (EMFF) and lattice quantum chromodynamics (QCD) results. The GPDs are parameterized using a physics-informed neural-network (PINN) that incorporates the known PDF behavior, an exponential momentum-transfer dependence, and a trainable neural network (NN) component. The network parameters are determined by minimizing a χ²-based loss function. For the valence-quark GPDs, the loss function includes contributions from the EMFF, squared EMFF, charge-normalization constraints, and regularization terms. For the gluon GPDs, it incorporates constraints from the gluon gravitational form factors together with regularization. This framework enables a flexible, nonparametric extraction while preserving the essential theoretical and phenomenological constraints. By employing the full ensemble of available PDF replicas, we quantify the uncertainties of the extracted GPDs over a broad kinematic range in the longitudinal momentum fraction and momentum transfer, with the uncertainty bands corresponding to the 1σ confidence interval. The extracted valence-quark GPDs are found to be in good agreement with available lattice-QCD calculations. Our study demonstrates that DNN-based methods provide a flexible and robust framework for extracting pion GPDs and probing the multidimensional internal structure of the pion, offering a promising avenue for future investigations of hadron tomography
+
+---
+
+*Added automatically from INSPIRE-HEP*
+"""
+
+[[items]]
+top_title = "🎉 New publication!"
+image = "images/portfolio/papers/rho-meson-nuclear-medium.webp"
+title = "Spectroscopy of the ρ meson in a symmetric nuclear medium"
+date = "2026-06-23"
+description = "In this work, we investigate the behavior of the light vector ρ meson in the presence of a symmetric nuclear medium at zero temperature."
+details = """
+**🎉 New publication!**
+
+- **Title:** Spectroscopy of the ρ meson in a symmetric nuclear medium
+- **Authors:** A. Gautam, Tanisha, S. Puhan, A. Kumar, H. Dahiya
+- **Published in:** Phys. Rev. D 113, 114043 (2026)
+- **e-Print:** [2601.11082 [hep-ph]](https://arxiv.org/abs/2601.11082)
+- **INSPIRE-HEP:** [record 3108526](https://inspirehep.net/literature/3108526)
+- **DOI:** [10.1103/mhyf-cqzx](https://doi.org/10.1103/mhyf-cqzx)
+
+### Abstract
+
+In this work, we investigate the behavior of the light vector ρ meson in the presence of a symmetric nuclear medium at zero temperature. We calculate the mass, decay constant of the ρ meson, and leading twist distribution amplitudes (DAs) in the light-front quark model in vacuum, which are further investigated at different baryonic densities. We also predict the Mellin moments of the DAs and decay width of the ρ0→e+e- process in both vacuum and medium. The evolution of DAs is carried out by the leading order (LO) Efremov-Radyushkin-Brodsky-Lepage method and compared with available predictions. For better understanding of medium effects on the ρ meson, we have also predicted the in-medium charge [GC(Q2)], magnetic [GM(Q2)], and quadrupole [GQ(Q2)] form factors. The in-medium charge radii, magnetic moment, and quadrupole moment have also been predicted in this work. We have found that the nuclear medium induces appreciable modifications on the mass, weak decay constant, decay width, and distribution amplitudes of the ρ meson. However, the charge radii, magnetic moment, and quadrupole moment are observed to exhibit weaker sensitivity to changes in baryonic density
 
 ---
 

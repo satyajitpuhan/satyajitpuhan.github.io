@@ -4,7 +4,7 @@ date = 2026-04-07
 
 [extra]
 thumbnail = "images/portfolio/papers/pion-parton-distribution-functions-in-the-light-cone-quark-first-page.webp"
-service = "Phys. Rev. D 114 (2026)"
+service = "Phys. Rev. D 114, 016010 (2026)"
 client = "H. G. P, S. Puhan, A. K. P., R. Pandey, H. Dahiya, A. Kumar, S. Dutt"
 short_description = "In this work, we investigate the valence quark parton distribution functions (PDFs) of the pion within the light-cone quark model."
 solution = "The evolved F2 structure function of the pion has been studied at the upcoming electron-ion collider energy kinematics. Overall, it was observed that the quark PDFs of pions computed using the light-cone quark model are consistent with the experimental results"
@@ -17,7 +17,7 @@ categories = ["Journal Article"]
 auto_generated = true
 +++
 **Authors:** H. G. P, S. Puhan, A. K. P., R. Pandey, H. Dahiya, A. Kumar, S. Dutt  
-**Published in:** Phys. Rev. D 114 (2026)
+**Published in:** Phys. Rev. D 114, 016010 (2026)
 
 [DOI: 10.1103/q5rc-999c](https://doi.org/10.1103/q5rc-999c) · [arXiv:2604.05762](https://arxiv.org/abs/2604.05762) · [INSPIRE-HEP record](https://inspirehep.net/literature/3140657)
 
