@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="or">
     <title>ସତ୍ୟଜିତ ପୁହାଣ - D Mesons</title>
-    <subtitle>ତାଇୱାନର ଆକାଡେମିଆ ସିନିକାରେ QCD, ହାଡ୍ରୋନିକ୍ ଫିଜିକ୍ସ ଓ ଡାଇସନ୍–ସ୍ୱିଙ୍ଗର୍ ସମୀକରଣର ତାତ୍ତ୍ୱିକ କଣିକା ପଦାର୍ଥବିଜ୍ଞାନୀ ସତ୍ୟଜିତ ପୁହାଣଙ୍କ ୱେବସାଇଟ୍।</subtitle>
+    <subtitle>ତାଇୱାନର ଆକାଡେମିଆ ସିନିକାରେ QCD, ହାଡ୍ରୋନିକ୍ ଫିଜିକ୍ସ ଓ ଲାଇଟ୍-ଫ୍ରଣ୍ଟ ଡାଇନାମିକ୍ସର ତାତ୍ତ୍ୱିକ କଣିକା ପଦାର୍ଥବିଜ୍ଞାନୀ ସତ୍ୟଜିତ ପୁହାଣଙ୍କ ୱେବସାଇଟ୍।</subtitle>
     <link rel="self" type="application/atom+xml" href="https://satyajitpuhan.github.io/or/tags/d-mesons/atom.xml"/>
     <link rel="alternate" type="text/html" href="https://satyajitpuhan.github.io/"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
