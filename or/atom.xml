@@ -100,12 +100,10 @@
 &lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2606.07073&quot;&gt;Read on arXiv →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 &lt;h3 id=&quot;pressure-distribution-in-pseudoscalar-mesons&quot;&gt;Pressure Distribution in Pseudoscalar Mesons&lt;&#x2F;h3&gt;
 &lt;p&gt;The pressure distribution $P(z_\perp)$ in the transverse plane for the mesons $\eta_c$ (left) and $\eta_b$ (right) shows a node where it changes sign from positive (repulsive) to negative (attractive) with increasing transverse distance $z_\perp$:&lt;&#x2F;p&gt;
-&lt;div style=&quot;text-align: center; margin: 30px 0;&quot;&gt;
-  &lt;img src=&quot;&#x2F;images&#x2F;portfolio&#x2F;papers&#x2F;pseudoscalar-charmonium-bottomonium-plots.webp&quot; alt=&quot;Pressure distribution of eta_c and eta_b mesons&quot; style=&quot;max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.15);&quot; &#x2F;&gt;
-  &lt;p style=&quot;font-size: 0.9rem; color: #a0aec0; margin-top: 10px;&quot;&gt;
-    &lt;strong&gt;Figure 1:&lt;&#x2F;strong&gt; The pressure distribution in the transverse plane for the mesons $\eta_c$ (left) and $\eta_b$ (right). Also shown are the pressure range of the quark-gluon plasma (QGP) from lattice QCD simulations, the peak pressure in the proton, and the range of peak pressure values in the pion.
-  &lt;&#x2F;p&gt;
-&lt;&#x2F;div&gt;
+&lt;figure class=&quot;paper-figure&quot;&gt;
+  &lt;img src=&quot;&#x2F;images&#x2F;portfolio&#x2F;papers&#x2F;pseudoscalar-charmonium-bottomonium-plots.webp&quot; alt=&quot;Pressure distribution of eta_c and eta_b mesons&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+  &lt;figcaption&gt;&lt;strong&gt;Figure 1:&lt;&#x2F;strong&gt; The pressure distribution in the transverse plane for the mesons $\eta_c$ (left) and $\eta_b$ (right). Also shown are the pressure range of the quark-gluon plasma (QGP) from lattice QCD simulations, the peak pressure in the proton, and the range of peak pressure values in the pion.&lt;&#x2F;figcaption&gt;
+&lt;&#x2F;figure&gt;
 </content>
         
     </entry>
@@ -130,20 +128,16 @@
 &lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2605.30945&quot;&gt;Read on arXiv →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 &lt;h3 id=&quot;kinematics-and-rapidity-coverage&quot;&gt;Kinematics and Rapidity Coverage&lt;&#x2F;h3&gt;
 &lt;p&gt;The partonic momentum fractions $x_{1,2}$ probed in NICA SPD kinematics ($\sqrt{s} = 27$ GeV) as a function of rapidity $y$ for different transverse momentum $p_T$ values:&lt;&#x2F;p&gt;
-&lt;div style=&quot;text-align: center; margin: 30px 0;&quot;&gt;
-  &lt;img src=&quot;&#x2F;images&#x2F;portfolio&#x2F;papers&#x2F;gluon-helicity-plots.webp&quot; alt=&quot;Partonic momentum fractions x_1,2 and A_LL vs y&quot; style=&quot;max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.15);&quot; &#x2F;&gt;
-  &lt;p style=&quot;font-size: 0.9rem; color: #a0aec0; margin-top: 10px;&quot;&gt;
-    &lt;strong&gt;Figure 1:&lt;&#x2F;strong&gt; (Left) Partonic momentum fractions $x_{1,2}$ as a function of rapidity for various $p_T$. (Right-a) Longitudinal double-spin asymmetry $A_{LL}^{J&#x2F;\psi}$ vs $y$ for $p_T = 1.5, 3.0, 5.0$ GeV. (Right-b) Theoretical uncertainties for $p_T = 3.0$ GeV.
-  &lt;&#x2F;p&gt;
-&lt;&#x2F;div&gt;
+&lt;figure class=&quot;paper-figure&quot;&gt;
+  &lt;img src=&quot;&#x2F;images&#x2F;portfolio&#x2F;papers&#x2F;gluon-helicity-plots.webp&quot; alt=&quot;Partonic momentum fractions x_1,2 and A_LL vs y&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+  &lt;figcaption&gt;&lt;strong&gt;Figure 1:&lt;&#x2F;strong&gt; (Left) Partonic momentum fractions $x_{1,2}$ as a function of rapidity for various $p_T$. (Right-a) Longitudinal double-spin asymmetry $A_{LL}^{J&#x2F;\psi}$ vs $y$ for $p_T = 1.5, 3.0, 5.0$ GeV. (Right-b) Theoretical uncertainties for $p_T = 3.0$ GeV.&lt;&#x2F;figcaption&gt;
+&lt;&#x2F;figure&gt;
 &lt;h3 id=&quot;uncertainty-analysis&quot;&gt;Uncertainty Analysis&lt;&#x2F;h3&gt;
 &lt;p&gt;The relative fractional uncertainties at ($\sqrt{s} = 27$ GeV) and $p_T = 3$ GeV, highlighting the PDF, scale, and total uncertainties:&lt;&#x2F;p&gt;
-&lt;div style=&quot;text-align: center; margin: 30px 0;&quot;&gt;
-  &lt;img src=&quot;&#x2F;images&#x2F;portfolio&#x2F;papers&#x2F;gluon-helicity-uncertainties.webp&quot; alt=&quot;Relative uncertainties vs rapidity&quot; style=&quot;max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.15);&quot; &#x2F;&gt;
-  &lt;p style=&quot;font-size: 0.9rem; color: #a0aec0; margin-top: 10px;&quot;&gt;
-    &lt;strong&gt;Figure 2:&lt;&#x2F;strong&gt; Relative uncertainties of $A_{LL}^{J&#x2F;\psi}$ as a function of rapidity $y$ at $p_T = 3$ GeV, separating PDF uncertainty, scale uncertainty, and total uncertainty.
-  &lt;&#x2F;p&gt;
-&lt;&#x2F;div&gt;
+&lt;figure class=&quot;paper-figure&quot;&gt;
+  &lt;img src=&quot;&#x2F;images&#x2F;portfolio&#x2F;papers&#x2F;gluon-helicity-uncertainties.webp&quot; alt=&quot;Relative uncertainties vs rapidity&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+  &lt;figcaption&gt;&lt;strong&gt;Figure 2:&lt;&#x2F;strong&gt; Relative uncertainties of $A_{LL}^{J&#x2F;\psi}$ as a function of rapidity $y$ at $p_T = 3$ GeV, separating PDF uncertainty, scale uncertainty, and total uncertainty.&lt;&#x2F;figcaption&gt;
+&lt;&#x2F;figure&gt;
 </content>
         
     </entry>
