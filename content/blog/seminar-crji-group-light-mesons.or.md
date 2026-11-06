@@ -19,4 +19,4 @@ categories = ["talks"]
 
 ## Abstract
 
-In this talk, I discuss the internal structure of light mesons such as the pion, kaon, and rho using light-front models. The study focuses on valence quark-level Parton Distribution Functions (PDFs), Generalized Parton Distributions (GPDs), and Transverse Momentum Dependent distributions (TMDs). Additionally, I highlight the mechanical properties of the pion and explore how these distributions behave in a nuclear medium.
+In this talk, I discuss the internal structure of light mesons such as the pion, kaon, and ρ using light-front models. The study focuses on valence quark-level Parton Distribution Functions (PDFs), Generalized Parton Distributions (GPDs), and Transverse Momentum Dependent distributions (TMDs). Additionally, I highlight the mechanical properties of the pion and explore how these distributions behave in a nuclear medium.
