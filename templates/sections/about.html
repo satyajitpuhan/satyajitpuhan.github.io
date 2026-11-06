@@ -6,7 +6,7 @@
 {% if d %}
 <section class="section" id="about">
   <div class="wrap">
-    <div class="grid" style="grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);align-items:start">
+    <div class="grid about-split">
       <div class="reveal">
         <img src="{{ get_url(path=d.image | default(value='images/about/me.webp')) }}"
              alt="Satyajit Puhan"
