@@ -6,7 +6,7 @@ top_title = "📄 New preprint!"
 image = "images/portfolio/papers/diffractive-vector-meson-production-from-the-light-front-first-page.webp"
 title = "Diffractive Vector-Meson Production from the Light-Front Quark Model"
 date = "2026-09-30"
-description = "We study exclusive diffractive electroproduction of the ρ^0, ϕ, J/ψ, and ψ(2S) mesons in the color-dipole picture using two spin-orbit light-front wave functions, S-1 and S-2."
+description = "We study exclusive diffractive electroproduction of the ρ⁰, ϕ, J/ψ, and ψ(2S) mesons in the color-dipole picture using two spin-orbit light-front wave functions, S-1 and S-2."
 details = """
 **📄 New preprint!**
 
@@ -18,7 +18,7 @@ details = """
 
 ### Abstract
 
-We study exclusive diffractive electroproduction of the ρ^0, ϕ, J/ψ, and ψ(2S) mesons in the color-dipole picture using two spin-orbit light-front wave functions, S-1 and S-2. S-1 follows from the Melosh--Wigner rotation in the light-front quark model (LFQM), while S-2 is the spin-improved form commonly used in holographic and boosted-Gaussian approaches. Both share the same radial wave function, with their parameters determined from the LFQM Hamiltonian. The color-glass-condensate dipole parameters are fixed from inclusive structure-function data, with no fit to diffractive data. We compare the predictions with measurements of cross sections, R=σ_L/σ_T, t and W dependences, and σ_ϕ/σ_ρ. S-1 gives a better description of the light-meson observables, while S-2 provides a better description of the charmonium ratio σ_ψ(2S)/σ_J/ψ and the J/ψ decay constant. We also present the charge, magnetic, and quadrupole form factors of the four mesons and compare them with available lattice-QCD results
+We study exclusive diffractive electroproduction of the ρ⁰, ϕ, J/ψ, and ψ(2S) mesons in the color-dipole picture using two spin-orbit light-front wave functions, S-1 and S-2. S-1 follows from the Melosh--Wigner rotation in the light-front quark model (LFQM), while S-2 is the spin-improved form commonly used in holographic and boosted-Gaussian approaches. Both share the same radial wave function, with their parameters determined from the LFQM Hamiltonian. The color-glass-condensate dipole parameters are fixed from inclusive structure-function data, with no fit to diffractive data. We compare the predictions with measurements of cross sections, R=σ_L/σ_T, t and W dependences, and σ_ϕ/σ_ρ. S-1 gives a better description of the light-meson observables, while S-2 provides a better description of the charmonium ratio σ_ψ(2S)/σ_J/ψ and the J/ψ decay constant. We also present the charge, magnetic, and quadrupole form factors of the four mesons and compare them with available lattice-QCD results
 
 ---
 
@@ -66,7 +66,7 @@ details = """
 
 ### Abstract
 
-We present a deep neural-network (DNN) extraction of the pion unpolarized quark and gluon generalized parton distributions (GPDs) using the corresponding parton distribution functions (PDFs) from the JAM21 and xFitter analysis, together with experimental measurements of the pion electromagnetic form factor (EMFF) and lattice quantum chromodynamics (QCD) results. The GPDs are parameterized using a physics-informed neural-network (PINN) that incorporates the known PDF behavior, an exponential momentum-transfer dependence, and a trainable neural network (NN) component. The network parameters are determined by minimizing a χ^2-based loss function. For the valence-quark GPDs, the loss function includes contributions from the EMFF, squared EMFF, charge-normalization constraints, and regularization terms. For the gluon GPDs, it incorporates constraints from the gluon gravitational form factors together with regularization. This framework enables a flexible, nonparametric extraction while preserving the essential theoretical and phenomenological constraints. By employing the full ensemble of available PDF replicas, we quantify the uncertainties of the extracted GPDs over a broad kinematic range in the longitudinal momentum fraction and momentum transfer, with the uncertainty bands corresponding to the 1σ confidence interval. The extracted valence-quark GPDs are found to be in good agreement with available lattice-QCD calculations. Our study demonstrates that DNN-based methods provide a flexible and robust framework for extracting pion GPDs and probing the multidimensional internal structure of the pion, offering a promising avenue for future investigations of hadron tomography
+We present a deep neural-network (DNN) extraction of the pion unpolarized quark and gluon generalized parton distributions (GPDs) using the corresponding parton distribution functions (PDFs) from the JAM21 and xFitter analysis, together with experimental measurements of the pion electromagnetic form factor (EMFF) and lattice quantum chromodynamics (QCD) results. The GPDs are parameterized using a physics-informed neural-network (PINN) that incorporates the known PDF behavior, an exponential momentum-transfer dependence, and a trainable neural network (NN) component. The network parameters are determined by minimizing a χ²-based loss function. For the valence-quark GPDs, the loss function includes contributions from the EMFF, squared EMFF, charge-normalization constraints, and regularization terms. For the gluon GPDs, it incorporates constraints from the gluon gravitational form factors together with regularization. This framework enables a flexible, nonparametric extraction while preserving the essential theoretical and phenomenological constraints. By employing the full ensemble of available PDF replicas, we quantify the uncertainties of the extracted GPDs over a broad kinematic range in the longitudinal momentum fraction and momentum transfer, with the uncertainty bands corresponding to the 1σ confidence interval. The extracted valence-quark GPDs are found to be in good agreement with available lattice-QCD calculations. Our study demonstrates that DNN-based methods provide a flexible and robust framework for extracting pion GPDs and probing the multidimensional internal structure of the pion, offering a promising avenue for future investigations of hadron tomography
 
 ---
 
@@ -91,7 +91,7 @@ details = """
 
 ### Abstract
 
-In this work, we investigate the constituent parton distribution functions (PDFs) of the kaon and heavy pseudoscalar mesons within the light-cone quark model. Starting from the initial-scale quark and antiquark PDFs, obtained by evaluating the quark-quark correlation functions for individual mesons, we perform QCD evolution to determine their partonic structure at higher energy scales. The QCD evolution is carried out using the next-to-leading-order (NLO) Dokshitzer-Gribov-Lipatov-Altarelli-Parisi equations. We further compute the average longitudinal momentum fractions carried by the individual constituents at both the model and evolved scales. In addition, we predict the NLO structure functions of the kaon at energy scales relevant to the upcoming Electron-Ion Collider (EIC). For the COMPASS++/AMBER experiment, we also present detailed predictions for the NLO Drell-Yan cross sections induced by both K+ and K- beams, using carbon, tungsten, and aluminum as nuclear targets. Finally, we demonstrate the dominance of the heavier constituents over the lighter constituents in heavy mesons in terms of the momentum fractions they carry
+In this work, we investigate the constituent parton distribution functions (PDFs) of the kaon and heavy pseudoscalar mesons within the light-cone quark model. Starting from the initial-scale quark and antiquark PDFs, obtained by evaluating the quark-quark correlation functions for individual mesons, we perform QCD evolution to determine their partonic structure at higher energy scales. The QCD evolution is carried out using the next-to-leading-order (NLO) Dokshitzer-Gribov-Lipatov-Altarelli-Parisi equations. We further compute the average longitudinal momentum fractions carried by the individual constituents at both the model and evolved scales. In addition, we predict the NLO structure functions of the kaon at energy scales relevant to the upcoming Electron-Ion Collider (EIC). For the COMPASS++/AMBER experiment, we also present detailed predictions for the NLO Drell-Yan cross sections induced by both K⁺ and K⁻ beams, using carbon, tungsten, and aluminum as nuclear targets. Finally, we demonstrate the dominance of the heavier constituents over the lighter constituents in heavy mesons in terms of the momentum fractions they carry
 
 ---
 
@@ -144,7 +144,7 @@ details = """
 - 🔹 **First projection** for constraining moderate-to-large-x gluon helicity distribution Δg(x) via J/ψ production at NICA-SPD energy
 - 🔹 **Color-singlet model at LO** in perturbative QCD used to compute longitudinal double-spin asymmetry (A_LL)
 - 🔹 **Five NLO helicity PDF sets** evaluated — NNPDFpol1.1, DSSV14, JAM17, LSS10, and AAL19
-- 🔹 **A_LL as a function of p_T and rapidity** — significant discriminating power between different helicity PDF scenarios
+- 🔹 **A_LL as a function of pT and rapidity** — significant discriminating power between different helicity PDF scenarios
 - 🔹 **Targeted regime:** moderate-to-large-x (x ≳ 0.1), poorly constrained by existing RHIC and EIC data
 
 ### Significance
@@ -563,9 +563,9 @@ Asmita Mukherjee, Manibrata Sen, Vikram Rentala, Debojit Sarkar
 image = "images/gallery/prd-paper-accepted.webp"
 title = "Recent Paper Published in Physical Review D"
 date = "27 Feb, 2026"
-description = "Our recent paper 'Valence quark distribution of the rho meson using a light-front quark model' has been published in Phys. Rev. D 113, 036030 (2026)."
+description = "Our recent paper 'Valence quark distribution of the ρ meson using a light-front quark model' has been published in Phys. Rev. D 113, 036030 (2026)."
 details = """
-**Title:** Valence quark distribution of the rho meson using a light-front quark model  
+**Title:** Valence quark distribution of the ρ meson using a light-front quark model  
 **Authors:** Satyajit Puhan, Shubham Sharma, Narinder Kumar, Harleen Dahiya  
 **Journal:** Physical Review D 113, 036030 (2026)  
 **Published:** Feb 27, 2026  
@@ -615,5 +615,5 @@ details = """
 **e-Print:** 2601.11082 [hep-ph]
 
 **Abstract (arXiv):**
-In this work, we investigate the behavior of the light vector ρ meson in the presence of a symmetric nuclear medium at zero temperature. We calculate the mass and decay constant of the ρ-meson as well as the leading twist distribution amplitudes (DAs) in the light-front quark model in vacuum, which are further investigated at different baryonic densities. We also predict the Mellin moments of the DAs and decay width of the ρ0 → e+ e- process in both vacuum and medium. The evolution of DAs is carried out by the leading order (LO) Efremov-Radyushkin-Brodsky-Lepage method and compared with available predictions. For better understanding of medium effects on ρ-meson, we have also predicted the in-medium charge (Gc(Q²)), magnetic (Gm(Q²)), and quadrupole (Gq(Q²)) form factors. The in-medium charge radii, magnetic moment, and quadrupole moment have also been predicted in this work. We have found that the nuclear medium induces appreciable modifications on the mass, weak decay constant, decay width, and distribution amplitudes of the ρ meson. However, the charge radii, magnetic moment, and quadrupole moment are observed to exhibit weaker sensitivity to changes in baryonic density.
+In this work, we investigate the behavior of the light vector ρ meson in the presence of a symmetric nuclear medium at zero temperature. We calculate the mass and decay constant of the ρ-meson as well as the leading twist distribution amplitudes (DAs) in the light-front quark model in vacuum, which are further investigated at different baryonic densities. We also predict the Mellin moments of the DAs and decay width of the ρ0 → e⁺e⁻ process in both vacuum and medium. The evolution of DAs is carried out by the leading order (LO) Efremov-Radyushkin-Brodsky-Lepage method and compared with available predictions. For better understanding of medium effects on ρ-meson, we have also predicted the in-medium charge (Gc(Q²)), magnetic (Gm(Q²)), and quadrupole (Gq(Q²)) form factors. The in-medium charge radii, magnetic moment, and quadrupole moment have also been predicted in this work. We have found that the nuclear medium induces appreciable modifications on the mass, weak decay constant, decay width, and distribution amplitudes of the ρ meson. However, the charge radii, magnetic moment, and quadrupole moment are observed to exhibit weaker sensitivity to changes in baryonic density.
 """
