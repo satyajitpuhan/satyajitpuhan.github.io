@@ -4,7 +4,7 @@ date = 2024-12-07
 
 [extra]
 thumbnail = "images/portfolio/papers/dae2024-radiative-psi-cover.svg"
-service = "DAE Nuclear 2024"
+service = "DAE Symp. Nucl. Phys. 68, 855 (2025)"
 client = "A. Yadav, S. Puhan, and H. Dahiya"
 short_description = "Symposium contribution on the radiative transition ψ(2S) → χc0(1P) + γ in LFQM, with transition form factors and decay width analysis."
 challenge = "This work investigates the radiative transition of ψ(2S) to χc0(1P) + γ in the light-front quark model. The transition form factors and decay widths are calculated and compared with available experimental data and other theoretical predictions."
@@ -16,6 +16,6 @@ citations = 0
 +++
 
 **Authors:** A. Yadav, S. Puhan, and H. Dahiya  
-**Published in:** DAE Nuclear 2024
+**Published in:** DAE Symp. Nucl. Phys. 68, 855 (2025)
 
 [Read on ResearchGate →](https://www.researchgate.net/publication/383878508)

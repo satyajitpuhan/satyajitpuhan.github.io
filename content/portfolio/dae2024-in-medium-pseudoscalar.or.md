@@ -4,7 +4,7 @@ date = 2024-12-10
 
 [extra]
 thumbnail = "images/portfolio/papers/dae2024-in-medium-pseudoscalar-cover.svg"
-service = "DAE Nuclear 2024"
+service = "DAE Symp. Nucl. Phys. 68, 851 (2025)"
 client = "A. Gautam, D. Singh, S. Puhan, N. Kaur, A. Kumar, H. Dahiya, and S. Dutt"
 short_description = "Conference proceeding on in-medium pseudoscalar meson properties in symmetric nuclear matter, using chiral SU(3) CQMF inputs to light-front quark model."
 challenge = "This study examines the in-medium properties of pseudoscalar mesons in symmetric nuclear matter using the light-front quark model combined with the chiral SU(3) quark mean field model. The effective masses, decay constants, and distribution amplitudes are analyzed as functions of baryon density and temperature."
@@ -16,6 +16,6 @@ citations = 0
 +++
 
 **Authors:** A. Gautam, D. Singh, S. Puhan, N. Kaur, A. Kumar, H. Dahiya, and S. Dutt  
-**Published in:** DAE Nuclear 2024
+**Published in:** DAE Symp. Nucl. Phys. 68, 851 (2025)
 
 [INSPIRE-HEP record](https://inspirehep.net/literature/2873111)

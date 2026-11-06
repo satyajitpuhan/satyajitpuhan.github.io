@@ -113,8 +113,78 @@ def strip_math(text: str) -> str:
     return text.strip(" .,")
 
 
+GREEK = {
+    "alpha": "α", "beta": "β", "gamma": "γ", "delta": "δ", "epsilon": "ε", "varepsilon": "ε",
+    "zeta": "ζ", "eta": "η", "theta": "θ", "kappa": "κ", "lambda": "λ", "mu": "μ", "nu": "ν",
+    "xi": "ξ", "pi": "π", "rho": "ρ", "sigma": "σ", "tau": "τ", "upsilon": "υ", "phi": "ϕ",
+    "varphi": "φ", "chi": "χ", "psi": "ψ", "omega": "ω", "Gamma": "Γ", "Delta": "Δ",
+    "Theta": "Θ", "Lambda": "Λ", "Xi": "Ξ", "Pi": "Π", "Sigma": "Σ", "Upsilon": "Υ",
+    "Phi": "Φ", "Psi": "Ψ", "Omega": "Ω",
+}
+TEX_SYMBOLS = {
+    "to": "→", "rightarrow": "→", "Rightarrow": "⇒", "leftrightarrow": "↔", "times": "×",
+    "sim": "~", "approx": "≈", "simeq": "≃", "pm": "±", "mp": "∓", "perp": "⊥", "prime": "′",
+    "le": "≤", "leq": "≤", "ge": "≥", "geq": "≥", "ll": "≪", "gg": "≫", "infty": "∞",
+    "cdot": "·", "ell": "ℓ", "langle": "⟨", "rangle": "⟩", "propto": "∝", "ast": "*",
+    "lesssim": "≲", "gtrsim": "≳", "left": "", "right": "", "%": "%", ",": " ", ";": " ",
+    "!": "", " ": " ",
+}
+SUPERSCRIPT = dict(zip("0123456789+-=()n*′,", "⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻⁼⁽⁾ⁿ*′,"))
+SUBSCRIPT = dict(zip("0123456789+-=()aehijklmnoprstuvx,⊥", "₀₁₂₃₄₅₆₇₈₉₊₋₌₍₎ₐₑₕᵢⱼₖₗₘₙₒₚᵣₛₜᵤᵥₓ,⊥"))
+GREEK_NAMES = {v: k.lower() for k, v in GREEK.items()} | {"φ": "phi"}
+
+
+def _tex_to_unicode(tex: str) -> str:
+    """One $...$ span of INSPIRE LaTeX as plain text: J/\\psi -> J/ψ, Q^2 -> Q², \\chi_{c0} -> χc0."""
+    s = re.sub(r"\\(?:mathrm|mathbf|mathit|mathsf|boldsymbol|bm|text|textrm|textbf|textit|rm|bf|it)"
+               r"\s*\{([^{}]*)\}", r"\1", tex)
+    s = re.sub(r"_\s*\\?perp\b", "⊥", s)                       # k_\perp and INSPIRE's k_perp
+    keep = {"sqrt", "bar", "overline", "frac"}
+    s = re.sub(r"\\([A-Za-z]+|[%,;! ])",
+               lambda m: m.group(0) if m.group(1) in keep
+               else GREEK.get(m.group(1), TEX_SYMBOLS.get(m.group(1), m.group(1))), s)
+
+    def script(m, table, mark):
+        body = (m.group(1) if m.group(1) is not None else m.group(2)).strip()
+        if body and all(c in table for c in body):
+            return "".join(table[c] for c in body)
+        if mark == "_" and re.fullmatch(r"[a-z0-9]{1,3}", body):
+            return body                                    # \chi_{c0} -> χc0, \eta_c -> ηc
+        return mark + body
+
+    s = re.sub(r"\^\s*(?:\{([^{}]*)\}|([^\s\\{]))", lambda m: script(m, SUPERSCRIPT, "^"), s)
+    s = re.sub(r"_\s*(?:\{([^{}]*)\}|([^\s\\{]))", lambda m: script(m, SUBSCRIPT, "_"), s)
+    s = re.sub(r"\\frac\s*\{([^{}]*)\}\s*\{([^{}]*)\}", r"\1/\2", s)
+    s = re.sub(r"\\sqrt\s*\{([^{}]*)\}",
+               lambda m: "√" + (m.group(1) if len(m.group(1)) <= 2 or "_" in m.group(1) else f"({m.group(1)})"), s)
+    s = re.sub(r"\\sqrt\s*(\w)", r"√\1", s)
+    s = re.sub(r"\\(?:bar|overline)\s*\{?([^{}\s])\}?", "\\1\u0304", s)
+    s = s.replace("{", "").replace("}", "").replace("\\", "")
+    return re.sub(r"\s+", " ", s).strip()
+
+
+def pretty_math(text: str) -> str:
+    """Titles and abstracts for display: INSPIRE's LaTeX and MathML become Unicode symbols.
+
+    strip_math() stays the ASCII version, used for slugs and title matching.
+    """
+    if not text:
+        return ""
+    text = re.sub(r"</?i>(?=\w)", " ", text)            # "<i>D</i>and<i>D*</i>" -> "D and D*"
+    text = re.sub(r"<[^>]+>", "", text)                 # MathML / HTML tags, keeping their text
+    text = text.replace("\\\\", " ")
+    text = re.sub(r"\$\$?([^$]+)\$\$?", lambda m: _tex_to_unicode(m.group(1)), text)
+    text = re.sub(r"(?<![-<])->(?!>)", "→", text)
+    text = re.sub(r"\s+", " ", text)
+    return text.strip(" .,")
+
+
+def ascii_greek(text: str) -> str:
+    return "".join(GREEK_NAMES.get(c, c) for c in text)
+
+
 def slugify(value: str, maxlen: int = 60) -> str:
-    value = unicodedata.normalize("NFKD", strip_math(value))
+    value = unicodedata.normalize("NFKD", strip_math(ascii_greek(value)))
     value = value.encode("ascii", "ignore").decode()
     value = re.sub(r"[^a-zA-Z0-9]+", "-", value).strip("-").lower()
     value = re.sub(r"-{2,}", "-", value)
@@ -124,11 +194,28 @@ def slugify(value: str, maxlen: int = 60) -> str:
 
 
 def norm_title(t: str) -> str:
-    return re.sub(r"[^a-z0-9]+", "", strip_math(t).lower())
+    return re.sub(r"[^a-z0-9]+", "", strip_math(ascii_greek(t)).lower())
 
 
 def toml_escape(s: str) -> str:
     return s.replace("\\", "\\\\").replace('"', '\\"').replace("\n", " ").strip()
+
+
+def format_reference(journal: str, volume: str, article: str, year) -> str:
+    """The usual citation form: "Phys. Rev. D 114, 074052 (2026)", "JHEP 02 (2024) 075",
+    "PTEP 2025, 113D03"."""
+    year = str(year or "")
+    if journal in ("JHEP", "JCAP") and volume:
+        return f"{journal} {volume}" + (f" ({year})" if year else "") + (f" {article}" if article else "")
+    if journal == "PTEP":
+        return f"PTEP {volume or year}" + (f", {article}" if article else "")
+    ref = journal + (f" {volume}" if volume else "") + (f", {article}" if article else "")
+    return ref + (f" ({year})" if year else "")
+
+
+# A page whose `service` is one of these is out of date as soon as INSPIRE has a journal reference.
+STALE_SERVICE = re.compile(r"e-Print|arXiv|Preprint|Accepted|Submitted|Communicated|Under review|In press",
+                           re.I)
 
 
 def fetch_json(url: str, timeout: int = 60):
@@ -186,11 +273,11 @@ def fetch_records(source: str | None = None):
         abstract = ""
         for a in abstracts:
             if a.get("value"):
-                abstract = strip_math(a["value"])
+                abstract = pretty_math(a["value"])
                 break
 
         if journal:
-            ref = journal + (" " + volume if volume else "") + (f" ({year})" if year else "")
+            ref = format_reference(journal, volume, str(pub.get("artid") or pub.get("page_start") or ""), year)
         elif arxiv:
             ref = f"e-Print: {arxiv} [hep-ph]"
         else:
@@ -205,7 +292,7 @@ def fetch_records(source: str | None = None):
 
         out.append({
             "control_number": cn,
-            "title": strip_math((m.get("titles") or [{}])[0].get("title", "")),
+            "title": pretty_math((m.get("titles") or [{}])[0].get("title", "")),
             "abstract": abstract,
             "arxiv": arxiv,
             "doi": doi,
@@ -290,7 +377,7 @@ def fetch_cited_by(my_ids):
 
         out.append({
             "inspire": str(m.get("control_number")),
-            "title": strip_math((m.get("titles") or [{}])[0].get("title", "")),
+            "title": pretty_math((m.get("titles") or [{}])[0].get("title", "")),
             "authors": authors,
             "date": m.get("earliest_date", ""),
             "reference": ref,
@@ -629,9 +716,9 @@ description = "{description}"
 details = """
 **{badge}**
 
-**Title:** {title}
-**Authors:** {authors}
-**Published in:** {reference}
+- **Title:** {title}
+- **Authors:** {authors}
+- **Published in:** {reference}
 {extra_links}
 
 ### {abstract_heading}
@@ -646,12 +733,46 @@ details = """
 '''
 
 
-def prepend_news(path, rec, thumb, lang, dry):
+def crossref_date(doi: str):
+    """The date a DOI was published (online first), or None."""
+    if not doi:
+        return None
+    try:
+        msg = fetch_json("https://api.crossref.org/works/" + urllib.parse.quote(doi), timeout=30)["message"]
+    except Exception as e:                                    # noqa: BLE001
+        log("crossref unavailable for", doi, e)
+        return None
+    for key in ("published-online", "published", "published-print", "issued"):
+        parts = ((msg.get(key) or {}).get("date-parts") or [[None]])[0]
+        if parts and parts[0] and len(parts) == 3:
+            return dt.date(*parts)
+    return None
+
+
+def news_date_key(text: str) -> str:
+    """Sortable YYYY-MM-DD from a news date, ISO or hand-written ("2nd April, 2026",
+    "Feb 8–15, 2026", "June, 2026")."""
+    text = (text or "").strip()
+    if re.fullmatch(r"\d{4}-\d{2}-\d{2}", text[:10]):
+        return text[:10]
+    year = re.search(r"\b(19|20)\d{2}\b", text)
+    month = re.search(r"\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?", text, re.I)
+    day = re.search(r"\b(\d{1,2})(?:st|nd|rd|th)?\b", re.sub(r"\b(19|20)\d{2}\b", "", text))
+    months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"]
+    mm = months.index(month.group(1).lower()) + 1 if month else 1
+    return f"{year.group(0) if year else '0000'}-{mm:02d}-{int(day.group(1)) if day else 1:02d}"
+
+
+def prepend_news(path, rec, thumb, lang, dry, published=False):
+    """Add a news item, in date order. `published` announces a preprint that has now
+    appeared in a journal (the preprint may already have its own item)."""
     if not os.path.exists(path):
         return False
     text = open(path, encoding="utf-8").read()
-    marker = f'inspirehep.net/literature/{rec["control_number"]}'
-    if marker in text or toml_escape(rec["title"]) in text:
+    if published:
+        if f'**Published in:** {rec["reference"]}' in text:
+            return False
+    elif f'inspirehep.net/literature/{rec["control_number"]}' in text or toml_escape(rec["title"]) in text:
         return False
 
     links = [f'**INSPIRE-HEP:** [record {rec["control_number"]}](https://inspirehep.net/literature/{rec["control_number"]})']
@@ -677,13 +798,19 @@ def prepend_news(path, rec, thumb, lang, dry):
         description=toml_escape(short_desc(rec)),
         authors=", ".join(rec["authors"][:10]) or "S. Puhan et al.",
         reference=rec["reference"],
-        extra_links="\n".join(links),
+        extra_links="\n".join("- " + link for link in links),
         abstract_heading=abstract_heading,
         abstract=rec["abstract"] or rec["title"],
         footer=footer,
     )
 
-    idx = text.find("[[items]]")
+    # in front of the first item that is older than this one
+    date = rec["date"][:10] or dt.date.today().isoformat()
+    idx = -1
+    for m in re.finditer(r'^\[\[items\]\]\n(?:(?!\[\[items\]\]).)*?^date = "([^"]*)"', text, re.M | re.S):
+        if news_date_key(m.group(1)) <= date:
+            idx = m.start()
+            break
     new_text = (text[:idx] + item + text[idx:]) if idx != -1 else (text.rstrip() + "\n\n" + item)
     if not dry:
         open(path, "w", encoding="utf-8", newline="\n").write(new_text)
@@ -752,6 +879,7 @@ def main():
 
     updated, created = 0, 0
     news_queue = []
+    published_queue = []      # preprints that have just appeared in a journal
 
     for rec in records:
         page = match_record(rec, by_key)
@@ -772,8 +900,17 @@ def main():
                     front = fm_set(front, "doi", rec["doi"])
                 if rec["arxiv"]:
                     front = fm_set(front, "arxiv", rec["arxiv"])
-                if rec["journal"] and "e-Print" in (fm_get(front, "service") or ""):
+                if rec["journal"]:
+                    # the journal reference replaces "e-Print …", "Accepted in PRD", a bare
+                    # conference name or an older reference without the article number
                     front = fm_set(front, "service", rec["reference"])
+                    if re.search(r'^categories\s*=\s*\["Preprint"\]', front, re.M):
+                        front = re.sub(r'^categories\s*=.*$', f'categories = ["{rec["category"]}"]',
+                                       front, count=1, flags=re.M)
+                        front = re.sub(r'^(tags\s*=\s*\[.*?)(?:,\s*"Preprint"|"Preprint",\s*)(.*\])$',
+                                       r"\1\2", front, count=1, flags=re.M)
+                        if variant == page["path"] and rec["category"] == "Journal Article":
+                            published_queue.append((rec, fm_get(front, "thumbnail")))
                 thumb_rel = fm_get(front, "thumbnail")
                 placeholder = (not thumb_rel) or bool(THEME_PLACEHOLDER.search(thumb_rel)) or (
                     not os.path.exists(os.path.join(ROOT, "static", thumb_rel)))
@@ -785,12 +922,16 @@ def main():
                     new_thumb = make_cover(rec, page["slug"], dry)
                 if new_thumb:
                     front = fm_set(front, "thumbnail", new_thumb)
-                if front != before:
+                s, e = pv["span"]
+                body = pv["text"][e:]
+                if rec["journal"]:   # the generated "Published in" line under the title
+                    body = re.sub(r"^(\*\*Published in:\*\*) (?!" + re.escape(rec["reference"]) + r"\s*$).*$",
+                                  lambda m: f"{m.group(1)} {rec['reference']}", body, count=1, flags=re.M)
+                if front != before or body != pv["text"][e:]:
                     updated += 1
                     if not dry:
-                        s, e = pv["span"]
                         open(variant, "w", encoding="utf-8", newline="\n").write(
-                            pv["text"][:s] + front + pv["text"][e:])
+                            pv["text"][:s] + front + body)
             continue
 
         # 4 ── brand-new paper ----------------------------------------------
@@ -820,6 +961,16 @@ def main():
         if prepend_news(NEWS_EN, rec, thumb, "en", dry):
             announced += 1
         prepend_news(NEWS_OR, rec, thumb, "or", dry)
+
+    # "New publication" for a preprint that is now out in a journal, dated by Crossref
+    for rec, thumb in published_queue:
+        when = crossref_date(rec["doi"])
+        if not when or (dt.date.today() - when).days > NEWS_WINDOW_DAYS:
+            continue
+        rec = dict(rec, date=when.isoformat())
+        if prepend_news(NEWS_EN, rec, thumb, "en", dry, published=True):
+            announced += 1
+        prepend_news(NEWS_OR, rec, thumb, "or", dry, published=True)
 
     log(f"done — {created} new page(s), {announced} announcement(s), {updated} metadata update(s){' [dry run]' if dry else ''}")
     return 0

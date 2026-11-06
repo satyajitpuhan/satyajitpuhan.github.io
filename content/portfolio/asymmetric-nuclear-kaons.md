@@ -4,7 +4,7 @@ date = 2025-03-01
 
 [extra]
 thumbnail = "images/portfolio/papers/kaons-asymmetric-nuclear-medium.webp"
-service = "Phys. Rev. D 111 (2025)"
+service = "Phys. Rev. D 111, 054001 (2025)"
 client = "D. Singh, S. Puhan, N. Kaur, M. Kaur, S. Dutt, A. Kumar, and H. Dahiya"
 short_description = "Decoding how baryon density, isospin asymmetry, and temperature rewrite the kaon’s valence quark story inside the nuclear medium."
 challenge = "The role of asymmetric nuclear medium on the properties of kaon is investigated at zero and finite temperature employing a hybrid approach integrating the light cone quark model (LCQM) and the chiral SU(3) quark mean field (CQMF) model. The in-medium quark masses are calculated within the CQMF model and are used as inputs to study the medium modifications in the kaon properties. In particular, we have analysed the impact of baryonic density, isospin asymmetry and temperature on the weak decay constant, distribution amplitudes (DAs) and parton quark distributions (PDFs) of valence quark structure of kaons. The effects of isospin asymmetry on the kaon doublet K = (K⁺, K0) and antikaon doublet K-bar = (K-, K-bar0) are also studied. In order to compare with future experiments, we have also evolved the in-medium DAs and PDFs of kaons to Q²=16 GeV². As compared to the temperature and isospin asymmetry, change in baryonic density of the nuclear medium makes more significant changes to the DAs and PDFs of kaons."
@@ -18,6 +18,6 @@ citations = 13
 +++
 
 **Authors:** D. Singh, S. Puhan, N. Kaur, M. Kaur, S. Dutt, A. Kumar, and H. Dahiya  
-**Published in:** Phys. Rev. D 111 (2025)
+**Published in:** Phys. Rev. D 111, 054001 (2025)
 
 [Read on INSPIRE →](https://inspirehep.net/literature/2843133)

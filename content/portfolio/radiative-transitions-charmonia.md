@@ -5,19 +5,19 @@ date = 2025-04-10
 [extra]
 doi = "10.1103/jsm8-d14d"
 thumbnail = "images/portfolio/papers/charmonia-radiative-transitions.webp"
-service = "Submitted to PRD"
+service = "Phys. Rev. D 114, 074047 (2026)"
 client = "A. Yadav, S. Puhan, and H. Dahiya"
 short_description = "Calculating radiative transition form factors and decay widths for ground and excited charmonia, with predictions benchmarked against experiment and lattice QCD."
 challenge = "In this work, we have investigated the physical properties like decay constants, radiative transitions, decay widths, and branching ratios for the ground and radially excited charmonia states. For the numerical calculations, we have adopted the light-front quark model (LFQM). We have studied χc0 → J/ψ + γ and ψ(2S) → χc0 + γ, hc(1P) → ηc(1S) + γ, and ηc(2S) → hc(1P) + γ transitions in this work. We have also demonstrated the behavior of the transition form factors (TFFs) for the hc(1P) → ηc(1S) + γ and ψ(2S) → χc0 + γ decays in this model. Using the TFFs results, we have calculated the decay widths and branching ratios for these transitions. Our numerical results of decay constants, decay widths, and branching ratios are overall in good agreement with available experimental, theoretical and lattice simulation data."
 solution = "Calculates decay constants, radiative transition form factors, decay widths, and branching ratios for ground and excited charmonia states. Results for χc0 → J/ψ + γ and ψ(2S) transitions agree well with experimental data."
 tags = ["Charmonia", "Spectroscopy", "Radiative Transitions", "Decay Widths", "Light-Front Dynamics"]
-categories = ["Preprint"]
+categories = ["Journal Article"]
 arxiv = "2504.14864"
 inspire = "2914109"
 citations = 2
 +++
 
 **Authors:** A. Yadav, S. Puhan, and H. Dahiya  
-**Published in:** Submitted to PRD
+**Published in:** Phys. Rev. D 114, 074047 (2026)
 
 [Read on INSPIRE →](https://inspirehep.net/literature/2914109)
