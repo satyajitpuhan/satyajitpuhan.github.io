@@ -722,6 +722,24 @@
     });
   });
 
+  /* ---- 11b. maths: $…$ and $$…$$ in page text, typeset by KaTeX --------
+     KaTeX is only loaded on pages that contain maths (see base.html). */
+  if (window.renderMathInElement) {
+    $$('.prose').forEach(function (el) {
+      try {
+        window.renderMathInElement(el, {
+          delimiters: [
+            { left: '$$', right: '$$', display: true },
+            { left: '$', right: '$', display: false },
+            { left: '\\(', right: '\\)', display: false },
+            { left: '\\[', right: '\\]', display: true }
+          ],
+          throwOnError: false
+        });
+      } catch (e) {}
+    });
+  }
+
   /* ---- 12. external links get rel + target ----------------------------- */
   $$('a[href^="http"]').forEach(function (a) {
     if (a.hostname && a.hostname !== window.location.hostname) {
