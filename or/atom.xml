@@ -27,7 +27,7 @@
 &lt;strong&gt;ପ୍ରକାଶିତ:&lt;&#x2F;strong&gt; e-Print: 2609.39647 [hep-ph]&lt;&#x2F;p&gt;
 &lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2609.39647&quot;&gt;arXiv:2609.39647&lt;&#x2F;a&gt; · &lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;inspirehep.net&#x2F;literature&#x2F;3209881&quot;&gt;INSPIRE-HEP record&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 &lt;h3 id=&quot;saaraansh&quot;&gt;ସାରାଂଶ&lt;&#x2F;h3&gt;
-&lt;p&gt;We study exclusive diffractive electroproduction of the ρ^0, ϕ, J&#x2F;ψ, and ψ(2S) mesons in the color-dipole picture using two spin-orbit light-front wave functions, S-1 and S-2. S-1 follows from the Melosh--Wigner rotation in the light-front quark model (LFQM), while S-2 is the spin-improved form commonly used in holographic and boosted-Gaussian approaches. Both share the same radial wave function, with their parameters determined from the LFQM Hamiltonian. The color-glass-condensate dipole parameters are fixed from inclusive structure-function data, with no fit to diffractive data. We compare the predictions with measurements of cross sections, R=σ_L&#x2F;σ_T, t and W dependences, and σ_ϕ&#x2F;σ_ρ. S-1 gives a better description of the light-meson observables, while S-2 provides a better description of the charmonium ratio σ_ψ(2S)&#x2F;σ_J&#x2F;ψ and the J&#x2F;ψ decay constant. We also present the charge, magnetic, and quadrupole form factors of the four mesons and compare them with available lattice-QCD results&lt;&#x2F;p&gt;
+&lt;p&gt;We study exclusive diffractive electroproduction of the ρ⁰, ϕ, J&#x2F;ψ, and ψ(2S) mesons in the color-dipole picture using two spin-orbit light-front wave functions, S-1 and S-2. S-1 follows from the Melosh--Wigner rotation in the light-front quark model (LFQM), while S-2 is the spin-improved form commonly used in holographic and boosted-Gaussian approaches. Both share the same radial wave function, with their parameters determined from the LFQM Hamiltonian. The color-glass-condensate dipole parameters are fixed from inclusive structure-function data, with no fit to diffractive data. We compare the predictions with measurements of cross sections, R=σ_L&#x2F;σ_T, t and W dependences, and σ_ϕ&#x2F;σ_ρ. S-1 gives a better description of the light-meson observables, while S-2 provides a better description of the charmonium ratio σ_ψ(2S)&#x2F;σ_J&#x2F;ψ and the J&#x2F;ψ decay constant. We also present the charge, magnetic, and quadrupole form factors of the four mesons and compare them with available lattice-QCD results&lt;&#x2F;p&gt;
 </content>
         
     </entry>
@@ -75,7 +75,7 @@
 &lt;strong&gt;ପ୍ରକାଶିତ:&lt;&#x2F;strong&gt; e-Print: 2608.07085 [hep-ph]&lt;&#x2F;p&gt;
 &lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2608.07085&quot;&gt;arXiv:2608.07085&lt;&#x2F;a&gt; · &lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;inspirehep.net&#x2F;literature&#x2F;3188657&quot;&gt;INSPIRE-HEP record&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 &lt;h3 id=&quot;saaraansh&quot;&gt;ସାରାଂଶ&lt;&#x2F;h3&gt;
-&lt;p&gt;We present a deep neural-network (DNN) extraction of the pion unpolarized quark and gluon generalized parton distributions (GPDs) using the corresponding parton distribution functions (PDFs) from the JAM21 and xFitter analysis, together with experimental measurements of the pion electromagnetic form factor (EMFF) and lattice quantum chromodynamics (QCD) results. The GPDs are parameterized using a physics-informed neural-network (PINN) that incorporates the known PDF behavior, an exponential momentum-transfer dependence, and a trainable neural network (NN) component. The network parameters are determined by minimizing a χ^2-based loss function. For the valence-quark GPDs, the loss function includes contributions from the EMFF, squared EMFF, charge-normalization constraints, and regularization terms. For the gluon GPDs, it incorporates constraints from the gluon gravitational form factors together with regularization. This framework enables a flexible, nonparametric extraction while preserving the essential theoretical and phenomenological constraints. By employing the full ensemble of available PDF replicas, we quantify the uncertainties of the extracted GPDs over a broad kinematic range in the longitudinal momentum fraction and momentum transfer, with the uncertainty bands corresponding to the 1σ confidence interval. The extracted valence-quark GPDs are found to be in good agreement with available lattice-QCD calculations. Our study demonstrates that DNN-based methods provide a flexible and robust framework for extracting pion GPDs and probing the multidimensional internal structure of the pion, offering a promising avenue for future investigations of hadron tomography&lt;&#x2F;p&gt;
+&lt;p&gt;We present a deep neural-network (DNN) extraction of the pion unpolarized quark and gluon generalized parton distributions (GPDs) using the corresponding parton distribution functions (PDFs) from the JAM21 and xFitter analysis, together with experimental measurements of the pion electromagnetic form factor (EMFF) and lattice quantum chromodynamics (QCD) results. The GPDs are parameterized using a physics-informed neural-network (PINN) that incorporates the known PDF behavior, an exponential momentum-transfer dependence, and a trainable neural network (NN) component. The network parameters are determined by minimizing a χ²-based loss function. For the valence-quark GPDs, the loss function includes contributions from the EMFF, squared EMFF, charge-normalization constraints, and regularization terms. For the gluon GPDs, it incorporates constraints from the gluon gravitational form factors together with regularization. This framework enables a flexible, nonparametric extraction while preserving the essential theoretical and phenomenological constraints. By employing the full ensemble of available PDF replicas, we quantify the uncertainties of the extracted GPDs over a broad kinematic range in the longitudinal momentum fraction and momentum transfer, with the uncertainty bands corresponding to the 1σ confidence interval. The extracted valence-quark GPDs are found to be in good agreement with available lattice-QCD calculations. Our study demonstrates that DNN-based methods provide a flexible and robust framework for extracting pion GPDs and probing the multidimensional internal structure of the pion, offering a promising avenue for future investigations of hadron tomography&lt;&#x2F;p&gt;
 </content>
         
     </entry>
@@ -110,7 +110,7 @@
         
     </entry>
     <entry xml:lang="or">
-        <title>Moderate-to-Large-x Gluon Helicity from J&#x2F;psi Production at sqrt(s) = 27 GeV</title>
+        <title>Moderate-to-Large-x Gluon Helicity from J&#x2F;ψ Production at √s = 27 GeV</title>
         <published>2026-05-29T00:00:00+00:00</published>
         <updated>2026-05-29T00:00:00+00:00</updated>
         
@@ -167,7 +167,7 @@
 &lt;strong&gt;ପ୍ରକାଶିତ:&lt;&#x2F;strong&gt; Phys. Rev. D 114 (2026)&lt;&#x2F;p&gt;
 &lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;doi.org&#x2F;10.1103&#x2F;6gjf-24ll&quot;&gt;DOI: 10.1103&#x2F;6gjf-24ll&lt;&#x2F;a&gt; · &lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2605.17389&quot;&gt;arXiv:2605.17389&lt;&#x2F;a&gt; · &lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;inspirehep.net&#x2F;literature&#x2F;3157139&quot;&gt;INSPIRE-HEP record&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 &lt;h3 id=&quot;saaraansh&quot;&gt;ସାରାଂଶ&lt;&#x2F;h3&gt;
-&lt;p&gt;In this work, we investigate the constituent parton distribution functions (PDFs) of the kaon and heavy pseudoscalar mesons within the light-cone quark model. Starting from the initial-scale quark and antiquark PDFs, obtained by evaluating the quark-quark correlation functions for individual mesons, we perform QCD evolution to determine their partonic structure at higher energy scales. The QCD evolution is carried out using the next-to-leading-order (NLO) Dokshitzer-Gribov-Lipatov-Altarelli-Parisi equations. We further compute the average longitudinal momentum fractions carried by the individual constituents at both the model and evolved scales. In addition, we predict the NLO structure functions of the kaon at energy scales relevant to the upcoming Electron-Ion Collider (EIC). For the COMPASS++&#x2F;AMBER experiment, we also present detailed predictions for the NLO Drell-Yan cross sections induced by both K+ and K- beams, using carbon, tungsten, and aluminum as nuclear targets. Finally, we demonstrate the dominance of the heavier constituents over the lighter constituents in heavy mesons in terms of the momentum fractions they carry&lt;&#x2F;p&gt;
+&lt;p&gt;In this work, we investigate the constituent parton distribution functions (PDFs) of the kaon and heavy pseudoscalar mesons within the light-cone quark model. Starting from the initial-scale quark and antiquark PDFs, obtained by evaluating the quark-quark correlation functions for individual mesons, we perform QCD evolution to determine their partonic structure at higher energy scales. The QCD evolution is carried out using the next-to-leading-order (NLO) Dokshitzer-Gribov-Lipatov-Altarelli-Parisi equations. We further compute the average longitudinal momentum fractions carried by the individual constituents at both the model and evolved scales. In addition, we predict the NLO structure functions of the kaon at energy scales relevant to the upcoming Electron-Ion Collider (EIC). For the COMPASS++&#x2F;AMBER experiment, we also present detailed predictions for the NLO Drell-Yan cross sections induced by both K⁺ and K⁻ beams, using carbon, tungsten, and aluminum as nuclear targets. Finally, we demonstrate the dominance of the heavier constituents over the lighter constituents in heavy mesons in terms of the momentum fractions they carry&lt;&#x2F;p&gt;
 </content>
         
     </entry>
@@ -238,7 +238,7 @@
 &lt;strong&gt;ପ୍ରକାଶିତ:&lt;&#x2F;strong&gt; e-Print: 2604.11116 [hep-ph]&lt;&#x2F;p&gt;
 &lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2604.11116&quot;&gt;arXiv:2604.11116&lt;&#x2F;a&gt; · &lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;inspirehep.net&#x2F;literature&#x2F;3144150&quot;&gt;INSPIRE-HEP record&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 &lt;h3 id=&quot;saaraansh&quot;&gt;ସାରାଂଶ&lt;&#x2F;h3&gt;
-&lt;p&gt;Based on a global fit to experimental measurements of the pion electromagnetic form factor and parton distribution functions (PDFs), we report a data-driven determination of the unpolarized quark generalized parton distributions (GPDs) for the case of pion in the zero-skewness limit (ξ= 0). The form factor is parameterized using a flexible functional form constrained by data and embedded into a GPD framework constructed from collinear PDFs and a profile function encoding transverse dynamics. This approach provides a unified description of the pion&#x27;s electromagnetic structure and its spatial parton distributions. We present the extracted pion GPDs and their impact-parameter-space interpretations, offering new insights into the internal structure of the lightest QCD bound state and providing essential input for future electron-ion collider studies via the Sullivan process, as well as for the exclusive π^+ electroproduction at the 12~GeV Jefferson Lab program, pion-induced exclusive measurements at COMPASS, proposed pion-beam experiments at AMBER, and phenomenological and lattice investigations of the structure of the meson&lt;&#x2F;p&gt;
+&lt;p&gt;Based on a global fit to experimental measurements of the pion electromagnetic form factor and parton distribution functions (PDFs), we report a data-driven determination of the unpolarized quark generalized parton distributions (GPDs) for the case of pion in the zero-skewness limit (ξ= 0). The form factor is parameterized using a flexible functional form constrained by data and embedded into a GPD framework constructed from collinear PDFs and a profile function encoding transverse dynamics. This approach provides a unified description of the pion&#x27;s electromagnetic structure and its spatial parton distributions. We present the extracted pion GPDs and their impact-parameter-space interpretations, offering new insights into the internal structure of the lightest QCD bound state and providing essential input for future electron-ion collider studies via the Sullivan process, as well as for the exclusive π⁺ electroproduction at the 12~GeV Jefferson Lab program, pion-induced exclusive measurements at COMPASS, proposed pion-beam experiments at AMBER, and phenomenological and lattice investigations of the structure of the meson&lt;&#x2F;p&gt;
 </content>
         
     </entry>
@@ -332,7 +332,7 @@
         
     </entry>
     <entry xml:lang="or">
-        <title>Spectroscopy of rho-meson in symmetric nuclear medium</title>
+        <title>Spectroscopy of ρ-meson in symmetric nuclear medium</title>
         <published>2026-01-05T00:00:00+00:00</published>
         <updated>2026-01-05T00:00:00+00:00</updated>
         
@@ -354,7 +354,7 @@
         
     </entry>
     <entry xml:lang="or">
-        <title>Extraction of f_1(x, fk^2_perp) quark TMDs of proton from E288 Drell-Yan data</title>
+        <title>Extraction of f₁(x, k⊥²) quark TMDs of proton from E288 Drell-Yan data</title>
         <published>2026-01-01T00:00:00+00:00</published>
         <updated>2026-01-01T00:00:00+00:00</updated>
         
@@ -472,7 +472,7 @@
         
     </entry>
     <entry xml:lang="or">
-        <title>Pion sub-leading twist generalized transverse momentum dependent parton distributions E_2 in light-front quark model</title>
+        <title>Pion sub-leading twist generalized transverse momentum dependent parton distributions E₂ in light-front quark model</title>
         <published>2026-01-01T00:00:00+00:00</published>
         <updated>2026-01-01T00:00:00+00:00</updated>
         
@@ -518,7 +518,7 @@
         
     </entry>
     <entry xml:lang="or">
-        <title>Valence quark structure of rho meson using light-front quark model</title>
+        <title>Valence quark structure of ρ meson using light-front quark model</title>
         <published>2025-11-01T00:00:00+00:00</published>
         <updated>2025-11-01T00:00:00+00:00</updated>
         
@@ -583,7 +583,7 @@
 &lt;p&gt;&lt;strong&gt;Mode:&lt;&#x2F;strong&gt; Zoom Meeting | &lt;strong&gt;Group:&lt;&#x2F;strong&gt; Prof. C. R. Ji&#x27;s Research Group, NCSU, USA&lt;&#x2F;p&gt;
 &lt;p&gt;&lt;a rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;crjiresearchgroup.wordpress.ncsu.edu&#x2F;group-meetings&#x2F;archives-satyajit-puhan&#x2F;&quot;&gt;View Talk →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;abstract&quot;&gt;Abstract&lt;&#x2F;h2&gt;
-&lt;p&gt;In this talk, I discuss the internal structure of light mesons such as the pion, kaon, and rho using light-front models. The study focuses on valence quark-level Parton Distribution Functions (PDFs), Generalized Parton Distributions (GPDs), and Transverse Momentum Dependent distributions (TMDs). Additionally, I highlight the mechanical properties of the pion and explore how these distributions behave in a nuclear medium.&lt;&#x2F;p&gt;
+&lt;p&gt;In this talk, I discuss the internal structure of light mesons such as the pion, kaon, and ρ using light-front models. The study focuses on valence quark-level Parton Distribution Functions (PDFs), Generalized Parton Distributions (GPDs), and Transverse Momentum Dependent distributions (TMDs). Additionally, I highlight the mechanical properties of the pion and explore how these distributions behave in a nuclear medium.&lt;&#x2F;p&gt;
 </content>
         
     </entry>
@@ -610,7 +610,7 @@
         
     </entry>
     <entry xml:lang="or">
-        <title>Valence quark distribution of light rho and heavy J&#x2F;psi vector mesons in light-cone quark model</title>
+        <title>Valence quark distribution of light ρ and heavy J&#x2F;ψ vector mesons in light-cone quark model</title>
         <published>2025-06-01T00:00:00+00:00</published>
         <updated>2025-06-01T00:00:00+00:00</updated>
         
