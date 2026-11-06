@@ -14,7 +14,8 @@
 {%- endif -%}
 
 {%- set_global meta_desc = config.description -%}
-{%- if page and page.description -%}{%- set_global meta_desc = page.description -%}
+{%- if page and page.extra.about -%}{%- set_global meta_desc = page.title ~ " — " ~ page.extra.about -%}
+{%- elif page and page.description -%}{%- set_global meta_desc = page.description -%}
 {%- elif page and page.extra.short_description -%}{%- set_global meta_desc = page.extra.short_description -%}
 {%- elif section and section.description -%}{%- set_global meta_desc = section.description -%}
 {%- endif -%}
