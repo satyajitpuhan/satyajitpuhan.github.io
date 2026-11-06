@@ -1187,3 +1187,20 @@ p, li, .card__text { text-wrap: pretty; }
 .paper-figure figcaption strong { color: var(--ink); }
 .prose .katex { font-size: 1.05em; }
 .prose .katex-display { overflow-x: auto; overflow-y: hidden; padding: 4px 0; }
+
+/* ---------- 24. Phone layout fixes ------------------------------------- */
+.news-item__date { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; }
+.news-item__when { white-space: nowrap; }
+.about-split { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); align-items: start; }
+@media (max-width: 720px) {
+  .about-split { grid-template-columns: 1fr; }
+  .about-split > :first-child { max-width: 340px; width: 100%; margin-inline: auto; }
+}
+@media (max-width: 420px) {
+  .news-item { grid-template-columns: 76px minmax(0, 1fr); gap: 12px; }
+}
+/* two photos per row on phones instead of one long column */
+@media (max-width: 480px) {
+  .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .gallery > .gallery__item:first-child:nth-last-child(odd) { grid-column: 1 / -1; }
+}

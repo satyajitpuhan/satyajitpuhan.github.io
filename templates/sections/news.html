@@ -19,8 +19,8 @@
           </div>
           <div style="min-width:0">
             <p class="news-item__date">
-              {% if item.top_title %}<span class="chip chip--accent" style="margin-right:8px">{{ item.top_title }}</span>{% endif %}
-              {{ item.date }}
+              {% if item.top_title %}<span class="chip chip--accent">{{ item.top_title }}</span>{% endif %}
+              <span class="news-item__when">{{ item.date }}</span>
             </p>
             <h3 class="news-item__title">{{ item.title }}</h3>
             <p class="news-item__text">{{ item.description | striptags | truncate(length=175) }}</p>
