@@ -1178,3 +1178,12 @@ p, li, .card__text { text-wrap: pretty; }
 .journals__label { font-family: var(--font-mono); font-size: .64rem; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); margin-right: 2px; }
 .journals__item { font-family: var(--font-serif, Georgia, serif); font-style: italic; font-size: .95rem; color: var(--ink-2, var(--ink)); white-space: nowrap; }
 .journals__item sup { font-family: var(--font-mono); font-style: normal; font-size: .6rem; color: var(--dim, #8b93a7); margin-left: 2px; }
+
+/* ---------- 23. Figures in paper pages ----------------------------------
+   <figure class="paper-figure"><img …><figcaption>…</figcaption></figure> */
+.paper-figure { margin: 30px auto; text-align: center; }
+.paper-figure img { max-width: 100%; height: auto; border-radius: var(--r); box-shadow: var(--shadow-2); background: #fff; }
+.paper-figure figcaption { max-width: 70ch; margin: 12px auto 0; text-align: left; font-size: .9rem; line-height: 1.6; color: var(--ink-2); }
+.paper-figure figcaption strong { color: var(--ink); }
+.prose .katex { font-size: 1.05em; }
+.prose .katex-display { overflow-x: auto; overflow-y: hidden; padding: 4px 0; }
