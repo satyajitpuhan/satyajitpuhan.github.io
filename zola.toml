@@ -14,7 +14,7 @@ generate_feeds = true
 
 [languages.en]
 title = "Satyajit Puhan"
-description = "Theoretical Particle Physicist specializing in QCD, hadronic physics, and Dyson–Schwinger equations at Academia Sinica, Taipei, Taiwan."
+description = "Theoretical hadron physicist at the Institute of Physics, Academia Sinica, Taipei: the 3D structure of pions, kaons, ρ mesons and quarkonia on the light front."
 generate_feeds = true
 build_search_index = false
 
@@ -66,7 +66,7 @@ latest_article = "Latest Talks"
 
 [languages.or]
 title = "ସତ୍ୟଜିତ ପୁହାଣ"
-description = "ତାଇୱାନର ଆକାଡେମିଆ ସିନିକାରେ QCD, ହାଡ୍ରୋନିକ୍ ଫିଜିକ୍ସ ଓ ଡାଇସନ୍–ସ୍ୱିଙ୍ଗର୍ ସମୀକରଣର ତାତ୍ତ୍ୱିକ କଣିକା ପଦାର୍ଥବିଜ୍ଞାନୀ ସତ୍ୟଜିତ ପୁହାଣଙ୍କ ୱେବସାଇଟ୍।"
+description = "ତାଇୱାନର ଆକାଡେମିଆ ସିନିକାରେ QCD, ହାଡ୍ରୋନିକ୍ ଫିଜିକ୍ସ ଓ ଲାଇଟ୍-ଫ୍ରଣ୍ଟ ଡାଇନାମିକ୍ସର ତାତ୍ତ୍ୱିକ କଣିକା ପଦାର୍ଥବିଜ୍ଞାନୀ ସତ୍ୟଜିତ ପୁହାଣଙ୍କ ୱେବସାଇଟ୍।"
 generate_feeds = true
 build_search_index = false
 
