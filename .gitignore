@@ -6,3 +6,6 @@
 /_preview.tgz
 /push_result.log
 /push_to_github.bat
+
+# Python bytecode
+__pycache__/

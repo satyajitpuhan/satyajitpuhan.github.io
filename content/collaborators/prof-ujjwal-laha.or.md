@@ -1,6 +1,6 @@
 +++
 title = "ପ୍ରଫେସର ଉଜୱାଲ ଲାହା"
-description = "MSc ସୁପରଭାଇଜର |"
+description = "MSc ସୁପରଭାଇଜର"
 weight = 4
 
 [extra]
