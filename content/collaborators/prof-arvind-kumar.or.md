@@ -1,6 +1,6 @@
 +++
 title = "ଗିରି। ଅରବିନ୍ଦ କୁମାର"
-description = "ସହଯୋଗୀ ପ୍ରଫେସର ଡ"
+description = "ସହଯୋଗୀ ପ୍ରଫେସର"
 weight = 5
 
 [extra]
