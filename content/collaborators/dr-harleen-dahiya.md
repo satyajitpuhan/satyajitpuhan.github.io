@@ -44,7 +44,7 @@ email = "dahiyah@nitj.ac.in"
 
 ## Selected Highly Cited Papers
 
-- **Spin 1/2^+, spin 3/2^+ and transition magnetic moments of low lying and charmed baryons**  
+- **Spin 1/2⁺, spin 3/2⁺ and transition magnetic moments of low lying and charmed baryons**  
   *Neetika Sharma, Harleen Dahiya, P.K. Chatley, Manmohan Gupta* (Mar, 2010)  
   *Phys.Rev.D 81 (2010) 073001* | **115 Citations**
 
