@@ -78,6 +78,10 @@ if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)
 <link rel="stylesheet" href="{{ get_url(path='css/site.css', cachebust=true) }}">
 {% endblock %}
 
+{#- Pages whose text has $…$ maths get KaTeX (self-hosted, ~110 kB gzipped); no other page loads it. -#}
+{%- set_global has_math = page and page.content is containing("$") -%}
+{% if has_math %}<link rel="stylesheet" href="{{ get_url(path='js/vendor/katex/katex.min.css') }}">{% endif %}
+
 {% block head_extra %}{% endblock %}
 </head>
 
@@ -106,6 +110,10 @@ if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)
 
 {% block javascripts %}
 {% include "partials/search-index.html" ignore missing %}
+{% if has_math %}
+<script src="{{ get_url(path='js/vendor/katex/katex.min.js') }}" defer></script>
+<script src="{{ get_url(path='js/vendor/katex/auto-render.min.js') }}" defer></script>
+{% endif %}
 <script src="{{ get_url(path='js/site.js', cachebust=true) }}" defer></script>
 {% endblock %}
 
