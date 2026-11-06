@@ -31,7 +31,7 @@ website = "https://ssharmahep.github.io/"
   *Sameer Jain, Shubham Sharma, Harleen Dahiya* (Feb 3, 2026)  
   *Springer Proc.Phys. 432 (2026) 1033-1036*
 
-- **Valence quark distribution of the rho meson using a light-front quark model**  
+- **Valence quark distribution of the ρ meson using a light-front quark model**  
   *Satyajit Puhan, Shubham Sharma, Narinder Kumar, Harleen Dahiya* (Nov 14, 2025)  
   *Phys.Rev.D 113 (2026) 3, 036030*
 
