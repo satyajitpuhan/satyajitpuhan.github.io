@@ -4,7 +4,7 @@ date = 2026-05-17
 
 [extra]
 thumbnail = "images/portfolio/papers/analysis-on-the-parton-distribution-functions-of-heavy-first-page.webp"
-service = "Phys. Rev. D 114 (2026)"
+service = "Phys. Rev. D 114, 034056 (2026)"
 client = "S. Puhan"
 short_description = "In this work, we investigate the constituent parton distribution functions (PDFs) of the kaon and heavy pseudoscalar mesons within the light-cone quark model."
 solution = "For the COMPASS++/AMBER experiment, we also present detailed predictions for the NLO Drell-Yan cross sections induced by both K⁺ and K⁻ beams, using carbon, tungsten, and aluminum as nuclear targets. Finally, we demonstrate the dominance of the heavier constituents over the lighter constituents in heavy mesons in terms of the momentum fractions they carry"
@@ -17,7 +17,7 @@ categories = ["Journal Article"]
 auto_generated = true
 +++
 **Authors:** S. Puhan  
-**Published in:** Phys. Rev. D 114 (2026)
+**Published in:** Phys. Rev. D 114, 034056 (2026)
 
 [DOI: 10.1103/6gjf-24ll](https://doi.org/10.1103/6gjf-24ll) · [arXiv:2605.17389](https://arxiv.org/abs/2605.17389) · [INSPIRE-HEP record](https://inspirehep.net/literature/3157139)
 

@@ -4,7 +4,7 @@ date = 2024-12-16
 
 [extra]
 thumbnail = "images/portfolio/papers/daehep2024-pion-asymm-nuclear-cover.svg"
-service = "DAE HEP 2024"
+service = "Springer Proc. Phys. 432, 978 (2026)"
 client = "A. Gautam, D. Singh, S. Puhan, N. Kaur, A. Kumar, H. Dahiya, and S. Dutt"
 short_description = "DAE HEP 2024 contribution on pion behavior in asymmetric nuclear medium, exploring decay constants and transition form factors in-medium."
 challenge = "We investigate the in-medium properties of pion in the light-front quark model, using the in-medium quark masses computed by chiral SU(3) quark mean field model. We calculate the decay constant and distribution amplitude of the pion in an asymmetric nuclear medium. Utilizing these findings, we derive the transition form factor (TFF) for the process γ* γ → π⁰ in asymmetric nuclear medium. We compare our free space and in-medium TFF results with the available experimental result, which is found to be in qualitative agreement. This work contributes valuable insights into the behavior of pion within nuclear environments."
@@ -17,6 +17,6 @@ citations = 0
 +++
 
 **Authors:** A. Gautam, D. Singh, S. Puhan, N. Kaur, A. Kumar, H. Dahiya, and S. Dutt  
-**Published in:** DAE HEP 2024
+**Published in:** Springer Proc. Phys. 432, 978 (2026)
 
 [DOI: 10.1007/978-981-95-1513-4_224](https://doi.org/10.1007/978-981-95-1513-4_224) · [INSPIRE-HEP record](https://inspirehep.net/literature/3116481)

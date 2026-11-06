@@ -4,7 +4,7 @@ date = 2023-11-28
 
 [extra]
 thumbnail = "images/portfolio/papers/hql2023-b-d-mesons-first-page.webp"
-service = "PoS HQL2023"
+service = "PoS HQL2023, 089 (2024)"
 client = "S. Puhan and H. Dahiya"
 short_description = "Conference proceeding on the spatial and transverse structure of heavy B and D mesons, connecting GPDs and PDFs through TMDs in light-front dynamics."
 challenge = "We have investigated the unpolarized valence quark generalized parton distribution functions (GPDs) and parton distribution functions (PDFs) for heavy spin-0, B- and D-mesons in the light-front quark model (LFQM). PDFs have been extracted from unpolarized f₁(x, k⊥²) transverse momentum-dependent parton distribution functions (TMDs). We have solved the quark-quark correlation function to have an unpolarized H(x, zeta, t) GPD. The unpolarized GPDs at zero skewness (zeta=0) lead to describing the electromagnetic form factors (EMFFs) (F_M(t)) and gravitational form factors (GFFs) (A_M(t)) of the mesons."
@@ -18,6 +18,6 @@ citations = 3
 +++
 
 **Authors:** S. Puhan and H. Dahiya  
-**Published in:** PoS HQL2023
+**Published in:** PoS HQL2023, 089 (2024)
 
 [Read on arXiv →](https://arxiv.org/abs/2408.07717)

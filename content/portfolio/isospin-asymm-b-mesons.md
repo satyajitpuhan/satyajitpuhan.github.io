@@ -4,7 +4,7 @@ date = 2026-01-01
 
 [extra]
 thumbnail = "images/portfolio/papers/b-mesons-isospin-asymmetric.webp"
-service = "Nucl. Phys. A 1068 (2026)"
+service = "Nucl. Phys. A 1068, 123330 (2026)"
 client = "Tanisha, S. Puhan, N. Kaur, A. Kumar and H. Dahiya"
 short_description = "Revealing how isospin asymmetric nuclear matter transforms the masses, decay constants, and distribution amplitudes of B and B* mesons at finite temperature."
 challenge = "In this study, using the light-front quark model, we examine how an isospin asymmetric nuclear medium affects the properties of pseudoscalar (B+, B0) and vector (B*+, B*0) mesons under different temperature values and degrees of isospin asymmetry. To simulate the in-medium modifications of the constituent quark masses, we employ the chiral SU(3) quark mean field model. Our analysis focuses on evaluating the effective masses, weak decay constants, and distribution amplitudes (DAs) of B mesons in isospin-asymmetric nuclear matter. The calculated vacuum values of the B meson masses and decay constants show good agreement with existing experimental data, validating our approach to study the medium effects within the same framework."
@@ -18,6 +18,6 @@ citations = 2
 +++
 
 **Authors:** Tanisha, S. Puhan, N. Kaur, A. Kumar and H. Dahiya  
-**Published in:** Nucl. Phys. A 1068 (2026)
+**Published in:** Nucl. Phys. A 1068, 123330 (2026)
 
 [Read on INSPIRE →](https://inspirehep.net/literature/2916907)

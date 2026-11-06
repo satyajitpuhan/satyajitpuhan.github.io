@@ -4,7 +4,7 @@ date = 2026-01-01
 
 [extra]
 thumbnail = "images/portfolio/papers/extraction-of-pion-parton-distribution-function-using-nn-cover.svg"
-service = "DAE Symp. Nucl. Phys. 69 (2026)"
+service = "DAE Symp. Nucl. Phys. 69, 849 (2026)"
 client = "S. Puhan, H. Dahiya"
 short_description = "Extraction of Pion Parton Distribution Function using NN"
 solution = "Extraction of Pion Parton Distribution Function using NN"
@@ -15,7 +15,7 @@ categories = ["Conference Proceeding"]
 auto_generated = true
 +++
 **Authors:** S. Puhan, H. Dahiya  
-**Published in:** DAE Symp. Nucl. Phys. 69 (2026)
+**Published in:** DAE Symp. Nucl. Phys. 69, 849 (2026)
 
 [INSPIRE-HEP record](https://inspirehep.net/literature/3114865)
 

@@ -4,7 +4,7 @@ date = 2025-01-10
 
 [extra]
 thumbnail = "images/portfolio/papers/athics2025-pion-kaon-first-page.webp"
-service = "ATHICS 2025"
+service = "Mod. Phys. Lett. A 41, 2642011 (2026)"
 client = "S. Puhan, and H. Dahiya"
 short_description = "ATHICS 2025 proceeding on leading-twist TMDs for pion and kaon with power-law wave functions, with predictions for AMBER, JLab, and EIC experiments."
 challenge = "This work presents a comprehensive study of pion and kaon structure using light-front dynamics. The structural properties including distribution amplitudes, parton distribution functions, and form factors are investigated within the light-cone quark model framework. The results provide valuable insights into the internal structure of pseudoscalar mesons relevant for upcoming experiments at AMBER, JLab, and the Electron-Ion Collider."
@@ -18,6 +18,6 @@ citations = 0
 +++
 
 **Authors:** S. Puhan, and H. Dahiya  
-**Published in:** ATHICS 2025
+**Published in:** Mod. Phys. Lett. A 41, 2642011 (2026)
 
 [arXiv:2604.07049](https://arxiv.org/abs/2604.07049) · [DOI: 10.1142/S0217732326420113](https://doi.org/10.1142/S0217732326420113) · [INSPIRE-HEP record](https://inspirehep.net/literature/3141833)

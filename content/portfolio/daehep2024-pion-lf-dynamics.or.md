@@ -4,7 +4,7 @@ date = 2024-12-15
 
 [extra]
 thumbnail = "images/portfolio/papers/daehep2024-pion-lf-dynamics-cover.svg"
-service = "DAE HEP 2024"
+service = "Springer Proc. Phys. 432, 650 (2026)"
 client = "S. Puhan and H. Dahiya"
 short_description = "DAE HEP 2024 contribution on pion valence quark structure using light-front dynamics, highlighting S-wave dominance and Mellin moment predictions."
 challenge = "In this work, we investigate the leading twist valence quark distribution functions of pion using the light cone quark model (LCQM). We calculate the time reversal f₁(x, k⊥²) quark transverse momentum parton distribution functions (TMDs) using the S-wave and P-wave meson state along with the parton distribution functions (PDFs). It is found that the S-wave contributes 94% to the TMDs and PDFs of pion, while P-wave contributes only 6%. We also calculate the average transverse momentum, Mellin moment and inverse moment for valence quark of pion."
@@ -17,6 +17,6 @@ citations = 0
 +++
 
 **Authors:** S. Puhan and H. Dahiya  
-**Published in:** DAE HEP 2024
+**Published in:** Springer Proc. Phys. 432, 650 (2026)
 
 [DOI: 10.1007/978-981-95-1513-4_148](https://doi.org/10.1007/978-981-95-1513-4_148) · [INSPIRE-HEP record](https://inspirehep.net/literature/3116443)

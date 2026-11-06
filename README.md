@@ -22,7 +22,12 @@ and, for anything new:
 * adds a "New preprint / New publication" entry at the top of
   **Latest news & talks** (`static/sections/news/{en,or}.toml`),
 * refreshes citation counts, DOIs and journal references on papers that were
-  already there,
+  already there (in the usual form, e.g. "Phys. Rev. D 114, 074052 (2026)"),
+* when a preprint appears in a journal, moves it from Preprints to Journal
+  articles and adds a "New publication" news item dated from Crossref (if it
+  came out in the last 150 days),
+* writes titles and abstracts with real symbols (J/ψ, √s, Q², χc0) instead of
+  INSPIRE's LaTeX,
 * rewrites `static/data/inspire-stats.json`, which drives the paper /
   citation / h-index counters,
 * rewrites `static/data/cited-by.json`, the **Recently cited by** list at the

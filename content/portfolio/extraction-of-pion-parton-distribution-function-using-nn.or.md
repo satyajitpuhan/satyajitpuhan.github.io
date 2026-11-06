@@ -4,7 +4,7 @@ date = 2026-01-01
 
 [extra]
 thumbnail = "images/portfolio/papers/extraction-of-pion-parton-distribution-function-using-nn-cover.svg"
-service = "DAE Symp. Nucl. Phys. 69 (2026)"
+service = "DAE Symp. Nucl. Phys. 69, 849 (2026)"
 client = "S. Puhan, H. Dahiya"
 short_description = "Extraction of Pion Parton Distribution Function using NN"
 solution = "Extraction of Pion Parton Distribution Function using NN"

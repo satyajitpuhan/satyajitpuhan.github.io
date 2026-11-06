@@ -4,7 +4,7 @@ date = 2025-06-01
 
 [extra]
 thumbnail = "images/portfolio/papers/rho-jpsi-vector-mesons-gpds.webp"
-service = "Phys. Rev. D 112 (2025)"
+service = "Phys. Rev. D 112, 054035 (2025)"
 client = "Tanisha, S. Puhan, A. Yadav, and H. Dahiya"
 short_description = "Unraveling the unpolarized quark GPDs of ρ and J/ψ mesons, deriving charge, magnetic, and quadrupole form factors with NNLO-evolved PDFs."
 challenge = "In this work, we have investigated the valence quark structure of light ρ and heavy J/ψ vector mesons using the light-cone quark model through unpolarized quark generalized parton distributions (GPDs). By solving the quark-quark correlator, we have represented the quark GPDs in the form of light-front wave function (LFWFs). The charge, magnetic, and quadrupole form factors of these particles have been derived from the unpolarized quark GPDs and compared with the available theoretical predictions and lattice simulation data. The structure functions corresponding to the Rosenbluth scattering cross section of these mesons have also been calculated and compared with the available NJL model predictions. The results of our calculations are found to follow a similar trend as the other model results. We have also calculated the parton distribution functions (PDFs) of these particles in the forward limit of GPDs. The calculated PDFs have also been evolved to 5 GeV² through next to next leading order Dokshitzer-Gribov-Lipatov-Altarelli-Parisi (DGLAP) evolutions."
@@ -18,6 +18,6 @@ citations = 10
 +++
 
 **Authors:** Tanisha, S. Puhan, A. Yadav, and H. Dahiya  
-**Published in:** Phys. Rev. D 112 (2025)
+**Published in:** Phys. Rev. D 112, 054035 (2025)
 
 [Read on PRD →](https://doi.org/10.1103/cmbw-vcds)

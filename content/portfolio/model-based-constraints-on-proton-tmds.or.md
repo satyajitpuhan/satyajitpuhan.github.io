@@ -4,7 +4,7 @@ date = 2026-01-01
 
 [extra]
 thumbnail = "images/portfolio/papers/model-based-constraints-on-proton-tmds-cover.svg"
-service = "DAE Symp. Nucl. Phys. 69 (2026)"
+service = "DAE Symp. Nucl. Phys. 69, 897 (2026)"
 client = "S. Sharma, S. Puhan, N. Kumar, H. Dahiya"
 short_description = "Model-Based Constraints on Proton TMDs"
 solution = "Model-Based Constraints on Proton TMDs"

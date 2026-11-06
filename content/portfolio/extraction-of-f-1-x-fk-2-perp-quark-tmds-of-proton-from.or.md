@@ -4,7 +4,7 @@ date = 2026-01-01
 
 [extra]
 thumbnail = "images/portfolio/papers/extraction-of-f-1-x-fk-2-perp-quark-tmds-of-proton-from-cover.svg"
-service = "DAE Symp. Nucl. Phys. 69 (2026)"
+service = "DAE Symp. Nucl. Phys. 69, 963 (2026)"
 client = "H. G. P, R. Pandey, S. Puhan, S. Dutt, H. Dahiya, A. Kumar"
 short_description = "Extraction of f₁(x, k⊥²) quark TMDs of proton from E288 Drell-Yan data"
 solution = "Extraction of f₁(x, k⊥²) quark TMDs of proton from E288 Drell-Yan data"
