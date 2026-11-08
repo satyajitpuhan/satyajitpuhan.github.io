@@ -71,11 +71,44 @@ jobs:
           fi
 
       # ── 2. Build ─────────────────────────────────────────────────────────
+      # Zola comes from its GitHub release. Those downloads sometimes fail for a while
+      # (HTTP 503/504, or an error page: "gzip: stdin: not in gzip format"), so the
+      # binary is cached between runs and the download is only needed on a cache miss.
+      - name: Restore cached Zola
+        id: zola-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.zola-bin
+          key: zola-${{ env.ZOLA_VERSION }}-x86_64-linux
+
       - name: Install Zola
         run: |
-          curl -sSL "https://github.com/getzola/zola/releases/download/v${ZOLA_VERSION}/zola-v${ZOLA_VERSION}-x86_64-unknown-linux-gnu.tar.gz" \
-            | tar xz -C /usr/local/bin zola
-          zola --version
+          mkdir -p ~/.zola-bin
+          if [ ! -x ~/.zola-bin/zola ]; then
+            url="https://github.com/getzola/zola/releases/download/v${ZOLA_VERSION}/zola-v${ZOLA_VERSION}-x86_64-unknown-linux-gnu.tar.gz"
+            for i in 1 2 3 4; do
+              if curl -fsSL --retry 3 --retry-all-errors -o /tmp/zola.tar.gz "$url" && gzip -t /tmp/zola.tar.gz; then
+                break
+              fi
+              echo "::warning::Zola download failed (attempt $i of 4), retrying"
+              rm -f /tmp/zola.tar.gz
+              sleep $((i * 15))
+            done
+            if [ -s /tmp/zola.tar.gz ]; then
+              tar xzf /tmp/zola.tar.gz -C ~/.zola-bin zola
+            else
+              # same release, published by Zola as a container image on ghcr.io
+              echo "::warning::Zola release download unavailable; using the official ghcr.io image instead"
+              img="ghcr.io/getzola/zola:v${ZOLA_VERSION}"
+              docker pull -q "$img"
+              bin=$(docker inspect -f '{{index .Config.Entrypoint 0}}' "$img")
+              cid=$(docker create "$img")
+              docker cp "$cid:$bin" ~/.zola-bin/zola
+              docker rm "$cid" >/dev/null
+            fi
+          fi
+          echo "$HOME/.zola-bin" >> "$GITHUB_PATH"
+          ~/.zola-bin/zola --version
 
       - name: Build site
         run: zola --config zola.toml build --minify
