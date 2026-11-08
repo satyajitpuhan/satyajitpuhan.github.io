@@ -58,6 +58,16 @@ python3 tools/sync_inspire.py --dry-run
 
 `mise.toml` pins the Zola version if you use [mise](https://mise.jdx.dev/).
 
+**Testing a local build in a browser:** pages link their CSS and JS with full
+URLs from `base_url`, so a plain `zola build` served locally still loads the
+*live* site's `site.css` / `site.js`, and your edits seem to have no effect.
+Either use `zola serve`, or build with the local address:
+
+```bash
+zola --config zola.toml build -u http://127.0.0.1:8765 -o /tmp/site
+python3 -m http.server 8765 --directory /tmp/site
+```
+
 ## Where things live
 
 | Path | What it is |
@@ -109,6 +119,32 @@ markup to keep in sync.
   feeds the card and the detail page.
 * **A talk or news post** — add a file to `content/blog/`.
 * **Menus, social links, contact details** — `zola.toml`.
+* **Maths** — write LaTeX between `$…$` (inline) or `$$…$$` (display) in any
+  page body, including figure captions. KaTeX (self-hosted in
+  `static/js/vendor/katex/`) is loaded only on pages that contain a `$`.
+  Titles and the `[extra]` text fields are plain text: use symbols there
+  (J/ψ, √s, Q², k⊥), as the INSPIRE sync now does.
+* **A figure with a caption** in a page body:
+
+  ```html
+  <figure class="paper-figure">
+    <img src="/images/portfolio/papers/my-plot.webp" alt="What the plot shows">
+    <figcaption><strong>Figure 1:</strong> Caption, maths like $x_{1,2}$ works.</figcaption>
+  </figure>
+  ```
+
+## Deploys
+
+* Every push to `main` runs **Build, sync and deploy**. Zola is cached between
+  runs; when the cache is empty it is downloaded from the Zola release (with
+  retries), or copied from the official `ghcr.io/getzola/zola` image if
+  GitHub's release downloads are down.
+* GitHub Pages then publishes the `gh-pages` branch. Several merges within a few
+  minutes make those publishes cancel each other, and the last one can hang
+  until it times out (this happened on 2026-11-06). Space merges out, or batch
+  them into one push. If Pages is stuck, *Settings → Pages* or
+  `gh api -X POST repos/satyajitpuhan/satyajitpuhan.github.io/pages/builds`
+  starts a fresh publish.
 
 ## Accessibility and performance notes
 
