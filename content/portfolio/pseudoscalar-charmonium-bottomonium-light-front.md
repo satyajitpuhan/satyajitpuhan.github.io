@@ -14,7 +14,7 @@ tags = ["GFFs", "Charmonia", "Bottomonia", "Pressure Distribution", "Light-Front
 categories = ["Journal Article"]
 arxiv = "2606.07073"
 inspire = "3165827"
-citations = 3
+citations = 4
 +++
 
 **Authors:** A. Dwivedi, S. Puhan, and S. Ghosh  

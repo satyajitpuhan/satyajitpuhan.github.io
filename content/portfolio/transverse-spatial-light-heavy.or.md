@@ -14,7 +14,7 @@ categories = ["Journal Article"]
 arxiv = "2410.07596"
 doi = "10.1103/PhysRevD.111.014008"
 inspire = "2839021"
-citations = 12
+citations = 13
 +++
 
 **Authors:** S. Puhan, N. Kaur and H. Dahiya  
