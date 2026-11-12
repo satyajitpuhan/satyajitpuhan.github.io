@@ -2,16 +2,16 @@
   "papers": 45,
   "citations": 242,
   "hindex": 10,
-  "journal_articles": 25,
+  "journal_articles": 26,
   "proceedings": 12,
-  "preprints": 8,
+  "preprints": 7,
   "papers_by_year": {
     "2023": 2,
     "2024": 9,
     "2025": 14,
     "2026": 20
   },
-  "updated": "2026-11-11",
+  "updated": "2026-11-12",
   "exclude": [
     3168377
   ],

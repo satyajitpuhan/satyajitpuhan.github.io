@@ -27,6 +27,31 @@ We study the three-dimensional structure of the pion beyond the leading Fock sta
 
 [[items]]
 top_title = "🎉 New publication!"
+image = "images/portfolio/papers/extraction-of-pion-unpolarized-quark-generalized-parton-first-page.webp"
+title = "Extraction of the pion unpolarized quark generalized parton distribution at zero skewness from charge form factors"
+date = "2026-11-09"
+description = "Based on a fit to experimental and lattice-QCD measurements of the pion electromagnetic form factor, using three pion parton distribution function (PDF) inputs, JAM21, xFitter and GRV, we report a data-driven…"
+details = """
+**🎉 New publication!**
+
+- **Title:** Extraction of the pion unpolarized quark generalized parton distribution at zero skewness from charge form factors
+- **Authors:** S. Puhan, S. Sharma, N. Kumar, H. Dahiya
+- **Published in:** Eur. Phys. J. C 86, 1293 (2026)
+- **e-Print:** [2604.11116 [hep-ph]](https://arxiv.org/abs/2604.11116)
+- **INSPIRE-HEP:** [record 3144150](https://inspirehep.net/literature/3144150)
+- **DOI:** [10.1140/epjc/s10052-026-16555-6](https://doi.org/10.1140/epjc/s10052-026-16555-6)
+
+### Abstract
+
+Based on a fit to experimental and lattice-QCD measurements of the pion electromagnetic form factor, using three pion parton distribution function (PDF) inputs, JAM21, xFitter and GRV, we report a data-driven determination of the unpolarized quark generalized parton distributions (GPDs) of the pion in the zero-skewness limit (ξ = 0). The form factor is parameterized using a flexible functional form constrained by data and embedded into a GPD framework constructed from collinear PDFs and a profile function encoding transverse dynamics. Three independent fits are reported, one to the experimental data alone, one to the lattice-QCD data alone and one to the two together, which allows the compatibility of the two sources of information to be assessed directly. The uncertainty of the extracted GPD combines the Δ χ ²=1 region of the profile parameters with the propagated uncertainty of the input PDF error members. We consider two GPD parameterizations, P-1 and P-2, to study the sensitivity of the extracted GPDs to the choice of parameterization and PDF input. This approach provides a unified description of the pion's electromagnetic structure and its spatial parton distributions. We present the extracted pion GPDs and their impact-parameter-space interpretations, offering new insights into the internal structure of the lightest QCD bound state and providing essential input for future studies at the Electron-Ion Collider via the Sullivan process, exclusive π ⁺ electroproduction at the 12 GeV Jefferson Lab program, pion-induced exclusive measurements at COMPASS, proposed pion-beam experiments at AMBER, and phenomenological and lattice investigations for structure of the meson
+
+---
+
+*Added automatically from INSPIRE-HEP*
+"""
+
+[[items]]
+top_title = "🎉 New publication!"
 image = "images/portfolio/papers/pseudoscalar-charmonium-bottomonium-light-front-first-page.webp"
 title = "Mechanical distribution of the pseudoscalar charmonium and bottomonium on the light-front"
 date = "2026-10-26"

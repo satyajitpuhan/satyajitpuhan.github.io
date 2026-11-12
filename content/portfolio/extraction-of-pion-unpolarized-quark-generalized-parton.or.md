@@ -3,8 +3,9 @@ title = "Extraction of Pion Unpolarized Quark Generalized Parton Distribution fr
 date = 2026-04-13
 
 [extra]
+doi = "10.1140/epjc/s10052-026-16555-6"
 thumbnail = "images/portfolio/papers/extraction-of-pion-unpolarized-quark-generalized-parton-first-page.webp"
-service = "e-Print: 2604.11116 [hep-ph]"
+service = "Eur. Phys. J. C 86, 1293 (2026)"
 client = "S. Puhan, S. Sharma, N. Kumar, H. Dahiya"
 short_description = "Based on a global fit to experimental measurements of the pion electromagnetic form factor and parton distribution functions (PDFs), we report a data-driven determination of the unpolarized quark generalized…"
 solution = "This approach provides a unified description of the pion's electromagnetic structure and its spatial parton distributions. We present the extracted pion GPDs and their impact-parameter-space interpretations, offering new insights into the internal structure of the lightest QCD bound state and providing essential input for future electron-ion collider studies via the Sullivan process, as well as fo"
@@ -12,7 +13,7 @@ arxiv = "2604.11116"
 inspire = "3144150"
 citations = 2
 tags = ["Hadron Structure", "QCD", "Light-Front Dynamics"]
-categories = ["Preprint"]
+categories = ["Journal Article"]
 auto_generated = true
 +++
 **ଲେଖକ:** S. Puhan, S. Sharma, N. Kumar, H. Dahiya  
