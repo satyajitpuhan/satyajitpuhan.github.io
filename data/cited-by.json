@@ -1,7 +1,19 @@
 {
-  "total": 61,
+  "total": 62,
   "updated": "2026-11-13",
   "papers": [
+    {
+      "inspire": "3227917",
+      "title": "Deeply inelastic scattering as an inverse problem",
+      "authors": "H. Li",
+      "date": "2026-11-11",
+      "reference": "arXiv:2611.15665",
+      "arxiv": "2611.15665",
+      "doi": "",
+      "cites": [
+        "3140657"
+      ]
+    },
     {
       "inspire": "3222313",
       "title": "On-shell constituent approach to the light-front partonic energy-momentum tensor",
@@ -138,18 +150,6 @@
       "doi": "",
       "cites": [
         "3157139"
-      ]
-    },
-    {
-      "inspire": "3183612",
-      "title": "Quantum entanglement within quarkonium",
-      "authors": "W. Zhang et al.",
-      "date": "2026-07-27",
-      "reference": "arXiv:2607.24068",
-      "arxiv": "2607.24068",
-      "doi": "",
-      "cites": [
-        "2706491"
       ]
     }
   ]
