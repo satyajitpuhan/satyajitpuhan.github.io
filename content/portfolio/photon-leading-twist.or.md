@@ -14,7 +14,7 @@ categories = ["Journal Article"]
 arxiv = "2408.07714"
 doi = "10.1140/epja/s10050-025-01527-3"
 inspire = "2818270"
-citations = 1
+citations = 2
 +++
 
 **Authors:** S. Puhan, N. Kumar and H. Dahiya  

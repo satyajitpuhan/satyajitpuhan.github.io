@@ -13,7 +13,7 @@ tags = ["Photon", "TMDs", "Light-Front Dynamics", "Conference"]
 categories = ["Conference Proceeding"]
 arxiv = "2504.01419"
 inspire = "2907230"
-citations = 0
+citations = 1
 +++
 
 **Authors:** S. Puhan, N. Kaur, and H. Dahiya  
