@@ -1,7 +1,21 @@
 {
-  "total": 62,
-  "updated": "2026-11-17",
+  "total": 63,
+  "updated": "2026-11-18",
   "papers": [
+    {
+      "inspire": "3230094",
+      "title": "Generalized transverse-momentum-dependent parton distributions of a photon and orbital angular momentum",
+      "authors": "S. Jana, A. Mukherjee, S. Nair",
+      "date": "2026-11-16",
+      "reference": "arXiv:2611.21289",
+      "arxiv": "2611.21289",
+      "doi": "",
+      "cites": [
+        "2818270",
+        "2907230",
+        "2782544"
+      ]
+    },
     {
       "inspire": "3227917",
       "title": "Deeply inelastic scattering as an inverse problem",
@@ -138,18 +152,6 @@
       "doi": "",
       "cites": [
         "2916907"
-      ]
-    },
-    {
-      "inspire": "3189023",
-      "title": "Quest for an Understanding of Pion and Kaon Structure",
-      "authors": "Z. Xu et al.",
-      "date": "2026-08-07",
-      "reference": "arXiv:2608.07670",
-      "arxiv": "2608.07670",
-      "doi": "",
-      "cites": [
-        "3157139"
       ]
     }
   ]
