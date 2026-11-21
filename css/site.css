@@ -1170,6 +1170,21 @@ html[lang="or"] .h-hero em, html[lang="or"] .h-1 em, html[lang="or"] h1 em, html
 .companion__menu button:hover, .companion__menu button:focus-visible { background: var(--surface-3); color: var(--ink); outline: none; }
 .companion__menu button[aria-checked="true"] { color: var(--accent); font-weight: 600; background: var(--accent-soft); }
 @media print { .companion-canvas { display: none !important; } }
+/* Background only: everything on the page steps aside except the companion and the way back. */
+html.bg-only { overflow: hidden; }
+html.bg-only body > :not(.companion-canvas):not(.bg-only-exit),
+html.bg-only body > :not(.companion-canvas):not(.bg-only-exit) * { visibility: hidden !important; pointer-events: none !important; transition: none !important; }
+html.bg-only .companion-canvas.is-on { opacity: 1; }
+.bg-only-exit {
+  position: fixed; top: 14px; right: 14px; z-index: 1000; padding: 8px 14px; border-radius: var(--r-pill);
+  font: 600 .78rem/1.2 var(--font-body); color: var(--ink-2); background: var(--surface-2);
+  border: 1px solid var(--line); box-shadow: var(--shadow-2); opacity: .5; cursor: pointer;
+  transition: opacity .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease);
+}
+.bg-only-exit::before { content: "✕"; margin-right: 7px; }
+.bg-only-exit:hover, .bg-only-exit:focus-visible { opacity: 1; color: var(--accent); border-color: var(--accent); }
+@media (hover: none) { .bg-only-exit { opacity: .8; } }
+html[lang^="or"] .bg-only-exit { font-family: var(--font-or); }
 
 /* ---- finishing touches: balanced headings, no lonely last words, the journals I publish in */
 h1, h2, h3, .h-1, .h-2, .h-3, .card__title, .hero__role, .lede { text-wrap: balance; }
