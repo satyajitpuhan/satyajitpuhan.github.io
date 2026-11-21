@@ -1,6 +1,58 @@
 {% extends "base.html" %}
 {% import 'partials/icons.html' as ic %}
 
+{#- Paper metadata for search engines: Google Scholar / Zotero read the citation_* tags, Google reads the
+    schema.org ScholarlyArticle. English pages only, so each paper is listed once. Nothing visible changes. -#}
+{% block head_extra %}
+{%- if lang == "en" and page.extra.client -%}
+{%- set cats = page.extra.categories | default(value=[]) -%}
+{%- set cat = cats | first | default(value="Journal Article") -%}
+{%- set authors = page.extra.client | replace(from=", and ", to=", ") | replace(from=" and ", to=", ") | split(pat=", ") -%}
+{%- set service = page.extra.service | default(value="") -%}
+{#- journal = the words of "Phys. Rev. D 111, 054001 (2025)" before the first one that starts with a digit -#}
+{%- set_global venue = "" -%}{%- set_global has_volume = false -%}
+{%- if "," in service and service is not starting_with("e-Print") and service is not starting_with("Communicated") -%}
+  {%- for w in service | split(pat=" ") -%}
+    {%- set c = w | truncate(length=1, end="") -%}
+    {%- if c and c in "0123456789" -%}{%- set_global has_volume = true -%}{%- break -%}{%- endif -%}
+    {%- set_global venue = venue ~ " " ~ w -%}
+  {%- endfor -%}
+{%- endif -%}
+{%- set venue = venue | trim | trim_end_matches(pat=",") -%}
+<meta name="citation_title" content="{{ page.title }}">
+{% for a in authors %}<meta name="citation_author" content="{{ a | trim }}">
+{% endfor -%}
+<meta name="citation_publication_date" content="{{ page.date | date(format='%Y/%m/%d') }}">
+{% if has_volume and venue and cat == "Conference Proceeding" %}<meta name="citation_conference_title" content="{{ venue }}">
+{% elif has_volume and venue %}<meta name="citation_journal_title" content="{{ venue }}">
+{% endif -%}
+{% if page.extra.doi %}<meta name="citation_doi" content="{{ page.extra.doi }}">
+{% endif -%}
+{% if page.extra.arxiv %}<meta name="citation_arxiv_id" content="{{ page.extra.arxiv }}">
+{% if cat == "Preprint" %}<meta name="citation_technical_report_institution" content="arXiv">
+<meta name="citation_technical_report_number" content="arXiv:{{ page.extra.arxiv }}">
+{% endif -%}
+<meta name="citation_pdf_url" content="https://arxiv.org/pdf/{{ page.extra.arxiv }}">
+{% endif -%}
+<meta name="citation_abstract_html_url" content="{{ page.permalink }}">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "headline": {{ page.title | truncate(length=110) | json_encode | safe }},
+  "name": {{ page.title | json_encode | safe }},
+  "author": [{% for a in authors %}{ "@type": "Person", "name": {{ a | trim | json_encode | safe }} }{% if not loop.last %}, {% endif %}{% endfor %}],
+  "datePublished": "{{ page.date | date(format='%Y-%m-%d') }}",
+  {% if page.extra.short_description %}"description": {{ page.extra.short_description | json_encode | safe }},
+  {% endif %}{% if has_volume and venue %}"isPartOf": { "@type": "Periodical", "name": {{ venue | json_encode | safe }} },
+  {% endif %}"url": {{ page.permalink | json_encode | safe }},
+  "sameAs": [{% set_global ids = [] %}{% if page.extra.doi %}{% set_global ids = ids | concat(with="https://doi.org/" ~ page.extra.doi) %}{% endif %}{% if page.extra.arxiv %}{% set_global ids = ids | concat(with="https://arxiv.org/abs/" ~ page.extra.arxiv) %}{% endif %}{% if page.extra.inspire %}{% set_global ids = ids | concat(with="https://inspirehep.net/literature/" ~ page.extra.inspire) %}{% endif %}{% for u in ids %}{{ u | json_encode | safe }}{% if not loop.last %}, {% endif %}{% endfor %}]{% if page.extra.doi %},
+  "identifier": { "@type": "PropertyValue", "propertyID": "DOI", "value": {{ page.extra.doi | json_encode | safe }} }{% endif %}
+}
+</script>
+{%- endif -%}
+{% endblock %}
+
 {% block content %}
 {%- set cats = page.extra.categories | default(value=[]) -%}
 {%- set cat = cats | first | default(value="Journal Article") -%}
