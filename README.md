@@ -187,8 +187,11 @@ Make sure GitHub notifications for this repository reach your email (Settings �
 
 ## The companions
 
-A companion lives behind the content on every page. Visitors choose one from the 🐉/🐺/🌸/🦚/🐼/🍌/💔
-button in the top bar (Dragon, Lone wolf, Wishes, Peacock, Kung fu panda, Minion mayhem, Journey, or Off); the choice is remembered.
+A companion lives behind the content on every page. Visitors choose one from the 🐉/🐺/🌸
+button in the top bar (Dragon, Lone wolf, Wishes, or Off); the choice is remembered.
+Peacock, Kung fu panda, Minion mayhem and Journey are no longer in the menu, but their files are
+kept (`peacock.js`, `panda.js`, `field.js`, `journey.js`); to bring one back, copy its button back
+into `templates/partials/nav.html`. A visitor whose saved choice is one of them gets the Dragon.
 
 * **Dragon** (`static/js/dragon.js`): an Eastern dragon that swims across the page, sometimes
   circles the mouse, and now and then opens its jaws.
@@ -260,7 +263,7 @@ button in the top bar (Dragon, Lone wolf, Wishes, Peacock, Kung fu panda, Minion
   and each chapter is a function (`chapter1` … `chapter4`).
   In the light theme the night is drawn paler, so the page text stays readable.
 
-The six 3D ones are built entirely in code (no model or image files); shared building blocks live in
+The 3D ones are built entirely in code (no model or image files); shared building blocks live in
 `static/js/kit.js`. The only library is three.js,
 self-hosted in `static/js/vendor/` (MIT licence alongside it), so the Site guard sees no outside
 scripts.
