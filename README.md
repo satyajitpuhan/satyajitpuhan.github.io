@@ -192,6 +192,8 @@ button in the top bar (Dragon, Lone wolf, Wishes, or Off); the choice is remembe
 Peacock, Kung fu panda, Minion mayhem and Journey are no longer in the menu, but their files are
 kept (`peacock.js`, `panda.js`, `field.js`, `journey.js`); to bring one back, copy its button back
 into `templates/partials/nav.html`. A visitor whose saved choice is one of them gets the Dragon.
+The 👁️ button after the language switch hides the whole page so only the companion behind it
+is left; the "Show the page" button in the corner, or Esc, brings the page back.
 
 * **Dragon** (`static/js/dragon.js`): an Eastern dragon that swims across the page, sometimes
   circles the mouse, and now and then opens its jaws.

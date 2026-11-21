@@ -75,6 +75,13 @@
         <a href="{{ or_url }}" class="{% if lang == 'or' %}is-active{% endif %}" hreflang="or" lang="or"{% if lang == 'or' %} aria-current="true"{% endif %}>ଓଡ଼ି</a>
       </div>
 
+      {#- Hides the page so only the companion behind it is seen; Esc or "Show the page" brings it back (site.js, 16b) -#}
+      <button class="icon-btn" data-bg-only hidden aria-pressed="false"
+              aria-label="{% if lang == 'or' %}କେବଳ ପୃଷ୍ଠଭୂମି ଦେଖନ୍ତୁ{% else %}Show only the background{% endif %}"
+              title="{% if lang == 'or' %}କେବଳ ପୃଷ୍ଠଭୂମି ଦେଖନ୍ତୁ (ଫେରିବାକୁ Esc){% else %}Show only the background (Esc to come back){% endif %}">
+        <span aria-hidden="true" style="font-size:15px;line-height:1">👁️</span>
+      </button>
+
       <button class="icon-btn nav__burger" data-nav-toggle aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
         {{ ic::ui(name="menu") }}
       </button>

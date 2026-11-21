@@ -680,6 +680,33 @@
     if (document.readyState === 'complete') idle(); else on(window, 'load', idle);
   })();
 
+  /* ---- 16b. background only: the page steps aside so the companion behind it is seen
+         whole. The 👁️ button sits after the language switch; the "Show the page" pill
+         or Esc brings the page back. Shown only where companions can run. ---- */
+  (function backgroundOnly() {
+    var btn = $('[data-bg-only]'), box = $('[data-companion]');
+    if (!btn || !box || box.hidden) return;
+    var root = document.documentElement, or = (root.getAttribute('lang') || '').indexOf('or') === 0;
+    var exit = document.createElement('button');
+    exit.type = 'button'; exit.className = 'bg-only-exit'; exit.hidden = true;
+    document.body.appendChild(exit);
+    function set(onOff) {
+      root.classList.toggle('bg-only', onOff);
+      btn.setAttribute('aria-pressed', onOff ? 'true' : 'false');
+      exit.hidden = !onOff;
+      if (onOff) {
+        var none = !$('.companion-canvas');            // nothing running: say how to get one
+        exit.textContent = (none ? (or ? 'କୌଣସି ପୃଷ୍ଠଭୂମି ଚାଲୁ ନାହିଁ · ' : 'No background is on · ') : '')
+          + (or ? 'ପୃଷ୍ଠା ଦେଖାନ୍ତୁ' : 'Show the page');
+        exit.focus();
+      } else btn.focus();
+    }
+    on(btn, 'click', function () { set(true); });
+    on(exit, 'click', function () { set(false); });
+    on(document, 'keydown', function (e) { if (e.key === 'Escape' && root.classList.contains('bg-only')) set(false); });
+    btn.hidden = false;
+  })();
+
   /* ---- 17. contact form: send through FormSubmit's AJAX endpoint, so the visitor
          stays on the page (no reCAPTCHA hop that many give up on) and sees whether
          it worked. If it fails, offer the same message as a ready-made email. ---- */
